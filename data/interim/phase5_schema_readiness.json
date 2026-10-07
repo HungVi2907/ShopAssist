@@ -1,0 +1,63 @@
+{
+  "rows_checked": 8405,
+  "product_id_validation": {
+    "total_ids": 8405,
+    "is_unique": true,
+    "id_equals_uniq_id_matches": 8405,
+    "id_mismatches": 0,
+    "status": "PASS"
+  },
+  "source_fields": {
+    "product_id": "ready",
+    "product_name": "ready",
+    "category": "ready",
+    "brand": "ready",
+    "retail_price": "ready",
+    "discounted_price": "ready",
+    "rating": "ready",
+    "description": "ready",
+    "product_specifications": "ready",
+    "product_url": "ready",
+    "image": "ready",
+    "pid": "ready"
+  },
+  "field_coverage_counts": {
+    "product_id": 8405,
+    "product_name": 8405,
+    "category": 8405,
+    "brand": 6417,
+    "retail_price": 8405,
+    "discounted_price": 8405,
+    "rating": 894,
+    "description": 8404,
+    "product_specifications": 8405,
+    "product_url": 8405,
+    "image": 8402,
+    "pid": 8405
+  },
+  "future_generated_fields": {
+    "retrieval_text": "phase_5_2",
+    "embedding": "phase_5_5",
+    "embedding_model": "phase_5_5",
+    "created_at": "database_default",
+    "updated_at": "database_default"
+  },
+  "specification_validation": {
+    "valid_specs_arrays": 8387,
+    "empty_specs_arrays": 18,
+    "invalid_specs": 0,
+    "status": "PASS"
+  },
+  "numeric_validation": {
+    "valid_discounted_price": 8405,
+    "price_violations": 0,
+    "rating_violations": 0,
+    "status": "PASS"
+  },
+  "taxonomy_validation": {
+    "valid_categories": 8405,
+    "category_violations": 0,
+    "status": "PASS"
+  },
+  "overall_status": "READY_FOR_PHASE_5_2"
+}

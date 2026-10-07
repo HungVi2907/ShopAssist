@@ -201,9 +201,10 @@ Normalize Structured Fields
         ↓
 Build retrieval_text
         ↓
-Final Product Dataset
+Final Product Dataset (products.parquet)
         ↓
-PostgreSQL + pgvector
+Supabase Cloud PostgreSQL + pgvector
+(Local PostgreSQL for dev/testing)
 ```
 
 ### Các bước xử lý cơ bản trong Data Cleaning:
@@ -246,49 +247,66 @@ Hệ thống tuyệt đối không tự bịa đặt hoặc suy diễn các bả
 
 # 7. Final Product Schema
 
-Sau khi hoàn tất quá trình làm sạch và chuẩn hóa, schema logic của bảng dữ liệu sản phẩm trong Product Knowledge Base được định hình như sau:
+Sau khi hoàn tất quá trình làm sạch dữ liệu (Phase 4) và thống nhất kiến trúc Product Knowledge Base (Phase 5), schema dữ liệu sản phẩm trong bảng `products` trên **Supabase Cloud PostgreSQL + pgvector** được quy định chính thức như sau:
 
-| Trường dữ liệu | Kiểu dữ liệu | Vai trò chính | Mô tả |
-|---|---|---|---|
-| `product_id` | String | Khóa chính (Primary Key) | Mã định danh duy nhất của sản phẩm (lấy từ `uniq_id` hoặc `pid`) |
-| `product_name` | String | Hiển thị, TF-IDF, Semantic | Tên đầy đủ của sản phẩm |
-| `category` | String | SQL Filter, Phân loại | Ngành hàng chuẩn hóa sau khi phân tách danh mục |
-| `brand` | String | SQL Filter, Ranking | Thương hiệu chuẩn hóa của sản phẩm |
-| `retail_price` | Float / Numeric | Thông tin tham chiếu | Giá bán lẻ niêm yết ban đầu |
-| `discounted_price`| Float / Numeric | SQL Filter, Ranking | Giá bán thực tế / giá ưu đãi sử dụng cho ràng buộc ngân sách |
-| `rating` | Float | SQL Filter, Ranking | Điểm đánh giá trung bình có sẵn từ dataset |
-| `description` | Text | Semantic Search | Văn bản mô tả tính năng và chi tiết sản phẩm |
-| `product_specifications` | Text / JSON | Semantic, Detail Display | Thông số kỹ thuật chi tiết của sản phẩm |
-| `product_url` | String | Hiển thị | Đường dẫn tham chiếu đến sản phẩm gốc |
-| `retrieval_text` | Text | TF-IDF, Vector Embedding | Văn bản tổng hợp đại diện ngữ nghĩa cho sản phẩm |
-
-*Lưu ý*: Schema chi tiết có thể được tinh chỉnh mở rộng sau khi EDA xác nhận cấu trúc thực tế của dataset Flipkart.
+| Trường dữ liệu | Kiểu dữ liệu | Ràng buộc | Vai trò chính | Mô tả |
+|---|---|---|---|---|
+| `product_id` | `VARCHAR(64)` | `PRIMARY KEY` | Khóa chính | Mã định danh duy nhất (ánh xạ trực tiếp 1:1 từ `uniq_id` của Flipkart) |
+| `product_name` | `TEXT` | `NOT NULL` | Hiển thị, TF-IDF, Semantic | Tên đầy đủ của sản phẩm đã làm sạch khoảng trắng và HTML |
+| `category` | `VARCHAR(128)` | `NOT NULL` | SQL Hard Filter | Danh mục ngành hàng chuẩn hóa (thuộc 16 categories chính thức) |
+| `brand` | `VARCHAR(128)` | `NULLABLE` | SQL Hard Filter, Ranking | Thương hiệu đã chuẩn hóa canonical casing (23.65% sản phẩm không có brand, lưu `null`) |
+| `retail_price` | `NUMERIC(10, 2)` | `NULLABLE` | Thông tin tham chiếu | Giá bán lẻ niêm yết ban đầu (nếu có) |
+| `discounted_price`| `NUMERIC(10, 2)` | `NOT NULL, CHECK (> 0)` | SQL Hard Filter, Budgeting | Giá bán thực tế / giá ưu đãi phục vụ lọc ngân sách (100% bản ghi hợp lệ) |
+| `rating` | `NUMERIC(3, 2)` | `NULLABLE, CHECK (1.0 - 5.0)` | Optional Ranking Signal | Điểm đánh giá thực tế (89.36% null; dùng làm trọng số xếp hạng phụ, không lọc cứng) |
+| `description` | `TEXT` | `NULLABLE` | Semantic Context, LLM Reasoning | Văn bản mô tả chi tiết tính năng sản phẩm đã khử HTML và ký tự điều khiển |
+| `product_specifications` | `JSONB` | `NOT NULL, DEFAULT '[]'::jsonb` | Structured Attributes, LLM Context | Mảng JSON chứa các cặp thông số kỹ thuật `[{"key": "...", "value": "..."}]` |
+| `product_url` | `TEXT` | `NULLABLE` | Tham chiếu người dùng | Đường dẫn gốc tới trang sản phẩm trên Flipkart |
+| `image` | `TEXT` | `NULLABLE` | Giao diện Telegram Bot | URL hình ảnh đại diện sản phẩm để render Product Card trực quan trên Telegram |
+| `pid` | `VARCHAR(64)` | `NULLABLE` | Lineage & Debugging | Mã SKU sản phẩm từ Flipkart dùng cho tra cứu nguồn gốc và đối chiếu kỹ thuật |
+| `retrieval_text` | `TEXT` | `NOT NULL` | TF-IDF, Vector Embedding | Văn bản tổng hợp đại diện ngữ nghĩa cho sản phẩm |
+| `embedding` | `vector(384)` | `NOT NULL` | Dense Semantic Search | Vector nhúng 384 chiều sinh bởi mô hình `BAAI/bge-small-en-v1.5` |
+| `embedding_model` | `VARCHAR(64)` | `NOT NULL, DEFAULT 'BAAI/bge-small-en-v1.5'` | Provenance / Versioning | Định danh mô hình embedding để quản lý phiên bản và tái sinh vector khi nâng cấp |
+| `created_at` | `TIMESTAMPTZ` | `NOT NULL, DEFAULT NOW()` | Metadata vận hành | Thời điểm bản ghi được khởi tạo trong database |
+| `updated_at` | `TIMESTAMPTZ` | `NOT NULL, DEFAULT NOW()` | Metadata vận hành | Thời điểm bản ghi được cập nhật gần nhất |
 
 ---
 
 # 8. Construction of `retrieval_text`
 
-Để phục vụ cho cả mô hình tìm kiếm từ khóa truyền thống (TF-IDF) và tìm kiếm ngữ nghĩa đa chiều (Dense Vector Search), mỗi sản phẩm được xây dựng một trường văn bản đại diện duy nhất gọi là `retrieval_text`.
+Để phục vụ cho cả mô hình tìm kiếm từ khóa truyền thống (TF-IDF Baseline), mô hình tìm kiếm ngữ nghĩa đa chiều (Dense Vector Search qua `pgvector`), và mô hình tái xếp hạng (Cross-Encoder Reranker), mỗi sản phẩm được xây dựng một trường văn bản đại diện ngữ nghĩa duy nhất gọi là `retrieval_text`.
 
-Cấu trúc xây dựng:
+### Cấu trúc và thứ tự trường chuẩn:
 
 ```text
 retrieval_text = 
-    product_name
+    "Product: " + product_name
     + " | Category: " + category
-    + " | Brand: " + brand
-    + " | Description: " + description
-    + " | Specifications: " + product_specifications
+    + (" | Brand: " + brand  [nếu brand != null])
+    + (" | Specifications: " + formatted_specs  [nếu specs không rỗng])
+    + (" | Description: " + truncated_description  [nếu description != null])
 ```
 
-### Nguyên tắc tạo `retrieval_text`:
+Ví dụ thực tế:
+```text
+Product: Logitech K380 Multi-Device Bluetooth Keyboard | Category: Computers | Brand: Logitech | Specifications: Type: Wireless Keyboard; Connectivity: Bluetooth 3.0; Battery Type: AAA; Compatible OS: Windows, macOS, Android, iOS | Description: Compact and lightweight multi-device Bluetooth keyboard that lets you type on your computer, tablet, and smartphone seamlessly...
+```
 
-- **Bỏ qua trường rỗng**: Nếu một trường thông tin (ví dụ `brand` hoặc `product_specifications`) không có dữ liệu ở một sản phẩm nhất định, hệ thống sẽ bỏ qua trường đó một cách an toàn mà không đưa vào các giá trị rác như `"None"`, `"NaN"`, hoặc `"null"`.
-- **Làm sạch văn bản**: Loại bỏ khoảng trắng thừa, thẻ HTML sót lại, và chuẩn hóa dấu phân tách để giữ độ liền mạch ngữ nghĩa.
-- **Ứng dụng thống nhất**: `retrieval_text` là nguồn đầu vào trực tiếp cho:
-  - Vectorizer TF-IDF (cho baseline lexical search);
-  - Mô hình Sentence Transformers / Embedding Model (để sinh dense vector embedding lưu trữ vào pgvector);
-  - Ngữ cảnh tham chiếu cho mô hình Reranker.
+### Nguyên tắc kỹ thuật khi xây dựng `retrieval_text`:
+
+1. **Thứ tự ưu tiên thông tin (Field Ordering):**
+   - Đặt `Product Name`, `Category`, `Brand` lên đầu nhằm neo vững thực thể và ngữ cảnh sản phẩm.
+   - Đặt `Specifications` **trước** `Description` vì thông số kỹ thuật chứa mật độ thông tin cao (vật liệu, kích thước, chuẩn kết nối, tương thích) có giá trị phân biệt ngữ nghĩa mạnh nhất, tránh bị cắt xén nếu văn bản quá dài.
+2. **Loại trừ Giá tiền (`discounted_price`) và Đánh giá (`rating`):**
+   - **Tuyệt đối không đưa giá tiền và rating vào `retrieval_text`**.
+   - *Lý do*: Không gian vector ngữ nghĩa không có khả năng so sánh liên tục các con số số học (vector của "749" không gần "750" theo nghĩa toán học). Ràng buộc ngân sách và điểm rating được bảo đảm chính xác 100% bằng câu lệnh lọc SQL cứng (`WHERE discounted_price <= :max_price`). Việc đưa giá/rating vào vector text chỉ gây nhiễu embedding và lãng phí độ dài context.
+3. **Chuẩn hóa thông số (`Specifications` Formatting):**
+   - Giải nén mảng JSON `product_specifications` thành chuỗi key-value gọn gàng phân tách bằng dấu chấm phẩy: `Key1: Value1; Key2: Value2; ...`
+   - Bỏ qua các cặp key-value có giá trị `null`, `"NA"`, hoặc rỗng.
+4. **Xử lý giá trị khuyết thiếu (Null Handling):**
+   - Nếu `brand` hoặc `description` bị khuyết, trường đó bị loại bỏ hoàn toàn khỏi chuỗi. Tuyệt đối không sinh các token rác như `"Brand: None"`, `"Brand: NaN"`, hoặc `"Description: null"`.
+5. **Giới hạn độ dài văn bản (Length Capping & Token Truncation):**
+   - Mô hình `BAAI/bge-small-en-v1.5` có giới hạn ngữ cảnh tối đa là 512 tokens (~2,000 ký tự).
+   - Phần `description` được giới hạn tối đa 1,200 ký tự (cắt tại ranh giới từ nguyên vẹn gần nhất) để đảm bảo toàn bộ chuỗi `retrieval_text` luôn nằm an toàn trong khoảng 1,500 – 1,800 ký tự (~380 – 450 tokens), không bị cắt cụt đột ngột trong tokenizer.
 
 ---
 
@@ -316,14 +334,14 @@ Product Data
 
 ### Structured Information:
 
-- Được lưu trữ dưới dạng các cột có kiểu dữ liệu chuẩn (TEXT, NUMERIC, FLOAT) trong PostgreSQL;
-- Được đánh index phù hợp (B-Tree) để tối ưu hóa truy vấn lọc điều kiện cứng;
+- Được lưu trữ dưới dạng các cột có kiểu dữ liệu chuẩn (TEXT, NUMERIC, JSONB) trong **Supabase Cloud PostgreSQL** (và local PostgreSQL tương thích);
+- Được đánh index phù hợp (B-Tree đơn và B-Tree tổng hợp) để tối ưu hóa truy vấn lọc điều kiện cứng;
 - Đảm bảo tính toán chính xác 100% đối với các yêu cầu về ngân sách, thương hiệu và ngành hàng.
 
 ### Unstructured Information:
 
 - Chứa đựng các chi tiết mô tả tính năng, công năng sử dụng, chất liệu, kích thước, thiết kế;
-- Được ánh xạ thành vector không gian nhiều chiều (ví dụ 384, 768 hoặc 1536 chiều) lưu trong cột kiểu `vector` của extension **pgvector**;
+- Được tổng hợp thành trường `retrieval_text` và ánh xạ thành dense vector không gian 384 chiều (mô hình `BAAI/bge-small-en-v1.5`) lưu trong cột kiểu `vector(384)` của extension **pgvector**;
 - Đảm bảo khả năng hiểu các nhu cầu ngữ nghĩa phức tạp mà SQL không thể so khớp chính xác.
 
 ---
@@ -335,19 +353,23 @@ Cấu trúc thư mục dữ liệu trong project được tổ chức rõ ràng 
 ```text
 data/
 ├── raw/
-│   └── flipkart_products.csv                  # File dataset gốc tải về
+│   └── flipkart_products.csv                  # File dataset gốc tải về (20,000 rows)
 │
 ├── interim/
-│   ├── eda_profiling_report.json             # Báo cáo tổng hợp số liệu EDA
-│   ├── category_distribution.json            # Thống kê phân bố ngành hàng
-│   └── cleaned_candidates.parquet            # Dữ liệu sau bước làm sạch sơ bộ
+│   ├── eda_profiling_report.json             # Báo cáo tổng hợp số liệu EDA (Phase 2)
+│   ├── category_distribution.json            # Thống kê phân bố ngành hàng (Phase 2)
+│   ├── selected_categories.json              # 16 ngành hàng chính thức được chọn (Phase 3)
+│   ├── selected_category_candidates.parquet  # Tập ứng viên 8,683 sản phẩm thô (Phase 3)
+│   ├── cleaned_candidates.parquet            # Dữ liệu 8,405 sản phẩm đã làm sạch & khử trùng (Phase 4)
+│   └── cleaning_report.json                  # Báo cáo định lượng quá trình làm sạch (Phase 4)
 │
 └── processed/
-    └── products.parquet                      # File dữ liệu chuẩn hóa cuối cùng
-                                              # sẵn sàng nạp vào PostgreSQL/pgvector
+    └── products.parquet                      # File dữ liệu chuẩn hóa cuối cùng (8,405 rows)
+                                              # chứa đầy đủ metadata, retrieval_text, và embedding vector(384)
+                                              # sẵn sàng nạp vào Supabase Cloud PostgreSQL / pgvector
 ```
 
-File `products.parquet` là nguồn chân lý (Single Source of Truth) đại diện cho toàn bộ Product Knowledge Base dùng cho ứng dụng và các kịch bản thử nghiệm đánh giá.
+File `products.parquet` là nguồn chân lý (Single Source of Truth) đại diện cho toàn bộ Product Knowledge Base dùng cho ứng dụng, đồng bộ lên Supabase Cloud database, và phục vụ các kịch bản thử nghiệm đánh giá.
 
 ---
 
@@ -463,41 +485,92 @@ Sản phẩm nào có phần mô tả (`description`) và thông số (`specific
 
 # 14. Product Knowledge Base
 
-Toàn bộ tri thức sản phẩm được lưu trữ tập trung trên cơ sở dữ liệu quan hệ mạnh mẽ hỗ trợ vector:
+Toàn bộ tri thức sản phẩm phục vụ môi trường Production được lưu trữ tập trung trên cơ sở dữ liệu quan hệ được quản lý hoàn toàn trên đám mây:
 
-> **PostgreSQL + pgvector**
+> **Production Database: Supabase Cloud managed PostgreSQL with pgvector**
+> *(Môi trường Local Development / Testing: Local PostgreSQL + pgvector hoặc Docker Compose khi cần thử nghiệm offline)*
 
-### Cấu trúc bảng lưu trữ:
+Backend FastAPI kết nối trực tiếp tới Supabase Cloud qua connection pool chuẩn PostgreSQL (`asyncpg` / `SQLAlchemy 2.0`).
+
+### Cấu trúc bảng lưu trữ chính thức (`products`):
 
 ```sql
+-- Kích hoạt extension pgvector trên database
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Bảng lưu trữ sản phẩm chính thức
 CREATE TABLE products (
     product_id VARCHAR(64) PRIMARY KEY,
-    product_name TEXT NOT NULL,
-    category VARCHAR(128) NOT NULL,
+    product_name TEXT NOT NULL CHECK (length(trim(product_name)) > 0),
+    category VARCHAR(128) NOT NULL CHECK (length(trim(category)) > 0),
     brand VARCHAR(128),
-    retail_price NUMERIC(12, 2),
-    discounted_price NUMERIC(12, 2),
-    rating REAL,
+    retail_price NUMERIC(10, 2) CHECK (retail_price IS NULL OR retail_price > 0),
+    discounted_price NUMERIC(10, 2) NOT NULL CHECK (discounted_price > 0),
+    rating NUMERIC(3, 2) CHECK (rating IS NULL OR (rating >= 1.0 AND rating <= 5.0)),
     description TEXT,
-    product_specifications TEXT,
+    product_specifications JSONB NOT NULL DEFAULT '[]'::jsonb,
     product_url TEXT,
-    retrieval_text TEXT,
-    embedding vector(384) -- Kích thước phụ thuộc vào mô hình embedding được chọn
+    image TEXT,
+    pid VARCHAR(64),
+    retrieval_text TEXT NOT NULL CHECK (length(trim(retrieval_text)) > 0),
+    embedding vector(384) NOT NULL,
+    embedding_model VARCHAR(64) NOT NULL DEFAULT 'BAAI/bge-small-en-v1.5',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Index cho tìm kiếm thuộc tính cấu trúc
+-- 1. Index cho các thuộc tính lọc cứng (Hard Constraint B-Tree Indexes)
 CREATE INDEX idx_products_category ON products(category);
-CREATE INDEX idx_products_brand ON products(brand);
 CREATE INDEX idx_products_price ON products(discounted_price);
-CREATE INDEX idx_products_rating ON products(rating);
+CREATE INDEX idx_products_brand ON products(brand);
 
--- Index cho tìm kiếm vector nhanh chóng
+-- 2. Index tổng hợp tối ưu hóa truy vấn kết hợp phổ biến nhất (category + budget)
+CREATE INDEX idx_products_category_price ON products(category, discounted_price);
+
+-- 3. HNSW Vector Index cho tìm kiếm ngữ nghĩa siêu tốc (Cosine Similarity)
 CREATE INDEX idx_products_embedding ON products 
 USING hnsw (embedding vector_cosine_ops)
 WITH (m = 16, ef_construction = 64);
+
+-- 4. Trigger tự động cập nhật updated_at khi bản ghi thay đổi
+CREATE OR REPLACE FUNCTION update_products_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_products_updated_at
+BEFORE UPDATE ON products
+FOR EACH ROW
+EXECUTE FUNCTION update_products_updated_at();
 ```
 
-Sự kết hợp giữa relational index và HNSW vector index trong cùng một database cho phép thực thi truy vấn kết hợp (filtered vector search) với độ trễ thấp và độ chính xác cao.
+### Mẫu truy vấn Filtered Semantic Search trên Supabase:
+
+```sql
+SELECT 
+    product_id,
+    product_name,
+    category,
+    brand,
+    discounted_price,
+    rating,
+    image,
+    product_specifications,
+    1 - (embedding <=> :query_embedding) AS semantic_similarity
+FROM products
+WHERE 
+    (:category IS NULL OR category = :category)
+    AND (:max_price IS NULL OR discounted_price <= :max_price)
+    AND (:min_price IS NULL OR discounted_price >= :min_price)
+    AND (:brand IS NULL OR brand ILIKE :brand)
+ORDER BY embedding <=> :query_embedding
+LIMIT 20;
+```
+
+Sự kết hợp giữa relational index B-Tree và HNSW vector index trong cùng một database Supabase Cloud cho phép thực thi truy vấn kết hợp (filtered vector search) với độ trễ cực thấp (< 30ms trên tập 8,405 sản phẩm) và độ chính xác tuyệt đối về điều kiện ràng buộc cứng.
 
 ---
 
@@ -836,8 +909,8 @@ Python 3.10+
 │   └── Scikit-learn (TF-IDF vectorizer, Cosine Similarity)
 │
 ├── Embeddings & Vector Search
-│   ├── Sentence Transformers (Hugging Face)
-│   └── PostgreSQL + pgvector (Vector storage, HNSW indexing)
+│   ├── Sentence Transformers (BAAI/bge-small-en-v1.5, 384 dimensions)
+│   └── Supabase Cloud PostgreSQL + pgvector (Production) / Local PostgreSQL (Dev & Test)
 │
 ├── Query Understanding & Generation
 │   └── LLM APIs (Structured Output via Pydantic / Function Calling)
@@ -864,7 +937,7 @@ Python 3.10+
 
 # 30. Development Plan
 
-Quy trình phát triển được thiết kế tuần tự, mạch lạc qua 17 giai đoạn rõ ràng:
+Quy trình phát triển được thiết kế tuần tự, mạch lạc qua các giai đoạn rõ ràng:
 
 ### Phase 1 — Acquire Flipkart Dataset
 - Tải về bộ dữ liệu Flipkart Products 20K;
@@ -879,21 +952,29 @@ Quy trình phát triển được thiết kế tuần tự, mạch lạc qua 17 
 
 ### Phase 3 — Category Selection
 - Phân tích cây phân cấp danh mục (`product_category_tree`);
-- Chọn lọc các nhóm ngành hàng phù hợp đáp ứng đầy đủ các tiêu chí về số lượng, chất lượng văn bản và tính ứng dụng cho mua sắm đàm thoại;
-- Xác lập phạm vi ngành hàng chính thức cho hệ thống (đạt quy mô dự kiến khoảng 5,000 – 15,000 sản phẩm sạch).
+- Chọn lọc 16 nhóm ngành hàng phù hợp đáp ứng đầy đủ các tiêu chí về số lượng, chất lượng văn bản và tính ứng dụng cho mua sắm đàm thoại;
+- Trích xuất tập ứng viên 8,683 sản phẩm thô (`selected_category_candidates.parquet`).
 
 ### Phase 4 — Dataset Cleaning
-- Loại bỏ các bản ghi thiếu thông tin định danh hoặc thiếu tiêu đề;
-- Khử trùng lặp sản phẩm;
-- Chuẩn hóa định dạng số cho giá và điểm rating;
-- Chuẩn hóa tên thương hiệu và phân cấp danh mục;
-- Làm sạch các chuỗi văn bản lỗi, ký tự HTML còn sót lại.
+- Kiểm tra và xác thực các trường bắt buộc;
+- Loại bỏ 36 bản ghi thiếu thông tin giá vận hành;
+- Chuẩn hóa điểm rating về thang điểm 1.0 – 5.0 (hoặc null);
+- Chuẩn hóa tên thương hiệu (khắc phục 63 biến thể casing);
+- Giải mã thực thể HTML, làm sạch khoảng trắng trong tên và mô tả sản phẩm;
+- Phân tích cú pháp Ruby hash trong `product_specifications` sang định dạng JSON an toàn (không dùng `eval()`);
+- Khử trùng lặp thận trọng (conservative deduplication): loại bỏ 242 bản ghi trùng lặp thừa, bảo toàn 1,913 biến thể sản phẩm hợp lệ;
+- Xuất dữ liệu sạch 8,405 sản phẩm (`cleaned_candidates.parquet`).
 
 ### Phase 5 — Build Product Knowledge Base
-- Xây dựng trường đại diện ngữ nghĩa tổng hợp `retrieval_text` cho từng sản phẩm;
-- Xuất dữ liệu sạch ra tệp chuẩn `products.parquet`;
-- Thiết kế schema database trên PostgreSQL, cài đặt extension `pgvector`;
-- Nạp toàn bộ dữ liệu cấu trúc và vector nhúng vào cơ sở dữ liệu, thiết lập index B-Tree và HNSW.
+Giai đoạn xây dựng Product Knowledge Base được chia thành 8 bước chuẩn tắc:
+- **Phase 5.1 — Product Knowledge Base Data Model & Schema Specification**: Chốt toàn diện cấu trúc bảng `products`, kiểu dữ liệu (`JSONB` cho specifications, `vector(384)` cho embeddings), các ràng buộc toàn vẹn, DDL migration và chiến lược index;
+- **Phase 5.2 — retrieval_text Construction & Validation**: Cài đặt hàm chuẩn hóa `build_retrieval_text()` tổng hợp tên, danh mục, thương hiệu, thông số kỹ thuật và mô tả (giới hạn 1,200 ký tự; loại bỏ giá và rating để chống nhiễu vector);
+- **Phase 5.3 — Embedding Model Setup & Validation**: Thiết lập môi trường suy luận mô hình `BAAI/bge-small-en-v1.5` (384 chiều, context window 512 tokens, tối ưu CPU/GPU) và kiểm định chất lượng embedding;
+- **Phase 5.4 — Supabase PostgreSQL + pgvector Provisioning**: Thiết lập kết nối an toàn tới Supabase Cloud, thực thi DDL migration tạo extension `vector`, bảng `products`, trigger `updated_at` và các ràng buộc dữ liệu;
+- **Phase 5.5 — Batch Embedding Generation & products.parquet Export**: Sinh dense embeddings 384 chiều theo batch cho 8,405 sản phẩm, lưu trữ tệp hoàn chỉnh `data/processed/products.parquet`;
+- **Phase 5.6 — Database Loading / Ingestion**: Nạp toàn bộ dữ liệu cấu trúc, JSONB specifications, retrieval_text và embeddings vào bảng `products` trên Supabase Cloud theo batch tối ưu;
+- **Phase 5.7 — Index Construction**: Khởi tạo các B-Tree index lọc cứng (`category`, `discounted_price`, `brand`, `(category, discounted_price)`) và HNSW vector index (`vector_cosine_ops`, `m=16, ef_construction=64`);
+- **Phase 5.8 — Knowledge Base Validation & Filtered Search Verification**: Kiểm tra tính toàn vẹn 8,405 bản ghi, kiểm thử truy vấn Filtered Semantic Search thực tế trên Supabase, đối soát độ trễ và độ khớp dữ liệu.
 
 ### Phase 6 — TF-IDF Baseline
 - Xây dựng pipeline trích xuất đặc trưng văn bản bằng TF-IDF trên `retrieval_text`;
@@ -943,8 +1024,8 @@ Quy trình phát triển được thiết kế tuần tự, mạch lạc qua 17 
 - Xử lý các tình huống ngoại lệ, phản hồi chờ và hỗ trợ trải nghiệm người dùng mượt mà.
 
 ### Phase 17 — Deployment
-- Đóng gói toàn bộ hệ thống bằng Docker và Docker Compose (FastAPI app, Telegram Bot, PostgreSQL + pgvector);
-- Cấu hình logging tập trung, quản lý biến môi trường (.env);
+- Đóng gói toàn bộ hệ thống bằng Docker và Docker Compose (FastAPI backend, Telegram Bot, cấu hình kết nối Supabase Cloud PostgreSQL và tùy chọn container PostgreSQL + pgvector phục vụ local testing);
+- Cấu hình logging tập trung, quản lý biến môi trường an toàn qua `.env` (`SUPABASE_DB_URL`, `SUPABASE_KEY`, `TELEGRAM_BOT_TOKEN`, `OPENAI_API_KEY`);
 - Giám sát độ trễ, mức độ tiêu thụ token và tính sẵn sàng của hệ thống.
 
 ---
@@ -958,7 +1039,7 @@ Phạm vi phiên bản sản phẩm khả thi tối thiểu (MVP - Version 1) ba
 [x] Dataset Profiling & Báo cáo EDA
 [x] Lựa chọn danh mục sản phẩm (Category Selection)
 [x] Quy trình làm sạch dữ liệu cơ bản (Basic Cleaning)
-[x] Xây dựng Product Knowledge Base (PostgreSQL + pgvector)
+[x] Xây dựng Product Knowledge Base (Supabase Cloud PostgreSQL + pgvector)
 [x] Baseline 1: TF-IDF Retrieval
 [x] Baseline 2: Dense Embedding Retrieval
 [x] LLM Query Understanding (Trích xuất JSON cấu trúc)
@@ -1035,12 +1116,12 @@ Tóm tắt định nghĩa kỹ thuật chính thức của dự án:
 - **Technical Name**: Conversational Product Recommendation System using LLM-based Query Understanding and Hybrid Retrieval
 - **Domain**: E-commerce Consumer Products
 - **Primary Dataset**: Flipkart Products 20K
-- **Product Scope**: Được xác định chính thức sau quá trình dataset profiling và phân tích phân bố ngành hàng
-- **Product Data**: Structured Product Metadata + Product Descriptions + Product Specifications
+- **Product Scope**: 16 danh mục ngành hàng chính thức (8,405 sản phẩm đã làm sạch & chuẩn hóa)
+- **Product Data**: Structured Product Metadata + Product Descriptions + JSONB Specifications + 384-d Embeddings
 - **Query Understanding**: LLM-based Structured Query Extraction + Semantic Representation of Soft Preferences
 - **Retrieval**: Structured Filtering + Semantic Search
 - **Recommendation**: Ranking / Reranking + Grounded LLM Explanation
-- **Database**: PostgreSQL + pgvector
+- **Database**: Supabase Cloud PostgreSQL + pgvector (Production) / Local PostgreSQL (Dev & Test)
 - **Backend**: FastAPI
 - **Interface**: Telegram Bot
 - **Evaluation**: Query Understanding, Retrieval Quality, Constraint Satisfaction, Generation Quality, System Performance

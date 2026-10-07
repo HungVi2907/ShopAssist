@@ -1,3 +1,5 @@
-raw/
-interim/
-processed/
+raw/*.csv
+interim/*.parquet
+processed/*.parquet
+!.gitkeep
+!interim/*.json

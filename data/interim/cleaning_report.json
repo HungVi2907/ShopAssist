@@ -1,0 +1,193 @@
+{
+  "input": {
+    "rows": 8683,
+    "columns": 16
+  },
+  "removed": {
+    "missing_id": 0,
+    "missing_title": 0,
+    "missing_category": 0,
+    "invalid_price": 36,
+    "unexpected_categories": 0,
+    "duplicates": 242,
+    "total_removed": 278,
+    "removed_percentage": 3.2
+  },
+  "normalization": {
+    "brand_normalized": 6417,
+    "brand_missing": 1988,
+    "brand_canonical_casings_fixed": 63,
+    "rating_numeric": 894,
+    "rating_missing": 7511,
+    "specification_parse_success": 8628,
+    "specification_empty_or_nil": 19
+  },
+  "deduplication": {
+    "input_rows": 8647,
+    "kept_rows": 8405,
+    "dropped_rows": 242,
+    "dropped_percentage": 2.8,
+    "clusters_total": 6947,
+    "duplicate_clusters": 503,
+    "variants_preserved": 1913
+  },
+  "output": {
+    "rows": 8405,
+    "columns": 15,
+    "unique_product_id": 8405,
+    "exact_duplicate_rows": 0
+  },
+  "before_after_comparison": {
+    "rows_before": 8683,
+    "rows_after": 8405,
+    "removed_rows": 278,
+    "removed_percentage": 3.2,
+    "exact_duplicates_before": 0,
+    "exact_duplicates_after": 0,
+    "name_brand_cat_price_duplicates_before": 1702,
+    "name_brand_cat_price_duplicates_after": 1458,
+    "price_coverage_pct_before": 99.59,
+    "price_coverage_pct_after": 100.0,
+    "brand_coverage_pct_before": 76.76,
+    "brand_coverage_pct_after": 76.35,
+    "rating_numeric_coverage_pct_before": 10.38,
+    "rating_numeric_coverage_pct_after": 10.64,
+    "description_coverage_pct_before": 99.99,
+    "description_coverage_pct_after": 99.99,
+    "specification_coverage_pct_before": 99.78,
+    "specification_coverage_pct_after": 99.79,
+    "category_preservation": [
+      {
+        "category": "Footwear",
+        "before": 1227,
+        "after": 1179,
+        "removed": 48,
+        "removed_pct": 3.91,
+        "warning": false
+      },
+      {
+        "category": "Mobiles & Accessories",
+        "before": 1099,
+        "after": 1097,
+        "removed": 2,
+        "removed_pct": 0.18,
+        "warning": false
+      },
+      {
+        "category": "Automotive",
+        "before": 1012,
+        "after": 1010,
+        "removed": 2,
+        "removed_pct": 0.2,
+        "warning": false
+      },
+      {
+        "category": "Home Decor & Festive Needs",
+        "before": 929,
+        "after": 866,
+        "removed": 63,
+        "removed_pct": 6.78,
+        "warning": false
+      },
+      {
+        "category": "Home Furnishing",
+        "before": 700,
+        "after": 689,
+        "removed": 11,
+        "removed_pct": 1.57,
+        "warning": false
+      },
+      {
+        "category": "Kitchen & Dining",
+        "before": 647,
+        "after": 643,
+        "removed": 4,
+        "removed_pct": 0.62,
+        "warning": false
+      },
+      {
+        "category": "Computers",
+        "before": 578,
+        "after": 573,
+        "removed": 5,
+        "removed_pct": 0.87,
+        "warning": false
+      },
+      {
+        "category": "Watches",
+        "before": 530,
+        "after": 528,
+        "removed": 2,
+        "removed_pct": 0.38,
+        "warning": false
+      },
+      {
+        "category": "Baby Care",
+        "before": 483,
+        "after": 360,
+        "removed": 123,
+        "removed_pct": 25.47,
+        "warning": true
+      },
+      {
+        "category": "Tools & Hardware",
+        "before": 391,
+        "after": 387,
+        "removed": 4,
+        "removed_pct": 1.02,
+        "warning": false
+      },
+      {
+        "category": "Pens & Stationery",
+        "before": 313,
+        "after": 313,
+        "removed": 0,
+        "removed_pct": 0.0,
+        "warning": false
+      },
+      {
+        "category": "Bags, Wallets & Belts",
+        "before": 265,
+        "after": 263,
+        "removed": 2,
+        "removed_pct": 0.75,
+        "warning": false
+      },
+      {
+        "category": "Furniture",
+        "before": 180,
+        "after": 180,
+        "removed": 0,
+        "removed_pct": 0.0,
+        "warning": false
+      },
+      {
+        "category": "Sports & Fitness",
+        "before": 166,
+        "after": 166,
+        "removed": 0,
+        "removed_pct": 0.0,
+        "warning": false
+      },
+      {
+        "category": "Cameras & Accessories",
+        "before": 82,
+        "after": 72,
+        "removed": 10,
+        "removed_pct": 12.2,
+        "warning": false
+      },
+      {
+        "category": "Home Improvement",
+        "before": 81,
+        "after": 79,
+        "removed": 2,
+        "removed_pct": 2.47,
+        "warning": false
+      }
+    ]
+  },
+  "input_unique_pid": 8682,
+  "raw_missing_brands": 2018,
+  "raw_no_rating": 7782
+}

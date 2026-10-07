@@ -1,0 +1,1063 @@
+{
+  "dataset_overview": {
+    "total_rows": 20000,
+    "total_columns": 15,
+    "memory_usage_mb": 47.6,
+    "duplicate_column_names": [],
+    "columns": {
+      "uniq_id": {
+        "dtype": "object",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 20000,
+        "unique_percentage": 100.0,
+        "sample_values": [
+          "c2d766ca982eca8304150849735ffef9",
+          "7f7036a6d550aaa89d34c77bd39a5e48",
+          "f449ec65dcbc041b6ae5e6a32717d01b"
+        ]
+      },
+      "crawl_timestamp": {
+        "dtype": "object",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 371,
+        "unique_percentage": 1.85,
+        "sample_values": [
+          "2016-03-25 22:59:23 +0000",
+          "2016-03-31 15:22:07 +0000",
+          "2016-01-03 20:56:50 +0000"
+        ]
+      },
+      "product_url": {
+        "dtype": "object",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 20000,
+        "unique_percentage": 100.0,
+        "sample_values": [
+          "http://www.flipkart.com/alisha-solid-women-s-cycling-shor...",
+          "http://www.flipkart.com/fabhomedecor-fabric-double-sofa-b...",
+          "http://www.flipkart.com/aw-bellies/p/itmeh4grgfbkexnt?pid..."
+        ]
+      },
+      "product_name": {
+        "dtype": "object",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 12676,
+        "unique_percentage": 63.38,
+        "sample_values": [
+          "Alisha Solid Women's Cycling Shorts",
+          "FabHomeDecor Fabric Double Sofa Bed",
+          "AW Bellies"
+        ]
+      },
+      "product_category_tree": {
+        "dtype": "object",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 6466,
+        "unique_percentage": 32.33,
+        "sample_values": [
+          "[\"Clothing >> Women's Clothing >> Lingerie, Sleep & Swimw...",
+          "[\"Furniture >> Living Room Furniture >> Sofa Beds & Futon...",
+          "[\"Footwear >> Women's Footwear >> Ballerinas >> AW Bellies\"]"
+        ]
+      },
+      "pid": {
+        "dtype": "object",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 19998,
+        "unique_percentage": 99.99,
+        "sample_values": [
+          "SRTEH2FF9KEDEFGF",
+          "SBEEH3QGU7MFYJFY",
+          "SHOEH4GRSUBJGZXE"
+        ]
+      },
+      "retail_price": {
+        "dtype": "float64",
+        "non_null_count": 19922,
+        "null_count": 78,
+        "null_percentage": 0.39,
+        "unique_count": 2247,
+        "unique_percentage": 11.24,
+        "sample_values": [
+          "999.0",
+          "32157.0",
+          "699.0"
+        ]
+      },
+      "discounted_price": {
+        "dtype": "float64",
+        "non_null_count": 19922,
+        "null_count": 78,
+        "null_percentage": 0.39,
+        "unique_count": 2448,
+        "unique_percentage": 12.24,
+        "sample_values": [
+          "379.0",
+          "22646.0",
+          "499.0"
+        ]
+      },
+      "image": {
+        "dtype": "object",
+        "non_null_count": 19997,
+        "null_count": 3,
+        "null_percentage": 0.01,
+        "unique_count": 18589,
+        "unique_percentage": 92.94,
+        "sample_values": [
+          "[\"http://img5a.flixcart.com/image/short/u/4/a/altht-3p-21...",
+          "[\"http://img6a.flixcart.com/image/sofa-bed/j/f/y/fhd112-d...",
+          "[\"http://img5a.flixcart.com/image/shoe/7/z/z/red-as-454-a..."
+        ]
+      },
+      "is_FK_Advantage_product": {
+        "dtype": "bool",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 2,
+        "unique_percentage": 0.01,
+        "sample_values": [
+          "False",
+          "True"
+        ]
+      },
+      "description": {
+        "dtype": "object",
+        "non_null_count": 19998,
+        "null_count": 2,
+        "null_percentage": 0.01,
+        "unique_count": 17539,
+        "unique_percentage": 87.7,
+        "sample_values": [
+          "Key Features of Alisha Solid Women's Cycling Shorts Cotto...",
+          "FabHomeDecor Fabric Double Sofa Bed (Finish Color - Leath...",
+          "Key Features of AW Bellies Sandals Wedges Heel Casuals,AW..."
+        ]
+      },
+      "product_rating": {
+        "dtype": "object",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 36,
+        "unique_percentage": 0.18,
+        "sample_values": [
+          "No rating available",
+          "5",
+          "3"
+        ]
+      },
+      "overall_rating": {
+        "dtype": "object",
+        "non_null_count": 20000,
+        "null_count": 0,
+        "null_percentage": 0.0,
+        "unique_count": 36,
+        "unique_percentage": 0.18,
+        "sample_values": [
+          "No rating available",
+          "5",
+          "3"
+        ]
+      },
+      "brand": {
+        "dtype": "object",
+        "non_null_count": 14136,
+        "null_count": 5864,
+        "null_percentage": 29.32,
+        "unique_count": 3499,
+        "unique_percentage": 17.5,
+        "sample_values": [
+          "Alisha",
+          "FabHomeDecor",
+          "AW"
+        ]
+      },
+      "product_specifications": {
+        "dtype": "object",
+        "non_null_count": 19986,
+        "null_count": 14,
+        "null_percentage": 0.07,
+        "unique_count": 18825,
+        "unique_percentage": 94.12,
+        "sample_values": [
+          "{\"product_specification\"=>[{\"key\"=>\"Number of Contents in...",
+          "{\"product_specification\"=>[{\"key\"=>\"Installation & Demo D...",
+          "{\"product_specification\"=>[{\"key\"=>\"Ideal For\", \"value\"=>..."
+        ]
+      }
+    }
+  },
+  "missing_values": {
+    "uniq_id": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 0,
+      "effective_missing_percentage": 0.0
+    },
+    "crawl_timestamp": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 0,
+      "effective_missing_percentage": 0.0
+    },
+    "product_url": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 0,
+      "effective_missing_percentage": 0.0
+    },
+    "product_name": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 0,
+      "effective_missing_percentage": 0.0
+    },
+    "product_category_tree": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 0,
+      "effective_missing_percentage": 0.0
+    },
+    "pid": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 0,
+      "effective_missing_percentage": 0.0
+    },
+    "retail_price": {
+      "actual_null_count": 78,
+      "actual_null_percentage": 0.39,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 78,
+      "effective_missing_percentage": 0.39
+    },
+    "discounted_price": {
+      "actual_null_count": 78,
+      "actual_null_percentage": 0.39,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 78,
+      "effective_missing_percentage": 0.39
+    },
+    "image": {
+      "actual_null_count": 3,
+      "actual_null_percentage": 0.01,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 3,
+      "effective_missing_percentage": 0.01
+    },
+    "is_FK_Advantage_product": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 0,
+      "effective_missing_percentage": 0.0
+    },
+    "description": {
+      "actual_null_count": 2,
+      "actual_null_percentage": 0.01,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 2,
+      "effective_missing_percentage": 0.01
+    },
+    "product_rating": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 18151,
+      "effective_missing_count": 18151,
+      "effective_missing_percentage": 90.75
+    },
+    "overall_rating": {
+      "actual_null_count": 0,
+      "actual_null_percentage": 0.0,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 18151,
+      "effective_missing_count": 18151,
+      "effective_missing_percentage": 90.75
+    },
+    "brand": {
+      "actual_null_count": 5864,
+      "actual_null_percentage": 29.32,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 5864,
+      "effective_missing_percentage": 29.32
+    },
+    "product_specifications": {
+      "actual_null_count": 14,
+      "actual_null_percentage": 0.07,
+      "empty_string_count": 0,
+      "whitespace_only_count": 0,
+      "semantic_missing_count": 0,
+      "effective_missing_count": 14,
+      "effective_missing_percentage": 0.07
+    }
+  },
+  "identifiers": {
+    "uniq_id": {
+      "total_count": 20000,
+      "unique_count": 20000,
+      "null_count": 0,
+      "duplicate_count": 0,
+      "duplicate_percentage": 0.0,
+      "is_unique_primary_key_candidate": true
+    },
+    "pid": {
+      "total_count": 20000,
+      "unique_count": 19998,
+      "null_count": 0,
+      "duplicate_count": 2,
+      "duplicate_percentage": 0.01,
+      "is_unique_primary_key_candidate": false
+    },
+    "mapping_consistency": {
+      "one_uniq_to_multiple_pid_count": 0,
+      "one_pid_to_multiple_uniq_count": 2,
+      "conflicting_pid_samples": [
+        {
+          "pid": "ACCEJ6TESY7AFT5W",
+          "mapped_uniq_ids": [
+            "3ddf7a0f5669f84751a36469af11b877",
+            "82f424a90d630acc188fcf267160a1fe"
+          ]
+        },
+        {
+          "pid": "JEAEGE8Q8GXYFTGU",
+          "mapped_uniq_ids": [
+            "f4e20863651ea54537388f1cd77a8776",
+            "2867c80d88e3693c883463e6358e6cc5"
+          ]
+        }
+      ]
+    }
+  },
+  "duplicates": {
+    "exact_duplicate_rows": 0,
+    "duplicate_uniq_id": 0,
+    "duplicate_pid": 2,
+    "duplicate_product_name": 7324,
+    "potential_duplicate_products": 4453
+  },
+  "prices": {
+    "retail_price": {
+      "count": 19922,
+      "missing_count": 78,
+      "missing_percentage": 0.39,
+      "min": 35.0,
+      "max": 571230.0,
+      "mean": 2979.21,
+      "median": 1040.0,
+      "std": 9009.64,
+      "P1": 199.0,
+      "P5": 349.0,
+      "P25": 666.0,
+      "P50": 1040.0,
+      "P75": 1999.0,
+      "P95": 8090.15,
+      "P99": 42446.66
+    },
+    "discounted_price": {
+      "count": 19922,
+      "missing_count": 78,
+      "missing_percentage": 0.39,
+      "min": 35.0,
+      "max": 571230.0,
+      "mean": 1973.4,
+      "median": 550.0,
+      "std": 7333.59,
+      "P1": 120.0,
+      "P5": 199.0,
+      "P25": 350.0,
+      "P50": 550.0,
+      "P75": 999.0,
+      "P95": 5999.0,
+      "P99": 31920.74
+    },
+    "anomalies_and_comparisons": {
+      "discount_exceeds_retail_count": 0,
+      "zero_or_negative_retail_price": 0,
+      "zero_or_negative_discounted_price": 0,
+      "both_prices_missing_count": 78,
+      "retail_missing_discount_present_count": 0,
+      "discount_missing_retail_present_count": 0,
+      "discount_amount_stats": {
+        "mean": 1005.8,
+        "median": 456.0,
+        "max": 87675.0,
+        "min": 0.0
+      },
+      "discount_percentage_stats": {
+        "mean": 40.52,
+        "median": 45.0,
+        "max": 96.53,
+        "min": 0.0
+      }
+    }
+  },
+  "ratings": {
+    "product_rating": {
+      "total_count": 20000,
+      "actual_null_count": 0,
+      "no_rating_available_count": 18151,
+      "numeric_rating_count": 1849,
+      "numeric_rating_percentage": 9.25,
+      "invalid_format_count": 0,
+      "numeric_stats": {
+        "min": 1.0,
+        "max": 5.0,
+        "mean": 3.81,
+        "median": 4.0,
+        "out_of_range_low": 0,
+        "out_of_range_high": 0,
+        "rating_distribution_rounded": {
+          "1_star": 175,
+          "2_star": 138,
+          "3_star": 254,
+          "4_star": 604,
+          "5_star": 678
+        }
+      }
+    },
+    "overall_rating": {
+      "total_count": 20000,
+      "actual_null_count": 0,
+      "no_rating_available_count": 18151,
+      "numeric_rating_count": 1849,
+      "numeric_rating_percentage": 9.25,
+      "invalid_format_count": 0,
+      "numeric_stats": {
+        "min": 1.0,
+        "max": 5.0,
+        "mean": 3.81,
+        "median": 4.0,
+        "out_of_range_low": 0,
+        "out_of_range_high": 0,
+        "rating_distribution_rounded": {
+          "1_star": 175,
+          "2_star": 138,
+          "3_star": 254,
+          "4_star": 604,
+          "5_star": 678
+        }
+      }
+    },
+    "relationship": {
+      "exact_raw_string_match_count": 20000,
+      "raw_string_mismatch_count": 0,
+      "both_have_numeric_rating": 1849,
+      "only_product_rating_numeric": 0,
+      "only_overall_rating_numeric": 0,
+      "both_lack_numeric_rating": 18151
+    }
+  },
+  "brands": {
+    "total_rows": 20000,
+    "missing_count": 5864,
+    "missing_percentage": 29.32,
+    "unique_brand_count_raw": 3499,
+    "unique_brand_count_normalized": 3369,
+    "case_variation_redundancy": 130,
+    "leading_trailing_whitespace_count": 1,
+    "top_20_brands": [
+      {
+        "brand": "Allure Auto",
+        "count": 469,
+        "percentage": 2.34
+      },
+      {
+        "brand": "Regular",
+        "count": 313,
+        "percentage": 1.57
+      },
+      {
+        "brand": "Voylla",
+        "count": 299,
+        "percentage": 1.49
+      },
+      {
+        "brand": "Slim",
+        "count": 288,
+        "percentage": 1.44
+      },
+      {
+        "brand": "TheLostPuppy",
+        "count": 229,
+        "percentage": 1.15
+      },
+      {
+        "brand": "Karatcraft",
+        "count": 211,
+        "percentage": 1.05
+      },
+      {
+        "brand": "Black",
+        "count": 167,
+        "percentage": 0.83
+      },
+      {
+        "brand": "White",
+        "count": 155,
+        "percentage": 0.78
+      },
+      {
+        "brand": "DailyObjects",
+        "count": 144,
+        "percentage": 0.72
+      },
+      {
+        "brand": "Speedwav",
+        "count": 141,
+        "percentage": 0.7
+      },
+      {
+        "brand": "Radiant Bay",
+        "count": 132,
+        "percentage": 0.66
+      },
+      {
+        "brand": "Red",
+        "count": 103,
+        "percentage": 0.52
+      },
+      {
+        "brand": "Enthopia",
+        "count": 101,
+        "percentage": 0.51
+      },
+      {
+        "brand": "Pink",
+        "count": 100,
+        "percentage": 0.5
+      },
+      {
+        "brand": "BlueStone",
+        "count": 99,
+        "percentage": 0.5
+      },
+      {
+        "brand": "HomeeHub",
+        "count": 95,
+        "percentage": 0.47
+      },
+      {
+        "brand": "Wallmantra",
+        "count": 83,
+        "percentage": 0.41
+      },
+      {
+        "brand": "Purple",
+        "count": 83,
+        "percentage": 0.41
+      },
+      {
+        "brand": "AdroitZ",
+        "count": 74,
+        "percentage": 0.37
+      },
+      {
+        "brand": "DeStudio",
+        "count": 73,
+        "percentage": 0.36
+      }
+    ]
+  },
+  "descriptions": {
+    "total_rows": 20000,
+    "missing_count": 2,
+    "missing_percentage": 0.01,
+    "empty_string_count": 0,
+    "valid_text_count": 19998,
+    "character_length_stats": {
+      "min": 74,
+      "max": 5309,
+      "mean": 430.88,
+      "median": 229.0,
+      "P25": 194.0,
+      "P50": 229.0,
+      "P75": 525.0,
+      "P95": 1313.15
+    },
+    "word_count_stats": {
+      "min": 8,
+      "max": 872,
+      "mean": 68.7,
+      "median": 37.0,
+      "P25": 31.0,
+      "P50": 37.0,
+      "P75": 83.0,
+      "P95": 213.0
+    },
+    "short_descriptions": {
+      "under_20_chars": 0,
+      "under_50_chars": 0,
+      "under_100_chars": 21
+    },
+    "content_patterns": {
+      "html_tags_present_count": 0,
+      "url_present_count": 2
+    }
+  },
+  "specifications": {
+    "total_rows": 20000,
+    "missing_count": 14,
+    "missing_percentage": 0.07,
+    "empty_string_count": 0,
+    "character_length_stats": {
+      "min": 30,
+      "max": 4721,
+      "mean": 600.98,
+      "median": 523.0,
+      "P25": 393.0,
+      "P50": 523.0,
+      "P75": 692.0,
+      "P95": 1220.0
+    },
+    "format_structure": {
+      "ruby_arrow_syntax_count": 19986,
+      "json_colon_syntax_count": 0
+    },
+    "sample_parsing_audit": {
+      "sample_size": 500,
+      "parseable_records_in_sample": 497,
+      "sample_parseable_rate_pct": 99.4,
+      "total_keys_extracted_in_sample": 5452,
+      "top_15_keys_in_sample": [
+        {
+          "key": "Type",
+          "frequency_in_sample": 332
+        },
+        {
+          "key": "Ideal For",
+          "frequency_in_sample": 327
+        },
+        {
+          "key": "Occasion",
+          "frequency_in_sample": 243
+        },
+        {
+          "key": "Color",
+          "frequency_in_sample": 234
+        },
+        {
+          "key": "Brand",
+          "frequency_in_sample": 213
+        },
+        {
+          "key": "Number of Contents in Sales Package",
+          "frequency_in_sample": 199
+        },
+        {
+          "key": "Fabric",
+          "frequency_in_sample": 168
+        },
+        {
+          "key": "Pattern",
+          "frequency_in_sample": 166
+        },
+        {
+          "key": "Sales Package",
+          "frequency_in_sample": 159
+        },
+        {
+          "key": "Model Number",
+          "frequency_in_sample": 148
+        },
+        {
+          "key": "Style Code",
+          "frequency_in_sample": 117
+        },
+        {
+          "key": "Model Name",
+          "frequency_in_sample": 115
+        },
+        {
+          "key": "Pack of",
+          "frequency_in_sample": 110
+        },
+        {
+          "key": "Material",
+          "frequency_in_sample": 108
+        },
+        {
+          "key": "Weight",
+          "frequency_in_sample": 103
+        }
+      ]
+    }
+  },
+  "categories": {
+    "total_rows": 20000,
+    "missing_category_tree_count": 0,
+    "malformed_category_tree_count": 0,
+    "valid_category_tree_count": 20000,
+    "depth_statistics": {
+      "min_depth": 1,
+      "max_depth": 8,
+      "mean_depth": 4.35,
+      "median_depth": 4.0,
+      "depth_distribution": {
+        "0": 0,
+        "1": 328,
+        "2": 1129,
+        "3": 4419,
+        "4": 4765,
+        "5": 4911,
+        "6": 3640,
+        "7": 778,
+        "8": 30
+      }
+    },
+    "unique_level_1_count": 265,
+    "unique_level_2_count": 217,
+    "unique_full_paths_count": 6466,
+    "top_20_level_1_categories": [
+      {
+        "category": "Clothing",
+        "count": 6198,
+        "percentage": 30.99
+      },
+      {
+        "category": "Jewellery",
+        "count": 3531,
+        "percentage": 17.66
+      },
+      {
+        "category": "Footwear",
+        "count": 1227,
+        "percentage": 6.13
+      },
+      {
+        "category": "Mobiles & Accessories",
+        "count": 1099,
+        "percentage": 5.5
+      },
+      {
+        "category": "Automotive",
+        "count": 1012,
+        "percentage": 5.06
+      },
+      {
+        "category": "Home Decor & Festive Needs",
+        "count": 929,
+        "percentage": 4.64
+      },
+      {
+        "category": "Beauty and Personal Care",
+        "count": 710,
+        "percentage": 3.55
+      },
+      {
+        "category": "Home Furnishing",
+        "count": 700,
+        "percentage": 3.5
+      },
+      {
+        "category": "Kitchen & Dining",
+        "count": 647,
+        "percentage": 3.23
+      },
+      {
+        "category": "Computers",
+        "count": 578,
+        "percentage": 2.89
+      },
+      {
+        "category": "Watches",
+        "count": 530,
+        "percentage": 2.65
+      },
+      {
+        "category": "Baby Care",
+        "count": 483,
+        "percentage": 2.42
+      },
+      {
+        "category": "Tools & Hardware",
+        "count": 391,
+        "percentage": 1.96
+      },
+      {
+        "category": "Toys & School Supplies",
+        "count": 330,
+        "percentage": 1.65
+      },
+      {
+        "category": "Pens & Stationery",
+        "count": 313,
+        "percentage": 1.57
+      },
+      {
+        "category": "Bags, Wallets & Belts",
+        "count": 265,
+        "percentage": 1.32
+      },
+      {
+        "category": "Furniture",
+        "count": 180,
+        "percentage": 0.9
+      },
+      {
+        "category": "Sports & Fitness",
+        "count": 166,
+        "percentage": 0.83
+      },
+      {
+        "category": "Cameras & Accessories",
+        "count": 82,
+        "percentage": 0.41
+      },
+      {
+        "category": "Home Improvement",
+        "count": 81,
+        "percentage": 0.4
+      }
+    ],
+    "top_20_level_2_categories": [
+      {
+        "category": "Women's Clothing",
+        "count": 3901,
+        "percentage": 19.5
+      },
+      {
+        "category": "Men's Clothing",
+        "count": 1773,
+        "percentage": 8.87
+      },
+      {
+        "category": "Necklaces & Chains",
+        "count": 1606,
+        "percentage": 8.03
+      },
+      {
+        "category": "Accessories & Spare parts",
+        "count": 925,
+        "percentage": 4.62
+      },
+      {
+        "category": "Tablet Accessories",
+        "count": 801,
+        "percentage": 4.0
+      },
+      {
+        "category": "Women's Footwear",
+        "count": 781,
+        "percentage": 3.91
+      },
+      {
+        "category": "Rings",
+        "count": 743,
+        "percentage": 3.72
+      },
+      {
+        "category": "Bangles, Bracelets & Armlets",
+        "count": 724,
+        "percentage": 3.62
+      },
+      {
+        "category": "Wrist Watches",
+        "count": 523,
+        "percentage": 2.61
+      },
+      {
+        "category": "Kids' Clothing",
+        "count": 520,
+        "percentage": 2.6
+      },
+      {
+        "category": "Tools",
+        "count": 403,
+        "percentage": 2.02
+      },
+      {
+        "category": "Fragrances",
+        "count": 391,
+        "percentage": 1.96
+      },
+      {
+        "category": "Laptop Accessories",
+        "count": 343,
+        "percentage": 1.71
+      },
+      {
+        "category": "Men's Footwear",
+        "count": 340,
+        "percentage": 1.7
+      },
+      {
+        "category": "(single-level)",
+        "count": 328,
+        "percentage": 1.64
+      },
+      {
+        "category": "Mobile Accessories",
+        "count": 304,
+        "percentage": 1.52
+      },
+      {
+        "category": "Showpieces",
+        "count": 303,
+        "percentage": 1.52
+      },
+      {
+        "category": "Coffee Mugs",
+        "count": 302,
+        "percentage": 1.51
+      },
+      {
+        "category": "School Supplies",
+        "count": 300,
+        "percentage": 1.5
+      },
+      {
+        "category": "Wall Decor & Clocks",
+        "count": 278,
+        "percentage": 1.39
+      }
+    ],
+    "top_15_full_category_paths": [
+      {
+        "path": "Jewellery >> Necklaces & Chains >> Necklaces",
+        "count": 1567,
+        "percentage": 7.83
+      },
+      {
+        "path": "Jewellery >> Rings",
+        "count": 710,
+        "percentage": 3.55
+      },
+      {
+        "path": "Automotive >> Accessories & Spare parts >> Car Interior & Exterior >> Car Interior >> Car Mats",
+        "count": 522,
+        "percentage": 2.61
+      },
+      {
+        "path": "Jewellery >> Bangles, Bracelets & Armlets >> Bangles",
+        "count": 430,
+        "percentage": 2.15
+      },
+      {
+        "path": "Tools & Hardware >> Tools >> Gardening Tools >> Plant Containers & Sets >> Plant Container Sets",
+        "count": 332,
+        "percentage": 1.66
+      },
+      {
+        "path": "Jewellery >> Bangles, Bracelets & Armlets >> Bracelets",
+        "count": 251,
+        "percentage": 1.26
+      },
+      {
+        "path": "Mobiles & Accessories >> Tablet Accessories >> Cases & Covers >> TheLostPuppy Cases & Covers",
+        "count": 229,
+        "percentage": 1.15
+      },
+      {
+        "path": "Clothing >> Women's Clothing >> Lingerie, Sleep & Swimwear >> Bras >> S4S Bras",
+        "count": 197,
+        "percentage": 0.98
+      },
+      {
+        "path": "Home Furnishing >> Bed Linen >> Blankets, Quilts & Dohars",
+        "count": 190,
+        "percentage": 0.95
+      },
+      {
+        "path": "Footwear >> Women's Footwear >> Wedges",
+        "count": 186,
+        "percentage": 0.93
+      },
+      {
+        "path": "Jewellery >> Jewellery Sets",
+        "count": 161,
+        "percentage": 0.8
+      },
+      {
+        "path": "Mobiles & Accessories >> Tablet Accessories >> Cases & Covers >> DailyObjects Cases & Covers",
+        "count": 144,
+        "percentage": 0.72
+      },
+      {
+        "path": "Clothing >> Men's Clothing >> T-Shirts >> Numero Uno T-Shirts",
+        "count": 135,
+        "percentage": 0.68
+      },
+      {
+        "path": "Home Furnishing >> Curtains & Accessories >> Curtains",
+        "count": 131,
+        "percentage": 0.66
+      },
+      {
+        "path": "Footwear >> Women's Footwear >> Casual Shoes >> Boots",
+        "count": 118,
+        "percentage": 0.59
+      }
+    ]
+  },
+  "retrieval_readiness": {
+    "total_products": 20000,
+    "with_product_name_count": 20000,
+    "with_product_name_pct": 100.0,
+    "with_description_count": 19998,
+    "with_description_pct": 99.99,
+    "with_specifications_count": 19986,
+    "with_specifications_pct": 99.93,
+    "with_title_and_description_count": 19998,
+    "with_title_and_description_pct": 99.99,
+    "with_all_three_count": 19984,
+    "with_all_three_pct": 99.92,
+    "simulated_combined_text_length_stats": {
+      "min": 130,
+      "max": 9088,
+      "mean": 1071.86,
+      "median": 884.0,
+      "P25": 700.0,
+      "P50": 884.0,
+      "P75": 1246.25,
+      "P95": 2154.0
+    }
+  }
+}

@@ -1,0 +1,588 @@
+{
+  "category_hierarchy_summary": {
+    "total_records": 20000,
+    "valid_category_trees": 20000,
+    "depth_statistics": {
+      "min_depth": 1,
+      "max_depth": 8,
+      "mean_depth": 4.35,
+      "median_depth": 4.0,
+      "depth_distribution": {
+        "0": 0,
+        "1": 328,
+        "2": 1129,
+        "3": 4419,
+        "4": 4765,
+        "5": 4911,
+        "6": 3640,
+        "7": 778,
+        "8": 30
+      }
+    },
+    "unique_level_1_count": 265,
+    "unique_level_2_count": 217
+  },
+  "top_level_1_categories": [
+    {
+      "category": "Clothing",
+      "count": 6198,
+      "percentage": 30.99
+    },
+    {
+      "category": "Jewellery",
+      "count": 3531,
+      "percentage": 17.66
+    },
+    {
+      "category": "Footwear",
+      "count": 1227,
+      "percentage": 6.13
+    },
+    {
+      "category": "Mobiles & Accessories",
+      "count": 1099,
+      "percentage": 5.5
+    },
+    {
+      "category": "Automotive",
+      "count": 1012,
+      "percentage": 5.06
+    },
+    {
+      "category": "Home Decor & Festive Needs",
+      "count": 929,
+      "percentage": 4.64
+    },
+    {
+      "category": "Beauty and Personal Care",
+      "count": 710,
+      "percentage": 3.55
+    },
+    {
+      "category": "Home Furnishing",
+      "count": 700,
+      "percentage": 3.5
+    },
+    {
+      "category": "Kitchen & Dining",
+      "count": 647,
+      "percentage": 3.23
+    },
+    {
+      "category": "Computers",
+      "count": 578,
+      "percentage": 2.89
+    },
+    {
+      "category": "Watches",
+      "count": 530,
+      "percentage": 2.65
+    },
+    {
+      "category": "Baby Care",
+      "count": 483,
+      "percentage": 2.42
+    },
+    {
+      "category": "Tools & Hardware",
+      "count": 391,
+      "percentage": 1.96
+    },
+    {
+      "category": "Toys & School Supplies",
+      "count": 330,
+      "percentage": 1.65
+    },
+    {
+      "category": "Pens & Stationery",
+      "count": 313,
+      "percentage": 1.57
+    },
+    {
+      "category": "Bags, Wallets & Belts",
+      "count": 265,
+      "percentage": 1.32
+    },
+    {
+      "category": "Furniture",
+      "count": 180,
+      "percentage": 0.9
+    },
+    {
+      "category": "Sports & Fitness",
+      "count": 166,
+      "percentage": 0.83
+    },
+    {
+      "category": "Cameras & Accessories",
+      "count": 82,
+      "percentage": 0.41
+    },
+    {
+      "category": "Home Improvement",
+      "count": 81,
+      "percentage": 0.4
+    }
+  ],
+  "top_level_2_categories": [
+    {
+      "category": "Women's Clothing",
+      "count": 3901,
+      "percentage": 19.5
+    },
+    {
+      "category": "Men's Clothing",
+      "count": 1773,
+      "percentage": 8.87
+    },
+    {
+      "category": "Necklaces & Chains",
+      "count": 1606,
+      "percentage": 8.03
+    },
+    {
+      "category": "Accessories & Spare parts",
+      "count": 925,
+      "percentage": 4.62
+    },
+    {
+      "category": "Tablet Accessories",
+      "count": 801,
+      "percentage": 4.0
+    },
+    {
+      "category": "Women's Footwear",
+      "count": 781,
+      "percentage": 3.91
+    },
+    {
+      "category": "Rings",
+      "count": 743,
+      "percentage": 3.72
+    },
+    {
+      "category": "Bangles, Bracelets & Armlets",
+      "count": 724,
+      "percentage": 3.62
+    },
+    {
+      "category": "Wrist Watches",
+      "count": 523,
+      "percentage": 2.61
+    },
+    {
+      "category": "Kids' Clothing",
+      "count": 520,
+      "percentage": 2.6
+    },
+    {
+      "category": "Tools",
+      "count": 403,
+      "percentage": 2.02
+    },
+    {
+      "category": "Fragrances",
+      "count": 391,
+      "percentage": 1.96
+    },
+    {
+      "category": "Laptop Accessories",
+      "count": 343,
+      "percentage": 1.71
+    },
+    {
+      "category": "Men's Footwear",
+      "count": 340,
+      "percentage": 1.7
+    },
+    {
+      "category": "(single-level)",
+      "count": 328,
+      "percentage": 1.64
+    },
+    {
+      "category": "Mobile Accessories",
+      "count": 304,
+      "percentage": 1.52
+    },
+    {
+      "category": "Showpieces",
+      "count": 303,
+      "percentage": 1.52
+    },
+    {
+      "category": "Coffee Mugs",
+      "count": 302,
+      "percentage": 1.51
+    },
+    {
+      "category": "School Supplies",
+      "count": 300,
+      "percentage": 1.5
+    },
+    {
+      "category": "Wall Decor & Clocks",
+      "count": 278,
+      "percentage": 1.39
+    }
+  ],
+  "top_full_paths": [
+    {
+      "path": "Jewellery >> Necklaces & Chains >> Necklaces",
+      "count": 1567,
+      "percentage": 7.83
+    },
+    {
+      "path": "Jewellery >> Rings",
+      "count": 710,
+      "percentage": 3.55
+    },
+    {
+      "path": "Automotive >> Accessories & Spare parts >> Car Interior & Exterior >> Car Interior >> Car Mats",
+      "count": 522,
+      "percentage": 2.61
+    },
+    {
+      "path": "Jewellery >> Bangles, Bracelets & Armlets >> Bangles",
+      "count": 430,
+      "percentage": 2.15
+    },
+    {
+      "path": "Tools & Hardware >> Tools >> Gardening Tools >> Plant Containers & Sets >> Plant Container Sets",
+      "count": 332,
+      "percentage": 1.66
+    },
+    {
+      "path": "Jewellery >> Bangles, Bracelets & Armlets >> Bracelets",
+      "count": 251,
+      "percentage": 1.26
+    },
+    {
+      "path": "Mobiles & Accessories >> Tablet Accessories >> Cases & Covers >> TheLostPuppy Cases & Covers",
+      "count": 229,
+      "percentage": 1.15
+    },
+    {
+      "path": "Clothing >> Women's Clothing >> Lingerie, Sleep & Swimwear >> Bras >> S4S Bras",
+      "count": 197,
+      "percentage": 0.98
+    },
+    {
+      "path": "Home Furnishing >> Bed Linen >> Blankets, Quilts & Dohars",
+      "count": 190,
+      "percentage": 0.95
+    },
+    {
+      "path": "Footwear >> Women's Footwear >> Wedges",
+      "count": 186,
+      "percentage": 0.93
+    },
+    {
+      "path": "Jewellery >> Jewellery Sets",
+      "count": 161,
+      "percentage": 0.8
+    },
+    {
+      "path": "Mobiles & Accessories >> Tablet Accessories >> Cases & Covers >> DailyObjects Cases & Covers",
+      "count": 144,
+      "percentage": 0.72
+    },
+    {
+      "path": "Clothing >> Men's Clothing >> T-Shirts >> Numero Uno T-Shirts",
+      "count": 135,
+      "percentage": 0.68
+    },
+    {
+      "path": "Home Furnishing >> Curtains & Accessories >> Curtains",
+      "count": 131,
+      "percentage": 0.66
+    },
+    {
+      "path": "Footwear >> Women's Footwear >> Casual Shoes >> Boots",
+      "count": 118,
+      "percentage": 0.59
+    }
+  ],
+  "category_suitability_metrics": [
+    {
+      "category": "Clothing",
+      "product_count": 6198,
+      "percentage_of_dataset": 30.99,
+      "description_coverage_pct": 99.98,
+      "description_median_length": 223.0,
+      "retail_price_coverage_pct": 99.56,
+      "discounted_price_coverage_pct": 99.56,
+      "rating_numeric_coverage_pct": 10.13,
+      "brand_coverage_pct": 50.87,
+      "unique_brand_count": 725,
+      "specification_coverage_pct": 99.92,
+      "specification_median_length": 467.0
+    },
+    {
+      "category": "Jewellery",
+      "product_count": 3531,
+      "percentage_of_dataset": 17.66,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 219.0,
+      "retail_price_coverage_pct": 99.75,
+      "discounted_price_coverage_pct": 99.75,
+      "rating_numeric_coverage_pct": 4.02,
+      "brand_coverage_pct": 100.0,
+      "unique_brand_count": 546,
+      "specification_coverage_pct": 99.97,
+      "specification_median_length": 723.0
+    },
+    {
+      "category": "Footwear",
+      "product_count": 1227,
+      "percentage_of_dataset": 6.13,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 190.0,
+      "retail_price_coverage_pct": 99.84,
+      "discounted_price_coverage_pct": 99.84,
+      "rating_numeric_coverage_pct": 13.12,
+      "brand_coverage_pct": 30.73,
+      "unique_brand_count": 212,
+      "specification_coverage_pct": 99.84,
+      "specification_median_length": 357.0
+    },
+    {
+      "category": "Mobiles & Accessories",
+      "product_count": 1099,
+      "percentage_of_dataset": 5.5,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 639.0,
+      "retail_price_coverage_pct": 99.82,
+      "discounted_price_coverage_pct": 99.82,
+      "rating_numeric_coverage_pct": 3.73,
+      "brand_coverage_pct": 100.0,
+      "unique_brand_count": 187,
+      "specification_coverage_pct": 99.91,
+      "specification_median_length": 403.0
+    },
+    {
+      "category": "Automotive",
+      "product_count": 1012,
+      "percentage_of_dataset": 5.06,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 222.0,
+      "retail_price_coverage_pct": 99.8,
+      "discounted_price_coverage_pct": 99.8,
+      "rating_numeric_coverage_pct": 2.37,
+      "brand_coverage_pct": 100.0,
+      "unique_brand_count": 127,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 548.0
+    },
+    {
+      "category": "Home Decor & Festive Needs",
+      "product_count": 929,
+      "percentage_of_dataset": 4.64,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 300.0,
+      "retail_price_coverage_pct": 99.78,
+      "discounted_price_coverage_pct": 99.78,
+      "rating_numeric_coverage_pct": 3.66,
+      "brand_coverage_pct": 92.9,
+      "unique_brand_count": 340,
+      "specification_coverage_pct": 99.78,
+      "specification_median_length": 515.0
+    },
+    {
+      "category": "Beauty and Personal Care",
+      "product_count": 710,
+      "percentage_of_dataset": 3.55,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 197.5,
+      "retail_price_coverage_pct": 99.86,
+      "discounted_price_coverage_pct": 99.86,
+      "rating_numeric_coverage_pct": 15.35,
+      "brand_coverage_pct": 21.97,
+      "unique_brand_count": 107,
+      "specification_coverage_pct": 99.86,
+      "specification_median_length": 294.0
+    },
+    {
+      "category": "Home Furnishing",
+      "product_count": 700,
+      "percentage_of_dataset": 3.5,
+      "description_coverage_pct": 99.86,
+      "description_median_length": 150.0,
+      "retail_price_coverage_pct": 100.0,
+      "discounted_price_coverage_pct": 100.0,
+      "rating_numeric_coverage_pct": 5.14,
+      "brand_coverage_pct": 100.0,
+      "unique_brand_count": 218,
+      "specification_coverage_pct": 99.86,
+      "specification_median_length": 662.0
+    },
+    {
+      "category": "Kitchen & Dining",
+      "product_count": 647,
+      "percentage_of_dataset": 3.23,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 482.0,
+      "retail_price_coverage_pct": 99.69,
+      "discounted_price_coverage_pct": 99.69,
+      "rating_numeric_coverage_pct": 9.74,
+      "brand_coverage_pct": 56.41,
+      "unique_brand_count": 228,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 422.0
+    },
+    {
+      "category": "Computers",
+      "product_count": 578,
+      "percentage_of_dataset": 2.89,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 215.0,
+      "retail_price_coverage_pct": 99.13,
+      "discounted_price_coverage_pct": 99.13,
+      "rating_numeric_coverage_pct": 30.45,
+      "brand_coverage_pct": 99.83,
+      "unique_brand_count": 164,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 786.5
+    },
+    {
+      "category": "Watches",
+      "product_count": 530,
+      "percentage_of_dataset": 2.65,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 305.0,
+      "retail_price_coverage_pct": 99.62,
+      "discounted_price_coverage_pct": 99.62,
+      "rating_numeric_coverage_pct": 36.42,
+      "brand_coverage_pct": 9.06,
+      "unique_brand_count": 27,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 837.5
+    },
+    {
+      "category": "Baby Care",
+      "product_count": 483,
+      "percentage_of_dataset": 2.42,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 222.0,
+      "retail_price_coverage_pct": 99.59,
+      "discounted_price_coverage_pct": 99.59,
+      "rating_numeric_coverage_pct": 2.9,
+      "brand_coverage_pct": 94.62,
+      "unique_brand_count": 137,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 578.0
+    },
+    {
+      "category": "Tools & Hardware",
+      "product_count": 391,
+      "percentage_of_dataset": 1.96,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 218.0,
+      "retail_price_coverage_pct": 98.98,
+      "discounted_price_coverage_pct": 98.98,
+      "rating_numeric_coverage_pct": 14.07,
+      "brand_coverage_pct": 100.0,
+      "unique_brand_count": 67,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 533.0
+    },
+    {
+      "category": "Toys & School Supplies",
+      "product_count": 330,
+      "percentage_of_dataset": 1.65,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 199.0,
+      "retail_price_coverage_pct": 99.7,
+      "discounted_price_coverage_pct": 99.7,
+      "rating_numeric_coverage_pct": 11.21,
+      "brand_coverage_pct": 31.21,
+      "unique_brand_count": 77,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 328.0
+    },
+    {
+      "category": "Pens & Stationery",
+      "product_count": 313,
+      "percentage_of_dataset": 1.57,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 217.0,
+      "retail_price_coverage_pct": 100.0,
+      "discounted_price_coverage_pct": 100.0,
+      "rating_numeric_coverage_pct": 4.79,
+      "brand_coverage_pct": 55.59,
+      "unique_brand_count": 85,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 376.0
+    },
+    {
+      "category": "Bags, Wallets & Belts",
+      "product_count": 265,
+      "percentage_of_dataset": 1.32,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 361.0,
+      "retail_price_coverage_pct": 99.62,
+      "discounted_price_coverage_pct": 99.62,
+      "rating_numeric_coverage_pct": 11.7,
+      "brand_coverage_pct": 56.98,
+      "unique_brand_count": 73,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 569.0
+    },
+    {
+      "category": "Furniture",
+      "product_count": 180,
+      "percentage_of_dataset": 0.9,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 213.0,
+      "retail_price_coverage_pct": 100.0,
+      "discounted_price_coverage_pct": 100.0,
+      "rating_numeric_coverage_pct": 3.33,
+      "brand_coverage_pct": 100.0,
+      "unique_brand_count": 43,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 2560.0
+    },
+    {
+      "category": "Sports & Fitness",
+      "product_count": 166,
+      "percentage_of_dataset": 0.83,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 291.0,
+      "retail_price_coverage_pct": 100.0,
+      "discounted_price_coverage_pct": 100.0,
+      "rating_numeric_coverage_pct": 19.28,
+      "brand_coverage_pct": 65.06,
+      "unique_brand_count": 67,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 440.5
+    },
+    {
+      "category": "Cameras & Accessories",
+      "product_count": 82,
+      "percentage_of_dataset": 0.41,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 150.0,
+      "retail_price_coverage_pct": 87.8,
+      "discounted_price_coverage_pct": 87.8,
+      "rating_numeric_coverage_pct": 19.51,
+      "brand_coverage_pct": 100.0,
+      "unique_brand_count": 22,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 285.5
+    },
+    {
+      "category": "Home Improvement",
+      "product_count": 81,
+      "percentage_of_dataset": 0.4,
+      "description_coverage_pct": 100.0,
+      "description_median_length": 259.0,
+      "retail_price_coverage_pct": 97.53,
+      "discounted_price_coverage_pct": 97.53,
+      "rating_numeric_coverage_pct": 4.94,
+      "brand_coverage_pct": 100.0,
+      "unique_brand_count": 36,
+      "specification_coverage_pct": 100.0,
+      "specification_median_length": 554.0
+    }
+  ]
+}
