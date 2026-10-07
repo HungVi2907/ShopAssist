@@ -1,1819 +1,1047 @@
-
 # ShopAssist — Conversational Product Recommendation System
 
 ## 1. Project Overview
 
-ShopAssist là một hệ thống AI hỗ trợ tư vấn và đề xuất các thiết bị điện gia dụng nhà bếp thông qua hội thoại tự nhiên.
+ShopAssist là một hệ thống AI hỗ trợ tư vấn và đề xuất sản phẩm thương mại điện tử (E-commerce Consumer Products) thông qua hội thoại ngôn ngữ tự nhiên.
 
-Người dùng tương tác với hệ thống thông qua Discord Bot.
+Người dùng tương tác với hệ thống thông qua giao diện **Telegram Bot**.
 
 Ví dụ:
 
-> “Tôi cần một máy pha cà phê dưới $100, nhỏ gọn và dễ vệ sinh.”
+> “Tôi cần một chiếc laptop mỏng nhẹ dưới $800, pin tốt và khởi động nhanh để làm việc văn phòng.”
 
-Hệ thống cần hiểu được:
+Hệ thống phân tích và bóc tách câu hỏi thành hai nhóm thông tin:
 
 ```text
-Hard Constraints
-- category = coffee maker
-- price <= 100
+Hard Constraints (Điều kiện ràng buộc rõ ràng)
+- category = laptop
+- max_price = 800
 ```
 
 và:
 
 ```text
-Soft Preferences
-- compact
-- easy to clean
+Soft Preferences (Sở thích, nhu cầu ngữ nghĩa)
+- lightweight / mỏng nhẹ
+- good battery life / pin tốt
+- fast boot / khởi động nhanh
+- suitable for office work / làm việc văn phòng
 ```
 
-Sau đó hệ thống tìm kiếm, xếp hạng và đề xuất các sản phẩm phù hợp nhất từ Product Knowledge Base.
+Sau đó hệ thống áp dụng kỹ thuật tìm kiếm kết hợp (Hybrid Retrieval) cùng bước tái xếp hạng (Reranking) để truy xuất các sản phẩm phù hợp nhất từ Product Knowledge Base, trước khi sinh câu trả lời tư vấn có căn cứ (grounded recommendation) trả về cho người dùng.
 
-Kiến trúc tổng quát:
+Kiến trúc luồng xử lý tổng quát:
 
 ```text
 User
-↓
-Discord Bot
-↓
+ ↓
+Telegram Bot
+ ↓
 FastAPI
-↓
+ ↓
 LLM Query Understanding
-↓
+ ↓
 Hard Constraints + Soft Preferences
-↓
-Hybrid Product Retrieval
-↓
+ ↓
+Hybrid Product Retrieval (SQL Filtering + Vector Search)
+ ↓
 Ranking / Reranking
-↓
+ ↓
 Top-K Products
-↓
-LLM Recommendation
-↓
-Discord Response
+ ↓
+LLM Recommendation Generation
+ ↓
+Telegram Response
 ```
 
 ---
 
 # 2. Problem Statement
 
-Các nền tảng thương mại điện tử cung cấp hàng nghìn hoặc hàng triệu sản phẩm.
+Các nền tảng thương mại điện tử cung cấp hàng chục nghìn đến hàng triệu sản phẩm đa dạng. Khi tìm kiếm sản phẩm phù hợp, người dùng thường gặp phải các rào cản:
 
-Người dùng thường phải:
+- Phải tìm kiếm bằng từ khóa cứng nhắc (keyword matching);
+- Phải áp dụng thủ công nhiều bộ lọc thông số kỹ thuật phức tạp;
+- Phải tự đọc và phân tích nhiều trang mô tả sản phẩm dài;
+- Phải tự so sánh thông số giữa các lựa chọn;
+- Khó diễn đạt các nhu cầu mang tính ngữ nghĩa và ngữ cảnh sử dụng thực tế.
 
-- tìm kiếm bằng keyword;
-- sử dụng nhiều bộ lọc;
-- đọc nhiều mô tả sản phẩm;
-- tự so sánh thông số;
-- đọc reviews;
-- tự xác định sản phẩm nào phù hợp với nhu cầu thực tế.
-
-Trong khi đó, nhu cầu mua hàng thường được diễn đạt bằng ngôn ngữ tự nhiên.
+Trong thực tế, nhu cầu mua sắm của người dùng thường được diễn đạt tự nhiên qua ngôn cảnh và mục đích sử dụng.
 
 Ví dụ:
 
-> “Tôi sống một mình, muốn một air fryer không quá đắt, nhỏ gọn và dễ vệ sinh.”
+> “Tôi là sinh viên cần tìm một tai nghe chụp tai chống ồn tốt, êm tai khi đeo lâu, giá dưới $100.”
 
-Một search engine truyền thống có thể xử lý:
-
-```text
-category = air fryer
-price <= X
-```
-
-nhưng khó xử lý:
+Một search engine truyền thống dựa trên từ khóa hoặc lọc thuộc tính (faceted search) có thể dễ dàng lọc:
 
 ```text
-good for one person
-compact
-easy to clean
+category = headphones
+price <= 100
 ```
 
-Project đặt ra bài toán:
+nhưng gặp khó khăn lớn khi phải định lượng và đối khớp các đặc tính ngữ nghĩa:
 
-> Làm thế nào để xây dựng một hệ thống có khả năng hiểu cả các điều kiện rõ ràng và các preference mang tính ngữ nghĩa của người dùng để đề xuất sản phẩm phù hợp?
+```text
+noise cancellation
+comfortable for long wear
+good for students
+```
+
+Nếu chỉ sử dụng Pure Vector Search (tìm kiếm ngữ nghĩa thuần túy), hệ thống lại thường vi phạm các ràng buộc cứng (như vượt mức giá tối đa hoặc sai ngành hàng). Ngược lại, nếu chỉ dùng bộ lọc truyền thống, hệ thống sẽ bỏ lỡ hoàn toàn chiều sâu ngữ nghĩa trong nhu cầu người dùng.
+
+Bài toán trọng tâm của project:
+
+> Làm thế nào để xây dựng một hệ thống có khả năng hiểu toàn diện cả các điều kiện rõ ràng (hard constraints) lẫn các sở thích ngữ nghĩa (soft preferences) của người dùng từ ngôn ngữ tự nhiên, kết hợp lọc cấu trúc và tìm kiếm vector để đề xuất sản phẩm chính xác và đáng tin cậy?
 
 ---
 
-# 3. Domain
+# 3. Domain & Product Scope
 
-Domain chính thức:
+Domain chính thức của hệ thống:
 
-> **Small Kitchen Appliances**
+> **E-commerce Consumer Products**
 
-Phiên bản V1 tập trung vào 5 product families:
+Thay vì giới hạn cố định ở một nhóm sản phẩm hẹp ngay từ đầu, ShopAssist định vị là hệ thống đề xuất cho các danh mục sản phẩm tiêu dùng phổ biến. Danh mục ngành hàng chính thức của hệ thống sẽ được quyết định sau khi tiến hành **Khám phá và phân tích phân phối dữ liệu (Exploratory Data Analysis - EDA)** trên dataset catalog.
 
-```text
-1. Coffee Makers
-2. Blenders
-3. Air Fryers
-4. Electric Kettles
-5. Rice Cookers
-```
-
-Không bao gồm:
+Quy trình xác định phạm vi ngành hàng:
 
 ```text
-spare parts
-replacement filters
-replacement blades
-accessories
-installation components
-attachments
-covers
-lids
-adapters
-```
-
-Mục tiêu là chỉ giữ lại các sản phẩm hoàn chỉnh mà người dùng thực sự có thể cân nhắc mua.
-
----
-
-# 4. Dataset
-
-## 4.1 Data Source
-
-Nguồn dữ liệu:
-
-> **Amazon Reviews 2023**
-
-Giả định trong đề xuất ban đầu là top-level category:
-
-```text
-Appliances
-```
-
-Sau Phase 2, `Appliances` không có độ phủ phù hợp cho cả năm family. Nguồn metadata **đang được sử dụng** để xây dựng candidate là `Home_and_Kitchen` của Amazon Reviews 2023. Phase 3B đã quét hết file metadata 11,788,767,944 byte bằng HTTP byte ranges, không tải toàn bộ file về máy.
-
-Sử dụng hai nguồn dữ liệu:
-
-```text
-Product Metadata
-+
-Product Reviews
-```
-
----
-
-# 5. Dataset Acquisition Strategy
-
-Amazon Reviews 2023 không cung cấp trực tiếp một dataset tên:
-
-```text
-Small Kitchen Appliances
-```
-
-Ban đầu dự kiến xây dựng dataset từ category:
-
-```text
-Appliances
-```
-
-rồi lọc xuống 5 product families đã chọn. Kết quả khám phá cho thấy cần chuyển nguồn chính sang `Home_and_Kitchen`.
-
-Quy trình:
-
-```text
-Amazon Reviews 2023
+Flipkart Products 20K
         ↓
-Home_and_Kitchen Metadata
+Dataset Profiling / EDA
         ↓
-Candidate Discovery (Phase 3/3B)
+Category Distribution Analysis
         ↓
-Stratified Manual Audit (Phase 4A)
+Select Suitable Product Categories
         ↓
-Cleaning Rule Design (Phase 4B)
+Basic Data Cleaning
         ↓
-Final Product Selection (Phase 4C)
-        ↓
-Collect parent_asin
-        ↓
-Acquire Reviews for Selected parent_asin
-        ↓
-Aggregate Reviews
-        ↓
-Final Product Knowledge Base
+Final Product Dataset
 ```
 
----
+### Tiêu chí lựa chọn category:
 
-# 6. Metadata Download
+1. **Sufficient Number of Products**: Danh mục phải có lượng sản phẩm đủ lớn để tạo không gian truy vấn và đề xuất có ý nghĩa (tránh danh mục quá thưa thớt).
+2. **Usable Descriptions**: Phần lớn sản phẩm phải có văn bản mô tả rõ ràng, giàu thông tin ngữ nghĩa phục vụ embedding.
+3. **Usable Price Information**: Có thông tin giá (retail price / discounted price) rõ ràng để hỗ trợ lọc điều kiện tài chính.
+4. **Usable Specifications**: Có thông số kỹ thuật (product specifications) để bóc tách thuộc tính chi tiết.
+5. **Reasonable Category Quality**: Cấu trúc danh mục phân tầng mạch lạc, dữ liệu ít nhiễu hoặc sai lệch.
+6. **Suitability for Natural-Language Queries**: Phù hợp với các truy vấn mua sắm giàu ngữ nghĩa (người dùng thường có nhiều tiêu chí so sánh, nhu cầu sử dụng, tính năng).
 
-Bước đầu đã tải và phân tích:
-
-```text
-meta_Appliances.jsonl
-```
-
-Sau EDA, Phase 3B đã quét toàn bộ metadata `meta_Home_and_Kitchen.jsonl` qua HTTP byte ranges và chỉ lưu các candidate. Xem [báo cáo Phase 3B](phase3b_full_scan.md).
-
-Không tải reviews ngay.
-
-Mục tiêu đầu tiên là kiểm tra taxonomy thực tế của Amazon.
-
-Các field quan trọng gồm:
-
-```text
-main_category
-title
-average_rating
-rating_number
-features
-description
-price
-store
-categories
-details
-parent_asin
-```
-
----
-
-# 7. Taxonomy Exploration
-
-Trong Phase 2, sau khi tải metadata `Appliances`:
-
-```text
-Appliances
-```
-
-thực hiện EDA để xác định Amazon đang biểu diễn 5 product families như thế nào.
-
-Ví dụ có thể gặp:
-
-```text
-Coffee Makers
-Drip Coffee Makers
-Countertop Blenders
-Air Fryers
-Electric Kettles
-Rice Cookers
-```
-
-Không hard-code taxonomy trước khi kiểm tra dữ liệu thực tế.
-
-Mục tiêu của bước này:
-
-```text
-Coffee Maker        → count
-Blender             → count
-Air Fryer           → count
-Electric Kettle     → count
-Rice Cooker         → count
-```
-
----
-
-# 8. Product Family Detection
-
-Xây dựng mapping riêng:
-
-```text
-coffee_maker
-blender
-air_fryer
-electric_kettle
-rice_cooker
-```
-
-Detection dựa trên:
-
-```text
-categories
-+
-title
-```
-
-thay vì chỉ dựa vào keyword trong title.
-
-Ví dụ:
-
-```text
-Coffee Maker:
-- coffee maker
-- coffee machine
-- drip coffee
-
-Blender:
-- blender
-- countertop blender
-
-Air Fryer:
-- air fryer
-
-Electric Kettle:
-- electric kettle
-
-Rice Cooker:
-- rice cooker
-```
-
----
-
-# 9. Accessory Filtering
-
-Keyword matching đơn giản có thể gặp sản phẩm như:
-
-```text
-Replacement Blade for Blender
-```
-
-và nhầm thành blender hoàn chỉnh.
-
-Do đó cần kiểm toán mẫu trước khi thiết kế exclusion filtering. Các từ khóa dưới đây chỉ là ví dụ tín hiệu; không được tự động xóa toàn bộ sản phẩm có từ `filter`, `basket` hoặc cờ phụ kiện.
-
-Ví dụ:
-
-```text
-replacement
-spare
-accessory
-filter
-blade replacement
-lid
-cover
-adapter
-attachment
-part
-parts
-```
-
-Pipeline:
-
-```text
-Product
-↓
-Product Family Detection
-↓
-Accessory Signal
-↓
-Manual Audit → Rule Validation → Keep / Remove (Phase 4B/4C)
-```
-
----
-
-# 10. Dataset Validation
-
-Sau cleaning, thống kê lại số lượng.
-
-Target dataset:
+### Quy mô sản phẩm mục tiêu (Target Dataset Size):
 
 > **5,000 – 15,000 clean products**
 
-Phase 3B có 55,064 candidate với `parent_asin` duy nhất; đây **chưa phải** 55,064 sản phẩm sạch. Phase 4 xác định tập cuối cùng. Không nới lỏng quy tắc chất lượng chỉ để đạt target.
-
-V1 hướng tới thiết bị nhà bếp nhỏ chạy điện. Dụng cụ pha cà phê thủ công và ấm đun trên bếp dự kiến nằm ngoài phạm vi cuối cùng, nhưng Phase 4A chỉ ghi nhãn mẫu; Phase 4B mới thiết kế và xác thực quy tắc. Giá thiếu không loại candidate ở Phase 4A; SQL price constraints chỉ áp dụng trên sản phẩm có giá, còn chính sách cho giá thiếu sẽ được quyết định sau.
-
-Không cần cố lấy càng nhiều càng tốt.
-
-Ưu tiên:
-
-```text
-quality
->
-quantity
-```
-
-Sản phẩm tối thiểu phải có:
-
-```text
-parent_asin
-title
-product_family
-```
-
-và nên có ít nhất một trong:
-
-```text
-description
-features
-details
-```
-
-Có thể ưu tiên những sản phẩm có:
-
-```text
-rating_number >= 5
-```
-
-hoặc:
-
-```text
-rating_number >= 10
-```
-
-nhưng chỉ áp dụng sau khi kiểm tra phân phối dữ liệu.
+*Lưu ý*: Con số 5,000 – 15,000 là khoảng mục tiêu dự kiến nhằm đảm bảo hiệu năng và chất lượng thử nghiệm, phạm vi chính thức sẽ được chốt sau khi hoàn thành EDA và lựa chọn danh mục.
 
 ---
 
-# 11. Category Validation Checkpoint — Completed
+# 4. Primary Dataset — Flipkart Products 20K
 
-Trước khi chốt dataset cuối cùng, cần kiểm tra:
+Dataset chính thức được sử dụng làm Product Knowledge Base ban đầu của ShopAssist là:
 
-> 5 product families có xuất hiện đủ trong `Appliances` hay không?
+> **Flipkart Products 20K**
 
-Nếu:
+Đây là bộ dữ liệu catalog sản phẩm thương mại điện tử với quy mô khoảng 20,000 bản ghi sản phẩm.
 
-```text
-Appliances
-```
-
-đã cung cấp đủ 5 category và đạt target dataset:
+Các trường dữ liệu dự kiến khai thác:
 
 ```text
-5K–15K products
+uniq_id / pid            - Định danh duy nhất của sản phẩm
+product_name             - Tên tiêu đề sản phẩm
+product_category_tree    - Chuỗi cây phân cấp danh mục
+retail_price             - Giá niêm yết bán lẻ
+discounted_price         - Giá sau khuyến mãi / giá bán thực tế
+description              - Văn bản mô tả chi tiết sản phẩm
+product_rating           - Điểm đánh giá sản phẩm
+overall_rating           - Điểm đánh giá tổng quan (nếu có)
+brand                    - Thương hiệu sản phẩm
+product_specifications   - Thông số kỹ thuật chi tiết của sản phẩm
+product_url              - Đường dẫn gốc đến sản phẩm
 ```
 
-thì giữ nguyên nguồn duy nhất là `Appliances`.
+### Yêu cầu khảo sát và kiểm định qua EDA:
 
-Nếu một số family có quá ít dữ liệu, mới xem xét bổ sung subset từ:
+Không giả định mọi trường dữ liệu đều có sẵn và đầy đủ giá trị ở tất cả bản ghi. Sau khi thu thập dữ liệu, hệ thống bắt buộc phải thực hiện bước **Dataset Profiling / EDA** chi tiết để kiểm tra:
 
-```text
-Home_and_Kitchen
-```
+- **Column availability**: Xác nhận chính xác tên cột và cấu trúc dữ liệu thực tế của file;
+- **Missing values**: Đo lường tỷ lệ khuyết thiếu trên từng trường (đặc biệt là giá, mô tả, rating, brand);
+- **Duplicates**: Phát hiện và xử lý các bản ghi trùng lặp mã sản phẩm, trùng lặp tiêu đề hoặc nội dung;
+- **Category distribution**: Phân tích tần suất xuất hiện và độ sâu phân cấp của các danh mục trong `product_category_tree`;
+- **Price coverage**: Kiểm tra tỷ lệ sản phẩm có giá hợp lệ, định dạng số, phân bố mức giá;
+- **Rating coverage**: Kiểm tra mật độ sản phẩm có điểm đánh giá rating sẵn có;
+- **Description coverage**: Đánh giá độ dài và độ phong phú của văn bản mô tả;
+- **Specification coverage**: Đánh giá cấu trúc trường thông số kỹ thuật (dạng chuỗi, JSON, hay key-value);
+- **Brand coverage**: Tỷ lệ bản ghi có nhãn thương hiệu rõ ràng.
 
-Kết quả: `Appliances` thiếu độ phủ cân bằng cho năm family; mẫu `Home_and_Kitchen` cho thấy độ phủ tốt hơn. Phase 3B đã quét toàn bộ metadata của nguồn này và thu 55,064 candidate từ 3,735,584 bản ghi. Đây là kết quả khám phá candidate, chưa phải tập sản phẩm cuối. Xem [kiểm tra nguồn](home_and_kitchen_probe.md) và [Phase 3B](phase3b_full_scan.md).
+Schema vật lý thực tế của cơ sở dữ liệu chỉ được hoàn thiện sau khi có báo cáo EDA cụ thể.
 
 ---
 
-# 12. Reviews Acquisition
+# 5. Data Pipeline & Processing Strategy
 
-Chỉ sau Phase 4C, khi tập `parent_asin` sạch cuối cùng đã được chốt, mới tải reviews liên quan từ Amazon Reviews 2023 (bao gồm nguồn `Home_and_Kitchen` phù hợp với sản phẩm được chọn):
+Khác với các pipeline phức tạp nhiều tầng cồng kềnh, ShopAssist tinh giản tối đa quy trình xử lý dữ liệu để tập trung nguồn lực vào bài toán cốt lõi: **AI Engineering, Hybrid Retrieval và LLM Recommendation**.
 
-```text
-Reviews for selected products
-```
-
-Sau đó lấy danh sách:
+Quy trình xử lý dữ liệu tổng thể:
 
 ```text
-selected parent_asin
+Flipkart Products 20K
+        ↓
+Dataset Download
+        ↓
+Dataset Profiling / EDA
+        ↓
+Category Selection
+        ↓
+Basic Data Cleaning
+        ↓
+Deduplication
+        ↓
+Normalize Structured Fields
+        ↓
+Build retrieval_text
+        ↓
+Final Product Dataset
+        ↓
+PostgreSQL + pgvector
 ```
 
-và chỉ giữ reviews thuộc những sản phẩm đã chọn.
+### Các bước xử lý cơ bản trong Data Cleaning:
 
-Flow:
+1. **Missing ID & Title**: Loại bỏ các bản ghi thiếu định danh duy nhất (`uniq_id`/`pid`) hoặc thiếu tên sản phẩm (`product_name`).
+2. **Deduplication**: Khử trùng lặp dựa trên product ID và tên sản phẩm tương đồng.
+3. **Price Normalization**: Chuẩn hóa trường giá (`retail_price`, `discounted_price`) về định dạng số thực (float/numeric), loại bỏ ký tự tiền tệ hoặc giá trị âm/không hợp lệ.
+4. **Rating Normalization**: Chuyển đổi trường rating về thang điểm chuẩn (ví dụ 1.0 – 5.0), xử lý giá trị NaN hoặc chuỗi không xác định.
+5. **Brand & Category Normalization**: Chuẩn hóa chuỗi thương hiệu (viết hoa/viết thường, khoảng trắng) và phân tách cây danh mục (`product_category_tree`) thành cấp danh mục rõ ràng (`main_category`, `sub_category`).
+6. **Malformed & Empty Text Handling**: Xử lý các ký tự điều khiển lỗi, định dạng mã HTML còn sót trong mô tả, và lọc các bản ghi có nội dung văn bản quá ngắn hoặc rỗng.
 
-```text
-Selected Products
-↓
-parent_asin list
-↓
-Relevant Reviews
-↓
-Filter Reviews
-↓
-Selected Reviews
-```
-
-Không giữ toàn bộ review dataset.
+Quy trình này không áp dụng các rule engine phức tạp giả định trước mà chỉ xử lý những vấn đề dữ liệu thực sự phát hiện được trong quá trình EDA.
 
 ---
 
-# 13. Aggregated Reviews
+# 6. Exclusion of Reviews in V1 Scope
 
-Không đưa hàng trăm review raw của từng sản phẩm trực tiếp vào Vector Database.
+Trong phiên bản Version 1 (V1), ShopAssist xác định phạm vi rõ ràng:
 
-Thay vào đó tạo:
+> **Không sử dụng raw reviews và không thực hiện bất kỳ bước tổng hợp review (review aggregation) nào trong V1.**
 
-```text
-Aggregated Review Information
-```
+Hệ thống loại bỏ hoàn toàn các cấu phần xử lý review phức tạp:
 
-Ví dụ:
+- Không thu thập dữ liệu raw user reviews;
+- Không thực hiện review filtering;
+- Không thực hiện tóm tắt review bằng LLM (LLM review summarization);
+- Không tự trích xuất danh sách ưu điểm (pros) và nhược điểm (cons) từ reviews;
+- Không tính toán các chỉ số phái sinh từ review cá nhân (như review count derived, common positive points, common negative points).
 
-```text
-review_count
-average_review_rating
-common positive points
-common negative points
-review summary
-```
+### Tận dụng điểm đánh giá có sẵn:
 
-Ví dụ:
+Nếu dataset Flipkart có sẵn trường đánh giá (ví dụ `product_rating` hoặc `overall_rating`), trường này sẽ được sử dụng trực tiếp như một thuộc tính cấu trúc (numerical metadata) phục vụ cho:
 
-```json
-{
-  "review_summary": {
-    "pros": [
-      "easy to clean",
-      "compact",
-      "fast cooking"
-    ],
-    "cons": [
-      "small capacity",
-      "fan can be noisy"
-    ]
-  }
-}
-```
+- Lọc điều kiện tối thiểu (ví dụ `rating >= 4.0`);
+- Trọng số phụ trợ trong quá trình Ranking / Reranking.
 
-Điều này đặc biệt hữu ích cho các soft preferences như:
-
-```text
-easy to clean
-quiet
-compact
-good for one person
-```
+Hệ thống tuyệt đối không tự bịa đặt hoặc suy diễn các bản tóm tắt đánh giá khi không có dữ liệu thực tế.
 
 ---
 
-# 14. Final Product Dataset
+# 7. Final Product Schema
 
-Dataset cuối cùng dự kiến có schema:
+Sau khi hoàn tất quá trình làm sạch và chuẩn hóa, schema logic của bảng dữ liệu sản phẩm trong Product Knowledge Base được định hình như sau:
 
-```text
-parent_asin
+| Trường dữ liệu | Kiểu dữ liệu | Vai trò chính | Mô tả |
+|---|---|---|---|
+| `product_id` | String | Khóa chính (Primary Key) | Mã định danh duy nhất của sản phẩm (lấy từ `uniq_id` hoặc `pid`) |
+| `product_name` | String | Hiển thị, TF-IDF, Semantic | Tên đầy đủ của sản phẩm |
+| `category` | String | SQL Filter, Phân loại | Ngành hàng chuẩn hóa sau khi phân tách danh mục |
+| `brand` | String | SQL Filter, Ranking | Thương hiệu chuẩn hóa của sản phẩm |
+| `retail_price` | Float / Numeric | Thông tin tham chiếu | Giá bán lẻ niêm yết ban đầu |
+| `discounted_price`| Float / Numeric | SQL Filter, Ranking | Giá bán thực tế / giá ưu đãi sử dụng cho ràng buộc ngân sách |
+| `rating` | Float | SQL Filter, Ranking | Điểm đánh giá trung bình có sẵn từ dataset |
+| `description` | Text | Semantic Search | Văn bản mô tả tính năng và chi tiết sản phẩm |
+| `product_specifications` | Text / JSON | Semantic, Detail Display | Thông số kỹ thuật chi tiết của sản phẩm |
+| `product_url` | String | Hiển thị | Đường dẫn tham chiếu đến sản phẩm gốc |
+| `retrieval_text` | Text | TF-IDF, Vector Embedding | Văn bản tổng hợp đại diện ngữ nghĩa cho sản phẩm |
 
-product_family
-
-title
-
-brand
-
-price
-
-average_rating
-
-rating_number
-
-categories
-
-description
-
-features
-
-details
-
-review_count
-
-review_rating
-
-review_summary
-
-retrieval_text
-```
-
-Trong đó:
-
-```text
-retrieval_text
-=
-title
-+
-features
-+
-description
-+
-technical details
-+
-review summary
-```
-
-`retrieval_text` được sử dụng để tạo embedding.
+*Lưu ý*: Schema chi tiết có thể được tinh chỉnh mở rộng sau khi EDA xác nhận cấu trúc thực tế của dataset Flipkart.
 
 ---
 
-# 15. Data Organization
+# 8. Construction of `retrieval_text`
 
-Cấu trúc dữ liệu hiện có và dự kiến (các file review và sản phẩm sạch chỉ xuất hiện ở phase sau):
+Để phục vụ cho cả mô hình tìm kiếm từ khóa truyền thống (TF-IDF) và tìm kiếm ngữ nghĩa đa chiều (Dense Vector Search), mỗi sản phẩm được xây dựng một trường văn bản đại diện duy nhất gọi là `retrieval_text`.
+
+Cấu trúc xây dựng:
+
+```text
+retrieval_text = 
+    product_name
+    + " | Category: " + category
+    + " | Brand: " + brand
+    + " | Description: " + description
+    + " | Specifications: " + product_specifications
+```
+
+### Nguyên tắc tạo `retrieval_text`:
+
+- **Bỏ qua trường rỗng**: Nếu một trường thông tin (ví dụ `brand` hoặc `product_specifications`) không có dữ liệu ở một sản phẩm nhất định, hệ thống sẽ bỏ qua trường đó một cách an toàn mà không đưa vào các giá trị rác như `"None"`, `"NaN"`, hoặc `"null"`.
+- **Làm sạch văn bản**: Loại bỏ khoảng trắng thừa, thẻ HTML sót lại, và chuẩn hóa dấu phân tách để giữ độ liền mạch ngữ nghĩa.
+- **Ứng dụng thống nhất**: `retrieval_text` là nguồn đầu vào trực tiếp cho:
+  - Vectorizer TF-IDF (cho baseline lexical search);
+  - Mô hình Sentence Transformers / Embedding Model (để sinh dense vector embedding lưu trữ vào pgvector);
+  - Ngữ cảnh tham chiếu cho mô hình Reranker.
+
+---
+
+# 9. Structured vs. Unstructured Information Architecture
+
+Kiến trúc dữ liệu của ShopAssist phân định rõ ràng vai trò của hai nhóm thông tin:
+
+```text
+Product Data
+ ├── Structured Information
+ │    ├── category
+ │    ├── brand
+ │    ├── retail_price
+ │    ├── discounted_price
+ │    └── rating
+ │    └───► Sử dụng cho: SQL Hard Filtering & Ranking Signals
+ │
+ └── Unstructured / Semantic Information
+      ├── product_name
+      ├── description
+      └── product_specifications
+      └───► Tổng hợp thành retrieval_text
+      └───► Sử dụng cho: TF-IDF, Dense Embedding & Semantic Search
+```
+
+### Structured Information:
+
+- Được lưu trữ dưới dạng các cột có kiểu dữ liệu chuẩn (TEXT, NUMERIC, FLOAT) trong PostgreSQL;
+- Được đánh index phù hợp (B-Tree) để tối ưu hóa truy vấn lọc điều kiện cứng;
+- Đảm bảo tính toán chính xác 100% đối với các yêu cầu về ngân sách, thương hiệu và ngành hàng.
+
+### Unstructured Information:
+
+- Chứa đựng các chi tiết mô tả tính năng, công năng sử dụng, chất liệu, kích thước, thiết kế;
+- Được ánh xạ thành vector không gian nhiều chiều (ví dụ 384, 768 hoặc 1536 chiều) lưu trong cột kiểu `vector` của extension **pgvector**;
+- Đảm bảo khả năng hiểu các nhu cầu ngữ nghĩa phức tạp mà SQL không thể so khớp chính xác.
+
+---
+
+# 10. Data Organization
+
+Cấu trúc thư mục dữ liệu trong project được tổ chức rõ ràng theo các tầng xử lý:
 
 ```text
 data/
-
 ├── raw/
-│   ├── meta_Appliances.jsonl
-│   └── reviews_source.jsonl                 # Phase 5, dự kiến
+│   └── flipkart_products.csv                  # File dataset gốc tải về
 │
 ├── interim/
-│   ├── category_analysis.csv
-│   ├── home_kitchen_candidates.jsonl         # Phase 3B
-│   ├── phase4a_audit_sample.csv              # Phase 4A
-│   ├── selected_products.jsonl
-│   └── selected_reviews.jsonl
+│   ├── eda_profiling_report.json             # Báo cáo tổng hợp số liệu EDA
+│   ├── category_distribution.json            # Thống kê phân bố ngành hàng
+│   └── cleaned_candidates.parquet            # Dữ liệu sau bước làm sạch sơ bộ
 │
 └── processed/
-    └── products.parquet
+    └── products.parquet                      # File dữ liệu chuẩn hóa cuối cùng
+                                              # sẵn sàng nạp vào PostgreSQL/pgvector
 ```
 
-`products.parquet` sẽ là dataset chính của AI system sau Phase 5/6. Không tạo file `meta_Home_and_Kitchen.jsonl` local trong Phase 3B.
+File `products.parquet` là nguồn chân lý (Single Source of Truth) đại diện cho toàn bộ Product Knowledge Base dùng cho ứng dụng và các kịch bản thử nghiệm đánh giá.
 
 ---
 
-# 16. Query Understanding
+# 11. Query Understanding
 
-Phương pháp chính thức:
+Cơ chế hiểu câu hỏi người dùng là mắt xích AI đầu tiên và quan trọng nhất trong hệ thống:
 
 > **LLM-based Structured Query Extraction + Semantic Representation of Soft Preferences**
 
-Ví dụ user hỏi:
+### Ví dụ quy trình trích xuất:
 
-> “Tôi muốn một máy pha cà phê Philips dưới $150, nhỏ gọn và dễ dùng.”
+Người dùng nhập câu hỏi tự nhiên:
 
-LLM parse thành:
+> *"I need a lightweight laptop under $800 with good battery life."*
+
+LLM phân tích ngữ cảnh và trích xuất thành đối tượng JSON có cấu trúc:
 
 ```json
 {
-  "category": "coffee_maker",
-  "brand": "Philips",
+  "category": "laptop",
+  "brand": null,
   "min_price": null,
-  "max_price": 150,
+  "max_price": 800,
   "min_rating": null,
   "preferences": [
-    "compact",
-    "easy to use"
+    "lightweight",
+    "good battery life"
   ]
 }
 ```
 
-LLM ở bước này:
+### Nguyên tắc kiến trúc tại tầng Query Understanding:
 
-```text
-không recommend sản phẩm
-```
-
-mà chỉ làm nhiệm vụ:
-
-```text
-Natural Language
-↓
-Structured Representation
-```
+- **Chuyên biệt hóa nhiệm vụ**: Tại bước này, LLM **tuyệt đối không gợi ý hoặc tự chọn sản phẩm**. Nhiệm vụ duy nhất của mô hình là bóc tách ngữ nghĩa từ ngôn ngữ tự nhiên sang cấu trúc dữ liệu máy có thể xử lý.
+- **Tách bạch Hard vs Soft**:
+  - Các thông số đo đếm được hoặc phạm vi cụ thể (`category`, `brand`, `min_price`, `max_price`, `min_rating`) được xếp vào nhóm điều kiện cứng.
+  - Các mong muốn định tính (`lightweight`, `compact`, `durable`, `good battery life`) được đưa vào mảng `preferences`.
+- **Dynamic Schema**: Danh mục chuẩn (`category`) được định hình theo danh sách categories đã chốt sau EDA, giúp mô hình prompt chuẩn hóa danh mục chính xác.
 
 ---
 
-# 17. Hard Constraints
+# 12. Hard Constraints Handling
 
-Hard constraints là các điều kiện có thể filter chính xác.
+Hard Constraints là các ràng buộc bắt buộc mà một sản phẩm hợp lệ phải thỏa mãn đầy đủ.
 
-Ví dụ:
-
-```text
-category
-brand
-min_price
-max_price
-min_rating
-```
-
-Ví dụ:
+Các trường điều kiện cứng điển hình:
 
 ```text
-category = coffee_maker
-brand = Philips
-price <= 150
+- category   : Khớp chính xác ngành hàng (hoặc ánh xạ enum ngành hàng)
+- brand      : Khớp thương hiệu chỉ định (nếu người dùng yêu cầu)
+- min_price  : Giá sàn (sản phẩm không được thấp hơn)
+- max_price  : Giá trần (sản phẩm không được vượt quá ngân sách)
+- min_rating : Ngưỡng đánh giá tối thiểu (ví dụ rating >= 4.0)
 ```
 
-được xử lý bằng:
+### Cơ chế thực thi qua SQL:
 
-```text
-SQL Filtering
+Các điều kiện này được chuyển trực tiếp thành câu truy vấn SQL có tham số trên PostgreSQL:
+
+```sql
+SELECT product_id, product_name, brand, discounted_price, rating, retrieval_text
+FROM products
+WHERE 
+    (:category IS NULL OR category ILIKE :category)
+    AND (:brand IS NULL OR brand ILIKE :brand)
+    AND (:max_price IS NULL OR discounted_price <= :max_price)
+    AND (:min_price IS NULL OR discounted_price >= :min_price)
+    AND (:min_rating IS NULL OR rating >= :min_rating);
 ```
+
+### Lợi ích:
+
+- **100% Deterministic**: Đảm bảo không xảy ra hiện tượng sản phẩm vượt ngân sách người dùng xuất hiện trong tập ứng viên.
+- **Tối ưu hóa không gian tìm kiếm**: Giảm bớt số lượng vector cần so sánh tương đồng trong bước tìm kiếm ngữ nghĩa tiếp theo.
 
 ---
 
-# 18. Soft Preferences
+# 13. Soft Preferences Handling
 
-Soft preferences là các yêu cầu khó biểu diễn bằng SQL.
+Soft Preferences là các sở thích, kỳ vọng mang tính mô tả định tính, công năng sử dụng hoặc phong cách mà người dùng mong muốn nhưng không thể diễn đạt bằng phép so sánh toán học hoặc SQL thông thường.
 
-Ví dụ:
+Ví dụ các soft preferences phổ biến:
 
 ```text
-quiet
-compact
-easy to clean
-easy to use
-good for one person
-good for family
-good for beginner
-powerful
-energy efficient
+lightweight           - mỏng nhẹ, dễ mang theo
+good battery life     - thời lượng pin dài
+easy to use           - dễ thao tác, thân thiện người dùng
+durable               - bền bỉ, chịu va đập tốt
+compact               - nhỏ gọn, tiết kiệm không gian
+portable              - tính di động cao
+good for beginners    - phù hợp cho người mới bắt đầu
+comfortable           - êm ái, thoải mái khi dùng lâu
 ```
 
-Các preference được chuyển thành semantic representation.
-
-Ví dụ:
+Hệ thống **không hard-code** danh sách cố định các sở thích này. Thay vào đó, kiến trúc xử lý động hoàn toàn:
 
 ```text
-["compact", "easy to clean", "good for one person"]
-```
-
-↓
-
-```text
-Semantic Query
-```
-
-↓
-
-```text
+preferences: ["lightweight", "good battery life"]
+        ↓
+Gộp thành Semantic Preference Query
+(Ví dụ: "lightweight laptop with good battery life for portable use")
+        ↓
 Embedding Model
-```
-
-↓
-
-```text
-Query Embedding
-```
-
----
-
-# 19. Product Knowledge Base
-
-Dữ liệu được chia thành hai nhóm.
-
-## Structured Information
-
-Ví dụ:
-
-```text
-product_family
-brand
-price
-rating
-```
-
-dùng cho:
-
-```text
-SQL Filtering
-```
-
-## Unstructured Information
-
-Ví dụ:
-
-```text
-description
-features
-details
-review_summary
-```
-
-dùng cho:
-
-```text
-Embedding
-+
-Semantic Search
-```
-
-Database:
-
-```text
-PostgreSQL
-+
-pgvector
-```
-
----
-
-# 20. Main AI Method
-
-Phương pháp chính:
-
-> **LLM Query Understanding + Hybrid Retrieval + Reranking + LLM Recommendation**
-
-Flow:
-
-```text
-User Query
         ↓
-LLM Structured Query Extraction
+Query Embedding Vector
         ↓
-┌──────────────────────┐
-│ Hard Constraints     │
-│ category             │
-│ brand                │
-│ price                │
-│ rating               │
-└──────────────────────┘
-          +
-┌──────────────────────┐
-│ Soft Preferences     │
-│ compact              │
-│ quiet                │
-│ easy to clean        │
-│ good for family      │
-└──────────────────────┘
-          ↓
-Structured Filtering
-+
-Semantic Search
-          ↓
-Candidate Products
-          ↓
-Ranking / Reranking
-          ↓
-Top-K
-          ↓
-LLM Recommendation
+Cosine Similarity / Vector Search trên retrieval_text
+```
+
+Sản phẩm nào có phần mô tả (`description`) và thông số (`specifications`) đề cập rõ nét và phù hợp với các đặc tính này sẽ đạt điểm tương đồng ngữ nghĩa (semantic similarity score) cao hơn.
+
+---
+
+# 14. Product Knowledge Base
+
+Toàn bộ tri thức sản phẩm được lưu trữ tập trung trên cơ sở dữ liệu quan hệ mạnh mẽ hỗ trợ vector:
+
+> **PostgreSQL + pgvector**
+
+### Cấu trúc bảng lưu trữ:
+
+```sql
+CREATE TABLE products (
+    product_id VARCHAR(64) PRIMARY KEY,
+    product_name TEXT NOT NULL,
+    category VARCHAR(128) NOT NULL,
+    brand VARCHAR(128),
+    retail_price NUMERIC(12, 2),
+    discounted_price NUMERIC(12, 2),
+    rating REAL,
+    description TEXT,
+    product_specifications TEXT,
+    product_url TEXT,
+    retrieval_text TEXT,
+    embedding vector(384) -- Kích thước phụ thuộc vào mô hình embedding được chọn
+);
+
+-- Index cho tìm kiếm thuộc tính cấu trúc
+CREATE INDEX idx_products_category ON products(category);
+CREATE INDEX idx_products_brand ON products(brand);
+CREATE INDEX idx_products_price ON products(discounted_price);
+CREATE INDEX idx_products_rating ON products(rating);
+
+-- Index cho tìm kiếm vector nhanh chóng
+CREATE INDEX idx_products_embedding ON products 
+USING hnsw (embedding vector_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+```
+
+Sự kết hợp giữa relational index và HNSW vector index trong cùng một database cho phép thực thi truy vấn kết hợp (filtered vector search) với độ trễ thấp và độ chính xác cao.
+
+---
+
+# 15. Main AI Recommendation Workflow
+
+Phương pháp AI chủ đạo của ShopAssist kết hợp sức mạnh của mô hình ngôn ngữ lớn, công cụ truy xuất dữ liệu lai và mô hình tái xếp hạng:
+
+> **LLM Query Understanding + Structured Filtering + Semantic Search + Reranking + Grounded Recommendation**
+
+Sơ đồ quy trình chi tiết:
+
+```text
+                        ┌────────────────────────────────┐
+                        │      User Natural Query        │
+                        └────────────────┬───────────────┘
+                                         │
+                                         ▼
+                        ┌────────────────────────────────┐
+                        │    LLM Query Understanding     │
+                        └───────┬────────────────┬───────┘
+                                │                │
+            ┌───────────────────┴──┐          ┌──┴───────────────────┐
+            │   Hard Constraints   │          │   Soft Preferences   │
+            │  category, brand,    │          │  semantic attributes │
+            │  price, rating       │          │  use-case context    │
+            └───────────┬──────────┘          └──────────┬───────────┘
+                        │                                │
+                        │  SQL Filter                    │  Vector Embedding
+                        ▼                                ▼
+            ┌────────────────────────────────────────────────────────┐
+            │                   Hybrid Retrieval                     │
+            │          (Filtered Semantic Vector Search)             │
+            └───────────────────────────┬────────────────────────────┘
+                                        │
+                                        ▼ Top-N Candidates (e.g. 20)
+            ┌────────────────────────────────────────────────────────┐
+            │                  Ranking / Reranking                   │
+            │     (Cross-Encoder / Weighted Multi-Signal Score)      │
+            └───────────────────────────┬────────────────────────────┘
+                                        │
+                                        ▼ Top-K Products (e.g. 3 - 5)
+            ┌────────────────────────────────────────────────────────┐
+            │           Grounded LLM Recommendation Engine           │
+            │   (Generates reasoning, comparisons, and trade-offs)   │
+            └───────────────────────────┬────────────────────────────┘
+                                        │
+                                        ▼
+                        ┌────────────────────────────────┐
+                        │     Telegram User Response     │
+                        └────────────────────────────────┘
 ```
 
 ---
 
-# 21. Hybrid Retrieval
+# 16. Hybrid Retrieval
 
-Ví dụ:
+Hybrid Retrieval đóng vai trò kết nối giữa bộ lọc chính xác (Deterministic Filtering) và không gian ngữ nghĩa (Semantic Space).
 
-> “Tôi cần air fryer dưới $120, nhỏ và dễ vệ sinh.”
+### Cơ chế hoạt động:
 
-LLM extract:
+1. **Bước 1 - Structured Filtering**: Dựa trên các thuộc tính trong `Hard Constraints`, SQL engine lọc nhanh trên bảng sản phẩm để loại bỏ tất cả các sản phẩm vi phạm điều kiện (sai ngành hàng, vượt ngân sách, điểm rating quá thấp).
+2. **Bước 2 - Semantic Scoring**: Trên tập sản phẩm ứng viên đã vượt qua bộ lọc cứng, hệ thống tính toán khoảng cách cosine giữa vector truy vấn (tổng hợp từ `soft preferences` hoặc toàn bộ câu hỏi) và vector `embedding` của từng sản phẩm.
+3. **Bước 3 - Candidate Selection**: Lấy ra danh sách ứng viên tiềm năng hàng đầu (`Top-N Candidates`, ví dụ N = 20) để chuyển tiếp sang giai đoạn Reranking.
 
-```text
-Hard:
-category = air_fryer
-price <= 120
-```
-
-và:
-
-```text
-Soft:
-compact
-easy to clean
-```
-
-SQL:
-
-```text
-category = air_fryer
-AND
-price <= 120
-```
-
-tạo ra candidate set.
-
-Sau đó semantic search sử dụng:
-
-```text
-compact
-easy to clean
-```
-
-để ranking các candidate.
+Cơ chế này ngăn chặn hoàn toàn nhược điểm "ảo giác điều kiện" của mô hình ngôn ngữ thuần túy và hiện tượng vector search trả về sản phẩm không đúng mức giá mong muốn.
 
 ---
 
-# 22. Retrieval Methods for Experiment
+# 17. Retrieval Methods for Experimentation
 
-Project sẽ benchmark nhiều phương pháp.
+Để trả lời câu hỏi nghiên cứu kỹ thuật và chứng minh tính hiệu quả của phương pháp đề xuất, ShopAssist thiết kế 4 cấu hình truy xuất phục vụ đánh giá thực nghiệm:
 
-## Baseline 1
+### Baseline 1 — TF-IDF + Cosine Similarity
+- Phương pháp tìm kiếm từ khóa truyền thống (Lexical Search).
+- Ánh xạ câu hỏi người dùng và `retrieval_text` thành ma trận thưa TF-IDF.
+- Xếp hạng theo độ tương đồng Cosine.
+- *Điểm yếu dự kiến*: Không hiểu từ đồng nghĩa, không xử lý được các ràng buộc số học về giá và rating.
 
-```text
-TF-IDF
-+
-Cosine Similarity
-```
+### Baseline 2 — Dense Embedding + Vector Search
+- Tìm kiếm ngữ nghĩa thuần túy (Pure Vector Search).
+- Nhúng toàn bộ câu hỏi người dùng thành dense vector và tìm k-láng giềng gần nhất (k-NN) trong `pgvector`.
+- *Điểm yếu dự kiến*: Có thể trả về sản phẩm phù hợp về mô tả ngữ nghĩa nhưng vi phạm mức giá tối đa hoặc sai lệch thương hiệu cụ thể.
 
-## Baseline 2
+### Method 3 — Structured Filtering + Embedding Search
+- Kết hợp lọc điều kiện cứng trước (Hard Filtering qua SQL), sau đó tìm kiếm vector trên tập sản phẩm còn lại.
+- Chưa áp dụng bước phân tích sâu soft preferences và chưa có tầng Reranking.
 
-```text
-Embedding
-+
-Vector Search
-```
-
-## Method 3
-
-```text
-Structured Filtering
-+
-Embedding Search
-```
-
-## Proposed Method
-
-```text
-LLM Query Understanding
-+
-Structured Filtering
-+
-Semantic Search
-+
-Reranking
-```
+### Proposed Method — LLM Query Understanding + Structured Filtering + Semantic Search + Reranking
+- Phương pháp toàn diện của ShopAssist:
+  - LLM trích xuất rõ ràng Hard Constraints và Soft Preferences;
+  - SQL Filtering đảm bảo ràng buộc 100%;
+  - Vector Search trên Soft Preferences tìm kiếm ứng viên;
+  - Cross-Encoder Reranker chấm điểm và xếp hạng lại Top-K sản phẩm tối ưu.
 
 ---
 
-# 23. Ranking / Reranking
+# 18. Ranking and Reranking
 
-Hybrid Retrieval có thể trả:
+Sau khi bước Hybrid Retrieval trả về tập ứng viên ban đầu (Top-N, thông thường N = 15 – 25 sản phẩm), hệ thống áp dụng bước tái xếp hạng (Reranking) để chọn ra Top-K (3 – 5 sản phẩm) xuất sắc nhất gửi tới tầng sinh gợi ý.
 
-```text
-Top 20 Candidates
-```
-
-Sau đó reranking chọn:
+### Yếu tố cấu thành điểm số xếp hạng:
 
 ```text
-Top 3–5 Products
+Final Score = 
+    w1 * Cross_Encoder_Score (hoặc Semantic Similarity)
+  + w2 * Constraint_Match_Score
+  + w3 * Normalized_Product_Rating
 ```
 
-Ranking có thể kết hợp:
+1. **Reranker Score (Cross-Encoder)**: Sử dụng một mô hình cross-encoder gọn nhẹ để đánh giá trực tiếp cặp `(Query + Preferences, Product Retrieval Text)`. Cross-encoder có khả năng so khớp tương tác giữa từng từ tốt hơn so với bi-encoder embedding.
+2. **Constraint Satisfaction**: Điểm thưởng nếu sản phẩm đáp ứng hoàn hảo các thuộc tính ưa thích.
+3. **Product Rating**: Điểm đánh giá thực tế của sản phẩm được chuẩn hóa đưa vào như một tín hiệu phụ trợ, ưu tiên sản phẩm có chất lượng được cộng đồng kiểm chứng cao hơn khi các yếu tố ngữ nghĩa tương đương.
 
-```text
-semantic similarity
-
-constraint satisfaction
-
-product rating
-
-reranker score
-```
+*Lưu ý*: Trong V1, không sử dụng bất kỳ đặc trưng phái sinh nào từ reviews trong công thức xếp hạng.
 
 ---
 
-# 24. LLM Recommendation
+# 19. Grounded LLM Recommendation Generation
 
-LLM nhận:
-
-```text
-Original User Query
-
-+
-
-Top-K Product Metadata
-```
-
-LLM có nhiệm vụ:
-
-- giải thích sản phẩm nào phù hợp;
-- so sánh các lựa chọn;
-- chỉ ra trade-off;
-- hỗ trợ người dùng đưa ra quyết định.
-
-Ví dụ:
-
-> Product A phù hợp nhất nếu bạn ưu tiên kích thước nhỏ và dễ vệ sinh. Product B có dung tích lớn hơn nhưng giá cao hơn. Product C phù hợp hơn nếu bạn thường nấu cho nhiều người.
-
-LLM:
+Mô hình LLM ở tầng cuối cùng nhận ngữ cảnh gồm:
 
 ```text
-không được tự tạo thông số sản phẩm
+Input Context:
+1. Original User Query (Câu hỏi gốc của người dùng)
+2. Parsed Requirements (Các ràng buộc và sở thích đã bóc tách)
+3. Top-K Product Metadata (Thông tin đầy đủ của các sản phẩm ứng viên được chọn)
 ```
 
-mà phải dựa trên Product Knowledge Base.
+### Nhiệm vụ của LLM:
+
+- **Giải thích lý do gợi ý (Reasoning)**: Trình bày rõ ràng tại sao từng sản phẩm lại đáp ứng đúng nhu cầu cụ thể của người dùng.
+- **So sánh đối chiếu (Comparison)**: So sánh sự khác biệt then chốt giữa các lựa chọn đề xuất (ví dụ: sản phẩm A ưu tiên tính gọn nhẹ, sản phẩm B có cấu hình mạnh hơn nhưng giá cao hơn một chút).
+- **Phân tích đánh đổi (Trade-offs)**: Giúp người dùng nhìn thấy điểm mạnh và điểm giới hạn của từng sản phẩm để đưa ra quyết định mua sắm sáng suốt.
+
+### Nguyên tắc Groundedness (Chống ảo giác thông tin):
+
+- LLM **tuyệt đối không được tự bịa đặt** giá cả, thông số kỹ thuật, thương hiệu, hoặc điểm đánh giá không có thật trong Product Knowledge Base.
+- Mọi nhận định về sản phẩm phải có căn cứ trực tiếp từ `description` và `product_specifications` được cung cấp trong prompt context.
 
 ---
 
-# 25. Discord Integration
+# 20. Telegram Bot Integration
 
-Discord chỉ đóng vai trò interface.
+Telegram Bot đóng vai trò là giao diện tương tác người dùng chính của ShopAssist.
 
-Architecture:
+Kiến trúc tích hợp:
 
 ```text
-Discord User
-↓
-Discord Bot
-↓
-FastAPI
-↓
+Telegram User
+     │ (Natural language messages)
+     ▼
+Telegram Bot Service (Python)
+     │ (HTTP POST /recommend)
+     ▼
+FastAPI Application
+     │ (Dependency Injection)
+     ▼
 AI Recommendation Engine
-↓
-FastAPI
-↓
-Discord Bot
-↓
-User
+  (Query Understanding → Hybrid Search → Reranking → Grounded LLM)
+     │ (Structured JSON Response + Formatted Text)
+     ▼
+FastAPI Application
+     │
+     ▼
+Telegram Bot Service
+     │ (Markdown formatted response + Product Cards / Links)
+     ▼
+Telegram User
 ```
 
-Core AI system được tách riêng khỏi Discord.
+### Tính độc lập và khả năng mở rộng của kiến trúc:
 
-Nhờ đó sau này có thể tích hợp:
-
-```text
-Zalo
-Telegram
-Web Application
-Mobile Application
-```
-
-mà không phải xây lại recommendation engine.
+- **Decoupled Architecture**: Giao diện Telegram Bot hoàn toàn tách rời khỏi Core AI Recommendation Engine.
+- Tầng Core AI được đóng gói sau dịch vụ RESTful API chuẩn mực xây dựng bằng **FastAPI**.
+- Nhờ thiết kế này, trong tương lai hệ thống có thể dễ dàng mở rộng để tích hợp thêm các nền tảng khác như:
+  - Web Application (React / Next.js / Vue);
+  - Mobile App;
+  - Zalo Mini App / Chatbot;
+  - Các hệ thống CSKH doanh nghiệp,
+  mà không cần phải sửa đổi hay viết lại bất kỳ dòng code nào trong recommendation engine.
 
 ---
 
-# 26. Evaluation Dataset
+# 21. Evaluation Dataset
 
-Ngoài Amazon Product Dataset, project xây dựng một evaluation dataset riêng.
+Để đánh giá một cách khoa học và định lượng hiệu năng của toàn bộ hệ thống, project xây dựng một bộ dữ liệu đánh giá chuẩn (Evaluation Benchmark Dataset).
 
-Cấu trúc:
+### Quy mô mục tiêu:
 
-```text
-User Query
+> **200 – 500 test queries**
 
-Expected Structured Query
-
-Relevant Products
-```
-
-Target:
-
-```text
-200–500 queries
-```
-
-Các query gồm:
-
-```text
-Simple Constraints
-
-Multi-Constraints
-
-Soft Preferences
-
-Use-case Queries
-
-Mixed Hard + Soft Requirements
-```
-
-Ví dụ:
-
-```text
-"I need a quiet blender under $100."
-```
-
-Ground truth:
+### Cấu trúc từng mẫu đánh giá:
 
 ```json
 {
-  "category": "blender",
-  "max_price": 100,
-  "preferences": [
-    "quiet"
+  "query_id": "test_042",
+  "raw_query": "I need a lightweight laptop under $800 with good battery life.",
+  "expected_structured_query": {
+    "category": "laptop",
+    "brand": null,
+    "min_price": null,
+    "max_price": 800,
+    "min_rating": null,
+    "preferences": [
+      "lightweight",
+      "good battery life"
+    ]
+  },
+  "ground_truth_relevant_product_ids": [
+    "PROD_00123",
+    "PROD_00456",
+    "PROD_00789"
   ]
 }
 ```
 
----
+### Phân loại các nhóm query kiểm thử:
 
-# 27. Query Understanding Evaluation
-
-Đánh giá khả năng LLM hiểu user query.
-
-Metrics:
-
-```text
-Category Accuracy
-
-Brand Accuracy
-
-Price Constraint Accuracy
-
-Rating Constraint Accuracy
-
-Preference Extraction Precision
-
-Preference Extraction Recall
-
-Preference Extraction F1
-```
-
-Ví dụ:
-
-```text
-Category Accuracy = 96%
-
-Price Constraint Accuracy = 95%
-
-Preference Extraction F1 = 0.88
-```
+1. **Simple Constraint Queries**: Chỉ chứa 1 ràng buộc cứng (ví dụ: *"Show me laptops under $600"*).
+2. **Multi-Constraint Queries**: Kết hợp nhiều điều kiện cứng (ví dụ: *"Samsung smartphone with at least 4.0 rating between $200 and $400"*).
+3. **Soft Preference Queries**: Chỉ chứa nhu cầu cảm tính/ngữ nghĩa (ví dụ: *"Ergonomic office chair for long working hours with good lumbar support"*).
+4. **Use-case Queries**: Diễn đạt theo ngữ cảnh người dùng (ví dụ: *"Best gifts for college students who study computer science"*).
+5. **Mixed Hard + Soft Requirements**: Kết hợp cả điều kiện cứng và ngữ nghĩa (ví dụ mẫu ở trên).
 
 ---
 
-# 28. Retrieval Evaluation
+# 22. Query Understanding Evaluation
 
-Metrics:
+Đo lường năng lực của LLM trong việc chuyển đổi từ ngôn ngữ tự nhiên sang cấu trúc dữ liệu chính xác.
 
-```text
-Precision@K
+### Các chỉ số đánh giá:
 
-Recall@K
-
-MRR
-
-nDCG@K
-```
-
-Mục tiêu:
-
-> Relevant products có xuất hiện ở vị trí cao trong ranking hay không?
+1. **Category Accuracy**: Tỷ lệ phần trăm dự đoán đúng danh mục sản phẩm so với nhãn chuẩn.
+2. **Brand Accuracy**: Tỷ lệ phần trăm bóc tách chính xác thương hiệu người dùng yêu cầu.
+3. **Price Constraint Accuracy**: Độ chính xác trong việc xác định đúng ngưỡng giá (`min_price`, `max_price`).
+4. **Rating Constraint Accuracy**: Độ chính xác khi nhận diện yêu cầu điểm đánh giá tối thiểu.
+5. **Preference Extraction Metrics**:
+   - **Precision**: Tỷ lệ sở thích bóc tách được thực sự có trong câu hỏi;
+   - **Recall**: Tỷ lệ sở thích người dùng đề cập được LLM nhận diện đầy đủ;
+   - **F1-Score**: Trung bình điều hòa giữa Precision và Recall của trích xuất sở thích.
 
 ---
 
-# 29. Constraint Satisfaction Evaluation
+# 23. Retrieval Quality Evaluation
 
-Đánh giá recommendation có thỏa hard constraints hay không.
+Đo lường chất lượng truy xuất sản phẩm của các thuật toán tìm kiếm trên tập Ground Truth.
 
-Metric:
+### Các chỉ số đánh giá:
 
-> **Constraint Satisfaction Rate**
-
-Ví dụ:
-
-```text
-User:
-price <= $100
-```
-
-Nếu hệ thống recommend sản phẩm:
-
-```text
-$150
-```
-
-thì tính là violation.
+1. **Precision@K (K = 3, 5)**: Tỷ lệ sản phẩm thực sự phù hợp trong top K sản phẩm được truy xuất.
+2. **Recall@K (K = 3, 5)**: Tỷ lệ sản phẩm phù hợp được tìm thấy so với toàn bộ các sản phẩm liên quan có trong database.
+3. **MRR (Mean Reciprocal Rank)**: Đánh giá vị trí xuất hiện của sản phẩm liên quan đầu tiên trong danh sách xếp hạng.
+4. **nDCG@K (Normalized Discounted Cumulative Gain)**: Đánh giá chất lượng thứ tự xếp hạng của danh sách sản phẩm, ưu tiên các sản phẩm có độ liên quan cao xuất hiện ở các vị trí đầu tiên.
 
 ---
 
-# 30. Generation Evaluation
+# 24. Constraint Satisfaction Evaluation
 
-Đánh giá câu trả lời cuối của LLM.
+Đánh giá mức độ tuân thủ các điều kiện bắt buộc mà người dùng đã chỉ định rõ trong truy vấn.
 
-Metrics / criteria:
+### Chỉ số cốt lõi:
 
-```text
-Groundedness
+> **Constraint Satisfaction Rate (%)**
 
-Factual Correctness
+Được định nghĩa là tỷ lệ phần trăm các sản phẩm được đề xuất thỏa mãn 100% các điều kiện ràng buộc cứng (ngân sách, ngành hàng, thương hiệu, điểm đánh giá tối thiểu).
 
-Recommendation Relevance
-```
-
-Kiểm tra xem LLM có:
-
-```text
-sai giá
-
-sai brand
-
-sai feature
-
-sai capacity
-
-tạo thông tin không có trong KB
-```
-
-hay không.
+Ví dụ: Nếu người dùng đặt điều kiện `price <= 800`, bất kỳ sản phẩm nào có giá $805 xuất hiện trong danh sách đề xuất đều bị tính là vi phạm điều kiện (constraint violation). Phương pháp đạt chuẩn phải hướng tới tỷ lệ thỏa mãn tiệm cận 100%.
 
 ---
 
-# 31. System Evaluation
+# 25. Generation Quality Evaluation
 
-Đánh giá dưới góc độ AI Engineering:
+Đánh giá chất lượng của văn bản câu trả lời do LLM sinh ra trước khi gửi về cho người dùng.
+
+### Tiêu chí đánh giá:
+
+1. **Groundedness / Hallucination Rate**: Kiểm tra xem tất cả các thông số, tính năng, và mức giá được nhắc đến trong câu trả lời có bằng chứng xác thực trong Product Knowledge Base hay không.
+2. **Factual Correctness**: Tính chính xác tuyệt đối của các thông tin kỹ thuật được trình bày.
+3. **Recommendation Relevance**: Độ phù hợp của lý lẽ tư vấn so với câu hỏi và mục đích sử dụng ban đầu của người dùng.
+
+---
+
+# 26. System & Engineering Evaluation
+
+Đánh giá hệ thống dưới góc độ kỹ thuật phần mềm và AI Engineering khi triển khai thực tế:
 
 ```text
-Average Latency
-
-P95 Latency
-
-Retrieval Latency
-
-LLM Latency
-
-Token Usage / Request
-
-Cost / Request
-
-API Error Rate
+- Average Latency (Độ trễ trung bình của một lượt tương tác end-to-end)
+- P95 Latency (Độ trễ phân vị thứ 95)
+- Retrieval Latency (Thời gian thực thi tìm kiếm database & vector)
+- LLM Latency (Thời gian xử lý của các lệnh gọi mô hình ngôn ngữ)
+- Token Usage per Request (Số lượng token tiêu thụ trung bình cho mỗi truy vấn)
+- Cost per Request (Chi phí tài nguyên ước tính trên mỗi lượt người dùng)
+- API Error Rate (Tỷ lệ lỗi của hệ thống backend)
 ```
 
 ---
 
-# 32. Main Experiment
+# 27. Experimental Benchmarking
 
-Benchmark:
+Bảng so sánh thực nghiệm tổng hợp giữa các phương pháp trên cùng một tập Evaluation Dataset:
 
-| Method | Recall@5 | MRR | nDCG@5 | Constraint Satisfaction |
-|---|---:|---:|---:|---:|
-| TF-IDF | | | | |
-| Embedding Search | | | | |
-| Hybrid Retrieval | | | | |
-| LLM Query Understanding + Hybrid | | | | |
-| Hybrid + Reranking | | | | |
+| Phương pháp (Method) | Recall@5 | MRR | nDCG@5 | Constraint Satisfaction Rate | Groundedness | Latency (ms) |
+|---|---:|---:|---:|---:|---:|---:|
+| **Baseline 1: TF-IDF + Cosine** | - | - | - | Thấp (< 60%) | N/A | Rất thấp |
+| **Baseline 2: Pure Embedding Search** | - | - | - | Trung bình (~70%) | N/A | Thấp |
+| **Method 3: Structured Filter + Embedding** | - | - | - | Cao (> 95%) | N/A | Trung bình |
+| **Proposed: LLM Understanding + Hybrid + Rerank** | **Cao nhất** | **Cao nhất** | **Cao nhất** | **Tiệm cận 100%** | **> 98%** | Chấp nhận được |
 
-Mục tiêu experiment:
-
-> Kiểm tra việc kết hợp LLM-based query understanding, structured filtering và semantic retrieval có cải thiện chất lượng product recommendation so với traditional search hay không.
+Mục tiêu thử nghiệm là chứng minh một cách định lượng sự vượt trội của phương pháp Proposed so với các baseline truyền thống.
 
 ---
 
-# 33. Research / Engineering Question
+# 28. Main Research / Engineering Question
 
-Câu hỏi kỹ thuật chính:
+Câu hỏi nghiên cứu và thực nghiệm kỹ thuật xuyên suốt của project ShopAssist:
 
 > **Can LLM-based query understanding combined with structured filtering and semantic retrieval improve product recommendation quality compared with traditional TF-IDF and pure embedding-based retrieval?**
 
-Đây sẽ là câu hỏi xuyên suốt phần experiment và evaluation.
+*(Liệu việc kết hợp cơ chế hiểu truy vấn dựa trên LLM cùng bộ lọc dữ liệu cấu trúc và tìm kiếm ngữ nghĩa có cải thiện chất lượng đề xuất sản phẩm một cách rõ rệt so với các phương pháp TF-IDF truyền thống và tìm kiếm vector thuần túy hay không?)*
 
 ---
 
-# 34. Technology Stack
+# 29. Technology Stack
+
+Kiến trúc công nghệ được lựa chọn theo tiêu chuẩn hiện đại, ổn định và tối ưu cho AI Engineering:
 
 ```text
-Python
+Python 3.10+
 │
-├── Data Processing
-│   └── Pandas
+├── Data Acquisition & Processing
+│   ├── Pandas / NumPy
+│   └── PyArrow (Parquet handling)
 │
 ├── Baseline Retrieval
-│   └── Scikit-learn / TF-IDF
+│   └── Scikit-learn (TF-IDF vectorizer, Cosine Similarity)
 │
-├── Embedding
-│   └── Sentence Transformers
+├── Embeddings & Vector Search
+│   ├── Sentence Transformers (Hugging Face)
+│   └── PostgreSQL + pgvector (Vector storage, HNSW indexing)
 │
-├── Database
-│   └── PostgreSQL
-│       └── pgvector
-│
-├── Query Understanding
-│   └── LLM Structured Output
+├── Query Understanding & Generation
+│   └── LLM APIs (Structured Output via Pydantic / Function Calling)
 │
 ├── Ranking / Reranking
+│   └── Cross-Encoder (Sentence Transformers / FlashRank / Cohere)
 │
-├── Recommendation Generation
-│   └── LLM
+├── Backend Application
+│   ├── FastAPI (RESTful API, Async request handling)
+│   └── Pydantic v2 (Data validation & schemas)
 │
-├── Backend
-│   └── FastAPI
+├── Conversational Interface
+│   └── Telegram Bot API (thông qua thư viện python-telegram-bot hoặc tương đương)
 │
-├── Discord
-│   └── discord.py
+├── Quality Assurance & Evaluation
+│   ├── Pytest (Unit testing, integration testing)
+│   └── Evaluation scripts (Custom metrics calculation)
 │
-├── Testing
-│   └── pytest
-│
-└── Deployment
-    └── Docker
+└── Containerization & Deployment
+    └── Docker & Docker Compose
 ```
 
 ---
 
-# 35. Development Plan
+# 30. Development Plan
 
-## Phase 1 — Metadata Acquisition (completed)
+Quy trình phát triển được thiết kế tuần tự, mạch lạc qua 17 giai đoạn rõ ràng:
 
-Download:
+### Phase 1 — Acquire Flipkart Dataset
+- Tải về bộ dữ liệu Flipkart Products 20K;
+- Kiểm tra tính toàn vẹn của tệp (file integrity, format parsing);
+- Khảo sát sơ bộ cấu trúc các cột và kiểu dữ liệu ban đầu.
 
-```text
-meta_Appliances.jsonl
-```
+### Phase 2 — Dataset Profiling / EDA
+- Phân tích chi tiết mức độ khuyết thiếu (missing values) trên từng trường;
+- Kiểm tra và đo lường tỷ lệ dữ liệu trùng lặp (duplicates);
+- Thống kê phân bố độ phủ của giá tiền (`retail_price`, `discounted_price`), đánh giá (`rating`), thương hiệu (`brand`), mô tả (`description`) và thông số (`product_specifications`);
+- Lập báo cáo EDA tổng quan làm căn cứ ra quyết định kỹ thuật.
 
-Chưa tải reviews.
+### Phase 3 — Category Selection
+- Phân tích cây phân cấp danh mục (`product_category_tree`);
+- Chọn lọc các nhóm ngành hàng phù hợp đáp ứng đầy đủ các tiêu chí về số lượng, chất lượng văn bản và tính ứng dụng cho mua sắm đàm thoại;
+- Xác lập phạm vi ngành hàng chính thức cho hệ thống (đạt quy mô dự kiến khoảng 5,000 – 15,000 sản phẩm sạch).
 
----
+### Phase 4 — Dataset Cleaning
+- Loại bỏ các bản ghi thiếu thông tin định danh hoặc thiếu tiêu đề;
+- Khử trùng lặp sản phẩm;
+- Chuẩn hóa định dạng số cho giá và điểm rating;
+- Chuẩn hóa tên thương hiệu và phân cấp danh mục;
+- Làm sạch các chuỗi văn bản lỗi, ký tự HTML còn sót lại.
 
-## Phase 2 — Dataset Exploration (completed)
+### Phase 5 — Build Product Knowledge Base
+- Xây dựng trường đại diện ngữ nghĩa tổng hợp `retrieval_text` cho từng sản phẩm;
+- Xuất dữ liệu sạch ra tệp chuẩn `products.parquet`;
+- Thiết kế schema database trên PostgreSQL, cài đặt extension `pgvector`;
+- Nạp toàn bộ dữ liệu cấu trúc và vector nhúng vào cơ sở dữ liệu, thiết lập index B-Tree và HNSW.
 
-Phân tích:
+### Phase 6 — TF-IDF Baseline
+- Xây dựng pipeline trích xuất đặc trưng văn bản bằng TF-IDF trên `retrieval_text`;
+- Cài đặt hàm tìm kiếm theo độ tương đồng Cosine phục vụ đối chuẩn (Baseline 1).
 
-```text
-categories
-title
-features
-details
-description
-price
-rating
-parent_asin
-```
+### Phase 7 — Semantic Search
+- Tích hợp mô hình Sentence Transformers sinh dense embedding cho câu hỏi và tài liệu;
+- Cài đặt truy vấn tìm kiếm k-NN vector trong `pgvector` phục vụ đối chuẩn (Baseline 2).
 
-Thống kê 5 product families.
+### Phase 8 — LLM Query Understanding
+- Thiết kế prompt và JSON schema chuẩn tắc cho LLM;
+- Cài đặt module phân tích câu hỏi người dùng, bóc tách chính xác Hard Constraints và Soft Preferences.
 
----
+### Phase 9 — Soft Preference Representation
+- Xây dựng cơ chế chuyển đổi mảng sở thích người dùng thành câu truy vấn ngữ nghĩa cô đọng;
+- Tạo vector nhúng đại diện cho các sở thích mềm để đối khớp vào không gian vector.
 
-## Phase 3 — Candidate Dataset Construction (completed)
+### Phase 10 — Hybrid Retrieval
+- Tích hợp điều kiện lọc SQL và tìm kiếm vector tương đồng trong một câu truy vấn thống nhất;
+- Kiểm tra độ chính xác và hiệu năng truy xuất tập ứng viên Top-N ban đầu.
 
-Phát hiện candidate có độ phủ cao cho:
+### Phase 11 — Reranking
+- Tích hợp mô hình Cross-Encoder hoặc thuật toán chấm điểm đa tín hiệu (Multi-signal scoring);
+- Tái xếp hạng danh sách ứng viên Top-N để chọn lọc ra Top-K sản phẩm tối ưu nhất.
 
-```text
-Coffee Makers
-Blenders
-Air Fryers
-Electric Kettles
-Rice Cookers
-```
+### Phase 12 — LLM Recommendation
+- Thiết kế prompt sinh phản hồi tư vấn có căn cứ (grounded prompt);
+- Cung cấp ngữ cảnh Top-K sản phẩm cho LLM sinh phân tích, so sánh ưu nhược điểm và đưa ra lý lẽ đề xuất thuyết phục.
 
-Gắn cờ để kiểm toán, chưa loại tự động:
+### Phase 13 — Evaluation Dataset
+- Xây dựng bộ dữ liệu đánh giá gồm 200 – 500 truy vấn đa dạng tình huống;
+- Gán nhãn chuẩn cho structured query mong đợi và danh sách sản phẩm liên quan (ground truth).
 
-```text
-Accessories
-Replacement Parts
-Spare Parts
-```
+### Phase 14 — Experimental Evaluation
+- Chạy thử nghiệm tự động trên toàn bộ các phương pháp (Baseline 1, Baseline 2, Method 3, Proposed Method);
+- Tính toán đầy đủ các chỉ số: Precision@K, Recall@K, MRR, nDCG@K, Constraint Satisfaction Rate, Groundedness, Latency;
+- Lập bảng kết quả so sánh và viết báo cáo phân tích thực nghiệm.
 
-Target sau Phase 4C:
+### Phase 15 — FastAPI Backend
+- Xây dựng backend RESTful API bằng FastAPI;
+- Thiết lập endpoint chính `POST /recommend`;
+- Tích hợp xử lý bất đồng bộ (async), cấu hình middleware, validation schemas và xử lý lỗi chuẩn mực.
 
-```text
-5K–15K clean products
-```
+### Phase 16 — Telegram Bot
+- Phát triển Telegram Bot độc lập kết nối tới FastAPI backend;
+- Xử lý tin nhắn người dùng, định dạng kết quả hiển thị trực quan (Markdown, hình ảnh sản phẩm, liên kết tham khảo);
+- Xử lý các tình huống ngoại lệ, phản hồi chờ và hỗ trợ trải nghiệm người dùng mượt mà.
 
-## Phase 3B — Full Home_and_Kitchen Metadata Scan (completed)
-
-Đã quét 3,735,584 metadata records qua HTTP byte ranges; giữ 55,064 candidate, 55,064 `parent_asin` duy nhất. Tập này còn phụ kiện, sản phẩm thủ công và các bản ghi mơ hồ, nên chưa phải clean dataset.
-
-## Phase 4A — Stratified Candidate Audit (metadata-based labels completed)
-
-Đã lấy mẫu theo năm family × `title_only`/`taxonomy_only`/`both`, bổ sung nhóm cờ rủi ro và gán nhãn 380 dòng từ metadata; 45 ca khó được xét sâu, 6 dòng có nhãn `AMBIGUOUS`. Đây là bằng chứng kiểm toán, chưa phải quy tắc lọc cuối. Xem [hướng dẫn Phase 4A](phase4a_stratified_audit.md) và [báo cáo gán nhãn](phase4a_labeling_report.md).
-
-## Phase 4B — Cleaning Rule Design and Validation (implemented on Phase 4A sample)
-
-Đã phân tích nhãn audit và kiểm chứng quy tắc xác định cho phụ kiện, dụng cụ thủ công, ấm dùng trên bếp, hàng ngoài phạm vi và bảo vệ máy hợp lệ. Quy tắc có kết quả `KEEP`/`REMOVE`/`REVIEW`, lý do và `rule_id`; đã đo precision, recall, lỗi loại nhầm và ca chưa đủ chứng cứ trên 380 dòng mẫu. Xem [Phase 4B](phase4b_cleaning_rules.md). Chưa chạy làm sạch toàn bộ 55.064 candidate.
-
-## Phase 4C — Final Product Cleaning and Selection
-
-Áp dụng quy tắc đã kiểm chứng và chốt tập `parent_asin` sạch. Mục tiêu 5,000–15,000 sản phẩm là định hướng, ưu tiên chất lượng hơn số lượng. Quyết định chính sách giá thiếu tại đây.
-
----
-
-## Phase 5 — Review Acquisition and Aggregation
-
-Chỉ lấy review của:
-
-```text
-selected parent_asin
-```
-
-Tạo:
-
-```text
-review_count
-review rating
-review summary
-pros
-cons
-```
+### Phase 17 — Deployment
+- Đóng gói toàn bộ hệ thống bằng Docker và Docker Compose (FastAPI app, Telegram Bot, PostgreSQL + pgvector);
+- Cấu hình logging tập trung, quản lý biến môi trường (.env);
+- Giám sát độ trễ, mức độ tiêu thụ token và tính sẵn sàng của hệ thống.
 
 ---
 
-## Phase 6 — Build Product Knowledge Base
+# 31. MVP Scope & Boundaries
 
-Tạo:
-
-```text
-products.parquet
-```
-
-Sau đó import vào:
+Phạm vi phiên bản sản phẩm khả thi tối thiểu (MVP - Version 1) bao gồm đầy đủ các thành phần cốt lõi:
 
 ```text
-PostgreSQL
-+
-pgvector
-```
-
----
-
-## Phase 7 — TF-IDF Baseline
-
-Implement:
-
-```text
-User Query
-↓
-TF-IDF
-↓
-Cosine Similarity
-↓
-Top-K Products
+[x] Dataset Flipkart Products 20K
+[x] Dataset Profiling & Báo cáo EDA
+[x] Lựa chọn danh mục sản phẩm (Category Selection)
+[x] Quy trình làm sạch dữ liệu cơ bản (Basic Cleaning)
+[x] Xây dựng Product Knowledge Base (PostgreSQL + pgvector)
+[x] Baseline 1: TF-IDF Retrieval
+[x] Baseline 2: Dense Embedding Retrieval
+[x] LLM Query Understanding (Trích xuất JSON cấu trúc)
+[x] Hard Constraint Filtering qua SQL
+[x] Soft Preference Embedding Representation
+[x] Hybrid Retrieval kết hợp lọc và tìm kiếm vector
+[x] Ranking / Reranking ứng viên Top-K
+[x] Grounded LLM Recommendation Generation
+[x] Bộ dữ liệu đánh giá và pipeline thực nghiệm định lượng
+[x] Backend RESTful API với FastAPI
+[x] Conversational Interface qua Telegram Bot
+[x] Đóng gói và triển khai qua Docker
 ```
 
 ---
 
-## Phase 8 — Embedding / Semantic Search
+# 32. Out of Scope for V1
 
-Implement:
-
-```text
-Product Text
-↓
-Embedding
-↓
-pgvector
-```
-
-So sánh:
+Các tính năng và hướng phát triển sau đây nằm ngoài phạm vi của phiên bản V1 và có thể được xem xét ở các phiên bản tiếp theo:
 
 ```text
-TF-IDF
-vs
-Embedding Search
+[-] Không sử dụng dữ liệu đánh giá chi tiết của người dùng (Raw User Reviews)
+[-] Không thực hiện tổng hợp review (Review Aggregation) hoặc trích xuất pros/cons từ review
+[-] Không xây dựng hệ thống gợi ý cá nhân hóa dựa trên lịch sử mua hàng (Personalized Recommendation)
+[-] Không áp dụng lọc cộng tác (Collaborative Filtering) hoặc phân tích giỏ hàng
+[-] Không fine-tuning mô hình ngôn ngữ lớn (LLM Fine-tuning)
+[-] Không xây dựng hệ thống đa tác tử phức tạp (Multi-agent Systems)
+[-] Không phát triển giao diện người dùng web đa trang phức tạp (Complex Web UI)
 ```
 
 ---
 
-## Phase 9 — LLM Query Understanding
+# 33. Key Highlights of the Project
 
-Implement:
-
-```text
-User Query
-↓
-LLM
-↓
-Structured JSON
-```
-
-Schema:
-
-```json
-{
-  "category": null,
-  "brand": null,
-  "min_price": null,
-  "max_price": null,
-  "min_rating": null,
-  "preferences": []
-}
-```
-
----
-
-## Phase 10 — Soft Preference Representation
+ShopAssist không đơn thuần là một ứng dụng bọc LLM đơn giản ("wrapper") hay một hệ thống RAG cơ bản dạng:
 
 ```text
-preferences
-↓
-Semantic Query
-↓
-Embedding
+Product Description ──► Vector Database ──► LLM
 ```
 
----
-
-## Phase 11 — Hybrid Retrieval
+Điểm khác biệt cốt lõi của ShopAssist nằm ở kiến trúc kỹ thuật AI Engineering bài bản và toàn diện:
 
 ```text
-Hard Constraints
-↓
-SQL Filtering
-```
-
-+
-
-```text
-Soft Preferences
-↓
-Semantic Retrieval
-```
-
-↓
-
-```text
-Candidate Products
-```
-
----
-
-## Phase 12 — Reranking
-
-```text
-Top 20
-↓
-Reranker
-↓
-Top 3–5
-```
-
----
-
-## Phase 13 — LLM Recommendation
-
-Input:
-
-```text
-User Query
-+
-Top Products
-+
-Product Metadata
-```
-
-Output:
-
-```text
-Recommendation
-
-Reason
-
-Comparison
-
-Trade-offs
-```
-
----
-
-## Phase 14 — Evaluation Dataset
-
-Tạo:
-
-```text
-200–500 queries
-```
-
-với:
-
-```text
-Expected Structured Query
-+
-Relevant Products
-```
-
----
-
-## Phase 15 — Experimental Evaluation
-
-Benchmark:
-
-```text
-TF-IDF
-
-Embedding
-
-Hybrid
-
-LLM + Hybrid
-
-Hybrid + Reranking
-```
-
-Metrics:
-
-```text
-Query Parsing Accuracy
-
-Precision@K
-
-Recall@K
-
-MRR
-
-nDCG@K
-
-Constraint Satisfaction Rate
-
-Groundedness
-```
-
----
-
-## Phase 16 — FastAPI
-
-API chính:
-
-```text
-POST /recommend
-```
-
-Input:
-
-```json
-{
-  "query": "I need a compact air fryer under $100"
-}
-```
-
-Output:
-
-```json
-{
-  "parsed_query": {},
-  "products": [],
-  "answer": ""
-}
-```
-
----
-
-## Phase 17 — Discord Bot
-
-```text
-Discord
-↓
-FastAPI
-↓
-Recommendation Engine
-↓
-FastAPI
-↓
-Discord
-```
-
----
-
-## Phase 18 — Deployment
-
-- Dockerize backend.
-- Deploy FastAPI.
-- Deploy Discord Bot.
-- Logging.
-- Error handling.
-- LLM usage tracking.
-- Latency monitoring.
-
----
-
-# 36. MVP Scope
-
-Version 1 bắt buộc có:
-
-```text
-Amazon Home_and_Kitchen Metadata
-
-5 Product Families
-
-Dataset Cleaning
-
-Aggregated Reviews
-
-TF-IDF Baseline
-
-Embedding Retrieval
-
-LLM Query Understanding
-
-Hard Constraint Filtering
-
-Soft Preference Embedding
-
-Hybrid Retrieval
-
-Ranking / Reranking
-
-LLM Recommendation
-
-Evaluation
-
-FastAPI
-
-Discord Bot
-
-Docker Deployment
-```
-
----
-
-# 37. Out of Scope for V1
-
-Chưa thực hiện:
-
-```text
-Personalized Recommendation
-
-User Purchase History
-
-Collaborative Filtering
-
-User Profile Learning
-
-Fine-tuning LLM
-
-Multi-agent Systems
-
-Complex Agent Framework
-
-Complex Web UI
-```
-
-Có thể phát triển trong Version 2.
-
----
-
-# 38. Điểm nổi bật của project
-
-Project không chỉ là:
-
-```text
-Product Description
-↓
-Vector Database
-↓
-LLM
-```
-
-mà là:
-
-```text
-Data Engineering
+Data Engineering (EDA, Cleaning, Knowledge Base Construction)
         ↓
 Natural Language Understanding
         ↓
-LLM Structured Extraction
+LLM Structured Query Extraction (Tách biệt Hard Constraints và Soft Preferences)
         ↓
-Hard Constraint Filtering
+Deterministic Hard Constraint Filtering (Đảm bảo 100% không vi phạm điều kiện)
         ↓
-Semantic Preference Understanding
+Semantic Preference Understanding (Nắm bắt nhu cầu cảm tính người dùng)
         ↓
-Hybrid Retrieval
+Hybrid Retrieval (Thu hẹp không gian tìm kiếm kết hợp vector search)
         ↓
-Ranking / Reranking
+Ranking / Reranking (Cross-Encoder tinh chỉnh thứ tự ưu tiên)
         ↓
-Grounded LLM Recommendation
+Grounded LLM Recommendation (Sinh lời giải thích minh bạch, không ảo giác)
         ↓
-Evaluation
+Empirical Evaluation (Đo lường định lượng từng thành phần AI độc lập)
         ↓
-API
-        ↓
-Discord
-        ↓
-Deployment
+Production-ready Architecture (FastAPI Backend + Telegram Bot + Docker)
 ```
 
-Điểm quan trọng nhất là mỗi AI component có thể được đánh giá riêng.
-
-Điều này giúp project thể hiện cả:
-
-```text
-AI / NLP
-
-AI Engineering
-
-Software Engineering
-
-Experimental Evaluation
-```
+Mỗi thành phần trong chuỗi xử lý đều có giao diện định nghĩa rõ ràng, có khả năng đo lường độc lập và có thể thay thế hoặc nâng cấp linh hoạt, thể hiện rõ tư duy kỹ thuật kết hợp giữa **Khoa học Dữ liệu, Xử lý Ngôn ngữ Tự nhiên và Kỹ thuật Phần mềm Hiện đại**.
 
 ---
 
-# 39. Final Project Definition
+# 34. Final Project Definition
 
-**Project Name**
+Tóm tắt định nghĩa kỹ thuật chính thức của dự án:
 
-> ShopAssist
-
-**Technical Name**
-
-> Conversational Product Recommendation System using LLM-based Query Understanding and Hybrid Retrieval
-
-**Domain**
-
-> Small Kitchen Appliances
-
-**Source**
-
-> Amazon Reviews 2023
-
-**Primary Source Category**
-
-> Home_and_Kitchen (metadata chính sau EDA; `Appliances` là giả định ban đầu)
-
-**Product Families**
-
-```text
-Coffee Makers
-Blenders
-Air Fryers
-Electric Kettles
-Rice Cookers
-```
-
-**Product Data**
-
-```text
-Metadata
-+
-Aggregated Reviews
-```
-
-**Target Dataset**
-
-```text
-5,000 – 15,000 clean products
-```
-
-**Query Understanding**
-
-> LLM-based Structured Query Extraction + Semantic Representation of Soft Preferences
-
-**Retrieval**
-
-> Structured Filtering + Semantic Search
-
-**Recommendation**
-
-> Ranking / Reranking + Grounded LLM Explanation
-
-**Interface**
-
-> Discord Bot
-
-**Evaluation**
-
-```text
-Query Understanding
-
-Retrieval Quality
-
-Constraint Satisfaction
-
-Generation Quality
-
-System Performance
-```
-
-**Main Objective**
-
-> Build and evaluate an end-to-end conversational product recommendation system capable of understanding natural-language purchasing requirements and recommending relevant small kitchen appliances based on both explicit constraints and semantic user preferences.
+- **Project Name**: ShopAssist
+- **Technical Name**: Conversational Product Recommendation System using LLM-based Query Understanding and Hybrid Retrieval
+- **Domain**: E-commerce Consumer Products
+- **Primary Dataset**: Flipkart Products 20K
+- **Product Scope**: Được xác định chính thức sau quá trình dataset profiling và phân tích phân bố ngành hàng
+- **Product Data**: Structured Product Metadata + Product Descriptions + Product Specifications
+- **Query Understanding**: LLM-based Structured Query Extraction + Semantic Representation of Soft Preferences
+- **Retrieval**: Structured Filtering + Semantic Search
+- **Recommendation**: Ranking / Reranking + Grounded LLM Explanation
+- **Database**: PostgreSQL + pgvector
+- **Backend**: FastAPI
+- **Interface**: Telegram Bot
+- **Evaluation**: Query Understanding, Retrieval Quality, Constraint Satisfaction, Generation Quality, System Performance
+- **Main Objective**: Build and evaluate an end-to-end conversational product recommendation system capable of understanding natural-language purchasing requirements and recommending relevant products based on both explicit constraints and semantic user preferences.
