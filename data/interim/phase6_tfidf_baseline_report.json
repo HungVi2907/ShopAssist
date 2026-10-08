@@ -1,0 +1,596 @@
+{
+  "phase": "6.0",
+  "objective": "TF-IDF Baseline Lexical Product Retrieval Engine",
+  "overall_status": "PASS",
+  "execution_timestamp": "2026-10-08T17:11:01Z",
+  "source_dataset": {
+    "path": "D:\\Project\\ShopAssist\\data\\processed\\products.parquet",
+    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+    "total_products": 8405,
+    "categories_count": 16,
+    "load_time_seconds": 0.085
+  },
+  "vectorizer_configuration": {
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "max_df": 0.8,
+    "max_features": null,
+    "sublinear_tf": true,
+    "use_idf": true,
+    "smooth_idf": true,
+    "norm": "l2",
+    "lowercase": true,
+    "token_pattern": "(?u)\\b\\w+\\b"
+  },
+  "corpus_statistics": {
+    "total_documents": 8405,
+    "vocabulary_size": 61979,
+    "matrix_shape": [
+      8405,
+      61979
+    ],
+    "nonzero_elements": 1276047,
+    "sparsity_pct": 99.755,
+    "memory_mb_approx": 14.64,
+    "fit_time_seconds": 1.0046
+  },
+  "artifact_persistence": {
+    "directory": "D:\\Project\\ShopAssist\\data\\processed\\tfidf",
+    "reload_verified": true,
+    "reload_time_seconds": 0.1584
+  },
+  "latency_benchmarks": {
+    "num_queries": 8,
+    "iterations_per_query": 15,
+    "total_measured_calls": 120,
+    "mean_latency_ms": 4.407,
+    "p50_latency_ms": 3.862,
+    "p95_latency_ms": 7.532,
+    "min_latency_ms": 2.769,
+    "max_latency_ms": 9.108
+  },
+  "retrieval_scenarios": [
+    {
+      "scenario_id": "SCENARIO_1_EXACT_KEYWORD",
+      "description": "Exact keyword match for technical hardware accessories",
+      "query": "wireless bluetooth keyboard",
+      "latency_ms": 3.199,
+      "returned_count": 5,
+      "candidates": [
+        {
+          "rank": 1,
+          "product_id": "203860575c7e91e6cf6e30856f573275",
+          "product_name": "Dyna Silver Heart Stereo Wireless Bluetooth Headset",
+          "category": "Mobiles & Accessories",
+          "brand": "Dyna",
+          "discounted_price": 1849.0,
+          "tfidf_score": 0.244048,
+          "metadata": {
+            "retail_price": 3299.0,
+            "pid": "ACCEBVT585S73BEW"
+          }
+        },
+        {
+          "rank": 2,
+          "product_id": "94d4019000f88153ee3ec5a4919020db",
+          "product_name": "Head Kik Premium Quality Solo2 S460 Wireless Bluetooth Headset Stereo Dynamic Wired & Wireless Bluetooth Headphones",
+          "category": "Mobiles & Accessories",
+          "brand": "Head Kik",
+          "discounted_price": 1198.0,
+          "tfidf_score": 0.243697,
+          "metadata": {
+            "retail_price": 9999.0,
+            "pid": "ACCEGJPRSJTAGYKV"
+          }
+        },
+        {
+          "rank": 3,
+          "product_id": "136454e94f8b20fd332f510601919c2c",
+          "product_name": "LIFE LIKE S450 3.0 WITH MIC GOOD SOUND QUALITY Wired & Wireless Bluetooth Headphones",
+          "category": "Mobiles & Accessories",
+          "brand": "LIFE LIKE",
+          "discounted_price": 999.0,
+          "tfidf_score": 0.190816,
+          "metadata": {
+            "retail_price": 1999.0,
+            "pid": "ACCEGZ8GRVUADQ4Y"
+          }
+        },
+        {
+          "rank": 4,
+          "product_id": "85746bd7ec397edbd4f727ab0f381cca",
+          "product_name": "LIFE LIKE STN-840 4.1 WITH MIC Wireless Bluetooth Headset",
+          "category": "Mobiles & Accessories",
+          "brand": "LIFE LIKE",
+          "discounted_price": 899.0,
+          "tfidf_score": 0.18766,
+          "metadata": {
+            "retail_price": 1999.0,
+            "pid": "ACCEGZ8GDQKDXMTT"
+          }
+        },
+        {
+          "rank": 5,
+          "product_id": "a4029904aa49f4dee9dcb2aa4ba918fd",
+          "product_name": "Softarts Universal Stand for Android Mobiles with Bluetooth Shutter_SWMA_04",
+          "category": "Automotive",
+          "brand": "Softarts",
+          "discounted_price": 2999.0,
+          "tfidf_score": 0.155757,
+          "metadata": {
+            "retail_price": 3599.0,
+            "pid": "ACCEF2TH2YRDRZCR"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SCENARIO_2_TECHNICAL_TERMS",
+      "description": "Multiple technical compound terms for portable electronics",
+      "query": "portable usb storage device",
+      "latency_ms": 3.496,
+      "returned_count": 5,
+      "candidates": [
+        {
+          "rank": 1,
+          "product_id": "f8139abf047c915ab570a555eb3d1d02",
+          "product_name": "DreamShop Flex Flexible Portable USB Led Light",
+          "category": "Computers",
+          "brand": "DreamShop",
+          "discounted_price": 129.0,
+          "tfidf_score": 0.193451,
+          "metadata": {
+            "retail_price": 599.0,
+            "rating": 5.0,
+            "pid": "USGEE3YXGXN9FHUQ"
+          }
+        },
+        {
+          "rank": 2,
+          "product_id": "6e7cc21610991cab64595af678e8eb5a",
+          "product_name": "Tapawire Portable USB Flexible Stick Dimmable Touch Switch 10 Super Bright LED Reading Lamp B00 USB Led Light",
+          "category": "Computers",
+          "brand": "Tapawire",
+          "discounted_price": 449.0,
+          "tfidf_score": 0.169127,
+          "metadata": {
+            "retail_price": 699.0,
+            "pid": "USGEDRPHJHRGHJNH"
+          }
+        },
+        {
+          "rank": 3,
+          "product_id": "8fb0e8e0bdaa949fbc265d3a22ff45f7",
+          "product_name": "eGizmos Micro Charging with Flexible for Computer & Mobile Notebook Laptop PC, Energy Saving Portable USB Led Light",
+          "category": "Computers",
+          "brand": "eGizmos",
+          "discounted_price": 199.0,
+          "tfidf_score": 0.158114,
+          "metadata": {
+            "retail_price": 499.0,
+            "pid": "USGEA6Z65ZHKACDH"
+          }
+        },
+        {
+          "rank": 4,
+          "product_id": "ed8ea9297d23defa67bc09ba573b1938",
+          "product_name": "Techone+ Portable SE122102-WHITE USB Led Light",
+          "category": "Computers",
+          "brand": "Techone+",
+          "discounted_price": 249.0,
+          "tfidf_score": 0.123661,
+          "metadata": {
+            "retail_price": 499.0,
+            "pid": "USGEDDUFPJG7A5GG"
+          }
+        },
+        {
+          "rank": 5,
+          "product_id": "758625519998932d38bbb8373531fde7",
+          "product_name": "Techone+ Portable SE122101-WHITE USB Led Light",
+          "category": "Computers",
+          "brand": "Techone+",
+          "discounted_price": 149.0,
+          "tfidf_score": 0.123413,
+          "metadata": {
+            "retail_price": 299.0,
+            "pid": "USGEDDUFASHHQGEY"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SCENARIO_3_BRAND_SPECIFIC",
+      "description": "Specific brand matching from catalog",
+      "query": "Allure Auto",
+      "latency_ms": 3.364,
+      "returned_count": 5,
+      "candidates": [
+        {
+          "rank": 1,
+          "product_id": "d59ef354b9b25c71318c6aaa82c5af1a",
+          "product_name": "Allure Auto CM 1904 Car Mat Mahindra Logan",
+          "category": "Automotive",
+          "brand": "Allure Auto",
+          "discounted_price": 1599.0,
+          "tfidf_score": 0.317671,
+          "metadata": {
+            "retail_price": 4900.0,
+            "pid": "CRTECN2QUPEM5TEE"
+          }
+        },
+        {
+          "rank": 2,
+          "product_id": "6785754a2e0f4e2a02c528a7c615ee45",
+          "product_name": "Allure Auto CM 573 Car Mat Chevrolet Enjoy",
+          "category": "Automotive",
+          "brand": "Allure Auto",
+          "discounted_price": 920.0,
+          "tfidf_score": 0.315128,
+          "metadata": {
+            "retail_price": 2450.0,
+            "pid": "CRTECN2QWJJWY8FU"
+          }
+        },
+        {
+          "rank": 3,
+          "product_id": "ab2af1b40d30c237d1081bec682beef3",
+          "product_name": "Allure Auto CM 544 Car Mat Tata Safari",
+          "category": "Automotive",
+          "brand": "Allure Auto",
+          "discounted_price": 920.0,
+          "tfidf_score": 0.313939,
+          "metadata": {
+            "retail_price": 2800.0,
+            "pid": "CRTECN2QUZSRCEN4"
+          }
+        },
+        {
+          "rank": 4,
+          "product_id": "b4e8a093e7ecebf70daf39eb97fde35c",
+          "product_name": "Allure Auto CM 211 Car Mat Maruti Alto",
+          "category": "Automotive",
+          "brand": "Allure Auto",
+          "discounted_price": 1350.0,
+          "tfidf_score": 0.313448,
+          "metadata": {
+            "retail_price": 3150.0,
+            "pid": "CRTECN2QZVUWVHZZ"
+          }
+        },
+        {
+          "rank": 5,
+          "product_id": "ed2242e5a67bcfa50c912555be7dbe22",
+          "product_name": "Allure Auto CM 1338 Car Mat Mahindra Quanto",
+          "category": "Automotive",
+          "brand": "Allure Auto",
+          "discounted_price": 1599.0,
+          "tfidf_score": 0.313308,
+          "metadata": {
+            "retail_price": 4900.0,
+            "pid": "CRTECN2R7EXGYGFZ"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SCENARIO_4_CATEGORY_ORIENTED",
+      "description": "Category-oriented search with product style",
+      "query": "Footwear casual running shoes",
+      "latency_ms": 3.752,
+      "returned_count": 5,
+      "candidates": [
+        {
+          "rank": 1,
+          "product_id": "09779c98e54c30f905b21bd9744ae685",
+          "product_name": "Campus Berlin Running Shoes",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1399.0,
+          "tfidf_score": 0.421644,
+          "metadata": {
+            "retail_price": 1399.0,
+            "pid": "SHOEAEGRVDKXNWXR"
+          }
+        },
+        {
+          "rank": 2,
+          "product_id": "ca1f2174844857098f6c8912c90811be",
+          "product_name": "BAAJ Running Shoes",
+          "category": "Footwear",
+          "brand": "BAAJ",
+          "discounted_price": 444.0,
+          "tfidf_score": 0.298797,
+          "metadata": {
+            "retail_price": 999.0,
+            "pid": "SHOEHXEGYRZC2RK2"
+          }
+        },
+        {
+          "rank": 3,
+          "product_id": "89032171e3e9d790631e24e3f9421bfb",
+          "product_name": "ETHICS Running Shoes",
+          "category": "Footwear",
+          "brand": "ETHICS",
+          "discounted_price": 298.0,
+          "tfidf_score": 0.265199,
+          "metadata": {
+            "retail_price": 499.0,
+            "pid": "SHOEJF5G5NAZ4EMG"
+          }
+        },
+        {
+          "rank": 4,
+          "product_id": "0d58c009b3b320e67a1e26630eb8d98a",
+          "product_name": "Parbat Nova-Orng-Strips Running Shoes",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 999.0,
+          "tfidf_score": 0.262191,
+          "metadata": {
+            "retail_price": 2699.0,
+            "pid": "SHOE9AGSGZQNEXGD"
+          }
+        },
+        {
+          "rank": 5,
+          "product_id": "ca91a9b331e5307b30068488feb78499",
+          "product_name": "WorldWearFootwear Running Shoes, Walking Shoes",
+          "category": "Footwear",
+          "brand": "WorldWearFootwear",
+          "discounted_price": 380.0,
+          "tfidf_score": 0.243926,
+          "metadata": {
+            "retail_price": 999.0,
+            "pid": "SHOEG7FXJFJDFPBD"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SCENARIO_5_SYNONYM_MISMATCH",
+      "description": "Colloquial synonym query testing lexical limitation",
+      "query": "sneakers for jogging",
+      "latency_ms": 2.607,
+      "returned_count": 5,
+      "candidates": [
+        {
+          "rank": 1,
+          "product_id": "587d85f6cd9ca811e54a61a3d00c358d",
+          "product_name": "Savie Shoes Sneakers",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 549.0,
+          "tfidf_score": 0.246678,
+          "metadata": {
+            "retail_price": 999.0,
+            "pid": "SHOECKEYFVTA6E8S"
+          }
+        },
+        {
+          "rank": 2,
+          "product_id": "f00eb0546af60913dd7abd3f90c90852",
+          "product_name": "HRX 29041 Sneakers",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1699.0,
+          "tfidf_score": 0.238699,
+          "metadata": {
+            "retail_price": 1699.0,
+            "rating": 5.0,
+            "pid": "SHODZYPRHHQWFTF9"
+          }
+        },
+        {
+          "rank": 3,
+          "product_id": "fc40784005b42d3fb3da108e62b58985",
+          "product_name": "Eego Italy Sneakers",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 799.0,
+          "tfidf_score": 0.222016,
+          "metadata": {
+            "retail_price": 1499.0,
+            "rating": 5.0,
+            "pid": "SHOECD8GFBPPBPVM"
+          }
+        },
+        {
+          "rank": 4,
+          "product_id": "55bd60b45bde7ee216e1fb10c9e1ee7b",
+          "product_name": "Calcetto Outdoor Sneakers",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1999.0,
+          "tfidf_score": 0.218666,
+          "metadata": {
+            "retail_price": 1999.0,
+            "pid": "SHOE47YQYGX5254P"
+          }
+        },
+        {
+          "rank": 5,
+          "product_id": "6471e4684ef4e1cd8f62677719b3b75e",
+          "product_name": "Sting Sneakers",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1950.0,
+          "tfidf_score": 0.217235,
+          "metadata": {
+            "retail_price": 2295.0,
+            "pid": "SHOECDCRVB2WHKU4"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SCENARIO_6_NATURAL_LANGUAGE_INTENT",
+      "description": "Conversational shopper request with descriptive words",
+      "query": "I need comfortable footwear for everyday walking",
+      "latency_ms": 3.701,
+      "returned_count": 5,
+      "candidates": [
+        {
+          "rank": 1,
+          "product_id": "7784bea41ff5f896aa643912f13d8db9",
+          "product_name": "CatBird Walking Shoes",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 799.0,
+          "tfidf_score": 0.153814,
+          "metadata": {
+            "retail_price": 1099.0,
+            "pid": "SHOECQP4GGYF9GPN"
+          }
+        },
+        {
+          "rank": 2,
+          "product_id": "c4ce3978e9a396ad838536be509c22fb",
+          "product_name": "ASIAN Walking Shoes",
+          "category": "Footwear",
+          "brand": "Asian",
+          "discounted_price": 499.0,
+          "tfidf_score": 0.112182,
+          "metadata": {
+            "retail_price": 499.0,
+            "rating": 5.0,
+            "pid": "SHOEGWVEARZFYHUZ"
+          }
+        },
+        {
+          "rank": 3,
+          "product_id": "e648ef4d4622152d5c02a67d50305bb5",
+          "product_name": "Asian Walking Shoes",
+          "category": "Footwear",
+          "brand": "Asian",
+          "discounted_price": 499.0,
+          "tfidf_score": 0.110333,
+          "metadata": {
+            "retail_price": 499.0,
+            "pid": "SHOEHVZPEFK8DAWV"
+          }
+        },
+        {
+          "rank": 4,
+          "product_id": "ca91a9b331e5307b30068488feb78499",
+          "product_name": "WorldWearFootwear Running Shoes, Walking Shoes",
+          "category": "Footwear",
+          "brand": "WorldWearFootwear",
+          "discounted_price": 380.0,
+          "tfidf_score": 0.097455,
+          "metadata": {
+            "retail_price": 999.0,
+            "pid": "SHOEG7FXJFJDFPBD"
+          }
+        },
+        {
+          "rank": 5,
+          "product_id": "e6d8fb72b092db555e0d882ec44fdc48",
+          "product_name": "AMCO Walking Shoes",
+          "category": "Footwear",
+          "brand": "AMCO",
+          "discounted_price": 399.0,
+          "tfidf_score": 0.097392,
+          "metadata": {
+            "retail_price": 1199.0,
+            "pid": "SHOEGWYGYKCCFGWH"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SCENARIO_7_NUMERIC_CONSTRAINT",
+      "description": "Numeric budget constraint demonstrating lexical inability to filter",
+      "query": "laptop under 500",
+      "latency_ms": 3.396,
+      "returned_count": 5,
+      "candidates": [
+        {
+          "rank": 1,
+          "product_id": "c3b5130723f942d48f8068215d5afbed",
+          "product_name": "DGB HP 500 520 HSTNN-IB44 6 Cell Laptop Battery",
+          "category": "Computers",
+          "brand": "DGB",
+          "discounted_price": 1349.0,
+          "tfidf_score": 0.159566,
+          "metadata": {
+            "retail_price": 2499.0,
+            "rating": 2.5,
+            "pid": "ACCDSUZJGMZD9FHZ"
+          }
+        },
+        {
+          "rank": 2,
+          "product_id": "a1f4bfb640ec3d833fa6fdb436d33250",
+          "product_name": "Jettec 104 Black Toner",
+          "category": "Computers",
+          "brand": "Jettec",
+          "discounted_price": 1500.0,
+          "tfidf_score": 0.125581,
+          "metadata": {
+            "retail_price": 6250.0,
+            "pid": "INKDWYSBHRJXDMSN"
+          }
+        },
+        {
+          "rank": 3,
+          "product_id": "e5d0e7cdaff4bc368b18519e96d32bbe",
+          "product_name": "Dell Sports Laptop Backpack",
+          "category": "Bags, Wallets & Belts",
+          "brand": null,
+          "discounted_price": 599.0,
+          "tfidf_score": 0.117714,
+          "metadata": {
+            "retail_price": 2999.0,
+            "rating": 3.0,
+            "pid": "BKPE25GC2ZFVGGNU"
+          }
+        },
+        {
+          "rank": 4,
+          "product_id": "6a42094aada21bd7af2544e69756d034",
+          "product_name": "JG Shoppe Neo S21 10 L Backpack",
+          "category": "Bags, Wallets & Belts",
+          "brand": null,
+          "discounted_price": 645.0,
+          "tfidf_score": 0.114004,
+          "metadata": {
+            "retail_price": 1500.0,
+            "pid": "BKPED5CV3NZFYFYW"
+          }
+        },
+        {
+          "rank": 5,
+          "product_id": "19eb152bf6ad8d80934113ccaeac610e",
+          "product_name": "Magnusdeal Universal Mobile/Gps Holder For Car/Office- Black",
+          "category": "Mobiles & Accessories",
+          "brand": "Magnusdeal",
+          "discounted_price": 299.0,
+          "tfidf_score": 0.108028,
+          "metadata": {
+            "retail_price": 550.0,
+            "pid": "ACCEBWRHKPQCGJNF"
+          }
+        }
+      ]
+    },
+    {
+      "scenario_id": "SCENARIO_8_OUT_OF_VOCABULARY",
+      "description": "Out-of-vocabulary query with zero catalog term overlap",
+      "query": "zyxwvutsrqponmlkjihgfedcba nonexistentgibberish",
+      "latency_ms": 0.402,
+      "returned_count": 0,
+      "candidates": []
+    }
+  ],
+  "performance": {
+    "total_pipeline_seconds": 2.53
+  },
+  "readiness_for_phase7": {
+    "status": "READY",
+    "role": "Baseline 1 established for lexical vs. dense semantic comparison"
+  }
+}

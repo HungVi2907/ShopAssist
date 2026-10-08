@@ -325,9 +325,10 @@ async def test_live_supabase_provisioning_integration():
         dim_res = await validate_vector_dimension(engine, expected_dim=384)
         assert dim_res["embedding_dimension"] == 384
 
-        # 4. Deferred indexes
+        # 4. Indexes check
         idx_res = await validate_deferred_indexes(engine)
-        assert idx_res["phase5_7_indexes_deferred"] is True
+        assert idx_res["status"] == "PASS"
+        assert "products_pkey" in idx_res["existing_indexes"]
 
     finally:
         await engine.dispose()

@@ -1,0 +1,179 @@
+{
+  "phase": "5.6",
+  "objective": "Database Loading / Ingestion",
+  "overall_status": "PASS",
+  "source_parquet": {
+    "path": "D:\\Project\\ShopAssist\\data\\processed\\products.parquet",
+    "rows": 8405,
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "brand",
+      "retail_price",
+      "discounted_price",
+      "rating",
+      "description",
+      "product_specifications",
+      "product_url",
+      "image",
+      "pid",
+      "retrieval_text",
+      "embedding",
+      "embedding_model"
+    ],
+    "validation": {
+      "total_products": 8405,
+      "column_count": 15,
+      "columns": [
+        "product_id",
+        "product_name",
+        "category",
+        "brand",
+        "retail_price",
+        "discounted_price",
+        "rating",
+        "description",
+        "product_specifications",
+        "product_url",
+        "image",
+        "pid",
+        "retrieval_text",
+        "embedding",
+        "embedding_model"
+      ],
+      "embedding_dimension": 384,
+      "dtype": "float32",
+      "nan_count": 0,
+      "inf_count": 0,
+      "zero_vector_count": 0,
+      "min_l2_norm": 1.0,
+      "mean_l2_norm": 1.0,
+      "max_l2_norm": 1.0,
+      "status": "PASS",
+      "source_path": "D:\\Project\\ShopAssist\\data\\processed\\products.parquet",
+      "file_size_mb": 17.94
+    }
+  },
+  "target_database": {
+    "masked_url": "postgresql://postgres.***:***@***.pooler.supabase.com:5432/postgres",
+    "table": "public.products",
+    "schema": "public",
+    "connection": {
+      "connection_method": "Supavisor Session Pooler",
+      "port": 5432,
+      "connection_status": "PASS",
+      "database": "postgres",
+      "postgresql_version": "PostgreSQL 17.11",
+      "full_version": "PostgreSQL 17.11 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 15.2.0, 64-bit",
+      "ssl": true
+    },
+    "schema_validation": {
+      "table_exists": true,
+      "column_count": 17,
+      "primary_key": "product_id",
+      "jsonb_column_valid": true,
+      "defaults_valid": true
+    },
+    "vector_validation": {
+      "embedding_type": "vector(384)",
+      "embedding_dimension": 384,
+      "status": "PASS"
+    },
+    "constraints_validation": {
+      "check_constraints_count": 6,
+      "required_constraints_verified": true,
+      "status": "PASS"
+    },
+    "deferred_indexes": {
+      "existing_indexes": [
+        "products_pkey"
+      ],
+      "phase5_7_indexes_deferred": true,
+      "status": "PASS"
+    }
+  },
+  "pre_ingestion_audit": {
+    "state": "ALREADY_POPULATED",
+    "current_row_count": 8405,
+    "current_distinct_ids": 8405,
+    "source_row_count": 8405,
+    "matching_ids_count": 8405,
+    "missing_ids_count": 0,
+    "unexpected_ids_count": 0,
+    "message": "Target table 'public.products' is already fully populated with all 8405 approved records. Content verified (Scenario B).",
+    "can_proceed_with_insert": false,
+    "is_already_populated": true
+  },
+  "ingestion_execution": {
+    "status": "SKIPPED_ALREADY_POPULATED",
+    "total_records": 8405,
+    "inserted_records": 0,
+    "batch_size": 250,
+    "num_batches": 0,
+    "elapsed_seconds": 0.0,
+    "throughput_rows_per_sec": 0.0,
+    "transaction_status": "NO_OP_ALREADY_POPULATED"
+  },
+  "post_ingestion_validation": {
+    "status": "PASS",
+    "total_rows": 8405,
+    "distinct_product_ids": 8405,
+    "null_mandatory_fields_count": 0,
+    "invalid_vector_dims_count": 0,
+    "invalid_specs_json_count": 0,
+    "null_timestamps_count": 0,
+    "sample_spot_check_count": 50,
+    "sample_spot_check_matched": 50,
+    "vector_smoke_test_passed": true,
+    "vector_smoke_test_query_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+    "vector_smoke_test_top_match_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+    "vector_smoke_test_distance": 0.0,
+    "details": {
+      "top_5_smoke_matches": [
+        {
+          "product_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+          "product_name": "11e Women Flats",
+          "cosine_distance": 0.0
+        },
+        {
+          "product_id": "e3a9583a4ec8b4a619ad299eaa546901",
+          "product_name": "Addons Women Flats",
+          "cosine_distance": 0.071862
+        },
+        {
+          "product_id": "2bb538fdebcfee62e987ad76f8e4f076",
+          "product_name": "Steppings Women Flats",
+          "cosine_distance": 0.080949
+        },
+        {
+          "product_id": "6d684e7d37de8de50f29a5f803406a3b",
+          "product_name": "Assort Women Flats",
+          "cosine_distance": 0.088009
+        },
+        {
+          "product_id": "8460de7a75211b1ecec7970fef395230",
+          "product_name": "DFR Women Flats",
+          "cosine_distance": 0.096429
+        }
+      ]
+    }
+  },
+  "phase5_7_readiness": {
+    "ready_for_index_construction": true,
+    "expected_indexes": [
+      "idx_products_category",
+      "idx_products_price",
+      "idx_products_brand",
+      "idx_products_category_price",
+      "idx_products_embedding"
+    ],
+    "catalog_size": 8405
+  },
+  "pipeline_performance": {
+    "total_pipeline_elapsed_seconds": 2.54,
+    "batch_size": 250
+  },
+  "warnings": [],
+  "errors": []
+}

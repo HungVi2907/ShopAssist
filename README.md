@@ -21,19 +21,31 @@ ShopAssist is an end-to-end conversational product recommendation system using L
 ShopAssist/
 ├── data/
 │   ├── raw/                  # Raw immutable dataset (flipkart_products.csv)
-│   ├── interim/              # EDA reports, intermediate candidates (Phase 2-4)
-│   └── processed/            # Final clean products (products.parquet)
+│   ├── interim/              # EDA reports, intermediate candidates, Phase reports
+│   └── processed/            # Final clean products (products.parquet) & TF-IDF artifacts (data/processed/tfidf/)
+├── database/                 # SQL migrations and index scripts
 ├── docs/
+│   ├── concepts/             # Theoretical guides (tfidf_retrieval_fundamentals.md, dense_semantic_retrieval_fundamentals.md)
 │   └── proposal.md           # Project Proposal (Single Source of Truth)
 ├── scripts/
 │   ├── download_dataset.py   # Download raw Flipkart dataset
-│   └── inspect_dataset.py    # Raw dataset inspection CLI
+│   ├── inspect_dataset.py    # Raw dataset inspection CLI
+│   ├── build_tfidf_baseline.py # Build and persist TF-IDF baseline index
+│   ├── search_tfidf.py       # Lexical product search CLI
+│   ├── search_semantic.py    # Dense semantic product search CLI
+│   └── benchmark_semantic.py # Dense semantic retrieval benchmark & evaluation suite
 ├── src/
 │   └── shopassist/
 │       ├── core/             # Configuration and path resolution
-│       └── data/             # Data loading and validation modules
+│       ├── data/             # Data loading and schema validation modules
+│       ├── db/               # PostgreSQL & pgvector connection & loading
+│       ├── embeddings/       # Dense embedding model and inference
+│       └── retrieval/        # Lexical (TF-IDF) & Dense Semantic retrieval engines
 └── tests/
-    └── test_data_loader.py   # Unit tests for data loading and schema validation
+    ├── test_data_loader.py   # Unit tests for data loading and schema validation
+    ├── test_tfidf_retrieval.py # Unit and integration tests for TF-IDF retrieval
+    ├── test_semantic_retrieval.py # Unit and integration tests for dense semantic retrieval
+    └── ...
 ```
 
 ---
@@ -76,15 +88,78 @@ Generated Phase 4 artifacts:
 
 ---
 
-## 4. Running Tests
+## 4. Phase 6 — TF-IDF Baseline Retrieval Engine
+
+Phase 6 implements a standalone, reproducible lexical product retrieval engine using TF-IDF vectorization and cosine similarity over all 8,405 products (`retrieval_text`). It acts as **Baseline 1** for future comparisons against dense semantic search (Phase 7) and hybrid retrieval (Phase 10).
+
+### Build & Persist TF-IDF Baseline Index
+
+```bash
+python scripts/build_tfidf_baseline.py
+```
+
+Generated Phase 6 artifacts in `data/processed/tfidf/`:
+- `tfidf_vectorizer.joblib` — Fitted scikit-learn `TfidfVectorizer` (61,979 features)
+- `tfidf_matrix.npz` — Compressed SciPy CSR sparse matrix (`[8405, 61979]`, 99.7550% sparsity)
+- `product_metadata.parquet` — Aligned row-to-product mapping (8,405 rows)
+- `tfidf_manifest.json` — Configuration and dataset integrity manifest
+- Report: `data/interim/phase6_tfidf_baseline_report.json`
+
+### Search via CLI (TF-IDF)
+
+```bash
+python scripts/search_tfidf.py --query "wireless bluetooth keyboard" --top-k 5
+```
+
+---
+
+## 5. Phase 7 — Dense Semantic Search Retrieval Engine
+
+Phase 7 implements **Baseline 2: Dense Semantic Retrieval** using `BAAI/bge-small-en-v1.5` dense embeddings (384 dimensions) and Supabase PostgreSQL + pgvector HNSW index search (`idx_products_embedding`).
+
+### Search via CLI (Dense Semantic)
+
+```bash
+# Standard HNSW approximate nearest-neighbor search
+python scripts/search_semantic.py --query "wireless bluetooth keyboard" --top-k 5
+
+# Exact ground-truth linear scan (disables index in transaction)
+python scripts/search_semantic.py --query "running shoes" --exact
+
+# JSON output
+python scripts/search_semantic.py --query "sneakers for jogging" --top-k 5 --json
+```
+
+### Benchmark Semantic Retrieval & Evaluate ANN Quality
+
+```bash
+python scripts/benchmark_semantic.py --iterations 20
+```
+
+### Phase 7 Documentation
+- **Conceptual Guide**: [`docs/concepts/dense_semantic_retrieval_fundamentals.md`](file:///d:/Project/ShopAssist/docs/concepts/dense_semantic_retrieval_fundamentals.md) — Comprehensive educational guide on dense embeddings, bi-encoders, BGE-small architecture, cosine distance math, HNSW graph navigation, and ANN Recall@K.
+- **Engineering Implementation Report**: [`docs/phase7_semantic_search.md`](file:///d:/Project/ShopAssist/docs/phase7_semantic_search.md) — Full technical report covering query pipeline, PostgreSQL HNSW plan audits, ANN Recall@10 (98.0%), 10 comparative scenarios vs. TF-IDF, latency quantiles (P50: 135.31 ms), and database safety.
+- **Machine-Readable Report**: `data/interim/phase7_semantic_search_report.json`
+
+---
+
+## 6. Running Tests
+
+To run the complete automated test suite (249 tests):
 
 ```bash
 python -m pytest
 ```
 
+To run Phase 7 dense semantic retrieval tests specifically (20 tests):
+
+```bash
+python -m pytest tests/test_semantic_retrieval.py -v
+```
+
 ---
 
-## 5. Development Status
+## 7. Development Status
 
 - **Phase 1 — Dataset Acquisition** (Completed)
   - Raw Flipkart Products 20K dataset acquired and verified.
@@ -136,5 +211,71 @@ python -m pytest
   - Production B-Tree and HNSW indexes cleanly separated in `database/migrations/002_create_product_indexes.sql` and deferred to Phase 5.7.
   - Machine-readable audit report generated: `data/interim/phase5_4_database_provisioning_report.json`.
   - Engineering documentation created: `docs/phase5_4_supabase_provisioning.md`.
-- **Next Phase**: **Phase 5.5 — Batch Embedding Generation & products.parquet Export**
+- **Phase 5.5 — Batch Embedding Generation & products.parquet Export** (Completed)
+  - Generated 384-dimensional dense vector embeddings for all **8,405 cleaned products** using validated `BAAI/bge-small-en-v1.5`.
+  - Batch GPU inference executed on NVIDIA RTX 3050 Laptop GPU in 41.26 seconds (throughput: 203.73 texts/sec, 4.91 ms/text).
+  - Multi-layer embedding validation passed: shape (8405, 384), `float32`, 0 NaN, 0 Inf, 0 zero vectors, unit $L_2$ norm ($1.000000 \pm 10^{-6}$).
+  - Canonical Product Knowledge Base dataset assembled (15 columns matching database schema, interim scraping fields removed).
+  - Atomic Parquet export completed with roundtrip deserialization verification: `data/processed/products.parquet` (17.94 MB).
+  - Positional alignment verified across catalog (spot-check dot product = 1.000000 on sample products).
+  - Category-aware semantic sanity checks verified (3/3 scenarios passed).
+  - 25 automated tests implemented; 162 total repository tests passing with zero regressions.
+  - Machine-readable execution report generated: `data/interim/phase5_5_embedding_generation_report.json`.
+  - Engineering documentation created: `docs/phase5_5_batch_embedding_generation.md`.
+- **Phase 5.6 — Database Loading / Ingestion** (Completed)
+  - Loaded all **8,405 approved products** from `data/processed/products.parquet` into Supabase PostgreSQL table `public.products`.
+  - Atomic batch ingestion implemented using SQLAlchemy 2.0 `executemany` with parameterized inserts (34 batches of 250, completed in 62.98s, 133.5 rows/s).
+  - Strict idempotency enforced: automatic classification for `EMPTY_TABLE`, `ALREADY_POPULATED` (no-op), `PARTIALLY_POPULATED` (abort), and `CONFLICTING_DATA` (abort).
+  - Comprehensive post-ingestion validation passed: exact 8,405 row count, 8,405 distinct product IDs, 0 null mandatory fields, 100% 384-d vector embeddings, 100% valid JSONB specification arrays, non-null PostgreSQL timestamps.
+  - 50-record content spot check matched Parquet source ground truth ($L_2$ vector tolerance $< 10^{-4}$).
+  - Vector cosine distance smoke test passed with pgvector `<=>` operator (0.000000 self-distance and verified footwear nearest neighbors).
+  - 18 automated tests added; 180 total repository tests passing with zero regressions.
+  - Machine-readable execution report generated: `data/interim/phase5_6_database_ingestion_report.json`.
+  - Engineering documentation created: `docs/phase5_6_database_ingestion.md`.
+- **Phase 5.7 — B-Tree & HNSW Index Construction** (Completed)
+  - Created and validated five approved production indexes on `public.products` in Supabase PostgreSQL: 4 relational B-Tree (`category`, `discounted_price`, `brand`, `category + discounted_price`) and 1 HNSW vector index (`embedding vector_cosine_ops`, `m=16`, `ef_construction=64`).
+  - Total index migration DDL completed in 5.44 seconds on remote Supabase instance.
+  - Strict PostgreSQL catalog state auditing implemented covering Scenarios A through E (absent, already existing, partial, conflicting definitions, invalid).
+  - Programmatic query plan benchmarks (`EXPLAIN ANALYZE BUFFERS`) demonstrated a ~35x–65x vector search speedup (from 38.22 ms sequential scan down to 0.59–1.08 ms HNSW index scan).
+  - 100% data integrity verified: exactly 8,405 rows, 8,405 unique IDs, 384-d embeddings, constraints, triggers, and primary key intact.
+  - 16 automated tests added; 196 total repository tests passing with zero regressions.
+  - Machine-readable execution report generated: `data/interim/phase5_7_index_construction_report.json`.
+  - Engineering documentation created: `docs/phase5_7_index_construction.md`.
+- **Phase 5.8 — Knowledge Base Validation & Filtered Search Verification** (Completed)
+  - Executed read-only validation suite covering 43 test cases across 5 test groups (Data Integrity, SQL Hard Filtering, Vector Cosine Search, Filtered Semantic Search, Index Verification & Performance Benchmarking) with **100.0% Pass Rate (43/43)**.
+  - Confirmed 100.0% constraint satisfaction on single, range, boundary, and multi-attribute SQL filters with zero budget or category violations.
+  - Validated 384-dimensional cosine similarity search: near-zero self-match distance ($0.00000000$), strict monotonic ordering, and complete float32 equivalence to independent NumPy cosine ground truth ($< 10^{-6}$ diff).
+  - Validated combined filtered semantic search with 100.0% hard constraint compliance and 100.0% Recall@10 against exact linear scan.
+  - Evaluated post-filtering underfill and verified runtime iterative scanning support in pgvector 0.8.2 (`SET LOCAL hnsw.iterative_scan = relaxed_order;`).
+  - Benchmarked retrieval performance: HNSW ANN search executes in **0.492 ms** on database engine (**76.4x speedup** over exact linear scan of 37.571 ms), with pure vector P50 latency of 34.39 ms and filtered search P50 of 34.79 ms over the WAN pooler.
+  - Confirmed post-validation catalog preservation: exactly 8,405 rows and 5/5 approved production indexes intact.
+  - Added 12 automated unit and integration tests; **208 total repository tests passing with zero regressions**.
+  - Machine-readable execution report generated: `data/interim/phase5_8_knowledge_base_validation_report.json`.
+  - Technical documentation completed: `docs/phase5_8_knowledge_base_validation.md`.
+- **Phase 6 — TF-IDF Baseline Retrieval Engine** (Completed)
+  - Built a standalone, pure lexical retrieval engine using scikit-learn `TfidfVectorizer` and SciPy CSR sparse matrix operations over all 8,405 products (`retrieval_text`).
+  - Configured reproducible unigram + bigram vectorizer (`min_df=2`, `max_df=0.8`, `sublinear_tf=True`, unit $L_2$ normalization).
+  - Fitted sparse document-term matrix of shape `(8405, 61979)` with 1,276,047 nonzeros and **99.7550% sparsity**, consuming only 14.64 MB in CSR format (vs 4.03 GB dense, a 99.64% memory reduction).
+  - Implemented dot-product cosine similarity scoring with deterministic tie-breaking (`score DESC, product_id ASC`) and safe zero-score policy (empty/OOV queries return zero results).
+  - Persisted index artifacts (`tfidf_vectorizer.joblib`, `tfidf_matrix.npz`, `product_metadata.parquet`, `tfidf_manifest.json`) with roundtrip reload validation yielding 100% identical rankings.
+  - Benchmarked retrieval performance on full catalog: **median P50 query latency of 3.862 ms** (mean 4.407 ms, P95 7.532 ms).
+  - Executed 8 retrieval scenarios revealing classic lexical strengths (exact keyword, brand, category) and failure modes (synonym mismatch, numeric constraints, OOV).
+  - Added 21 automated unit and integration tests; **229 total repository tests passing with zero regressions**.
+  - Conceptual learning guide created: [`docs/concepts/tfidf_retrieval_fundamentals.md`](file:///d:/Project/ShopAssist/docs/concepts/tfidf_retrieval_fundamentals.md).
+  - Engineering documentation created: [`docs/phase6_tfidf_baseline.md`](file:///d:/Project/ShopAssist/docs/phase6_tfidf_baseline.md).
+  - Machine-readable execution report generated: `data/interim/phase6_tfidf_baseline_report.json`.
+- **Phase 7 — Dense Semantic Search Retrieval Engine** (Completed)
+  - Built a production-ready dense semantic retrieval engine using `BAAI/bge-small-en-v1.5` embeddings (384 dimensions) and Supabase PostgreSQL + pgvector HNSW index search (`idx_products_embedding`).
+  - Reused existing 8,405 product embeddings without redundant generation or database writes.
+  - Configured asymmetric BGE query encoding (`"Represent this sentence for searching relevant passages: "`) with unit $L_2$ vector normalization and thread-safe async offloading.
+  - Verified pure distance ordering in SQL activating HNSW Index Scan in **0.44–1.07 ms** server execution time, with in-memory deterministic tie-breaking on `(distance ASC, product_id ASC)`.
+  - Evaluated algorithmic ANN quality against exact sequential scan: achieved **Recall@5 = 96.0%**, **Recall@10 = 98.0%**, and **Recall@20 = 98.0%**.
+  - Benchmarked retrieval latency on NVIDIA RTX 3050 Laptop GPU: **P50 query embedding = 23.08 ms**, **P50 database roundtrip = 112.72 ms**, **P50 end-to-end = 135.31 ms**.
+  - Evaluated 10 comparative scenarios vs. Phase 6 TF-IDF, demonstrating high semantic recall on synonyms and paraphrases (e.g. *"sneakers for jogging"* $\rightarrow$ *"running shoes"*) where lexical matching failed.
+  - Preserved catalog integrity: exactly 8,405 rows and all 5 production indexes intact.
+  - Added 20 automated unit and integration tests; **249 total repository tests passing with zero regressions**.
+  - Conceptual learning guide created: [`docs/concepts/dense_semantic_retrieval_fundamentals.md`](file:///d:/Project/ShopAssist/docs/concepts/dense_semantic_retrieval_fundamentals.md).
+  - Engineering documentation created: [`docs/phase7_semantic_search.md`](file:///d:/Project/ShopAssist/docs/phase7_semantic_search.md).
+  - Machine-readable execution report generated: `data/interim/phase7_semantic_search_report.json`.
+- **Next Phase**: **Phase 8 — LLM Query Understanding**
 

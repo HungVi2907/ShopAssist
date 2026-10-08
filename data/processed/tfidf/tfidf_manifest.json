@@ -1,0 +1,41 @@
+{
+  "phase": "6.0",
+  "artifact_type": "tfidf_baseline_index",
+  "timestamp": "2026-10-08T17:11:00Z",
+  "statistics": {
+    "is_fitted": true,
+    "total_documents": 8405,
+    "vocabulary_size": 61979,
+    "matrix_shape": [
+      8405,
+      61979
+    ],
+    "nonzero_elements": 1276047,
+    "sparsity_pct": 99.755,
+    "memory_bytes_approx": 15346188,
+    "memory_mb_approx": 14.64,
+    "fit_time_seconds": 1.0046,
+    "config": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 2,
+      "max_df": 0.8,
+      "max_features": null,
+      "sublinear_tf": true,
+      "use_idf": true,
+      "smooth_idf": true,
+      "norm": "l2",
+      "lowercase": true,
+      "token_pattern": "(?u)\\b\\w+\\b"
+    }
+  },
+  "files": {
+    "vectorizer": "tfidf_vectorizer.joblib",
+    "matrix": "tfidf_matrix.npz",
+    "metadata": "product_metadata.parquet"
+  },
+  "source_dataset_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "source_dataset_path": "D:\\Project\\ShopAssist\\data\\processed\\products.parquet"
+}

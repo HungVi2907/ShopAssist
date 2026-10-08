@@ -1,0 +1,186 @@
+{
+  "phase": "5.5",
+  "objective": "Batch Embedding Generation & products.parquet Export",
+  "overall_status": "PASS",
+  "input_dataset": {
+    "path": "data\\interim\\cleaned_candidates.parquet",
+    "rows": 8405,
+    "columns_present": [
+      "product_id",
+      "product_name",
+      "category",
+      "brand",
+      "retail_price",
+      "discounted_price",
+      "rating",
+      "description",
+      "product_specifications",
+      "product_url",
+      "uniq_id",
+      "pid",
+      "image",
+      "crawl_timestamp",
+      "is_FK_Advantage_product"
+    ],
+    "retrieval_text_generated_in_pipeline": true,
+    "validation": {
+      "input_rows": 8405,
+      "product_id_unique": true,
+      "null_id_count": 0,
+      "duplicate_id_count": 0,
+      "retrieval_text_generated": true,
+      "valid_retrieval_texts": 8405,
+      "status": "PASS"
+    }
+  },
+  "model_configuration": {
+    "model_name": "BAAI/bge-small-en-v1.5",
+    "embedding_dimension": 384,
+    "max_sequence_length": 512,
+    "device": "cuda",
+    "cuda_device_name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "normalization_enabled": true
+  },
+  "generation_performance": {
+    "batch_size": 32,
+    "total_items": 8405,
+    "total_batches": 263,
+    "model_load_seconds": 0.0,
+    "embedding_elapsed_seconds": 41.256,
+    "throughput_texts_per_second": 203.73,
+    "milliseconds_per_text": 4.91,
+    "process_ram_mb": {
+      "before_load": 815.9,
+      "after_load": 815.9
+    }
+  },
+  "embedding_validation": {
+    "num_vectors": 8405,
+    "dimension": 384,
+    "dtype": "float32",
+    "nan_count": 0,
+    "inf_count": 0,
+    "zero_vector_count": 0,
+    "min_l2_norm": 1.0,
+    "mean_l2_norm": 1.0,
+    "max_l2_norm": 1.0,
+    "status": "PASS"
+  },
+  "output_dataset": {
+    "path": "D:\\Project\\ShopAssist\\data\\processed\\products.parquet",
+    "rows": 8405,
+    "column_count": 15,
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "brand",
+      "retail_price",
+      "discounted_price",
+      "rating",
+      "description",
+      "product_specifications",
+      "product_url",
+      "image",
+      "pid",
+      "retrieval_text",
+      "embedding",
+      "embedding_model"
+    ],
+    "file_size_bytes": 18808917,
+    "file_size_mb": 17.94,
+    "roundtrip_validation": "PASS"
+  },
+  "semantic_sanity_checks": {
+    "total_scenarios": 3,
+    "passed": 3,
+    "scenarios": [
+      {
+        "scenario_id": "sanity_keyboard",
+        "query": "wireless bluetooth keyboard",
+        "category_filtered": "Computers",
+        "top_product_name": "RoQ Slim Multimedia 105key Flexible Wired USB Flexible Keyboard",
+        "top_similarity": 0.6921,
+        "target_keywords": [
+          "keyboard",
+          "key"
+        ],
+        "is_semantically_aligned": true
+      },
+      {
+        "scenario_id": "sanity_sofa",
+        "query": "leather two seater sofa for living room",
+        "category_filtered": "Furniture",
+        "top_product_name": "ARRA Fabric 2 Seater Sectional",
+        "top_similarity": 0.7689,
+        "target_keywords": [
+          "sofa",
+          "couch",
+          "sectional",
+          "seater"
+        ],
+        "is_semantically_aligned": true
+      },
+      {
+        "scenario_id": "sanity_shoes",
+        "query": "women casual flat sandals",
+        "category_filtered": "Footwear",
+        "top_product_name": "Metro Sandal Women Flats",
+        "top_similarity": 0.7929,
+        "target_keywords": [
+          "sandal",
+          "flat",
+          "shoe"
+        ],
+        "is_semantically_aligned": true
+      }
+    ],
+    "alignment_spot_checks": {
+      "total_checked": 5,
+      "passed": 5,
+      "status": "PASS",
+      "checks": [
+        {
+          "index": 0,
+          "product_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+          "dot_product": 1.0,
+          "is_aligned": true
+        },
+        {
+          "index": 2101,
+          "product_id": "252f8e55680acc05fce2b13b2530919c",
+          "dot_product": 1.0,
+          "is_aligned": true
+        },
+        {
+          "index": 4202,
+          "product_id": "44b963eb856b4831dfdd21b666593c95",
+          "dot_product": 1.0,
+          "is_aligned": true
+        },
+        {
+          "index": 6303,
+          "product_id": "2d85de3cf87f6d6c88d4099b56f0d171",
+          "dot_product": 1.0,
+          "is_aligned": true
+        },
+        {
+          "index": 8404,
+          "product_id": "c2e71e7c97489d4efa5eab796ae354ac",
+          "dot_product": 1.0,
+          "is_aligned": true
+        }
+      ]
+    },
+    "status": "PASS"
+  },
+  "timestamps_policy": {
+    "columns_included": false,
+    "omitted_columns": [
+      "created_at",
+      "updated_at"
+    ],
+    "rationale": "Preserved PostgreSQL DEFAULT NOW() behavior for Phase 5.6 ingestion"
+  },
+  "total_pipeline_seconds": 55.14
+}

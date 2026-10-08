@@ -1,0 +1,983 @@
+{
+  "phase": "5.8",
+  "objective": "Product Knowledge Base Validation & Filtered Search Verification",
+  "overall_status": "PASS",
+  "execution_timestamp": "2026-10-08T16:53:45Z",
+  "target_database": {
+    "masked_url": "postgresql://postgres.***:***@***.pooler.supabase.com:5432/postgres",
+    "table": "public.products",
+    "connection": {
+      "connection_method": "Supavisor Session Pooler",
+      "port": 5432,
+      "connection_status": "PASS",
+      "database": "postgres",
+      "postgresql_version": "PostgreSQL 17.11",
+      "full_version": "PostgreSQL 17.11 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 15.2.0, 64-bit",
+      "ssl": true
+    }
+  },
+  "dataset_statistics": {
+    "expected_products": 8405,
+    "actual_products": 8405,
+    "expected_categories": 16,
+    "actual_categories": 16,
+    "embedding_dimension": 384,
+    "embedding_model": "BAAI/bge-small-en-v1.5"
+  },
+  "test_summary": {
+    "total_tests": 43,
+    "passed_tests": 43,
+    "failed_tests": 0,
+    "pass_rate_pct": 100.0,
+    "group_breakdown": {
+      "Group_A_Data_Integrity": "10/10",
+      "Group_B_SQL_Filtering": "10/10",
+      "Group_C_Vector_Search": "7/7",
+      "Group_D_Filtered_Semantic": "10/10",
+      "Group_E_Index_Performance": "6/6"
+    }
+  },
+  "latency_benchmarks": [
+    {
+      "query_id": "sql_category_filter",
+      "description": "Relational category filter",
+      "num_measured_runs": 5,
+      "mean_ms": 43.86,
+      "p50_ms": 37.27,
+      "p95_ms": 63.53,
+      "min_ms": 37.11,
+      "max_ms": 69.99,
+      "runs": [
+        37.27,
+        37.11,
+        37.23,
+        69.99,
+        37.72
+      ]
+    },
+    {
+      "query_id": "pure_hnsw_vector_search",
+      "description": "Pure HNSW ANN cosine similarity search (Top-10)",
+      "num_measured_runs": 5,
+      "mean_ms": 41.67,
+      "p50_ms": 34.39,
+      "p95_ms": 62.08,
+      "min_ms": 34.15,
+      "max_ms": 68.32,
+      "runs": [
+        37.1,
+        34.15,
+        34.39,
+        68.32,
+        34.38
+      ]
+    },
+    {
+      "query_id": "filtered_semantic_search",
+      "description": "Filtered semantic search (Category + Price + Vector, Top-10)",
+      "num_measured_runs": 5,
+      "mean_ms": 43.47,
+      "p50_ms": 34.79,
+      "p95_ms": 66.43,
+      "min_ms": 34.43,
+      "max_ms": 72.84,
+      "runs": [
+        40.75,
+        34.79,
+        34.43,
+        72.84,
+        34.54
+      ]
+    }
+  ],
+  "exact_vs_ann_tradeoff": {
+    "ann_ms": 34.71,
+    "exact_ms": 73.23,
+    "client_speedup_factor": 2.1,
+    "speedup_factor": 2.1,
+    "server_ann_ms": 0.492,
+    "server_exact_ms": 37.571,
+    "server_speedup_factor": 76.4
+  },
+  "test_matrix": [
+    {
+      "test_id": "A01",
+      "name": "Product Count",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify exactly 8,405 products exist in public.products.",
+      "expected": "8405",
+      "actual": "8405",
+      "details": {
+        "total_rows": 8405
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A02",
+      "name": "Unique Product IDs",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify all 8,405 product IDs are distinct (zero duplicates).",
+      "expected": "8405",
+      "actual": "8405",
+      "details": {
+        "distinct_product_ids": 8405
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A03",
+      "name": "Category Distribution",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify exactly 16 approved categories matching source Parquet distribution.",
+      "expected": "16 categories matching Parquet counts",
+      "actual": "16 categories, 0 distribution mismatches",
+      "details": {
+        "category_count": 16,
+        "db_distribution": {
+          "Footwear": 1179,
+          "Mobiles & Accessories": 1097,
+          "Automotive": 1010,
+          "Home Decor & Festive Needs": 866,
+          "Home Furnishing": 689,
+          "Kitchen & Dining": 643,
+          "Computers": 573,
+          "Watches": 528,
+          "Tools & Hardware": 387,
+          "Baby Care": 360,
+          "Pens & Stationery": 313,
+          "Bags, Wallets & Belts": 263,
+          "Furniture": 180,
+          "Sports & Fitness": 166,
+          "Home Improvement": 79,
+          "Cameras & Accessories": 72
+        },
+        "mismatches": {}
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A04",
+      "name": "Mandatory Column Integrity",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify zero null or empty values across all mandatory columns.",
+      "expected": "0 null mandatory values",
+      "actual": "0 null mandatory values",
+      "details": {
+        "null_mandatory_count": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A05",
+      "name": "Pricing Constraints",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify discounted_price > 0 and retail_price > 0 when non-null.",
+      "expected": "0 price constraint violations",
+      "actual": "0 price constraint violations",
+      "details": {
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A06",
+      "name": "Rating Constraints",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify 1.0 <= rating <= 5.0 when rating is present.",
+      "expected": "0 rating constraint violations",
+      "actual": "0 rating constraint violations",
+      "details": {
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A07",
+      "name": "JSONB Specifications Integrity",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify product_specifications is stored as valid JSONB array for every record.",
+      "expected": "0 non-array specifications",
+      "actual": "0 non-array specifications",
+      "details": {
+        "invalid_jsonb_count": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A08",
+      "name": "Embedding Dimension & Validity",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify all embeddings contain exactly 384 finite float dimensions.",
+      "expected": "0 invalid dimension records (all vector(384))",
+      "actual": "0 invalid dimension records",
+      "details": {
+        "invalid_dim_count": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A09",
+      "name": "PostgreSQL-Managed Timestamps",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Verify created_at and updated_at timestamps are populated for all records.",
+      "expected": "0 null timestamp records",
+      "actual": "0 null timestamp records",
+      "details": {
+        "null_timestamp_count": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "A10",
+      "name": "Source-to-Database Consistency",
+      "category": "A_integrity",
+      "status": "PASS",
+      "description": "Field-by-field and vector numerical tolerance comparison against canonical Parquet.",
+      "expected": "86/86 sample matches (drift < 1e-4)",
+      "actual": "86/86 matches (max L2 drift: 0.00e+00)",
+      "details": {
+        "sample_size": 86,
+        "matched_count": 86,
+        "max_vector_drift": 0.0,
+        "mismatches": []
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B01",
+      "name": "Category Filtering",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Filter products by exact category and verify 100% compliance.",
+      "expected": "All returned products have category='Footwear'",
+      "actual": "1179 returned, 0 violations",
+      "details": {
+        "returned_count": 1179,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B02",
+      "name": "Price Upper Bound",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Filter products by discounted_price <= 500.0 and verify 100% budget compliance.",
+      "expected": "All returned products <= 500.0",
+      "actual": "2876 returned, 0 budget violations",
+      "details": {
+        "returned_count": 2876,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B03",
+      "name": "Price Lower Bound",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Filter products by discounted_price >= 2000.0 and verify 100% price compliance.",
+      "expected": "All returned products >= 2000.0",
+      "actual": "805 returned, 0 violations",
+      "details": {
+        "returned_count": 805,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B04",
+      "name": "Price Range",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Filter products by 300.0 <= discounted_price <= 800.0.",
+      "expected": "All returned products within [300.0, 800.0]",
+      "actual": "3183 returned, 0 range violations",
+      "details": {
+        "returned_count": 3183,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B05",
+      "name": "Brand Filtering",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Filter products by brand = 'Allure Auto'.",
+      "expected": "All returned products have brand='Allure Auto'",
+      "actual": "468 returned, 0 brand violations",
+      "details": {
+        "returned_count": 468,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B06",
+      "name": "Category + Price Composite",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Simultaneous category='Footwear' and discounted_price <= 600.0.",
+      "expected": "All returned products satisfy category and budget",
+      "actual": "420 returned, 0 violations",
+      "details": {
+        "returned_count": 420,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B07",
+      "name": "Multi-Constraint Filtering",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Category='Automotive' + Brand='Allure Auto' + Price <= 1000.0.",
+      "expected": "All returned products satisfy all 3 hard constraints",
+      "actual": "87 returned, 0 violations",
+      "details": {
+        "returned_count": 87,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B08",
+      "name": "Rating Filtering",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Filter products by rating >= 4.0.",
+      "expected": "All returned products have rating >= 4.0",
+      "actual": "542 returned, 0 rating violations",
+      "details": {
+        "returned_count": 542,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B09",
+      "name": "Empty Result Handling",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Unsatisfiable constraint returns 0 records without SQL error.",
+      "expected": "0 records returned, 0 errors",
+      "actual": "0 records returned",
+      "details": {
+        "returned_count": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "B10",
+      "name": "Boundary Condition Filtering",
+      "category": "B_sql_filtering",
+      "status": "PASS",
+      "description": "Exact minimum price boundary test (discounted_price = 35.0).",
+      "expected": "All returned products have discounted_price = 35.0",
+      "actual": "1 returned, 0 violations",
+      "details": {
+        "returned_count": 1,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "C01",
+      "name": "Exact Self-Match",
+      "category": "C_vector_search",
+      "status": "PASS",
+      "description": "Querying with a stored product vector returns that product with distance ~0.0.",
+      "expected": "Top match ID='20e1ffc3b0db7e7422d50d895a5d3158' with cosine distance < 1e-4",
+      "actual": "Top match ID='20e1ffc3b0db7e7422d50d895a5d3158' with distance=0.00000000",
+      "details": {
+        "query_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+        "top_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+        "distance": 0.0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "C02",
+      "name": "Distance Ordering",
+      "category": "C_vector_search",
+      "status": "PASS",
+      "description": "Verify retrieved vector candidates are sorted monotonically by ascending cosine distance.",
+      "expected": "Monotonically non-decreasing distances",
+      "actual": "10 items: min=0.000000, max=0.100924, monotonic=True",
+      "details": {
+        "distances": [
+          0.0,
+          0.071862,
+          0.080949,
+          0.088009,
+          0.096429,
+          0.098401,
+          0.099035,
+          0.099209,
+          0.100915,
+          0.100924
+        ]
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "C03",
+      "name": "Vector Dimension Compatibility",
+      "category": "C_vector_search",
+      "status": "PASS",
+      "description": "Verify database executes query against standard 384-dimensional float vector.",
+      "expected": "Query executes successfully",
+      "actual": "Nearest ID='ba7aad8c878409fdadf3a5802ce4768f', distance=0.946682",
+      "details": {
+        "matched_id": "ba7aad8c878409fdadf3a5802ce4768f",
+        "distance": 0.94668243398175
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "C04",
+      "name": "Invalid Vector Dimension Handling",
+      "category": "C_vector_search",
+      "status": "PASS",
+      "description": "Verify incorrect-dimension vector (3-dim) is safely rejected with database exception.",
+      "expected": "Database exception raised; no modification",
+      "actual": "Exception caught = True",
+      "details": {
+        "error_caught": true
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "C05",
+      "name": "Top-K Retrieval",
+      "category": "C_vector_search",
+      "status": "PASS",
+      "description": "Verify Top-K retrieval returns exactly K records for K in {1, 5, 10, 20}.",
+      "expected": "Exact K items for each K",
+      "actual": "Retrieved: {'k=1': 1, 'k=5': 5, 'k=10': 10, 'k=20': 20}",
+      "details": {
+        "k=1": 1,
+        "k=5": 5,
+        "k=10": 10,
+        "k=20": 20
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "C06",
+      "name": "Cosine Similarity Correctness",
+      "category": "C_vector_search",
+      "status": "PASS",
+      "description": "Compare pgvector <=> against independently computed NumPy cosine distance.",
+      "expected": "Numerical difference < 1e-4",
+      "actual": "Max absolute difference = 1.19e-07",
+      "details": {
+        "max_diff": 1.1920929512965195e-07,
+        "comparisons": [
+          {
+            "product_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+            "pg_dist": 0.0,
+            "np_dist": 0.0,
+            "abs_diff": 0.0
+          },
+          {
+            "product_id": "e3a9583a4ec8b4a619ad299eaa546901",
+            "pg_dist": 0.071862,
+            "np_dist": 0.071862,
+            "abs_diff": 0.0
+          },
+          {
+            "product_id": "2bb538fdebcfee62e987ad76f8e4f076",
+            "pg_dist": 0.080949,
+            "np_dist": 0.080949,
+            "abs_diff": 0.0
+          },
+          {
+            "product_id": "6d684e7d37de8de50f29a5f803406a3b",
+            "pg_dist": 0.088009,
+            "np_dist": 0.088009,
+            "abs_diff": 6e-08
+          },
+          {
+            "product_id": "8460de7a75211b1ecec7970fef395230",
+            "pg_dist": 0.096429,
+            "np_dist": 0.096429,
+            "abs_diff": 1.2e-07
+          }
+        ]
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "C07",
+      "name": "HNSW Approximate Search Quality",
+      "category": "C_vector_search",
+      "status": "PASS",
+      "description": "Measure HNSW Recall@K (K in 5, 10, 20) against exact linear scan baseline.",
+      "expected": "Recall >= 80% across K=5, 10, 20",
+      "actual": "R@5=100.0%, R@10=100.0%, R@20=100.0%",
+      "details": {
+        "recall_metrics": [
+          {
+            "k": 5,
+            "recall": 1.0,
+            "num_queries": 5,
+            "individual_recalls": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "k": 10,
+            "recall": 1.0,
+            "num_queries": 5,
+            "individual_recalls": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "k": 20,
+            "recall": 1.0,
+            "num_queries": 5,
+            "individual_recalls": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D01",
+      "name": "Category + Vector Search",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Category='Footwear' filter combined with vector similarity ranking.",
+      "expected": "10 items returned; 100% have category='Footwear'",
+      "actual": "10 returned; 0 violations",
+      "details": {
+        "returned_count": 10,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D02",
+      "name": "Price + Vector Search",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Price <= 500.0 budget constraint combined with vector similarity ranking.",
+      "expected": "10 items returned; 100% <= 500.0",
+      "actual": "10 returned; 0 budget violations",
+      "details": {
+        "returned_count": 10,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D03",
+      "name": "Category + Price + Vector Search",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Category='Footwear' AND Price <= 600.0 combined with vector similarity.",
+      "expected": "10 items returned; 100% satisfy both constraints",
+      "actual": "10 returned; 0 violations",
+      "details": {
+        "returned_count": 10,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D04",
+      "name": "Brand + Vector Search",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Brand='Allure Auto' filter combined with vector similarity ranking.",
+      "expected": "10 items returned; 100% have brand='Allure Auto'",
+      "actual": "10 returned; 0 violations",
+      "details": {
+        "returned_count": 10,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D05",
+      "name": "Multiple Constraints + Vector Search",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Category + Brand + Budget combined with vector ranking.",
+      "expected": "100% compliance across all 3 hard constraints",
+      "actual": "10 returned; 0 violations",
+      "details": {
+        "returned_count": 10,
+        "violations": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D06",
+      "name": "No-Match Filter Handling",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Impossible hard constraints return 0 results safely without SQL error.",
+      "expected": "0 results returned, 0 errors",
+      "actual": "0 results returned",
+      "details": {
+        "returned_count": 0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D07",
+      "name": "Small Candidate Pool Search",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Requesting Limit=10 on brand='99Gems' with pool size=2 returns exactly 2 items.",
+      "expected": "Exactly 2 items returned with 0 errors",
+      "actual": "2 items returned",
+      "details": {
+        "returned_count": 2,
+        "pool_size": 2
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D08",
+      "name": "Filtered HNSW Recall@10",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Recall@10 of filtered HNSW ANN search against exact filtered baseline.",
+      "expected": "Filtered Recall@10 >= 80%",
+      "actual": "Filtered Recall@10 = 100.0%",
+      "details": {
+        "filtered_recall_10": 1.0
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D09",
+      "name": "Post-Filtering Underfill Audit",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Audit whether HNSW underfills requested K results under restrictive filters.",
+      "expected": "Zero underfill or successful iterative scan mitigation",
+      "actual": "Underfill=False, IterativeScanSupport=True",
+      "details": {
+        "eligible_candidates": 73,
+        "requested_k": 10,
+        "standard_ann_returned": 10,
+        "underfill_detected": false,
+        "iterative_scan_supported": true,
+        "mitigation_verified": true
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "D10",
+      "name": "Constraint Satisfaction Audit",
+      "category": "D_filtered_semantic",
+      "status": "PASS",
+      "description": "Audit 100% compliance across all tested filtered semantic search scenarios.",
+      "expected": "100.0% constraint satisfaction rate across all tests",
+      "actual": "100.0% compliance (0 violations)",
+      "details": {
+        "satisfaction_rate": 1.0,
+        "violating_tests": []
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "E01",
+      "name": "B-Tree Index Verification",
+      "category": "E_index_performance",
+      "status": "PASS",
+      "description": "Verify all 4 approved B-Tree indexes exist, are valid, and match column specifications.",
+      "expected": "4 valid B-Tree indexes matching specifications",
+      "actual": "4/4 verified",
+      "details": {
+        "idx_products_category": {
+          "name": "idx_products_category",
+          "exists": true,
+          "access_method": "btree",
+          "indexed_columns": [
+            "category"
+          ],
+          "opclasses": [
+            "text_ops"
+          ],
+          "options": {},
+          "is_valid": true,
+          "is_ready": true,
+          "is_primary": false,
+          "index_def": "CREATE INDEX idx_products_category ON public.products USING btree (category)",
+          "matches_expected": true,
+          "discrepancy": null
+        },
+        "idx_products_price": {
+          "name": "idx_products_price",
+          "exists": true,
+          "access_method": "btree",
+          "indexed_columns": [
+            "discounted_price"
+          ],
+          "opclasses": [
+            "numeric_ops"
+          ],
+          "options": {},
+          "is_valid": true,
+          "is_ready": true,
+          "is_primary": false,
+          "index_def": "CREATE INDEX idx_products_price ON public.products USING btree (discounted_price)",
+          "matches_expected": true,
+          "discrepancy": null
+        },
+        "idx_products_brand": {
+          "name": "idx_products_brand",
+          "exists": true,
+          "access_method": "btree",
+          "indexed_columns": [
+            "brand"
+          ],
+          "opclasses": [
+            "text_ops"
+          ],
+          "options": {},
+          "is_valid": true,
+          "is_ready": true,
+          "is_primary": false,
+          "index_def": "CREATE INDEX idx_products_brand ON public.products USING btree (brand)",
+          "matches_expected": true,
+          "discrepancy": null
+        },
+        "idx_products_category_price": {
+          "name": "idx_products_category_price",
+          "exists": true,
+          "access_method": "btree",
+          "indexed_columns": [
+            "category",
+            "discounted_price"
+          ],
+          "opclasses": [
+            "text_ops",
+            "numeric_ops"
+          ],
+          "options": {},
+          "is_valid": true,
+          "is_ready": true,
+          "is_primary": false,
+          "index_def": "CREATE INDEX idx_products_category_price ON public.products USING btree (category, discounted_price)",
+          "matches_expected": true,
+          "discrepancy": null
+        }
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "E02",
+      "name": "HNSW Vector Index Verification",
+      "category": "E_index_performance",
+      "status": "PASS",
+      "description": "Verify idx_products_embedding exists as valid HNSW index with vector_cosine_ops, m=16, ef_construction=64.",
+      "expected": "Valid HNSW index with m=16, ef_construction=64, vector_cosine_ops",
+      "actual": "Valid=True, Method=hnsw",
+      "details": {
+        "name": "idx_products_embedding",
+        "exists": true,
+        "access_method": "hnsw",
+        "indexed_columns": [
+          "embedding"
+        ],
+        "opclasses": [
+          "vector_cosine_ops"
+        ],
+        "options": {
+          "m": "16",
+          "ef_construction": "64"
+        },
+        "is_valid": true,
+        "is_ready": true,
+        "is_primary": false,
+        "index_def": "CREATE INDEX idx_products_embedding ON public.products USING hnsw (embedding vector_cosine_ops) WITH (m='16', ef_construction='64')",
+        "matches_expected": true,
+        "discrepancy": null
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "E03",
+      "name": "Index Query Plans (EXPLAIN ANALYZE)",
+      "category": "E_index_performance",
+      "status": "PASS",
+      "description": "Inspect query plans across 5 query patterns using EXPLAIN (ANALYZE, BUFFERS).",
+      "expected": "All 5 query plans collected successfully",
+      "actual": "5/5 plans collected",
+      "details": {
+        "plans": [
+          {
+            "query_name": "category_filter",
+            "primary_node": "Bitmap Heap Scan",
+            "execution_time_ms": 1.015,
+            "planning_time_ms": 0.085
+          },
+          {
+            "query_name": "brand_filter",
+            "primary_node": "Index Scan",
+            "execution_time_ms": 0.272,
+            "planning_time_ms": 0.083
+          },
+          {
+            "query_name": "category_price_filter",
+            "primary_node": "Index Scan",
+            "execution_time_ms": 0.399,
+            "planning_time_ms": 0.11
+          },
+          {
+            "query_name": "hnsw_vector_similarity",
+            "primary_node": "Limit",
+            "execution_time_ms": 0.525,
+            "planning_time_ms": 0.086
+          },
+          {
+            "query_name": "filtered_semantic_search",
+            "primary_node": "Limit",
+            "execution_time_ms": 0.541,
+            "planning_time_ms": 0.142
+          }
+        ]
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "E04",
+      "name": "Query Latency Benchmarking",
+      "category": "E_index_performance",
+      "status": "PASS",
+      "description": "Measure Mean, P50, P95, Min, Max latencies across filtering, vector, and filtered vector queries.",
+      "expected": "Benchmarks collected across all patterns",
+      "actual": "3 patterns benchmarked (Vector P50: 34.39 ms)",
+      "details": {
+        "latency_benchmarks": [
+          {
+            "query_id": "sql_category_filter",
+            "description": "Relational category filter",
+            "num_measured_runs": 5,
+            "mean_ms": 43.86,
+            "p50_ms": 37.27,
+            "p95_ms": 63.53,
+            "min_ms": 37.11,
+            "max_ms": 69.99,
+            "runs": [
+              37.27,
+              37.11,
+              37.23,
+              69.99,
+              37.72
+            ]
+          },
+          {
+            "query_id": "pure_hnsw_vector_search",
+            "description": "Pure HNSW ANN cosine similarity search (Top-10)",
+            "num_measured_runs": 5,
+            "mean_ms": 41.67,
+            "p50_ms": 34.39,
+            "p95_ms": 62.08,
+            "min_ms": 34.15,
+            "max_ms": 68.32,
+            "runs": [
+              37.1,
+              34.15,
+              34.39,
+              68.32,
+              34.38
+            ]
+          },
+          {
+            "query_id": "filtered_semantic_search",
+            "description": "Filtered semantic search (Category + Price + Vector, Top-10)",
+            "num_measured_runs": 5,
+            "mean_ms": 43.47,
+            "p50_ms": 34.79,
+            "p95_ms": 66.43,
+            "min_ms": 34.43,
+            "max_ms": 72.84,
+            "runs": [
+              40.75,
+              34.79,
+              34.43,
+              72.84,
+              34.54
+            ]
+          }
+        ]
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "E05",
+      "name": "Exact vs ANN Performance Tradeoff",
+      "category": "E_index_performance",
+      "status": "PASS",
+      "description": "Compare exact linear scan vs HNSW index scan for latency speedup and recall quality.",
+      "expected": "HNSW provides measurable speedup over exact sequential scan",
+      "actual": "Client P50: Exact=73.23ms, ANN=34.71ms (2.1x) | Server Exec: Exact=37.57ms, ANN=0.49ms (76.4x)",
+      "details": {
+        "ann_ms": 34.71,
+        "exact_ms": 73.23,
+        "client_speedup_factor": 2.1,
+        "speedup_factor": 2.1,
+        "server_ann_ms": 0.492,
+        "server_exact_ms": 37.571,
+        "server_speedup_factor": 76.4
+      },
+      "error_message": null
+    },
+    {
+      "test_id": "E06",
+      "name": "Post-Testing Database Integrity",
+      "category": "E_index_performance",
+      "status": "PASS",
+      "description": "Confirm exactly 8,405 rows and all 5 production indexes remain 100% intact after all tests.",
+      "expected": "8405 rows preserved, 5/5 indexes intact",
+      "actual": "8405 rows preserved, 5/5 indexes matching",
+      "details": {
+        "row_count": 8405,
+        "distinct_product_ids": 8405,
+        "index_state": "ALL_INDEXES_EXIST_AND_MATCH",
+        "matching_indexes": 5
+      },
+      "error_message": null
+    }
+  ],
+  "phase5_completion_assessment": {
+    "ready_for_phase_6": true,
+    "product_knowledge_base_status": "VALIDATED_AND_VERIFIED",
+    "next_phase": "Phase 6: TF-IDF Baseline"
+  },
+  "performance": {
+    "total_elapsed_seconds": 14.82
+  }
+}

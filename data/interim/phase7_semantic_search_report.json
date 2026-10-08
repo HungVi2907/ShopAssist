@@ -1,0 +1,1022 @@
+{
+  "status": "PASS",
+  "phase": "Phase 7 \u2014 Dense Semantic Search Retrieval Engine",
+  "execution_timestamp_utc": "2026-10-08T17:26:58.060203+00:00",
+  "environment": {
+    "os": "win32",
+    "python_version": "3.10.11",
+    "torch_version": "2.6.0+cu124",
+    "cuda_available": true,
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "model_name": "BAAI/bge-small-en-v1.5",
+    "embedding_dimension": 384,
+    "model_load_time_sec": 0.0001
+  },
+  "pre_execution_integrity": {
+    "is_intact": true,
+    "total_rows": 8405,
+    "expected_rows": 8405,
+    "matching_dim_rows": 8405,
+    "null_emb_rows": 0
+  },
+  "post_execution_integrity": {
+    "is_intact": true,
+    "total_rows": 8405,
+    "expected_rows": 8405,
+    "matching_dim_rows": 8405,
+    "null_emb_rows": 0
+  },
+  "plan_verification": {
+    "uses_hnsw_index": true,
+    "index_name": "idx_products_embedding",
+    "sample_plan": "Limit  (cost=151.93..154.43 rows=5 width=41) (actual time=1.012..1.075 rows=5 loops=1)\n  Buffers: shared hit=520\n  ->  Index Scan using idx_products_embedding on products  (cost=151.93..4356.90 rows=8405 width=41) (actual time=1.010..1.072 rows=5 loops=1)\n        Order By: (embedding <=> '[-0.025281172,-0.045559824,-0.012049996,-0.051591624,-0.08263524,-0.032799903,0.018402878,0.045959108,-0.0029642712,-0.06318691,-0.033535484,0.014087946,0.050183896,-0.011136635,0.032525867,-0.038914844,0.047419425,-0.041912083,0.007382774,0.026655542,-0.0015005795,-0.0030074404,-0.027943565,0.0035861242,-0.04070691,0.0025487533,0.04406725,0.051761527,-0.05969286,-0.13859922,-0.06141226,0.031496044,0.095969126,0.054257672,-0.046703536,-0.018681606,0.019809762,-0.043108366,0.0075556226,0.035165153,-0.03494707,0.0073247473,0.02774637,0.012517537,0.017326292,-0.0511356,-0.022989403,-0.032882623,-0.0025366212,-0.02542985,0.033671357,0.026153674,0.028917138,-0.033100672,0.05029014,0.036938623,-0.006784693,0.08521122,0.048563074,0.020173013,0.034177225,0.0800061,-0.12397441,0.073803246,0.030894013,-0.010442899,0.027701303,-0.13096507,0.03892374,0.027483415,0.069557905,0.012077895,0.058612846,0.023131315,-0.016418098,0.04131225,0.005252693,-0.0023078835,-0.0124852,0.0030671086,0.019173354,0.08291815,0.021829205,0.009181025,-0.05851324,-0.026195457,-0.08103791,-0.026263691,-0.02608369,-0.0045308615,-0.124835774,-0.06382701,-0.02638139,-0.00285664,-0.077743374,-0.054177757,0.005060126,0.009159649,-0.10556644,0.30527452,-0.024456503,0.0070718993,-0.0025993108,-0.09306886,-0.04244541,-0.08438703,0.010325441,-0.025101012,-0.08738463,0.050335877,-0.016507352,-0.061469417,0.00011470155,0.0150654325,-0.029671581,0.03001267,0.007822827,0.06117776,0.04775809,0.04672036,-0.056394696,0.0076912567,0.064602785,0.004392678,0.006037743,-0.03711124,-0.01042658,0.06191261,-0.037692823,0.01622163,-0.01728259,-0.03352675,0.020177111,0.060253028,-0.037869316,0.006270816,-0.046906568,0.0043423404,-0.0031092437,-0.00488098,0.074973784,-0.027618948,0.08611879,0.008374429,-0.053282835,0.05103024,-0.012989467,-0.00587084,-0.024792084,0.035063017,0.00041074233,0.050242953,0.017701942,0.015283519,-0.011455731,0.090235874,0.086768664,0.027730241,0.02626585,0.016724596,-0.082052104,-0.0070230723,-0.036932044,-0.024943644,0.05640844,-0.10478469,-0.018986363,-0.0043015694,-0.021748086,-0.018998465,-0.07924004,0.009333939,0.013485714,0.019313553,-0.0017577913,0.038580768,0.00185243,-0.0016490999,-0.030047115,0.009845676,-0.075439416,-0.01798035,0.013377969,-0.079795174,0.008010789,0.037563007,0.0031066467,0.018884148,0.052990787,0.09823506,0.015316545,-0.011187352,-0.023882043,0.030290987,-0.0004947208,-0.028672917,-0.031721935,-0.06366534,0.006456118,-0.021762049,0.013251459,0.028164204,-0.10360124,0.009333613,0.022229888,-0.01614927,-2.508606e-05,-0.02096125,0.06357591,-0.04307496,0.03671743,0.004635609,0.048748564,-0.05804222,-0.06385449,-0.05768875,-0.07621618,0.06300253,0.019134829,-0.024340307,-0.017701937,-0.0798785,-0.07908222,-0.2662241,-0.021274742,-0.017070014,0.0075425506,-0.018153556,-0.023364477,0.0016216118,-0.006965707,0.024570296,-0.011183234,0.080646515,0.06822941,-0.0036533836,-0.028243504,-0.016359506,0.10188912,0.054508988,-0.05856324,-0.024313036,0.025290973,0.031214165,-0.034102816,-0.058143627,-0.04767365,0.021481164,-0.055432715,0.10902082,-0.033467427,0.10543661,-0.07886,0.024819352,0.027961923,-0.022910457,-0.049480226,0.018204637,0.111468606,-0.0015588858,0.041902788,-0.009988915,-0.0248544,-0.053544328,0.04737445,-0.047814533,-0.09348724,-0.029689394,-0.0011743932,-0.025173021,-0.06408725,-0.047054023,0.074589945,0.015339601,0.093969144,-0.018242497,0.03219216,-0.0049422965,-0.0044014985,-0.021415703,-0.03643611,-0.03634215,0.0047966363,0.060066886,0.04359135,-0.00930336,-0.013763371,-0.000968732,0.02901277,0.01236969,0.059109528,0.041974384,0.00042700005,0.014088054,0.07453856,0.025402868,0.069493614,0.048924904,0.022747237,0.052677963,0.07733216,-0.03600757,-0.023853216,0.036098316,-0.004320334,0.08199943,0.03771471,-0.027189786,-0.0021730962,0.10886761,-0.049900956,0.0691021,0.01243127,-0.047591146,-0.018668415,-0.007842411,-0.09229276,0.04060015,0.013273527,-0.193132,0.05018853,0.02165986,0.050783288,-0.028742159,-0.028230408,-0.021266796,-0.023909057,-0.11681755,0.007835176,-0.031026535,0.060454708,-0.03242899,0.010320636,0.03956602,0.0018113825,0.068415895,0.020655744,-0.07291965,0.029362924,-0.032846242,-0.042558514,0.08554082,0.026483566,-0.009278259,0.02962329,-0.020959375,0.032948423,0.09591118,0.001970245,0.043249946,-0.021811469,0.081757955,0.03507754,0.011833656,0.04379307,0.023508264,0.041275308,0.020411665,-0.0064521017,-0.0038803227,0.052270666,-0.04334809,-0.029200971,0.086937815,-0.0034013698,-0.033994317,-0.041889396,0.01122268,0.024315504,-0.008274274,-0.047229804,-0.01612361,0.020498427,0.009999089,0.00894334,0.014759621,-0.063794896,-0.03486807,0.033136256,-0.010474998,-0.07146512,0.021186067,0.03465713,0.07410989]'::vector)\n        Buffers: shared hit=520\nPlanning:\n  Buffers: shared hit=38\nPlanning Time: 1.563 ms\nExecution Time: 1.162 ms"
+  },
+  "ann_recall_evaluation": {
+    "num_queries": 5,
+    "ks": [
+      5,
+      10,
+      20
+    ],
+    "average_recall": {
+      "Recall@5": 0.96,
+      "Recall@10": 0.98,
+      "Recall@20": 0.98
+    },
+    "min_recall": {
+      "Recall@5": 0.8,
+      "Recall@10": 0.9,
+      "Recall@20": 0.9
+    },
+    "query_details": [
+      {
+        "query": "wireless bluetooth keyboard",
+        "recalls": {
+          "K=5": 1.0,
+          "K=10": 1.0,
+          "K=20": 1.0
+        }
+      },
+      {
+        "query": "portable USB storage device",
+        "recalls": {
+          "K=5": 1.0,
+          "K=10": 1.0,
+          "K=20": 1.0
+        }
+      },
+      {
+        "query": "Puma running shoes",
+        "recalls": {
+          "K=5": 1.0,
+          "K=10": 1.0,
+          "K=20": 1.0
+        }
+      },
+      {
+        "query": "I need comfortable footwear for everyday walking",
+        "recalls": {
+          "K=5": 0.8,
+          "K=10": 0.9,
+          "K=20": 0.9
+        }
+      },
+      {
+        "query": "optical gaming mouse",
+        "recalls": {
+          "K=5": 1.0,
+          "K=10": 1.0,
+          "K=20": 1.0
+        }
+      }
+    ]
+  },
+  "instruction_experiment": [
+    {
+      "scenario_id": "S01",
+      "query": "wireless bluetooth keyboard",
+      "overlap_at_k": 0.8,
+      "with_instruction_top_id": "deda6ef54ed8a95ab3215ce01b7f7178",
+      "with_instruction_top_score": 0.703057,
+      "without_instruction_top_id": "b4d35b6536b623c83b293eb3a1c02bba",
+      "without_instruction_top_score": 0.690844
+    },
+    {
+      "scenario_id": "S02",
+      "query": "portable USB storage device",
+      "overlap_at_k": 0.6,
+      "with_instruction_top_id": "ca52328046aff2060dd3e72dcaf26b6d",
+      "with_instruction_top_score": 0.708724,
+      "without_instruction_top_id": "144b073f174d8e010ae142552c308912",
+      "without_instruction_top_score": 0.693815
+    },
+    {
+      "scenario_id": "S03",
+      "query": "Puma running shoes",
+      "overlap_at_k": 0.6,
+      "with_instruction_top_id": "6115cc684e982f24d2b8eb3b7499529f",
+      "with_instruction_top_score": 0.772804,
+      "without_instruction_top_id": "6115cc684e982f24d2b8eb3b7499529f",
+      "without_instruction_top_score": 0.770051
+    },
+    {
+      "scenario_id": "S04",
+      "query": "running shoes",
+      "overlap_at_k": 0.8,
+      "with_instruction_top_id": "5bfcdafa8d9f1e46334f7c72c276ac4d",
+      "with_instruction_top_score": 0.736197,
+      "without_instruction_top_id": "855c191a7973278a777e8374c67b2c8a",
+      "without_instruction_top_score": 0.749139
+    }
+  ],
+  "scenario_results": [
+    {
+      "scenario_id": "S01",
+      "name": "Exact Keywords",
+      "query": "wireless bluetooth keyboard",
+      "focus": "Direct keyword match overlap with TF-IDF and category relevance.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "deda6ef54ed8a95ab3215ce01b7f7178",
+          "product_name": "Spycom Wireless 3.5mm Bluetooth Audio Music Receiver with Mic Handsfree Stereo Output Car Kit",
+          "category": "Automotive",
+          "brand": "Spycom",
+          "discounted_price": 788.0,
+          "cosine_distance": 0.296943,
+          "semantic_score": 0.703057
+        },
+        {
+          "rank": 2,
+          "product_id": "b4d35b6536b623c83b293eb3a1c02bba",
+          "product_name": "RoQ Slim Multimedia 105key Flexible Wired USB Flexible Keyboard",
+          "category": "Computers",
+          "brand": "RoQ",
+          "discounted_price": 399.0,
+          "cosine_distance": 0.30794,
+          "semantic_score": 0.69206
+        },
+        {
+          "rank": 3,
+          "product_id": "5530d3015e7827bb9a1124af38c4db9c",
+          "product_name": "couponsmall key 343 Wired USB Tablet Keyboard",
+          "category": "Mobiles & Accessories",
+          "brand": "couponsmall",
+          "discounted_price": 351.0,
+          "cosine_distance": 0.316581,
+          "semantic_score": 0.683419
+        },
+        {
+          "rank": 4,
+          "product_id": "e9988db53102b402d9463a2990e4b585",
+          "product_name": "cm key 354 Wired USB Tablet Keyboard",
+          "category": "Computers",
+          "brand": "cm",
+          "discounted_price": 351.0,
+          "cosine_distance": 0.324289,
+          "semantic_score": 0.675711
+        },
+        {
+          "rank": 5,
+          "product_id": "2c475daafe597ed93c1e27fcaa38d8cc",
+          "product_name": "Task Logistics Audio Receiver H-366 USB Bluetooth",
+          "category": "Computers",
+          "brand": "Task Logistics",
+          "discounted_price": 1200.0,
+          "cosine_distance": 0.335136,
+          "semantic_score": 0.664864
+        }
+      ]
+    },
+    {
+      "scenario_id": "S02",
+      "name": "Technical Description",
+      "query": "portable USB storage device",
+      "focus": "Capability to retrieve flash drives and OTG pen drives without exact token matches.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "ca52328046aff2060dd3e72dcaf26b6d",
+          "product_name": "Memore Portable and Flexible MMULL-Red USB Led Light",
+          "category": "Computers",
+          "brand": "Memore",
+          "discounted_price": 195.0,
+          "cosine_distance": 0.291276,
+          "semantic_score": 0.708724
+        },
+        {
+          "rank": 2,
+          "product_id": "8a589971a22b71e9aa36ce3133ff147d",
+          "product_name": "Memore Portable MMULL-Pink USB Led Light",
+          "category": "Computers",
+          "brand": "Memore",
+          "discounted_price": 199.0,
+          "cosine_distance": 0.293333,
+          "semantic_score": 0.706667
+        },
+        {
+          "rank": 3,
+          "product_id": "ae6cd387b30e96b95c8308a3f0567ad2",
+          "product_name": "Memore Portable and Flexible MMULL-Orange USB Led Light",
+          "category": "Computers",
+          "brand": "Memore",
+          "discounted_price": 199.0,
+          "cosine_distance": 0.295573,
+          "semantic_score": 0.704427
+        },
+        {
+          "rank": 4,
+          "product_id": "4354b7418ee0fab2fd9f8eb493556529",
+          "product_name": "Memore Portable and Flexible MMULL-White USB Led Light",
+          "category": "Computers",
+          "brand": "Memore",
+          "discounted_price": 195.0,
+          "cosine_distance": 0.297786,
+          "semantic_score": 0.702214
+        },
+        {
+          "rank": 5,
+          "product_id": "d710b9fcd54c999ed2ed92593794ba55",
+          "product_name": "Link+ Flexible Portable Lamp LP-3PCS USB Led Light",
+          "category": "Computers",
+          "brand": "Link+",
+          "discounted_price": 299.0,
+          "cosine_distance": 0.300499,
+          "semantic_score": 0.699501
+        }
+      ]
+    },
+    {
+      "scenario_id": "S03",
+      "name": "Brand-Specific Retrieval",
+      "query": "Puma running shoes",
+      "focus": "Brand entity preservation and product category matching.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "6115cc684e982f24d2b8eb3b7499529f",
+          "product_name": "Puma Adreno FG Jr Sports Shoes",
+          "category": "Footwear",
+          "brand": "Puma",
+          "discounted_price": 1499.0,
+          "cosine_distance": 0.227196,
+          "semantic_score": 0.772804
+        },
+        {
+          "rank": 2,
+          "product_id": "4438205dd1de1ccb6c345a8b6d52d6c3",
+          "product_name": "Urban Monkey Womens Pu Loafers",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1050.0,
+          "cosine_distance": 0.277419,
+          "semantic_score": 0.722581
+        },
+        {
+          "rank": 3,
+          "product_id": "d7eab6cca9b2fbfb315503140d3740b5",
+          "product_name": "Puma Casuals",
+          "category": "Footwear",
+          "brand": "Puma",
+          "discounted_price": 2499.0,
+          "cosine_distance": 0.282086,
+          "semantic_score": 0.717914
+        },
+        {
+          "rank": 4,
+          "product_id": "4df0882fcaa458ca302c4233719f5186",
+          "product_name": "Puma Kids Casual Graphic 18 L Backpack",
+          "category": "Bags, Wallets & Belts",
+          "brand": null,
+          "discounted_price": 1299.0,
+          "cosine_distance": 0.29043,
+          "semantic_score": 0.70957
+        },
+        {
+          "rank": 5,
+          "product_id": "50e96d562acd1d5530645ee1d3caa595",
+          "product_name": "Puma Primary 3 L Backpack",
+          "category": "Bags, Wallets & Belts",
+          "brand": null,
+          "discounted_price": 524.0,
+          "cosine_distance": 0.313314,
+          "semantic_score": 0.686686
+        }
+      ]
+    },
+    {
+      "scenario_id": "S04",
+      "name": "Category-Oriented Retrieval",
+      "query": "running shoes",
+      "focus": "General athletic footwear category retrieval.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "5bfcdafa8d9f1e46334f7c72c276ac4d",
+          "product_name": "Lee Parke Running Shoes",
+          "category": "Footwear",
+          "brand": "Lee Parke",
+          "discounted_price": 499.0,
+          "cosine_distance": 0.263803,
+          "semantic_score": 0.736197
+        },
+        {
+          "rank": 2,
+          "product_id": "855c191a7973278a777e8374c67b2c8a",
+          "product_name": "N Five Running Shoes",
+          "category": "Footwear",
+          "brand": "N Five",
+          "discounted_price": 959.0,
+          "cosine_distance": 0.266152,
+          "semantic_score": 0.733848
+        },
+        {
+          "rank": 3,
+          "product_id": "914146b77022c4c8bdd31961d3797640",
+          "product_name": "Steppings Running Shoes Casuals Shoes",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 2099.0,
+          "cosine_distance": 0.26686,
+          "semantic_score": 0.73314
+        },
+        {
+          "rank": 4,
+          "product_id": "302e6ef2e54802627c442ad6acdcc521",
+          "product_name": "Nike",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 5516.0,
+          "cosine_distance": 0.273364,
+          "semantic_score": 0.726636
+        },
+        {
+          "rank": 5,
+          "product_id": "b168c7b936c3ad9d9a02f1bfafa4926d",
+          "product_name": "Steppings Running Shoes Casuals Shoes",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 2589.0,
+          "cosine_distance": 0.27552,
+          "semantic_score": 0.72448
+        }
+      ]
+    },
+    {
+      "scenario_id": "S05",
+      "name": "Synonym-Based Query",
+      "query": "sneakers for jogging",
+      "focus": "Semantic bridge: 'sneakers for jogging' <-> 'running shoes'.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "302e6ef2e54802627c442ad6acdcc521",
+          "product_name": "Nike",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 5516.0,
+          "cosine_distance": 0.313187,
+          "semantic_score": 0.686813
+        },
+        {
+          "rank": 2,
+          "product_id": "f00eb0546af60913dd7abd3f90c90852",
+          "product_name": "HRX 29041 Sneakers",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1699.0,
+          "cosine_distance": 0.329254,
+          "semantic_score": 0.670746
+        },
+        {
+          "rank": 3,
+          "product_id": "7ae33aaf60fc1ffa5d2601c92ec11304",
+          "product_name": "Select Sporty Running Shoes",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 449.0,
+          "cosine_distance": 0.333414,
+          "semantic_score": 0.666586
+        },
+        {
+          "rank": 4,
+          "product_id": "f0312e69515bf76aee9d17f6cacce6b2",
+          "product_name": "Select Sporty Walking Shoes",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 449.0,
+          "cosine_distance": 0.333551,
+          "semantic_score": 0.666449
+        },
+        {
+          "rank": 5,
+          "product_id": "55bd60b45bde7ee216e1fb10c9e1ee7b",
+          "product_name": "Calcetto Outdoor Sneakers",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1999.0,
+          "cosine_distance": 0.333672,
+          "semantic_score": 0.666328
+        }
+      ]
+    },
+    {
+      "scenario_id": "S06",
+      "name": "Conversational Request",
+      "query": "I need comfortable footwear for everyday walking",
+      "focus": "Robustness against conversational filler words ('I need', 'for everyday').",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "202fe215b335490c18be3a943223c5c6",
+          "product_name": "Catwalk Women Heels",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 3495.0,
+          "cosine_distance": 0.320086,
+          "semantic_score": 0.679914
+        },
+        {
+          "rank": 2,
+          "product_id": "5d1866bae175a1a511a2965470855853",
+          "product_name": "Walkway Women Wedges",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 909.0,
+          "cosine_distance": 0.320427,
+          "semantic_score": 0.679573
+        },
+        {
+          "rank": 3,
+          "product_id": "85a27ada9fb0d8ca4939f364596c2028",
+          "product_name": "Catwalk Women Heels",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 699.0,
+          "cosine_distance": 0.321205,
+          "semantic_score": 0.678795
+        },
+        {
+          "rank": 4,
+          "product_id": "d8640057d0dc2d1cf41e1eb39cf5983c",
+          "product_name": "Catwalk Women Wedges",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1895.0,
+          "cosine_distance": 0.323118,
+          "semantic_score": 0.676882
+        },
+        {
+          "rank": 5,
+          "product_id": "cf59d4e4b6583f4c4bc32c385d7952d1",
+          "product_name": "Magnum Footwear Lifestyle",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 2099.0,
+          "cosine_distance": 0.323763,
+          "semantic_score": 0.676237
+        }
+      ]
+    },
+    {
+      "scenario_id": "S07",
+      "name": "Budget-Constrained Language",
+      "query": "laptop under 500",
+      "focus": "Diagnostic scenario verifying semantic retrieval does NOT enforce numeric prices.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "85aec4bf3185da7ebcc45003429cbfe2",
+          "product_name": "HP 15-ac116TX (Notebook) (Core i3 (5th Gen)/ 4GB/ 1TB/ Win10/ 2GB Graph) (N8M19PA)",
+          "category": "Computers",
+          "brand": "HP",
+          "discounted_price": 38890.0,
+          "cosine_distance": 0.331101,
+          "semantic_score": 0.668899
+        },
+        {
+          "rank": 2,
+          "product_id": "c3b5130723f942d48f8068215d5afbed",
+          "product_name": "DGB HP 500 520 HSTNN-IB44 6 Cell Laptop Battery",
+          "category": "Computers",
+          "brand": "DGB",
+          "discounted_price": 1349.0,
+          "cosine_distance": 0.331554,
+          "semantic_score": 0.668446
+        },
+        {
+          "rank": 3,
+          "product_id": "bcb8e456728013a90ba66ab3b1b783ad",
+          "product_name": "HP 15-ac121tu (Notebook) (Core i3 (5th Gen)/ 4GB/ 1TB/ Win10) (N8M17PA)",
+          "category": "Computers",
+          "brand": "HP",
+          "discounted_price": 35390.0,
+          "cosine_distance": 0.33161,
+          "semantic_score": 0.66839
+        },
+        {
+          "rank": 4,
+          "product_id": "469bd5bef19c764ae58857e46999832c",
+          "product_name": "Scomp EliteBook 8540P 6 Cell Laptop Battery",
+          "category": "Computers",
+          "brand": "Scomp",
+          "discounted_price": 1599.0,
+          "cosine_distance": 0.34224,
+          "semantic_score": 0.65776
+        },
+        {
+          "rank": 5,
+          "product_id": "ddb0afaebb45aff52279c41d0c5c90c6",
+          "product_name": "Intel 3.1 GHz LGA 1150 G3240 Processor",
+          "category": "Computers",
+          "brand": "Intel",
+          "discounted_price": 4333.0,
+          "cosine_distance": 0.348318,
+          "semantic_score": 0.651682
+        }
+      ]
+    },
+    {
+      "scenario_id": "S08",
+      "name": "Ambiguous Search Intent",
+      "query": "apple charger cable",
+      "focus": "Disambiguation of 'apple' in electronic accessories context.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "d9b513911fcd6dc049f8274cd1000410",
+          "product_name": "Nillkin Apple Lightning to USB Cable USB Cable",
+          "category": "Mobiles & Accessories",
+          "brand": "Nillkin",
+          "discounted_price": 599.0,
+          "cosine_distance": 0.248478,
+          "semantic_score": 0.751522
+        },
+        {
+          "rank": 2,
+          "product_id": "5dfde003664ed7fe5020582ccbb8cd4b",
+          "product_name": "Finger's iPhone 5 5s Ipad Data Sync USB USB Charger",
+          "category": "Computers",
+          "brand": "Finger's",
+          "discounted_price": 199.0,
+          "cosine_distance": 0.256258,
+          "semantic_score": 0.743742
+        },
+        {
+          "rank": 3,
+          "product_id": "c666e51ec698f56a304d5fd9c1687229",
+          "product_name": "AW High Speed Charge and Sync Usb for Iphone 6 Lightning Cable",
+          "category": "Mobiles & Accessories",
+          "brand": "AW",
+          "discounted_price": 271.0,
+          "cosine_distance": 0.257232,
+          "semantic_score": 0.742768
+        },
+        {
+          "rank": 4,
+          "product_id": "31100b8a80a913fbfab9f7c891e517de",
+          "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "category": "Mobiles & Accessories",
+          "brand": "Lexel",
+          "discounted_price": 339.0,
+          "cosine_distance": 0.26329,
+          "semantic_score": 0.73671
+        },
+        {
+          "rank": 5,
+          "product_id": "56d0c335e9013cacbda2736b44c5075c",
+          "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "category": "Mobiles & Accessories",
+          "brand": "Lexel",
+          "discounted_price": 339.0,
+          "cosine_distance": 0.266428,
+          "semantic_score": 0.733572
+        }
+      ]
+    },
+    {
+      "scenario_id": "S09",
+      "name": "Specialized Product Language",
+      "query": "optical gaming mouse 3200 DPI",
+      "focus": "Granular technical specifications and hardware terms.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "b280f792bdc0b53d642c489c7b8211a9",
+          "product_name": "SHOPRIDER DESGINER MOUSEPAD-971 Mousepad",
+          "category": "Computers",
+          "brand": "Shoprider",
+          "discounted_price": 179.0,
+          "cosine_distance": 0.33479,
+          "semantic_score": 0.66521
+        },
+        {
+          "rank": 2,
+          "product_id": "9cb9e949df55048d065704b46a9079b6",
+          "product_name": "Aadishwar Creations U11 M101 USB Led Light",
+          "category": "Computers",
+          "brand": "Aadishwar Creations",
+          "discounted_price": 299.0,
+          "cosine_distance": 0.346988,
+          "semantic_score": 0.653012
+        },
+        {
+          "rank": 3,
+          "product_id": "1245d6631734ea47a743cac7775ea080",
+          "product_name": "FRENEMY MPAD348 Mousepad",
+          "category": "Computers",
+          "brand": "FRENEMY",
+          "discounted_price": 169.0,
+          "cosine_distance": 0.35017,
+          "semantic_score": 0.64983
+        },
+        {
+          "rank": 4,
+          "product_id": "07116e86e1ed1ec3f0c819bdec3a8e5c",
+          "product_name": "SHOPRIDER DESGINER MOUSEPAD-556 Mousepad",
+          "category": "Computers",
+          "brand": "Shoprider",
+          "discounted_price": 179.0,
+          "cosine_distance": 0.35188,
+          "semantic_score": 0.64812
+        },
+        {
+          "rank": 5,
+          "product_id": "3b96b52180b76fa710e785e7afe36e2b",
+          "product_name": "FRENEMY MPAD389 Mousepad",
+          "category": "Computers",
+          "brand": "FRENEMY",
+          "discounted_price": 169.0,
+          "cosine_distance": 0.356643,
+          "semantic_score": 0.643357
+        }
+      ]
+    },
+    {
+      "scenario_id": "S10A",
+      "name": "Paraphrase Pair A - Base",
+      "query": "wireless bluetooth earbuds",
+      "focus": "Paraphrase baseline query.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "685aef6aaa5cf32d29cab2b7a2e054ac",
+          "product_name": "Dhhan Earphones/Handfree for Iphone 4/4s/4g/5/5c/5s Stereo Dynamic Headphone Wired Bluetooth Headphones",
+          "category": "Mobiles & Accessories",
+          "brand": "Dhhan",
+          "discounted_price": 399.0,
+          "cosine_distance": 0.272941,
+          "semantic_score": 0.727059
+        },
+        {
+          "rank": 2,
+          "product_id": "deda6ef54ed8a95ab3215ce01b7f7178",
+          "product_name": "Spycom Wireless 3.5mm Bluetooth Audio Music Receiver with Mic Handsfree Stereo Output Car Kit",
+          "category": "Automotive",
+          "brand": "Spycom",
+          "discounted_price": 788.0,
+          "cosine_distance": 0.300827,
+          "semantic_score": 0.699173
+        },
+        {
+          "rank": 3,
+          "product_id": "81df14e9c6419658dc459c232bcbb368",
+          "product_name": "GND Wired Earphones Dynamic Handsfree Wired Headset",
+          "category": "Mobiles & Accessories",
+          "brand": "GND",
+          "discounted_price": 179.0,
+          "cosine_distance": 0.306763,
+          "semantic_score": 0.693237
+        },
+        {
+          "rank": 4,
+          "product_id": "203860575c7e91e6cf6e30856f573275",
+          "product_name": "Dyna Silver Heart Stereo Wireless Bluetooth Headset",
+          "category": "Mobiles & Accessories",
+          "brand": "Dyna",
+          "discounted_price": 1849.0,
+          "cosine_distance": 0.311606,
+          "semantic_score": 0.688394
+        },
+        {
+          "rank": 5,
+          "product_id": "136454e94f8b20fd332f510601919c2c",
+          "product_name": "LIFE LIKE S450 3.0 WITH MIC GOOD SOUND QUALITY Wired & Wireless Bluetooth Headphones",
+          "category": "Mobiles & Accessories",
+          "brand": "LIFE LIKE",
+          "discounted_price": 999.0,
+          "cosine_distance": 0.319045,
+          "semantic_score": 0.680955
+        }
+      ]
+    },
+    {
+      "scenario_id": "S10B",
+      "name": "Paraphrase Pair A - Variant",
+      "query": "cordless earphone headset",
+      "focus": "Paraphrase semantic equivalence against S10A.",
+      "retrieved_count": 5,
+      "top_results": [
+        {
+          "rank": 1,
+          "product_id": "81df14e9c6419658dc459c232bcbb368",
+          "product_name": "GND Wired Earphones Dynamic Handsfree Wired Headset",
+          "category": "Mobiles & Accessories",
+          "brand": "GND",
+          "discounted_price": 179.0,
+          "cosine_distance": 0.276426,
+          "semantic_score": 0.723574
+        },
+        {
+          "rank": 2,
+          "product_id": "685aef6aaa5cf32d29cab2b7a2e054ac",
+          "product_name": "Dhhan Earphones/Handfree for Iphone 4/4s/4g/5/5c/5s Stereo Dynamic Headphone Wired Bluetooth Headphones",
+          "category": "Mobiles & Accessories",
+          "brand": "Dhhan",
+          "discounted_price": 399.0,
+          "cosine_distance": 0.278213,
+          "semantic_score": 0.721787
+        },
+        {
+          "rank": 3,
+          "product_id": "eadd1a659f6acfc0a27321f1b0fe3d30",
+          "product_name": "Shop Swipe Anti-Radiation Retro Style Wired Headphones",
+          "category": "Mobiles & Accessories",
+          "brand": "Shop Swipe",
+          "discounted_price": 559.0,
+          "cosine_distance": 0.292686,
+          "semantic_score": 0.707314
+        },
+        {
+          "rank": 4,
+          "product_id": "73b59d6a513fc892a75bb75d24a8242a",
+          "product_name": "BELL BLEP-D10 Earphone Cable Organizer",
+          "category": "Mobiles & Accessories",
+          "brand": "BELL",
+          "discounted_price": 90.0,
+          "cosine_distance": 0.29443,
+          "semantic_score": 0.70557
+        },
+        {
+          "rank": 5,
+          "product_id": "73251fa112fe08dbdbdc96c028c7db47",
+          "product_name": "snjmart M5 Dual Stereo Dynamic Earphone Wired Headphones",
+          "category": "Mobiles & Accessories",
+          "brand": "snjmart",
+          "discounted_price": 335.0,
+          "cosine_distance": 0.294947,
+          "semantic_score": 0.705053
+        }
+      ]
+    }
+  ],
+  "tfidf_vs_semantic_comparison": [
+    {
+      "scenario_id": "S01",
+      "query": "wireless bluetooth keyboard",
+      "overlap_at_k": 0.0,
+      "tfidf_top_match": {
+        "product_id": "203860575c7e91e6cf6e30856f573275",
+        "product_name": "Dyna Silver Heart Stereo Wireless Bluetooth Headset",
+        "category": "Mobiles & Accessories",
+        "score": 0.244
+      },
+      "semantic_top_match": {
+        "product_id": "deda6ef54ed8a95ab3215ce01b7f7178",
+        "product_name": "Spycom Wireless 3.5mm Bluetooth Audio Music Receiver with Mic Handsfree Stereo Output Car Kit",
+        "category": "Automotive",
+        "score": 0.7031,
+        "distance": 0.2969
+      }
+    },
+    {
+      "scenario_id": "S02",
+      "query": "portable USB storage device",
+      "overlap_at_k": 0.0,
+      "tfidf_top_match": {
+        "product_id": "f8139abf047c915ab570a555eb3d1d02",
+        "product_name": "DreamShop Flex Flexible Portable USB Led Light",
+        "category": "Computers",
+        "score": 0.1935
+      },
+      "semantic_top_match": {
+        "product_id": "ca52328046aff2060dd3e72dcaf26b6d",
+        "product_name": "Memore Portable and Flexible MMULL-Red USB Led Light",
+        "category": "Computers",
+        "score": 0.7087,
+        "distance": 0.2913
+      }
+    },
+    {
+      "scenario_id": "S03",
+      "query": "Puma running shoes",
+      "overlap_at_k": 0.0,
+      "tfidf_top_match": {
+        "product_id": "09779c98e54c30f905b21bd9744ae685",
+        "product_name": "Campus Berlin Running Shoes",
+        "category": "Footwear",
+        "score": 0.4492
+      },
+      "semantic_top_match": {
+        "product_id": "6115cc684e982f24d2b8eb3b7499529f",
+        "product_name": "Puma Adreno FG Jr Sports Shoes",
+        "category": "Footwear",
+        "score": 0.7728,
+        "distance": 0.2272
+      }
+    },
+    {
+      "scenario_id": "S04",
+      "query": "running shoes",
+      "overlap_at_k": 0.0,
+      "tfidf_top_match": {
+        "product_id": "09779c98e54c30f905b21bd9744ae685",
+        "product_name": "Campus Berlin Running Shoes",
+        "category": "Footwear",
+        "score": 0.5674
+      },
+      "semantic_top_match": {
+        "product_id": "5bfcdafa8d9f1e46334f7c72c276ac4d",
+        "product_name": "Lee Parke Running Shoes",
+        "category": "Footwear",
+        "score": 0.7362,
+        "distance": 0.2638
+      }
+    },
+    {
+      "scenario_id": "S05",
+      "query": "sneakers for jogging",
+      "overlap_at_k": 0.4,
+      "tfidf_top_match": {
+        "product_id": "587d85f6cd9ca811e54a61a3d00c358d",
+        "product_name": "Savie Shoes Sneakers",
+        "category": "Footwear",
+        "score": 0.2467
+      },
+      "semantic_top_match": {
+        "product_id": "302e6ef2e54802627c442ad6acdcc521",
+        "product_name": "Nike",
+        "category": "Footwear",
+        "score": 0.6868,
+        "distance": 0.3132
+      }
+    },
+    {
+      "scenario_id": "S06",
+      "query": "I need comfortable footwear for everyday walking",
+      "overlap_at_k": 0.0,
+      "tfidf_top_match": {
+        "product_id": "7784bea41ff5f896aa643912f13d8db9",
+        "product_name": "CatBird Walking Shoes",
+        "category": "Footwear",
+        "score": 0.1538
+      },
+      "semantic_top_match": {
+        "product_id": "202fe215b335490c18be3a943223c5c6",
+        "product_name": "Catwalk Women Heels",
+        "category": "Footwear",
+        "score": 0.6799,
+        "distance": 0.3201
+      }
+    },
+    {
+      "scenario_id": "S07",
+      "query": "laptop under 500",
+      "overlap_at_k": 0.2,
+      "tfidf_top_match": {
+        "product_id": "c3b5130723f942d48f8068215d5afbed",
+        "product_name": "DGB HP 500 520 HSTNN-IB44 6 Cell Laptop Battery",
+        "category": "Computers",
+        "score": 0.1596
+      },
+      "semantic_top_match": {
+        "product_id": "85aec4bf3185da7ebcc45003429cbfe2",
+        "product_name": "HP 15-ac116TX (Notebook) (Core i3 (5th Gen)/ 4GB/ 1TB/ Win10/ 2GB Graph) (N8M19PA)",
+        "category": "Computers",
+        "score": 0.6689,
+        "distance": 0.3311
+      }
+    },
+    {
+      "scenario_id": "S08",
+      "query": "apple charger cable",
+      "overlap_at_k": 0.0,
+      "tfidf_top_match": {
+        "product_id": "4361765ad1c3567a52d2713e0e984ecf",
+        "product_name": "Swiss Charger Cable de synchro micro USB USB Cable",
+        "category": "Mobiles & Accessories",
+        "score": 0.2987
+      },
+      "semantic_top_match": {
+        "product_id": "d9b513911fcd6dc049f8274cd1000410",
+        "product_name": "Nillkin Apple Lightning to USB Cable USB Cable",
+        "category": "Mobiles & Accessories",
+        "score": 0.7515,
+        "distance": 0.2485
+      }
+    },
+    {
+      "scenario_id": "S09",
+      "query": "optical gaming mouse 3200 DPI",
+      "overlap_at_k": 0.0,
+      "tfidf_top_match": {
+        "product_id": "984f2908c2dde2e13bcb2a00d623df3e",
+        "product_name": "Kanabis Women Wedges",
+        "category": "Footwear",
+        "score": 0.1459
+      },
+      "semantic_top_match": {
+        "product_id": "b280f792bdc0b53d642c489c7b8211a9",
+        "product_name": "SHOPRIDER DESGINER MOUSEPAD-971 Mousepad",
+        "category": "Computers",
+        "score": 0.6652,
+        "distance": 0.3348
+      }
+    },
+    {
+      "scenario_id": "S10A",
+      "query": "wireless bluetooth earbuds",
+      "overlap_at_k": 0.4,
+      "tfidf_top_match": {
+        "product_id": "203860575c7e91e6cf6e30856f573275",
+        "product_name": "Dyna Silver Heart Stereo Wireless Bluetooth Headset",
+        "category": "Mobiles & Accessories",
+        "score": 0.283
+      },
+      "semantic_top_match": {
+        "product_id": "685aef6aaa5cf32d29cab2b7a2e054ac",
+        "product_name": "Dhhan Earphones/Handfree for Iphone 4/4s/4g/5/5c/5s Stereo Dynamic Headphone Wired Bluetooth Headphones",
+        "category": "Mobiles & Accessories",
+        "score": 0.7271,
+        "distance": 0.2729
+      }
+    },
+    {
+      "scenario_id": "S10B",
+      "query": "cordless earphone headset",
+      "overlap_at_k": 0.2,
+      "tfidf_top_match": {
+        "product_id": "a9ccf337cea5a87dcc4613389f7e993c",
+        "product_name": "keshar 25868 Earphone Cable Organizer",
+        "category": "Mobiles & Accessories",
+        "score": 0.1626
+      },
+      "semantic_top_match": {
+        "product_id": "81df14e9c6419658dc459c232bcbb368",
+        "product_name": "GND Wired Earphones Dynamic Handsfree Wired Headset",
+        "category": "Mobiles & Accessories",
+        "score": 0.7236,
+        "distance": 0.2764
+      }
+    }
+  ],
+  "latency_benchmarks": {
+    "num_queries": 5,
+    "num_iterations": 20,
+    "warmup_iterations": 5,
+    "top_k": 5,
+    "embedding_latency": {
+      "mean_ms": 23.549,
+      "p50_ms": 23.082,
+      "p95_ms": 26.317,
+      "min_ms": 21.246,
+      "max_ms": 27.331
+    },
+    "database_latency": {
+      "mean_ms": 117.187,
+      "p50_ms": 112.723,
+      "p95_ms": 142.171,
+      "min_ms": 103.293,
+      "max_ms": 174.878
+    },
+    "end_to_end_latency": {
+      "mean_ms": 141.012,
+      "p50_ms": 135.311,
+      "p95_ms": 168.174,
+      "min_ms": 126.52,
+      "max_ms": 198.931
+    }
+  },
+  "acceptance_criteria": {
+    "model_reused": true,
+    "embeddings_384_dim": true,
+    "l2_normalized": true,
+    "hnsw_used": true,
+    "ann_recall_evaluated": true,
+    "experiments_completed": true,
+    "tfidf_compared": true,
+    "zero_score_policy_safe": true,
+    "catalog_unmodified": true
+  }
+}
