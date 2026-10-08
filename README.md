@@ -33,18 +33,24 @@ ShopAssist/
 │   ├── build_tfidf_baseline.py # Build and persist TF-IDF baseline index
 │   ├── search_tfidf.py       # Lexical product search CLI
 │   ├── search_semantic.py    # Dense semantic product search CLI
-│   └── benchmark_semantic.py # Dense semantic retrieval benchmark & evaluation suite
+│   ├── benchmark_semantic.py # Dense semantic retrieval benchmark & evaluation suite
+│   ├── test_gemini_connection.py # Gemini API connection & model discovery CLI
+│   ├── parse_user_query.py   # Natural language Query Understanding CLI
+│   └── evaluate_query_understanding.py # Query Understanding accuracy & latency benchmark CLI
 ├── src/
 │   └── shopassist/
 │       ├── core/             # Configuration and path resolution
 │       ├── data/             # Data loading and schema validation modules
 │       ├── db/               # PostgreSQL & pgvector connection & loading
 │       ├── embeddings/       # Dense embedding model and inference
+│       ├── llm/              # LLM Query Understanding (Gemini, schemas, prompts, normalization)
 │       └── retrieval/        # Lexical (TF-IDF) & Dense Semantic retrieval engines
 └── tests/
     ├── test_data_loader.py   # Unit tests for data loading and schema validation
     ├── test_tfidf_retrieval.py # Unit and integration tests for TF-IDF retrieval
     ├── test_semantic_retrieval.py # Unit and integration tests for dense semantic retrieval
+    ├── test_query_understanding.py # Offline unit tests for LLM Query Understanding
+    ├── test_gemini_integration.py # Live integration tests for Google Gemini API
     └── ...
 ```
 
@@ -143,23 +149,87 @@ python scripts/benchmark_semantic.py --iterations 20
 
 ---
 
-## 6. Running Tests
+## 6. Phase 8 — LLM Query Understanding (Google Gemini API)
 
-To run the complete automated test suite (249 tests):
+Phase 8 implements an asynchronous, production-grade LLM Query Understanding module that transforms natural-language shopping requests into strongly-typed, validated structured representations using the official Google Gen AI Python SDK (`google-genai` v2.29.0) and Google Gemini API (`gemini-3.1-flash-lite`).
+
+The module performs structured information extraction:
+1. **Hard Constraints**: Normalized category (16 canonical categories), catalog-verified brand, minimum/maximum budget, rating threshold, and ISO currency code.
+2. **Soft Preferences**: Qualitative lifestyle/aesthetic preferences for semantic ranking.
+3. **Cleaned Semantic Query**: Core product search intent stripped of conversational filler.
+4. **Clarification Status**: Automatic detection of out-of-domain requests, prompt injection attempts, or foreign currency mismatches.
+
+### Environment Configuration
+
+Configure the following variables in `.env`:
+```dotenv
+LLM_PROVIDER=gemini
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-3.1-flash-lite
+GEMINI_TEMPERATURE=0.0
+GEMINI_MAX_OUTPUT_TOKENS=2048
+GEMINI_TIMEOUT_SECONDS=30.0
+GEMINI_MAX_RETRIES=3
+```
+
+### CLI Usage
+
+Test Gemini API connectivity and verified model discovery:
+```bash
+python scripts/test_gemini_connection.py
+```
+
+Parse an arbitrary natural language shopping query:
+```bash
+python scripts/parse_user_query.py --query "Puma running shoes under 2000 rupees"
+```
+
+Output structured JSON representation:
+```bash
+python scripts/parse_user_query.py --query "Samsung phone under 15000 with good battery life" --json
+```
+
+Interactive REPL mode:
+```bash
+python scripts/parse_user_query.py --interactive
+```
+
+Execute full 50-case extraction accuracy & latency benchmark:
+```bash
+python scripts/evaluate_query_understanding.py --pacing 0.5
+```
+
+### Phase 8 Documentation
+- **Conceptual Guide**: [`docs/concepts/llm_query_understanding_fundamentals.md`](file:///d:/Project/ShopAssist/docs/concepts/llm_query_understanding_fundamentals.md) — Comprehensive educational guide covering NLU, LLMs vs. bi-encoders, structured outputs, Pydantic invariants, prompt security, and multi-tiered validation.
+- **Engineering Implementation Report**: [`docs/phase8_llm_query_understanding.md`](file:///d:/Project/ShopAssist/docs/phase8_llm_query_understanding.md) — Complete 30-section technical report with architecture diagrams, schema definitions, prompt templates, benchmark quantiles (P50: 1,580.5 ms), accuracy metrics (98.0% exact match), and resilience evaluation.
+- **Query Understanding Data Contract**: [`docs/phase8_query_contract.md`](file:///d:/Project/ShopAssist/docs/phase8_query_contract.md) — Formal interface contract defining field semantics, nullability, category enums, currency conventions, and Phase 9/10 integration interfaces.
+- **Machine-Readable Report**: `data/interim/phase8_query_understanding_report.json`
+
+---
+
+## 7. Running Tests
+
+To run the complete automated test suite (276 tests):
 
 ```bash
 python -m pytest
 ```
 
-To run Phase 7 dense semantic retrieval tests specifically (20 tests):
+To run Phase 8 offline unit tests specifically (27 tests):
 
 ```bash
-python -m pytest tests/test_semantic_retrieval.py -v
+python -m pytest tests/test_query_understanding.py -v
+```
+
+To run Phase 8 live Gemini integration tests (6 tests, requires network & GEMINI_API_KEY):
+
+```bash
+python -m pytest tests/test_gemini_integration.py -v
 ```
 
 ---
 
-## 7. Development Status
+## 8. Development Status
 
 - **Phase 1 — Dataset Acquisition** (Completed)
   - Raw Flipkart Products 20K dataset acquired and verified.
@@ -277,5 +347,20 @@ python -m pytest tests/test_semantic_retrieval.py -v
   - Conceptual learning guide created: [`docs/concepts/dense_semantic_retrieval_fundamentals.md`](file:///d:/Project/ShopAssist/docs/concepts/dense_semantic_retrieval_fundamentals.md).
   - Engineering documentation created: [`docs/phase7_semantic_search.md`](file:///d:/Project/ShopAssist/docs/phase7_semantic_search.md).
   - Machine-readable execution report generated: `data/interim/phase7_semantic_search_report.json`.
-- **Next Phase**: **Phase 8 — LLM Query Understanding**
+- **Phase 8 — LLM Query Understanding** (Completed)
+  - Built a production-grade LLM Query Understanding Engine using the official Google Gen AI Python SDK (`google-genai` v2.29.0) and Google Gemini API (`gemini-3.1-flash-lite`).
+  - Model availability verified live via API discovery among 62 accessible models (`models/gemini-3.1-flash-lite-preview`).
+  - Implemented strongly-typed Pydantic v2 schemas: `HardConstraints` (category, brand, min_price, max_price, min_rating, currency), `QueryUnderstandingOutput`, `TokenUsageMetadata`, and `QueryUnderstandingResult`.
+  - Enforced strict normalization: 16 canonical catalog categories, 1,860 catalog brand matching & preservation, ISO-4217 currency standardization (default: `INR`).
+  - Built multi-tiered validation: Stage 1 (input sanitation), Stage 2 (API validation), Stage 3 (Pydantic bounds & invariants), Stage 4 (business rules & foreign currency clarification).
+  - Evaluated on 50 curated ground-truth test cases: **100.00% schema validity**, **100.00% category accuracy**, **98.00% brand accuracy**, **100.00% price accuracy**, **100.00% rating accuracy**, **100.00% clarification accuracy**, **99.70% hard constraints F1**, and **98.00% exact match accuracy**.
+  - Benchmarked API performance: **median P50 latency of 1,580.5 ms**, average 1,206.2 tokens/query (1,081.3 prompt / 124.8 output).
+  - Production resilience verified: exponential backoff with jitter successfully recovered from transient 503 spikes and timeout retries.
+  - Zero database writes, zero schema modifications, zero embedding recalculations (catalog integrity 100% preserved).
+  - Added 27 offline unit tests and 6 live Gemini integration tests; **276 total repository tests passing with zero regressions**.
+  - Conceptual learning guide created: [`docs/concepts/llm_query_understanding_fundamentals.md`](file:///d:/Project/ShopAssist/docs/concepts/llm_query_understanding_fundamentals.md).
+  - Engineering implementation documentation created: [`docs/phase8_llm_query_understanding.md`](file:///d:/Project/ShopAssist/docs/phase8_llm_query_understanding.md).
+  - Data contract documentation created: [`docs/phase8_query_contract.md`](file:///d:/Project/ShopAssist/docs/phase8_query_contract.md).
+  - Machine-readable execution report generated: `data/interim/phase8_query_understanding_report.json`.
+- **Next Phase**: **Phase 9 — Soft Preference Representation**
 
