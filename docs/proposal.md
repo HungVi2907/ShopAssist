@@ -6,6 +6,8 @@ ShopAssist là một hệ thống AI hỗ trợ tư vấn và đề xuất sản
 
 Người dùng tương tác với hệ thống thông qua giao diện **Telegram Bot**.
 
+Link repo: "[ShopAssist](https://github.com/HungVi2907/ShopAssist)" 
+
 Ví dụ:
 
 > “Tôi cần một chiếc laptop mỏng nhẹ dưới $800, pin tốt và khởi động nhanh để làm việc văn phòng.”
@@ -490,7 +492,7 @@ Toàn bộ tri thức sản phẩm phục vụ môi trường Production đượ
 > **Production Database: Supabase Cloud managed PostgreSQL with pgvector**
 > *(Môi trường Local Development / Testing: Local PostgreSQL + pgvector hoặc Docker Compose khi cần thử nghiệm offline)*
 
-Backend FastAPI kết nối trực tiếp tới Supabase Cloud qua connection pool chuẩn PostgreSQL (`asyncpg` / `SQLAlchemy 2.0`).
+Backend FastAPI và hệ thống ShopAssist V1 kết nối tới Supabase Cloud qua **Supavisor Session Pooler** (Port 5432, SSL enabled, biến môi trường duy nhất `SUPABASE_DB_URL`) sử dụng SQLAlchemy 2.0 async engine. Kết nối Direct hoặc Transaction Pooler không sử dụng trong V1.
 
 ### Cấu trúc bảng lưu trữ chính thức (`products`):
 

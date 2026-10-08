@@ -108,4 +108,33 @@ python -m pytest
   - Pydantic schema contract defined in `src/shopassist/data/schema.py`.
   - 8,405 cleaned candidate products validated with 100% pass rate (`data/interim/phase5_schema_readiness.json`).
   - Architecture documentation created: `docs/phase5_1_product_data_model.md`.
-- **Next Phase**: **Phase 5.2 — retrieval_text Construction & Validation** (Ready)
+- **Phase 5.2 — retrieval_text Construction & Validation** (Completed)
+  - Standardized semantic `retrieval_text` built for all 8,405 products with deterministic field ordering (`Product` -> `Category` -> `Brand` -> `Specifications` -> `Description`).
+  - Robust specification flattening with placeholder filtering (`NA`, `N/A`, `None`, `null`) and whitespace normalization.
+  - Safe description truncation at word boundaries (max ~1,200 chars) ensuring compatibility with `BAAI/bge-small-en-v1.5` context window.
+  - Numerical hard constraints (`discounted_price`, `retail_price`, `rating`) strictly excluded from semantic text.
+  - 100% valid retrieval_text rows verified (8,405 / 8,405) with 0 invalid emissions.
+  - Intermediate dataset exported: `data/interim/products_with_retrieval_text.parquet`.
+  - Quality audit report generated: `data/interim/phase5_2_retrieval_text_report.json`.
+  - Technical documentation completed: `docs/phase5_2_retrieval_text.md`.
+- **Phase 5.3 — Embedding Model Setup & Validation** (Completed)
+  - `BAAI/bge-small-en-v1.5` loaded and validated with exact 384-dimensional dense vectors and unit $L_2$ normalization.
+  - Native tokenization audit performed across all 8,405 products (mean: 212.9 tokens, only 1.94% $> 512$ tokens with entity/spec preservation).
+  - Numerical integrity verified on 200 representative products: 0 NaN, 0 Inf, 0 zero vectors.
+  - 5 multi-category semantic sanity retrieval scenarios passed (100% success).
+  - Batch performance benchmarked on NVIDIA RTX 3050 GPU (167–210 texts/s, ~50s for full catalog) and CPU fallback (~6.7 mins).
+  - Reusable `EmbeddingModel` module created in `src/shopassist/embeddings/`.
+  - Machine-readable audit report generated: `data/interim/phase5_3_embedding_model_report.json`.
+  - Engineering documentation created: `docs/phase5_3_embedding_model_validation.md`.
+- **Phase 5.4 — Supabase PostgreSQL + pgvector Provisioning** (Completed)
+  - Supabase Session Pooler connectivity verified (port 5432, SSL enabled, masked credentials).
+  - pgvector extension enabled and validated (`vector v0.8.2`).
+  - Base `products` schema provisioned (17 columns, `product_id` primary key, `product_specifications JSONB`).
+  - `vector(384)` schema type and dimension verified via PostgreSQL catalog.
+  - 6 integrity CHECK constraints and automatic `updated_at` trigger verified.
+  - Transactional smoke test passed with negative constraint checks, temporary vector inserts, `<=>` cosine distance ranking, and clean rollback (0 residual test records).
+  - Production B-Tree and HNSW indexes cleanly separated in `database/migrations/002_create_product_indexes.sql` and deferred to Phase 5.7.
+  - Machine-readable audit report generated: `data/interim/phase5_4_database_provisioning_report.json`.
+  - Engineering documentation created: `docs/phase5_4_supabase_provisioning.md`.
+- **Next Phase**: **Phase 5.5 — Batch Embedding Generation & products.parquet Export**
+

@@ -16,6 +16,7 @@ from shopassist.data.schema import (
 )
 
 MIGRATION_PATH = Path("database/migrations/001_create_product_knowledge_base.sql")
+INDEX_MIGRATION_PATH = Path("database/migrations/002_create_product_indexes.sql")
 READINESS_REPORT_PATH = Path("data/interim/phase5_schema_readiness.json")
 
 
@@ -141,7 +142,8 @@ class TestSQLMigrationArtifact:
         assert "CHECK (length(trim(retrieval_text)) > 0)" in sql
 
     def test_migration_contains_approved_indexes(self):
-        sql = MIGRATION_PATH.read_text(encoding="utf-8")
+        assert INDEX_MIGRATION_PATH.exists(), f"Index migration missing at {INDEX_MIGRATION_PATH}"
+        sql = INDEX_MIGRATION_PATH.read_text(encoding="utf-8")
         assert "idx_products_category" in sql
         assert "idx_products_price" in sql
         assert "idx_products_brand" in sql
@@ -158,7 +160,7 @@ class TestSQLMigrationArtifact:
         assert "BEFORE UPDATE ON products" in sql
 
     def test_migration_does_not_contain_unapproved_indexes(self):
-        sql = MIGRATION_PATH.read_text(encoding="utf-8")
+        sql = MIGRATION_PATH.read_text(encoding="utf-8") + INDEX_MIGRATION_PATH.read_text(encoding="utf-8")
         assert "ivfflat" not in sql.lower()
         assert "to_tsvector" not in sql.lower()
 

@@ -1,0 +1,54 @@
+{
+  "input_rows": 8405,
+  "output_rows": 8405,
+  "valid_retrieval_text_rows": 8405,
+  "invalid_retrieval_text_rows": 0,
+  "min_length": 214,
+  "max_length": 3975,
+  "mean_length": 881.62,
+  "median_length": 716.0,
+  "percentile_90": 1591.0,
+  "percentile_95": 1730.0,
+  "percentile_99": 2303.8799999999974,
+  "description_truncated_count": 813,
+  "missing_brand_count": 1988,
+  "missing_description_count": 1,
+  "empty_specs_count": 18,
+  "status": "PASS",
+  "representative_samples": {
+    "full_product": {
+      "product_id": "66101a7c61deadd6fd46d7e69ce5d9af",
+      "product_name": "3a Autocare 3D MAT Car Mat Suzuki New Swift",
+      "category": "Automotive",
+      "brand": "3a AUTOCARE",
+      "retrieval_text": "Product: 3a Autocare 3D MAT Car Mat Suzuki New Swift | Category: Automotive | Brand: 3a AUTOCARE | Specifications: Segment Type: Front 2 Pcs , Rear 3 Pcs; Brand: 3a Autocare; Used For: Clean and Dust free touring; Type: Floor Mat; Material: Microfibre; Finish: Matt; Compatible Models: Swift Dezire, Ritz, Wagon R, Alto, Celario, K10; Color: Black, Beige; Compatible Vehicle Type: CAR; Grommets Included: Yes; Vehicle Model Name: New Swift; Model Number: 3A101; Vehicle Brand: Suzuki; Spiked Sole: Yes; Model Name: 3D MAT; Sales Package: set of 5 Pcs, 1; Pack of: 5; Covered in Warranty: Manufacturing Defects; Warranty Summary: 2 Month replacement warranty against manufacturing defects; Not Covered in Warranty: Cuts or Burn during the use; Weight: 4 kg; Height: 65 cm; Width: 45 cm; Depth: 7 cm; Other Features: O light weight, heat insulation, Fit to edge, temperature and corrosion resostant and strongly antibacterial.; Water Resistant: Yes; Technology Used: Advanced | Description: Buy 3a Autocare 3D MAT Car Mat Suzuki New Swift for Rs.1350 online. 3a Autocare 3D MAT Car Mat Suzuki New Swift at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+    },
+    "missing_brand": {
+      "product_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+      "product_name": "11e Women Flats",
+      "category": "Footwear",
+      "brand": null,
+      "retrieval_text": "Product: 11e Women Flats | Category: Footwear | Specifications: Occasion: Casual; Ideal For: Women; Sole Material: PVC; Weight: 150 g (per single Sandal) - Weight of the product may vary depending on size.; Type: Flats; Heel Height: 0 inch; Insole Material: PVC; Outer Material: Synthetic Leather; Color: Beige; Care Instructions: Wash in Lukewarm Water, Do Not Bleach | Description: Flipkart.com: Buy 11e Women Flats only for Rs. 349 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+    },
+    "missing_description": {
+      "product_id": "5c753808021920c85f3a4852f1c58c40",
+      "product_name": "Amore Abstract Cushions Cover",
+      "category": "Home Furnishing",
+      "description": null,
+      "retrieval_text": "Product: Amore Abstract Cushions Cover | Category: Home Furnishing | Brand: Amore | Specifications: Brand: Amore; Collection: Ravishing; Closure: Flap; Suitable For: Cushions; Type: Square; Design Code: AC135350; Material: Silk; Pattern: Abstract; Thread Count: 350; Style Code: AC135350; Color: Multicolor; Height: 16 inch / 40 cm; Width: 16 inch / 40 cm; Number of Contents in Sales Package: Pack of 2; Sales Package: 2 Cushion Cover"
+    },
+    "empty_specifications": {
+      "product_id": "dfd348a0bd9f73ffab5dafa430b12c0f",
+      "product_name": "Cratly 7I Vase Filler",
+      "category": "Home Decor & Festive Needs",
+      "raw_specs": "[]",
+      "retrieval_text": "Product: Cratly 7I Vase Filler | Category: Home Decor & Festive Needs | Brand: Cratly | Description: Key Features of Cratly 7I Vase Filler Made of Pure glass Made by UP Agra artist Made by hand only No joints,Cratly 7I Vase Filler (Flower vase) Price: Rs. 399 Made of Pure glass:: Made by UP Agra artist :: Made by hand only :: No joints"
+    },
+    "truncated_description": {
+      "product_id": "10ba0edd1a8f404575199e419a00578d",
+      "product_name": "99Gems LR GOLD 5 in 1 MOBILE / MP3 USB USB Cable",
+      "original_desc_length": 1239,
+      "retrieval_text": "Product: 99Gems LR GOLD 5 in 1 MOBILE / MP3 USB USB Cable | Category: Computers | Brand: 99Gems | Specifications: Brand: 99Gems; Type: USB Cable; System Requirements: Usb Port; Material: pvc; Model Name: LR GOLD; Model ID: 5 in 1 MOBILE / MP3; Color: black; Power Cord Length: 1 m; Number of Contents in Sales Package: Pack of 1; Sales Package: 1 usb cable | Description: 99Gems LR GOLD 5 in 1 MOBILE / MP3 USB USB Cable (black) Price: Rs. 149 Sure To Match Your Fashion Electronics, This Black In Color 5 In 1 Data Cable From The Latest Collection , A Great Pick Against Your Valuable Currency. Perfectly Compatible With Smart Phones And Some Other Mobile Phones (Nokia, Samsung, Motorola, Huwai, Micromax, Lava, Karbonn Etc), This Data Cable Will Lend You High End Results With Is Attractive Features. Further, This Data Cable Is Helpful In Charging Your Phone And Transferring Data Between Your Pc And Laptop To Your Mobile Phone And Vice Versa. Lay A Hand On This High End Production From The Brand And Make Your Work Easy. Sure To Match Your Fashion Electronics, This Black In Color 5 In 1 Data Cable From The Latest Collection , A Great Pick Against Your Valuable Currency. Perfectly Compatible With Smart Phones And Some Other Mobile Phones (Nokia, Samsung, Motorola, Huwai, Micromax, Lava, Karbonn Etc), This Data Cable Will Lend You High End Results With Is Attractive Features. Further, This Data Cable Is Helpful In Charging Your Phone And Transferring Data Between Your Pc And Laptop To Your Mobile Phone And Vice Versa. Lay A Hand On This High End Production"
+    }
+  }
+}

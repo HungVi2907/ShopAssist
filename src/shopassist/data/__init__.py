@@ -48,6 +48,15 @@ from shopassist.data.reporting import (
     generate_markdown_report,
     save_json_reports,
 )
+from shopassist.data.retrieval_text import (
+    DEFAULT_MAX_DESCRIPTION_CHARS,
+    audit_retrieval_text_dataset,
+    build_dataset_retrieval_texts,
+    build_retrieval_text,
+    format_specifications,
+    truncate_description,
+    validate_retrieval_text,
+)
 from shopassist.data.validation import (
     check_candidate_fields,
     check_duplicate_columns,
@@ -57,6 +66,7 @@ from shopassist.data.validation import (
 )
 
 __all__ = [
+
     "load_raw_dataset",
     "validate_raw_file",
     "validate_dataframe",
@@ -99,4 +109,11 @@ __all__ = [
     "ProductKnowledgeBaseRecord",
     "validate_cleaned_dataset_readiness",
     "save_schema_readiness_report",
+    "DEFAULT_MAX_DESCRIPTION_CHARS",
+    "format_specifications",
+    "truncate_description",
+    "build_retrieval_text",
+    "validate_retrieval_text",
+    "build_dataset_retrieval_texts",
+    "audit_retrieval_text_dataset",
 ]

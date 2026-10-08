@@ -1,0 +1,120 @@
+{
+  "phase": "5.3",
+  "model_name": "BAAI/bge-small-en-v1.5",
+  "framework": "sentence-transformers",
+  "framework_version": "6.0.1",
+  "transformers_version": "5.16.1",
+  "torch_version": "2.6.0+cu124",
+  "device": "cuda",
+  "cuda_device_name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "process_ram_mb": {
+    "before_load": 696.6,
+    "after_load": 825.8,
+    "model_footprint_mb": 129.2
+  },
+  "model_load_seconds": 10.36,
+  "dataset_rows": 8405,
+  "embedding_dimension_expected": 384,
+  "embedding_dimension_actual": 384,
+  "max_sequence_length": 512,
+  "tokenization": {
+    "total_texts_audited": 8405,
+    "tokenization_elapsed_seconds": 1.041,
+    "min_tokens": 54,
+    "mean_tokens": 212.91,
+    "median_tokens": 178.0,
+    "p90_tokens": 362.0,
+    "p95_tokens": 420.0,
+    "p99_tokens": 574.9199999999983,
+    "max_tokens": 863,
+    "count_over_512": 163,
+    "percentage_over_512": 1.94
+  },
+  "sample_validation": {
+    "sample_size": 200,
+    "embedding_shape": [
+      200,
+      384
+    ],
+    "dtype": "float32",
+    "nan_count": 0,
+    "inf_count": 0,
+    "zero_vector_count": 0
+  },
+  "normalization": {
+    "enabled": true,
+    "min_l2_norm": 1.0,
+    "mean_l2_norm": 1.0,
+    "max_l2_norm": 1.0
+  },
+  "performance": {
+    "device": "cuda",
+    "batch_size": 32,
+    "sample_size": 200,
+    "elapsed_seconds": 1.197,
+    "throughput_texts_per_second": 167.03,
+    "milliseconds_per_text": 5.99,
+    "estimated_full_dataset_seconds": 50.3,
+    "estimated_full_dataset_minutes": 0.84
+  },
+  "semantic_sanity_checks": {
+    "total_scenarios": 5,
+    "passed": 5,
+    "failed": 0,
+    "status": "PASS",
+    "scenarios": [
+      {
+        "scenario_id": "scenario_1_keyboard",
+        "query": "wireless bluetooth keyboard",
+        "target_similarity": 0.7923,
+        "max_distractor_similarity": 0.4713,
+        "margin": 0.321,
+        "status": "PASS"
+      },
+      {
+        "scenario_id": "scenario_2_car_mat",
+        "query": "waterproof car floor mat",
+        "target_similarity": 0.7611,
+        "max_distractor_similarity": 0.5379,
+        "margin": 0.2233,
+        "status": "PASS"
+      },
+      {
+        "scenario_id": "scenario_3_sofa",
+        "query": "leather two seater sofa for living room",
+        "target_similarity": 0.7653,
+        "max_distractor_similarity": 0.5401,
+        "margin": 0.2252,
+        "status": "PASS"
+      },
+      {
+        "scenario_id": "scenario_4_shoes",
+        "query": "women casual flat sandals",
+        "target_similarity": 0.7582,
+        "max_distractor_similarity": 0.5705,
+        "margin": 0.1877,
+        "status": "PASS"
+      },
+      {
+        "scenario_id": "scenario_5_usb_cable",
+        "query": "fast charging micro usb data cable",
+        "target_similarity": 0.7214,
+        "max_distractor_similarity": 0.4977,
+        "margin": 0.2238,
+        "status": "PASS"
+      }
+    ]
+  },
+  "outlier_truncation_check": {
+    "longest_product_id": "3a2546675bc399953779e58d84d56650",
+    "longest_text_chars": 3975,
+    "longest_text_tokens": 863,
+    "output_vector_shape": [
+      384
+    ],
+    "is_finite": true,
+    "l2_norm": 1.0,
+    "status": "PASS"
+  },
+  "overall_status": "PASS"
+}

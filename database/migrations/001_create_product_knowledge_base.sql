@@ -44,30 +44,10 @@ CREATE TABLE IF NOT EXISTS products (
     updated_at              TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Step 3: Hard-constraint relational indexes (B-Tree)
-CREATE INDEX IF NOT EXISTS idx_products_category
-ON products (category);
+-- Note: Production B-Tree and HNSW indexes are intentionally deferred to Phase 5.7
+-- and defined in migration: database/migrations/002_create_product_indexes.sql.
 
-CREATE INDEX IF NOT EXISTS idx_products_price
-ON products (discounted_price);
-
-CREATE INDEX IF NOT EXISTS idx_products_brand
-ON products (brand);
-
--- Step 4: Composite index for primary hybrid query pattern (category + budget filtering)
-CREATE INDEX IF NOT EXISTS idx_products_category_price
-ON products (category, discounted_price);
-
--- Step 5: HNSW vector index for high-recall cosine similarity search
-CREATE INDEX IF NOT EXISTS idx_products_embedding
-ON products
-USING hnsw (embedding vector_cosine_ops)
-WITH (
-    m = 16,
-    ef_construction = 64
-);
-
--- Step 6: Automatic updated_at trigger
+-- Step 3: Automatic updated_at trigger
 CREATE OR REPLACE FUNCTION update_products_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -81,3 +61,4 @@ CREATE TRIGGER trg_products_updated_at
 BEFORE UPDATE ON products
 FOR EACH ROW
 EXECUTE FUNCTION update_products_updated_at();
+
