@@ -1,5 +1,15 @@
 # ShopAssist Query Understanding Data Contract (Phase 8)
 
+<!-- phase82-correction-start -->
+> **Phase8.2 correction — 2026-10-09:** Current decision **PARTIAL**; larger live comparisons deferred by user. Production remains original **v1**, not E5-B/v2. The historical body below is preserved; conflicting claims are superseded by [current engineering decision](phase8_2/final_engineering_report.md), [audited results](phase8_2/experimental_results.md) and [contract review](phase8_2/query_contract_review.md).
+>
+> Original50 98% EM omits preferences; shared-field EM is54%. Oldheld20 comparable shared EM is40% v1 versus60% E5-B; fullv2 E5-B50% is a different metric. Semantic-query/reason wording is not covered by slot EM. E5-B soft macro78.33%, product/exclusion exact90%, exclusion micro28.57%. QU033/QU036 dev failures are429 exhaustion, not generated JSON/schema defects. New failure-aware dev E5-B HC F1 is93.88%, soft F1 is80%; historical96%/86.67% use the frozen old policy.
+>
+> Development overlaps original50 in13/15 queries. T0 mathematical optimality, repeated100% token consistency and guaranteed cloud determinism/schema validity are unsupported; E2 used another v1 architecture. Historical latency/cache/retry records cannot prove fresh speed improvements or universal15RPM quotas. Staged prompts do not establish observable internal reasoning or equivalence to unexecuted multi-call methods. Boeing suppression is filter policy, not necessarily correct NER. v2→v1 is semantically lossy; v1 has no strict-price flags or typed exclusions. Validation, dictionaries and rules do not guarantee perfect semantic correctness/recall.
+>
+> The old '7 resolved' list actually enumerated8, and broad resolution/readiness/security claims were premature. Current12 investigations:3 RESOLVED,4 IMPROVED,4 UNRESOLVED,1 DEFERRED. Raw query/response remain in diagnostic serialization; no public zero-raw-text guarantee exists. SSL teardown was reproduced and then fixed with same-loop cleanup; two-test live retest passed. Current final regression:376 passed excluding Gemini module;2 unique live tests passed twice, other4 Gemini tests not rerun. No new live quality winner or production semantic change is claimed.
+<!-- phase82-correction-end -->
+
 > **Document Version:** 1.0.0  
 > **Schema Stability:** Stable  
 > **Target Audience:** Core AI Engineers, Backend Engineers, and Downstream Retrieval Pipeline Developers (Phases 9, 10, 11, 12).
@@ -330,15 +340,20 @@ Phase 10 (Hybrid Retrieval) consumes:
 - `output.hard_constraints: HardConstraints`
 - `output.semantic_query: str`
 
-Contract: Phase 10 constructs the SQL filter clause:
+Contract: Phase 10 constructs the SQL filter clause (with strict/inclusive boundary operator support):
 ```sql
-SELECT product_id, title, discounted_price, rating,
+SELECT product_id, product_name, discounted_price, rating,
        1 - (embedding <=> :query_vector) AS cosine_similarity
 FROM public.products
 WHERE (:category IS NULL OR category = :category)
   AND (:brand IS NULL OR brand = :brand)
-  AND (:min_price IS NULL OR discounted_price >= :min_price)
-  AND (:max_price IS NULL OR discounted_price <= :max_price)
+  -- Boundary semantics: strict (<, >) vs inclusive (<=, >=)
+  AND (:min_price IS NULL OR 
+       (CASE WHEN :min_inclusive = TRUE THEN discounted_price >= :min_price 
+             ELSE discounted_price > :min_price END))
+  AND (:max_price IS NULL OR 
+       (CASE WHEN :max_inclusive = TRUE THEN discounted_price <= :max_price 
+             ELSE discounted_price < :max_price END))
   AND (:min_rating IS NULL OR rating >= :min_rating)
 ORDER BY embedding <=> :query_vector ASC
 LIMIT :top_k;
@@ -348,6 +363,10 @@ LIMIT :top_k;
 
 ## 18. Schema Evolution & Versioning Policy
 
-- **Current Version:** `1.0.0`
-- **Backward Compatibility:** Future minor versions (e.g. `1.1.0`) may add optional fields to `HardConstraints` (such as `gender` or `color`) with default `null`.
-- **Breaking Changes:** Any change removing a field, changing field types, or altering canonical category names will trigger a major version bump (`2.0.0`) and requires downstream consumer migration.
+- **Historical Version:** `1.0.0` (Implemented in Phase 8)
+- **Refined Version:** `2.0.0` (Evaluated and proven in Phase 8.1)
+  - `product_type: str | None`: Explicit representation of the target product noun phrase, resolving confusion with soft preferences.
+  - `exclusions: list[ExclusionConstraint]`: Explicit representation of negative constraints (`target_type`, `value`), preventing unintended promotion of excluded items.
+  - `min_inclusive: bool`, `max_inclusive: bool`: Explicit boundary operators preserving strict inequalities (`<` vs `<=`).
+- **Backward Compatibility:** Schema v2.0.0 models provide `to_v1()` converters ensuring existing Phase 8 consumers continue functioning without breaking changes.
+- **Breaking Changes Policy:** Any removal of existing fields or changes to canonical category identifiers triggers a major version bump (`3.0.0`).

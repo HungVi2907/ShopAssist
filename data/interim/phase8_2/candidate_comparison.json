@@ -1,0 +1,19 @@
+{
+  "status": "HISTORICAL_REANALYSIS",
+  "common_field_paired_bootstrap": {
+    "effect": 0.2,
+    "percentile95": [
+      -0.05,
+      0.45
+    ],
+    "seed": 82,
+    "repetitions": 2000,
+    "wins": 6,
+    "losses": 2,
+    "ties": 12,
+    "unit": "query; not repeated requests"
+  },
+  "selection": "NO_NEW_LIVE_CANDIDATE_ADOPTED",
+  "production": "v1 original prompt retained",
+  "historical_e5b": "leading experimental control; not a proven production winner"
+}

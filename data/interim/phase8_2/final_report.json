@@ -1,0 +1,527 @@
+{
+  "timestamp_utc": "2026-10-09T09:26:31.725664+00:00",
+  "decision": "PARTIAL",
+  "authorized_offline_scope": "COMPLETE",
+  "live_comparisons": "NOT_RUN_USER_DEFERRED",
+  "production_model": "gemini-3.1-flash-lite",
+  "production_schema": "v1.0.0",
+  "new_semantic_candidate_adopted": false,
+  "tests": {
+    "baseline_tests": {
+      "tests": 296,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 296,
+      "seconds": 98.674,
+      "artifact": "data/interim/phase8_2/baseline_tests.xml"
+    },
+    "focused_tests": {
+      "tests": 101,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 101,
+      "seconds": 1.27,
+      "artifact": "data/interim/phase8_2/focused_tests.xml"
+    },
+    "regression_tests": {
+      "tests": 376,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 376,
+      "seconds": 75.365,
+      "artifact": "data/interim/phase8_2/regression_tests.xml"
+    },
+    "smoke_tests": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 2,
+      "seconds": 33.74,
+      "artifact": "data/interim/phase8_2/smoke_tests.xml"
+    },
+    "smoke_retest": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 2,
+      "seconds": 8.186,
+      "artifact": "data/interim/phase8_2/smoke_retest.xml"
+    }
+  },
+  "bounded_live_generation_calls": 4,
+  "distinct_live_tests": 2,
+  "remaining_gemini_tests_not_rerun": 4,
+  "issue_status_counts": {
+    "UNRESOLVED": 4,
+    "RESOLVED": 3,
+    "DEFERRED": 1,
+    "IMPROVED": 4
+  },
+  "quality": {
+    "original50": {
+      "policy": "phase82-1.0",
+      "cases": 50,
+      "unique_queries": 50,
+      "uncertainty_note": "Wilson intervals over query records",
+      "schema_validity": {
+        "count": 50,
+        "denominator": 50,
+        "rate": 1.0,
+        "wilson95": [
+          0.9286524008666414,
+          1.0
+        ]
+      },
+      "common_exact": {
+        "count": 27,
+        "denominator": 50,
+        "rate": 0.54,
+        "wilson95": [
+          0.40398871399157477,
+          0.6703034780777566
+        ]
+      },
+      "full_v2_exact": {
+        "count": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson95": null
+      },
+      "hard_exact": {
+        "count": 49,
+        "denominator": 50,
+        "rate": 0.98,
+        "wilson95": [
+          0.8950455641036219,
+          0.9964607407283539
+        ]
+      },
+      "soft_exact": {
+        "count": 28,
+        "denominator": 50,
+        "rate": 0.56,
+        "wilson95": [
+          0.4230602802165686,
+          0.6883780078874284
+        ]
+      },
+      "product_type_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson95": null
+      },
+      "exclusion_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson95": null
+      },
+      "semantic_query_lexical_accuracy": {
+        "count": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson95": null
+      },
+      "hard_micro": {
+        "tp": 164,
+        "fp": 1,
+        "fn": 0,
+        "f1": 0.9969604863221885
+      },
+      "soft_micro": {
+        "tp": 58,
+        "fp": 11,
+        "fn": 25,
+        "f1": 0.7631578947368421
+      },
+      "exclusion_micro": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "f1": null
+      },
+      "soft_macro_f1": 0.6640952380952381,
+      "soft_macro_precision": 0.6733333333333333,
+      "soft_macro_recall": 0.6733333333333333,
+      "semantic_soft_macro_f1": 0.6840952380952381,
+      "exclusion_macro_f1": null,
+      "field_accuracy": {
+        "category": 1.0,
+        "brand": 0.98,
+        "min_price": 1.0,
+        "max_price": 1.0,
+        "min_rating": 1.0,
+        "currency": 1.0,
+        "clarification": 1.0
+      },
+      "performance": {
+        "live_end_to_end": {
+          "n": 0,
+          "median_ms": null,
+          "p95_ms": null
+        },
+        "cache_lookup": {
+          "n": 0,
+          "median_ms": null,
+          "p95_ms": null
+        },
+        "historical_api_latency": "not comparable: origin/retry provenance incomplete"
+      },
+      "boundary_accuracy": {
+        "min_inclusive": {
+          "count": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson95": null
+        },
+        "max_inclusive": {
+          "count": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson95": null
+        }
+      },
+      "hallucinated_hard_constraints": {
+        "false_positive_atoms": 1,
+        "query_rate": 0.02,
+        "note": "Reference-relative false positives, including wrong values; not a universal hallucination detector"
+      },
+      "live_tokens": {
+        "observed": 0,
+        "observed_per_call": null,
+        "input_observed": 0,
+        "output_observed": 0,
+        "calls_with_observed_usage": 0,
+        "unknown_attempts": 0,
+        "per_valid": null,
+        "per_common_exact": null
+      }
+    },
+    "legacy_heldout20": {
+      "E1-A": {
+        "policy": "phase82-1.0",
+        "cases": 20,
+        "unique_queries": 20,
+        "uncertainty_note": "Wilson intervals over query records",
+        "schema_validity": {
+          "count": 20,
+          "denominator": 20,
+          "rate": 1.0,
+          "wilson95": [
+            0.8388748419471806,
+            1.0
+          ]
+        },
+        "common_exact": {
+          "count": 8,
+          "denominator": 20,
+          "rate": 0.4,
+          "wilson95": [
+            0.21880653237281705,
+            0.6134184992377469
+          ]
+        },
+        "full_v2_exact": {
+          "count": 0,
+          "denominator": 20,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.16112515805281938
+          ]
+        },
+        "hard_exact": {
+          "count": 19,
+          "denominator": 20,
+          "rate": 0.95,
+          "wilson95": [
+            0.763868806553258,
+            0.9911185511992047
+          ]
+        },
+        "soft_exact": {
+          "count": 9,
+          "denominator": 20,
+          "rate": 0.45,
+          "wilson95": [
+            0.2581978582556243,
+            0.6579146575496577
+          ]
+        },
+        "product_type_accuracy": {
+          "count": 0,
+          "denominator": 20,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.16112515805281938
+          ]
+        },
+        "exclusion_accuracy": {
+          "count": 0,
+          "denominator": 20,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.16112515805281938
+          ]
+        },
+        "semantic_query_lexical_accuracy": {
+          "count": 8,
+          "denominator": 20,
+          "rate": 0.4,
+          "wilson95": [
+            0.21880653237281705,
+            0.6134184992377469
+          ]
+        },
+        "hard_micro": {
+          "tp": 64,
+          "fp": 1,
+          "fn": 0,
+          "f1": 0.9922480620155039
+        },
+        "soft_micro": {
+          "tp": 17,
+          "fp": 9,
+          "fn": 4,
+          "f1": 0.723404255319149
+        },
+        "exclusion_micro": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 3,
+          "f1": 0.0
+        },
+        "soft_macro_f1": 0.65,
+        "soft_macro_precision": 0.6583333333333333,
+        "soft_macro_recall": 0.6833333333333333,
+        "semantic_soft_macro_f1": 0.6666666666666666,
+        "exclusion_macro_f1": 0.85,
+        "field_accuracy": {
+          "category": 1.0,
+          "brand": 0.95,
+          "min_price": 1.0,
+          "max_price": 1.0,
+          "min_rating": 1.0,
+          "currency": 1.0,
+          "clarification": 1.0
+        },
+        "performance": {
+          "live_end_to_end": {
+            "n": 0,
+            "median_ms": null,
+            "p95_ms": null
+          },
+          "cache_lookup": {
+            "n": 0,
+            "median_ms": null,
+            "p95_ms": null
+          },
+          "historical_api_latency": "not comparable: origin/retry provenance incomplete"
+        },
+        "boundary_accuracy": {
+          "min_inclusive": {
+            "count": 0,
+            "denominator": 2,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "max_inclusive": {
+            "count": 0,
+            "denominator": 13,
+            "rate": 0.0,
+            "wilson95": [
+              0.0,
+              0.22809537235419838
+            ]
+          }
+        },
+        "hallucinated_hard_constraints": {
+          "false_positive_atoms": 1,
+          "query_rate": 0.05,
+          "note": "Reference-relative false positives, including wrong values; not a universal hallucination detector"
+        },
+        "live_tokens": {
+          "observed": 0,
+          "observed_per_call": null,
+          "input_observed": 0,
+          "output_observed": 0,
+          "calls_with_observed_usage": 0,
+          "unknown_attempts": 0,
+          "per_valid": null,
+          "per_common_exact": null
+        }
+      },
+      "E5-B": {
+        "policy": "phase82-1.0",
+        "cases": 20,
+        "unique_queries": 20,
+        "uncertainty_note": "Wilson intervals over query records",
+        "schema_validity": {
+          "count": 20,
+          "denominator": 20,
+          "rate": 1.0,
+          "wilson95": [
+            0.8388748419471806,
+            1.0
+          ]
+        },
+        "common_exact": {
+          "count": 12,
+          "denominator": 20,
+          "rate": 0.6,
+          "wilson95": [
+            0.3865815007622531,
+            0.781193467627183
+          ]
+        },
+        "full_v2_exact": {
+          "count": 10,
+          "denominator": 20,
+          "rate": 0.5,
+          "wilson95": [
+            0.2992980081982123,
+            0.7007019918017877
+          ]
+        },
+        "hard_exact": {
+          "count": 19,
+          "denominator": 20,
+          "rate": 0.95,
+          "wilson95": [
+            0.763868806553258,
+            0.9911185511992047
+          ]
+        },
+        "soft_exact": {
+          "count": 13,
+          "denominator": 20,
+          "rate": 0.65,
+          "wilson95": [
+            0.43285427668523624,
+            0.818808175898918
+          ]
+        },
+        "product_type_accuracy": {
+          "count": 18,
+          "denominator": 20,
+          "rate": 0.9,
+          "wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ]
+        },
+        "exclusion_accuracy": {
+          "count": 18,
+          "denominator": 20,
+          "rate": 0.9,
+          "wilson95": [
+            0.6989663547715128,
+            0.9721335187862319
+          ]
+        },
+        "semantic_query_lexical_accuracy": {
+          "count": 8,
+          "denominator": 20,
+          "rate": 0.4,
+          "wilson95": [
+            0.21880653237281705,
+            0.6134184992377469
+          ]
+        },
+        "hard_micro": {
+          "tp": 64,
+          "fp": 1,
+          "fn": 0,
+          "f1": 0.9922480620155039
+        },
+        "soft_micro": {
+          "tp": 18,
+          "fp": 9,
+          "fn": 3,
+          "f1": 0.75
+        },
+        "exclusion_micro": {
+          "tp": 1,
+          "fp": 3,
+          "fn": 2,
+          "f1": 0.2857142857142857
+        },
+        "soft_macro_f1": 0.7833333333333333,
+        "soft_macro_precision": 0.7833333333333333,
+        "soft_macro_recall": 0.8083333333333333,
+        "semantic_soft_macro_f1": 0.8,
+        "exclusion_macro_f1": 0.9,
+        "field_accuracy": {
+          "category": 1.0,
+          "brand": 0.95,
+          "min_price": 1.0,
+          "max_price": 1.0,
+          "min_rating": 1.0,
+          "currency": 1.0,
+          "clarification": 0.95
+        },
+        "performance": {
+          "live_end_to_end": {
+            "n": 0,
+            "median_ms": null,
+            "p95_ms": null
+          },
+          "cache_lookup": {
+            "n": 0,
+            "median_ms": null,
+            "p95_ms": null
+          },
+          "historical_api_latency": "not comparable: origin/retry provenance incomplete"
+        },
+        "boundary_accuracy": {
+          "min_inclusive": {
+            "count": 2,
+            "denominator": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.34238022750665303,
+              1.0
+            ]
+          },
+          "max_inclusive": {
+            "count": 13,
+            "denominator": 13,
+            "rate": 1.0,
+            "wilson95": [
+              0.7719046276458016,
+              0.9999999999999999
+            ]
+          }
+        },
+        "hallucinated_hard_constraints": {
+          "false_positive_atoms": 1,
+          "query_rate": 0.05,
+          "note": "Reference-relative false positives, including wrong values; not a universal hallucination detector"
+        },
+        "live_tokens": {
+          "observed": 0,
+          "observed_per_call": null,
+          "input_observed": 0,
+          "output_observed": 0,
+          "calls_with_observed_usage": 0,
+          "unknown_attempts": 0,
+          "per_valid": null,
+          "per_common_exact": null
+        }
+      }
+    }
+  },
+  "fresh_heldout_metrics": null,
+  "recommendation": "Keep refining Phase8; allow interface prototypes only with documented limitations"
+}

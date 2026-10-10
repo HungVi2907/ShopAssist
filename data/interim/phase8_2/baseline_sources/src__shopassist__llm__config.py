@@ -47,7 +47,7 @@ class LLMSettings(BaseSettings):
     """Google Gemini and LLM provider configuration settings."""
 
     llm_provider: str = Field(default="gemini", alias="LLM_PROVIDER")
-    gemini_api_key: str | None = Field(default=None, alias="GEMINI_API_KEY", repr=False, exclude=True)
+    gemini_api_key: str | None = Field(default=None, alias="GEMINI_API_KEY")
     gemini_model: str = Field(default=DEFAULT_GEMINI_MODEL, alias="GEMINI_MODEL")
     gemini_temperature: float = Field(default=DEFAULT_TEMPERATURE, alias="GEMINI_TEMPERATURE")
     gemini_max_output_tokens: int = Field(default=DEFAULT_MAX_OUTPUT_TOKENS, alias="GEMINI_MAX_OUTPUT_TOKENS")

@@ -1,0 +1,3211 @@
+{
+  "E1-A": {
+    "experiment_id": "E1-A",
+    "experiment_name": "Existing Prompt (Control)",
+    "config": {
+      "id": "E1-A",
+      "name": "Existing Prompt (Control)",
+      "variable_changed": "None",
+      "purpose": "Establish exact experimental baseline on development split.",
+      "hypothesis": "Baseline prompt confuses product nouns (e.g. 'running shoes') with qualitative soft preferences.",
+      "prompt_variant": "E1-A",
+      "schema_version": "v1.0.0",
+      "temperature": 0.0,
+      "apply_rules": false,
+      "multi_stage": false,
+      "model": "gemini-3.1-flash-lite",
+      "dataset_split": "dev_15"
+    },
+    "timestamp_utc": "2026-10-09T08:01:55Z",
+    "cases_evaluated_count": 20,
+    "metrics": {
+      "total_cases_evaluated": 20,
+      "schema_validity_rate": 1.0,
+      "category_accuracy": 1.0,
+      "brand_accuracy": 0.95,
+      "price_accuracy": 1.0,
+      "boundary_operator_accuracy": 1.0,
+      "rating_accuracy": 1.0,
+      "currency_accuracy": 1.0,
+      "clarification_accuracy": 1.0,
+      "product_type_accuracy": 0.05,
+      "hard_constraints_metrics": {
+        "precision": 0.9846,
+        "recall": 1.0,
+        "f1_score": 0.9922,
+        "true_positives": 64,
+        "false_positives": 1,
+        "false_negatives": 0
+      },
+      "soft_preferences_metrics": {
+        "mean_f1": 0.65,
+        "mean_precision": 0.7083,
+        "mean_recall": 0.8833,
+        "exact_match_count": 9
+      },
+      "exclusions_mean_f1": 0.85,
+      "legacy_exact_match_rate": 0.95,
+      "strict_complete_exact_match_rate": 0.05,
+      "latency_stats_ms": {
+        "mean": 4549.99,
+        "p50": 1638.2,
+        "p95": 12736.33,
+        "min": 964.89,
+        "max": 15003.63
+      },
+      "token_usage_stats": {
+        "total_prompt_tokens": 21633,
+        "total_candidates_tokens": 2517,
+        "total_tokens": 24150,
+        "avg_tokens_per_request": 1207.5
+      }
+    },
+    "per_case_results": [
+      {
+        "test_id": "HELD001",
+        "query": "Logitech wireless gaming mouse under 2500 rs",
+        "expected": {
+          "product_type": "gaming mouse",
+          "semantic_query": "Logitech wireless gaming mouse",
+          "hard_constraints": {
+            "category": "Computers",
+            "brand": "Logitech",
+            "min_price": null,
+            "max_price": 2500.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "wireless"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Logitech wireless gaming mouse",
+          "hard_constraints": {
+            "category": "Computers",
+            "brand": "Logitech",
+            "min_price": null,
+            "max_price": 2500.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "wireless",
+            "gaming"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 12617.0,
+        "token_usage": {
+          "prompt_tokens": 1081,
+          "candidates_tokens": 127,
+          "total_tokens": 1208
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.5,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [
+            "gaming"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD002",
+        "query": "Sony noise cancelling headphones above 10000 with at least 4.5 stars",
+        "expected": {
+          "product_type": "headphones",
+          "semantic_query": "Sony noise cancelling headphones",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": "Sony",
+            "min_price": 10000.0,
+            "max_price": null,
+            "min_inclusive": false,
+            "max_inclusive": true,
+            "min_rating": 4.5,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "noise cancelling"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Sony noise cancelling headphones",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": "Sony",
+            "min_price": 10000.0,
+            "max_price": null,
+            "min_rating": 4.5,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "noise cancelling"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 9901.49,
+        "token_usage": {
+          "prompt_tokens": 1088,
+          "candidates_tokens": 127,
+          "total_tokens": 1215
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 5,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD003",
+        "query": "Puma walking shoes at most 3000 rupees",
+        "expected": {
+          "product_type": "walking shoes",
+          "semantic_query": "Puma walking shoes",
+          "hard_constraints": {
+            "category": "Footwear",
+            "brand": "Puma",
+            "min_price": null,
+            "max_price": 3000.0,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Puma walking shoes",
+          "hard_constraints": {
+            "category": "Footwear",
+            "brand": "Puma",
+            "min_price": null,
+            "max_price": 3000.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "walking"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 4677.88,
+        "token_usage": {
+          "prompt_tokens": 1081,
+          "candidates_tokens": 121,
+          "total_tokens": 1202
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.0,
+          "soft_false_positives": [
+            "walking"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD004",
+        "query": "Dell laptop for programming, but not gaming",
+        "expected": {
+          "product_type": "laptop",
+          "semantic_query": "Dell laptop",
+          "hard_constraints": {
+            "category": "Computers",
+            "brand": "Dell",
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "attribute",
+              "value": "gaming"
+            }
+          ],
+          "soft_preferences": [
+            "for programming"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Dell laptop for programming",
+          "hard_constraints": {
+            "category": "Computers",
+            "brand": "Dell",
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "for programming",
+            "not for gaming"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 9391.79,
+        "token_usage": {
+          "prompt_tokens": 1077,
+          "candidates_tokens": 122,
+          "total_tokens": 1199
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.5,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [
+            "not for gaming"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 0.0,
+          "exclusions_match": false,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD005",
+        "query": "Casio analog watch between 2000 and 5000 with leather strap",
+        "expected": {
+          "product_type": "analog watch",
+          "semantic_query": "Casio analog watch",
+          "hard_constraints": {
+            "category": "Watches",
+            "brand": "Casio",
+            "min_price": 2000.0,
+            "max_price": 5000.0,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "leather strap"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Casio analog watch leather strap",
+          "hard_constraints": {
+            "category": "Watches",
+            "brand": "Casio",
+            "min_price": 2000.0,
+            "max_price": 5000.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "analog",
+            "leather strap"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1080.77,
+        "token_usage": {
+          "prompt_tokens": 1088,
+          "candidates_tokens": 135,
+          "total_tokens": 1223
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.5,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [
+            "analog"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 5,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD006",
+        "query": "Nike sports shoes without leather under 4000",
+        "expected": {
+          "product_type": "sports shoes",
+          "semantic_query": "Nike sports shoes",
+          "hard_constraints": {
+            "category": "Footwear",
+            "brand": "Nike",
+            "min_price": null,
+            "max_price": 4000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "attribute",
+              "value": "leather"
+            }
+          ],
+          "soft_preferences": [],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Nike sports shoes without leather",
+          "hard_constraints": {
+            "category": "Footwear",
+            "brand": "Nike",
+            "min_price": null,
+            "max_price": 4000.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "non-leather"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1562.55,
+        "token_usage": {
+          "prompt_tokens": 1080,
+          "candidates_tokens": 123,
+          "total_tokens": 1203
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.0,
+          "soft_false_positives": [
+            "non-leather"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 0.0,
+          "exclusions_match": false,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD007",
+        "query": "ergonomic mesh office chair with lumbar support below 7000",
+        "expected": {
+          "product_type": "office chair",
+          "semantic_query": "ergonomic mesh office chair",
+          "hard_constraints": {
+            "category": "Furniture",
+            "brand": null,
+            "min_price": null,
+            "max_price": 7000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "ergonomic",
+            "mesh",
+            "with lumbar support"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "ergonomic mesh office chair with lumbar support",
+          "hard_constraints": {
+            "category": "Furniture",
+            "brand": null,
+            "min_price": null,
+            "max_price": 7000.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "ergonomic",
+            "mesh",
+            "lumbar support"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1559.48,
+        "token_usage": {
+          "prompt_tokens": 1083,
+          "candidates_tokens": 135,
+          "total_tokens": 1218
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.6667,
+          "soft_preferences_recall": 0.6667,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [
+            "lumbar support"
+          ],
+          "soft_false_negatives": [
+            "with lumbar support"
+          ],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD008",
+        "query": "smartphone under 20000, actually make it under 25000",
+        "expected": {
+          "product_type": "smartphone",
+          "semantic_query": "smartphone",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": null,
+            "min_price": null,
+            "max_price": 25000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "smartphone",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": null,
+            "min_price": null,
+            "max_price": 25000.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 10045.19,
+        "token_usage": {
+          "prompt_tokens": 1088,
+          "candidates_tokens": 111,
+          "total_tokens": 1199
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD009",
+        "query": "smartwatch under 150 dollars",
+        "expected": {
+          "product_type": "smartwatch",
+          "semantic_query": "smartwatch",
+          "hard_constraints": {
+            "category": "Watches",
+            "brand": null,
+            "min_price": null,
+            "max_price": 150.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "USD"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true
+        },
+        "actual": {
+          "semantic_query": "smartwatch",
+          "hard_constraints": {
+            "category": "Watches",
+            "brand": null,
+            "min_price": null,
+            "max_price": 150.0,
+            "min_rating": null,
+            "currency": "USD"
+          },
+          "soft_preferences": [],
+          "needs_clarification": true,
+          "clarification_reason": "The user specified a currency other than INR (USD)."
+        },
+        "is_valid": true,
+        "latency_ms": 1019.81,
+        "token_usage": {
+          "prompt_tokens": 1077,
+          "candidates_tokens": 119,
+          "total_tokens": 1196
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD010",
+        "query": "cheap portable Bluetooth speaker for outdoor party",
+        "expected": {
+          "product_type": "bluetooth speaker",
+          "semantic_query": "portable Bluetooth speaker",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "cheap",
+            "for outdoor party",
+            "portable"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "portable Bluetooth speaker",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "cheap",
+            "portable",
+            "for outdoor party"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1713.85,
+        "token_usage": {
+          "prompt_tokens": 1076,
+          "candidates_tokens": 126,
+          "total_tokens": 1202
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 2,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD011",
+        "query": "Bosch hammer drill machine at least 1500 watts under 5000",
+        "expected": {
+          "product_type": "hammer drill machine",
+          "semantic_query": "Bosch hammer drill machine",
+          "hard_constraints": {
+            "category": "Tools & Hardware",
+            "brand": "Bosch",
+            "min_price": null,
+            "max_price": 5000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "1500 watts"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Bosch hammer drill machine 1500 watts",
+          "hard_constraints": {
+            "category": "Tools & Hardware",
+            "brand": "Bosch",
+            "min_price": null,
+            "max_price": 5000.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "1500 watts"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 979.22,
+        "token_usage": {
+          "prompt_tokens": 1088,
+          "candidates_tokens": 133,
+          "total_tokens": 1221
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD012",
+        "query": "show me some good stuff to purchase online",
+        "expected": {
+          "product_type": null,
+          "semantic_query": "unspecified product query",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true
+        },
+        "actual": {
+          "semantic_query": "products",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": true,
+          "clarification_reason": "The user query is excessively ambiguous and does not specify a product category or intent."
+        },
+        "is_valid": true,
+        "latency_ms": 964.89,
+        "token_usage": {
+          "prompt_tokens": 1077,
+          "candidates_tokens": 116,
+          "total_tokens": 1193
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 1,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD013",
+        "query": "fresh organic farm milk 1 litre carton",
+        "expected": {
+          "product_type": "milk",
+          "semantic_query": "fresh organic farm milk",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true
+        },
+        "actual": {
+          "semantic_query": "organic farm milk 1 litre carton",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "fresh",
+            "organic"
+          ],
+          "needs_clarification": true,
+          "clarification_reason": "The requested product category (groceries/milk) is not supported by the platform."
+        },
+        "is_valid": true,
+        "latency_ms": 1409.73,
+        "token_usage": {
+          "prompt_tokens": 1077,
+          "candidates_tokens": 136,
+          "total_tokens": 1213
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.0,
+          "soft_false_positives": [
+            "fresh",
+            "organic"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 1,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD014",
+        "query": "Cello stainless steel insulated water bottle 1000ml under 800",
+        "expected": {
+          "product_type": "water bottle",
+          "semantic_query": "Cello stainless steel insulated water bottle",
+          "hard_constraints": {
+            "category": "Kitchen & Dining",
+            "brand": "Cello",
+            "min_price": null,
+            "max_price": 800.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "1000ml",
+            "insulated",
+            "stainless steel"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Cello stainless steel insulated water bottle 1000ml",
+          "hard_constraints": {
+            "category": "Kitchen & Dining",
+            "brand": "Cello",
+            "min_price": null,
+            "max_price": 800.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "stainless steel",
+            "insulated",
+            "1000ml"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 3433.21,
+        "token_usage": {
+          "prompt_tokens": 1087,
+          "candidates_tokens": 145,
+          "total_tokens": 1232
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD015",
+        "query": "Canon camera lens, but no telephoto lenses",
+        "expected": {
+          "product_type": "camera lens",
+          "semantic_query": "Canon camera lens",
+          "hard_constraints": {
+            "category": "Cameras & Accessories",
+            "brand": "Canon",
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "product_type",
+              "value": "telephoto"
+            }
+          ],
+          "soft_preferences": [],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Canon camera lens excluding telephoto",
+          "hard_constraints": {
+            "category": "Cameras & Accessories",
+            "brand": "Canon",
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "non-telephoto"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1130.01,
+        "token_usage": {
+          "prompt_tokens": 1078,
+          "candidates_tokens": 120,
+          "total_tokens": 1198
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.0,
+          "soft_false_positives": [
+            "non-telephoto"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 0.0,
+          "exclusions_match": false,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD016",
+        "query": "lightweight baby stroller foldable under 6000 with 4 star rating",
+        "expected": {
+          "product_type": "baby stroller",
+          "semantic_query": "lightweight foldable baby stroller",
+          "hard_constraints": {
+            "category": "Baby Care",
+            "brand": null,
+            "min_price": null,
+            "max_price": 6000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": 4.0,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "foldable",
+            "lightweight"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "lightweight foldable baby stroller",
+          "hard_constraints": {
+            "category": "Baby Care",
+            "brand": null,
+            "min_price": null,
+            "max_price": 6000.0,
+            "min_rating": 4.0,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "lightweight",
+            "foldable"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 9411.69,
+        "token_usage": {
+          "prompt_tokens": 1085,
+          "candidates_tokens": 130,
+          "total_tokens": 1215
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD017",
+        "query": "Parker rollerball pen pack of 2 under 500",
+        "expected": {
+          "product_type": "rollerball pen",
+          "semantic_query": "Parker rollerball pen",
+          "hard_constraints": {
+            "category": "Pens & Stationery",
+            "brand": "Parker",
+            "min_price": null,
+            "max_price": 500.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "pack of 2"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "Parker rollerball pen pack of 2",
+          "hard_constraints": {
+            "category": "Pens & Stationery",
+            "brand": "Parker",
+            "min_price": null,
+            "max_price": 500.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 15003.63,
+        "token_usage": {
+          "prompt_tokens": 1082,
+          "candidates_tokens": 116,
+          "total_tokens": 1198
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 0.0,
+          "soft_preferences_f1": 0.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [
+            "pack of 2"
+          ],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD018",
+        "query": "leather wallet for men below 1200",
+        "expected": {
+          "product_type": "wallet",
+          "semantic_query": "leather wallet",
+          "hard_constraints": {
+            "category": "Bags, Wallets & Belts",
+            "brand": null,
+            "min_price": null,
+            "max_price": 1200.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "for men",
+            "leather"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "leather wallet for men",
+          "hard_constraints": {
+            "category": "Bags, Wallets & Belts",
+            "brand": null,
+            "min_price": null,
+            "max_price": 1200.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "leather"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 2693.45,
+        "token_usage": {
+          "prompt_tokens": 1079,
+          "candidates_tokens": 125,
+          "total_tokens": 1204
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 0.5,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [],
+          "soft_false_negatives": [
+            "for men"
+          ],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD019",
+        "query": "commercial Airbus A320 passenger jet plane",
+        "expected": {
+          "product_type": "passenger jet plane",
+          "semantic_query": "Airbus A320 passenger jet plane",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true
+        },
+        "actual": {
+          "semantic_query": "commercial Airbus A320 passenger jet plane",
+          "hard_constraints": {
+            "category": null,
+            "brand": "Airbus",
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": true,
+          "clarification_reason": "The requested item (commercial passenger jet) is not available in the catalog categories."
+        },
+        "is_valid": true,
+        "latency_ms": 1273.74,
+        "token_usage": {
+          "prompt_tokens": 1078,
+          "candidates_tokens": 126,
+          "total_tokens": 1204
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": false,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": false,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 1,
+          "false_positives": 1,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD020",
+        "query": "waterproof car body cover for Honda City under 1800",
+        "expected": {
+          "product_type": "car body cover",
+          "semantic_query": "waterproof car body cover for Honda City",
+          "hard_constraints": {
+            "category": "Automotive",
+            "brand": null,
+            "min_price": null,
+            "max_price": 1800.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "for honda city",
+            "waterproof"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "semantic_query": "waterproof car body cover for Honda City",
+          "hard_constraints": {
+            "category": "Automotive",
+            "brand": null,
+            "min_price": null,
+            "max_price": 1800.0,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [
+            "waterproof"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1130.35,
+        "token_usage": {
+          "prompt_tokens": 1083,
+          "candidates_tokens": 124,
+          "total_tokens": 1207
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 0.5,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [],
+          "soft_false_negatives": [
+            "for honda city"
+          ],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      }
+    ]
+  },
+  "E5-B": {
+    "experiment_id": "E5-B",
+    "experiment_name": "Logically Staged Extraction (Single-Call CoT)",
+    "config": {
+      "id": "E5-B",
+      "name": "Logically Staged Extraction (Single-Call CoT)",
+      "variable_changed": "Internal reasoning structure",
+      "purpose": "Evaluate structured 5-stage reasoning instructions within a single API request.",
+      "hypothesis": "Logical staging improves isolation between stages without requiring multiple API calls.",
+      "prompt_variant": "E5-B",
+      "schema_version": "v2.0.0",
+      "temperature": 0.0,
+      "apply_rules": true,
+      "multi_stage": false,
+      "model": "gemini-3.1-flash-lite",
+      "dataset_split": "dev_15"
+    },
+    "timestamp_utc": "2026-10-09T08:04:54Z",
+    "cases_evaluated_count": 20,
+    "metrics": {
+      "total_cases_evaluated": 20,
+      "schema_validity_rate": 1.0,
+      "category_accuracy": 1.0,
+      "brand_accuracy": 0.95,
+      "price_accuracy": 1.0,
+      "boundary_operator_accuracy": 1.0,
+      "rating_accuracy": 1.0,
+      "currency_accuracy": 1.0,
+      "clarification_accuracy": 0.95,
+      "product_type_accuracy": 0.9,
+      "hard_constraints_metrics": {
+        "precision": 0.9846,
+        "recall": 1.0,
+        "f1_score": 0.9922,
+        "true_positives": 64,
+        "false_positives": 1,
+        "false_negatives": 0
+      },
+      "soft_preferences_metrics": {
+        "mean_f1": 0.7833,
+        "mean_precision": 0.8333,
+        "mean_recall": 0.9083,
+        "exact_match_count": 13
+      },
+      "exclusions_mean_f1": 0.9,
+      "legacy_exact_match_rate": 0.9,
+      "strict_complete_exact_match_rate": 0.5,
+      "latency_stats_ms": {
+        "mean": 3354.6,
+        "p50": 1480.78,
+        "p95": 8496.28,
+        "min": 1087.96,
+        "max": 9690.36
+      },
+      "token_usage_stats": {
+        "total_prompt_tokens": 9873,
+        "total_candidates_tokens": 3320,
+        "total_tokens": 13193,
+        "avg_tokens_per_request": 659.6
+      }
+    },
+    "per_case_results": [
+      {
+        "test_id": "HELD001",
+        "query": "Logitech wireless gaming mouse under 2500 rs",
+        "expected": {
+          "product_type": "gaming mouse",
+          "semantic_query": "Logitech wireless gaming mouse",
+          "hard_constraints": {
+            "category": "Computers",
+            "brand": "Logitech",
+            "min_price": null,
+            "max_price": 2500.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "wireless"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "wireless gaming mouse",
+          "semantic_query": "Logitech wireless gaming mouse",
+          "hard_constraints": {
+            "category": "Computers",
+            "brand": "Logitech",
+            "min_price": null,
+            "max_price": 2500.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "wireless",
+            "gaming"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1174.29,
+        "token_usage": {
+          "prompt_tokens": 493,
+          "candidates_tokens": 161,
+          "total_tokens": 654
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.5,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [
+            "gaming"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD002",
+        "query": "Sony noise cancelling headphones above 10000 with at least 4.5 stars",
+        "expected": {
+          "product_type": "headphones",
+          "semantic_query": "Sony noise cancelling headphones",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": "Sony",
+            "min_price": 10000.0,
+            "max_price": null,
+            "min_inclusive": false,
+            "max_inclusive": true,
+            "min_rating": 4.5,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "noise cancelling"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "noise cancelling headphones",
+          "semantic_query": "Sony noise cancelling headphones",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": "Sony",
+            "min_price": 10000.0,
+            "max_price": null,
+            "min_inclusive": false,
+            "max_inclusive": true,
+            "min_rating": 4.5,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1414.26,
+        "token_usage": {
+          "prompt_tokens": 500,
+          "candidates_tokens": 152,
+          "total_tokens": 652
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": false,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 0.0,
+          "soft_preferences_f1": 0.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [
+            "noise cancelling"
+          ],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 5,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD003",
+        "query": "Puma walking shoes at most 3000 rupees",
+        "expected": {
+          "product_type": "walking shoes",
+          "semantic_query": "Puma walking shoes",
+          "hard_constraints": {
+            "category": "Footwear",
+            "brand": "Puma",
+            "min_price": null,
+            "max_price": 3000.0,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "walking shoes",
+          "semantic_query": "Puma walking shoes",
+          "hard_constraints": {
+            "category": "Footwear",
+            "brand": "Puma",
+            "min_price": null,
+            "max_price": 3000.0,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1787.03,
+        "token_usage": {
+          "prompt_tokens": 493,
+          "candidates_tokens": 146,
+          "total_tokens": 639
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD004",
+        "query": "Dell laptop for programming, but not gaming",
+        "expected": {
+          "product_type": "laptop",
+          "semantic_query": "Dell laptop",
+          "hard_constraints": {
+            "category": "Computers",
+            "brand": "Dell",
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "attribute",
+              "value": "gaming"
+            }
+          ],
+          "soft_preferences": [
+            "for programming"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "laptop",
+          "semantic_query": "Dell laptop for programming",
+          "hard_constraints": {
+            "category": "Computers",
+            "brand": "Dell",
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "feature",
+              "value": "gaming"
+            }
+          ],
+          "soft_preferences": [
+            "for programming"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1193.86,
+        "token_usage": {
+          "prompt_tokens": 489,
+          "candidates_tokens": 176,
+          "total_tokens": 665
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 0.0,
+          "exclusions_match": false,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD005",
+        "query": "Casio analog watch between 2000 and 5000 with leather strap",
+        "expected": {
+          "product_type": "analog watch",
+          "semantic_query": "Casio analog watch",
+          "hard_constraints": {
+            "category": "Watches",
+            "brand": "Casio",
+            "min_price": 2000.0,
+            "max_price": 5000.0,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "leather strap"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "analog watch",
+          "semantic_query": "Casio analog watch leather strap",
+          "hard_constraints": {
+            "category": "Watches",
+            "brand": "Casio",
+            "min_price": 2000.0,
+            "max_price": 5000.0,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "analog",
+            "leather strap"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1483.99,
+        "token_usage": {
+          "prompt_tokens": 500,
+          "candidates_tokens": 166,
+          "total_tokens": 666
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.5,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [
+            "analog"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 5,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD006",
+        "query": "Nike sports shoes without leather under 4000",
+        "expected": {
+          "product_type": "sports shoes",
+          "semantic_query": "Nike sports shoes",
+          "hard_constraints": {
+            "category": "Footwear",
+            "brand": "Nike",
+            "min_price": null,
+            "max_price": 4000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "attribute",
+              "value": "leather"
+            }
+          ],
+          "soft_preferences": [],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "sports shoes",
+          "semantic_query": "Nike sports shoes",
+          "hard_constraints": {
+            "category": "Footwear",
+            "brand": "Nike",
+            "min_price": null,
+            "max_price": 4000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "attribute",
+              "value": "leather"
+            }
+          ],
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1477.58,
+        "token_usage": {
+          "prompt_tokens": 492,
+          "candidates_tokens": 171,
+          "total_tokens": 663
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD007",
+        "query": "ergonomic mesh office chair with lumbar support below 7000",
+        "expected": {
+          "product_type": "office chair",
+          "semantic_query": "ergonomic mesh office chair",
+          "hard_constraints": {
+            "category": "Furniture",
+            "brand": null,
+            "min_price": null,
+            "max_price": 7000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "ergonomic",
+            "mesh",
+            "with lumbar support"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "office chair",
+          "semantic_query": "ergonomic mesh office chair lumbar support",
+          "hard_constraints": {
+            "category": "Furniture",
+            "brand": null,
+            "min_price": null,
+            "max_price": 7000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "ergonomic",
+            "mesh",
+            "lumbar support"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1272.81,
+        "token_usage": {
+          "prompt_tokens": 495,
+          "candidates_tokens": 167,
+          "total_tokens": 662
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.6667,
+          "soft_preferences_recall": 0.6667,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [
+            "lumbar support"
+          ],
+          "soft_false_negatives": [
+            "with lumbar support"
+          ],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD008",
+        "query": "smartphone under 20000, actually make it under 25000",
+        "expected": {
+          "product_type": "smartphone",
+          "semantic_query": "smartphone",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": null,
+            "min_price": null,
+            "max_price": 25000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "smartphone",
+          "semantic_query": "smartphone",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": null,
+            "min_price": null,
+            "max_price": 25000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 8387.75,
+        "token_usage": {
+          "prompt_tokens": 500,
+          "candidates_tokens": 143,
+          "total_tokens": 643
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD009",
+        "query": "smartwatch under 150 dollars",
+        "expected": {
+          "product_type": "smartwatch",
+          "semantic_query": "smartwatch",
+          "hard_constraints": {
+            "category": "Watches",
+            "brand": null,
+            "min_price": null,
+            "max_price": 150.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "USD"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true
+        },
+        "actual": {
+          "product_type": "smartwatch",
+          "semantic_query": "smartwatch",
+          "hard_constraints": {
+            "category": "Watches",
+            "brand": null,
+            "min_price": null,
+            "max_price": 150.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "USD"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1087.96,
+        "token_usage": {
+          "prompt_tokens": 489,
+          "candidates_tokens": 141,
+          "total_tokens": 630
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": false,
+          "product_type_match": true,
+          "is_legacy_exact_match": false,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD010",
+        "query": "cheap portable Bluetooth speaker for outdoor party",
+        "expected": {
+          "product_type": "bluetooth speaker",
+          "semantic_query": "portable Bluetooth speaker",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "cheap",
+            "for outdoor party",
+            "portable"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "bluetooth speaker",
+          "semantic_query": "portable Bluetooth speaker outdoor party",
+          "hard_constraints": {
+            "category": "Mobiles & Accessories",
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "cheap",
+            "portable",
+            "for outdoor party"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1157.55,
+        "token_usage": {
+          "prompt_tokens": 488,
+          "candidates_tokens": 163,
+          "total_tokens": 651
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 2,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD011",
+        "query": "Bosch hammer drill machine at least 1500 watts under 5000",
+        "expected": {
+          "product_type": "hammer drill machine",
+          "semantic_query": "Bosch hammer drill machine",
+          "hard_constraints": {
+            "category": "Tools & Hardware",
+            "brand": "Bosch",
+            "min_price": null,
+            "max_price": 5000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "1500 watts"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "hammer drill machine",
+          "semantic_query": "Bosch hammer drill machine 1500 watts",
+          "hard_constraints": {
+            "category": "Tools & Hardware",
+            "brand": "Bosch",
+            "min_price": null,
+            "max_price": 5000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "1500 watts"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 7197.69,
+        "token_usage": {
+          "prompt_tokens": 500,
+          "candidates_tokens": 167,
+          "total_tokens": 667
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD012",
+        "query": "show me some good stuff to purchase online",
+        "expected": {
+          "product_type": null,
+          "semantic_query": "unspecified product query",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true
+        },
+        "actual": {
+          "product_type": null,
+          "semantic_query": "purchase online",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true,
+          "clarification_reason": "The query is too broad and does not specify a product type or category to search for."
+        },
+        "is_valid": true,
+        "latency_ms": 1427.86,
+        "token_usage": {
+          "prompt_tokens": 489,
+          "candidates_tokens": 152,
+          "total_tokens": 641
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 1,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD013",
+        "query": "fresh organic farm milk 1 litre carton",
+        "expected": {
+          "product_type": "milk",
+          "semantic_query": "fresh organic farm milk",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true
+        },
+        "actual": {
+          "product_type": "milk",
+          "semantic_query": "fresh organic farm milk 1 litre carton",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "fresh",
+            "organic",
+            "farm",
+            "1 litre",
+            "carton"
+          ],
+          "needs_clarification": true,
+          "clarification_reason": "Out-of-domain request or unsupported product category."
+        },
+        "is_valid": true,
+        "latency_ms": 1496.64,
+        "token_usage": {
+          "prompt_tokens": 489,
+          "candidates_tokens": 252,
+          "total_tokens": 741
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.0,
+          "soft_false_positives": [
+            "1 litre",
+            "carton",
+            "farm",
+            "fresh",
+            "organic"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 1,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD014",
+        "query": "Cello stainless steel insulated water bottle 1000ml under 800",
+        "expected": {
+          "product_type": "water bottle",
+          "semantic_query": "Cello stainless steel insulated water bottle",
+          "hard_constraints": {
+            "category": "Kitchen & Dining",
+            "brand": "Cello",
+            "min_price": null,
+            "max_price": 800.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "1000ml",
+            "insulated",
+            "stainless steel"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "water bottle",
+          "semantic_query": "Cello stainless steel insulated water bottle 1000ml",
+          "hard_constraints": {
+            "category": "Kitchen & Dining",
+            "brand": "Cello",
+            "min_price": null,
+            "max_price": 800.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "stainless steel",
+            "insulated",
+            "1000ml"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 6511.65,
+        "token_usage": {
+          "prompt_tokens": 499,
+          "candidates_tokens": 178,
+          "total_tokens": 677
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD015",
+        "query": "Canon camera lens, but no telephoto lenses",
+        "expected": {
+          "product_type": "camera lens",
+          "semantic_query": "Canon camera lens",
+          "hard_constraints": {
+            "category": "Cameras & Accessories",
+            "brand": "Canon",
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "product_type",
+              "value": "telephoto"
+            }
+          ],
+          "soft_preferences": [],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "camera lens",
+          "semantic_query": "Canon camera lens",
+          "hard_constraints": {
+            "category": "Cameras & Accessories",
+            "brand": "Canon",
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [
+            {
+              "target_type": "attribute",
+              "value": "telephoto"
+            },
+            {
+              "target_type": "attribute",
+              "value": "telephoto lenses"
+            }
+          ],
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1247.67,
+        "token_usage": {
+          "prompt_tokens": 490,
+          "candidates_tokens": 169,
+          "total_tokens": 659
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 0.0,
+          "exclusions_match": false,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD016",
+        "query": "lightweight baby stroller foldable under 6000 with 4 star rating",
+        "expected": {
+          "product_type": "baby stroller",
+          "semantic_query": "lightweight foldable baby stroller",
+          "hard_constraints": {
+            "category": "Baby Care",
+            "brand": null,
+            "min_price": null,
+            "max_price": 6000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": 4.0,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "foldable",
+            "lightweight"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "baby stroller",
+          "semantic_query": "lightweight foldable baby stroller",
+          "hard_constraints": {
+            "category": "Baby Care",
+            "brand": null,
+            "min_price": null,
+            "max_price": 6000.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": 4.0,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "lightweight",
+            "foldable"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 3123.18,
+        "token_usage": {
+          "prompt_tokens": 497,
+          "candidates_tokens": 163,
+          "total_tokens": 660
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD017",
+        "query": "Parker rollerball pen pack of 2 under 500",
+        "expected": {
+          "product_type": "rollerball pen",
+          "semantic_query": "Parker rollerball pen",
+          "hard_constraints": {
+            "category": "Pens & Stationery",
+            "brand": "Parker",
+            "min_price": null,
+            "max_price": 500.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "pack of 2"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "rollerball pen",
+          "semantic_query": "Parker rollerball pen pack of 2",
+          "hard_constraints": {
+            "category": "Pens & Stationery",
+            "brand": "Parker",
+            "min_price": null,
+            "max_price": 500.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "pack of 2"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 1183.33,
+        "token_usage": {
+          "prompt_tokens": 494,
+          "candidates_tokens": 161,
+          "total_tokens": 655
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 4,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD018",
+        "query": "leather wallet for men below 1200",
+        "expected": {
+          "product_type": "wallet",
+          "semantic_query": "leather wallet",
+          "hard_constraints": {
+            "category": "Bags, Wallets & Belts",
+            "brand": null,
+            "min_price": null,
+            "max_price": 1200.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "for men",
+            "leather"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "wallet",
+          "semantic_query": "leather wallet for men",
+          "hard_constraints": {
+            "category": "Bags, Wallets & Belts",
+            "brand": null,
+            "min_price": null,
+            "max_price": 1200.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "leather",
+            "for men"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 8433.43,
+        "token_usage": {
+          "prompt_tokens": 491,
+          "candidates_tokens": 163,
+          "total_tokens": 654
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": true,
+          "soft_exact_match": true,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 1.0,
+          "soft_false_positives": [],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD019",
+        "query": "commercial Airbus A320 passenger jet plane",
+        "expected": {
+          "product_type": "passenger jet plane",
+          "semantic_query": "Airbus A320 passenger jet plane",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [],
+          "needs_clarification": true
+        },
+        "actual": {
+          "product_type": "passenger jet plane",
+          "semantic_query": "commercial Airbus A320 passenger jet plane",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_inclusive": true,
+            "max_inclusive": true,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "commercial"
+          ],
+          "needs_clarification": true,
+          "clarification_reason": "Out-of-domain request or unsupported product category."
+        },
+        "is_valid": true,
+        "latency_ms": 6343.12,
+        "token_usage": {
+          "prompt_tokens": 490,
+          "candidates_tokens": 171,
+          "total_tokens": 661
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": true,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": true,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 0.0,
+          "soft_preferences_recall": 1.0,
+          "soft_preferences_f1": 0.0,
+          "soft_false_positives": [
+            "commercial"
+          ],
+          "soft_false_negatives": [],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 1,
+          "false_positives": 0,
+          "false_negatives": 0
+        }
+      },
+      {
+        "test_id": "HELD020",
+        "query": "waterproof car body cover for Honda City under 1800",
+        "expected": {
+          "product_type": "car body cover",
+          "semantic_query": "waterproof car body cover for Honda City",
+          "hard_constraints": {
+            "category": "Automotive",
+            "brand": null,
+            "min_price": null,
+            "max_price": 1800.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "for honda city",
+            "waterproof"
+          ],
+          "needs_clarification": false
+        },
+        "actual": {
+          "product_type": "car body cover",
+          "semantic_query": "waterproof car body cover Honda City",
+          "hard_constraints": {
+            "category": "Automotive",
+            "brand": "Honda",
+            "min_price": null,
+            "max_price": 1800.0,
+            "min_inclusive": true,
+            "max_inclusive": false,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "exclusions": [],
+          "soft_preferences": [
+            "waterproof"
+          ],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "is_valid": true,
+        "latency_ms": 9690.36,
+        "token_usage": {
+          "prompt_tokens": 495,
+          "candidates_tokens": 158,
+          "total_tokens": 653
+        },
+        "metrics": {
+          "category_match": true,
+          "brand_match": false,
+          "price_match": true,
+          "min_price_match": true,
+          "max_price_match": true,
+          "min_inclusive_match": true,
+          "max_inclusive_match": true,
+          "boundary_operator_match": true,
+          "rating_match": true,
+          "currency_match": true,
+          "clarification_match": true,
+          "product_type_match": true,
+          "is_legacy_exact_match": false,
+          "is_strict_complete_exact_match": false,
+          "soft_exact_match": false,
+          "soft_preferences_precision": 1.0,
+          "soft_preferences_recall": 0.5,
+          "soft_preferences_f1": 0.6667,
+          "soft_false_positives": [],
+          "soft_false_negatives": [
+            "for honda city"
+          ],
+          "exclusions_f1": 1.0,
+          "exclusions_match": true,
+          "true_positives": 3,
+          "false_positives": 1,
+          "false_negatives": 0
+        }
+      }
+    ]
+  }
+}

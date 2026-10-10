@@ -1,0 +1,82 @@
+{
+  "timestamp_utc": "2026-10-09T09:26:31.725664+00:00",
+  "sources": [
+    {
+      "id": "R1",
+      "description": "- **R1** Google, [Structured outputs](https://ai.google.dev/gemini-api/docs/generate-content/structured-output). Living documentation; publication date not established. Schema subset and semantic validation limits.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R2",
+      "description": "- **R2** Google, [Gen AI Python SDK](https://googleapis.github.io/python-genai/) and [official implementation](https://github.com/googleapis/python-genai/blob/main/google/genai/_api_client.py). Living documentation/source; installed version 2.29.0 checked locally. Retry policy and session lifecycle.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R3",
+      "description": "- **R3** Google, [Prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies). Living documentation; publication date not established. Explicit instructions and consistent varied demonstrations.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R4",
+      "description": "- **R4** Google, [Gemini 3 developer guide, temperature](https://ai.google.dev/gemini-api/docs/gemini-3). Living/deprecated guide accessed on the stated date; recommends default 1.0 for Gemini 3. No model migration is implied.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R5",
+      "description": "- **R5** Wu and Sun, [Negation Scope Refinement via Boundary Shift Loss](https://aclanthology.org/2023.findings-acl.379/), Findings ACL, July 2023. Negation scope boundaries matter; its trained model was not implemented here.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R6",
+      "description": "- **R6** Dror et al., [The Hitchhiker's Guide to Testing Statistical Significance in NLP](https://aclanthology.org/P18-1128/), ACL, July 2018. Match tests to metrics and experimental units.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R7",
+      "description": "- **R7** Peyrard et al., [Better than Average: Paired Evaluation of NLP systems](https://aclanthology.org/2021.acl-long.179/), ACL, August 2021. Instance pairing informs comparison.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R8",
+      "description": "- **R8** Wang et al., [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171), submitted March 21, 2022; ICLR 2023. Multi-sample reasoning evidence, not a shopping extraction guarantee.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R9",
+      "description": "- **R9** Google, [Rate limits](https://ai.google.dev/gemini-api/docs/rate-limits). Living documentation; limits depend on project/tier/model.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R10",
+      "description": "- **R10** aiohttp, [Advanced client usage: graceful shutdown](https://docs.aiohttp.org/en/stable/client_advanced.html#graceful-shutdown). Living documentation; SSL transport cleanup can require a brief delay.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R11",
+      "description": "- **R11** Google, [Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing). Living documentation; rates checked for configured Gemini 3.1 Flash-Lite on the access date.",
+      "access_date": "2026-10-09"
+    },
+    {
+      "id": "R12",
+      "description": "- **R12** Pydantic, [Strict mode](https://docs.pydantic.dev/latest/concepts/strict_mode/). Living documentation; normal validation may coerce types. Validation and semantic truth are different claims.",
+      "access_date": "2026-10-09"
+    }
+  ],
+  "baseline_revision": "b301455ca1c2b3b6c3883207f9efd8322fccc004",
+  "baseline_manifest": "baseline_manifest.json",
+  "model": "gemini-3.1-flash-lite",
+  "sdk": "google-genai2.29.0",
+  "source_policy": "Official docs and primary papers; living docs accessed2026-10-09",
+  "reports": {
+    "docs/phase8_2/experimental_methodology.md": "479482442753bc7faa0d1a28deb44fddf2a62952d59f38ecb009dc4a8172712b",
+    "docs/phase8_2/experimental_results.md": "00ed5f840c1a2fd25df1ffc5b9488d50d9c883fd01788c6c0daf165ad548dc9e",
+    "docs/phase8_2/final_engineering_report.md": "6a764fd03827b6a1b0465d6b8006e9d49f342b319b3d88c2231c45a7e8a2cfe2",
+    "docs/phase8_2/issue_investigation.md": "45d7014415ea0058ad7bbb2f6059dca4b05710b561eca635074e0dd64ae8320c",
+    "docs/phase8_2/query_contract_review.md": "57474e7d05dd7b4ae6615182664a6365f145af693e955dfdccbffe86171b2570",
+    "docs/phase8_2/research_review.md": "0d9a4a3c88359682b6ff92513ea51edd9bc81a6b25e647e7ab8d1ff464d55938",
+    "docs/concepts/llm_query_understanding_optimization.md": "a5428afa7f6b792fd9a649aa7a673de6cc3840a6aa3005411e10e5f1b0919a26"
+  },
+  "annotation_review": "PENDING",
+  "live_execution": "NOT_RUN_USER_DEFERRED",
+  "new_requests_comparative": 0
+}

@@ -1,0 +1,63 @@
+{
+  "sets": {
+    "query_understanding_cases": {
+      "count": 50,
+      "duplicate_ids": 0,
+      "duplicate_queries": 0,
+      "cases_hash": "8016281fd43c225c0672d2ad157118e6e7e423a395e7dfe7ac76f6919f10a6aa"
+    },
+    "dev_evaluation_cases": {
+      "count": 15,
+      "duplicate_ids": 0,
+      "duplicate_queries": 0,
+      "cases_hash": "559bdcef64b75d3938577c42579544209dd3f0828eeb840241c45b371180f856"
+    },
+    "heldout_evaluation_cases": {
+      "count": 20,
+      "duplicate_ids": 0,
+      "duplicate_queries": 0,
+      "cases_hash": "5b1433850fb3c736a54687f574a8147735ffd4ab9e23c3f822b5c70af66377be"
+    },
+    "phase82_dev": {
+      "count": 20,
+      "duplicate_ids": 0,
+      "duplicate_queries": 0,
+      "cases_hash": "2425608ba933cfa30d58a43e7445f80e3c9383cdaf021169132c248abbd6532c"
+    },
+    "phase82_validation": {
+      "count": 20,
+      "duplicate_ids": 0,
+      "duplicate_queries": 0,
+      "cases_hash": "fe15d9b44acae7f3fbf8d82bbb2f13ea9c71e06fcb222650c7b5d7b8e95dd598"
+    },
+    "phase82_heldout": {
+      "count": 40,
+      "duplicate_ids": 0,
+      "duplicate_queries": 0,
+      "cases_hash": "61a414f104e243ac8c50eb278a0be90c689ed52f0c2f1a57f43ee905fbfc0c3c"
+    }
+  },
+  "overlaps": [
+    {
+      "left": "query_understanding_cases",
+      "right": "dev_evaluation_cases",
+      "exact_query_overlap": [
+        "canon dslr camera lens above 25000",
+        "casio digital watch for men below 1500",
+        "cheap laptop",
+        "comfortable nike sneakers under 3500 rs with at least 4 star rating",
+        "commercial boeing 747 airplane for sale",
+        "fast wireless charging pad for iphone and android under 1800",
+        "laptop under 500 dollars",
+        "lightweight dell laptop for programming under 60000",
+        "nike shoes, but not running shoes",
+        "puma running shoes under 2000 rupees",
+        "samsung smartphone between 10000 and 20000 with good battery life",
+        "show me something interesting",
+        "titan formal gold watch below 5000 with minimum 4.2 rating"
+      ]
+    }
+  ],
+  "independent_annotation_review": "PENDING",
+  "fresh_heldout_predictions": "NOT RUN"
+}

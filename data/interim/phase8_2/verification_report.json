@@ -1,0 +1,104 @@
+{
+  "timestamp_utc": "2026-10-09T09:26:36.330065+00:00",
+  "status": "PASS_OFFLINE_INTEGRITY",
+  "protected_hash_checks": {
+    "src/shopassist/llm/normalization.py": true,
+    "src/shopassist/llm/prompts.py": true,
+    "src/shopassist/llm/prompt_variants.py": true,
+    "src/shopassist/llm/refinement_rules.py": true,
+    "src/shopassist/llm/schemas.py": true,
+    "src/shopassist/llm/schema_variants.py": true,
+    "tests/fixtures/dev_evaluation_cases.json": true,
+    "tests/fixtures/heldout_evaluation_cases.json": true,
+    "tests/fixtures/query_understanding_cases.json": true,
+    "data/interim/phase8_1/baseline_audit.json": true,
+    "data/interim/phase8_1/experiment_comparison.json": true,
+    "data/interim/phase8_1/experiment_manifest.json": true,
+    "data/interim/phase8_1/experiment_results.json": true,
+    "data/interim/phase8_1/experiment_results_heldout_20.json": true,
+    "data/interim/phase8_1/failure_analysis.json": true,
+    "data/interim/phase8_1/gemini_response_cache.json": true,
+    "data/interim/phase8_1/phase8_1_final_report.json": true,
+    "data/interim/phase8_query_understanding_report.json": true
+  },
+  "fixtures": {
+    "dev": 20,
+    "validation": 20,
+    "heldout": 40
+  },
+  "fixture_labels_pydantic_valid": 80,
+  "independent_annotation": "PENDING",
+  "canonical_categories_covered": 16,
+  "reports_present": 7,
+  "local_report_links_checked": 4,
+  "json_artifacts_parseable": [
+    "data/interim/phase8_2/baseline_audit.json",
+    "data/interim/phase8_2/baseline_manifest.json",
+    "data/interim/phase8_2/candidate_comparison.json",
+    "data/interim/phase8_2/dataset_integrity.json",
+    "data/interim/phase8_2/experiment_registry.json",
+    "data/interim/phase8_2/failure_analysis.json",
+    "data/interim/phase8_2/final_report.json",
+    "data/interim/phase8_2/heldout_evaluation_results.json",
+    "data/interim/phase8_2/issue_inventory.json",
+    "data/interim/phase8_2/prompt_experiment_results.json",
+    "data/interim/phase8_2/research_manifest.json",
+    "data/interim/phase8_2/robustness_evaluation_results.json",
+    "data/interim/phase8_2/rule_ablation_results.json",
+    "data/interim/phase8_2/schema_experiment_results.json",
+    "data/interim/phase8_2/temperature_experiment_results.json",
+    "data/interim/phase8_2/verification_report.json"
+  ],
+  "configured_key_not_in_artifacts": true,
+  "report_consistency": "PASS",
+  "live_comparisons": "NOT_RUN_USER_DEFERRED",
+  "tests": {
+    "baseline_tests": {
+      "tests": 296,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 296,
+      "seconds": 98.674,
+      "artifact": "data/interim/phase8_2/baseline_tests.xml"
+    },
+    "focused_tests": {
+      "tests": 101,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 101,
+      "seconds": 1.27,
+      "artifact": "data/interim/phase8_2/focused_tests.xml"
+    },
+    "regression_tests": {
+      "tests": 376,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 376,
+      "seconds": 75.365,
+      "artifact": "data/interim/phase8_2/regression_tests.xml"
+    },
+    "smoke_tests": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 2,
+      "seconds": 33.74,
+      "artifact": "data/interim/phase8_2/smoke_tests.xml"
+    },
+    "smoke_retest": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 2,
+      "seconds": 8.186,
+      "artifact": "data/interim/phase8_2/smoke_retest.xml"
+    }
+  },
+  "database_or_embedding_operations": "None submitted by Phase8.2 workflows",
+  "git_diff_check": "Pre-existing Markdown hard-break/trailing-space warnings retained in historical additions"
+}

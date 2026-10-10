@@ -1,0 +1,3793 @@
+{
+  "2af40f13f3e158790d7d4b7379261e0540f353af6fab00f091e00b0c1c4ffe4a": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 2000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"running\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Puma running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 2000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "running"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2375.09,
+    "token_usage": {
+      "prompt_tokens": 1080,
+      "candidates_tokens": 121,
+      "total_tokens": 1201
+    },
+    "is_valid": true
+  },
+  "78036c4a0a2c3a3f75795316c4a545a99da57bab90b9756c91c8b58ad4e41c5d": {
+    "raw_json": "{\n  \"semantic_query\": \"Nike sneakers\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": 3500.0,\n    \"min_rating\": 4.0,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"comfortable\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Nike sneakers",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": 3500.0,
+        "min_rating": 4.0,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "comfortable"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1959.72,
+    "token_usage": {
+      "prompt_tokens": 1086,
+      "candidates_tokens": 121,
+      "total_tokens": 1207
+    },
+    "is_valid": true
+  },
+  "c2dc70e2d11ed7380ea4312dd1be15181f188ead0faaf9aa6861fd600a561d9b": {
+    "raw_json": "{\n  \"semantic_query\": \"Samsung smartphone\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": \"Samsung\",\n    \"min_price\": 10000,\n    \"max_price\": 20000,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"good battery life\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Samsung smartphone",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": "Samsung",
+        "min_price": 10000.0,
+        "max_price": 20000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "good battery life"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1529.08,
+    "token_usage": {
+      "prompt_tokens": 1089,
+      "candidates_tokens": 126,
+      "total_tokens": 1215
+    },
+    "is_valid": true
+  },
+  "f3a629ed7435b349877d01e1ce6dcd31c6f33f2c4a650d3ea2f3be12c6310c3b": {
+    "raw_json": "{\n  \"semantic_query\": \"Dell laptop for programming\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"min_price\": null,\n    \"max_price\": 60000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"for programming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Dell laptop for programming",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": 60000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "lightweight",
+        "for programming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1979.19,
+    "token_usage": {
+      "prompt_tokens": 1082,
+      "candidates_tokens": 128,
+      "total_tokens": 1210
+    },
+    "is_valid": true
+  },
+  "71cd5931b77598a8300955075d5f30608d072eed3b7787fa171c7f430de460e3": {
+    "raw_json": "{\n  \"semantic_query\": \"Casio digital watch for men\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Casio\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"digital\",\n    \"men\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Casio digital watch for men",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "digital",
+        "men"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1537.25,
+    "token_usage": {
+      "prompt_tokens": 1081,
+      "candidates_tokens": 128,
+      "total_tokens": 1209
+    },
+    "is_valid": true
+  },
+  "f768732e6aba601454cf9c2ce038cc223168774af63d0998fd65046ca0396bf8": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma t-shirt\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested product category 't-shirt' does not map to any of the 16 approved canonical categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "Puma t-shirt",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The requested product category 't-shirt' does not map to any of the 16 approved canonical categories."
+    },
+    "latency_ms": 1554.35,
+    "token_usage": {
+      "prompt_tokens": 1092,
+      "candidates_tokens": 135,
+      "total_tokens": 1227
+    },
+    "is_valid": true
+  },
+  "a1f8faa6636dd5c8a90089a6e9a8b38f4961d39f81e7f1e20fd96f3f888af9dc": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 500.0,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The user specified a currency other than INR (USD).\"\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": 500.0,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The user specified a currency other than INR (USD)."
+    },
+    "latency_ms": 1373.99,
+    "token_usage": {
+      "prompt_tokens": 1076,
+      "candidates_tokens": 118,
+      "total_tokens": 1194
+    },
+    "is_valid": true
+  },
+  "102c0ef647151718b27d92758fb06e05539ed66f8ae62208fec0dbd60e5b882a": {
+    "raw_json": "{\n  \"semantic_query\": \"Canon DSLR camera lens\",\n  \"hard_constraints\": {\n    \"category\": \"Cameras & Accessories\",\n    \"brand\": \"Canon\",\n    \"min_price\": 25000,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Canon DSLR camera lens",
+      "hard_constraints": {
+        "category": "Cameras & Accessories",
+        "brand": "Canon",
+        "min_price": 25000.0,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1317.45,
+    "token_usage": {
+      "prompt_tokens": 1080,
+      "candidates_tokens": 112,
+      "total_tokens": 1192
+    },
+    "is_valid": true
+  },
+  "afcdd6dfa39bc7e25b4377430660f2953709d8f47e28bb946b5bf92d96d48c68": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"cheap\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "cheap"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1145.38,
+    "token_usage": {
+      "prompt_tokens": 1071,
+      "candidates_tokens": 110,
+      "total_tokens": 1181
+    },
+    "is_valid": true
+  },
+  "65a18558686ff19764f86eb03f55c0c54d5c6139fe9638a81e29df5df3160294": {
+    "raw_json": "{\n  \"semantic_query\": \"Nike shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"not running shoes\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Nike shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "not running shoes"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1409.97,
+    "token_usage": {
+      "prompt_tokens": 1076,
+      "candidates_tokens": 114,
+      "total_tokens": 1190
+    },
+    "is_valid": true
+  },
+  "8069bd87f18cb253d8bbed25d6afd6ebc1e699147d96cb07fe4e9cc8bb3aa74f": {
+    "raw_json": "{\n  \"semantic_query\": \"something interesting\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The query is too vague and does not specify a product category or intent.\"\n}",
+    "parsed_output": {
+      "semantic_query": "something interesting",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The query is too vague and does not specify a product category or intent."
+    },
+    "latency_ms": 2048.25,
+    "token_usage": {
+      "prompt_tokens": 1073,
+      "candidates_tokens": 116,
+      "total_tokens": 1189
+    },
+    "is_valid": true
+  },
+  "f3cabf4c3a496eef5fe16775ad2d3c0f24fc75e85b97b1c89a8aeb5cdbb15f33": {
+    "raw_json": "{\n  \"semantic_query\": \"commercial Boeing 747 airplane\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Boeing\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested item (commercial airplane) is not available in the catalog categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "commercial Boeing 747 airplane",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Boeing",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The requested item (commercial airplane) is not available in the catalog categories."
+    },
+    "latency_ms": 1562.6,
+    "token_usage": {
+      "prompt_tokens": 1078,
+      "candidates_tokens": 123,
+      "total_tokens": 1201
+    },
+    "is_valid": true
+  },
+  "f6add04ad89d865c17aa95e09712e4598d84121b5b2d569f7929c004aa0f32f8": {
+    "raw_json": "{\n  \"semantic_query\": \"Titan formal gold watch\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Titan\",\n    \"min_price\": null,\n    \"max_price\": 5000.0,\n    \"min_rating\": 4.2,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"formal\",\n    \"gold\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Titan formal gold watch",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Titan",
+        "min_price": null,
+        "max_price": 5000.0,
+        "min_rating": 4.2,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "formal",
+        "gold"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1331.49,
+    "token_usage": {
+      "prompt_tokens": 1086,
+      "candidates_tokens": 128,
+      "total_tokens": 1214
+    },
+    "is_valid": true
+  },
+  "4fbc2de2e7bfc2f819166eaa9c1b5b225b93a8c7493174bd0868d70e01c00f50": {
+    "raw_json": "{\n  \"semantic_query\": \"Under Armour running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Under Armour\",\n    \"min_price\": null,\n    \"max_price\": 4000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"running\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Under Armour running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Under Armour",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "running"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1977.7,
+    "token_usage": {
+      "prompt_tokens": 1079,
+      "candidates_tokens": 121,
+      "total_tokens": 1200
+    },
+    "is_valid": true
+  },
+  "a4ff894bde2bb6c50926d493ba0584318291d3e7d6b5c070b4f590c8ce1c7040": {
+    "raw_json": "{\n  \"semantic_query\": \"fast wireless charging pad for iPhone and Android\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1800.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"fast charging\",\n    \"wireless\",\n    \"compatible with iPhone and Android\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "fast wireless charging pad for iPhone and Android",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "fast charging",
+        "wireless",
+        "compatible with iphone and android"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2283.72,
+    "token_usage": {
+      "prompt_tokens": 1083,
+      "candidates_tokens": 140,
+      "total_tokens": 1223
+    },
+    "is_valid": true
+  },
+  "65e21135f7774498f1f44b6d831248609538ad2320288e0e384d5e63e627c8ec": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 2000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Puma running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 2000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1724.56,
+    "token_usage": {
+      "prompt_tokens": 1099,
+      "candidates_tokens": 113,
+      "total_tokens": 1212
+    },
+    "is_valid": true
+  },
+  "3c6ff8894b112dc950df0ee96df986e1c8c4120a11e8b07d299366c653b0480f": {
+    "raw_json": "{\"semantic_query\": \"comfortable Nike sneakers under 3500 rs with at least 4 star rating\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 19.727636082s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "comfortable Nike sneakers under 3500 rs with at least 4 star rating",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 19.727636082s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "10ec0f24267851defb8d7abb6cce394395e5ddac8c9c801b1bfac990ac75acef": {
+    "raw_json": "{\"semantic_query\": \"Samsung smartphone between 10000 and 20000 with good battery life\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 9.977949246s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.1-flash-lite', 'location': 'global'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "Samsung smartphone between 10000 and 20000 with good battery life",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 9.977949246s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.1-flash-lite', 'location': 'global'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "f8a0f59cbb773d6c6f5dca102c83fdb0e207e3bff2ac689c1c1a811337b2af69": {
+    "raw_json": "{\n  \"semantic_query\": \"Dell laptop for programming\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"min_price\": null,\n    \"max_price\": 60000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"for programming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Dell laptop for programming",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": 60000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "lightweight",
+        "for programming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1344.17,
+    "token_usage": {
+      "prompt_tokens": 1101,
+      "candidates_tokens": 128,
+      "total_tokens": 1229
+    },
+    "is_valid": true
+  },
+  "ccfaaa07f2e23d20ab698789a47a6b82c36afb02f520ce57a145688df4658a0a": {
+    "raw_json": "{\n  \"semantic_query\": \"Casio digital watch for men\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Casio\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"digital\",\n    \"for men\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Casio digital watch for men",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "digital",
+        "for men"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1714.25,
+    "token_usage": {
+      "prompt_tokens": 1100,
+      "candidates_tokens": 129,
+      "total_tokens": 1229
+    },
+    "is_valid": true
+  },
+  "dbf8a28ba9d12b00b0af6a9ecbd312ecac886e9a5c248d8a4dd90e14873e119f": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma t-shirt\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested product 't-shirt' does not fall into any of the 16 approved catalog categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "Puma t-shirt",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The requested product 't-shirt' does not fall into any of the 16 approved catalog categories."
+    },
+    "latency_ms": 1284.22,
+    "token_usage": {
+      "prompt_tokens": 1111,
+      "candidates_tokens": 134,
+      "total_tokens": 1245
+    },
+    "is_valid": true
+  },
+  "8127e31eaa86188f2da745dcca515c12e12046841309ac83d115f79003152b37": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 500.0,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The user specified a budget in USD, which is a foreign currency; the platform operates in INR.\"\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": 500.0,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The user specified a budget in USD, which is a foreign currency; the platform operates in INR."
+    },
+    "latency_ms": 1910.75,
+    "token_usage": {
+      "prompt_tokens": 1095,
+      "candidates_tokens": 127,
+      "total_tokens": 1222
+    },
+    "is_valid": true
+  },
+  "5bdc4b5c8540eb5c82be7d24ad3c56be7cb7ba1df31d44e9cfb522851fc3f9ce": {
+    "raw_json": "{\n  \"semantic_query\": \"Canon DSLR camera lens\",\n  \"hard_constraints\": {\n    \"category\": \"Cameras & Accessories\",\n    \"brand\": \"Canon\",\n    \"min_price\": 25000.0,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Canon DSLR camera lens",
+      "hard_constraints": {
+        "category": "Cameras & Accessories",
+        "brand": "Canon",
+        "min_price": 25000.0,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1649.91,
+    "token_usage": {
+      "prompt_tokens": 1099,
+      "candidates_tokens": 114,
+      "total_tokens": 1213
+    },
+    "is_valid": true
+  },
+  "65c39bf8cc76c89778cebd019cbeb8f18e054751ee30b3235d42bca75b79479f": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"cheap\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "cheap"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1387.75,
+    "token_usage": {
+      "prompt_tokens": 1090,
+      "candidates_tokens": 110,
+      "total_tokens": 1200
+    },
+    "is_valid": true
+  },
+  "6861f292636e840b2d376f743adba01062b59b21b8c1bbdccd778f8555fcb26f": {
+    "raw_json": "{\n  \"semantic_query\": \"Nike shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Nike shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1558.58,
+    "token_usage": {
+      "prompt_tokens": 1095,
+      "candidates_tokens": 104,
+      "total_tokens": 1199
+    },
+    "is_valid": true
+  },
+  "b38e63137ff8e178403d5c0c6d56f6548e5cf697a0637442bcb305fb221da857": {
+    "raw_json": "{\n  \"semantic_query\": \"something interesting\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The query is too vague and lacks a specific product type or category.\"\n}",
+    "parsed_output": {
+      "semantic_query": "something interesting",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The query is too vague and lacks a specific product type or category."
+    },
+    "latency_ms": 2093.69,
+    "token_usage": {
+      "prompt_tokens": 1092,
+      "candidates_tokens": 115,
+      "total_tokens": 1207
+    },
+    "is_valid": true
+  },
+  "df6081b07bcfbedb8e635eba1946019ff74e59f46db8e74673f7b23732b87fb0": {
+    "raw_json": "{\n  \"semantic_query\": \"commercial Boeing 747 airplane\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Boeing\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested item (commercial airplane) is outside the supported product categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "commercial Boeing 747 airplane",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Boeing",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The requested item (commercial airplane) is outside the supported product categories."
+    },
+    "latency_ms": 2325.67,
+    "token_usage": {
+      "prompt_tokens": 1097,
+      "candidates_tokens": 122,
+      "total_tokens": 1219
+    },
+    "is_valid": true
+  },
+  "267741faeb1626a58c40ab4de906eb7f8fa30f7344bf4b304be3f8ede69447f9": {
+    "raw_json": "{\n  \"semantic_query\": \"Titan formal gold watch\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Titan\",\n    \"min_price\": null,\n    \"max_price\": 5000.0,\n    \"min_rating\": 4.2,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"formal\",\n    \"gold\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Titan formal gold watch",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Titan",
+        "min_price": null,
+        "max_price": 5000.0,
+        "min_rating": 4.2,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "formal",
+        "gold"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1442.56,
+    "token_usage": {
+      "prompt_tokens": 1105,
+      "candidates_tokens": 128,
+      "total_tokens": 1233
+    },
+    "is_valid": true
+  },
+  "6f8633364f5ce3bb763ab30d3e3fe345ccc5c74842ae2cfabca7748b8293f0fb": {
+    "raw_json": "{\n  \"semantic_query\": \"Under Armour running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Under Armour\",\n    \"min_price\": null,\n    \"max_price\": 4000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Under Armour running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Under Armour",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1123.47,
+    "token_usage": {
+      "prompt_tokens": 1098,
+      "candidates_tokens": 113,
+      "total_tokens": 1211
+    },
+    "is_valid": true
+  },
+  "1c9c36d3941066904da8d130a1c8f863178633b95e76e60b7c818e011b858c0c": {
+    "raw_json": "{\n  \"semantic_query\": \"wireless charging pad\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1800.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"fast\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "wireless charging pad",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "fast"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1028.85,
+    "token_usage": {
+      "prompt_tokens": 1102,
+      "candidates_tokens": 120,
+      "total_tokens": 1222
+    },
+    "is_valid": true
+  },
+  "64584294e557f6ccf08dad157ae2d9c5985596da1e4acc03001944a4e667a47b": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 2000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Puma running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 2000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1357.74,
+    "token_usage": {
+      "prompt_tokens": 2225,
+      "candidates_tokens": 113,
+      "total_tokens": 2338
+    },
+    "is_valid": true
+  },
+  "c6a1a2dd1208d59f001a79972039304676af580fc05e5bb4cef58587e2df5887": {
+    "raw_json": "{\n  \"semantic_query\": \"Nike sneakers\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": 3500.0,\n    \"min_rating\": 4.0,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"comfortable\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Nike sneakers",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": 3500.0,
+        "min_rating": 4.0,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "comfortable"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1748.61,
+    "token_usage": {
+      "prompt_tokens": 2231,
+      "candidates_tokens": 121,
+      "total_tokens": 2352
+    },
+    "is_valid": true
+  },
+  "81c5ae7191103a4d78fb88f394fca42f775f1b8462f8b737bd5d47282a8fdeed": {
+    "raw_json": "{\n  \"semantic_query\": \"Samsung smartphone\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": \"Samsung\",\n    \"min_price\": 10000.0,\n    \"max_price\": 20000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"good battery life\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Samsung smartphone",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": "Samsung",
+        "min_price": 10000.0,
+        "max_price": 20000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "good battery life"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1097.38,
+    "token_usage": {
+      "prompt_tokens": 2234,
+      "candidates_tokens": 130,
+      "total_tokens": 2364
+    },
+    "is_valid": true
+  },
+  "9965e48bb456f973a0bef23bb1090e2f5a5e3c5a0988a06bc31da0fc50417c1b": {
+    "raw_json": "{\n  \"semantic_query\": \"Dell laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"max_price\": 60000.0,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"for programming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Dell laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": 60000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "lightweight",
+        "for programming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2053.51,
+    "token_usage": {
+      "prompt_tokens": 2227,
+      "candidates_tokens": 108,
+      "total_tokens": 2335
+    },
+    "is_valid": true
+  },
+  "edf5badfe02b0eae9d80c6156e4b37c7d420eb14071561dbbd348ee4e56a5f3f": {
+    "raw_json": "{\"semantic_query\": \"Casio digital watch for men below 1500\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 17.593820853s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.1-flash-lite', 'location': 'global'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '17s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "Casio digital watch for men below 1500",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 17.593820853s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.1-flash-lite', 'location': 'global'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '17s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "e438b3ee1d53758e65eed8fa7d350f2a2c8cafee585ab2b8ed93c7dd1bab6f8b": {
+    "raw_json": "{\"semantic_query\": \"Puma t-shirt under 1000 rs, actually make it under 1500 rs\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 7.077321123s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '7s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "Puma t-shirt under 1000 rs, actually make it under 1500 rs",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 7.077321123s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '7s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "b174a05a031b656ca5793e24fe18b1fc7fb6b158178e701da749394711b6cd80": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 500.0,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"Query specifies foreign currency 'USD'. Catalog prices are in INR.\"\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": 500.0,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Query specifies foreign currency 'USD'. Catalog prices are in INR."
+    },
+    "latency_ms": 1718.83,
+    "token_usage": {
+      "prompt_tokens": 2221,
+      "candidates_tokens": 120,
+      "total_tokens": 2341
+    },
+    "is_valid": true
+  },
+  "592455e213abc26892edc209f186cbe4f5835bd73dba9d5e38eb8380b00bebe1": {
+    "raw_json": "{\n  \"semantic_query\": \"Canon DSLR camera lens\",\n  \"hard_constraints\": {\n    \"category\": \"Cameras & Accessories\",\n    \"brand\": \"Canon\",\n    \"min_price\": 25000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Canon DSLR camera lens",
+      "hard_constraints": {
+        "category": "Cameras & Accessories",
+        "brand": "Canon",
+        "min_price": 25000.0,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1941.99,
+    "token_usage": {
+      "prompt_tokens": 2225,
+      "candidates_tokens": 106,
+      "total_tokens": 2331
+    },
+    "is_valid": true
+  },
+  "59155845af2059d1ad8045e88559cab274d585b20216a42ca9e752e143d24ef9": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"cheap\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "cheap"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1348.61,
+    "token_usage": {
+      "prompt_tokens": 2216,
+      "candidates_tokens": 110,
+      "total_tokens": 2326
+    },
+    "is_valid": true
+  },
+  "c73acce36932601039c5d45753631e88410b96eb319b68b0135278b40a76be9c": {
+    "raw_json": "{\n  \"semantic_query\": \"Nike shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Nike shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1715.89,
+    "token_usage": {
+      "prompt_tokens": 2221,
+      "candidates_tokens": 104,
+      "total_tokens": 2325
+    },
+    "is_valid": true
+  },
+  "77ae2f631bde9a27fc2119adb440ebc1a67b1bd87e2bbd5747222b0a47574d83": {
+    "raw_json": "{\n  \"semantic_query\": \"unspecified product query\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"Query lacks specific product intent or criteria.\"\n}",
+    "parsed_output": {
+      "semantic_query": "unspecified product query",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Query lacks specific product intent or criteria."
+    },
+    "latency_ms": 2066.28,
+    "token_usage": {
+      "prompt_tokens": 2218,
+      "candidates_tokens": 111,
+      "total_tokens": 2329
+    },
+    "is_valid": true
+  },
+  "acf873c29f46681b2522e25055936354181667e8d343546b8923bfd68301e44c": {
+    "raw_json": "{\n  \"semantic_query\": \"Boeing 747 airplane\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Boeing\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"Requested product is outside the 16 supported catalog categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "Boeing 747 airplane",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Boeing",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Requested product is outside the 16 supported catalog categories."
+    },
+    "latency_ms": 1184.39,
+    "token_usage": {
+      "prompt_tokens": 2223,
+      "candidates_tokens": 120,
+      "total_tokens": 2343
+    },
+    "is_valid": true
+  },
+  "3337755184118ac46cb247a1d514d845f3cd16affb540143e89b3a9ec4fefedc": {
+    "raw_json": "{\n  \"semantic_query\": \"Titan formal gold watch\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Titan\",\n    \"max_price\": 5000.0,\n    \"min_rating\": 4.2,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"formal\",\n    \"gold\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Titan formal gold watch",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Titan",
+        "min_price": null,
+        "max_price": 5000.0,
+        "min_rating": 4.2,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "formal",
+        "gold"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1753.91,
+    "token_usage": {
+      "prompt_tokens": 2231,
+      "candidates_tokens": 119,
+      "total_tokens": 2350
+    },
+    "is_valid": true
+  },
+  "80fd85ef16ecded83850323754aba518f2afce56a737becc1dc4355b8b994830": {
+    "raw_json": "{\n  \"semantic_query\": \"Under Armour running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Under Armour\",\n    \"min_price\": null,\n    \"max_price\": 4000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Under Armour running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Under Armour",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1523.98,
+    "token_usage": {
+      "prompt_tokens": 2224,
+      "candidates_tokens": 113,
+      "total_tokens": 2337
+    },
+    "is_valid": true
+  },
+  "24fc5d1d6bf0a93dab434b6db8b2d042306bdd3b8ed07fec18a67da2cf0cd1fa": {
+    "raw_json": "{\n  \"semantic_query\": \"wireless charging pad for iPhone and Android\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1800.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"fast\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "wireless charging pad for iPhone and Android",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "fast"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1269.15,
+    "token_usage": {
+      "prompt_tokens": 2228,
+      "candidates_tokens": 124,
+      "total_tokens": 2352
+    },
+    "is_valid": true
+  },
+  "31f7c7271ff0ef3035bd1837ff78064c36d9738b3282846334c452363461c07b": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 2000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Puma running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 2000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1230.34,
+    "token_usage": {
+      "prompt_tokens": 1099,
+      "candidates_tokens": 113,
+      "total_tokens": 1212
+    },
+    "is_valid": true
+  },
+  "f8473c122c13ab954c57b21a2979b9a853e15f8ea2e88039b06fc092a7957018": {
+    "raw_json": "{\n  \"semantic_query\": \"comfortable Nike sneakers\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": 3500.0,\n    \"min_rating\": 4.0,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"comfortable\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "comfortable Nike sneakers",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": 3500.0,
+        "min_rating": 4.0,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "comfortable"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1121.24,
+    "token_usage": {
+      "prompt_tokens": 1105,
+      "candidates_tokens": 122,
+      "total_tokens": 1227
+    },
+    "is_valid": true
+  },
+  "ed03bcff83bdbae42573b0e36ce1df1b8208b3037364118a8977b018ce88fa7c": {
+    "raw_json": "{\n  \"semantic_query\": \"Samsung smartphone\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": \"Samsung\",\n    \"min_price\": 10000.0,\n    \"max_price\": 20000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"good battery life\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Samsung smartphone",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": "Samsung",
+        "min_price": 10000.0,
+        "max_price": 20000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "good battery life"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1645.59,
+    "token_usage": {
+      "prompt_tokens": 1108,
+      "candidates_tokens": 130,
+      "total_tokens": 1238
+    },
+    "is_valid": true
+  },
+  "0e7f367c0c5186bde9ecdbbc5a85221d9584b2098efaf2ddfa704630be96a52a": {
+    "raw_json": "{\n  \"semantic_query\": \"Dell laptop for programming\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"min_price\": null,\n    \"max_price\": 60000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"for programming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Dell laptop for programming",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": 60000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "lightweight",
+        "for programming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1401.74,
+    "token_usage": {
+      "prompt_tokens": 1101,
+      "candidates_tokens": 128,
+      "total_tokens": 1229
+    },
+    "is_valid": true
+  },
+  "5f9a2643903e7295341cf6aeb579e77a4b36ef5e8669a62daa9bf48d2778ec51": {
+    "raw_json": "{\n  \"semantic_query\": \"Casio digital watch for men\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Casio\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"digital\",\n    \"men\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Casio digital watch for men",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "digital",
+        "men"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1677.47,
+    "token_usage": {
+      "prompt_tokens": 1100,
+      "candidates_tokens": 128,
+      "total_tokens": 1228
+    },
+    "is_valid": true
+  },
+  "4be7bcadb7aac552a8228e920260f305208447d3978b50b717612be2798a6d3f": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma t-shirt\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The category 't-shirt' does not map to any of the 16 approved catalog categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "Puma t-shirt",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The category 't-shirt' does not map to any of the 16 approved catalog categories."
+    },
+    "latency_ms": 990.51,
+    "token_usage": {
+      "prompt_tokens": 1111,
+      "candidates_tokens": 133,
+      "total_tokens": 1244
+    },
+    "is_valid": true
+  },
+  "67586777115d2a823603f0e6f2ed929ca9c32128a962a5f464e1f89ed4249c4e": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 500.0,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The user provided a budget in USD, which is a foreign currency.\"\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": 500.0,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The user provided a budget in USD, which is a foreign currency."
+    },
+    "latency_ms": 1435.34,
+    "token_usage": {
+      "prompt_tokens": 1095,
+      "candidates_tokens": 121,
+      "total_tokens": 1216
+    },
+    "is_valid": true
+  },
+  "bfcdd430593e07a09486b18cb3967499b1e70b3f3d5e1c0105c1f03520951c1a": {
+    "raw_json": "{\"semantic_query\": \"Canon DSLR camera lens above 25000\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 18.631174066s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '18s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "Canon DSLR camera lens above 25000",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 18.631174066s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '18s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "a2830e2c6583ab4a96e896119010e642f7e5352d23ba2b365176e23f913d22a2": {
+    "raw_json": "{\"semantic_query\": \"cheap laptop\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 8.418590103s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "cheap laptop",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 8.418590103s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "8df0df51ce908a2448f7bcbe4979d6a1b31a7c4b516c0032d1a98a3bb13c4ffe": {
+    "raw_json": "{\n  \"semantic_query\": \"Nike shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Nike shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1384.99,
+    "token_usage": {
+      "prompt_tokens": 1095,
+      "candidates_tokens": 104,
+      "total_tokens": 1199
+    },
+    "is_valid": true
+  },
+  "a4160c427d141da859ccd6d118f52d0a5aa5010be6092fdc757116f4e6620370": {
+    "raw_json": "{\n  \"semantic_query\": \"something interesting\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The user query is too vague and lacks a specific product type or category to perform a search.\"\n}",
+    "parsed_output": {
+      "semantic_query": "something interesting",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The user query is too vague and lacks a specific product type or category to perform a search."
+    },
+    "latency_ms": 1192.55,
+    "token_usage": {
+      "prompt_tokens": 1092,
+      "candidates_tokens": 120,
+      "total_tokens": 1212
+    },
+    "is_valid": true
+  },
+  "6683766e32c6c9a17e7028220f74ba82935ff48908496e7ea174e2f453e6fa93": {
+    "raw_json": "{\n  \"semantic_query\": \"commercial Boeing 747 airplane\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Boeing\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested item (airplane) falls outside the supported product categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "commercial Boeing 747 airplane",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Boeing",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The requested item (airplane) falls outside the supported product categories."
+    },
+    "latency_ms": 1033.49,
+    "token_usage": {
+      "prompt_tokens": 1097,
+      "candidates_tokens": 121,
+      "total_tokens": 1218
+    },
+    "is_valid": true
+  },
+  "7415cb92b66ef4013d93eaca25215fced47a92eeed7e370b966a8e9e557b32a2": {
+    "raw_json": "{\n  \"semantic_query\": \"Titan formal gold watch\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Titan\",\n    \"min_price\": null,\n    \"max_price\": 5000.0,\n    \"min_rating\": 4.2,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"formal\",\n    \"gold\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Titan formal gold watch",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Titan",
+        "min_price": null,
+        "max_price": 5000.0,
+        "min_rating": 4.2,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "formal",
+        "gold"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1943.14,
+    "token_usage": {
+      "prompt_tokens": 1105,
+      "candidates_tokens": 128,
+      "total_tokens": 1233
+    },
+    "is_valid": true
+  },
+  "58692faeed8eb0f54cc11463c174b32d3f53764b727c158b25309b429c9b8123": {
+    "raw_json": "{\n  \"semantic_query\": \"Under Armour running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Under Armour\",\n    \"min_price\": null,\n    \"max_price\": 4000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Under Armour running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Under Armour",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1312.55,
+    "token_usage": {
+      "prompt_tokens": 1098,
+      "candidates_tokens": 113,
+      "total_tokens": 1211
+    },
+    "is_valid": true
+  },
+  "15549ef8e17b156d3944948762bf7b5b0797a2cf9df04b9b42424f9c5510abbd": {
+    "raw_json": "{\n  \"semantic_query\": \"wireless charging pad\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1800.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"fast\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "wireless charging pad",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "fast"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1629.54,
+    "token_usage": {
+      "prompt_tokens": 1102,
+      "candidates_tokens": 120,
+      "total_tokens": 1222
+    },
+    "is_valid": true
+  },
+  "814239d4f33e1c76cbe5acd76ac93568dfa10700898c4f835878fdd7b41d6b63": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 2000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Puma running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 2000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1324.67,
+    "token_usage": {
+      "prompt_tokens": 1099,
+      "candidates_tokens": 113,
+      "total_tokens": 1212
+    },
+    "is_valid": true
+  },
+  "ab523f476a1b8df40ee335e8171735b471555c52e3e44c0ee4c07831cef26e29": {
+    "raw_json": "{\n  \"semantic_query\": \"comfortable Nike sneakers\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": 3500.0,\n    \"min_rating\": 4.0,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"comfortable\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "comfortable Nike sneakers",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": 3500.0,
+        "min_rating": 4.0,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "comfortable"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2196.35,
+    "token_usage": {
+      "prompt_tokens": 1105,
+      "candidates_tokens": 122,
+      "total_tokens": 1227
+    },
+    "is_valid": true
+  },
+  "a844f970d801684a1333657fcd118862174dd2dff2498f7bbaf71b4b4b8da486": {
+    "raw_json": "{\n  \"semantic_query\": \"Samsung smartphone\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": \"Samsung\",\n    \"min_price\": 10000.0,\n    \"max_price\": 20000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"good battery life\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Samsung smartphone",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": "Samsung",
+        "min_price": 10000.0,
+        "max_price": 20000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "good battery life"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1110.96,
+    "token_usage": {
+      "prompt_tokens": 1108,
+      "candidates_tokens": 130,
+      "total_tokens": 1238
+    },
+    "is_valid": true
+  },
+  "8d67900df1a0d2213f7596d256acaac9a5f86b76c632be6f8d944e3d1a26827e": {
+    "raw_json": "{\n  \"semantic_query\": \"Dell laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"min_price\": null,\n    \"max_price\": 60000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"for programming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Dell laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": 60000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "lightweight",
+        "for programming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1939.69,
+    "token_usage": {
+      "prompt_tokens": 1101,
+      "candidates_tokens": 126,
+      "total_tokens": 1227
+    },
+    "is_valid": true
+  },
+  "bb50a3cd9b75eb5eb3c75e7af07c839910c179f50dcd58c8e8f69f0795082abd": {
+    "raw_json": "{\n  \"semantic_query\": \"Casio digital watch for men\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Casio\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"digital\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Casio digital watch for men",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "digital"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1448.12,
+    "token_usage": {
+      "prompt_tokens": 1100,
+      "candidates_tokens": 123,
+      "total_tokens": 1223
+    },
+    "is_valid": true
+  },
+  "7871d02d477cf2a28efdbb8f65afc4a64cebc2f6a8faecda0313b413f9b34a69": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma t-shirt\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Puma t-shirt",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1338.39,
+    "token_usage": {
+      "prompt_tokens": 1111,
+      "candidates_tokens": 112,
+      "total_tokens": 1223
+    },
+    "is_valid": true
+  },
+  "8c310a0973eaa693e62583348886cd50411282ecd69f369469f58fde17520870": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 500.0,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"Foreign currency specified (USD) requires conversion or clarification.\"\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": 500.0,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Foreign currency specified (USD) requires conversion or clarification."
+    },
+    "latency_ms": 2502.97,
+    "token_usage": {
+      "prompt_tokens": 1095,
+      "candidates_tokens": 118,
+      "total_tokens": 1213
+    },
+    "is_valid": true
+  },
+  "1a9bbf16ffae1c27422406d15afe3667311faed246c912498b8287f22ab895cb": {
+    "raw_json": "{\n  \"semantic_query\": \"Canon DSLR camera lens\",\n  \"hard_constraints\": {\n    \"category\": \"Cameras & Accessories\",\n    \"brand\": \"Canon\",\n    \"min_price\": 25000.0,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Canon DSLR camera lens",
+      "hard_constraints": {
+        "category": "Cameras & Accessories",
+        "brand": "Canon",
+        "min_price": 25000.0,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1272.41,
+    "token_usage": {
+      "prompt_tokens": 1099,
+      "candidates_tokens": 114,
+      "total_tokens": 1213
+    },
+    "is_valid": true
+  },
+  "eae5b32d03ed21049d89d45fc8dad17348bdd29e49bb82ff1034ae680148ea50": {
+    "raw_json": "{\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"cheap\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "cheap"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1909.8,
+    "token_usage": {
+      "prompt_tokens": 1090,
+      "candidates_tokens": 110,
+      "total_tokens": 1200
+    },
+    "is_valid": true
+  },
+  "d5ba309b0c89203d7b5dda3dc0319540b895781499f083f9ca23f8d444fb1956": {
+    "raw_json": "{\n  \"semantic_query\": \"Nike shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Nike shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1419.52,
+    "token_usage": {
+      "prompt_tokens": 1095,
+      "candidates_tokens": 104,
+      "total_tokens": 1199
+    },
+    "is_valid": true
+  },
+  "5212cd43184f7647e2fea579c436da4035826a1ab2db2cb88087215697249d2d": {
+    "raw_json": "{\n  \"semantic_query\": \"something interesting\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The request is too vague and lacks a specific product intent.\"\n}",
+    "parsed_output": {
+      "semantic_query": "something interesting",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The request is too vague and lacks a specific product intent."
+    },
+    "latency_ms": 1025.31,
+    "token_usage": {
+      "prompt_tokens": 1092,
+      "candidates_tokens": 113,
+      "total_tokens": 1205
+    },
+    "is_valid": true
+  },
+  "48106aed09c0364d43ae4a595fd2c6176b818165ac37f31c34544b0e19cbb383": {
+    "raw_json": "{\n  \"semantic_query\": \"Boeing 747 airplane\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Boeing\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"Requested item is not within the supported product categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "Boeing 747 airplane",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Boeing",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Requested item is not within the supported product categories."
+    },
+    "latency_ms": 1450.73,
+    "token_usage": {
+      "prompt_tokens": 1097,
+      "candidates_tokens": 118,
+      "total_tokens": 1215
+    },
+    "is_valid": true
+  },
+  "d8f390f2a62725a0d3fb76fdd740710c0abcfae097482f11313cb5869731daca": {
+    "raw_json": "{\n  \"semantic_query\": \"Titan formal gold watch\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Titan\",\n    \"min_price\": null,\n    \"max_price\": 5000.0,\n    \"min_rating\": 4.2,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"formal\",\n    \"gold\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Titan formal gold watch",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Titan",
+        "min_price": null,
+        "max_price": 5000.0,
+        "min_rating": 4.2,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "formal",
+        "gold"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1504.86,
+    "token_usage": {
+      "prompt_tokens": 1105,
+      "candidates_tokens": 128,
+      "total_tokens": 1233
+    },
+    "is_valid": true
+  },
+  "34571309e11520906f846630b0ba34408b7af99860f4e3c2eb6f1de7472ee86b": {
+    "raw_json": "{\n  \"semantic_query\": \"Under Armour running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Under Armour\",\n    \"min_price\": null,\n    \"max_price\": 4000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Under Armour running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Under Armour",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1364.86,
+    "token_usage": {
+      "prompt_tokens": 1098,
+      "candidates_tokens": 113,
+      "total_tokens": 1211
+    },
+    "is_valid": true
+  },
+  "8e7f36bbbb827d183bbed46a63181aec5d2163dfdb7d2798776a0e8b1e763a9b": {
+    "raw_json": "{\n  \"semantic_query\": \"wireless charging pad\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1800.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"fast\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "wireless charging pad",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "fast"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1177.75,
+    "token_usage": {
+      "prompt_tokens": 1102,
+      "candidates_tokens": 120,
+      "total_tokens": 1222
+    },
+    "is_valid": true
+  },
+  "4a33d6386608313a73d3bb95f40c5701085390c3a165fd4ba0398768d334dd81": {
+    "raw_json": "{\n  \"product_type\": \"running shoes\",\n  \"semantic_query\": \"Puma running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 2000.0,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "running shoes",
+      "semantic_query": "Puma running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 2000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2454.22,
+    "token_usage": {
+      "prompt_tokens": 2225,
+      "candidates_tokens": 148,
+      "total_tokens": 2373
+    },
+    "is_valid": true
+  },
+  "a6d49b15469a0e177fd6090f13923e880aa61e242f4dfce7e9eb951435df470f": {
+    "raw_json": "{\n  \"product_type\": \"sneakers\",\n  \"semantic_query\": \"Nike sneakers\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": 3500.0,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": 4.0,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"comfortable\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "sneakers",
+      "semantic_query": "Nike sneakers",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": 3500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": 4.0,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "comfortable"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1656.17,
+    "token_usage": {
+      "prompt_tokens": 2231,
+      "candidates_tokens": 156,
+      "total_tokens": 2387
+    },
+    "is_valid": true
+  },
+  "9931d8096adaee65fde61e478eb005a5fefadafc499986e312a11be3559968d7": {
+    "raw_json": "{\n  \"product_type\": \"smartphone\",\n  \"semantic_query\": \"Samsung smartphone\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": \"Samsung\",\n    \"min_price\": 10000.0,\n    \"max_price\": 20000.0,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"good battery life\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "smartphone",
+      "semantic_query": "Samsung smartphone",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": "Samsung",
+        "min_price": 10000.0,
+        "max_price": 20000.0,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "good battery life"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1840.38,
+    "token_usage": {
+      "prompt_tokens": 2234,
+      "candidates_tokens": 164,
+      "total_tokens": 2398
+    },
+    "is_valid": true
+  },
+  "937b17b3997b87526d16e21f474bf6f426db437dc0d17486f71a8cbade1da6ec": {
+    "raw_json": "{\n  \"product_type\": \"laptop\",\n  \"semantic_query\": \"Dell laptop for programming\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"max_price\": 60000.0,\n    \"max_inclusive\": false,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"for programming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "laptop",
+      "semantic_query": "Dell laptop for programming",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": 60000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "lightweight",
+        "for programming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1678.0,
+    "token_usage": {
+      "prompt_tokens": 2227,
+      "candidates_tokens": 135,
+      "total_tokens": 2362
+    },
+    "is_valid": true
+  },
+  "9ea55ed67358946da540a9c2067c4652f1c194475c92c655f216ea68d49104b5": {
+    "raw_json": "{\n  \"product_type\": \"digital watch\",\n  \"semantic_query\": \"Casio digital watch for men\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Casio\",\n    \"max_price\": 1500.0,\n    \"max_inclusive\": false,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"for men\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "digital watch",
+      "semantic_query": "Casio digital watch for men",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "for men"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2206.37,
+    "token_usage": {
+      "prompt_tokens": 2226,
+      "candidates_tokens": 132,
+      "total_tokens": 2358
+    },
+    "is_valid": true
+  },
+  "fa40a78615c3065a7fc6a78fca58d197d020634233562ce23019f88a777f3ba6": {
+    "raw_json": "{\n  \"product_type\": \"t-shirt\",\n  \"semantic_query\": \"Puma t-shirt\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 1500.0,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "t-shirt",
+      "semantic_query": "Puma t-shirt",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1397.92,
+    "token_usage": {
+      "prompt_tokens": 2237,
+      "candidates_tokens": 148,
+      "total_tokens": 2385
+    },
+    "is_valid": true
+  },
+  "adf347f3923f59a0a75b795862c366dbd5124b61256dbed2cbb79a25513c02f5": {
+    "raw_json": "{\n  \"product_type\": \"laptop\",\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 500.0,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"Query specifies foreign currency 'USD'. Catalog prices are in INR.\"\n}",
+    "parsed_output": {
+      "product_type": "laptop",
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": 500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Query specifies foreign currency 'USD'. Catalog prices are in INR."
+    },
+    "latency_ms": 2319.92,
+    "token_usage": {
+      "prompt_tokens": 2221,
+      "candidates_tokens": 154,
+      "total_tokens": 2375
+    },
+    "is_valid": true
+  },
+  "48a58e51ec636bea3702e39b68a44eebb9c1bdf7bcbe6a7409df8a4fa9c85da8": {
+    "raw_json": "{\"semantic_query\": \"Canon DSLR camera lens above 25000\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 19.000167891s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "Canon DSLR camera lens above 25000",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 19.000167891s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "74284f953e66fbe9a08e3122957d3740828d0e7329986bdf0866e76c70bc3da0": {
+    "raw_json": "{\"semantic_query\": \"cheap laptop\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 9.3708357s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "cheap laptop",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 9.3708357s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "cb505c3dcc26fd8fa5b07a4b15f96848d0b3e360054ba531ea9d7b2b6c73d222": {
+    "raw_json": "{\"semantic_query\": \"Nike shoes, but not running shoes\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 59.434897707s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '59s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "Nike shoes, but not running shoes",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 59.434897707s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '59s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "ffaf801bbc337d3684c9674cffc263786339ec0f818442fc2ae7db48c496d790": {
+    "raw_json": "{\n  \"product_type\": null,\n  \"semantic_query\": \"unspecified product query\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"Query lacks specific product intent or criteria.\"\n}",
+    "parsed_output": {
+      "product_type": null,
+      "semantic_query": "unspecified product query",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Query lacks specific product intent or criteria."
+    },
+    "latency_ms": 1356.73,
+    "token_usage": {
+      "prompt_tokens": 2218,
+      "candidates_tokens": 144,
+      "total_tokens": 2362
+    },
+    "is_valid": true
+  },
+  "85e0bc2147d9ce859ade33e82aaa1e17e5c0e233186556e952042c2b2635afcc": {
+    "raw_json": "{\n  \"product_type\": \"airplane\",\n  \"semantic_query\": \"Boeing 747 airplane\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Boeing\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"Requested product is outside the 16 supported catalog categories.\"\n}",
+    "parsed_output": {
+      "product_type": "airplane",
+      "semantic_query": "Boeing 747 airplane",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Boeing",
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Requested product is outside the 16 supported catalog categories."
+    },
+    "latency_ms": 1268.04,
+    "token_usage": {
+      "prompt_tokens": 2223,
+      "candidates_tokens": 154,
+      "total_tokens": 2377
+    },
+    "is_valid": true
+  },
+  "4f437c167e4b04cb15921bdb08c307e56f0d4b1642086449c58e3a35203994e9": {
+    "raw_json": "{\n  \"product_type\": \"formal gold watch\",\n  \"semantic_query\": \"Titan formal gold watch\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Titan\",\n    \"max_price\": 5000.0,\n    \"max_inclusive\": false,\n    \"min_rating\": 4.2,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "formal gold watch",
+      "semantic_query": "Titan formal gold watch",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Titan",
+        "min_price": null,
+        "max_price": 5000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": 4.2,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1419.42,
+    "token_usage": {
+      "prompt_tokens": 2231,
+      "candidates_tokens": 133,
+      "total_tokens": 2364
+    },
+    "is_valid": true
+  },
+  "e10b1e3b1d565f81647fa7f3d5deb46af0a09b2f0b5ef993aa0525dbfad258cb": {
+    "raw_json": "{\n  \"product_type\": \"running shoes\",\n  \"semantic_query\": \"Under Armour running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Under Armour\",\n    \"min_price\": null,\n    \"max_price\": 4000.0,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "running shoes",
+      "semantic_query": "Under Armour running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Under Armour",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1853.63,
+    "token_usage": {
+      "prompt_tokens": 2224,
+      "candidates_tokens": 148,
+      "total_tokens": 2372
+    },
+    "is_valid": true
+  },
+  "915c1de01cf0a26ba6e88fc5dad506f8d2303f58a82dba65b6a3e1051be53d88": {
+    "raw_json": "{\n  \"product_type\": \"wireless charging pad\",\n  \"semantic_query\": \"wireless charging pad for iPhone and Android\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1800.0,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"fast\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "wireless charging pad",
+      "semantic_query": "wireless charging pad for iPhone and Android",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "fast"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1320.1,
+    "token_usage": {
+      "prompt_tokens": 2228,
+      "candidates_tokens": 160,
+      "total_tokens": 2388
+    },
+    "is_valid": true
+  },
+  "faaa62e05df600323db007d5c88914ed5824599551fe75ba545bb83afef3a21d": {
+    "raw_json": "{\n  \"product_type\": \"running shoes\",\n  \"semantic_query\": \"Puma running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 2000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "running shoes",
+      "semantic_query": "Puma running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 2000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1446.02,
+    "token_usage": {
+      "prompt_tokens": 492,
+      "candidates_tokens": 146,
+      "total_tokens": 638
+    },
+    "is_valid": true
+  },
+  "5e96e4caf905d39fc1fcecf23f1d69d65665f1abe4a7fa0f3aea1d049ea2e2a7": {
+    "raw_json": "{\n  \"product_type\": \"sneakers\",\n  \"semantic_query\": \"comfortable Nike sneakers\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": 3500,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": 4,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"comfortable\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "sneakers",
+      "semantic_query": "comfortable Nike sneakers",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": 3500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": 4.0,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "comfortable"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1073.9,
+    "token_usage": {
+      "prompt_tokens": 498,
+      "candidates_tokens": 153,
+      "total_tokens": 651
+    },
+    "is_valid": true
+  },
+  "1c31e1e3e51fd108b989d2a4e128d67f5e71f7b5500a1f2d0bf2bc8cf711f891": {
+    "raw_json": "{\n  \"product_type\": \"smartphone\",\n  \"semantic_query\": \"Samsung smartphone\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": \"Samsung\",\n    \"min_price\": 10000,\n    \"max_price\": 20000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"good battery life\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "smartphone",
+      "semantic_query": "Samsung smartphone",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": "Samsung",
+        "min_price": 10000.0,
+        "max_price": 20000.0,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "good battery life"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1115.54,
+    "token_usage": {
+      "prompt_tokens": 501,
+      "candidates_tokens": 160,
+      "total_tokens": 661
+    },
+    "is_valid": true
+  },
+  "7f8b16926f503667b9e9e9423a06d1ccc52c18e15a84bb8dc0bfa378276c64fc": {
+    "raw_json": "{\n  \"product_type\": \"laptop\",\n  \"semantic_query\": \"Dell laptop for programming\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"min_price\": null,\n    \"max_price\": 60000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"for programming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "laptop",
+      "semantic_query": "Dell laptop for programming",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": 60000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "lightweight",
+        "for programming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2151.63,
+    "token_usage": {
+      "prompt_tokens": 494,
+      "candidates_tokens": 160,
+      "total_tokens": 654
+    },
+    "is_valid": true
+  },
+  "6b0c604a07baa46a9b3a5bef7ad1851b1957a93433626de9bc603cbc221f5aab": {
+    "raw_json": "{\n  \"product_type\": \"digital watch\",\n  \"semantic_query\": \"Casio digital watch for men\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Casio\",\n    \"min_price\": null,\n    \"max_price\": 1500,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"for men\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "digital watch",
+      "semantic_query": "Casio digital watch for men",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "for men"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1877.86,
+    "token_usage": {
+      "prompt_tokens": 493,
+      "candidates_tokens": 157,
+      "total_tokens": 650
+    },
+    "is_valid": true
+  },
+  "705238eef0031ecae04db15431abf570d04afad1839af60432093c9e9746ada6": {
+    "raw_json": "{\n  \"product_type\": \"t-shirt\",\n  \"semantic_query\": \"Puma t-shirt\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 1500,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "t-shirt",
+      "semantic_query": "Puma t-shirt",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 1500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1759.2,
+    "token_usage": {
+      "prompt_tokens": 504,
+      "candidates_tokens": 148,
+      "total_tokens": 652
+    },
+    "is_valid": true
+  },
+  "b5206773200a6565a7b64fcd9a43a6f3aa5b33103537146bba85c845bc0f0725": {
+    "raw_json": "{\n  \"product_type\": \"laptop\",\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 500,\n    \"min_inclusive\": false,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "laptop",
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": 500.0,
+        "min_inclusive": false,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2545.84,
+    "token_usage": {
+      "prompt_tokens": 488,
+      "candidates_tokens": 139,
+      "total_tokens": 627
+    },
+    "is_valid": true
+  },
+  "94ee73544a079313f669d9e558d00c1abc7b52896ff82462a8e4799526f4c36d": {
+    "raw_json": "{\n  \"product_type\": \"DSLR camera lens\",\n  \"semantic_query\": \"Canon DSLR camera lens\",\n  \"hard_constraints\": {\n    \"category\": \"Cameras & Accessories\",\n    \"brand\": \"Canon\",\n    \"min_price\": 25000,\n    \"max_price\": null,\n    \"min_inclusive\": false,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "dslr camera lens",
+      "semantic_query": "Canon DSLR camera lens",
+      "hard_constraints": {
+        "category": "Cameras & Accessories",
+        "brand": "Canon",
+        "min_price": 25000.0,
+        "max_price": null,
+        "min_inclusive": false,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1077.46,
+    "token_usage": {
+      "prompt_tokens": 492,
+      "candidates_tokens": 149,
+      "total_tokens": 641
+    },
+    "is_valid": true
+  },
+  "7b2ba4779c287e5ef3635d233e9c033d256784004bc07c780a05b2bf5e840cde": {
+    "raw_json": "{\n  \"product_type\": \"laptop\",\n  \"semantic_query\": \"laptop\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"cheap\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "laptop",
+      "semantic_query": "laptop",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "cheap"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1738.84,
+    "token_usage": {
+      "prompt_tokens": 483,
+      "candidates_tokens": 144,
+      "total_tokens": 627
+    },
+    "is_valid": true
+  },
+  "ce350c3dbab7ad6368fb57ae0143bc2cd1afa81ea37f449fc9632d6aedf82622": {
+    "raw_json": "{\n  \"product_type\": \"shoes\",\n  \"semantic_query\": \"Nike shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [\n    {\n      \"target_type\": \"product_type\",\n      \"value\": \"running shoes\"\n    }\n  ],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "shoes",
+      "semantic_query": "Nike shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [
+        {
+          "target_type": "product_type",
+          "value": "running shoes"
+        }
+      ],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1151.71,
+    "token_usage": {
+      "prompt_tokens": 488,
+      "candidates_tokens": 168,
+      "total_tokens": 656
+    },
+    "is_valid": true
+  },
+  "e3e96e00740f4b1fe1ec17bf17fec53d26372c0b4d36972bf8c3bde98cd9a784": {
+    "raw_json": "{\n  \"product_type\": null,\n  \"semantic_query\": \"interesting products\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The request is too vague. Please specify a product category or type you are interested in.\"\n}",
+    "parsed_output": {
+      "product_type": null,
+      "semantic_query": "interesting products",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The request is too vague. Please specify a product category or type you are interested in."
+    },
+    "latency_ms": 1861.16,
+    "token_usage": {
+      "prompt_tokens": 485,
+      "candidates_tokens": 152,
+      "total_tokens": 637
+    },
+    "is_valid": true
+  },
+  "b7341d51f9b93d52b83d548c81a370f9fbe5bbf4856f010242310d60df74d9ee": {
+    "raw_json": "{\"semantic_query\": \"commercial Boeing 747 airplane for sale\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 16.005096704s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '16s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "commercial Boeing 747 airplane for sale",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 16.005096704s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '16s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "30adc2e0946c07ed99a08cae7307da93e90b1c413be4cc286042a73df3908a94": {
+    "raw_json": "{\"semantic_query\": \"Titan formal gold watch below 5000 with minimum 4.2 rating\", \"hard_constraints\": {}, \"soft_preferences\": [], \"needs_clarification\": true, \"clarification_reason\": \"Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\\\nPlease retry in 6.231437408s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}\"}",
+    "parsed_output": {
+      "semantic_query": "Titan formal gold watch below 5000 with minimum 4.2 rating",
+      "hard_constraints": {},
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "Failed to generate structured content from Gemini after 4 attempts. Last error: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.1-flash-lite\\nPlease retry in 6.231437408s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.1-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}"
+    },
+    "latency_ms": 0.0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "candidates_tokens": 0,
+      "total_tokens": 0
+    },
+    "is_valid": false
+  },
+  "3d318db103291eff14bbf07ef6ceae99777855a03c8bdf5a3ffb797837ae37ba": {
+    "raw_json": "{\n  \"product_type\": \"running shoes\",\n  \"semantic_query\": \"Under Armour running shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Under Armour\",\n    \"min_price\": null,\n    \"max_price\": 4000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "running shoes",
+      "semantic_query": "Under Armour running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Under Armour",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1200.83,
+    "token_usage": {
+      "prompt_tokens": 491,
+      "candidates_tokens": 146,
+      "total_tokens": 637
+    },
+    "is_valid": true
+  },
+  "f36cae5e710a73736e48351af007a98dad4d51e6a27a6678adf4bf20efb54f41": {
+    "raw_json": "{\n  \"product_type\": \"wireless charging pad\",\n  \"semantic_query\": \"fast wireless charging pad iPhone Android\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1800,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"fast\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "wireless charging pad",
+      "semantic_query": "fast wireless charging pad iPhone Android",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "fast"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1003.34,
+    "token_usage": {
+      "prompt_tokens": 495,
+      "candidates_tokens": 157,
+      "total_tokens": 652
+    },
+    "is_valid": true
+  },
+  "d367ef7e9689563da5daf27a5d2ccb09917b78a3ec0b14145c3afeb2dc2db59f": {
+    "raw_json": "{\n  \"semantic_query\": \"Logitech wireless gaming mouse\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Logitech\",\n    \"min_price\": null,\n    \"max_price\": 2500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"wireless\",\n    \"gaming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Logitech wireless gaming mouse",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Logitech",
+        "min_price": null,
+        "max_price": 2500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "wireless",
+        "gaming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 12617.0,
+    "token_usage": {
+      "prompt_tokens": 1081,
+      "candidates_tokens": 127,
+      "total_tokens": 1208
+    },
+    "is_valid": true
+  },
+  "a0732263f7a4a6a55eae82bc8780a8f6b70c2d13cb4c078c915207b1798ebede": {
+    "raw_json": "{\n  \"semantic_query\": \"Sony noise cancelling headphones\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": \"Sony\",\n    \"min_price\": 10000.0,\n    \"max_price\": null,\n    \"min_rating\": 4.5,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"noise cancelling\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Sony noise cancelling headphones",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": "Sony",
+        "min_price": 10000.0,
+        "max_price": null,
+        "min_rating": 4.5,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "noise cancelling"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 9901.49,
+    "token_usage": {
+      "prompt_tokens": 1088,
+      "candidates_tokens": 127,
+      "total_tokens": 1215
+    },
+    "is_valid": true
+  },
+  "a669c668925f2140ad87ef0e9f869d3072cdae26dee62cb2b6dd47f511fd7967": {
+    "raw_json": "{\n  \"semantic_query\": \"Puma walking shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 3000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"walking\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Puma walking shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 3000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "walking"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 4677.88,
+    "token_usage": {
+      "prompt_tokens": 1081,
+      "candidates_tokens": 121,
+      "total_tokens": 1202
+    },
+    "is_valid": true
+  },
+  "b81e56703e66a7b60fa72defc7d450291a9a7948523d38ca562a9945ef480b84": {
+    "raw_json": "{\n  \"semantic_query\": \"Dell laptop for programming\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"for programming\",\n    \"not for gaming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Dell laptop for programming",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "for programming",
+        "not for gaming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 9391.79,
+    "token_usage": {
+      "prompt_tokens": 1077,
+      "candidates_tokens": 122,
+      "total_tokens": 1199
+    },
+    "is_valid": true
+  },
+  "f906c2e4657de81740e265f25677a2f8ad998daa0f354947280ded8e84805a0b": {
+    "raw_json": "{\n  \"semantic_query\": \"Casio analog watch leather strap\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Casio\",\n    \"min_price\": 2000.0,\n    \"max_price\": 5000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"analog\",\n    \"leather strap\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Casio analog watch leather strap",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_price": 2000.0,
+        "max_price": 5000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "analog",
+        "leather strap"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1080.77,
+    "token_usage": {
+      "prompt_tokens": 1088,
+      "candidates_tokens": 135,
+      "total_tokens": 1223
+    },
+    "is_valid": true
+  },
+  "4b7c45a538402dcc02bd2c6ffaecca4dcf8c15b9924c05a22e626621bb4bf50e": {
+    "raw_json": "{\n  \"semantic_query\": \"Nike sports shoes without leather\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": 4000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"non-leather\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Nike sports shoes without leather",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "non-leather"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1562.55,
+    "token_usage": {
+      "prompt_tokens": 1080,
+      "candidates_tokens": 123,
+      "total_tokens": 1203
+    },
+    "is_valid": true
+  },
+  "0b4c2f504ad11b0d5b07cb594e2b134d99bbafcdc3dd415430f57f62cbbfd20f": {
+    "raw_json": "{\n  \"semantic_query\": \"ergonomic mesh office chair with lumbar support\",\n  \"hard_constraints\": {\n    \"category\": \"Furniture\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 7000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"ergonomic\",\n    \"mesh\",\n    \"lumbar support\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "ergonomic mesh office chair with lumbar support",
+      "hard_constraints": {
+        "category": "Furniture",
+        "brand": null,
+        "min_price": null,
+        "max_price": 7000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "ergonomic",
+        "mesh",
+        "lumbar support"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1559.48,
+    "token_usage": {
+      "prompt_tokens": 1083,
+      "candidates_tokens": 135,
+      "total_tokens": 1218
+    },
+    "is_valid": true
+  },
+  "b28dc0d2c091214910597dc399329e4baaafd9eb611201420ba551ee527df354": {
+    "raw_json": "{\n  \"semantic_query\": \"smartphone\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 25000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "smartphone",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 25000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 10045.19,
+    "token_usage": {
+      "prompt_tokens": 1088,
+      "candidates_tokens": 111,
+      "total_tokens": 1199
+    },
+    "is_valid": true
+  },
+  "78f2627477a64c22def4d3157dcf557bfc1d5ecca77da3dff19d8287eb401954": {
+    "raw_json": "{\n  \"semantic_query\": \"smartwatch\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 150.0,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The user specified a currency other than INR (USD).\"\n}",
+    "parsed_output": {
+      "semantic_query": "smartwatch",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": null,
+        "min_price": null,
+        "max_price": 150.0,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The user specified a currency other than INR (USD)."
+    },
+    "latency_ms": 1019.81,
+    "token_usage": {
+      "prompt_tokens": 1077,
+      "candidates_tokens": 119,
+      "total_tokens": 1196
+    },
+    "is_valid": true
+  },
+  "c2ad7ae806156b70a96b2790f8aac87344467fbad381533b59f7ec5835949a72": {
+    "raw_json": "{\n  \"semantic_query\": \"portable Bluetooth speaker\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"cheap\",\n    \"portable\",\n    \"for outdoor party\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "portable Bluetooth speaker",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "cheap",
+        "portable",
+        "for outdoor party"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1713.85,
+    "token_usage": {
+      "prompt_tokens": 1076,
+      "candidates_tokens": 126,
+      "total_tokens": 1202
+    },
+    "is_valid": true
+  },
+  "dbc441c7c7968985fc041557553ef5bb5c0d6fad85b3b41ce12abe744cb64e03": {
+    "raw_json": "{\n  \"semantic_query\": \"Bosch hammer drill machine 1500 watts\",\n  \"hard_constraints\": {\n    \"category\": \"Tools & Hardware\",\n    \"brand\": \"Bosch\",\n    \"min_price\": null,\n    \"max_price\": 5000.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"1500 watts\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Bosch hammer drill machine 1500 watts",
+      "hard_constraints": {
+        "category": "Tools & Hardware",
+        "brand": "Bosch",
+        "min_price": null,
+        "max_price": 5000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "1500 watts"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 979.22,
+    "token_usage": {
+      "prompt_tokens": 1088,
+      "candidates_tokens": 133,
+      "total_tokens": 1221
+    },
+    "is_valid": true
+  },
+  "d06e9483b2a6075b358b1466127f24beae6e7757d94aedf0bd9e2631a2cf2912": {
+    "raw_json": "{\n  \"semantic_query\": \"products\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The user query is excessively ambiguous and does not specify a product category or intent.\"\n}",
+    "parsed_output": {
+      "semantic_query": "products",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The user query is excessively ambiguous and does not specify a product category or intent."
+    },
+    "latency_ms": 964.89,
+    "token_usage": {
+      "prompt_tokens": 1077,
+      "candidates_tokens": 116,
+      "total_tokens": 1193
+    },
+    "is_valid": true
+  },
+  "9448f869c8dc0c4a1ffa6d0df25145f2a8fceef9227cf06a16561ab591c6adbb": {
+    "raw_json": "{\n  \"semantic_query\": \"organic farm milk 1 litre carton\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"fresh\",\n    \"organic\"\n  ],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested product category (groceries/milk) is not supported by the platform.\"\n}",
+    "parsed_output": {
+      "semantic_query": "organic farm milk 1 litre carton",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "fresh",
+        "organic"
+      ],
+      "needs_clarification": true,
+      "clarification_reason": "The requested product category (groceries/milk) is not supported by the platform."
+    },
+    "latency_ms": 1409.73,
+    "token_usage": {
+      "prompt_tokens": 1077,
+      "candidates_tokens": 136,
+      "total_tokens": 1213
+    },
+    "is_valid": true
+  },
+  "25658e4854c70e060c1ccd5687dad46dd839d48ee125cf8ce02bd70ba0382992": {
+    "raw_json": "{\n  \"semantic_query\": \"Cello stainless steel insulated water bottle 1000ml\",\n  \"hard_constraints\": {\n    \"category\": \"Kitchen & Dining\",\n    \"brand\": \"Cello\",\n    \"min_price\": null,\n    \"max_price\": 800.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"stainless steel\",\n    \"insulated\",\n    \"1000ml\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Cello stainless steel insulated water bottle 1000ml",
+      "hard_constraints": {
+        "category": "Kitchen & Dining",
+        "brand": "Cello",
+        "min_price": null,
+        "max_price": 800.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "stainless steel",
+        "insulated",
+        "1000ml"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 3433.21,
+    "token_usage": {
+      "prompt_tokens": 1087,
+      "candidates_tokens": 145,
+      "total_tokens": 1232
+    },
+    "is_valid": true
+  },
+  "db5818972ced34bfc96dc419b15d24ced6e62678a105cf991c4bbe4c996df052": {
+    "raw_json": "{\n  \"semantic_query\": \"Canon camera lens excluding telephoto\",\n  \"hard_constraints\": {\n    \"category\": \"Cameras & Accessories\",\n    \"brand\": \"Canon\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"non-telephoto\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Canon camera lens excluding telephoto",
+      "hard_constraints": {
+        "category": "Cameras & Accessories",
+        "brand": "Canon",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "non-telephoto"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1130.01,
+    "token_usage": {
+      "prompt_tokens": 1078,
+      "candidates_tokens": 120,
+      "total_tokens": 1198
+    },
+    "is_valid": true
+  },
+  "22cbf7bae6593af79b8cbd8ed985510a3aec8c516ef22feb68d268a31842e0d3": {
+    "raw_json": "{\n  \"semantic_query\": \"lightweight foldable baby stroller\",\n  \"hard_constraints\": {\n    \"category\": \"Baby Care\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 6000.0,\n    \"min_rating\": 4.0,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"foldable\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "lightweight foldable baby stroller",
+      "hard_constraints": {
+        "category": "Baby Care",
+        "brand": null,
+        "min_price": null,
+        "max_price": 6000.0,
+        "min_rating": 4.0,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "lightweight",
+        "foldable"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 9411.69,
+    "token_usage": {
+      "prompt_tokens": 1085,
+      "candidates_tokens": 130,
+      "total_tokens": 1215
+    },
+    "is_valid": true
+  },
+  "dbd4f2ccb3f00268c0776c2952bc7547f314a3e925657b5b06220a02067e895c": {
+    "raw_json": "{\n  \"semantic_query\": \"Parker rollerball pen pack of 2\",\n  \"hard_constraints\": {\n    \"category\": \"Pens & Stationery\",\n    \"brand\": \"Parker\",\n    \"min_price\": null,\n    \"max_price\": 500.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "Parker rollerball pen pack of 2",
+      "hard_constraints": {
+        "category": "Pens & Stationery",
+        "brand": "Parker",
+        "min_price": null,
+        "max_price": 500.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 15003.63,
+    "token_usage": {
+      "prompt_tokens": 1082,
+      "candidates_tokens": 116,
+      "total_tokens": 1198
+    },
+    "is_valid": true
+  },
+  "3e14b04ebaecebb0e900b359b6b490dd18c01d1c067d789e8d777b3a7b9d06c2": {
+    "raw_json": "{\n  \"semantic_query\": \"leather wallet for men\",\n  \"hard_constraints\": {\n    \"category\": \"Bags, Wallets & Belts\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1200.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"leather\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "leather wallet for men",
+      "hard_constraints": {
+        "category": "Bags, Wallets & Belts",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1200.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "leather"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 2693.45,
+    "token_usage": {
+      "prompt_tokens": 1079,
+      "candidates_tokens": 125,
+      "total_tokens": 1204
+    },
+    "is_valid": true
+  },
+  "777985318152d1702a67e9afd22b2c9c12c52b3a4cb81d65d9da80f1715066a3": {
+    "raw_json": "{\n  \"semantic_query\": \"commercial Airbus A320 passenger jet plane\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Airbus\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested item (commercial passenger jet) is not available in the catalog categories.\"\n}",
+    "parsed_output": {
+      "semantic_query": "commercial Airbus A320 passenger jet plane",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Airbus",
+        "min_price": null,
+        "max_price": null,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The requested item (commercial passenger jet) is not available in the catalog categories."
+    },
+    "latency_ms": 1273.74,
+    "token_usage": {
+      "prompt_tokens": 1078,
+      "candidates_tokens": 126,
+      "total_tokens": 1204
+    },
+    "is_valid": true
+  },
+  "e18c01d4716785b314b5b56eac5eb9fe89f07332f269f79cc5432de8c1f30c99": {
+    "raw_json": "{\n  \"semantic_query\": \"waterproof car body cover for Honda City\",\n  \"hard_constraints\": {\n    \"category\": \"Automotive\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1800.0,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"soft_preferences\": [\n    \"waterproof\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "semantic_query": "waterproof car body cover for Honda City",
+      "hard_constraints": {
+        "category": "Automotive",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [
+        "waterproof"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1130.35,
+    "token_usage": {
+      "prompt_tokens": 1083,
+      "candidates_tokens": 124,
+      "total_tokens": 1207
+    },
+    "is_valid": true
+  },
+  "473036f60280e6f0aadf7de659a9c23b952835332c55c02105bd672c163cbe1d": {
+    "raw_json": "{\n  \"product_type\": \"wireless gaming mouse\",\n  \"semantic_query\": \"Logitech wireless gaming mouse\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Logitech\",\n    \"min_price\": null,\n    \"max_price\": 2500,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"wireless\",\n    \"gaming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "wireless gaming mouse",
+      "semantic_query": "Logitech wireless gaming mouse",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Logitech",
+        "min_price": null,
+        "max_price": 2500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "wireless",
+        "gaming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1174.29,
+    "token_usage": {
+      "prompt_tokens": 493,
+      "candidates_tokens": 161,
+      "total_tokens": 654
+    },
+    "is_valid": true
+  },
+  "6c09bfa58ced1515f583088e1436df286382ea9f1c3c1c417804afb6aba81882": {
+    "raw_json": "{\n  \"product_type\": \"noise cancelling headphones\",\n  \"semantic_query\": \"Sony noise cancelling headphones\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": \"Sony\",\n    \"min_price\": 10000,\n    \"max_price\": null,\n    \"min_inclusive\": false,\n    \"max_inclusive\": true,\n    \"min_rating\": 4.5,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "noise cancelling headphones",
+      "semantic_query": "Sony noise cancelling headphones",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": "Sony",
+        "min_price": 10000.0,
+        "max_price": null,
+        "min_inclusive": false,
+        "max_inclusive": true,
+        "min_rating": 4.5,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1414.26,
+    "token_usage": {
+      "prompt_tokens": 500,
+      "candidates_tokens": 152,
+      "total_tokens": 652
+    },
+    "is_valid": true
+  },
+  "4813483db4abc7e05f9f24f23385f099d3e02d3055de46418a7f42e64abf1be4": {
+    "raw_json": "{\n  \"product_type\": \"walking shoes\",\n  \"semantic_query\": \"Puma walking shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Puma\",\n    \"min_price\": null,\n    \"max_price\": 3000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "walking shoes",
+      "semantic_query": "Puma walking shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Puma",
+        "min_price": null,
+        "max_price": 3000.0,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1787.03,
+    "token_usage": {
+      "prompt_tokens": 493,
+      "candidates_tokens": 146,
+      "total_tokens": 639
+    },
+    "is_valid": true
+  },
+  "8e2bdefd007df9fa3ae7d0e5adf1b0f3853ed337f74b46c898c95dc8446488f9": {
+    "raw_json": "{\n  \"product_type\": \"laptop\",\n  \"semantic_query\": \"Dell laptop for programming\",\n  \"hard_constraints\": {\n    \"category\": \"Computers\",\n    \"brand\": \"Dell\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [\n    {\n      \"target_type\": \"feature\",\n      \"value\": \"gaming\"\n    }\n  ],\n  \"soft_preferences\": [\n    \"for programming\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "laptop",
+      "semantic_query": "Dell laptop for programming",
+      "hard_constraints": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [
+        {
+          "target_type": "feature",
+          "value": "gaming"
+        }
+      ],
+      "soft_preferences": [
+        "for programming"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1193.86,
+    "token_usage": {
+      "prompt_tokens": 489,
+      "candidates_tokens": 176,
+      "total_tokens": 665
+    },
+    "is_valid": true
+  },
+  "7bf68169dbcdb8e94b25f9ecb876214c6b56d778e9b6f6a026e44f440c282ee8": {
+    "raw_json": "{\n  \"product_type\": \"analog watch\",\n  \"semantic_query\": \"Casio analog watch leather strap\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": \"Casio\",\n    \"min_price\": 2000,\n    \"max_price\": 5000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"analog\",\n    \"leather strap\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "analog watch",
+      "semantic_query": "Casio analog watch leather strap",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_price": 2000.0,
+        "max_price": 5000.0,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "analog",
+        "leather strap"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1483.99,
+    "token_usage": {
+      "prompt_tokens": 500,
+      "candidates_tokens": 166,
+      "total_tokens": 666
+    },
+    "is_valid": true
+  },
+  "1d1d481eba1676538869e7292d4cb962f400e0a49c018d40ec758623e6629db2": {
+    "raw_json": "{\n  \"product_type\": \"sports shoes\",\n  \"semantic_query\": \"Nike sports shoes\",\n  \"hard_constraints\": {\n    \"category\": \"Footwear\",\n    \"brand\": \"Nike\",\n    \"min_price\": null,\n    \"max_price\": 4000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [\n    {\n      \"target_type\": \"attribute\",\n      \"value\": \"leather\"\n    }\n  ],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "sports shoes",
+      "semantic_query": "Nike sports shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_price": null,
+        "max_price": 4000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [
+        {
+          "target_type": "attribute",
+          "value": "leather"
+        }
+      ],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1477.58,
+    "token_usage": {
+      "prompt_tokens": 492,
+      "candidates_tokens": 171,
+      "total_tokens": 663
+    },
+    "is_valid": true
+  },
+  "7c77eb1329a3b66a6745ac7ce21ff0320a2922f0dd16d1196858fde28aff9e27": {
+    "raw_json": "{\n  \"product_type\": \"office chair\",\n  \"semantic_query\": \"ergonomic mesh office chair lumbar support\",\n  \"hard_constraints\": {\n    \"category\": \"Furniture\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 7000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"ergonomic\",\n    \"mesh\",\n    \"lumbar support\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "office chair",
+      "semantic_query": "ergonomic mesh office chair lumbar support",
+      "hard_constraints": {
+        "category": "Furniture",
+        "brand": null,
+        "min_price": null,
+        "max_price": 7000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "ergonomic",
+        "mesh",
+        "lumbar support"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1272.81,
+    "token_usage": {
+      "prompt_tokens": 495,
+      "candidates_tokens": 167,
+      "total_tokens": 662
+    },
+    "is_valid": true
+  },
+  "b495f07592fab889d29abf46767cf02a000ad82e1cd04302f41d683df17a5bdb": {
+    "raw_json": "{\n  \"product_type\": \"smartphone\",\n  \"semantic_query\": \"smartphone\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 25000,\n    \"min_inclusive\": false,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "smartphone",
+      "semantic_query": "smartphone",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": 25000.0,
+        "min_inclusive": false,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 8387.75,
+    "token_usage": {
+      "prompt_tokens": 500,
+      "candidates_tokens": 143,
+      "total_tokens": 643
+    },
+    "is_valid": true
+  },
+  "cc2139ab387e815ecd13c15b858cf52267341ff5bbda867ddd1dfd2f6ac123de": {
+    "raw_json": "{\n  \"product_type\": \"smartwatch\",\n  \"semantic_query\": \"smartwatch\",\n  \"hard_constraints\": {\n    \"category\": \"Watches\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 150,\n    \"min_inclusive\": false,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"USD\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "smartwatch",
+      "semantic_query": "smartwatch",
+      "hard_constraints": {
+        "category": "Watches",
+        "brand": null,
+        "min_price": null,
+        "max_price": 150.0,
+        "min_inclusive": false,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "USD"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1087.96,
+    "token_usage": {
+      "prompt_tokens": 489,
+      "candidates_tokens": 141,
+      "total_tokens": 630
+    },
+    "is_valid": true
+  },
+  "300c5ca01be5a2baa7ed6299ee439e0285b6e31807a8bb93df57966176bddb2c": {
+    "raw_json": "{\n  \"product_type\": \"Bluetooth speaker\",\n  \"semantic_query\": \"portable Bluetooth speaker outdoor party\",\n  \"hard_constraints\": {\n    \"category\": \"Mobiles & Accessories\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"cheap\",\n    \"portable\",\n    \"for outdoor party\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "bluetooth speaker",
+      "semantic_query": "portable Bluetooth speaker outdoor party",
+      "hard_constraints": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "cheap",
+        "portable",
+        "for outdoor party"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1157.55,
+    "token_usage": {
+      "prompt_tokens": 488,
+      "candidates_tokens": 163,
+      "total_tokens": 651
+    },
+    "is_valid": true
+  },
+  "ce2e0c2ca03e0a39bdd145fa614855b60637d1dba0feb04014f37a8c337c872b": {
+    "raw_json": "{\n  \"product_type\": \"hammer drill machine\",\n  \"semantic_query\": \"Bosch hammer drill machine 1500 watts\",\n  \"hard_constraints\": {\n    \"category\": \"Tools & Hardware\",\n    \"brand\": \"Bosch\",\n    \"min_price\": null,\n    \"max_price\": 5000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"1500 watts\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "hammer drill machine",
+      "semantic_query": "Bosch hammer drill machine 1500 watts",
+      "hard_constraints": {
+        "category": "Tools & Hardware",
+        "brand": "Bosch",
+        "min_price": null,
+        "max_price": 5000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "1500 watts"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 7197.69,
+    "token_usage": {
+      "prompt_tokens": 500,
+      "candidates_tokens": 167,
+      "total_tokens": 667
+    },
+    "is_valid": true
+  },
+  "9c907a1151055ed5c94bc7c6dbd102db1223fd495feddbb8abdf2a103e5de6b7": {
+    "raw_json": "{\n  \"product_type\": null,\n  \"semantic_query\": \"purchase online\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The query is too broad and does not specify a product type or category to search for.\"\n}",
+    "parsed_output": {
+      "product_type": null,
+      "semantic_query": "purchase online",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [],
+      "needs_clarification": true,
+      "clarification_reason": "The query is too broad and does not specify a product type or category to search for."
+    },
+    "latency_ms": 1427.86,
+    "token_usage": {
+      "prompt_tokens": 489,
+      "candidates_tokens": 152,
+      "total_tokens": 641
+    },
+    "is_valid": true
+  },
+  "d62ff9eb8d466738aac8c93410ba1c7e9b2f50f8655542cff5267ba127b2a336": {
+    "raw_json": "{\n  \"product_type\": \"milk\",\n  \"semantic_query\": \"fresh organic farm milk 1 litre carton\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"fresh\",\n    \"organic\",\n    \"farm\",\n    \"1 litre\",\n    \"carton\"\n  ],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested product 'milk' does not fall into any of the 16 approved categories (Automotive, Baby Care, Bags, Wallets & Belts, Cameras & Accessories, Computers, Footwear, Furniture, Home Decor & Festive Needs, Home Furnishing, Home Improvement, Kitchen & Dining, Mobiles & Accessories, Pens & Stationery, Sports & Fitness, Tools & Hardware, Watches).\"\n}",
+    "parsed_output": {
+      "product_type": "milk",
+      "semantic_query": "fresh organic farm milk 1 litre carton",
+      "hard_constraints": {
+        "category": null,
+        "brand": null,
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "fresh",
+        "organic",
+        "farm",
+        "1 litre",
+        "carton"
+      ],
+      "needs_clarification": true,
+      "clarification_reason": "The requested product 'milk' does not fall into any of the 16 approved categories (Automotive, Baby Care, Bags, Wallets & Belts, Cameras & Accessories, Computers, Footwear, Furniture, Home Decor & Festive Needs, Home Furnishing, Home Improvement, Kitchen & Dining, Mobiles & Accessories, Pens & Stationery, Sports & Fitness, Tools & Hardware, Watches)."
+    },
+    "latency_ms": 1496.64,
+    "token_usage": {
+      "prompt_tokens": 489,
+      "candidates_tokens": 252,
+      "total_tokens": 741
+    },
+    "is_valid": true
+  },
+  "8d1e3b85854dcbd33a2bbadf151bc156c6cc62b32999f2e726878d6a5ee4656f": {
+    "raw_json": "{\n  \"product_type\": \"water bottle\",\n  \"semantic_query\": \"Cello stainless steel insulated water bottle 1000ml\",\n  \"hard_constraints\": {\n    \"category\": \"Kitchen & Dining\",\n    \"brand\": \"Cello\",\n    \"min_price\": null,\n    \"max_price\": 800,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"stainless steel\",\n    \"insulated\",\n    \"1000ml\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "water bottle",
+      "semantic_query": "Cello stainless steel insulated water bottle 1000ml",
+      "hard_constraints": {
+        "category": "Kitchen & Dining",
+        "brand": "Cello",
+        "min_price": null,
+        "max_price": 800.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "stainless steel",
+        "insulated",
+        "1000ml"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 6511.65,
+    "token_usage": {
+      "prompt_tokens": 499,
+      "candidates_tokens": 178,
+      "total_tokens": 677
+    },
+    "is_valid": true
+  },
+  "b9cafebdc05415c0b3e994c321b1efb66baf30ec414fde6aa63cb38cf0a2161a": {
+    "raw_json": "{\n  \"product_type\": \"camera lens\",\n  \"semantic_query\": \"Canon camera lens\",\n  \"hard_constraints\": {\n    \"category\": \"Cameras & Accessories\",\n    \"brand\": \"Canon\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [\n    {\n      \"target_type\": \"attribute\",\n      \"value\": \"telephoto\"\n    }\n  ],\n  \"soft_preferences\": [],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "camera lens",
+      "semantic_query": "Canon camera lens",
+      "hard_constraints": {
+        "category": "Cameras & Accessories",
+        "brand": "Canon",
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [
+        {
+          "target_type": "attribute",
+          "value": "telephoto"
+        }
+      ],
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1247.67,
+    "token_usage": {
+      "prompt_tokens": 490,
+      "candidates_tokens": 169,
+      "total_tokens": 659
+    },
+    "is_valid": true
+  },
+  "2196d527f0fc9b7f4ddb1f001631bf861f6040e78af3943f6053b071b2dab6f9": {
+    "raw_json": "{\n  \"product_type\": \"baby stroller\",\n  \"semantic_query\": \"lightweight foldable baby stroller\",\n  \"hard_constraints\": {\n    \"category\": \"Baby Care\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 6000,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": 4.0,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"lightweight\",\n    \"foldable\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "baby stroller",
+      "semantic_query": "lightweight foldable baby stroller",
+      "hard_constraints": {
+        "category": "Baby Care",
+        "brand": null,
+        "min_price": null,
+        "max_price": 6000.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": 4.0,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "lightweight",
+        "foldable"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 3123.18,
+    "token_usage": {
+      "prompt_tokens": 497,
+      "candidates_tokens": 163,
+      "total_tokens": 660
+    },
+    "is_valid": true
+  },
+  "55c95370761268d712a65c24733b68f0d8f6211945d3109929919164535b38dc": {
+    "raw_json": "{\n  \"product_type\": \"rollerball pen\",\n  \"semantic_query\": \"Parker rollerball pen pack of 2\",\n  \"hard_constraints\": {\n    \"category\": \"Pens & Stationery\",\n    \"brand\": \"Parker\",\n    \"min_price\": null,\n    \"max_price\": 500,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"pack of 2\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "rollerball pen",
+      "semantic_query": "Parker rollerball pen pack of 2",
+      "hard_constraints": {
+        "category": "Pens & Stationery",
+        "brand": "Parker",
+        "min_price": null,
+        "max_price": 500.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "pack of 2"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 1183.33,
+    "token_usage": {
+      "prompt_tokens": 494,
+      "candidates_tokens": 161,
+      "total_tokens": 655
+    },
+    "is_valid": true
+  },
+  "63209347cd7081f05e38cae1c7e32e60943d0f7772fb1aecf3f778279dbfad5c": {
+    "raw_json": "{\n  \"product_type\": \"wallet\",\n  \"semantic_query\": \"leather wallet for men\",\n  \"hard_constraints\": {\n    \"category\": \"Bags, Wallets & Belts\",\n    \"brand\": null,\n    \"min_price\": null,\n    \"max_price\": 1200,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"leather\",\n    \"for men\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "wallet",
+      "semantic_query": "leather wallet for men",
+      "hard_constraints": {
+        "category": "Bags, Wallets & Belts",
+        "brand": null,
+        "min_price": null,
+        "max_price": 1200.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "leather",
+        "for men"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 8433.43,
+    "token_usage": {
+      "prompt_tokens": 491,
+      "candidates_tokens": 163,
+      "total_tokens": 654
+    },
+    "is_valid": true
+  },
+  "04955dd2a69dc6ded22ac243ed19de1ee9c6b7d9e0668ac0d9f838867be00f96": {
+    "raw_json": "{\n  \"product_type\": \"passenger jet plane\",\n  \"semantic_query\": \"commercial Airbus A320 passenger jet plane\",\n  \"hard_constraints\": {\n    \"category\": null,\n    \"brand\": \"Airbus\",\n    \"min_price\": null,\n    \"max_price\": null,\n    \"min_inclusive\": true,\n    \"max_inclusive\": true,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"commercial\"\n  ],\n  \"needs_clarification\": true,\n  \"clarification_reason\": \"The requested item (commercial passenger jet plane) falls outside the available product catalog categories.\"\n}",
+    "parsed_output": {
+      "product_type": "passenger jet plane",
+      "semantic_query": "commercial Airbus A320 passenger jet plane",
+      "hard_constraints": {
+        "category": null,
+        "brand": "Airbus",
+        "min_price": null,
+        "max_price": null,
+        "min_inclusive": true,
+        "max_inclusive": true,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "commercial"
+      ],
+      "needs_clarification": true,
+      "clarification_reason": "The requested item (commercial passenger jet plane) falls outside the available product catalog categories."
+    },
+    "latency_ms": 6343.12,
+    "token_usage": {
+      "prompt_tokens": 490,
+      "candidates_tokens": 171,
+      "total_tokens": 661
+    },
+    "is_valid": true
+  },
+  "36fa4381561c1402f3ed07e90029d329e657e9d5873d209907f4623fa025d56b": {
+    "raw_json": "{\n  \"product_type\": \"car body cover\",\n  \"semantic_query\": \"waterproof car body cover Honda City\",\n  \"hard_constraints\": {\n    \"category\": \"Automotive\",\n    \"brand\": \"Honda\",\n    \"min_price\": null,\n    \"max_price\": 1800,\n    \"min_inclusive\": true,\n    \"max_inclusive\": false,\n    \"min_rating\": null,\n    \"currency\": \"INR\"\n  },\n  \"exclusions\": [],\n  \"soft_preferences\": [\n    \"waterproof\"\n  ],\n  \"needs_clarification\": false,\n  \"clarification_reason\": null\n}",
+    "parsed_output": {
+      "product_type": "car body cover",
+      "semantic_query": "waterproof car body cover Honda City",
+      "hard_constraints": {
+        "category": "Automotive",
+        "brand": "Honda",
+        "min_price": null,
+        "max_price": 1800.0,
+        "min_inclusive": true,
+        "max_inclusive": false,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "exclusions": [],
+      "soft_preferences": [
+        "waterproof"
+      ],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "latency_ms": 9690.36,
+    "token_usage": {
+      "prompt_tokens": 495,
+      "candidates_tokens": 158,
+      "total_tokens": 653
+    },
+    "is_valid": true
+  }
+}

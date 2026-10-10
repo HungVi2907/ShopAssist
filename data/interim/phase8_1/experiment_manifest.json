@@ -1,0 +1,143 @@
+{
+  "phase": "8.1",
+  "phase_name": "Query Understanding Refinement & Experimental Evaluation",
+  "git_revision": "b301455ca1c2b3b6c3883207f9efd8322fccc004",
+  "llm_provider": "gemini",
+  "configured_model": "gemini-3.1-flash-lite",
+  "model_endpoint": "models/gemini-3.1-flash-lite-preview",
+  "sdk": "google-genai",
+  "sdk_version": "2.29.0",
+  "timestamp": "2026-10-09T07:30:00Z",
+  "datasets": {
+    "dev_15": {
+      "path": "tests/fixtures/dev_evaluation_cases.json",
+      "count": 15,
+      "version": "1.0.0",
+      "description": "Representative development & tuning split extracted from verified baseline cases"
+    },
+    "heldout_20": {
+      "path": "tests/fixtures/heldout_evaluation_cases.json",
+      "count": 20,
+      "version": "1.0.0",
+      "description": "Independently curated held-out evaluation test cases with ground-truth Schema v2.0.0 labels"
+    },
+    "baseline_50": {
+      "path": "tests/fixtures/query_understanding_cases.json",
+      "count": 50,
+      "version": "1.0.0",
+      "description": "Original Phase 8 benchmark suite used for metric audit and regression verification"
+    }
+  },
+  "experiments": [
+    {
+      "id": "E0",
+      "name": "Phase 8 Baseline Evaluation Audit",
+      "variable": "Evaluation methodology & metric definitions",
+      "purpose": "Verify reported 98.0% exact match and 66.41% soft preferences F1 discrepancy",
+      "prompt_variant": "PROMPT_E1_A_SYSTEM",
+      "schema_version": "v1.0.0",
+      "temperature": 0.0,
+      "apply_rules": false,
+      "dataset_split": "baseline_50"
+    },
+    {
+      "id": "E1-A",
+      "name": "Phase 8 Existing Baseline Prompt (Control)",
+      "variable": "None (Control)",
+      "purpose": "Establish controlled baseline on development split with exact Schema v1.0.0",
+      "prompt_variant": "PROMPT_E1_A_SYSTEM",
+      "schema_version": "v1.0.0",
+      "temperature": 0.0,
+      "apply_rules": false,
+      "dataset_split": "dev_15"
+    },
+    {
+      "id": "E1-B",
+      "name": "Explicit Extraction Rules Prompt",
+      "variable": "System prompt definitions",
+      "purpose": "Clearly distinguish product type noun from soft preference attributes",
+      "prompt_variant": "PROMPT_E1_B_SYSTEM",
+      "schema_version": "v1.0.0",
+      "temperature": 0.0,
+      "apply_rules": false,
+      "dataset_split": "dev_15"
+    },
+    {
+      "id": "E1-C",
+      "name": "Few-Shot Exemplars Prompt",
+      "variable": "In-context few-shot exemplars (10 cases)",
+      "purpose": "Guide boundary conditions and multi-word brand extraction via demonstration",
+      "prompt_variant": "PROMPT_E1_C_SYSTEM",
+      "schema_version": "v1.0.0",
+      "temperature": 0.0,
+      "apply_rules": false,
+      "dataset_split": "dev_15"
+    },
+    {
+      "id": "E2-A",
+      "name": "Greedy Decoding Baseline (T=0.0)",
+      "variable": "Sampling temperature = 0.0",
+      "purpose": "Evaluate deterministic argmax sampling stability",
+      "prompt_variant": "PROMPT_E1_A_SYSTEM",
+      "schema_version": "v1.0.0",
+      "temperature": 0.0,
+      "apply_rules": false,
+      "dataset_split": "dev_15"
+    },
+    {
+      "id": "E2-B",
+      "name": "Intermediate Temperature Sampling (T=0.5)",
+      "variable": "Sampling temperature = 0.5",
+      "purpose": "Evaluate slight stochasticity on preference paraphrasing and extraction",
+      "prompt_variant": "PROMPT_E1_A_SYSTEM",
+      "schema_version": "v1.0.0",
+      "temperature": 0.5,
+      "apply_rules": false,
+      "dataset_split": "dev_15"
+    },
+    {
+      "id": "E2-C",
+      "name": "High Temperature Sampling (T=1.0)",
+      "variable": "Sampling temperature = 1.0",
+      "purpose": "Evaluate default model temperature effects on schema validity and hallucinations",
+      "prompt_variant": "PROMPT_E1_A_SYSTEM",
+      "schema_version": "v1.0.0",
+      "temperature": 1.0,
+      "apply_rules": false,
+      "dataset_split": "dev_15"
+    },
+    {
+      "id": "E3",
+      "name": "Structured Schema Refinement (v2.0.0)",
+      "variable": "Output Schema v2.0.0",
+      "purpose": "Add explicit product_type, typed exclusions, and inclusive price boundary operators",
+      "prompt_variant": "PROMPT_E1_B_SYSTEM",
+      "schema_version": "v2.0.0",
+      "temperature": 0.0,
+      "apply_rules": false,
+      "dataset_split": "dev_15"
+    },
+    {
+      "id": "E4",
+      "name": "Hybrid LLM + Deterministic Refinement Rules",
+      "variable": "Post-processing business validation layer",
+      "purpose": "Correct boundary semantics, resolve negation conflicts, and sanitize product types",
+      "prompt_variant": "PROMPT_E1_B_SYSTEM",
+      "schema_version": "v2.0.0",
+      "temperature": 0.0,
+      "apply_rules": true,
+      "dataset_split": "dev_15"
+    },
+    {
+      "id": "E5-B",
+      "name": "Logically Staged Pipeline with Schema v2.0.0 & Hybrid Rules",
+      "variable": "Prompt reasoning structure + Schema v2.0.0 + Deterministic rules",
+      "purpose": "Sequential 5-stage intent extraction in a single API call for optimal latency and accuracy",
+      "prompt_variant": "PROMPT_E5_B_SYSTEM",
+      "schema_version": "v2.0.0",
+      "temperature": 0.0,
+      "apply_rules": true,
+      "dataset_split": "dev_15"
+    }
+  ]
+}

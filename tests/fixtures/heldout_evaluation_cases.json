@@ -1,0 +1,472 @@
+{
+  "version": "1.0.0",
+  "description": "Independently curated held-out evaluation dataset for Phase 8.1 LLM Query Understanding (20 cases)",
+  "cases": [
+    {
+      "test_id": "HELD001",
+      "query": "Logitech wireless gaming mouse under 2500 rs",
+      "category": "Computers",
+      "description": "Standard brand, product_type, strict max price, soft preference for gaming",
+      "expected": {
+        "product_type": "gaming mouse",
+        "semantic_query": "Logitech wireless gaming mouse",
+        "hard_constraints": {
+          "category": "Computers",
+          "brand": "Logitech",
+          "min_price": null,
+          "max_price": 2500.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["wireless"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD002",
+      "query": "Sony noise cancelling headphones above 10000 with at least 4.5 stars",
+      "category": "Mobiles & Accessories",
+      "description": "Brand, strict min price, rating, qualitative preference",
+      "expected": {
+        "product_type": "headphones",
+        "semantic_query": "Sony noise cancelling headphones",
+        "hard_constraints": {
+          "category": "Mobiles & Accessories",
+          "brand": "Sony",
+          "min_price": 10000.0,
+          "max_price": null,
+          "min_inclusive": false,
+          "max_inclusive": true,
+          "min_rating": 4.5,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["noise cancelling"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD003",
+      "query": "Puma walking shoes at most 3000 rupees",
+      "category": "Footwear",
+      "description": "Inclusive max price ('at most'), brand, product type",
+      "expected": {
+        "product_type": "walking shoes",
+        "semantic_query": "Puma walking shoes",
+        "hard_constraints": {
+          "category": "Footwear",
+          "brand": "Puma",
+          "min_price": null,
+          "max_price": 3000.0,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD004",
+      "query": "Dell laptop for programming, but not gaming",
+      "category": "Computers",
+      "description": "Explicit negation ('not gaming'), soft preference for programming",
+      "expected": {
+        "product_type": "laptop",
+        "semantic_query": "Dell laptop",
+        "hard_constraints": {
+          "category": "Computers",
+          "brand": "Dell",
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [
+          {"target_type": "attribute", "value": "gaming"}
+        ],
+        "soft_preferences": ["for programming"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD005",
+      "query": "Casio analog watch between 2000 and 5000 with leather strap",
+      "category": "Watches",
+      "description": "Price range, brand, product type, preference",
+      "expected": {
+        "product_type": "analog watch",
+        "semantic_query": "Casio analog watch",
+        "hard_constraints": {
+          "category": "Watches",
+          "brand": "Casio",
+          "min_price": 2000.0,
+          "max_price": 5000.0,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["leather strap"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD006",
+      "query": "Nike sports shoes without leather under 4000",
+      "category": "Footwear",
+      "description": "Brand, category, exclusion ('without leather'), strict max price",
+      "expected": {
+        "product_type": "sports shoes",
+        "semantic_query": "Nike sports shoes",
+        "hard_constraints": {
+          "category": "Footwear",
+          "brand": "Nike",
+          "min_price": null,
+          "max_price": 4000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [
+          {"target_type": "attribute", "value": "leather"}
+        ],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD007",
+      "query": "ergonomic mesh office chair with lumbar support below 7000",
+      "category": "Furniture",
+      "description": "Category Furniture, product type office chair, qualitative preferences, strict max price",
+      "expected": {
+        "product_type": "office chair",
+        "semantic_query": "ergonomic mesh office chair",
+        "hard_constraints": {
+          "category": "Furniture",
+          "brand": null,
+          "min_price": null,
+          "max_price": 7000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["ergonomic", "mesh", "with lumbar support"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD008",
+      "query": "smartphone under 20000, actually make it under 25000",
+      "category": "Mobiles & Accessories",
+      "description": "In-query self-correction of upper budget ceiling",
+      "expected": {
+        "product_type": "smartphone",
+        "semantic_query": "smartphone",
+        "hard_constraints": {
+          "category": "Mobiles & Accessories",
+          "brand": null,
+          "min_price": null,
+          "max_price": 25000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD009",
+      "query": "smartwatch under 150 dollars",
+      "category": "Watches",
+      "description": "Foreign currency requiring clarification",
+      "expected": {
+        "product_type": "smartwatch",
+        "semantic_query": "smartwatch",
+        "hard_constraints": {
+          "category": "Watches",
+          "brand": null,
+          "min_price": null,
+          "max_price": 150.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "USD"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": true
+      }
+    },
+    {
+      "test_id": "HELD010",
+      "query": "cheap portable Bluetooth speaker for outdoor party",
+      "category": "Mobiles & Accessories",
+      "description": "Qualitative budget ('cheap') and intended use, no invented price bound",
+      "expected": {
+        "product_type": "bluetooth speaker",
+        "semantic_query": "portable Bluetooth speaker",
+        "hard_constraints": {
+          "category": "Mobiles & Accessories",
+          "brand": null,
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["cheap", "for outdoor party", "portable"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD011",
+      "query": "Bosch hammer drill machine at least 1500 watts under 5000",
+      "category": "Tools & Hardware",
+      "description": "Brand, category, specification, strict upper bound",
+      "expected": {
+        "product_type": "hammer drill machine",
+        "semantic_query": "Bosch hammer drill machine",
+        "hard_constraints": {
+          "category": "Tools & Hardware",
+          "brand": "Bosch",
+          "min_price": null,
+          "max_price": 5000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["1500 watts"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD012",
+      "query": "show me some good stuff to purchase online",
+      "category": "General",
+      "description": "Severely ambiguous non-shopping request",
+      "expected": {
+        "product_type": null,
+        "semantic_query": "unspecified product query",
+        "hard_constraints": {
+          "category": null,
+          "brand": null,
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": true
+      }
+    },
+    {
+      "test_id": "HELD013",
+      "query": "fresh organic farm milk 1 litre carton",
+      "category": "General",
+      "description": "Out-of-catalog grocery domain",
+      "expected": {
+        "product_type": "milk",
+        "semantic_query": "fresh organic farm milk",
+        "hard_constraints": {
+          "category": null,
+          "brand": null,
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": true
+      }
+    },
+    {
+      "test_id": "HELD014",
+      "query": "Cello stainless steel insulated water bottle 1000ml under 800",
+      "category": "Kitchen & Dining",
+      "description": "Brand Cello, product type water bottle, attributes",
+      "expected": {
+        "product_type": "water bottle",
+        "semantic_query": "Cello stainless steel insulated water bottle",
+        "hard_constraints": {
+          "category": "Kitchen & Dining",
+          "brand": "Cello",
+          "min_price": null,
+          "max_price": 800.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["1000ml", "insulated", "stainless steel"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD015",
+      "query": "Canon camera lens, but no telephoto lenses",
+      "category": "Cameras & Accessories",
+      "description": "Category, brand Canon, exclusion ('no telephoto')",
+      "expected": {
+        "product_type": "camera lens",
+        "semantic_query": "Canon camera lens",
+        "hard_constraints": {
+          "category": "Cameras & Accessories",
+          "brand": "Canon",
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [
+          {"target_type": "product_type", "value": "telephoto"}
+        ],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD016",
+      "query": "lightweight baby stroller foldable under 6000 with 4 star rating",
+      "category": "Baby Care",
+      "description": "Baby Care category, product type stroller, qualitative attributes, rating",
+      "expected": {
+        "product_type": "baby stroller",
+        "semantic_query": "lightweight foldable baby stroller",
+        "hard_constraints": {
+          "category": "Baby Care",
+          "brand": null,
+          "min_price": null,
+          "max_price": 6000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": 4.0,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["foldable", "lightweight"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD017",
+      "query": "Parker rollerball pen pack of 2 under 500",
+      "category": "Pens & Stationery",
+      "description": "Pens & Stationery, brand Parker, product type rollerball pen",
+      "expected": {
+        "product_type": "rollerball pen",
+        "semantic_query": "Parker rollerball pen",
+        "hard_constraints": {
+          "category": "Pens & Stationery",
+          "brand": "Parker",
+          "min_price": null,
+          "max_price": 500.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["pack of 2"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD018",
+      "query": "leather wallet for men below 1200",
+      "category": "Bags, Wallets & Belts",
+      "description": "Category Bags, Wallets & Belts, product type wallet, attribute leather, for men",
+      "expected": {
+        "product_type": "wallet",
+        "semantic_query": "leather wallet",
+        "hard_constraints": {
+          "category": "Bags, Wallets & Belts",
+          "brand": null,
+          "min_price": null,
+          "max_price": 1200.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["for men", "leather"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "HELD019",
+      "query": "commercial Airbus A320 passenger jet plane",
+      "category": "General",
+      "description": "Unserviceable aviation domain, brand Airbus suppressed",
+      "expected": {
+        "product_type": "passenger jet plane",
+        "semantic_query": "Airbus A320 passenger jet plane",
+        "hard_constraints": {
+          "category": null,
+          "brand": null,
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": true
+      }
+    },
+    {
+      "test_id": "HELD020",
+      "query": "waterproof car body cover for Honda City under 1800",
+      "category": "Automotive",
+      "description": "Automotive category, car body cover, waterproof, strict upper price",
+      "expected": {
+        "product_type": "car body cover",
+        "semantic_query": "waterproof car body cover for Honda City",
+        "hard_constraints": {
+          "category": "Automotive",
+          "brand": null,
+          "min_price": null,
+          "max_price": 1800.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["for honda city", "waterproof"],
+        "needs_clarification": false
+      }
+    }
+  ]
+}

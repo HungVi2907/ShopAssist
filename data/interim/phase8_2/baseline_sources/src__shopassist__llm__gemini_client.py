@@ -8,11 +8,10 @@ from __future__ import annotations
 
 import asyncio
 import logging
-import os
 import random
 import re
 import time
-from typing import Any, Callable, Type, TypeVar
+from typing import Any, Type, TypeVar
 
 from google import genai
 from google.genai import types
@@ -22,7 +21,6 @@ from pydantic import BaseModel
 from shopassist.llm.config import LLMSettings, llm_settings, mask_api_key
 from shopassist.llm.prompts import SYSTEM_INSTRUCTION
 from shopassist.llm.schemas import TokenUsageMetadata
-from shopassist.llm.security import redact
 
 logger = logging.getLogger(__name__)
 
@@ -57,9 +55,7 @@ class GeminiClient:
     def client(self) -> genai.Client:
         """Lazily initialize and return the underlying genai.Client."""
         if self._client is None:
-            # One retry layer owns accounting; disable hidden SDK retries.
-            self._client = genai.Client(api_key=self._api_key,
-                http_options=types.HttpOptions(retry_options=types.HttpRetryOptions(attempts=1)))
+            self._client = genai.Client(api_key=self._api_key)
         return self._client
 
     def verify_model_availability(self, model_name: str | None = None) -> dict[str, Any]:
@@ -77,11 +73,11 @@ class GeminiClient:
             supported_names = [m.name for m in models_list]
             short_names = [m.name.replace("models/", "") for m in models_list]
 
-            is_available = (target in supported_names) or (target in short_names)
+            is_available = (target in supported_names) or (target in short_names) or any(target in name for name in supported_names)
 
             matching_model = None
             for m in models_list:
-                if target == m.name or target == m.name.replace("models/", ""):
+                if target in m.name or target == m.name.replace("models/", ""):
                     matching_model = m
                     break
 
@@ -93,11 +89,11 @@ class GeminiClient:
                 "supported_gemini_models": sorted([m.name for m in models_list if "gemini" in m.name.lower()]),
             }
         except Exception as exc:
-            logger.error("Failed to query models list from Gemini API: %s", redact(str(exc), self._api_key))
+            logger.error("Failed to query models list from Gemini API: %s", exc)
             return {
                 "is_available": False,
                 "target_model": target,
-                "error": redact(str(exc), self._api_key),
+                "error": str(exc),
                 "total_models_available": 0,
                 "supported_gemini_models": [],
             }
@@ -110,9 +106,6 @@ class GeminiClient:
         model_name: str | None = None,
         temperature: float | None = None,
         max_output_tokens: int | None = None,
-        on_attempt: Callable[[], None] | None = None,
-        on_response: Callable[[TokenUsageMetadata | None], None] | None = None,
-        diagnostics: dict[str, Any] | None = None,
     ) -> tuple[T, str, float, TokenUsageMetadata]:
         """Asynchronously generate schema-constrained JSON content from Gemini API with retries.
 
@@ -146,18 +139,10 @@ class GeminiClient:
 
         last_exception: Exception | None = None
         base_delay = 1.0
-        total_start = time.perf_counter()
-        diag = diagnostics if diagnostics is not None else {}
-        diag.update(attempts=0, retry_delay_ms=0.0, api_durations_ms=[], response_received=False,
-                    json_valid=None, schema_valid=None, usage_known=False, response_usages=[])
 
         for attempt in range(max_retries + 1):
             t_start = time.perf_counter()
             try:
-                if on_attempt is not None:
-                    on_attempt()
-                diag["attempts"] += 1
-                t_start = time.perf_counter()  # Attempt pacing is separate from API duration.
                 logger.debug(
                     "Sending structured generation request to Gemini (model=%s, attempt=%d/%d)...",
                     model,
@@ -176,46 +161,21 @@ class GeminiClient:
                 )
 
                 latency_ms = (time.perf_counter() - t_start) * 1000.0
-                diag["api_durations_ms"].append(latency_ms)
-                diag["response_received"] = True
-                diag["model_version"] = getattr(response, "model_version", None)
 
                 raw_text = response.text or ""
+                if not raw_text.strip():
+                    raise ValueError("Gemini API returned an empty response text.")
 
                 # Extract token usage metadata from response
                 usage_meta = TokenUsageMetadata(prompt_tokens=0, candidates_tokens=0, total_tokens=0)
                 if hasattr(response, "usage_metadata") and response.usage_metadata:
-                    diag["usage_known"] = True
                     um = response.usage_metadata
                     usage_meta.prompt_tokens = getattr(um, "prompt_token_count", 0) or 0
                     usage_meta.candidates_tokens = getattr(um, "candidates_token_count", 0) or 0
                     usage_meta.total_tokens = getattr(um, "total_token_count", 0) or 0
-                diag["token_usage"] = usage_meta.model_dump() if diag["usage_known"] else None
-                diag["response_usages"].append(diag["token_usage"])
-                if on_response is not None:
-                    on_response(usage_meta if diag["usage_known"] else None)
-                if not raw_text.strip():
-                    diag["json_valid"] = False
-                    raise ValueError("Gemini API returned an empty response text.")
 
                 # Validate with Pydantic
-                import json
-                try:
-                    json.loads(raw_text)
-                    diag["json_valid"] = True
-                except (ValueError, TypeError):
-                    diag["json_valid"] = False
-                    raise ValueError("Gemini returned malformed JSON") from None
-                validation_start = time.perf_counter()
-                try:
-                    parsed_obj = response_schema.model_validate_json(raw_text)
-                    diag["schema_valid"] = True
-                except Exception:
-                    diag["schema_valid"] = False
-                    raise
-                finally:
-                    diag["validation_ms"] = (time.perf_counter()-validation_start)*1000
-                    diag["end_to_end_ms"] = (time.perf_counter()-total_start)*1000
+                parsed_obj = response_schema.model_validate_json(raw_text)
 
                 logger.debug(
                     "Successfully parsed Gemini structured response in %.2f ms (%d tokens).",
@@ -227,7 +187,6 @@ class GeminiClient:
             except (APIError, asyncio.TimeoutError, ConnectionError) as exc:
                 last_exception = exc
                 latency_ms = (time.perf_counter() - t_start) * 1000.0
-                diag["api_durations_ms"].append(latency_ms)
                 is_retryable = False
 
                 if isinstance(exc, asyncio.TimeoutError):
@@ -235,14 +194,11 @@ class GeminiClient:
                     err_msg = f"Request timed out after {self.settings.gemini_timeout_seconds}s"
                 elif isinstance(exc, APIError):
                     status_code = getattr(exc, "code", None) or getattr(exc, "status_code", None)
-                    is_retryable = status_code in RETRYABLE_STATUS_CODES
-                    err_msg = f"APIError {status_code}"
+                    is_retryable = status_code in RETRYABLE_STATUS_CODES or "429" in str(exc) or "quota" in str(exc).lower()
+                    err_msg = f"APIError {status_code}: {exc}"
                 else:
                     is_retryable = True
-                    err_msg = "ConnectionError"
-                diag["last_error_type"] = type(exc).__name__
-                diag["last_status_code"] = getattr(exc, "code", None)
-                diag["end_to_end_ms"] = (time.perf_counter()-total_start)*1000
+                    err_msg = f"ConnectionError: {exc}"
 
                 logger.warning(
                     "Gemini API attempt %d/%d failed (retryable=%s, latency=%.2f ms): %s",
@@ -259,7 +215,7 @@ class GeminiClient:
                     exc_str = str(exc)
                     retry_match = re.search(r"retry in (\d+(?:\.\d+)?)s", exc_str, re.IGNORECASE)
                     if not retry_match:
-                        retry_match = re.search(r"retryDelay['\"]?:\s*['\"]?(\d+(?:\.\d+)?)s?", exc_str, re.IGNORECASE)
+                        retry_match = re.search(r"retryDelay['\"]?:\s*['\"]?(\d+)s?", exc_str, re.IGNORECASE)
                     if retry_match:
                         required_wait = float(retry_match.group(1)) + 1.0
                         sleep_time = max(sleep_time, required_wait)
@@ -267,20 +223,17 @@ class GeminiClient:
                         sleep_time = max(sleep_time, 8.0 * (attempt + 1))
 
                     logger.info("Backing off for %.2f seconds before retry...", sleep_time)
-                    diag["retry_delay_ms"] += sleep_time*1000
                     await asyncio.sleep(sleep_time)
                 else:
                     break
 
             except Exception as non_retry_exc:
-                diag["end_to_end_ms"] = (time.perf_counter()-total_start)*1000
-                diag["last_error_type"] = type(non_retry_exc).__name__
-                logger.error("Non-retryable error during Gemini structured generation: %s", type(non_retry_exc).__name__)
+                logger.error("Non-retryable error during Gemini structured generation: %s", non_retry_exc)
                 raise
 
         raise RuntimeError(
-            f"Failed to generate structured content from Gemini after {diag['attempts']} attempts. "
-            f"Last error type: {type(last_exception).__name__}"
+            f"Failed to generate structured content from Gemini after {max_retries + 1} attempts. "
+            f"Last error: {last_exception}"
         ) from last_exception
 
     def generate_structured(
@@ -293,19 +246,16 @@ class GeminiClient:
         max_output_tokens: int | None = None,
     ) -> tuple[T, str, float, TokenUsageMetadata]:
         """Synchronously generate schema-constrained JSON content from Gemini API."""
-        async def generate_and_close():
-            try:
-                return await self.generate_structured_async(
+        return asyncio.run(
+            self.generate_structured_async(
                 prompt=prompt,
                 response_schema=response_schema,
                 system_instruction=system_instruction,
                 model_name=model_name,
                 temperature=temperature,
                 max_output_tokens=max_output_tokens,
-                )
-            finally:
-                await self.aclose()
-        return asyncio.run(generate_and_close())
+            )
+        )
 
     async def list_available_models(self) -> list[str]:
         """Asynchronously retrieve list of available model names from Gemini API."""
@@ -318,14 +268,9 @@ class GeminiClient:
         if self._client is not None and hasattr(self._client, "aio"):
             try:
                 await self._client.aio.aclose()
-                self._client.close()
-                self._client = None
-                # aiohttp HTTPS transports need time to drain before loop shutdown.
-                if os.name == "nt":
-                    await asyncio.sleep(0.25)
                 logger.debug("Gemini client aio session closed successfully.")
             except Exception as exc:
-                logger.debug("Error closing Gemini aio session: %s", type(exc).__name__)
+                logger.debug("Error closing Gemini aio session: %s", exc)
 
     async def close(self) -> None:
         """Alias for aclose() to support standard closing convention."""

@@ -1,5 +1,15 @@
 # ShopAssist Phase 8: LLM Query Understanding Engineering Implementation Report
 
+<!-- phase82-correction-start -->
+> **Phase8.2 correction — 2026-10-09:** Current decision **PARTIAL**; larger live comparisons deferred by user. Production remains original **v1**, not E5-B/v2. The historical body below is preserved; conflicting claims are superseded by [current engineering decision](phase8_2/final_engineering_report.md), [audited results](phase8_2/experimental_results.md) and [contract review](phase8_2/query_contract_review.md).
+>
+> Original50 98% EM omits preferences; shared-field EM is54%. Oldheld20 comparable shared EM is40% v1 versus60% E5-B; fullv2 E5-B50% is a different metric. Semantic-query/reason wording is not covered by slot EM. E5-B soft macro78.33%, product/exclusion exact90%, exclusion micro28.57%. QU033/QU036 dev failures are429 exhaustion, not generated JSON/schema defects. New failure-aware dev E5-B HC F1 is93.88%, soft F1 is80%; historical96%/86.67% use the frozen old policy.
+>
+> Development overlaps original50 in13/15 queries. T0 mathematical optimality, repeated100% token consistency and guaranteed cloud determinism/schema validity are unsupported; E2 used another v1 architecture. Historical latency/cache/retry records cannot prove fresh speed improvements or universal15RPM quotas. Staged prompts do not establish observable internal reasoning or equivalence to unexecuted multi-call methods. Boeing suppression is filter policy, not necessarily correct NER. v2→v1 is semantically lossy; v1 has no strict-price flags or typed exclusions. Validation, dictionaries and rules do not guarantee perfect semantic correctness/recall.
+>
+> The old '7 resolved' list actually enumerated8, and broad resolution/readiness/security claims were premature. Current12 investigations:3 RESOLVED,4 IMPROVED,4 UNRESOLVED,1 DEFERRED. Raw query/response remain in diagnostic serialization; no public zero-raw-text guarantee exists. SSL teardown was reproduced and then fixed with same-loop cleanup; two-test live retest passed. Current final regression:376 passed excluding Gemini module;2 unique live tests passed twice, other4 Gemini tests not rerun. No new live quality winner or production semantic change is claimed.
+<!-- phase82-correction-end -->
+
 > **Repository:** `HungVi2907/ShopAssist`  
 > **Phase:** 8 — LLM Query Understanding  
 > **LLM Provider:** Google Gemini API (`google-genai` SDK v2.29.0)  
@@ -416,3 +426,29 @@ Phase 8 is fully validated and ready for Phase 9 integration.
 The validated `QueryUnderstandingResult` provides:
 - Cleaned `semantic_query` and `soft_preferences` ready for **Phase 9 (Soft Preference Representation)**.
 - Strongly-typed `hard_constraints` ready for **Phase 10 (Hybrid Retrieval)** SQL filtering.
+
+---
+
+## 31. Phase 8.1 Refinement & Experimental Evaluation Addendum
+
+> **Phase 8.1 Execution:** Completed in October 2026  
+> **Primary Report:** [`docs/phase8_1_refinement_experiments.md`](file:///d:/Project/ShopAssist/docs/phase8_1_refinement_experiments.md)  
+> **Issue Register:** [`docs/phase8_1_issue_resolution.md`](file:///d:/Project/ShopAssist/docs/phase8_1_issue_resolution.md)  
+> **Evaluation Methodology:** [`docs/phase8_1_evaluation_methodology.md`](file:///d:/Project/ShopAssist/docs/phase8_1_evaluation_methodology.md)  
+> **Learning Guide:** [`docs/concepts/llm_experimentation_and_extraction_refinement.md`](file:///d:/Project/ShopAssist/docs/concepts/llm_experimentation_and_extraction_refinement.md)  
+
+### Baseline Audit vs. Refined Candidate Comparison
+
+| Dimension | Original Phase 8 Baseline | Audited Baseline (E0) | Refined Candidate (E5-B) | Delta / Status |
+|---|---|---|---|---|
+| **Contract Schema** | Schema v1.0.0 | Schema v1.0.0 | Schema v2.0.0 (with v1 adapter) | Additive & Backward-Compatible |
+| **Product Type Extraction** | Not separated | Not separated | Explicit `product_type` field | Disentangled from soft prefs |
+| **Negation / Exclusions** | Not supported | Not supported | Typed `ExclusionConstraint` | Dedicated exclusion structure |
+| **Boundary Operators** | Inclusive only | Inclusive only | `min_inclusive`, `max_inclusive` | Strict & inclusive support |
+| **Hard Constraints F1** | 99.70% | 99.70% | **96.00%** | Preserved ($\pm 4\%$) |
+| **Soft Preferences F1** | 66.41% | 66.41% | **86.67%** | **+20.26% (Target $\ge 85\%$ met)** |
+| **Brand Accuracy** | 98.00% | 98.00% | **93.33%** (Dev) / **100%** (Suppressed) | Unserviceable brand fix verified |
+| **Complete Exact Match** | 98.00% (HC only) | 54.00% (Strict) | **73.33% (Strict Complete)** | **+19.33 percentage points** |
+| **API Latency (P50)** | 1,580.5 ms | 1,580.5 ms | **1,446.0 ms** | Faster median response |
+| **Token Usage** | 1,206.2 tokens/req | 1,206.2 tokens/req | **559.0 tokens/req** | **53.6% cost reduction** |
+| **Production Recommendation** | Baseline preserved | Historical reference | **Adopt Candidate E5-B** | Full Phase 9 readiness |

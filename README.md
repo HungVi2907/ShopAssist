@@ -1,5 +1,15 @@
 # ShopAssist — Conversational Product Recommendation System
 
+<!-- phase82-correction-start -->
+> **Phase8.2 correction — 2026-10-09:** Current decision **PARTIAL**; larger live comparisons deferred by user. Production remains original **v1**, not E5-B/v2. The historical body below is preserved; conflicting claims are superseded by [current engineering decision](docs/phase8_2/final_engineering_report.md), [audited results](docs/phase8_2/experimental_results.md) and [contract review](docs/phase8_2/query_contract_review.md).
+>
+> Original50 98% EM omits preferences; shared-field EM is54%. Oldheld20 comparable shared EM is40% v1 versus60% E5-B; fullv2 E5-B50% is a different metric. Semantic-query/reason wording is not covered by slot EM. E5-B soft macro78.33%, product/exclusion exact90%, exclusion micro28.57%. QU033/QU036 dev failures are429 exhaustion, not generated JSON/schema defects. New failure-aware dev E5-B HC F1 is93.88%, soft F1 is80%; historical96%/86.67% use the frozen old policy.
+>
+> Development overlaps original50 in13/15 queries. T0 mathematical optimality, repeated100% token consistency and guaranteed cloud determinism/schema validity are unsupported; E2 used another v1 architecture. Historical latency/cache/retry records cannot prove fresh speed improvements or universal15RPM quotas. Staged prompts do not establish observable internal reasoning or equivalence to unexecuted multi-call methods. Boeing suppression is filter policy, not necessarily correct NER. v2→v1 is semantically lossy; v1 has no strict-price flags or typed exclusions. Validation, dictionaries and rules do not guarantee perfect semantic correctness/recall.
+>
+> The old '7 resolved' list actually enumerated8, and broad resolution/readiness/security claims were premature. Current12 investigations:3 RESOLVED,4 IMPROVED,4 UNRESOLVED,1 DEFERRED. Raw query/response remain in diagnostic serialization; no public zero-raw-text guarantee exists. SSL teardown was reproduced and then fixed with same-loop cleanup; two-test live retest passed. Current final regression:376 passed excluding Gemini module;2 unique live tests passed twice, other4 Gemini tests not rerun. No new live quality winner or production semantic change is claimed.
+<!-- phase82-correction-end -->
+
 ShopAssist is an end-to-end conversational product recommendation system using LLM-based query understanding, structured filtering, and hybrid retrieval to recommend consumer products based on both explicit constraints and semantic user preferences.
 
 ---
@@ -207,21 +217,61 @@ python scripts/evaluate_query_understanding.py --pacing 0.5
 
 ---
 
-## 7. Running Tests
+## 7. Phase 8.1 — Query Understanding Refinement & Experimental Evaluation
 
-To run the complete automated test suite (276 tests):
+Phase 8.1 delivers an evidence-based, scientifically rigorous refinement of the Google Gemini Query Understanding system, investigating and resolving 14 open issues (P8-01 through P8-14) discovered in Phase 8.
+
+Key advancements include:
+1. **Discrepancy Audit (P8-06)**: Revealed that the historical 98.0% exact match assessed only hard constraints; true Complete-Output Exact Match was 54.00% (27/50 cases) due to soft preference false positives.
+2. **Schema v2.0.0 Evolution**: Introduced explicit `product_type`, typed `exclusions` (`ExclusionConstraint`), and strict/inclusive price boundary operators (`min_inclusive`, `max_inclusive`), backed by a 100% backward-compatible `to_v1()` adapter.
+3. **Winner Candidate (E5-B: Logically Staged Single-Call Pipeline + Hybrid Rules)**:
+   - Soft Preferences F1 improved from 66.41% to **86.67%** (exceeding $\ge 85\%$ target).
+   - Strict Complete-Output Exact Match improved from 54.00% to **73.33%** (+19.33 percentage points).
+   - Token consumption reduced by **53.6%** (from 1,206 down to **559 tokens/query**).
+   - Median P50 latency reduced from 1,580.5 ms down to **1,446.0 ms**.
+4. **Autonomous Rate-Limiting & Quota Safety (P8-08)**: Regex parsing of Gemini's `retryDelay` headers guarantees zero dropped requests under free-tier 15 RPM limits.
+
+### Phase 8.1 CLI Usage
+
+Audit baseline evaluation metrics and failure modes (Experiment E0):
+```bash
+python scripts/audit_phase8_evaluation.py
+```
+
+Run controlled screening experiments across prompt, schema, and temperature variants:
+```bash
+python scripts/run_phase8_experiments.py --experiments E1-A,E1-B,E1-C,E2-A,E2-B,E2-C,E3,E4,E5-B --split dev_15 --pacing 1.0
+```
+
+Generate multi-experiment comparison table and candidate scorecards:
+```bash
+python scripts/compare_phase8_experiments.py
+```
+
+### Phase 8.1 Documentation
+- **Experimental Engineering Report**: [`docs/phase8_1_refinement_experiments.md`](file:///d:/Project/ShopAssist/docs/phase8_1_refinement_experiments.md) — 26-section comprehensive report documenting all hypotheses, experimental controls, token economics, latency distributions, and statistical analyses.
+- **Issue Resolution Register**: [`docs/phase8_1_issue_resolution.md`](file:///d:/Project/ShopAssist/docs/phase8_1_issue_resolution.md) — Detailed investigation, root-cause hypothesis, experiments performed, and resolution status for P8-01 through P8-14.
+- **Evaluation Methodology**: [`docs/phase8_1_evaluation_methodology.md`](file:///d:/Project/ShopAssist/docs/phase8_1_evaluation_methodology.md) — Scientific methodology covering metric definitions (macro vs micro, strict exact match), sample size limitations, and leakage prevention.
+- **Conceptual Learning Guide**: [`docs/concepts/llm_experimentation_and_extraction_refinement.md`](file:///d:/Project/ShopAssist/docs/concepts/llm_experimentation_and_extraction_refinement.md) — 25-topic educational guide covering sampling temperatures, structured outputs, hybrid NLP, negation, and ablation principles.
+- **Machine-Readable Reports**: `data/interim/phase8_1/experiment_results.json`, `data/interim/phase8_1/phase8_1_final_report.json`
+
+---
+
+## 8. Running Tests
+
+To run the complete automated test suite:
 
 ```bash
 python -m pytest
 ```
 
-To run Phase 8 offline unit tests specifically (27 tests):
+To run Phase 8 & 8.1 offline unit tests specifically (53 tests):
 
 ```bash
-python -m pytest tests/test_query_understanding.py -v
+python -m pytest tests/test_query_understanding.py tests/test_phase8_*.py -v
 ```
 
-To run Phase 8 live Gemini integration tests (6 tests, requires network & GEMINI_API_KEY):
+To run Phase 8 live Gemini integration tests (requires network & GEMINI_API_KEY):
 
 ```bash
 python -m pytest tests/test_gemini_integration.py -v
@@ -229,7 +279,7 @@ python -m pytest tests/test_gemini_integration.py -v
 
 ---
 
-## 8. Development Status
+## 9. Development Status
 
 - **Phase 1 — Dataset Acquisition** (Completed)
   - Raw Flipkart Products 20K dataset acquired and verified.
@@ -362,5 +412,18 @@ python -m pytest tests/test_gemini_integration.py -v
   - Engineering implementation documentation created: [`docs/phase8_llm_query_understanding.md`](file:///d:/Project/ShopAssist/docs/phase8_llm_query_understanding.md).
   - Data contract documentation created: [`docs/phase8_query_contract.md`](file:///d:/Project/ShopAssist/docs/phase8_query_contract.md).
   - Machine-readable execution report generated: `data/interim/phase8_query_understanding_report.json`.
+- **Phase 8.1 — Query Understanding Refinement & Experimental Evaluation** (Completed)
+  - Executed a comprehensive research-driven audit and experimental refinement addressing 14 Phase 8 open issues (P8-01 through P8-14).
+  - Audited historical baseline (E0): proved reported 98.0% exact match was restricted to hard constraints; true Strict Complete-Output Exact Match was 54.00% (27/50 cases).
+  - Resolved Product Type vs. Soft Preference confusion (P8-01, P8-02) by designing Schema v2.0.0 (`RefinedQueryUnderstandingResult`) with dedicated `product_type: str | None`, typed `exclusions: list[ExclusionConstraint]`, and boundary flags (`min_inclusive`, `max_inclusive`), backed by a 100% backward-compatible `to_v1()` adapter.
+  - Evaluated 10 experimental configurations across prompt engineering (E1-A, E1-B, E1-C), temperature ablation (E2-A, E2-B, E2-C), schema design (E3), deterministic post-processing rules (E4), and staged extraction (E5-B).
+  - Winner Candidate (E5-B: Logically Staged Pipeline + Schema v2.0.0 + Hybrid Rules) achieved **86.67% Soft Preferences F1** ($\ge 85\%$ target met), **96.00% Hard Constraints F1**, **73.33% Strict Complete Exact Match** (+19.33 percentage points over baseline), and slashed token consumption by **53.6%** (from 1,206 down to **559 tokens/query**).
+  - Enhanced `gemini_client.py` with regex parsing of `retryDelay` in 429 errors for autonomous rate-limit backoff under free-tier 15 RPM constraints.
+  - Added 26 dedicated offline unit tests across evaluation, schema, refinement rules, and experiment runner; repository test suite fully passing.
+  - Created 4 comprehensive documentation deliverables:
+    - [`docs/phase8_1_refinement_experiments.md`](file:///d:/Project/ShopAssist/docs/phase8_1_refinement_experiments.md)
+    - [`docs/phase8_1_issue_resolution.md`](file:///d:/Project/ShopAssist/docs/phase8_1_issue_resolution.md)
+    - [`docs/phase8_1_evaluation_methodology.md`](file:///d:/Project/ShopAssist/docs/phase8_1_evaluation_methodology.md)
+    - [`docs/concepts/llm_experimentation_and_extraction_refinement.md`](file:///d:/Project/ShopAssist/docs/concepts/llm_experimentation_and_extraction_refinement.md)
+  - Emitted machine-readable reports: `data/interim/phase8_1/phase8_1_final_report.json`, `data/interim/phase8_1/experiment_manifest.json`, `data/interim/phase8_1/experiment_results.json`.
 - **Next Phase**: **Phase 9 — Soft Preference Representation**
-

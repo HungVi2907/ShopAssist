@@ -1,0 +1,587 @@
+{
+  "total_failures_analyzed": 22,
+  "total_error_instances": 40,
+  "error_distribution": {
+    "Missing preference": 8,
+    "Extra preference": 9,
+    "Product-type confusion": 14,
+    "Incorrect paraphrase": 2,
+    "Incorrect negation": 2,
+    "Inconsistent ground truth": 5,
+    "Other": 0
+  },
+  "per_case_failures": [
+    {
+      "test_id": "QU005",
+      "query": "Casio digital watch for men below 1500",
+      "expected_soft": [
+        "digital",
+        "for men"
+      ],
+      "actual_soft": [
+        "digital",
+        "men"
+      ],
+      "soft_f1": 0.5,
+      "errors": [
+        {
+          "category": "Inconsistent ground truth",
+          "test_id": "QU005",
+          "query": "Casio digital watch for men below 1500",
+          "detail": "Preposition variance: Ground truth required 'for men' but model extracted 'men'.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Incorrect paraphrase",
+          "test_id": "QU005",
+          "expected": "for men",
+          "actual": "men",
+          "detail": "Syntactic variation: 'for men' vs 'men'.",
+          "severity": "LOW"
+        }
+      ]
+    },
+    {
+      "test_id": "QU008",
+      "query": "baby stroller with safety harness under 5000 rs",
+      "expected_soft": [
+        "with safety harness"
+      ],
+      "actual_soft": [
+        "safety harness"
+      ],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Inconsistent ground truth",
+          "test_id": "QU008",
+          "query": "baby stroller with safety harness under 5000 rs",
+          "detail": "Preposition variance: Ground truth required 'with safety harness' but model extracted 'safety harness'.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Incorrect paraphrase",
+          "test_id": "QU008",
+          "expected": "with safety harness",
+          "actual": "safety harness",
+          "detail": "Syntactic variation: 'with safety harness' vs 'safety harness'.",
+          "severity": "LOW"
+        }
+      ]
+    },
+    {
+      "test_id": "QU010",
+      "query": "Canon DSLR camera lens above 25000",
+      "expected_soft": [
+        "dslr lens"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU010",
+          "term": "dslr lens",
+          "detail": "Expected soft preference 'dslr lens' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "test_id": "QU013",
+      "query": "decorative wall art hanging lights under 1500",
+      "expected_soft": [
+        "decorative",
+        "hanging lights"
+      ],
+      "actual_soft": [
+        "decorative"
+      ],
+      "soft_f1": 0.6667,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU013",
+          "term": "hanging lights",
+          "detail": "Expected soft preference 'hanging lights' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "test_id": "QU014",
+      "query": "Bosch cordless drill machine kit under 4500",
+      "expected_soft": [
+        "cordless",
+        "kit"
+      ],
+      "actual_soft": [
+        "cordless"
+      ],
+      "soft_f1": 0.6667,
+      "errors": [
+        {
+          "category": "Missing preference",
+          "test_id": "QU014",
+          "term": "kit",
+          "detail": "Model failed to extract expected soft preference 'kit'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU015",
+      "query": "bathroom shower head water softener filter under 2000",
+      "expected_soft": [
+        "shower head",
+        "water softener filter"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU015",
+          "term": "shower head",
+          "detail": "Expected soft preference 'shower head' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU015",
+          "term": "water softener filter",
+          "detail": "Expected soft preference 'water softener filter' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "test_id": "QU016",
+      "query": "Parker fountain pen with blue ink bottle under 800",
+      "expected_soft": [
+        "fountain pen",
+        "with blue ink bottle"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU016",
+          "term": "fountain pen",
+          "detail": "Expected soft preference 'fountain pen' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Missing preference",
+          "test_id": "QU016",
+          "term": "with blue ink bottle",
+          "detail": "Model failed to extract expected soft preference 'with blue ink bottle'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU018",
+      "query": "car dashboard mobile phone holder mount under 500",
+      "expected_soft": [
+        "dashboard mount"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU018",
+          "term": "dashboard mount",
+          "detail": "Expected soft preference 'dashboard mount' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "test_id": "QU019",
+      "query": "Adidas football shoes studs at least 2500",
+      "expected_soft": [
+        "football studs"
+      ],
+      "actual_soft": [
+        "studs"
+      ],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU019",
+          "term": "football studs",
+          "detail": "Expected soft preference 'football studs' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Extra preference",
+          "test_id": "QU019",
+          "term": "studs",
+          "detail": "Model extracted unrequested or extraneous preference 'studs'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU020",
+      "query": "Apple iPad tablet between 25000 and 40000 rupees",
+      "expected_soft": [
+        "tablet"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU020",
+          "term": "tablet",
+          "detail": "Expected soft preference 'tablet' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "test_id": "QU021",
+      "query": "comfortable running shoes",
+      "expected_soft": [
+        "comfortable",
+        "running"
+      ],
+      "actual_soft": [
+        "comfortable"
+      ],
+      "soft_f1": 0.6667,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU021",
+          "term": "running",
+          "detail": "Expected soft preference 'running' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "test_id": "QU024",
+      "query": "prestige induction cooktop between 2000 and 4000",
+      "expected_soft": [
+        "induction cooktop"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU024",
+          "term": "induction cooktop",
+          "detail": "Expected soft preference 'induction cooktop' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "test_id": "QU027",
+      "query": "smartwatch under 100 EUR with heart rate monitor",
+      "expected_soft": [
+        "smartwatch",
+        "heart rate monitor"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU027",
+          "term": "smartwatch",
+          "detail": "Expected soft preference 'smartwatch' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Missing preference",
+          "test_id": "QU027",
+          "term": "heart rate monitor",
+          "detail": "Model failed to extract expected soft preference 'heart rate monitor'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU029",
+      "query": "cheap laptop",
+      "expected_soft": [
+        "affordable"
+      ],
+      "actual_soft": [
+        "cheap"
+      ],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Inconsistent ground truth",
+          "test_id": "QU029",
+          "query": "cheap laptop",
+          "detail": "Annotator replaced literal user adjective 'cheap' with synonym 'affordable' in ground truth, penalizing exact extraction.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Missing preference",
+          "test_id": "QU029",
+          "term": "affordable",
+          "detail": "Model failed to extract expected soft preference 'affordable'.",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "Extra preference",
+          "test_id": "QU029",
+          "term": "cheap",
+          "detail": "Model extracted unrequested or extraneous preference 'cheap'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU030",
+      "query": "Nike shoes, but not running shoes",
+      "expected_soft": [
+        "casual",
+        "not running"
+      ],
+      "actual_soft": [
+        "not running shoes"
+      ],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Inconsistent ground truth",
+          "test_id": "QU030",
+          "query": "Nike shoes, but not running shoes",
+          "detail": "Annotator invented unstated preference 'casual' for 'Nike shoes, but not running shoes'.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Incorrect negation",
+          "test_id": "QU030",
+          "term": "not running",
+          "detail": "Negative constraint 'not running' was incorrectly handled in soft preferences rather than explicit exclusions.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Incorrect negation",
+          "test_id": "QU030",
+          "term": "not running shoes",
+          "detail": "Negative constraint 'not running shoes' was incorrectly handled in soft preferences rather than explicit exclusions.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Missing preference",
+          "test_id": "QU030",
+          "term": "casual",
+          "detail": "Model failed to extract expected soft preference 'casual'.",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "Extra preference",
+          "test_id": "QU030",
+          "term": "not running shoes",
+          "detail": "Model extracted unrequested or extraneous preference 'not running shoes'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU031",
+      "query": "show me something interesting",
+      "expected_soft": [
+        "interesting"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Inconsistent ground truth",
+          "test_id": "QU031",
+          "query": "show me something interesting",
+          "detail": "Ambiguous non-shopping query: Ground truth expected 'interesting' despite query lacking product intent.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Missing preference",
+          "test_id": "QU031",
+          "term": "interesting",
+          "detail": "Model failed to extract expected soft preference 'interesting'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU032",
+      "query": "fresh organic bananas from supermarket",
+      "expected_soft": [
+        "organic"
+      ],
+      "actual_soft": [
+        "fresh",
+        "organic"
+      ],
+      "soft_f1": 0.6667,
+      "errors": [
+        {
+          "category": "Extra preference",
+          "test_id": "QU032",
+          "term": "fresh",
+          "detail": "Model extracted unrequested or extraneous preference 'fresh'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU039",
+      "query": "leather laptop messenger bag for men under 3000",
+      "expected_soft": [
+        "leather",
+        "messenger",
+        "for men"
+      ],
+      "actual_soft": [
+        "leather",
+        "laptop",
+        "messenger bag",
+        "for men"
+      ],
+      "soft_f1": 0.5714,
+      "errors": [
+        {
+          "category": "Missing preference",
+          "test_id": "QU039",
+          "term": "messenger",
+          "detail": "Model failed to extract expected soft preference 'messenger'.",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "Extra preference",
+          "test_id": "QU039",
+          "term": "laptop",
+          "detail": "Model extracted unrequested or extraneous preference 'laptop'.",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "Extra preference",
+          "test_id": "QU039",
+          "term": "messenger bag",
+          "detail": "Model extracted unrequested or extraneous preference 'messenger bag'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU042",
+      "query": "dumbbell set 20kg with curl bar between 2000 and 4500",
+      "expected_soft": [
+        "20kg",
+        "with curl bar"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU042",
+          "term": "20kg",
+          "detail": "Expected soft preference '20kg' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Missing preference",
+          "test_id": "QU042",
+          "term": "with curl bar",
+          "detail": "Model failed to extract expected soft preference 'with curl bar'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU047",
+      "query": "Reebok men training gym shoes size 9 under 2800",
+      "expected_soft": [
+        "training",
+        "gym"
+      ],
+      "actual_soft": [
+        "men",
+        "training",
+        "gym",
+        "size 9"
+      ],
+      "soft_f1": 0.6667,
+      "errors": [
+        {
+          "category": "Extra preference",
+          "test_id": "QU047",
+          "term": "size 9",
+          "detail": "Model extracted unrequested or extraneous preference 'size 9'.",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "Extra preference",
+          "test_id": "QU047",
+          "term": "men",
+          "detail": "Model extracted unrequested or extraneous preference 'men'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "test_id": "QU049",
+      "query": "Apsara platinum pencils pack of 50 under 300",
+      "expected_soft": [
+        "platinum",
+        "pack of 50"
+      ],
+      "actual_soft": [],
+      "soft_f1": 0.0,
+      "errors": [
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU049",
+          "term": "pack of 50",
+          "detail": "Expected soft preference 'pack of 50' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        },
+        {
+          "category": "Product-type confusion",
+          "test_id": "QU049",
+          "term": "platinum",
+          "detail": "Expected soft preference 'platinum' is actually the core product type noun phrase, preserved in semantic query.",
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "test_id": "QU050",
+      "query": "fast wireless charging pad for iPhone and Android under 1800",
+      "expected_soft": [
+        "fast charging",
+        "wireless"
+      ],
+      "actual_soft": [
+        "fast charging",
+        "wireless",
+        "compatible with iphone and android"
+      ],
+      "soft_f1": 0.8,
+      "errors": [
+        {
+          "category": "Extra preference",
+          "test_id": "QU050",
+          "term": "compatible with iphone and android",
+          "detail": "Model extracted unrequested or extraneous preference 'compatible with iphone and android'.",
+          "severity": "MEDIUM"
+        }
+      ]
+    }
+  ]
+}

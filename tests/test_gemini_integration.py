@@ -28,7 +28,15 @@ def async_test(coro):
     """Helper decorator to run coroutines synchronously in pytest."""
     @functools.wraps(coro)
     def wrapper(*args, **kwargs):
-        return asyncio.run(coro(*args, **kwargs))
+        async def run_and_close():
+            try:
+                return await coro(*args, **kwargs)
+            finally:
+                # The session belongs to this loop, not the later fixture teardown loop.
+                for value in [*args, *kwargs.values()]:
+                    if isinstance(value, (GeminiClient, QueryUnderstandingEngine)):
+                        await value.aclose()
+        return asyncio.run(run_and_close())
     return wrapper
 
 

@@ -1,0 +1,353 @@
+{
+  "version": "1.0.0",
+  "description": "Representative 15-case development subset for Phase 8.1 experiments",
+  "cases": [
+    {
+      "test_id": "QU001",
+      "query": "Puma running shoes under 2000 rupees",
+      "category": "Footwear",
+      "description": "Standard category, brand, strict max price in INR",
+      "expected": {
+        "product_type": "running shoes",
+        "semantic_query": "Puma running shoes",
+        "hard_constraints": {
+          "category": "Footwear",
+          "brand": "Puma",
+          "min_price": null,
+          "max_price": 2000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU002",
+      "query": "comfortable Nike sneakers under 3500 rs with at least 4 star rating",
+      "category": "Footwear",
+      "description": "Brand, category, strict max price, min rating, soft preference",
+      "expected": {
+        "product_type": "sneakers",
+        "semantic_query": "Nike sneakers",
+        "hard_constraints": {
+          "category": "Footwear",
+          "brand": "Nike",
+          "min_price": null,
+          "max_price": 3500.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": 4.0,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["comfortable"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU003",
+      "query": "Samsung smartphone between 10000 and 20000 with good battery life",
+      "category": "Mobiles & Accessories",
+      "description": "Brand, category, price range, soft preference",
+      "expected": {
+        "product_type": "smartphone",
+        "semantic_query": "Samsung smartphone",
+        "hard_constraints": {
+          "category": "Mobiles & Accessories",
+          "brand": "Samsung",
+          "min_price": 10000.0,
+          "max_price": 20000.0,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["good battery life"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU004",
+      "query": "lightweight Dell laptop for programming under 60000",
+      "category": "Computers",
+      "description": "Category, brand, strict max price, soft preferences",
+      "expected": {
+        "product_type": "laptop",
+        "semantic_query": "Dell laptop",
+        "hard_constraints": {
+          "category": "Computers",
+          "brand": "Dell",
+          "min_price": null,
+          "max_price": 60000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["for programming", "lightweight"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU005",
+      "query": "Casio digital watch for men below 1500",
+      "category": "Watches",
+      "description": "Category, brand, strict max price, demographic/digital preference",
+      "expected": {
+        "product_type": "digital watch",
+        "semantic_query": "Casio digital watch",
+        "hard_constraints": {
+          "category": "Watches",
+          "brand": "Casio",
+          "min_price": null,
+          "max_price": 1500.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["for men"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU007",
+      "query": "Puma t-shirt under 1000 rs, actually make it under 1500 rs",
+      "category": "Footwear",
+      "description": "In-query correction with Footwear fallback or general clothing",
+      "expected": {
+        "product_type": "t-shirt",
+        "semantic_query": "Puma t-shirt",
+        "hard_constraints": {
+          "category": "Footwear",
+          "brand": "Puma",
+          "min_price": null,
+          "max_price": 1500.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU009",
+      "query": "laptop under 500 dollars",
+      "category": "Computers",
+      "description": "Foreign currency flag",
+      "expected": {
+        "product_type": "laptop",
+        "semantic_query": "laptop",
+        "hard_constraints": {
+          "category": "Computers",
+          "brand": null,
+          "min_price": null,
+          "max_price": 500.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "USD"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": true
+      }
+    },
+    {
+      "test_id": "QU010",
+      "query": "Canon DSLR camera lens above 25000",
+      "category": "Cameras & Accessories",
+      "description": "Product type dslr camera lens, strict min price",
+      "expected": {
+        "product_type": "dslr camera lens",
+        "semantic_query": "Canon DSLR camera lens",
+        "hard_constraints": {
+          "category": "Cameras & Accessories",
+          "brand": "Canon",
+          "min_price": 25000.0,
+          "max_price": null,
+          "min_inclusive": false,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU029",
+      "query": "cheap laptop",
+      "category": "Computers",
+      "description": "Qualitative budget word preserved literally without price hallucination",
+      "expected": {
+        "product_type": "laptop",
+        "semantic_query": "cheap laptop",
+        "hard_constraints": {
+          "category": "Computers",
+          "brand": null,
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["cheap"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU030",
+      "query": "Nike shoes, but not running shoes",
+      "category": "Footwear",
+      "description": "Explicit negation / exclusion",
+      "expected": {
+        "product_type": "shoes",
+        "semantic_query": "Nike shoes",
+        "hard_constraints": {
+          "category": "Footwear",
+          "brand": "Nike",
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [
+          {"target_type": "product_type", "value": "running shoes"}
+        ],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU031",
+      "query": "show me something interesting",
+      "category": "General",
+      "description": "Ambiguous non-shopping request",
+      "expected": {
+        "product_type": null,
+        "semantic_query": "unspecified product query",
+        "hard_constraints": {
+          "category": null,
+          "brand": null,
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": true
+      }
+    },
+    {
+      "test_id": "QU033",
+      "query": "commercial Boeing 747 airplane for sale",
+      "category": "General",
+      "description": "Out-of-catalog unserviceable query with brand suppression",
+      "expected": {
+        "product_type": "airplane",
+        "semantic_query": "Boeing 747 airplane",
+        "hard_constraints": {
+          "category": null,
+          "brand": null,
+          "min_price": null,
+          "max_price": null,
+          "min_inclusive": true,
+          "max_inclusive": true,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": true
+      }
+    },
+    {
+      "test_id": "QU036",
+      "query": "Titan formal gold watch below 5000 with minimum 4.2 rating",
+      "category": "Watches",
+      "description": "Brand Titan, strict max price, min rating, formal/gold attributes",
+      "expected": {
+        "product_type": "watch",
+        "semantic_query": "Titan formal gold watch",
+        "hard_constraints": {
+          "category": "Watches",
+          "brand": "Titan",
+          "min_price": null,
+          "max_price": 5000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": 4.2,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["formal", "gold"],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU043",
+      "query": "Under Armour running shoes under 4000",
+      "category": "Footwear",
+      "description": "Multiword brand not in catalog preserved, strict max price",
+      "expected": {
+        "product_type": "running shoes",
+        "semantic_query": "Under Armour running shoes",
+        "hard_constraints": {
+          "category": "Footwear",
+          "brand": "Under Armour",
+          "min_price": null,
+          "max_price": 4000.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": [],
+        "needs_clarification": false
+      }
+    },
+    {
+      "test_id": "QU050",
+      "query": "fast wireless charging pad for iPhone and Android under 1800",
+      "category": "Mobiles & Accessories",
+      "description": "Product type charging pad, qualitative features",
+      "expected": {
+        "product_type": "wireless charging pad",
+        "semantic_query": "fast wireless charging pad for iPhone and Android",
+        "hard_constraints": {
+          "category": "Mobiles & Accessories",
+          "brand": null,
+          "min_price": null,
+          "max_price": 1800.0,
+          "min_inclusive": true,
+          "max_inclusive": false,
+          "min_rating": null,
+          "currency": "INR"
+        },
+        "exclusions": [],
+        "soft_preferences": ["fast charging"],
+        "needs_clarification": false
+      }
+    }
+  ]
+}

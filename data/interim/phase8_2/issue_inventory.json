@@ -1,0 +1,156 @@
+{
+  "timestamp_utc": "2026-10-09T09:26:31.725664+00:00",
+  "issues": [
+    {
+      "id": "ISSUE-01",
+      "severity": "High",
+      "status": "UNRESOLVED",
+      "title": "Soft preferences below target",
+      "evidence": "Old heldout E5-B has 7/20 soft mismatches; TP=18, FP=9, FN=3; strict macro F1=78.33%, micro F1=75%.",
+      "root_cause": "Product-class duplication, omitted attributes, compatibility confusion, literal synonyms and disputed unsupported-domain labels.",
+      "reproduction": "Audit HELD001/002/005/007/013/019/020; run audit_phase8_2.py.",
+      "affected": "prompts.py, prompt_variants.py, refinement_rules.py, scoring.py",
+      "solution": "C2-C5 prompts; contextual cleanup; independent label review. Product cleanup fixes HELD005 on replay only.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-02",
+      "severity": "High",
+      "status": "UNRESOLVED",
+      "title": "Low complete slot accuracy",
+      "evidence": "E5-B full v2 slot EM=10/20; shared-field EM=12/20. Error counts overlap: soft 7, product type 2, exclusions 2, brand 1, clarification 1, active boundaries 0.",
+      "root_cause": "Several independently imperfect slots compound into a failed query; exact wording is a separate metric.",
+      "reproduction": "Inspect failure_analysis.json per-case records; compare field mismatches.",
+      "affected": "schema_variants.py, scoring.py, failure_analysis.json",
+      "solution": "Improve individual slots; keep strict metric. No semantic extraction winner adopted.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-03",
+      "severity": "Medium",
+      "status": "RESOLVED",
+      "title": "Development failure classification",
+      "evidence": "QU033 and QU036 both exhausted 429 retries. No successful provider JSON exists for these failures.",
+      "root_cause": "Legacy validity combined transport and schema failures; fallback rules overwrote QU033's provider reason.",
+      "reproduction": "Compare dev E5-B records with preserved raw cache; invalid_cases identifies API_429_RETRY_EXHAUSTED.",
+      "affected": "gemini_client.py, runner.py, audit_phase8_2.py",
+      "solution": "Stage diagnostics and failure-aware scoring implemented. JSON/schema defect allegation NOT REPRODUCED for these two cases; provider quota remains an operational risk.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-04",
+      "severity": "Medium",
+      "status": "DEFERRED",
+      "title": "Temperature conclusion unsupported",
+      "evidence": "E2 used E1-B/v1, not E5-B/v2. T1 quality is higher in those stored runs; T0/T0.5 also have API failures. No independent repeated-run evidence.",
+      "root_cause": "Architecture transfer and quota confounding; no theorem makes T0 best for extraction.",
+      "reproduction": "Inspect E2 configurations and raw cache; dry-run B0,T05,T10 with repetitions=3.",
+      "affected": "prompt_variants.py, candidates.py, research_review.md",
+      "solution": "Same-E5-B 0/0.5/1 experiment prepared; user explicitly deferred larger live work.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-05",
+      "severity": "High",
+      "status": "RESOLVED",
+      "title": "Unfair exact-match comparisons",
+      "evidence": "Original 98% excludes preferences. Historical 54% is common-field EM. The old v1 5% vs v2 50% mixed field capabilities; missing null product_type and active boundary flags received credit.",
+      "root_cause": "Scoring defaults masked missing fields and failures; schema capability was confused with shared extraction quality.",
+      "reproduction": "Run independent scoring tests and audit; same-query shared EM is 40% vs 60%.",
+      "affected": "evaluation.py, experiments/metrics.py, phase82/scoring.py",
+      "solution": "Independent versioned common/full-v2 metrics with explicit missing-field and failure policy. Old scorer retained solely for historical reproduction.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-06",
+      "severity": "High",
+      "status": "IMPROVED",
+      "title": "Rules can alter intent",
+      "evidence": "Historical rules damage 9/18 authored oracle outputs. Conservative rules preserve all 18. This is a rule-invariance test, not LLM quality evidence.",
+      "root_cause": "Naive negation cues, unbound price operators, substring domain detection and global class-word blacklists.",
+      "reproduction": "Test not only/not necessarily/not too expensive/except Nike/no less than/not under/double negation; run rule tests and offline ablations.",
+      "affected": "refinement_rules.py, phase82/rules.py",
+      "solution": "Isolated narrow evidence rules implemented. Ambiguous and multilingual scope is still not solved; production rules not switched.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-07",
+      "severity": "High",
+      "status": "UNRESOLVED",
+      "title": "Entity extraction versus filter activation",
+      "evidence": "Boeing is a named manufacturer in QU033. HELD020 treats Honda compatibility as accessory brand and omits for Honda City.",
+      "root_cause": "Business support policy conflates named entities with active catalog filters; a single brand slot cannot encode both.",
+      "reproduction": "Inspect QU033 raw output and HELD020; compare brand-preserving rule replay.",
+      "affected": "normalization.py, refinement_rules.py, query_contract_review.md",
+      "solution": "Preserve named manufacturers in experimental extraction; gate unsupported queries before filtering. Old labels unchanged; policy adjudication pending.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-08",
+      "severity": "High",
+      "status": "IMPROVED",
+      "title": "Coverage and annotation limitations",
+      "evidence": "13/15 development queries overlap original50. New 20/20/40 fixtures have 80 unique exact queries and no overlap with old fixtures.",
+      "root_cause": "Small handcrafted data and single-annotator policy choices; exact disjointness does not establish semantic independence.",
+      "reproduction": "Run fixture builder and dataset_integrity.json audit.",
+      "affected": "tests/fixtures/phase8_2, build_phase8_2_fixtures.py",
+      "solution": "Labels authored before predictions; independent annotation and ambiguous-case adjudication still pending.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-09",
+      "severity": "Medium",
+      "status": "IMPROVED",
+      "title": "Latency, tokens and cache provenance",
+      "evidence": "Old cache keys omit prompt/schema content and settings, cache errors, round temperature and reuse stored latency. Retry counts and cache flags are incomplete.",
+      "root_cause": "Logical cases were counted instead of actual attempts; stored metrics cannot isolate provider speed.",
+      "reproduction": "Run runner tests for fingerprint changes, failure caching, resume and budget exhaustion.",
+      "affected": "experiments/runner.py, phase82/runner.py, gemini_client.py",
+      "solution": "New content hashes, success-only opt-in cache, persistent attempt/token reservations and stage timings. Fresh comparative performance remains unmeasured.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-10",
+      "severity": "High",
+      "status": "UNRESOLVED",
+      "title": "v2 to v1 semantic loss",
+      "evidence": "Adapter drops product_type, strict/inclusive flags and typed exclusions; negatives become soft strings and may be truncated at ten preferences.",
+      "root_cause": "Structural compatibility cannot preserve meanings absent in the target schema.",
+      "reproduction": "Read both to_v1 methods and run existing schema adapter tests; see contract review example.",
+      "affected": "schemas.py, schema_variants.py",
+      "solution": "Versioned consumer migration proposed; no breaking production schema switch made.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-11",
+      "severity": "Medium",
+      "status": "RESOLVED",
+      "title": "Documentation contradictions",
+      "evidence": "Old report says seven resolved issues but enumerates eight; unsupported determinism, validity, latency and readiness guarantees remain in historical prose.",
+      "root_cause": "Narrative claims exceeded per-case evidence and blurred experimental versus adopted behavior.",
+      "reproduction": "Read synchronization addenda and compare generated figures with audit JSON.",
+      "affected": "README.md, Phase8/8.1 reports, conceptual guides",
+      "solution": "Explicit superseding corrections preserve historical measurements and provide current status counts.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    },
+    {
+      "id": "ISSUE-12",
+      "severity": "High",
+      "status": "IMPROVED",
+      "title": "Operational safety and lifecycle",
+      "evidence": "Settings representation/serialization and provider errors exposed sensitive values; Windows smoke teardown reproduced SSL transport warnings. Two-test retest passed after lifecycle fix.",
+      "root_cause": "Unrestricted exception text, double retry layers, lazy SDK sessions closed after their owning event loop.",
+      "reproduction": "Run reliability tests for 401/403/429/503/timeout/invalid JSON/key redaction/input bounds; inspect smoke_retest.xml.",
+      "affected": "config.py, security.py, gemini_client.py, query_understanding.py, test_gemini_integration.py",
+      "solution": "Redacted settings/errors, one retry owner, exact model identity, usage-before-validation, same-loop cleanup. Injection immunity, retention policy, strict coercion and finite numeric validation remain open.",
+      "tests": "Offline audit, targeted Phase8.2 tests and repository regression; see verification_report.json. Live evidence only the bounded production smoke subset."
+    }
+  ],
+  "status_counts": {
+    "UNRESOLVED": 4,
+    "RESOLVED": 3,
+    "DEFERRED": 1,
+    "IMPROVED": 4
+  },
+  "scope": "12 requested investigations; original14 mapped in Markdown"
+}

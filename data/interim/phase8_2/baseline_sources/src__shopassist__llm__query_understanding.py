@@ -163,17 +163,17 @@ class QueryUnderstandingEngine:
             )
 
         except Exception as exc:
-            logger.error("Query understanding processing error: %s", type(exc).__name__)
+            logger.error("Query understanding processing error for query '%s': %s", clean_query, exc)
             return QueryUnderstandingResult(
                 query=clean_query,
                 output=QueryUnderstandingOutput(
                     semantic_query=clean_query,
                     hard_constraints=HardConstraints(),
                     needs_clarification=True,
-                    clarification_reason=f"Processing failure: {type(exc).__name__}. Please try again.",
+                    clarification_reason=f"Processing failure: {type(exc).__name__}: {exc}",
                 ),
                 is_valid=False,
-                validation_errors=[f"Processing failure: {type(exc).__name__}"],
+                validation_errors=[str(exc)],
             )
 
     def parse_query(
@@ -182,12 +182,9 @@ class QueryUnderstandingEngine:
         system_instruction: str = SYSTEM_INSTRUCTION,
     ) -> QueryUnderstandingResult:
         """Synchronous wrapper for parse_query_async."""
-        async def parse_and_close():
-            try:
-                return await self.parse_query_async(query, system_instruction=system_instruction)
-            finally:
-                await self.aclose()
-        return asyncio.run(parse_and_close())
+        return asyncio.run(
+            self.parse_query_async(query, system_instruction=system_instruction)
+        )
 
     async def aclose(self) -> None:
         """Cleanly close client resources."""

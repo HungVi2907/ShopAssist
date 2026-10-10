@@ -1,0 +1,4019 @@
+{
+  "status": "OFFLINE_RULE_INVARIANCE_EXECUTED",
+  "requests": 0,
+  "scope": "18 authored oracle inputs; not LLM extraction or generalization measurement",
+  "results": {
+    "historical": {
+      "metrics": {
+        "policy": "phase82-1.0",
+        "cases": 18,
+        "unique_queries": 18,
+        "uncertainty_note": "Wilson intervals over query records",
+        "schema_validity": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "common_exact": {
+          "count": 15,
+          "denominator": 18,
+          "rate": 0.8333333333333334,
+          "wilson95": [
+            0.6077796189608428,
+            0.9416342319413856
+          ]
+        },
+        "full_v2_exact": {
+          "count": 9,
+          "denominator": 18,
+          "rate": 0.5,
+          "wilson95": [
+            0.29031021505169974,
+            0.7096897849483003
+          ]
+        },
+        "hard_exact": {
+          "count": 16,
+          "denominator": 18,
+          "rate": 0.8888888888888888,
+          "wilson95": [
+            0.672002348698212,
+            0.9689804773543876
+          ]
+        },
+        "soft_exact": {
+          "count": 17,
+          "denominator": 18,
+          "rate": 0.9444444444444444,
+          "wilson95": [
+            0.7424269921812741,
+            0.990124809021697
+          ]
+        },
+        "product_type_accuracy": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "exclusion_accuracy": {
+          "count": 12,
+          "denominator": 18,
+          "rate": 0.6666666666666666,
+          "wilson95": [
+            0.43749467295945105,
+            0.837212252491663
+          ]
+        },
+        "semantic_query_lexical_accuracy": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "hard_micro": {
+          "tp": 40,
+          "fp": 0,
+          "fn": 2,
+          "f1": 0.975609756097561
+        },
+        "soft_micro": {
+          "tp": 5,
+          "fp": 0,
+          "fn": 1,
+          "f1": 0.9090909090909091
+        },
+        "exclusion_micro": {
+          "tp": 3,
+          "fp": 6,
+          "fn": 0,
+          "f1": 0.5
+        },
+        "soft_macro_f1": 0.9444444444444444,
+        "soft_macro_precision": 0.9444444444444444,
+        "soft_macro_recall": 0.9444444444444444,
+        "semantic_soft_macro_f1": 0.9444444444444444,
+        "exclusion_macro_f1": 0.6666666666666666,
+        "field_accuracy": {
+          "category": 0.9444444444444444,
+          "brand": 0.9444444444444444,
+          "min_price": 1.0,
+          "max_price": 1.0,
+          "min_rating": 1.0,
+          "currency": 1.0,
+          "clarification": 0.9444444444444444
+        },
+        "performance": {
+          "live_end_to_end": {
+            "n": 0,
+            "median_ms": null,
+            "p95_ms": null
+          },
+          "cache_lookup": {
+            "n": 0,
+            "median_ms": null,
+            "p95_ms": null
+          },
+          "historical_api_latency": "not comparable: origin/retry provenance incomplete"
+        },
+        "boundary_accuracy": {
+          "min_inclusive": {
+            "count": 2,
+            "denominator": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.34238022750665303,
+              1.0
+            ]
+          },
+          "max_inclusive": {
+            "count": 3,
+            "denominator": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.30064184258240184,
+              0.9544127391902995
+            ]
+          }
+        },
+        "hallucinated_hard_constraints": {
+          "false_positive_atoms": 0,
+          "query_rate": 0.0,
+          "note": "Reference-relative false positives, including wrong values; not a universal hallucination detector"
+        },
+        "live_tokens": {
+          "observed": 0,
+          "observed_per_call": null,
+          "input_observed": 0,
+          "output_observed": 0,
+          "calls_with_observed_usage": 0,
+          "unknown_attempts": 0,
+          "per_valid": null,
+          "per_common_exact": null
+        }
+      },
+      "per_case_results": [
+        {
+          "test_id": "P82_DEV_001",
+          "query": "Nike shoes, not only running shoes",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": "Nike",
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": "Nike",
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "product_type",
+                "value": "only running shoes"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "exclusion_exact": false,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_002",
+          "query": "Shoes, not necessarily running shoes",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "product_type",
+                "value": "necessarily running shoes"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "exclusion_exact": false,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_003",
+          "query": "Shoes, not running shoes",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [
+              {
+                "target_type": "product_type",
+                "value": "running shoes"
+              }
+            ],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "product_type",
+                "value": "running shoes"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_004",
+          "query": "Wallet without leather",
+          "expected": {
+            "product_type": "wallet",
+            "semantic_query": "wallet",
+            "hard_constraints": {
+              "category": "Bags, Wallets & Belts",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [
+              {
+                "target_type": "attribute",
+                "value": "leather"
+              }
+            ],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "wallet",
+            "semantic_query": "wallet",
+            "hard_constraints": {
+              "category": "Bags, Wallets & Belts",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "attribute",
+                "value": "leather"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_005",
+          "query": "A laptop that is not too expensive",
+          "expected": {
+            "product_type": "laptop",
+            "semantic_query": "laptop",
+            "hard_constraints": {
+              "category": "Computers",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "not too expensive"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "laptop",
+            "semantic_query": "laptop",
+            "hard_constraints": {
+              "category": "Computers",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "attribute",
+                "value": "too expensive"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": false,
+            "common_exact": false,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "exclusion_exact": false,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": [
+              "not too expensive"
+            ]
+          },
+          "notes": [
+            "Moved negative preference 'not too expensive' into explicit exclusions."
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_006",
+          "query": "Shoes from anything except Nike",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [
+              {
+                "target_type": "brand",
+                "value": "nike"
+              }
+            ],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "brand",
+                "value": "nike"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_007",
+          "query": "Nike or Adidas shoes",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": true
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": true,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_008",
+          "query": "Watch no less than 2000",
+          "expected": {
+            "product_type": "watch",
+            "semantic_query": "watch",
+            "hard_constraints": {
+              "category": "Watches",
+              "brand": null,
+              "min_price": 2000,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "watch",
+            "semantic_query": "watch",
+            "hard_constraints": {
+              "category": "Watches",
+              "brand": null,
+              "min_price": 2000.0,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "attribute",
+                "value": "less than 2000"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": true,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "exclusion_exact": false,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_009",
+          "query": "Watch not under 2000",
+          "expected": {
+            "product_type": "watch",
+            "semantic_query": "watch",
+            "hard_constraints": {
+              "category": "Watches",
+              "brand": null,
+              "min_price": 2000,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "watch",
+            "semantic_query": "watch",
+            "hard_constraints": {
+              "category": "Watches",
+              "brand": null,
+              "min_price": 2000.0,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "attribute",
+                "value": "under 2000"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": true,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "exclusion_exact": false,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_010",
+          "query": "Chair under 3000, actually up to 4200",
+          "expected": {
+            "product_type": "chair",
+            "semantic_query": "chair",
+            "hard_constraints": {
+              "category": "Furniture",
+              "brand": null,
+              "min_price": null,
+              "max_price": 4200,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "chair",
+            "semantic_query": "chair",
+            "hard_constraints": {
+              "category": "Furniture",
+              "brand": null,
+              "min_price": null,
+              "max_price": 4200.0,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": false
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_011",
+          "query": "Lamp up to 1400, make it below 1600",
+          "expected": {
+            "product_type": "lamp",
+            "semantic_query": "lamp",
+            "hard_constraints": {
+              "category": "Home Decor & Festive Needs",
+              "brand": null,
+              "min_price": null,
+              "max_price": 1600,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "lamp",
+            "semantic_query": "lamp",
+            "hard_constraints": {
+              "category": "Home Decor & Festive Needs",
+              "brand": null,
+              "min_price": null,
+              "max_price": 1600.0,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": true
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_012",
+          "query": "Phone not more than 18000",
+          "expected": {
+            "product_type": "phone",
+            "semantic_query": "phone",
+            "hard_constraints": {
+              "category": "Mobiles & Accessories",
+              "brand": null,
+              "min_price": null,
+              "max_price": 18000,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "phone",
+            "semantic_query": "phone",
+            "hard_constraints": {
+              "category": "Mobiles & Accessories",
+              "brand": null,
+              "min_price": null,
+              "max_price": 18000.0,
+              "min_inclusive": false,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "attribute",
+                "value": "more than 18000"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": true
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "exclusion_exact": false,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_013",
+          "query": "Drill at least 900 watts under 3400",
+          "expected": {
+            "product_type": "drill",
+            "semantic_query": "drill",
+            "hard_constraints": {
+              "category": "Tools & Hardware",
+              "brand": null,
+              "min_price": null,
+              "max_price": 3400,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "900 watts"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "drill",
+            "semantic_query": "drill",
+            "hard_constraints": {
+              "category": "Tools & Hardware",
+              "brand": null,
+              "min_price": null,
+              "max_price": 3400.0,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "900 watts"
+            ],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": true
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_014",
+          "query": "Shoes suitable for running",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "suitable for running"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "suitable for running"
+            ],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_015",
+          "query": "Boeing aircraft for sale",
+          "expected": {
+            "product_type": "aircraft",
+            "semantic_query": "aircraft",
+            "hard_constraints": {
+              "category": null,
+              "brand": "Boeing",
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": true
+          },
+          "actual": {
+            "product_type": "aircraft",
+            "semantic_query": "aircraft",
+            "hard_constraints": {
+              "category": null,
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": true,
+            "clarification_reason": "Out-of-domain request or unsupported product category."
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1": 0.6666666666666666
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": false,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": false,
+            "soft_exact": true,
+            "common_exact": false,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Out-of-domain request or unsupported product category."
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_016",
+          "query": "Toy airplane for a child",
+          "expected": {
+            "product_type": "toy airplane",
+            "semantic_query": "toy airplane",
+            "hard_constraints": {
+              "category": null,
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "for a child"
+            ],
+            "exclusions": [],
+            "needs_clarification": true
+          },
+          "actual": {
+            "product_type": "toy airplane",
+            "semantic_query": "toy airplane",
+            "hard_constraints": {
+              "category": null,
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "for a child"
+            ],
+            "needs_clarification": true,
+            "clarification_reason": "Out-of-domain request or unsupported product category."
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Out-of-domain request or unsupported product category."
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_017",
+          "query": "Milk bottle for a baby",
+          "expected": {
+            "product_type": "milk bottle",
+            "semantic_query": "milk bottle",
+            "hard_constraints": {
+              "category": "Baby Care",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "for a baby"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "milk bottle",
+            "semantic_query": "milk bottle",
+            "hard_constraints": {
+              "category": null,
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "for a baby"
+            ],
+            "needs_clarification": true,
+            "clarification_reason": "Out-of-domain request or unsupported product category."
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.5,
+              "f1": 0.6666666666666666
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": false,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": false
+            },
+            "hard_exact": false,
+            "soft_exact": true,
+            "common_exact": false,
+            "full_v2_exact": false,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Out-of-domain request or unsupported product category."
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_018",
+          "query": "Case compatible with Samsung Galaxy S23",
+          "expected": {
+            "product_type": "case",
+            "semantic_query": "case",
+            "hard_constraints": {
+              "category": "Mobiles & Accessories",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "compatible with samsung galaxy s23"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "case",
+            "semantic_query": "case",
+            "hard_constraints": {
+              "category": "Mobiles & Accessories",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "compatible with samsung galaxy s23"
+            ],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        }
+      ]
+    },
+    "conservative_all": {
+      "metrics": {
+        "policy": "phase82-1.0",
+        "cases": 18,
+        "unique_queries": 18,
+        "uncertainty_note": "Wilson intervals over query records",
+        "schema_validity": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "common_exact": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "full_v2_exact": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "hard_exact": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "soft_exact": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "product_type_accuracy": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "exclusion_accuracy": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "semantic_query_lexical_accuracy": {
+          "count": 18,
+          "denominator": 18,
+          "rate": 1.0,
+          "wilson95": [
+            0.8241207763533425,
+            1.0
+          ]
+        },
+        "hard_micro": {
+          "tp": 42,
+          "fp": 0,
+          "fn": 0,
+          "f1": 1.0
+        },
+        "soft_micro": {
+          "tp": 6,
+          "fp": 0,
+          "fn": 0,
+          "f1": 1.0
+        },
+        "exclusion_micro": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "f1": 1.0
+        },
+        "soft_macro_f1": 1.0,
+        "soft_macro_precision": 1.0,
+        "soft_macro_recall": 1.0,
+        "semantic_soft_macro_f1": 1.0,
+        "exclusion_macro_f1": 1.0,
+        "field_accuracy": {
+          "category": 1.0,
+          "brand": 1.0,
+          "min_price": 1.0,
+          "max_price": 1.0,
+          "min_rating": 1.0,
+          "currency": 1.0,
+          "clarification": 1.0
+        },
+        "performance": {
+          "live_end_to_end": {
+            "n": 0,
+            "median_ms": null,
+            "p95_ms": null
+          },
+          "cache_lookup": {
+            "n": 0,
+            "median_ms": null,
+            "p95_ms": null
+          },
+          "historical_api_latency": "not comparable: origin/retry provenance incomplete"
+        },
+        "boundary_accuracy": {
+          "min_inclusive": {
+            "count": 2,
+            "denominator": 2,
+            "rate": 1.0,
+            "wilson95": [
+              0.34238022750665303,
+              1.0
+            ]
+          },
+          "max_inclusive": {
+            "count": 4,
+            "denominator": 4,
+            "rate": 1.0,
+            "wilson95": [
+              0.5101091635454027,
+              1.0
+            ]
+          }
+        },
+        "hallucinated_hard_constraints": {
+          "false_positive_atoms": 0,
+          "query_rate": 0.0,
+          "note": "Reference-relative false positives, including wrong values; not a universal hallucination detector"
+        },
+        "live_tokens": {
+          "observed": 0,
+          "observed_per_call": null,
+          "input_observed": 0,
+          "output_observed": 0,
+          "calls_with_observed_usage": 0,
+          "unknown_attempts": 0,
+          "per_valid": null,
+          "per_common_exact": null
+        }
+      },
+      "per_case_results": [
+        {
+          "test_id": "P82_DEV_001",
+          "query": "Nike shoes, not only running shoes",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": "Nike",
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": "Nike",
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_002",
+          "query": "Shoes, not necessarily running shoes",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_003",
+          "query": "Shoes, not running shoes",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [
+              {
+                "target_type": "product_type",
+                "value": "running shoes"
+              }
+            ],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "product_type",
+                "value": "running shoes"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_004",
+          "query": "Wallet without leather",
+          "expected": {
+            "product_type": "wallet",
+            "semantic_query": "wallet",
+            "hard_constraints": {
+              "category": "Bags, Wallets & Belts",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [
+              {
+                "target_type": "attribute",
+                "value": "leather"
+              }
+            ],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "wallet",
+            "semantic_query": "wallet",
+            "hard_constraints": {
+              "category": "Bags, Wallets & Belts",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "attribute",
+                "value": "leather"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_005",
+          "query": "A laptop that is not too expensive",
+          "expected": {
+            "product_type": "laptop",
+            "semantic_query": "laptop",
+            "hard_constraints": {
+              "category": "Computers",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "not too expensive"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "laptop",
+            "semantic_query": "laptop",
+            "hard_constraints": {
+              "category": "Computers",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "not too expensive"
+            ],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_006",
+          "query": "Shoes from anything except Nike",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [
+              {
+                "target_type": "brand",
+                "value": "nike"
+              }
+            ],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [
+              {
+                "target_type": "brand",
+                "value": "nike"
+              }
+            ],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_007",
+          "query": "Nike or Adidas shoes",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": true
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": true,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_008",
+          "query": "Watch no less than 2000",
+          "expected": {
+            "product_type": "watch",
+            "semantic_query": "watch",
+            "hard_constraints": {
+              "category": "Watches",
+              "brand": null,
+              "min_price": 2000,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "watch",
+            "semantic_query": "watch",
+            "hard_constraints": {
+              "category": "Watches",
+              "brand": null,
+              "min_price": 2000.0,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": true,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Boundary matched numeric evidence: no less than 2000"
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_009",
+          "query": "Watch not under 2000",
+          "expected": {
+            "product_type": "watch",
+            "semantic_query": "watch",
+            "hard_constraints": {
+              "category": "Watches",
+              "brand": null,
+              "min_price": 2000,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "watch",
+            "semantic_query": "watch",
+            "hard_constraints": {
+              "category": "Watches",
+              "brand": null,
+              "min_price": 2000.0,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": true,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Boundary matched numeric evidence: not under 2000"
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_010",
+          "query": "Chair under 3000, actually up to 4200",
+          "expected": {
+            "product_type": "chair",
+            "semantic_query": "chair",
+            "hard_constraints": {
+              "category": "Furniture",
+              "brand": null,
+              "min_price": null,
+              "max_price": 4200,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "chair",
+            "semantic_query": "chair",
+            "hard_constraints": {
+              "category": "Furniture",
+              "brand": null,
+              "min_price": null,
+              "max_price": 4200.0,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": true
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Boundary matched numeric evidence: up to 4200"
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_011",
+          "query": "Lamp up to 1400, make it below 1600",
+          "expected": {
+            "product_type": "lamp",
+            "semantic_query": "lamp",
+            "hard_constraints": {
+              "category": "Home Decor & Festive Needs",
+              "brand": null,
+              "min_price": null,
+              "max_price": 1600,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "lamp",
+            "semantic_query": "lamp",
+            "hard_constraints": {
+              "category": "Home Decor & Festive Needs",
+              "brand": null,
+              "min_price": null,
+              "max_price": 1600.0,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": true
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Boundary matched numeric evidence: below 1600"
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_012",
+          "query": "Phone not more than 18000",
+          "expected": {
+            "product_type": "phone",
+            "semantic_query": "phone",
+            "hard_constraints": {
+              "category": "Mobiles & Accessories",
+              "brand": null,
+              "min_price": null,
+              "max_price": 18000,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "phone",
+            "semantic_query": "phone",
+            "hard_constraints": {
+              "category": "Mobiles & Accessories",
+              "brand": null,
+              "min_price": null,
+              "max_price": 18000.0,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": true
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Boundary matched numeric evidence: not more than 18000"
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_013",
+          "query": "Drill at least 900 watts under 3400",
+          "expected": {
+            "product_type": "drill",
+            "semantic_query": "drill",
+            "hard_constraints": {
+              "category": "Tools & Hardware",
+              "brand": null,
+              "min_price": null,
+              "max_price": 3400,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "900 watts"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "drill",
+            "semantic_query": "drill",
+            "hard_constraints": {
+              "category": "Tools & Hardware",
+              "brand": null,
+              "min_price": null,
+              "max_price": 3400.0,
+              "min_inclusive": true,
+              "max_inclusive": false,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "900 watts"
+            ],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": true
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [
+            "Boundary matched numeric evidence: under 3400"
+          ],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_014",
+          "query": "Shoes suitable for running",
+          "expected": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "suitable for running"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "shoes",
+            "semantic_query": "shoes",
+            "hard_constraints": {
+              "category": "Footwear",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "suitable for running"
+            ],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_015",
+          "query": "Boeing aircraft for sale",
+          "expected": {
+            "product_type": "aircraft",
+            "semantic_query": "aircraft",
+            "hard_constraints": {
+              "category": null,
+              "brand": "Boeing",
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [],
+            "exclusions": [],
+            "needs_clarification": true
+          },
+          "actual": {
+            "product_type": "aircraft",
+            "semantic_query": "aircraft",
+            "hard_constraints": {
+              "category": null,
+              "brand": "Boeing",
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [],
+            "needs_clarification": true,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_016",
+          "query": "Toy airplane for a child",
+          "expected": {
+            "product_type": "toy airplane",
+            "semantic_query": "toy airplane",
+            "hard_constraints": {
+              "category": null,
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "for a child"
+            ],
+            "exclusions": [],
+            "needs_clarification": true
+          },
+          "actual": {
+            "product_type": "toy airplane",
+            "semantic_query": "toy airplane",
+            "hard_constraints": {
+              "category": null,
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "for a child"
+            ],
+            "needs_clarification": true,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_017",
+          "query": "Milk bottle for a baby",
+          "expected": {
+            "product_type": "milk bottle",
+            "semantic_query": "milk bottle",
+            "hard_constraints": {
+              "category": "Baby Care",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "for a baby"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "milk bottle",
+            "semantic_query": "milk bottle",
+            "hard_constraints": {
+              "category": "Baby Care",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "for a baby"
+            ],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        },
+        {
+          "test_id": "P82_DEV_018",
+          "query": "Case compatible with Samsung Galaxy S23",
+          "expected": {
+            "product_type": "case",
+            "semantic_query": "case",
+            "hard_constraints": {
+              "category": "Mobiles & Accessories",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "soft_preferences": [
+              "compatible with samsung galaxy s23"
+            ],
+            "exclusions": [],
+            "needs_clarification": false
+          },
+          "actual": {
+            "product_type": "case",
+            "semantic_query": "case",
+            "hard_constraints": {
+              "category": "Mobiles & Accessories",
+              "brand": null,
+              "min_price": null,
+              "max_price": null,
+              "min_inclusive": true,
+              "max_inclusive": true,
+              "min_rating": null,
+              "currency": "INR"
+            },
+            "exclusions": [],
+            "soft_preferences": [
+              "compatible with samsung galaxy s23"
+            ],
+            "needs_clarification": false,
+            "clarification_reason": null
+          },
+          "score": {
+            "valid": true,
+            "hard": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "semantic_soft": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "field_matches": {
+              "category": true,
+              "brand": true,
+              "min_price": true,
+              "max_price": true,
+              "min_rating": true,
+              "currency": true,
+              "clarification": true
+            },
+            "hard_exact": true,
+            "soft_exact": true,
+            "common_exact": true,
+            "full_v2_exact": true,
+            "product_type_match": true,
+            "boundary_matches": {
+              "min_inclusive": null,
+              "max_inclusive": null
+            },
+            "exclusions": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "exclusion_exact": true,
+            "semantic_query_lexical_match": true,
+            "soft_fp": [],
+            "soft_fn": []
+          },
+          "notes": [],
+          "cache_status": "synthetic_oracle_input"
+        }
+      ]
+    }
+  },
+  "multilingual_live": "NOT_RUN",
+  "adversarial_live": "NOT_RUN"
+}
