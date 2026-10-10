@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "model": "BAAI/bge-small-en-v1.5",
+  "dimension": 384,
+  "device": "cuda",
+  "actual_vector_count": 16,
+  "all_finite_nonzero_unit_norm": true,
+  "model_load_ms": 17958.63640000016,
+  "semantic_pair_count": 12,
+  "relevant_ranked_higher": 12
+}

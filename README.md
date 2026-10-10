@@ -10,6 +10,10 @@
 > The old '7 resolved' list actually enumerated8, and broad resolution/readiness/security claims were premature. Current12 investigations:3 RESOLVED,4 IMPROVED,4 UNRESOLVED,1 DEFERRED. Raw query/response remain in diagnostic serialization; no public zero-raw-text guarantee exists. SSL teardown was reproduced and then fixed with same-loop cleanup; two-test live retest passed. Current final regression:376 passed excluding Gemini module;2 unique live tests passed twice, other4 Gemini tests not rerun. No new live quality winner or production semantic change is claimed.
 <!-- phase82-correction-end -->
 
+<!-- current-development-status-start -->
+> **Current development status — 2026-10-10:** Phase 8 is frozen as **IMPLEMENTED — ACCEPTED WITH KNOWN LIMITATIONS**. Phase 8.1 remains experimental and is not fully adopted in production. Phase 8.2 is **PARTIAL — offline research/validation complete; live optimization deferred**. Phase 9 is **PASS — component scope**: 22/22 Phase 9 tests, 398/398 offline regression excluding live Gemini tests, and BGE 384D/runtime semantic checks. This is not an end-to-end recommendation-quality claim. See the [development status and checklist](docs/development_status.md), [Phase 8 handover](docs/phase8_freeze_and_handover.md), [technical debt register](docs/technical_debt/phase8_deferred_issues.md), and [Phase 9 evaluation](docs/phase9_preference_evaluation.md).
+<!-- current-development-status-end -->
+
 ShopAssist is an end-to-end conversational product recommendation system using LLM-based query understanding, structured filtering, and hybrid retrieval to recommend consumer products based on both explicit constraints and semantic user preferences.
 
 ---
@@ -264,6 +268,13 @@ To run the complete automated test suite:
 ```bash
 python -m pytest
 ```
+
+Phase 9 contracts and implementation details:
+
+- [Phase 9 engineering report](docs/phase9_soft_preference_representation.md)
+- [Phase 9 data contract](docs/phase9_preference_contract.md)
+- [Phase 9 conceptual guide](docs/concepts/soft_preference_representation_fundamentals.md)
+- [Phase 9 evaluation evidence](docs/phase9_preference_evaluation.md)
 
 To run Phase 8 & 8.1 offline unit tests specifically (53 tests):
 

@@ -1,0 +1,28 @@
+{
+  "snapshot_date": "2026-10-10",
+  "source_status_counts": {
+    "RESOLVED": 3,
+    "IMPROVED": 4,
+    "UNRESOLVED": 4,
+    "DEFERRED": 1
+  },
+  "original_issue_count": 14,
+  "consolidated_investigation_count": 12,
+  "canonical_document": "docs/technical_debt/phase8_deferred_issues.md",
+  "issues": [
+    {"id": "ISSUE-01", "status": "UNRESOLVED", "severity": "High", "original_ids": ["P8-01", "P8-02"], "title": "Soft preference extraction quality"},
+    {"id": "ISSUE-02", "status": "UNRESOLVED", "severity": "High", "original_ids": ["P8-02", "P8-03"], "title": "Complete structured-intent accuracy"},
+    {"id": "ISSUE-03", "status": "RESOLVED", "operational_risk_status": "UNRESOLVED", "severity": "Medium", "original_ids": ["P8-09"], "title": "Gemini failure classification fixed; provider quota remains a risk"},
+    {"id": "ISSUE-04", "status": "DEFERRED", "severity": "Medium", "original_ids": ["P8-09"], "title": "Temperature selection unsupported"},
+    {"id": "ISSUE-05", "status": "RESOLVED", "severity": "Medium", "original_ids": ["P8-06"], "title": "Evaluation metric integrity"},
+    {"id": "ISSUE-06", "status": "IMPROVED", "severity": "High", "original_ids": ["P8-03", "P8-04", "P8-11"], "title": "Rule overcorrection, negation and boundary semantics"},
+    {"id": "ISSUE-07", "status": "UNRESOLVED", "severity": "High", "original_ids": ["P8-07", "P8-12"], "title": "Brand, compatibility and entity/filter semantics"},
+    {"id": "ISSUE-08", "status": "IMPROVED", "severity": "High", "original_ids": ["P8-12"], "title": "Ground truth, sample coverage and annotation quality"},
+    {"id": "ISSUE-09", "status": "IMPROVED", "severity": "Medium", "original_ids": ["P8-08"], "title": "Latency, token costs and provenance"},
+    {"id": "ISSUE-10", "status": "UNRESOLVED", "deferred_feature_status": "DEFERRED", "severity": "High", "original_ids": ["P8-03", "P8-04", "P8-10", "P8-11"], "title": "Schema semantic loss, multi-turn and currency limitations"},
+    {"id": "ISSUE-11", "status": "RESOLVED", "severity": "Medium", "original_ids": ["P8-05", "P8-06"], "title": "Documentation consistency"},
+    {"id": "ISSUE-12", "status": "IMPROVED", "severity": "High", "original_ids": ["P8-13", "P8-14", "P8-09"], "title": "Security, robustness and lifecycle"}
+  ],
+  "status_note": "Issue 03 distinguishes the resolved diagnostic classification defect from unresolved external provider availability risk. Issue 10 distinguishes unresolved semantic loss from intentionally deferred multi-turn/currency features. Remediation scheduling does not change status.",
+  "dependencies": "Per-issue impacts on Phases 9-17 and safeguards are recorded in the canonical Markdown document."
+}

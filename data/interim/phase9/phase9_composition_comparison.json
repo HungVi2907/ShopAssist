@@ -1,0 +1,115 @@
+{
+  "status": "MEASURED",
+  "model": "BAAI/bge-small-en-v1.5",
+  "embedding_dimension": 384,
+  "paired_results": [
+    {
+      "case_id": "shoes_daily",
+      "strategy": "preference_only",
+      "query": "comfortable; breathable; for daily jogging",
+      "relevant_cosine": 0.8244686126708984,
+      "irrelevant_cosine": 0.36521264910697937,
+      "relevant_ranked_higher": true,
+      "margin": 0.45925596356391907
+    },
+    {
+      "case_id": "shoes_daily",
+      "strategy": "context_keywords",
+      "query": "running shoes comfortable breathable for daily jogging",
+      "relevant_cosine": 0.8995424509048462,
+      "irrelevant_cosine": 0.3804744482040405,
+      "relevant_ranked_higher": true,
+      "margin": 0.5190680027008057
+    },
+    {
+      "case_id": "shoes_daily",
+      "strategy": "contextual_phase9",
+      "query": "comfortable; breathable; for daily jogging — running shoes",
+      "relevant_cosine": 0.8756707906723022,
+      "irrelevant_cosine": 0.3722606301307678,
+      "relevant_ranked_higher": true,
+      "margin": 0.5034101605415344
+    },
+    {
+      "case_id": "laptop_battery",
+      "strategy": "preference_only",
+      "query": "lightweight; good battery life",
+      "relevant_cosine": 0.7307401895523071,
+      "irrelevant_cosine": 0.5303988456726074,
+      "relevant_ranked_higher": true,
+      "margin": 0.2003413438796997
+    },
+    {
+      "case_id": "laptop_battery",
+      "strategy": "context_keywords",
+      "query": "laptop lightweight good battery life",
+      "relevant_cosine": 0.8201647996902466,
+      "irrelevant_cosine": 0.6062499284744263,
+      "relevant_ranked_higher": true,
+      "margin": 0.2139148712158203
+    },
+    {
+      "case_id": "laptop_battery",
+      "strategy": "contextual_phase9",
+      "query": "lightweight; good battery life — laptop",
+      "relevant_cosine": 0.8134572505950928,
+      "irrelevant_cosine": 0.5951732397079468,
+      "relevant_ranked_higher": true,
+      "margin": 0.218284010887146
+    },
+    {
+      "case_id": "waterproof_bag",
+      "strategy": "preference_only",
+      "query": "waterproof; durable",
+      "relevant_cosine": 0.816804051399231,
+      "irrelevant_cosine": 0.45273107290267944,
+      "relevant_ranked_higher": true,
+      "margin": 0.3640729784965515
+    },
+    {
+      "case_id": "waterproof_bag",
+      "strategy": "context_keywords",
+      "query": "backpack waterproof durable",
+      "relevant_cosine": 0.8861740827560425,
+      "irrelevant_cosine": 0.43054357171058655,
+      "relevant_ranked_higher": true,
+      "margin": 0.45563051104545593
+    },
+    {
+      "case_id": "waterproof_bag",
+      "strategy": "contextual_phase9",
+      "query": "waterproof; durable — backpack",
+      "relevant_cosine": 0.8814858198165894,
+      "irrelevant_cosine": 0.416351854801178,
+      "relevant_ranked_higher": true,
+      "margin": 0.4651339650154114
+    },
+    {
+      "case_id": "compact_keyboard",
+      "strategy": "preference_only",
+      "query": "compact; portable",
+      "relevant_cosine": 0.7265818119049072,
+      "irrelevant_cosine": 0.44989338517189026,
+      "relevant_ranked_higher": true,
+      "margin": 0.27668842673301697
+    },
+    {
+      "case_id": "compact_keyboard",
+      "strategy": "context_keywords",
+      "query": "wireless keyboard compact portable",
+      "relevant_cosine": 0.8862869143486023,
+      "irrelevant_cosine": 0.4732263684272766,
+      "relevant_ranked_higher": true,
+      "margin": 0.4130605459213257
+    },
+    {
+      "case_id": "compact_keyboard",
+      "strategy": "contextual_phase9",
+      "query": "compact; portable — wireless keyboard",
+      "relevant_cosine": 0.874612033367157,
+      "irrelevant_cosine": 0.4477151334285736,
+      "relevant_ranked_higher": true,
+      "margin": 0.4268968999385834
+    }
+  ]
+}

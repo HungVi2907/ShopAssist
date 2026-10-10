@@ -1,0 +1,140 @@
+{
+  "manifest_version": "1.0.0",
+  "freeze_date": "2026-10-10",
+  "timezone": "Asia/Saigon",
+  "repository": "HungVi2907/ShopAssist",
+  "git_commit": "4ba3bfeb38decdf2512a346ba9efaf50bd7f9918",
+  "git_branch": "main",
+  "working_tree_at_freeze": "clean (verified before this handover edits)",
+  "active_production": {
+    "provider": "gemini",
+    "model": "gemini-3.1-flash-lite",
+    "temperature": 0.0,
+    "max_output_tokens": 2048,
+    "timeout_seconds": 30.0,
+    "application_max_retries": 3,
+    "schema": "QueryUnderstandingOutput / QueryUnderstandingResult v1",
+    "schema_fields": [
+      "semantic_query",
+      "hard_constraints",
+      "soft_preferences",
+      "needs_clarification",
+      "clarification_reason"
+    ],
+    "prompt_identifier": "production.SYSTEM_INSTRUCTION.original.v1",
+    "prompt_sha256": "647d609bc489d881ef163b809f4d4f7ec0d66be5a285a54fd804ffd4fc6c31bf",
+    "prompt_hash_method": "SHA-256 of rendered SYSTEM_INSTRUCTION with canonical categories from production normalization.py; user prompt adds query through build_user_prompt"
+  },
+  "source_sha256": {
+    "src/shopassist/llm/prompts.py": "02ec67b9198a174d292af2f0440738ac7ab471958acb3d177a97943ce4755441",
+    "src/shopassist/llm/schemas.py": "c58fd182f80b9bb2d4d9a3374e1b895632ef357e41a16ff8084682f234454da4",
+    "src/shopassist/llm/normalization.py": "0168bf65ed89be3fde85a942086e933dadfca7c9df106478ce07f4998413a56e",
+    "src/shopassist/llm/query_understanding.py": "dba7fb3810287eb545bc89eaff11e8740780469c8e287e09b41119fb358ff74e",
+    "src/shopassist/llm/config.py": "c1397d17fd4237e4595c2116481de1e3b3a19955f773b5a1513dbfc4db945b82",
+    "src/shopassist/llm/gemini_client.py": "e249162990be9c8960549a1e525ed06625a47eed314db22427fae2ba3a61bd93",
+    "src/shopassist/embeddings/model.py": "0a40155542044f5eaa5ea9d17b0d9497f47e8afec6ba24232647785f047288d4",
+    "src/shopassist/retrieval/semantic.py": "baf1159f82998bc35a2a55544b2658600f9d2956bfb3416db91f549fe16ec0f3"
+  },
+  "benchmark_artifacts": {
+    "data/interim/phase8_query_understanding_report.json": {
+      "sha256": "6f29d72eac7154379a178d38bf5c564f510a382829bf9c687116b91763788f33",
+      "historical_or_audited": true
+    },
+    "data/interim/phase8_1/baseline_audit.json": {
+      "sha256": "b28b27796973a38ad64a7149701ef5b0258ecbd3dabec465a790cf6d7dc9f54d",
+      "historical_or_audited": true
+    },
+    "data/interim/phase8_1/experiment_results_heldout_20.json": {
+      "sha256": "5a97bf7e25be344af89e1d1f973671a8da1bc479b8a466744f7ad9503c763ee4",
+      "historical_or_audited": true
+    },
+    "data/interim/phase8_2/final_report.json": {
+      "sha256": "227550ebd2511f3cbcf39d83582d976b73282cb050415e09b260a8a3c00a52e3",
+      "historical_or_audited": true
+    },
+    "data/interim/phase8_2/issue_inventory.json": {
+      "sha256": "246dcc3b091180ae1da3d0a12ed767b800b1b4cf6580f213f168110a11189488",
+      "historical_or_audited": true
+    },
+    "data/interim/phase8_2/verification_report.json": {
+      "sha256": "77085fcb597ec9f3c3d95b8aea1722c2b22490a0d7caaba2238502d2b627370e",
+      "historical_or_audited": true
+    }
+  },
+  "phase8_test_evidence": {
+    "source": "data/interim/phase8_2/verification_report.json",
+    "last_offline_regression": {
+      "passed": 376,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "scope": "Phase 8.2 historical run; Gemini integration module excluded"
+    },
+    "bounded_live_smoke": {
+      "passed_per_run": 2,
+      "distinct_tests": 2,
+      "runs": 2,
+      "note": "historical evidence, not rerun for freeze"
+    }
+  },
+  "quality_baselines": {
+    "original_phase8_50": {
+      "hard_constraint_micro_f1": 0.997,
+      "soft_preference_macro_f1": 0.6641,
+      "common_field_exact_match": 0.54,
+      "queries": 50
+    },
+    "historical_heldout20_stored_output": {
+      "v1_vs_e5b_v2": {
+        "hard_micro_f1": [
+          0.9922,
+          0.9922
+        ],
+        "soft_macro_f1": [
+          0.65,
+          0.7833
+        ],
+        "common_field_exact_match": [
+          0.4,
+          0.6
+        ],
+        "full_v2_exact_match": [
+          null,
+          0.5
+        ]
+      },
+      "exclusion_micro_f1_e5b": 0.2857
+    }
+  },
+  "issue_classification": {
+    "original_issue_count": 14,
+    "consolidated_investigation_count": 12,
+    "RESOLVED": 3,
+    "IMPROVED": 4,
+    "UNRESOLVED": 4,
+    "DEFERRED": 1,
+    "source": "data/interim/phase8_2/issue_inventory.json"
+  },
+  "limitations": [
+    "small datasets and pending independent annotation",
+    "negative/exclusion extraction and v1 representation gaps",
+    "compatibility entity versus brand semantics",
+    "foreign currency requires clarification",
+    "strict/inclusive boundaries not fully representable in v1",
+    "fresh live latency/token comparison unavailable",
+    "Gemini provider quota/availability risk",
+    "injection and diagnostic retention policy remain open"
+  ],
+  "deferred_experiments": [
+    "larger live prompt/schema comparisons",
+    "same-architecture repeated temperature ablation",
+    "312-call Gemini suite",
+    "fresh comparative live latency/token evaluation"
+  ],
+  "downstream_contract": [
+    "Phase 9 consumes v1 only",
+    "Phase 9 stops on invalid/clarification/recognized negatives/non-INR currency",
+    "Phase 10 must enforce hard constraints separately and never treat exclusions as positive evidence",
+    "No production prompt/model/temperature/schema modifications made"
+  ]
+}

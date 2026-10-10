@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "source": "curated component cases; not Gemini outputs",
+  "cases": [
+    {"id": "PREF-001", "semantic_query": "laptop", "soft_preferences": ["lightweight", "good battery life"], "expected_status": "SUCCESS"},
+    {"id": "PREF-002", "semantic_query": "running shoes", "soft_preferences": ["comfortable", "breathable", "for daily jogging"], "expected_status": "SUCCESS"},
+    {"id": "PREF-003", "semantic_query": "backpack", "soft_preferences": ["waterproof"], "expected_status": "SUCCESS"},
+    {"id": "PREF-004", "semantic_query": "camera", "soft_preferences": ["beginner-friendly"], "expected_status": "SUCCESS"},
+    {"id": "PREF-005", "semantic_query": "wireless keyboard", "soft_preferences": ["compact"], "expected_status": "SUCCESS"},
+    {"id": "PREF-006", "semantic_query": "office chair", "soft_preferences": ["durable"], "expected_status": "SUCCESS"},
+    {"id": "PREF-007", "semantic_query": "Nike running shoes", "soft_preferences": [], "expected_status": "NO_PREFERENCES"},
+    {"id": "PREF-008", "semantic_query": "running shoes", "soft_preferences": ["without leather"], "expected_status": "UNSUPPORTED_INTENT"},
+    {"id": "PREF-009", "semantic_query": "running shoes", "soft_preferences": ["not too heavy"], "expected_status": "SUCCESS", "note": "retained verbatim as a conservative soft phrase"}
+  ]
+}
