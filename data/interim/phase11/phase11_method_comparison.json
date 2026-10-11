@@ -1,0 +1,14 @@
+{
+  "RRF": {
+    "ndcg@5": 0.9605202300026037,
+    "mrr": 0.875,
+    "precision@5": 0.9,
+    "reranking_latency_median_ms_25_warm": 0.13330000001587905
+  },
+  "MULTI_SIGNAL": {
+    "ndcg@5": 0.9894586927454222,
+    "mrr": 1.0,
+    "precision@5": 0.85,
+    "reranking_latency_median_ms_25_warm": 0.1102749997698993
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "manifest_version": 1,
+  "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "artifact": "data/processed/products.parquet",
+  "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "size_bytes": 18808917,
+  "product_count": 8405,
+  "canonical_text_count": 8405,
+  "count_provenance": "Historical Phase 11 evaluation manifest reports 8405 catalog rows; load_canonical_product_texts validates unique IDs and non-empty text against the current file at runtime.",
+  "cross_phase_consistency": "UNVERIFIED: Phase 10 v1 does not carry a matching catalog snapshot identifier."
+}

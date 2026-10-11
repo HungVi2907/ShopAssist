@@ -1,0 +1,30 @@
+{
+  "candidate_models": [
+    {
+      "model_id": "cross-encoder/ms-marco-MiniLM-L2-v2",
+      "provider": "Sentence Transformers / Hugging Face",
+      "architecture": "BERT sequence classifier, 2 transformer layers, hidden size 384, 12 attention heads, max positions 512, scalar output",
+      "published_artifact_size": "62.5 MB safetensors weight file; Hugging Face repository lists 611 MB total including exported formats",
+      "license": "Apache-2.0 according to the model card metadata; review upstream terms before product deployment",
+      "training_task": "MS MARCO passage ranking",
+      "published_benchmark": {
+        "trec_dl_2019_ndcg_at_10": 71.01,
+        "ms_marco_dev_mrr_at_10": 34.85,
+        "published_docs_per_second": 4100,
+        "hardware_for_published_speed": "NVIDIA V100 GPU"
+      },
+      "score_semantics": "Raw relevance logit; model card examples show unbounded outputs. Do not treat as probability.",
+      "sequence_limit": 512,
+      "local_cache_status": "not present when checked 2026-10-10",
+      "shopassist_inference_status": "not run; adapter implemented with local_files_only and CPU device; mocked scorer tests pass",
+      "assessment": "Small candidate pool and lightweight two-layer architecture fit the intended reranking stage. English web passage training differs from product relevance, so transfer must be measured on independent ShopAssist labels before adoption.",
+      "sources": [
+        "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L2-v2",
+        "https://www.sbert.net/docs/cross_encoder/pretrained_models.html",
+        "https://sbert.net/docs/package_reference/cross_encoder/model.html",
+        "https://github.com/microsoft/msmarco/blob/master/Datasets.md"
+      ]
+    }
+  ],
+  "selection": "The model is the first candidate to validate once a local checkpoint is approved. It is not selected as the production method because its weights were unavailable locally and there are no independent relevance labels. Phase 11 default remains the Phase 10 RRF order."
+}

@@ -1,0 +1,1006 @@
+{
+  "status": "MEASURED_REAL_MODEL_CPU_BENCHMARK",
+  "model": {
+    "repository": "cross-encoder/ms-marco-MiniLM-L2-v2",
+    "revision": "1b5cd67b15209f24824c50370e0397743aa9b787",
+    "device": "cpu",
+    "batch_size": 16,
+    "load_time_ms": 221.7918000096688,
+    "memory": {
+      "process_rss_before_mb": 629.515625,
+      "process_rss_after_mb": 644.9921875,
+      "process_rss_delta_mb": 15.4765625,
+      "measurement": "Process RSS via psutil; null when psutil is unavailable."
+    },
+    "artifact_manifest": "D:\\Project\\ShopAssist\\data\\interim\\phase11\\phase11_model_manifest.json",
+    "artifact_manifest_sha256": "877978adc29973ef3782a1a3459e7312b8ddba994212e89da6c1e64385e5456b"
+  },
+  "catalog": {
+    "path": "data\\processed\\products.parquet",
+    "product_count": 8405
+  },
+  "runtime": {
+    "python": "3.10.11",
+    "torch": "2.6.0+cu124",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cuda_available": true,
+    "iterations_per_query": 30
+  },
+  "tokenization": {
+    "pair_count": 33620,
+    "max_length": 512,
+    "token_count_p50": 184.0,
+    "token_count_p95": 426,
+    "token_count_max": 870,
+    "truncated_pair_count": 708,
+    "truncated_pair_fraction": 0.021058893515764426,
+    "tail_loss_sample": [
+      {
+        "query": "women red party wedges heel",
+        "product_id": "3c74db45cbfc14a78b8466dca494b3bb",
+        "full_pair_tokens": 720,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 711,
+        "canonical_tail_token_loss_estimate": 202,
+        "canonical_text_tail_preview": "x Material: Plastic; Strap Design: Mesh; Case / Bezel Material: Plastic; Water Resistance Depth: 5 m; Clasp Type: Buckle; Strap Material: Rubber Strap | Description: Alfajr WQ18 Qibla Compass Digital Watch - For Men, Boys, Girls - Buy Alfajr WQ18 Qibla Compass Digital Watch - For Men, Boys, Girls WQ18 Online at Rs.7495 in India Only at Flipkart.com. Qibla Compass, Light, Azan Time Calculation - Great Discounts, Only Genuine Products, 30 Day Replacement Guarantee, Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "7b206daa70ff84e5e4699307a9b15c5a",
+        "full_pair_tokens": 584,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 575,
+        "canonical_tail_token_loss_estimate": 66,
+        "canonical_text_tail_preview": "r kid's toys, accessories, stationery items with a neat and tidy look, So now the toys will no more be scattered in your room, place it in any corner of your room and relish the space you always desired. A 'must have' for its multipurpose usage. The quilted cover is specially designed to last longer and is home washable. This almirah comes with 4 wheels- making it easy to push or relocate.,Specifications of Amardeep PP Collapsible Wardrobe (Finish Color - BlueHughoRed6t) In The Box 1 collapsible"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "970f15ed19fdde0dabaf39774ee97c2f",
+        "full_pair_tokens": 527,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 518,
+        "canonical_tail_token_loss_estimate": 9,
+        "canonical_text_tail_preview": "s if found damaged Service Type Damaged Parts Will Be Sent Via Courier Not Covered in Warranty Warranty does not cover the cloth of almirah,neither it covers the damage caused to the product due to improper fitting by customer or normal wear and tear of the wheels. Disclaimer - The color of the product may vary slightly compared to the picture displayed on your screen. This is due to lighting, pixel quality and color settings - Please check the product's dimensions to ensure the product will fit"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "bd14dd59679d591eba6101144bfc0a04",
+        "full_pair_tokens": 589,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 580,
+        "canonical_tail_token_loss_estimate": 71,
+        "canonical_text_tail_preview": "able material guaranteed for long lasting - FOUR WHEELS - For 360 degrees rotation and easy to manoveure - TROLLEY - International qualty high grade Aluminium Trolley . Guaranteed to be the toughest and highest guage in the Industry- FIXED HANDLE - In built in the body /frame and not a stand alone piece to give it EXTRA Strength - UNIQUE handle shaped design to give that DESIGNER Look-- EXPANDABLE - Exapndable for that extra space you might need - FIRST TIME IN INDIA --DOUBLE CHAIN ZIPPER - High"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "ae28d6dacbbd20460d48b00c984b1fdb",
+        "full_pair_tokens": 591,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 582,
+        "canonical_tail_token_loss_estimate": 73,
+        "canonical_text_tail_preview": "erial guaranteed for long lasting - FOUR WHEELS - For 360 degrees rotation and easy to manoveure - TROLLEY - International qualty high grade Aluminium Trolley . Guaranteed to be the toughest and highest guage in the Industry- FIXED HANDLE - In built in the body /frame and not a stand alone piece to give it EXTRA Strength - UNIQUE handle shaped design to give that DESIGNER Look-- EXPANDABLE - Exapndable for that extra space you might need - FIRST TIME IN INDIA --DOUBLE CHAIN ZIPPER - High quality"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "f7ad053961d7119ddbc903723dfac021",
+        "full_pair_tokens": 591,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 582,
+        "canonical_tail_token_loss_estimate": 73,
+        "canonical_text_tail_preview": "erial guaranteed for long lasting - FOUR WHEELS - For 360 degrees rotation and easy to manoveure - TROLLEY - International qualty high grade Aluminium Trolley . Guaranteed to be the toughest and highest guage in the Industry- FIXED HANDLE - In built in the body /frame and not a stand alone piece to give it EXTRA Strength - UNIQUE handle shaped design to give that DESIGNER Look-- EXPANDABLE - Exapndable for that extra space you might need - FIRST TIME IN INDIA --DOUBLE CHAIN ZIPPER - High quality"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "31cfd3fb40b37dfbbe2634128a369440",
+        "full_pair_tokens": 589,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 580,
+        "canonical_tail_token_loss_estimate": 71,
+        "canonical_text_tail_preview": "able material guaranteed for long lasting - FOUR WHEELS - For 360 degrees rotation and easy to manoveure - TROLLEY - International qualty high grade Aluminium Trolley . Guaranteed to be the toughest and highest guage in the Industry- FIXED HANDLE - In built in the body /frame and not a stand alone piece to give it EXTRA Strength - UNIQUE handle shaped design to give that DESIGNER Look-- EXPANDABLE - Exapndable for that extra space you might need - FIRST TIME IN INDIA --DOUBLE CHAIN ZIPPER - High"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "815f09e6982a6b5900f30ebefb770e23",
+        "full_pair_tokens": 590,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 581,
+        "canonical_tail_token_loss_estimate": 72,
+        "canonical_text_tail_preview": "able material guaranteed for long lasting - FOUR WHEELS - For 360 degrees rotation and easy to manoveure - TROLLEY - International qualty high grade Aluminium Trolley . Guaranteed to be the toughest and highest guage in the Industry- FIXED HANDLE - In built in the body /frame and not a stand alone piece to give it EXTRA Strength - UNIQUE handle shaped design to give that DESIGNER Look-- EXPANDABLE - Exapndable for that extra space you might need - FIRST TIME IN INDIA --DOUBLE CHAIN ZIPPER - High"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "dc530e4d9ad668006e37a1d5ee631f06",
+        "full_pair_tokens": 558,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 549,
+        "canonical_tail_token_loss_estimate": 40,
+        "canonical_text_tail_preview": "ennae: External; Standard IEEE: IEEE 802.11n, IPv6, IEEE 802.11b, IEEE 802.11g, IEEE 802.11a, IEEE 802.11ac; VPN: IPSec Pass-Through, PPTP Pass-Through, L2TP Pass-Through, PPTP Server, Open VPN Server, PPTP Client, L2TP Client, Open VPN Client; Certification: CE; SSID Support: Multiple SSID | Description: Buy Asus DSL-AC68U Dual Band Wireless AC1900 VDSL / ADSL Modem Router only for Rs. 25000 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "f5c0fcffe67ef8ff4088fbff74c13da8",
+        "full_pair_tokens": 613,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 604,
+        "canonical_tail_token_loss_estimate": 95,
+        "canonical_text_tail_preview": " -10DegC - 50DegC degree C; Other Features: Web-based GUI Configuration, Firmware Upgraded, Configuration Data Uploaded and Downloaded Via Web-based GUI, Auto VPI/VCI Detection, Configuration Backup and Restore, Diagnostics, Log and Trace Function, Network Printer Setup; Certification: CE, C-Tick, IDA, PCT, Wi-Fi | Description: Buy Asus DSL-N55U Wireless-N600 Gigabit Router only for Rs. 11500 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "c668c070270a6cc3350707cc3f94827e",
+        "full_pair_tokens": 538,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 529,
+        "canonical_tail_token_loss_estimate": 20,
+        "canonical_text_tail_preview": "ntennae Capacity: 2 x 5 dBi Detachable Antenna; Number of WAN ports: 1; Antennae: External; Operating Humidity: Operating: 10 % - 90 % Non-condensing, Storage: 5 % - 95 % Non-condensing; Temperature: Operating: 0DegC - 40DegC, Storage: -20DegC - 70DegC degree C; SSID Support: 4 SSIDs Help Manage Bandwidth Allocation and Access Control | Description: Buy Asus RT-N12 D1 Router only for Rs. 6000 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "394c2c627914e1eed9b8ac343583a679",
+        "full_pair_tokens": 555,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 546,
+        "canonical_tail_token_loss_estimate": 37,
+        "canonical_text_tail_preview": "Humidity: Operating: 10 % - 90 %; Temperature: Operating: 0DegC - 45DegC degree C; VPN: IPSec Pass-through, PPTP Pass-through, L2TP Pass-through; Other Features: WAN Connection Type: Automatic IP, Static IP, PPPoE (MPPE Supported), PPTP, L2TP, DHCP Management, Utilities: Device Discover, Firware Restore, Setup Utility | Description: Buy Asus RT-N12 LX 300Mbps Wireless Router only for Rs. 4200 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "88234501ae4ec60655e126ae520cedab",
+        "full_pair_tokens": 577,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 568,
+        "canonical_tail_token_loss_estimate": 59,
+        "canonical_text_tail_preview": "e: -20DegC - 70DegC degree C; VPN: Virtual Server, DMZ; Other Features: Management: IGMP v1, v2, v3, Port Triger, DDNS, Plug-n-Surf Installation, Bandwidth Allocation and Access Control, EZ Switch, Network Map Manual Free Management, Back Input / Output Ports, 2T2R MIMO Technology, CD and Manual Free Easy Setup; SSID Support: Four SSID | Description: Buy Asus RT-N12C1 Router only for Rs. 2999 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "fd2716d0e5dd7ffc367ca4dd9f97aaa0",
+        "full_pair_tokens": 631,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 622,
+        "canonical_tail_token_loss_estimate": 113,
+        "canonical_text_tail_preview": " RJ-45; Number of WAN ports: 1; Antennae: External; Standard IEEE: IEEE 802.11n, IEEE 802.11ac, IPv4, IEEE 802.11g, IEEE 802.11a, IEEE 802.11b, IPv6; VPN: IPSec Pass-Through, PPTP Pass-Through, L2TP Pass-Through, PPTP Server, Open VPN Server, PPTP Client, L2TP Client, Open VPN Client; SSID Support: Multiple SSID | Description: Buy Asus Wireless AC2400 Dual-band Gigabit Router only for Rs. 0.0 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "43c343ad3dc830484b982279bb762429",
+        "full_pair_tokens": 553,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 544,
+        "canonical_tail_token_loss_estimate": 35,
+        "canonical_text_tail_preview": "ity: 1 x 5 dBi Detachable Antenna; Antennae: External; Operating Humidity: Operating: 5 % - 95 % Non-condensing, Storage: 5 % - 95 % Non-condensing; Temperature: Operating: -10DegC - 50DegC, Storage: -40DegC - 60DegC degree C; VPN: IPSec, L2TP and PPTP Pass-through; SSID Support: Multiple SSID; Certification: CE, C-Tick | Description: Buy Asus Wireless-N150 ADSL Modem Router only for Rs. 5000 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "0c4e7646251e7646e152cca7f614ed36",
+        "full_pair_tokens": 519,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 510,
+        "canonical_tail_token_loss_estimate": 1,
+        "canonical_text_tail_preview": " % - 85 % Non-condensing, Storing: 5 % - 95 % Non-condensing; VPN: PPTP, IPSec pass-through; Other Features: Web-based password-protected advanced, ISP Protocols Supported: Dynamic / Static / PPOE / Telstra BigPond, ADSL Protocols Supported: ISP PPPoE / PPPoA / 1483 Bridged / Dynamic and Fixed IP / 1483 Routed, MIMO technology | Description: Buy Belkin Play Max Modem Router only for Rs. 12499 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "303b2cc1a682291b94061b7633f23c9d",
+        "full_pair_tokens": 519,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 510,
+        "canonical_tail_token_loss_estimate": 1,
+        "canonical_text_tail_preview": " Temperature: 0DegC - 40DegC degree C; VPN: PPTP, IPSec pass-through; Other Features: Web-based password-protected advanced, Supports external USB hard drives formatted in FAT 16/32 and NTFS file systems Supports USB printer, ISP Protocols Supported: Dynamic / Static / PPOE / Telstra BigPond; SSID Support: Radio Service Set ID (SSID) | Description: Buy Belkin Play Max Router only for Rs. 8199 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "f5758d843ca3d967148c7fd6a1934490",
+        "full_pair_tokens": 604,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 595,
+        "canonical_tail_token_loss_estimate": 86,
+        "canonical_text_tail_preview": "umidity: 5% - 90% RH Non-condensing; Temperature: Operating Temperature: 0DegC - 40DegC, Storage Temperature: -40DegC - 70DegC degree C; Certification: CE, RoHS; SSID Support: SSID Enable / Disable, Enable SSID Broadcast, SSID: Wireless_XXXXXX (XXXXXX Stands for the Last 6 Characters of the Router's MAC Address) | Description: Buy Binatone WR3005N3 300 Mbps Wireless N Router only for Rs. 1190 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "a060b5acc6e3fb814769805db61f589b",
+        "full_pair_tokens": 513,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 504,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": "e Modern Art Wall Mount Yes Frame Color no framing Artist Name avasthi Dimensions Weight 0.04 kg Height 18 inch Other Dimensions Dummy, Dummy Width 12 inch Warranty Covered in Warranty Warranty of the product is limited to manufacturing defects only. Warranty Summary 1 Year Dummy Company Domestic Warranty Warranty Service Type customer can exchange if any damage before delivery Not Covered in Warranty Warranty does not cover any external accessories (such as battery, cable, carrying bag), damage"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e432411ae07c82f9c27b084b6bfe3b5f",
+        "full_pair_tokens": 565,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 556,
+        "canonical_tail_token_loss_estimate": 47,
+        "canonical_text_tail_preview": "onda, Yamaha, LML Material Rubber Construction Type Bias Size 3.00-18 Important Note Please refer to the size specification before you make your purchase, because tyre sizes vary with vehicle models. Warranty Covered in Warranty Manufacturing Defects only Service Type Provided By Nearest Authorized Service Center Of Manufacturer Warranty Summary Manufacturer's Warranty Not Covered in Warranty Defects due to improper usage and other conditions as stipulated by the manufacturer Dimensions Diameter"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "0580b7f5a59d69ab10f01b409624cb66",
+        "full_pair_tokens": 521,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 512,
+        "canonical_tail_token_loss_estimate": 3,
+        "canonical_text_tail_preview": " The sofa has conjugate polyfill for the backrest and foam filling for the seat, which offers brilliant support. The sofa has soft cushions, which are removable, and have gorgeous fabric upholstery.,Specifications of Comfort Couch Engineered Wood 3 Seater Sofa (Finish Color - Neon Orange) In The Box 1 Sofa General Brand Comfort Couch Orientation NA Delivery Condition Knock Down Type Sofa Style Contemporary & Modern Filling Material Foam Configuration Straight Seating Capacity 3 Seater Upholstery"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "19e429857f2b8f609c732dbe6ff3bc05",
+        "full_pair_tokens": 556,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 547,
+        "canonical_tail_token_loss_estimate": 38,
+        "canonical_text_tail_preview": "rience, giving an uninterrupted music on the go. MAKE SURE THAT THE COLORS ARE LIMITED AND WOULD BE SENT AS PER AVAILABILITY.,Specifications of CONVENIENCE vm46 headphone for XIOMI Mi4 and Mi4i Signature vm46 Stereo Wired Headphones (MULTI COLOR, BLACK, WHITE, RED, BLUE, PURPLE, Over the Ear) General Headset Design Over the Head Brand CONVENIENCE Number of Pins 2 Wired/Wireless Wired Designed For Xiomi Redmi Mi4 and Mi 4i Headphone Type Over the Ear Model ID vm46 headphone for XIOMI Mi4 and Mi4i"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "6c3768639e82ceaeab681e083b897672",
+        "full_pair_tokens": 571,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 562,
+        "canonical_tail_token_loss_estimate": 53,
+        "canonical_text_tail_preview": "orts: 1; LAN: RJ-45; Antennae Capacity: Built-in MIMO; Antennae: External; Operating Humidity: Operating: 5 % - 95 % Non-condensing; Temperature: Operating: 0DegC - 40DegC, Storage: - 20DegC - 70DegC degree C; VPN: Multiple PPTP, IPSec, L2TP pass-through; Certification: CE Certification, FCC Certification | Description: Buy D-Link DSL-2750U Wireless N 300 ADSL2+ 4-Port Wi-Fi only for Rs. 1975 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "eec8052b80d3a133866c17a7426a9d15",
+        "full_pair_tokens": 522,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 513,
+        "canonical_tail_token_loss_estimate": 4,
+        "canonical_text_tail_preview": "UR OWN DECALS AT VERY AFFORDABLE RATE @ Rs 99 PER Sq ft...ANY DESIGN, IN ANY SIZE WITH CHOICE OF COLORS...SO DON'T WAIT HERE, START DESIGNING YOUR WALLS... Add a pinch of interest to every corner of your house with Multi Color Wall Sticker and Wall Decal by DeStudio that best suit your need. Hurry...Hurry...Hurry...NOW ALL OF YOU CAN DESIGN YOUR OWN DECALS AT VERY AFFORDABLE RATE @ Rs 99 PER Sq ft...ANY DESIGN, IN ANY SIZE WITH CHOICE OF COLORS...SO DON'T WAIT HERE, START DESIGNING YOUR WALLS..."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "8116bd28bf74c5930426fd53a9b4d1cb",
+        "full_pair_tokens": 531,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 522,
+        "canonical_tail_token_loss_estimate": 13,
+        "canonical_text_tail_preview": " 0DegC - 40DegC, Storage: - 20DegC - 60DegC degree C; VPN: VPN Pass-Through; Other Features: WMM (Wi-Fi Multimedia), Flash: 4 MB, RAM: 16 MB, Dynamic DNS, UTP LAN/WAN Ports, Functions as Access Point and AP Bridge Simultaneously, Auto MDIX, Full Duplex, WDS; Certification: FCC Certification, CE Certification | Description: Buy Digisol 150 Mbps Wireless Green Broadband Router only for Rs. 1733 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "3608d8ee939a37fe90c7751e2ba2692f",
+        "full_pair_tokens": 531,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 522,
+        "canonical_tail_token_loss_estimate": 13,
+        "canonical_text_tail_preview": "e to the product due to improper installation by customer, normal wear and tear.; Upholstery Color: Beige; Primary Color: Beige; Primary Material: Leatherette; Secondary Material: Solid Wood; Finish Color: Muslin Beige; Primary Material Subtype: PU Leatherette | Description: Buy Durian BID/32625/A/1 Leatherette 1 Seater Sofa for Rs.8710 online. Durian BID/32625/A/1 Leatherette 1 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "6cbbd2873d2f9e939df5495785170ede",
+        "full_pair_tokens": 531,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 522,
+        "canonical_tail_token_loss_estimate": 13,
+        "canonical_text_tail_preview": "wear and tear.; Weight: 25.57 kg; Height: 740 mm; Width: 1100 mm; Depth: 780 mm; Primary Material: Leatherette; Primary Color: Beige; Upholstery Color: Beige; Secondary Material: Solid Wood; Finish Color: Muslin Beige; Primary Material Subtype: PU Leatherette | Description: Buy Durian BID/32625/A/2 Leatherette 2 Seater Sofa for Rs.12220 online. Durian BID/32625/A/2 Leatherette 2 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "ccfc32116d6c7c16584522b029719510",
+        "full_pair_tokens": 529,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 520,
+        "canonical_tail_token_loss_estimate": 11,
+        "canonical_text_tail_preview": "e cause to the product due to improper installation by customer, normal wear and tear.; Upholstery Color: Black; Primary Color: Black; Primary Material: Leatherette; Secondary Material: Solid Wood; Finish Color: Black; Primary Material Subtype: PU Leatherette | Description: Buy Durian BID/32626/A/1 Leatherette 1 Seater Sofa for Rs.11375 online. Durian BID/32626/A/1 Leatherette 1 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "dd96000fa1d9e408a4fc47ea5c1123e5",
+        "full_pair_tokens": 551,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 542,
+        "canonical_tail_token_loss_estimate": 33,
+        "canonical_text_tail_preview": "r.; Weight: 102.4 kg; Height: 930 mm; Width: 2235 mm; Depth: 670 mm; Upholstery Color: Brown; Primary Color: Brown; Primary Material: Leather; Secondary Material: Solid Wood; Finish Color: Dark Brown; Primary Material Subtype: Semi Aniline Leather; Origin of Manufacture: Imported | Description: Buy Durian Club/3 Leather 3 Seater Sofa for Rs.105300 online. Durian Club/3 Leather 3 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e794bd226967af2298a2c7a1f8e2c9bb",
+        "full_pair_tokens": 648,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 639,
+        "canonical_tail_token_loss_estimate": 130,
+        "canonical_text_tail_preview": "y dream. There's lot of place to relax here. So comfy and elegant, that sweet dreams are given. And plus its completely value for money. Available in 1, 2, and 3 seater this brown reclining couch can add a fresh touch to almost any decor. Sleep, curl on or simply dream. There's lot of place to relax here. So comfy and elegant, that sweet dreams are given. And plus its completely value for money. Available in 1, 2, and 3 seater this brown reclining couch can add a fresh touch to almost any decor."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "eb821e8951c709f5109160a98c2ff321",
+        "full_pair_tokens": 715,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 706,
+        "canonical_tail_token_loss_estimate": 197,
+        "canonical_text_tail_preview": "the office waiting room or the lounge at home. Comfortable, yet super stylish, the Swift Fabric Lounge chair is the perfect piece to round out your setting. Designed to please, both practically and aesthetically, it has a hint of retro flair. A comfortable, brightly coloured lounge chair in a Mid-Century Modern style.Inspire your interior with this graceful armchair that possesses an air ofthe 1960s, but maintains a timeless, contemporary feel. Soft colouringand even softer cushions will put you"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e0de6958769d030f7e470e590f374d24",
+        "full_pair_tokens": 730,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 721,
+        "canonical_tail_token_loss_estimate": 212,
+        "canonical_text_tail_preview": " quality checking process. The Malacca Divan is a contemporary twist to the traditionally loved wooden sofa.. Its simple in design with straight lines crafted of solid - wood with durable soft chenille upholstery, and provides ample support with the Bolsters for comfortable seating.The wooden structure is made of high grade solid wood with a Rosewood finish.The wood used in the furniture is perfectly seasoned.Post manufacturing, each product has gone through a stringent quality checking process."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e5a97beaed03ee8ece9a5749a431e985",
+        "full_pair_tokens": 547,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 538,
+        "canonical_tail_token_loss_estimate": 29,
+        "canonical_text_tail_preview": "epth: 920 mm; Upholstery Color: GREY/BROWN; Primary Color: Multicolor; Primary Material: Fabric; Secondary Material: Solid Wood; Finish Color: UTOPIA GREY/BISTRE; Primary Material Subtype: Velvet; Other Features: Soft Touch Upholstery, Superior Durability And Comfort; Origin of Manufacture: India | Description: Buy Durian Fabric 3 Seater Sofa for Rs.47970 online. Durian Fabric 3 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "44ac0b6808242ce5c71b971d7620c609",
+        "full_pair_tokens": 562,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 553,
+        "canonical_tail_token_loss_estimate": 44,
+        "canonical_text_tail_preview": " Color: Multicolor; Primary Material: Fabric; Secondary Material Subtype: Plywood; Secondary Material: Engineered Wood; Finish Color: BERYL GREEN/MAHOGANY/TEAL; Primary Material Subtype: Chenille; Other Features: Soft Touch Upholstery, Superior Durability And Comfort; Origin of Manufacture: India | Description: Buy Durian Fabric 3 Seater Sofa for Rs.60840 online. Durian Fabric 3 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "1b1c83326a749b99c9cafc740f9136fa",
+        "full_pair_tokens": 583,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 574,
+        "canonical_tail_token_loss_estimate": 65,
+        "canonical_text_tail_preview": "arranty. If a warranty cannot be provided, kindly fill \"No warranty available\".; Primary Material: Fabric; Primary Color: Blue; Upholstery Color: BLUE; Secondary Material: Solid Wood; Finish Color: Process Blue; Primary Material Subtype: Cotton; Origin of Manufacture: Imported | Description: Buy Durian Harmony/2 Fabric 2 Seater Sofa for Rs.55575 online. Durian Harmony/2 Fabric 2 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "d9fa5b1d8917b841abaef2a1ce032114",
+        "full_pair_tokens": 678,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 669,
+        "canonical_tail_token_loss_estimate": 160,
+        "canonical_text_tail_preview": "s find Laze by your side. This motorised recliner comes in leather upholstery. You can now adjust your comfort levels with a tiny button, so that you don't need to leave your seat at all. Meet laze, you new partner in crime. Be it watching movies, reading books or simply treating your daily blues. You will always find Laze by your side. This motorised recliner comes in leather upholstery. You can now adjust your comfort levels with a tiny button, so that you don't need to leave your seat at all."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "8cfb7f1ab467a2439eeec8f9257abeac",
+        "full_pair_tokens": 663,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 654,
+        "canonical_tail_token_loss_estimate": 145,
+        "canonical_text_tail_preview": "mm; Depth: 1080 mm; Upholstery Color: WHITE; Primary Color: White; Primary Material: Leather; Secondary Material: Solid Wood; Finish Color: IVORY; Primary Material Subtype: Semi Aniline Leather; Other Features: Soft Touch Upholstery, Superior Durability And Comfort; Origin of Manufacture: India | Description: Buy Durian Leather 1 Seater Sofa for Rs.45045 online. Durian Leather 1 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "07b0df742cdcac28d09c29a1e246fff2",
+        "full_pair_tokens": 823,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 814,
+        "canonical_tail_token_loss_estimate": 305,
+        "canonical_text_tail_preview": "tly draped in high quality leather for soft touch upholstery. Sofa flaunts the stainless steel legs. This design invites user to configure the sofa to his own style.Reclining headrest, sliding seat and a wide range of sizes offer a versatile product suitable for any environment.The reclining headrest gives the right comfort of a high backrest, due to the full support of our back.The sofa is perfectly draped in high quality leather for soft touch upholstery. Sofa flaunts the stainless steel legs."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "3a2546675bc399953779e58d84d56650",
+        "full_pair_tokens": 870,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 861,
+        "canonical_tail_token_loss_estimate": 352,
+        "canonical_text_tail_preview": " will add modern appeal to any home.High density seating foam and premium quality material make this piece not only stylish, but extremely comfortable.Sofa Wrapped in sumptuously leather and constructed with double-stitching tailoring.Comes with the best click clack mechanism headrest & wide arm rest for extra comfort. The multi-purpose sit, lay, and snack make this sofa an ultimate comfort piece for your home.From holiday company, to family movie time this sofa will be an enjoyable comfort that"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "5964ea88ca5583acd4a54d7f77112a6f",
+        "full_pair_tokens": 765,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 756,
+        "canonical_tail_token_loss_estimate": 247,
+        "canonical_text_tail_preview": " a commercial guest eception area to your home then or media room.Serving as the perfect sofa for the office furniture. Enhance your office decor with thia stylish BID/32627.Luxurious beige colour leather sofa bringing class & comfort to any sitting.This sleek sofa with beige upholstery is an investment in versatility.This elegant sofa can fit seamlessly in settings ranging from a commercial guest eception area to your home then or media room.Serving as the perfect sofa for the office furniture."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "b922a87a7c65a84e3cd287f529455755",
+        "full_pair_tokens": 540,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 531,
+        "canonical_tail_token_loss_estimate": 22,
+        "canonical_text_tail_preview": "ry Color: Brown; Primary Color: Brown; Primary Material: Leatherette; Secondary Material: Solid Wood; Finish Color: Chocolate Brown; Primary Material Subtype: Leatherette; Other Features: Soft touch upholstery, superior durability and comfort; Origin of Manufacture: Domestic | Description: Buy Durian Tulsa Leatherette 1 Seater Sofa for Rs.23205 online. Durian Tulsa Leatherette 1 Seater Sofa at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee."
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "3d17b0bac575544e5274ff836efaee36",
+        "full_pair_tokens": 679,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 670,
+        "canonical_tail_token_loss_estimate": 161,
+        "canonical_text_tail_preview": "ously crafted featuring the very highest standards of workmanship. For indoor use only It's a vintage British style but made for modern living.This Chesterfield sofa is large, comfy and finished with beautiful detailing - the best of both worlds.Our emphasis is upon superior design style and expression of individuality, this we believe gives us a leading edge compared to our cometitors.The sofa has been meticulously crafted featuring the very highest standards of workmanship. For indoor use only"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e6b81dab7f9a1dd8f5584bb070e6b692",
+        "full_pair_tokens": 558,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 549,
+        "canonical_tail_token_loss_estimate": 40,
+        "canonical_text_tail_preview": "Queen Bed (Finish Color - Honey Oak) In The Box 1 Queen Bed Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. General Brand Ethnic Handicrafts Delivery Condition Knock Down Storage Included No Style Contemporary & Modern Bed"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "d8c9f0555da2430ce0086d676f196d65",
+        "full_pair_tokens": 555,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 546,
+        "canonical_tail_token_loss_estimate": 37,
+        "canonical_text_tail_preview": "d (Finish Color - Walnut) In The Box 1 Queen Bed Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. General Brand Ethnic Handicrafts Delivery Condition Knock Down Storage Included No Style Contemporary & Modern Bed Size Queen"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "c30332da544791978f73c290fa5ae97a",
+        "full_pair_tokens": 557,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 548,
+        "canonical_tail_token_loss_estimate": 39,
+        "canonical_text_tail_preview": "le Bed (Finish Color - Walnut) In The Box 1 Single Bed Installation & Demo Installation & Demo Details Installation and demo for this product is done free of cost as part of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. General Brand Ethnic Handicrafts Delivery Condition Knock Down Storage Included No Style Contemporary & Modern Bed Size"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "7f7036a6d550aaa89d34c77bd39a5e48",
+        "full_pair_tokens": 848,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 839,
+        "canonical_tail_token_loss_estimate": 330,
+        "canonical_text_tail_preview": "urchase. Our service partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD112 Care Instructions Avoid outdoor"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "7ee3e337474a29b38cfe1f5d4020d633",
+        "full_pair_tokens": 850,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 841,
+        "canonical_tail_token_loss_estimate": 332,
+        "canonical_text_tail_preview": "t of this purchase. Our service partner will visit your location within 72 business hours from the delivery of the product. Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "849ab05698081a374215d0b7d18047d0",
+        "full_pair_tokens": 844,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 835,
+        "canonical_tail_token_loss_estimate": 326,
+        "canonical_text_tail_preview": " partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD132 Care Instructions Avoid outdoor use and exposure to"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "8542703ca9e6ebdf6d742638dfb1f2ca",
+        "full_pair_tokens": 844,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 835,
+        "canonical_tail_token_loss_estimate": 326,
+        "canonical_text_tail_preview": " partner will visit your location within 72 business hours from the delivery of the product. In The Box 1 Sofa Bed General Brand FabHomeDecor Mattress Included No Delivery Condition Knock Down Storage Included No Mechanism Type Pull Out Type Sofa Bed Style Contemporary & Modern Filling Material Microfiber Seating Capacity 3 Seater Upholstery Type NA Upholstery Included No Bed Size Double Shape Square Suitable For Living Room Model Number FHD107 Care Instructions Avoid outdoor use and exposure to"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "268e62d2ab00a036100ee9c29fd357ce",
+        "full_pair_tokens": 513,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 504,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": "ckberry Priv OTG Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package Micro Usb Supported Mobile OTG cable General Brand Generix Suitable For Smartphones, tablet Cable Length 0.128 m Model OTG for Blackberry Priv Cable Type High Speed Cable 1000 Mbps Speed Compatible Devices Mobile, Tablet Type OTG Cable Cable Round Part Number Otg_White74 Connector 2 Micro USB Connector 1 USB 2.0 Color White Warranty Covered in Warranty Warranty of the product is limited to manufacturing"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "4eacaabf6b1a7f98dab5c6679b5498cb",
+        "full_pair_tokens": 519,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 510,
+        "canonical_tail_token_loss_estimate": 1,
+        "canonical_text_tail_preview": "hite) In The Box Number of Contents in Sales Package 1 Sales Package Micro Usb Supported Mobile OTG cable General Brand Generix Suitable For Smartphones, tablet Cable Type High Speed Cable 1000 Mbps Speed Model OTG for Honor 5X Cable Length 0.128 m Compatible Devices Mobile, Tablet Type OTG Cable Cable Round Part Number Otg_White67 Connector 2 Micro USB Connector 1 USB 2.0 Color White Warranty Covered in Warranty Warranty of the product is limited to manufacturing defects only Warranty Summary 1"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "b23636010413fb61b39ec4c8c1fc7fc9",
+        "full_pair_tokens": 524,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 515,
+        "canonical_tail_token_loss_estimate": 6,
+        "canonical_text_tail_preview": "ite) In The Box Number of Contents in Sales Package 1 Sales Package Micro Usb Supported Mobile OTG cable General Brand Generix Suitable For Smartphones, tablet Cable Length 0.128 m Model OTG for Lenovo K3 Cable Type High Speed Cable 1000 Mbps Speed Compatible Devices Mobile, Tablet Type OTG Cable Cable Round Part Number Otg_White21 Connector 2 Micro USB Connector 1 USB 2.0 Color White Warranty Covered in Warranty Warranty of the product is limited to manufacturing defects only Warranty Summary 1"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "8c6ebf0197d3480c81811b78c685428e",
+        "full_pair_tokens": 517,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 508,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": "hite) In The Box Number of Contents in Sales Package 1 Sales Package Micro Usb Supported Mobile OTG cable General Brand Generix Suitable For Smartphones, tablet Cable Type High Speed Cable 1000 Mbps Speed Model OTG for Nexus 6P Cable Length 0.128 m Compatible Devices Mobile, Tablet Type OTG Cable Cable Round Part Number Otg_White36 Connector 2 Micro USB Connector 1 USB 2.0 Color White Warranty Covered in Warranty Warranty of the product is limited to manufacturing defects only Warranty Summary 1"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "7e126ebbc0dd125ca54548b784ee7ef2",
+        "full_pair_tokens": 515,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 506,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": "rix OTG for Samsung Galaxy Tab 3 OTG Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package Micro Usb Supported Mobile OTG cable General Brand Generix Suitable For Smartphones, tablet Cable Length 0.128 m Model OTG for Samsung Galaxy Tab 3 Cable Type High Speed Cable 1000 Mbps Speed Compatible Devices Mobile, Tablet Type OTG Cable Cable Round Part Number Otg_White90 Connector 2 Micro USB Connector 1 USB 2.0 Color White Warranty Covered in Warranty Warranty of the product is"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "03e236d543c63a869ae044a664b0eaf1",
+        "full_pair_tokens": 522,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 513,
+        "canonical_tail_token_loss_estimate": 4,
+        "canonical_text_tail_preview": "Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package Micro Usb Supported Mobile OTG cable General Brand Generix Suitable For Smartphones, tablet Cable Type High Speed Cable 1000 Mbps Speed Model OTG for Xiaomi Mi4 Cable Length 0.128 m Compatible Devices Mobile, Tablet Type OTG Cable Cable Round Part Number Otg_White31 Connector 2 Micro USB Connector 1 USB 2.0 Color White Warranty Covered in Warranty Warranty of the product is limited to manufacturing defects only Warranty"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "201c0cd2a0f34b158dae09d08cb0e73c",
+        "full_pair_tokens": 539,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 530,
+        "canonical_tail_token_loss_estimate": 21,
+        "canonical_text_tail_preview": "ck of 2 Micro USB On-the-go For Mobile Phones & Tablets OTG Cable,Specifications of Generix Pack of 2 Micro USB On-the-go For Mobile Phones & Tablets OTG Cable (White) In The Box Number of Contents in Sales Package 2 Sales Package Micro Usb Supported Mobile OTG cable General Brand Generix Suitable For Smartphones, tablet Cable Length 0.128 m Model Pack of 2 Micro USB On-the-go For Mobile Phones & Tablets Cable Type High Speed Cable 1000 Mbps Speed Compatible Devices Mobile, Tablet Type OTG Cable"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "4985c89966ccf1609a2c930c91d1e159",
+        "full_pair_tokens": 540,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 531,
+        "canonical_tail_token_loss_estimate": 22,
+        "canonical_text_tail_preview": "ck of 5 Micro USB On-the-go For Mobile Phones & Tablets OTG Cable,Specifications of Generix pack of 5 Micro USB On-the-go For Mobile Phones & Tablets OTG Cable (White) In The Box Number of Contents in Sales Package 5 Sales Package Micro Usb Supported Mobile OTG cable General Brand Generix Suitable For Smartphones, tablet Cable Type High Speed Cable 1000 Mbps Speed Model pack of 5 Micro USB On-the-go For Mobile Phones & Tablets Cable Length 0.128 m Compatible Devices Mobile, Tablet Type OTG Cable"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "81df14e9c6419658dc459c232bcbb368",
+        "full_pair_tokens": 565,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 556,
+        "canonical_tail_token_loss_estimate": 47,
+        "canonical_text_tail_preview": "/Htc/Micromax/Black Berry/Nexus/Tablet/Nokia/Gionee/Tablet/I Pod/ And More. Handsfree With This Stylish Headset Lightweight And Comfortable.Intense Bass And Ultra Clear Mid Range Sounds, Solid Sound Isolation, Powerful Punch Of Bass, Soul Stirring Power Of Extra Bass. Most Importantly, The Sound Quality Of These Ear Phones Is Marvellous. Features Easy To Carry And Easy To Handle.Powerful, Bass-Driven Stereo Sound ; Universally Compatible For Use With Other Devices That Have A 3.5 Mm Connector Or"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "d8ef80a8ba345dedc9f944cf21201988",
+        "full_pair_tokens": 519,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 510,
+        "canonical_tail_token_loss_estimate": 1,
+        "canonical_text_tail_preview": "Model Id 45W Magsafe Laptop Charger For APPLE MacBook Air 13 MB003JA Power Power Consumption (W) 45 W Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 1 Year Warranty Warranty Service Type To Claim a Warranty Customer needs to contact seller.. Then he will be guided to the nearest service center.. If the service center is not available in in his area then he needs to courier the product to seller and we will replace the product and send via courier Not Covered in Warranty"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "c57e5619fec33ae959cfc60ce7b8b688",
+        "full_pair_tokens": 532,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 523,
+        "canonical_tail_token_loss_estimate": 14,
+        "canonical_text_tail_preview": "03X/A MAGSAFE 2 Model Id 45W Magsafe2 Laptop Charger For APPLE MacBook Air 13 MB003LLA 2 Power Power Consumption (W) 45 W Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 1 Year Warranty Warranty Service Type To Claim a Warranty Customer needs to contact seller.. Then he will be guided to the nearest service center.. If the service center is not available in in his area then he needs to courier the product to seller and we will replace the product and send via courier Not"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "3e7d6eb69f390cb8c120ee6eb8d6feb3",
+        "full_pair_tokens": 516,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 507,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": " Charger For APPLE MacBook 13 MA701BA Power Power Consumption (W) 60 W Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 1 Year Warranty Warranty Service Type To Claim a Warranty Customer needs to contact seller.. Then he will be guided to the nearest service center.. If the service center is not available in in his area then he needs to courier the product to seller and we will replace the product and send via courier Not Covered in Warranty Any Physcal Damage will not be"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e70923888f89bde2e5b31be14f4000f5",
+        "full_pair_tokens": 514,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 505,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": "Laptop Charger For APPLE MacBook 13 MB466CHA Power Power Consumption (W) 60 W Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 1 Year Warranty Warranty Service Type To Claim a Warranty Customer needs to contact seller.. Then he will be guided to the nearest service center.. If the service center is not available in in his area then he needs to courier the product to seller and we will replace the product and send via courier Not Covered in Warranty Any Physcal Damage will"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "8e961e4fd248c9496ca54808d2d2b25f",
+        "full_pair_tokens": 525,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 516,
+        "canonical_tail_token_loss_estimate": 7,
+        "canonical_text_tail_preview": "el Id 60W Magsafe Laptop Charger For APPLE MacBook Pro13 MB990XA Power Power Consumption (W) 60 W Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 1 Year Warranty Warranty Service Type To Claim a Warranty Customer needs to contact seller.. Then he will be guided to the nearest service center.. If the service center is not available in in his area then he needs to courier the product to seller and we will replace the product and send via courier Not Covered in Warranty Any"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "82f424a90d630acc188fcf267160a1fe",
+        "full_pair_tokens": 524,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 515,
+        "canonical_tail_token_loss_estimate": 6,
+        "canonical_text_tail_preview": "990 MAGSAFE Model Id 60W Magsafe1 Laptop Charger For APPLE MacBook Pro 13\" MB990 MAGSAFE Power Power Consumption (W) 60 W Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 1 Year Warranty Warranty Service Type To Claim a Warranty Customer needs to contact seller.. Then he will be guided to the nearest service center.. If the service center is not available in in his area then he needs to courier the product to seller and we will replace the product and send via courier Not"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e5005b4a2d809bbb2f5944a8fa1ba0db",
+        "full_pair_tokens": 523,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 514,
+        "canonical_tail_token_loss_estimate": 5,
+        "canonical_text_tail_preview": "MAGSAFE Model Id 85W Magsafe Laptop Charger For APPLE MacBook Pro 15 MC371ZPA Power Power Consumption (W) 85 W Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 1 Year Warranty Warranty Service Type To Claim a Warranty Customer needs to contact seller.. Then he will be guided to the nearest service center.. If the service center is not available in in his area then he needs to courier the product to seller and we will replace the product and send via courier Not Covered in"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "d7fded8e211b3033e424fb450b97caec",
+        "full_pair_tokens": 523,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 514,
+        "canonical_tail_token_loss_estimate": 5,
+        "canonical_text_tail_preview": "MAGSAFE Model Id 85W Magsafe Laptop Charger For APPLE MacBook Pro 17 MA897LLA Power Power Consumption (W) 85 W Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 1 Year Warranty Warranty Service Type To Claim a Warranty Customer needs to contact seller.. Then he will be guided to the nearest service center.. If the service center is not available in in his area then he needs to courier the product to seller and we will replace the product and send via courier Not Covered in"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "371f849e0fe966f2c36f68affa17bfa1",
+        "full_pair_tokens": 568,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 559,
+        "canonical_tail_token_loss_estimate": 50,
+        "canonical_text_tail_preview": "th, Wipe Clean Regularly. Number of Benches 0 Finish Type Glossy Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Table Dimensions Table Height 760 mm Table Depth 1070 mm Table Diameter 1070 mm Table Weight 25 kg Table Width 1070 mm Chair Features Number of Chairs 2 Warranty Covered in Warranty Manufacturing Defects Service Type Products will be repaire or replaced as required and deemed fit by the manufacturer. Customer needs to contact the manufacturer to"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e1ea38df44a61cdbb7fa76f9131b27b0",
+        "full_pair_tokens": 569,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 560,
+        "canonical_tail_token_loss_estimate": 51,
+        "canonical_text_tail_preview": "re Instructions Clean With Soft Cloth, Wipe Clean Regularly. Table Dimensions Table Height 760 mm Table Depth 1070 mm Table Width 1070 mm Table Weight 25 kg Table Diameter 1070 mm Chair Features Number of Chairs 2 Warranty Covered in Warranty Manufacturing Defects Warranty Summary 1 Month Limted Warranty Against Manufacturing Defects. Service Type Products will be repaire or replaced as required and deemed fit by the manufacturer. Customer needs to contact the manufacturer to avail warranty. Not"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "ffd4e25e9d7700a490031b0ddbc32457",
+        "full_pair_tokens": 574,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 565,
+        "canonical_tail_token_loss_estimate": 56,
+        "canonical_text_tail_preview": "an With Soft Cloth, Wipe Clean Regularly. Number of Benches 0 Finish Type Glossy Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Table Dimensions Table Height 760 mm Table Depth 1070 mm Table Diameter 1070 mm Table Weight 25 kg Table Width 1070 mm Chair Features Number of Chairs 4 Warranty Covered in Warranty Manufacturing Defects Service Type Products will be repaire or replaced as required and deemed fit by the manufacturer. Customer needs to contact the"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "85aec4bf3185da7ebcc45003429cbfe2",
+        "full_pair_tokens": 607,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 598,
+        "canonical_tail_token_loss_estimate": 89,
+        "canonical_text_tail_preview": " OS Architecture: 64 bit; Sales Package: Laptop, Battery, AC Adapter, User Guide and Manuals; Cache: 3 MB; Variant: 5005U; Clock Speed: 2 GHz; Processor: Core i3 (5th Gen) | Description: Buy HP 15-ac116TX (Notebook) (Core i3 (5th Gen)/ 4GB/ 1TB/ Win10/ 2GB Graph) (N8M19PA) Online For Rs.38890 , Also get HP 15-ac116TX (Notebook) (Core i3 (5th Gen)/ 4GB/ 1TB/ Win10/ 2GB Graph) (N8M19PA) Specifications & Features. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "bcb8e456728013a90ba66ab3b1b783ad",
+        "full_pair_tokens": 570,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 561,
+        "canonical_tail_token_loss_estimate": 52,
+        "canonical_text_tail_preview": "ng System: Windows 10; OS Architecture: 64 bit; Sales Package: Laptop, Battery, AC Adapter, User Guide and Manuals; Cache: 3 MB; Variant: 5005U; Clock Speed: 2 GHz; Processor: Core i3 (5th Gen) | Description: Buy HP 15-ac121tu (Notebook) (Core i3 (5th Gen)/ 4GB/ 1TB/ Win10) (N8M17PA) Online For Rs.35390 , Also get HP 15-ac121tu (Notebook) (Core i3 (5th Gen)/ 4GB/ 1TB/ Win10) (N8M17PA) Specifications & Features. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "b2f45d57493e10877d4e8764302cf409",
+        "full_pair_tokens": 580,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 571,
+        "canonical_tail_token_loss_estimate": 62,
+        "canonical_text_tail_preview": "er Features: Protocols: TCP/IP, ICMP, SNTP, Maximum RF Power: 20 dBm, WAN - 1 4G / 3G USB Port, 4G / 3G Internet: GSM / CDMA USB Datacard Support, WDS (Wireless Distribution System ) Support, AP Isolation, Local and Remote Management Control, Web Based UI; SSID Support: Multi SSID Security; Certification: CE, FCC, RoHS | Description: Buy iBall iB-W4GX150N 4G Wireless N Router only for Rs. 0.0 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "991ab64cade7439fb18a4e76b1ad078c",
+        "full_pair_tokens": 557,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 548,
+        "canonical_tail_token_loss_estimate": 39,
+        "canonical_text_tail_preview": "C - 40DegC, Storage Temperature: -40DegC - 70DegC degree C; VPN: Virtual Server, DMZ; Other Features: Protocols: TCP/IP, ICMP, SNTP, Remote Management Control, AP Isolation - Access Restriction within WLAN, DDNS, 200 mW High Power; Certification: CE, FCC, RoHS; SSID Support: Multi SSID Security | Description: Buy iBall iB-WRX300NP 300 Mbps Extreme High Power Wireless N Router only for Rs. 0.0 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "a439243232d8bacc3fa7f79dbde4ae66",
+        "full_pair_tokens": 514,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 505,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": "lacquer once a year for glossy finish Finish Type Glossy Dimensions Weight 37 kg Height 810 mm Width 1150 mm Depth 530 mm Warranty Covered in Warranty Warranty of the product is limited to manufacturing defects only. Warranty Summary 6 Months Limited Warranty against Manufacturing Defects. Service Type The Products will be Repaired/ Replaced as required and deemed fit by the manufacturer, he customer must contact the Manufacturer to avail Warranty Not Covered in Warranty Wear and Tear Disclaimer"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "f8b2fff13ca1e706e96ca9cf5aa1005d",
+        "full_pair_tokens": 538,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 529,
+        "canonical_tail_token_loss_estimate": 20,
+        "canonical_text_tail_preview": "anel Headers 2 VGA/Dsub Connectors 2 Fan Headers 1 (Processor Fan Headers) USB 2.0 Headers 2 USB 3.0 Headers 2 Warranty Covered in Warranty Manufacturing Defects Warranty Summary 1 Year India Warranty Warranty Service Type Cary In Not Covered in Warranty Physical Damage in Usage Graphics Integrated Graphics card ATI Radeon HD3000 Expansion Slots PCIe x16 Slots, Generation 1 Audio Audio Channels 7.1 Essentials Chipset Manufacturer Intel Chipset Intel H61 Form Factor Micro-ATX Socket Type LGA 1155"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "c8de76912ac4723b40f4ba4c7a4aa220",
+        "full_pair_tokens": 567,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 558,
+        "canonical_tail_token_loss_estimate": 49,
+        "canonical_text_tail_preview": "lease Note That An Electric Air Pump Is Not Included With This Item.. To Do Service Work, Make The Following Special Provisions Always Look Out For Asreh International Id On Flipkart For Your Genuine And 100% Original Buy Asreh International Your Only Name On Flipkart For Genuine And 100% Original Buy Brings You A Unique Yet Exclusive Product.Intex Baby Beds Small Size, Light Weight, Intex Inflatable Excellent Quality And Reliable Products, A New Layout And Design, Properties Quality Tested 20.8"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "df5eb679bd88077a81d678e691aea8d4",
+        "full_pair_tokens": 547,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 538,
+        "canonical_tail_token_loss_estimate": 29,
+        "canonical_text_tail_preview": "gh dirt. 2. Wash with 1 part mild liquid detergent & 4 parts warm water. Soaking not required. 3. Wash using soft brush to remove surface stains or dirt. DO NOT USE hard brush. 4. Wash off all trace of soap thoroughly before lea...View More 1. Use soft brush to remove loose surface dirt & hard brush to free tough dirt. 2. Wash with 1 part mild liquid detergent & 4 parts warm water. Soaking not required. 3. Wash using soft brush to remove surface stains or dirt. DO NOT USE hard brush. 4. Wash off"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "9683155147075fec3409561b094ed075",
+        "full_pair_tokens": 547,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 538,
+        "canonical_tail_token_loss_estimate": 29,
+        "canonical_text_tail_preview": "Number of USB Ports: 1; Antennae Capacity: 3 dBi Internal Antenna; LAN: RJ-45; Number of WAN ports: 1; Antennae: Internal; Standard IEEE: IEEE 802.11n/g/b, IEEE 802.3U, IEEE 802.3; Operating Humidity: 10 % - 85% Non-condensing; Temperature: 0-40 degree C; VPN: Multiple Pass-through::IPSec::L2TP::PPTP; SSID Support: Multiple SSID Support | Description: Buy Leoxsys Leo-300n-R1 only for Rs. 1190 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "253a7f050335f81d9c3b653b463f605e",
+        "full_pair_tokens": 513,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 504,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": " Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Pink) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc Cable Length 1.5 m Compatible Devices Mobile Type USB Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 MicroUSB Color"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "136454e94f8b20fd332f510601919c2c",
+        "full_pair_tokens": 514,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 505,
+        "canonical_tail_token_loss_estimate": 0,
+        "canonical_text_tail_preview": "ned For SMARTPHONES Wired/Wireless Wired & Wireless Compatible Devices Mobile Controls PLAY/PAUSE/ON/OFF/SONGS CHANGE/ON/OFF Headphone Type Over the Ear Model ID S450 3.0 WITH MIC Color BLACK In Sales Package 1 BLUETOOTH HEADPHONES 1 CHARGING CABLE 1 AUX CABLEB 1 CHARGING CABLE Bluetooth Bluetooth Yes Bluetooth Version & Profiles 3.0 with A2DP profiles Bluetooth Range 10 m Warranty Covered in Warranty MANUFACTURING DEFECT Warranty Summary 6 MONTHS LIFE LIKE WARRANTY Warranty Service Type ON-SITE"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "fca4bd01d8b8ba6fb3d5cc5fcac13373",
+        "full_pair_tokens": 780,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 771,
+        "canonical_tail_token_loss_estimate": 262,
+        "canonical_text_tail_preview": "el, PAL: Global 200fps, 25fps per Channel Color White Lens Size 3.6 mm Mounting Type Camera, Wall mount, Ceiling Mount Video Features Video Formats PAL Recording Formats H.264, 720p Display Frame Rate PAL:25 FPS Record Modes Manual, Time Scheduled Camera and Imaging Features Image Resolution 720P (1280 x 720), VGA (1024 x 768) Night Vision Yes Number of IR LEDs 24 Other Camera and Imaging Features Brightness, Contrast, Color, Hue, Saturation Performance Features HDD Type SATA 1 HDD Capacity 4 TB"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "ac9f785b417feed54cf9213d0caaaf29",
+        "full_pair_tokens": 534,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 525,
+        "canonical_tail_token_loss_estimate": 16,
+        "canonical_text_tail_preview": "fortable shoes. Handcrafted by seasoned craftsmen and designed by the Best Italian Designers . Moladz is an aesthetic fusion of natural elegance and luxury to bring out the best in Foot Fashion. MOLADZ Footwear for men who want to look elegante and perfect for every occasion. Moladz is a brand that makes stylish footwear while keeping new trends and comfort level in mind. We are the brand never compromises on the level of quality, class and comfort. Our mission is to create quality products with"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "45673ea699d3acad7be648ffc1e24abf",
+        "full_pair_tokens": 534,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 525,
+        "canonical_tail_token_loss_estimate": 16,
+        "canonical_text_tail_preview": "d Comfortable shoes. Handcrafted by seasoned craftsmen and designed by the Best Italian Designers . Moladz is an aesthetic fusion of natural elegance and luxury to bring out the best in Foot Fashion. MOLADZ Footwear for men who want to look elegante and perfect for every occasion. Moladz is a brand that makes stylish footwear while keeping new trends and comfort level in mind. We are the brand never compromises on the level of quality, class and comfort. Our mission is to create quality products"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "27110e07b507c8e78c8507d117b6730f",
+        "full_pair_tokens": 827,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 818,
+        "canonical_tail_token_loss_estimate": 309,
+        "canonical_text_tail_preview": " Warranty Warranty Type Limited Dimensions Weight 130 g Network Features Frequency 2.4 GHz, 5 GHz Connectivity Number of Antennae 2 Number of LAN ports 1 Antennae External Supported Protocols Standard IEEE IEEE 802.11b/g/n, IEEE 802.11a/n/ac Additional Features Other Features Wi-Fi Technology: IEEE 802.11ac, Wi-Fi Performance: AC1200 (300 Mbps + 900 Mbps), Wi-Fi Band: Dual Band 2.4 and 5 GHz, 1 Ethernet Port with Auto Sensing Technology, Dual Band Wi-Fi upto 1200 Mbps, Supports New IEEE 802.11ac"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "9b5c670a48f2c996e1bc76b78bdbd558",
+        "full_pair_tokens": 569,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 560,
+        "canonical_tail_token_loss_estimate": 51,
+        "canonical_text_tail_preview": " IEEE: IEEE 802.11b/g/n; Operating Humidity: Operating: 0 % - 90 %; Temperature: 0Deg C - 40Deg C degree C; VPN: IPSec; Other Features: Live Parental Controls, Broadband Usage Meter, NETGEAR Green Features; Certification: RoHS, CEC, WEEE; SSID Support: Multiple SSID Guest Networks, Radio Service Set ID | Description: Buy Netgear MBRN3000 3G Mobile Broadband Wireless-N Router only for Rs. 5547 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "ab9d8c8189980dc5b33552a3ffce8107",
+        "full_pair_tokens": 615,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 606,
+        "canonical_tail_token_loss_estimate": 97,
+        "canonical_text_tail_preview": " 10 % - 80 % Non-condensing; Temperature: 0DegC - 40DegC degree C; Other Features: Automatic Quality of Service (QoS) For Video, Voice, Gaming, Compatible 3G / 4G / WiMAX USB Modems, 2 External Detachable; SSID Support: Multiple SSID Guest Networks; Certification: RoHS, CEC, WEEE | Description: Buy Netgear N300 Wireless ADSL2+ Modem Router Mobile Broadband Edition (DGN2200M) only for Rs. 3895 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "1549ca339f5c05075c3e53ebabbde1a4",
+        "full_pair_tokens": 544,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 535,
+        "canonical_tail_token_loss_estimate": 26,
+        "canonical_text_tail_preview": "y: Operating: 90 % Non-condensing; Temperature: 0Deg C - 40Deg C degree C; VPN: IPSec, PPTP; Other Features: Extends Range of Any Wireless Router or Gateway, Finds Best Location for Optimal Wireless Coverage with Dynamic LED Indicators, NETGEAR Green Features; Certification: RoHS, CEC, WEEE; SSID Support: Yes | Description: Buy Netgear WN2000RPT Universal WiFi Range Extender only for Rs. 4745 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "54a98e0bb717a0d71da2931e6c7ccd79",
+        "full_pair_tokens": 524,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 515,
+        "canonical_tail_token_loss_estimate": 6,
+        "canonical_text_tail_preview": " flexible and customizable filter settings, ReadySHARE USB storage access, DLNA compliant, Broadband usage meter measures Internet usage, Automatic Quality of Service (QoS); Certification: Yes, Wi-Fi Certification; SSID Support: Multiple SSID guest networks (separate security and access restrictions) | Description: Buy Netgear WNDR3700 N600 Dual Band Wireless Gigabit Router only for Rs. 10915 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "14191703e152d9bf42ffbc576d83907a",
+        "full_pair_tokens": 795,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 786,
+        "canonical_tail_token_loss_estimate": 277,
+        "canonical_text_tail_preview": "able Cover No Size Double Care Instructions Clean The Mattress With Surgical Spirit Or Any Mild Detergent Only, In Case Of Thread Coming Out, Do Not Pull With Hands, Use A Scissor To Cut Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Warranty Covered in Warranty 1) Coils or wires that are loose or broken. 2) Coils or wires that protrude or rip through the fabric. 3) Body indention of 1-1/2\" or greater on both sides. 4) Excessively lumpy feel. Service Type"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "94df93fd098b3e15921e78e44048503a",
+        "full_pair_tokens": 777,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 768,
+        "canonical_tail_token_loss_estimate": 259,
+        "canonical_text_tail_preview": "with hands, use a scissor to cut. Important Note Cancellation NOT allowed for this product after 24 hrs of order booking. Warranty Covered in Warranty 1) Coils or wires that are loose or broken. 2) Coils or wires that protrude or rip through the fabric. 3) Body indention of 1-1/2\" or greater on both sides. 4) Excessively lumpy feel. Service Type Customer needs to call our Toll Free number - 1800 - 1219 - 115 Warranty Summary 2 years Not Covered in Warranty 1) Fabric (including stains, soiling or"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "a1fb13ead0d648acd61e600531421a34",
+        "full_pair_tokens": 793,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 784,
+        "canonical_tail_token_loss_estimate": 275,
+        "canonical_text_tail_preview": "sword) General Brand NITGEN LCD Resolution 4.3\" TFT LCD Colour TouchScreen Scratch Proof Yes Type Time & Attendance, Access Control, Door Locks Identification Method Face, Fingerprint, Card, Password Material Stainless Steel, Fiber Card Read Range 10 to 40 mm Key Type Touch Keypad, 4 Function Keys (Clock In/Clock Out/Absence/Return) Suitable For Home, Office FAR 0 Battery Type In-built Battery (Optional)::Power on Ethernet (Optional) Multiple Languages Yes Communication Interface TCP/IP, Wiegand"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "6bdbfcd8a37c9302fea53891aaad7426",
+        "full_pair_tokens": 769,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 760,
+        "canonical_tail_token_loss_estimate": 251,
+        "canonical_text_tail_preview": "General Brand NITGEN LCD Resolution 122 x 32 Monochrome LCD Scratch Proof Yes Type Time & Attendance, Access Control, Door Locks Identification Method Fingerprint, Card, Password Material Stainless Steel, Fiber Card Read Range 10 to 40 mm Key Type Touch Keypad, 4 Function Keys (Clock In/Clock Out/Absence/Return) Suitable For Home, Office FAR 0 Battery Type External Battery Backup (Optional) Multiple Languages No Communication Interface TCP/IP, RS485(TBD), Wiegand In/Out(26/34 bit) Backup Options"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "ed470854f3cce6d10135d9b16b9e073c",
+        "full_pair_tokens": 700,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 691,
+        "canonical_tail_token_loss_estimate": 182,
+        "canonical_text_tail_preview": "d Capacity 0 Display Type NO LCD Power Requirement 230V, 50 HZ Model Number Hamster - DX Model Name Hamster DX Fingerprint Capacity 1 Operating Temperature Temp Range -20 to 60 *C:: Humidity Less Than 90% Card Type NO RFID Card Dimensions Weight 0.2 kg Height 7.4 cm Other Dimensions Model features such as dimensions, colour, shape etc. may change as per manufacturer's policy Width 5.4 cm Depth 8.26 cm Warranty Covered in Warranty Warranty applies only to manufacturing defects. Warranty Summary 2"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "94a78d2340f75683751ec37bbae9b748",
+        "full_pair_tokens": 731,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 722,
+        "canonical_tail_token_loss_estimate": 213,
+        "canonical_text_tail_preview": "y of the product is limited to manufacturing defects only; Warranty Summary: 6 Months Manufacturer warranty; Warranty Service Type: Off Site Warrany - Customer will Need to send the Defected Product To the Nearest Branch of the company and the replaced Product will be sent back to customer; Not Covered in Warranty: No Physical Damage, Mishandling or Burnt Out Part; Weight: 400 g | Description: Nova LENOVO G450 6 Cell Laptop Battery Price: Rs. 1,099 100% Compatible Battery 100% Compatible Battery"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "53b4e767520887c1f33051ee2ec2c272",
+        "full_pair_tokens": 565,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 556,
+        "canonical_tail_token_loss_estimate": 47,
+        "canonical_text_tail_preview": ") Type Teardrop Style Contemporary & Modern Refillable Bean Yes With Beans Yes Upholstery Included No Upholstery Type NA Filling Type Bead Filling Maximum Load Capacity 120 kg Suitable For Kids Room Age Group 12-16 Years Model Number ORKA Red & Green Digital Printed Bean Bag XXXL (Cover Only) Armrest Included No Backrest Yes Fastening Mechanism Zipper and velcro Filling Amount 3 kg Care Instructions Wipe Clean with a Dry Cloth, Do Not use Wet Cloth Size XXXL Finish Type Matte Warranty Covered in"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "e1d3377b7d5dc174660e7681a7fa0e49",
+        "full_pair_tokens": 590,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 581,
+        "canonical_tail_token_loss_estimate": 72,
+        "canonical_text_tail_preview": "Poly Carbonate with PRINTING - FOUR WHEELS - For 360 degrees rotation and easy to manoveure - TROLLEY - International qualty high grade Aluminium Handle - FIXED HANDLE - In built in the body and not a stand alone piece to give it EXTRA Strength- Combination Lock available Available in 3 sizes 28 inch 24 inch and 20 inch ( cabin luggage ),Specifications of Polo House USA ExclusiveTrolleyBag13MD Check-in Luggage - 28 (Multi Color) General Closure Combination Lock Luggage Size 28 Cabin Size No Type"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "7bf8feeeaefc8d0adeb7ed3c6de5e039",
+        "full_pair_tokens": 582,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 573,
+        "canonical_tail_token_loss_estimate": 64,
+        "canonical_text_tail_preview": "te with PRINTING - FOUR WHEELS - For 360 degrees rotation and easy to manoveure - TROLLEY - International qualty high grade Aluminium Handle - FIXED HANDLE - In built in the body and not a stand alone piece to give it EXTRA Strength- Combination Lock available Available in 3 sizes 28 inch 24 inch and 20 inch ( cabin luggage ),Specifications of Polo House USA ExclusiveTrolleyBag15OE Cabin Luggage - 20 (Multi Color) General Closure Combination Lock Luggage Size 20 Cabin Size Yes Type Cabin Luggage"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "f457fbaccb1faa563485e52e7a761330",
+        "full_pair_tokens": 520,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 511,
+        "canonical_tail_token_loss_estimate": 2,
+        "canonical_text_tail_preview": "tenance jobs like putting up picture frames, shelves, lightings, hangers is also easier. Not just that, you can also assemble and dismantle your furniture with ease. These handy tools help to perform all types of restoration and repairing works at home. The components of this tool kit are made from quality material and have a user-friendly mechanism. The ergonomic design of the drill machine ensures fatigue-free working, irrespective of the task. This PT2000401+ Kit runs on a robust and powerful"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "d5be97e54159b52cacf95b651db26e45",
+        "full_pair_tokens": 558,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 549,
+        "canonical_tail_token_loss_estimate": 40,
+        "canonical_text_tail_preview": "vetech Vehicle Model Name NA Primary Product Type Car Media Player Weight 1 kg Model Number RT-302-7 Vehicle Brand Universal Warranty Covered in Warranty Warranty of the product is limited to manufacturing defects only. Service Type Customer Needs To Contact The Customer Care No/Mail Id And Report About The Malfunction. Then After Confirmation From The Seller, The Product Has To Be Sent To The Sellers Address For Repair/Service Along With The Photo Copy Of The Invoice And Warranty Card. Warranty"
+      },
+      {
+        "query": "women red party wedges heel",
+        "product_id": "ddb032cfc07724d88710d3ad70fcc08f",
+        "full_pair_tokens": 588,
+        "truncated_pair_tokens": 512,
+        "canonical_text_tokens": 579,
+        "canonical_tail_token_loss_estimate": 70,
+        "canonical_text_tail_preview": "so passes necessary authentication certifications like CE, ROHS etc. Before leaving the factory, so you can be rest assured for its quality, durability and performance. Please make sure that you are selecting the correct adapter as per you old charger specification. Please compare your old Adapter Power Rating i.e. Volts (V), Amps (A), Watt (W) and Pin / Tip / Connector Size. Rega IT Replacement Laptop AC Power Adapter/Charger for Asus U33JC-RX044V U33JC-RX067V Laptop enables you to operate your"
+      }
+    ],
+    "important_specification_review": "Requires human review of tail_loss_sample against canonical text; tokenizer statistics alone cannot determine semantic importance."
+  },
+  "warm_inference": {
+    "10": {
+      "batch_size": 16,
+      "device": "cpu",
+      "query_count": 4,
+      "iterations_per_query": 30,
+      "median_ms": 103.0293499934487,
+      "p95_ms": 120.38829999801237,
+      "scope": "Cross-Encoder inference only; 20/25 pools extend frozen Phase 10 fixtures with canonical catalog rows and are performance-only."
+    },
+    "20": {
+      "batch_size": 16,
+      "device": "cpu",
+      "query_count": 4,
+      "iterations_per_query": 30,
+      "median_ms": 229.68955000396818,
+      "p95_ms": 303.00469999201596,
+      "scope": "Cross-Encoder inference only; 20/25 pools extend frozen Phase 10 fixtures with canonical catalog rows and are performance-only."
+    },
+    "25": {
+      "batch_size": 16,
+      "device": "cpu",
+      "query_count": 4,
+      "iterations_per_query": 30,
+      "median_ms": 269.4633999999496,
+      "p95_ms": 310.640700001386,
+      "scope": "Cross-Encoder inference only; 20/25 pools extend frozen Phase 10 fixtures with canonical catalog rows and are performance-only."
+    }
+  },
+  "model_config": {
+    "_name_or_path": "cross-encoder/ms-marco-MiniLM-L-12-v2",
+    "architectures": [
+      "BertForSequenceClassification"
+    ],
+    "attention_probs_dropout_prob": 0.1,
+    "gradient_checkpointing": false,
+    "hidden_act": "gelu",
+    "hidden_dropout_prob": 0.1,
+    "hidden_size": 384,
+    "id2label": {
+      "0": "LABEL_0"
+    },
+    "initializer_range": 0.02,
+    "intermediate_size": 1536,
+    "label2id": {
+      "LABEL_0": 0
+    },
+    "layer_norm_eps": 1e-12,
+    "max_position_embeddings": 512,
+    "model_type": "bert",
+    "num_attention_heads": 12,
+    "num_hidden_layers": 2,
+    "pad_token_id": 0,
+    "position_embedding_type": "absolute",
+    "transformers_version": "4.4.2",
+    "type_vocab_size": 2,
+    "use_cache": true,
+    "vocab_size": 30522,
+    "sbert_ce_default_activation_function": "torch.nn.modules.linear.Identity"
+  },
+  "limitations": [
+    "CPU load memory footprint not measured in this runner",
+    "no Phase 10 retrieval or full Phase 10-to-11 latency",
+    "token truncation semantic impact requires human review"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "status": "VALIDATED_PROTOTYPE_EXECUTION",
+  "execution_timestamp": "2026-10-11T14:40:00+07:00",
+  "python": {
+    "executable": "D:\\Project\\ShopAssist\\.venv\\Scripts\\python.exe",
+    "version": "3.10.11",
+    "pytorch": "2.6.0+cu124",
+    "cuda_available": true,
+    "cuda_device": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "transformers": "5.16.1",
+    "sentence_transformers": "6.0.1",
+    "huggingface_hub": "1.9.2"
+  },
+  "test_suites": [
+    {
+      "suite": "Phase 11 unit tests",
+      "command": "python -m pytest tests/test_reranking.py -v",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 8.26,
+      "status": "PASS"
+    },
+    {
+      "suite": "Phase 10 regression tests",
+      "command": "python -m pytest tests/test_hybrid_retrieval.py -v",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 7.76,
+      "status": "PASS"
+    },
+    {
+      "suite": "Cross-Encoder real-model tests",
+      "command": "python -m pytest tests/test_reranking_real_model.py -v",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 12.02,
+      "status": "PASS"
+    },
+    {
+      "suite": "Phase 10 -> Phase 11 live DB integration tests",
+      "command": "SHOPASSIST_PHASE11_LIVE_DB=1 python -m pytest tests/test_phase10_to_phase11_integration.py -v",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 25.42,
+      "status": "PASS"
+    },
+    {
+      "suite": "Combined Phase 10 and Phase 11 suite",
+      "command": "SHOPASSIST_PHASE11_LIVE_DB=1 python -m pytest tests/test_reranking.py tests/test_hybrid_retrieval.py tests/test_reranking_real_model.py tests/test_phase10_to_phase11_integration.py -v",
+      "passed": 53,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 22.23,
+      "status": "PASS"
+    },
+    {
+      "suite": "Broader offline project regression suite",
+      "command": "python -m pytest --ignore=tests/test_gemini_integration.py -m \"not integration\" -k \"not live\" -q",
+      "passed": 433,
+      "failed": 0,
+      "deselected": 18,
+      "duration_seconds": 23.71,
+      "status": "PASS"
+    }
+  ],
+  "cross_encoder_benchmark": {
+    "repository": "cross-encoder/ms-marco-MiniLM-L2-v2",
+    "revision": "1b5cd67b15209f24824c50370e0397743aa9b787",
+    "load_time_ms": 221.79,
+    "memory_rss_delta_mb": 15.48,
+    "warm_inference_median_ms": {
+      "top_10": 103.03,
+      "top_20": 229.69,
+      "top_25": 269.46
+    },
+    "warm_inference_p95_ms": {
+      "top_10": 120.39,
+      "top_20": 303.00,
+      "top_25": 310.64
+    },
+    "token_truncation_512_fraction": 0.02106
+  },
+  "evaluation_metrics": {
+    "dataset": "data/interim/phase11/phase11_reranking_cases.json (4 queries, fixed 10-candidate pool)",
+    "methods": {
+      "RRF": {
+        "ndcg@5": 0.9605,
+        "mrr": 0.8750,
+        "precision@5": 0.9000,
+        "warm_latency_ms": 0.0965
+      },
+      "MULTI_SIGNAL": {
+        "ndcg@5": 0.9895,
+        "mrr": 1.0000,
+        "precision@5": 0.8500,
+        "warm_latency_ms": 0.0736
+      },
+      "CROSS_ENCODER": {
+        "ndcg@5": 0.9284,
+        "mrr": 0.8333,
+        "precision@5": 0.8500,
+        "warm_latency_ms": 75.9867
+      }
+    }
+  },
+  "database_verification": {
+    "endpoint": "aws-0-ap-southeast-1.pooler.supabase.com:5432",
+    "products_row_count": 8405,
+    "parquet_products_row_count": 8405,
+    "product_id_symmetric_difference": 0,
+    "read_only": true
+  }
+}

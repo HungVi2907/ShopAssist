@@ -11,7 +11,7 @@
 <!-- phase82-correction-end -->
 
 <!-- current-development-status-start -->
-> **Current development status — 2026-10-10:** Phase 8 is frozen as **IMPLEMENTED — ACCEPTED WITH KNOWN LIMITATIONS**. Phase 8.1 remains experimental and is not fully adopted in production. Phase 8.2 is **PARTIAL — offline research/validation complete; live optimization deferred**. Phase 9 is **PASS — component scope**: 22/22 Phase 9 tests, 398/398 offline regression excluding live Gemini tests, and BGE 384D/runtime semantic checks. This is not an end-to-end recommendation-quality claim. See the [development status and checklist](docs/development_status.md), [Phase 8 handover](docs/phase8_freeze_and_handover.md), [technical debt register](docs/technical_debt/phase8_deferred_issues.md), and [Phase 9 evaluation](docs/phase9_preference_evaluation.md).
+> **Current development status — 2026-10-10:** Phase 8 is frozen as **IMPLEMENTED — ACCEPTED WITH KNOWN LIMITATIONS**. Phase 8.1 remains experimental and is not fully adopted in production. Phase 8.2 is **PARTIAL — offline research/validation complete; live optimization deferred**. Phase 9 is **PASS — component scope**. Phase 10 is **PASS — offline component scope**: 21/21 Phase 10 tests and 405 offline regression tests passed; 14 live/integration cases were deselected. Phase 11 is **PARTIAL**: offline RRF/Multi-Signal reranking, typed contracts, mocked Cross-Encoder adapter and four-query single-reviewer evaluation are implemented; no live Phase 10 or real Cross-Encoder quality claim is made. See the [development status and checklist](docs/development_status.md), [Phase 8 handover](docs/phase8_freeze_and_handover.md), [Phase 9 evaluation](docs/phase9_preference_evaluation.md), [Phase 10 report](docs/phase10_hybrid_retrieval.md), and [Phase 11 report](docs/phase11_reranking.md).
 <!-- current-development-status-end -->
 
 ShopAssist is an end-to-end conversational product recommendation system using LLM-based query understanding, structured filtering, and hybrid retrieval to recommend consumer products based on both explicit constraints and semantic user preferences.
@@ -276,6 +276,11 @@ Phase 9 contracts and implementation details:
 - [Phase 9 conceptual guide](docs/concepts/soft_preference_representation_fundamentals.md)
 - [Phase 9 evaluation evidence](docs/phase9_preference_evaluation.md)
 
+Phase 10 hybrid retrieval contract and implementation:
+
+- [Phase 10 contract, statuses, safety boundary and usage](docs/phase10_hybrid_retrieval.md)
+- Test module: `tests/test_hybrid_retrieval.py`
+
 To run Phase 8 & 8.1 offline unit tests specifically (53 tests):
 
 ```bash
@@ -437,4 +442,4 @@ python -m pytest tests/test_gemini_integration.py -v
     - [`docs/phase8_1_evaluation_methodology.md`](file:///d:/Project/ShopAssist/docs/phase8_1_evaluation_methodology.md)
     - [`docs/concepts/llm_experimentation_and_extraction_refinement.md`](file:///d:/Project/ShopAssist/docs/concepts/llm_experimentation_and_extraction_refinement.md)
   - Emitted machine-readable reports: `data/interim/phase8_1/phase8_1_final_report.json`, `data/interim/phase8_1/experiment_manifest.json`, `data/interim/phase8_1/experiment_results.json`.
-- **Next Phase**: **Phase 9 — Soft Preference Representation**
+- **Next Phase**: **Phase 11 — Reranking**

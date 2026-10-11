@@ -21,6 +21,18 @@ from shopassist.retrieval.tfidf import (
     build_tfidf_baseline,
     load_canonical_products,
 )
+from shopassist.retrieval.hybrid import (
+    CandidateSource,
+    HardConstraintFilters,
+    HybridCandidate,
+    HybridRetrievalConfig,
+    HybridRetrievalResult,
+    HybridRetrievalService,
+    HybridRetrievalStatus,
+    compile_hard_constraint_filters,
+    product_matches_filters,
+    validate_query_vector,
+)
 
 __all__ = [
     "DEFAULT_SEMANTIC_REPORT_PATH",
@@ -36,6 +48,16 @@ __all__ = [
     "benchmark_semantic_retrieval",
     "build_tfidf_baseline",
     "compute_result_overlap",
+    "CandidateSource",
+    "HardConstraintFilters",
+    "HybridCandidate",
+    "HybridRetrievalConfig",
+    "HybridRetrievalResult",
+    "HybridRetrievalService",
+    "HybridRetrievalStatus",
+    "compile_hard_constraint_filters",
+    "product_matches_filters",
+    "validate_query_vector",
     "load_canonical_products",
 ]
 

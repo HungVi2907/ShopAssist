@@ -1,0 +1,45 @@
+{
+  "dataset_id": "shopassist-phase11-curated-v1",
+  "annotation_method": "Single-engineer relevance judgments based on canonical retrieval_text and catalog attributes; labels assigned before comparing Phase 11 methods. Not independently reviewed.",
+  "relevance_scale": {
+    "0": "Not relevant or contradicts requested product identity/attribute",
+    "1": "Weakly related; matches product family but misses or contradicts an important requested attribute",
+    "2": "Relevant partial match; product identity matches and most attributes match, with one missing or mismatched detail",
+    "3": "Strong match to product identity and all visible requested positive attributes"
+  },
+  "pool_method": "Frozen top-10 reciprocal-rank fusion from local exact cosine scoring over saved Phase 7 product embeddings plus saved Phase 6 TF-IDF. Dense query encoding used cached BAAI/bge-small-en-v1.5. This is an offline component fixture, not a live Phase 10 pgvector result.",
+  "cases": [
+    {
+      "query_id": "Q01", "query": "women red party wedges heel",
+      "candidate_ids_in_phase10_order": ["237e586616e07088c6ee26151ea7cd2b", "ba2c3c10eaeea0fa5eebbd65d8e67011", "7f2fd8125ccb82de558945ba4b2af423", "f1298c172e76a855e5355e4e3ab15aa4", "21808964e54316f7f4271449a3fd89db", "11abda05733874b6c40f62d1d0081249", "fcfcbe96134e9ffdadcf1fe910c5e2fe", "bc4fe48d387b517df09dd5a55b20700d", "ef27a3eb0469e764d9fb63fa9913ffb6", "c1cbf2317ebbcebda3a4b198ed2e1007"],
+      "dense_ranks": {"237e586616e07088c6ee26151ea7cd2b": 1, "ba2c3c10eaeea0fa5eebbd65d8e67011": 4, "7f2fd8125ccb82de558945ba4b2af423": 2, "f1298c172e76a855e5355e4e3ab15aa4": 3, "21808964e54316f7f4271449a3fd89db": 17, "11abda05733874b6c40f62d1d0081249": 6, "fcfcbe96134e9ffdadcf1fe910c5e2fe": 12, "bc4fe48d387b517df09dd5a55b20700d": 16},
+      "lexical_ranks": {"237e586616e07088c6ee26151ea7cd2b": 1, "ba2c3c10eaeea0fa5eebbd65d8e67011": 3, "7f2fd8125ccb82de558945ba4b2af423": 10, "f1298c172e76a855e5355e4e3ab15aa4": 18, "21808964e54316f7f4271449a3fd89db": 5, "11abda05733874b6c40f62d1d0081249": 16, "fcfcbe96134e9ffdadcf1fe910c5e2fe": 11, "bc4fe48d387b517df09dd5a55b20700d": 15, "ef27a3eb0469e764d9fb63fa9913ffb6": 2, "c1cbf2317ebbcebda3a4b198ed2e1007": 4},
+      "qrels": {"237e586616e07088c6ee26151ea7cd2b": 3, "ba2c3c10eaeea0fa5eebbd65d8e67011": 3, "7f2fd8125ccb82de558945ba4b2af423": 3, "f1298c172e76a855e5355e4e3ab15aa4": 2, "21808964e54316f7f4271449a3fd89db": 2, "11abda05733874b6c40f62d1d0081249": 2, "fcfcbe96134e9ffdadcf1fe910c5e2fe": 1, "bc4fe48d387b517df09dd5a55b20700d": 2, "ef27a3eb0469e764d9fb63fa9913ffb6": 3, "c1cbf2317ebbcebda3a4b198ed2e1007": 2},
+      "judgment_note": "Grades compare women + wedge identity, party occasion, and red color. Casual-only, other-color, or multicolor results are partial/weak."
+    },
+    {
+      "query_id": "Q02", "query": "brown leather boots women zipper",
+      "candidate_ids_in_phase10_order": ["8a51adce678b874bef63d8a8a7d28ea4", "c6c1eca6e11a3b8e347feb7c35a29680", "522cc294663f3cf4bf1774d060ef949e", "de9c564d1a29a3dc35754bceb9f8baa8", "02da96dc6adeae5e40687c61a31544fc", "73d0dc9c796beb0b34c8e3391ee8295f", "de39565c5a59238698a60162052809bc", "3a9689400032bf48b5487b9a878b90e7", "5841b9d15dc9622bf32e60793a6d9f11", "dfaf4940f90825ee347fe7fabc816833"],
+      "dense_ranks": {"8a51adce678b874bef63d8a8a7d28ea4": 1, "c6c1eca6e11a3b8e347feb7c35a29680": 6, "522cc294663f3cf4bf1774d060ef949e": 9, "de9c564d1a29a3dc35754bceb9f8baa8": 12, "02da96dc6adeae5e40687c61a31544fc": 2, "de39565c5a59238698a60162052809bc": 3, "3a9689400032bf48b5487b9a878b90e7": 4, "5841b9d15dc9622bf32e60793a6d9f11": 5},
+      "lexical_ranks": {"8a51adce678b874bef63d8a8a7d28ea4": 4, "c6c1eca6e11a3b8e347feb7c35a29680": 1, "522cc294663f3cf4bf1774d060ef949e": 3, "de9c564d1a29a3dc35754bceb9f8baa8": 5, "73d0dc9c796beb0b34c8e3391ee8295f": 2, "dfaf4940f90825ee347fe7fabc816833": 6},
+      "qrels": {"8a51adce678b874bef63d8a8a7d28ea4": 1, "c6c1eca6e11a3b8e347feb7c35a29680": 2, "522cc294663f3cf4bf1774d060ef949e": 2, "de9c564d1a29a3dc35754bceb9f8baa8": 2, "02da96dc6adeae5e40687c61a31544fc": 1, "73d0dc9c796beb0b34c8e3391ee8295f": 1, "de39565c5a59238698a60162052809bc": 0, "3a9689400032bf48b5487b9a878b90e7": 2, "5841b9d15dc9622bf32e60793a6d9f11": 0, "dfaf4940f90825ee347fe7fabc816833": 0},
+      "judgment_note": "The leading brown women's boot is explicitly artificial/non-leather; brown leather women's boots lack a visible zipper claim; the tan women's leather zipper boot misses brown. Men’s boots and bags are weaker or irrelevant."
+    },
+    {
+      "query_id": "Q03", "query": "running shoes for jogging",
+      "candidate_ids_in_phase10_order": ["7ae33aaf60fc1ffa5d2601c92ec11304", "855c191a7973278a777e8374c67b2c8a", "09779c98e54c30f905b21bd9744ae685", "ca1f2174844857098f6c8912c90811be", "89032171e3e9d790631e24e3f9421bfb", "0d58c009b3b320e67a1e26630eb8d98a", "ca91a9b331e5307b30068488feb78499", "ca0a884cc1cb9215f638d20bfe8d716f", "f0312e69515bf76aee9d17f6cacce6b2", "8055828154db43d7137cb26b978fcb8f"],
+      "dense_ranks": {"7ae33aaf60fc1ffa5d2601c92ec11304": 1, "855c191a7973278a777e8374c67b2c8a": 3, "09779c98e54c30f905b21bd9744ae685": 10, "ca1f2174844857098f6c8912c90811be": 9, "89032171e3e9d790631e24e3f9421bfb": 7, "0d58c009b3b320e67a1e26630eb8d98a": 14, "ca91a9b331e5307b30068488feb78499": 20, "ca0a884cc1cb9215f638d20bfe8d716f": 15, "f0312e69515bf76aee9d17f6cacce6b2": 11, "8055828154db43d7137cb26b978fcb8f": 19},
+      "lexical_ranks": {"7ae33aaf60fc1ffa5d2601c92ec11304": 3, "855c191a7973278a777e8374c67b2c8a": 7, "09779c98e54c30f905b21bd9744ae685": 1, "ca1f2174844857098f6c8912c90811be": 2, "89032171e3e9d790631e24e3f9421bfb": 4, "0d58c009b3b320e67a1e26630eb8d98a": 5, "ca91a9b331e5307b30068488feb78499": 6, "ca0a884cc1cb9215f638d20bfe8d716f": 10, "f0312e69515bf76aee9d17f6cacce6b2": 17, "8055828154db43d7137cb26b978fcb8f": 12},
+      "qrels": {"7ae33aaf60fc1ffa5d2601c92ec11304": 3, "855c191a7973278a777e8374c67b2c8a": 3, "09779c98e54c30f905b21bd9744ae685": 3, "ca1f2174844857098f6c8912c90811be": 3, "89032171e3e9d790631e24e3f9421bfb": 3, "0d58c009b3b320e67a1e26630eb8d98a": 3, "ca91a9b331e5307b30068488feb78499": 3, "ca0a884cc1cb9215f638d20bfe8d716f": 3, "f0312e69515bf76aee9d17f6cacce6b2": 2, "8055828154db43d7137cb26b978fcb8f": 3},
+      "judgment_note": "Running shoes are an explicit product identity and jogging is a compatible use. The candidate named walking shoes is a related sports shoe, graded partial. Gender and weight were not specified by the query."
+    },
+    {
+      "query_id": "Q04", "query": "car floor mats Suzuki Swift",
+      "candidate_ids_in_phase10_order": ["697f4e16b77e369bf90703b1258fa995", "77b724e25769214931572f61e0ed7053", "5cd55e33ad760e876f04fe27eea61bf8", "0b8a13e58f4a1a233c3a3e9f38bae660", "6485a67e25ec54015efb5d4dd862bdbf", "aa6db105d130d4a2ab3b4cecdcc9dec9", "5174be45812bbaebaa5742fde18f1597", "66101a7c61deadd6fd46d7e69ce5d9af", "8e9b83f0ddc36bdf677a1e6ed125557f", "bda8a831b2062de898697a8ec6ba5479"],
+      "dense_ranks": {"697f4e16b77e369bf90703b1258fa995": 3, "77b724e25769214931572f61e0ed7053": 4, "5cd55e33ad760e876f04fe27eea61bf8": 5, "0b8a13e58f4a1a233c3a3e9f38bae660": 8, "6485a67e25ec54015efb5d4dd862bdbf": 1, "aa6db105d130d4a2ab3b4cecdcc9dec9": 7, "5174be45812bbaebaa5742fde18f1597": 9, "66101a7c61deadd6fd46d7e69ce5d9af": 2, "8e9b83f0ddc36bdf677a1e6ed125557f": 6, "bda8a831b2062de898697a8ec6ba5479": 14},
+      "lexical_ranks": {"697f4e16b77e369bf90703b1258fa995": 1, "77b724e25769214931572f61e0ed7053": 2, "5cd55e33ad760e876f04fe27eea61bf8": 3, "0b8a13e58f4a1a233c3a3e9f38bae660": 4, "6485a67e25ec54015efb5d4dd862bdbf": 12, "aa6db105d130d4a2ab3b4cecdcc9dec9": 7, "5174be45812bbaebaa5742fde18f1597": 6, "66101a7c61deadd6fd46d7e69ce5d9af": 14, "8e9b83f0ddc36bdf677a1e6ed125557f": 11, "bda8a831b2062de898697a8ec6ba5479": 5},
+      "qrels": {"697f4e16b77e369bf90703b1258fa995": 3, "77b724e25769214931572f61e0ed7053": 3, "5cd55e33ad760e876f04fe27eea61bf8": 3, "0b8a13e58f4a1a233c3a3e9f38bae660": 3, "6485a67e25ec54015efb5d4dd862bdbf": 3, "aa6db105d130d4a2ab3b4cecdcc9dec9": 3, "5174be45812bbaebaa5742fde18f1597": 3, "66101a7c61deadd6fd46d7e69ce5d9af": 3, "8e9b83f0ddc36bdf677a1e6ed125557f": 3, "bda8a831b2062de898697a8ec6ba5479": 1},
+      "judgment_note": "The first nine candidates are explicitly floor mats for Swift or New Swift, with Suzuki/Maruti fitment in product text; Swift Dzire is a related but distinct vehicle model."
+    }
+  ]
+}

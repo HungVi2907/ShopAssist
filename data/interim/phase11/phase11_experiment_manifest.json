@@ -1,0 +1,31 @@
+{
+  "experiment_id": "shopassist-phase11-offline-rerank-v1",
+  "created_utc": "2026-10-10",
+  "code_contract": "1.0.0",
+  "case_file": "phase11_reranking_cases.json",
+  "candidate_pool_size": 10,
+  "top_k": 5,
+  "case_count": 4,
+  "catalog": "data/processed/products.parquet",
+  "catalog_rows": 8405,
+  "product_embedding": {"model": "BAAI/bge-small-en-v1.5", "dimension": 384, "artifact_reused": true, "regenerated": false},
+  "dense_method": "Exact cosine scan over the saved product embeddings; BGE query instruction from Phase 7; model loaded from local cache with network offline.",
+  "lexical_method": "Saved Phase 6 TF-IDF artifacts, top 20 per query.",
+  "candidate_fusion": "RRF k=60, deterministic product_id tie-break; frozen top 10 IDs and branch ranks checked for drift.",
+  "label_source": "Single engineer, canonical product text review; labels frozen before method metric comparison; independent review pending.",
+  "methods_run": ["RRF", "MULTI_SIGNAL"],
+  "methods_not_run": {
+    "CROSS_ENCODER": "Checkpoint not in local cache; no external download authorization.",
+    "COMBINED": "Cross-Encoder unavailable; weights also require a development split and tuning protocol."
+  },
+  "measurements": {
+    "quality": ["nDCG@5", "MRR with grade>=2", "Precision@5"],
+    "latency": "25 warm Phase 11 service calls per query and method; candidate generation and query encoding excluded."
+  },
+  "reproduction": [
+    "$env:PYTHONPATH='src'; $env:HF_HUB_OFFLINE='1'; python scripts/evaluate_phase11.py"
+  ],
+  "no_live_database": true,
+  "no_external_model_download": true,
+  "limitations": ["four queries", "single reviewer", "exact local dense scan instead of live pgvector ANN", "no Cross-Encoder inference", "no confidence interval"]
+}

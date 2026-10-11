@@ -1,0 +1,25 @@
+{
+  "status": "MEASURED_OFFLINE_COMPONENT_TIMINGS",
+  "candidate_count": 10,
+  "top_k": 5,
+  "repetitions_per_query_method": 25,
+  "measurement": "Warm service wall time per candidate set; excludes Phase 10 retrieval and BGE query encoding.",
+  "methods": {
+    "RRF": {
+      "median_ms_mean_across_queries": 0.13330000001587905
+    },
+    "MULTI_SIGNAL": {
+      "median_ms_mean_across_queries": 0.1102749997698993
+    }
+  },
+  "cross_encoder": {
+    "status": "NOT_RUN",
+    "reason": "No Cross-Encoder checkpoint was present in local cache; external model downloads were not authorized."
+  },
+  "runtime": {
+    "python": "3.10.11",
+    "torch": "2.6.0+cu124",
+    "cuda_available": true,
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel"
+  }
+}

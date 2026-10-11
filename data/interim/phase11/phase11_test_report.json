@@ -1,0 +1,19 @@
+{
+  "status": "PASS_OFFLINE_TESTS",
+  "python": "Python 3.10.11 project environment",
+  "commands": [
+    {
+      "command": "python -m pytest tests/test_reranking.py tests/test_hybrid_retrieval.py -q",
+      "result": "41 passed in 7.06s",
+      "scope": "Phase 11 dedicated contract tests and unchanged Phase 10 component tests"
+    },
+    {
+      "command": "python -m pytest --ignore=tests/test_gemini_integration.py -m \"not integration\" -k \"not live\" -q",
+      "result": "425 passed, 14 deselected in 53.59s",
+      "scope": "Applicable offline repository regression; Gemini module and live/integration-marked tests excluded"
+    }
+  ],
+  "network_used": false,
+  "live_database_used": false,
+  "gemini_called": false
+}

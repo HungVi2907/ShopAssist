@@ -1,0 +1,331 @@
+{
+  "status": "MEASURED_OFFLINE_COMPONENT_EVALUATION",
+  "dataset_id": "shopassist-phase11-curated-v1",
+  "case_count": 4,
+  "catalog_product_count": 8405,
+  "candidate_pool_size": 10,
+  "top_k": 5,
+  "methods": [
+    "RRF",
+    "MULTI_SIGNAL"
+  ],
+  "metric_definitions": {
+    "ndcg@5": "Graded gain 2^relevance-1, logarithmic rank discount, idealized over the judged fixed candidate pool.",
+    "mrr": "Reciprocal rank of first candidate with grade >= 2.",
+    "precision@5": "Fraction of top-five candidates with grade >= 2."
+  },
+  "annotation_limitations": "Single-engineer relevance judgments based on canonical retrieval_text and catalog attributes; labels assigned before comparing Phase 11 methods. Not independently reviewed.",
+  "candidate_pool_method": "Frozen top-10 reciprocal-rank fusion from local exact cosine scoring over saved Phase 7 product embeddings plus saved Phase 6 TF-IDF. Dense query encoding used cached BAAI/bge-small-en-v1.5. This is an offline component fixture, not a live Phase 10 pgvector result.",
+  "model": {
+    "id": "BAAI/bge-small-en-v1.5",
+    "revision": "local cache revision not recorded",
+    "device": "cuda:0"
+  },
+  "runtime": {
+    "python": "3.10.11",
+    "torch": "2.6.0+cu124",
+    "cuda_available": true,
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel"
+  },
+  "comparison": {
+    "RRF": {
+      "ndcg@5": 0.9605202300026037,
+      "mrr": 0.875,
+      "precision@5": 0.9,
+      "reranking_latency_median_ms_25_warm": 0.13330000001587905
+    },
+    "MULTI_SIGNAL": {
+      "ndcg@5": 0.9894586927454222,
+      "mrr": 1.0,
+      "precision@5": 0.85,
+      "reranking_latency_median_ms_25_warm": 0.1102749997698993
+    }
+  },
+  "per_query": [
+    {
+      "query_id": "Q01",
+      "query": "women red party wedges heel",
+      "methods": {
+        "RRF": {
+          "ranked_product_ids": [
+            "237e586616e07088c6ee26151ea7cd2b",
+            "ba2c3c10eaeea0fa5eebbd65d8e67011",
+            "7f2fd8125ccb82de558945ba4b2af423",
+            "f1298c172e76a855e5355e4e3ab15aa4",
+            "21808964e54316f7f4271449a3fd89db"
+          ],
+          "score_components": {
+            "237e586616e07088c6ee26151ea7cd2b": {
+              "phase10_rrf_score": 0.03278688524590164
+            },
+            "ba2c3c10eaeea0fa5eebbd65d8e67011": {
+              "phase10_rrf_score": 0.03149801587301587
+            },
+            "7f2fd8125ccb82de558945ba4b2af423": {
+              "phase10_rrf_score": 0.0304147465437788
+            },
+            "f1298c172e76a855e5355e4e3ab15aa4": {
+              "phase10_rrf_score": 0.028693528693528692
+            },
+            "21808964e54316f7f4271449a3fd89db": {
+              "phase10_rrf_score": 0.028371628371628373
+            }
+          },
+          "metrics": {
+            "ndcg@5": 1.0,
+            "mrr": 1.0,
+            "precision@5": 1.0,
+            "reranking_latency_median_ms_25_warm": 0.15979999989212956
+          }
+        },
+        "MULTI_SIGNAL": {
+          "ranked_product_ids": [
+            "237e586616e07088c6ee26151ea7cd2b",
+            "ba2c3c10eaeea0fa5eebbd65d8e67011",
+            "7f2fd8125ccb82de558945ba4b2af423",
+            "ef27a3eb0469e764d9fb63fa9913ffb6",
+            "f1298c172e76a855e5355e4e3ab15aa4"
+          ],
+          "score_components": {
+            "237e586616e07088c6ee26151ea7cd2b": {
+              "multi_signal_rank_utility": 1.0
+            },
+            "ba2c3c10eaeea0fa5eebbd65d8e67011": {
+              "multi_signal_rank_utility": 0.8562091503267973
+            },
+            "7f2fd8125ccb82de558945ba4b2af423": {
+              "multi_signal_rank_utility": 0.7205882352941176
+            },
+            "ef27a3eb0469e764d9fb63fa9913ffb6": {
+              "multi_signal_rank_utility": 0.4722222222222222
+            },
+            "f1298c172e76a855e5355e4e3ab15aa4": {
+              "multi_signal_rank_utility": 0.46895424836601307
+            }
+          },
+          "metrics": {
+            "ndcg@5": 1.0,
+            "mrr": 1.0,
+            "precision@5": 1.0,
+            "reranking_latency_median_ms_25_warm": 0.14599999849451706
+          }
+        }
+      }
+    },
+    {
+      "query_id": "Q02",
+      "query": "brown leather boots women zipper",
+      "methods": {
+        "RRF": {
+          "ranked_product_ids": [
+            "8a51adce678b874bef63d8a8a7d28ea4",
+            "c6c1eca6e11a3b8e347feb7c35a29680",
+            "522cc294663f3cf4bf1774d060ef949e",
+            "de9c564d1a29a3dc35754bceb9f8baa8",
+            "02da96dc6adeae5e40687c61a31544fc"
+          ],
+          "score_components": {
+            "8a51adce678b874bef63d8a8a7d28ea4": {
+              "phase10_rrf_score": 0.032018442622950824
+            },
+            "c6c1eca6e11a3b8e347feb7c35a29680": {
+              "phase10_rrf_score": 0.031544957774465976
+            },
+            "522cc294663f3cf4bf1774d060ef949e": {
+              "phase10_rrf_score": 0.03036576949620428
+            },
+            "de9c564d1a29a3dc35754bceb9f8baa8": {
+              "phase10_rrf_score": 0.029273504273504274
+            },
+            "02da96dc6adeae5e40687c61a31544fc": {
+              "phase10_rrf_score": 0.016129032258064516
+            }
+          },
+          "metrics": {
+            "ndcg@5": 0.8420809200104147,
+            "mrr": 0.5,
+            "precision@5": 0.6,
+            "reranking_latency_median_ms_25_warm": 0.15499999972234946
+          }
+        },
+        "MULTI_SIGNAL": {
+          "ranked_product_ids": [
+            "c6c1eca6e11a3b8e347feb7c35a29680",
+            "8a51adce678b874bef63d8a8a7d28ea4",
+            "522cc294663f3cf4bf1774d060ef949e",
+            "02da96dc6adeae5e40687c61a31544fc",
+            "73d0dc9c796beb0b34c8e3391ee8295f"
+          ],
+          "score_components": {
+            "c6c1eca6e11a3b8e347feb7c35a29680": {
+              "multi_signal_rank_utility": 0.7916666666666667
+            },
+            "8a51adce678b874bef63d8a8a7d28ea4": {
+              "multi_signal_rank_utility": 0.75
+            },
+            "522cc294663f3cf4bf1774d060ef949e": {
+              "multi_signal_rank_utility": 0.5
+            },
+            "02da96dc6adeae5e40687c61a31544fc": {
+              "multi_signal_rank_utility": 0.4583333333333333
+            },
+            "73d0dc9c796beb0b34c8e3391ee8295f": {
+              "multi_signal_rank_utility": 0.4166666666666667
+            }
+          },
+          "metrics": {
+            "ndcg@5": 0.9578347709816888,
+            "mrr": 1.0,
+            "precision@5": 0.4,
+            "reranking_latency_median_ms_25_warm": 0.14659999942523427
+          }
+        }
+      }
+    },
+    {
+      "query_id": "Q03",
+      "query": "running shoes for jogging",
+      "methods": {
+        "RRF": {
+          "ranked_product_ids": [
+            "7ae33aaf60fc1ffa5d2601c92ec11304",
+            "855c191a7973278a777e8374c67b2c8a",
+            "09779c98e54c30f905b21bd9744ae685",
+            "ca1f2174844857098f6c8912c90811be",
+            "89032171e3e9d790631e24e3f9421bfb"
+          ],
+          "score_components": {
+            "7ae33aaf60fc1ffa5d2601c92ec11304": {
+              "phase10_rrf_score": 0.032266458495966696
+            },
+            "855c191a7973278a777e8374c67b2c8a": {
+              "phase10_rrf_score": 0.030798389007344232
+            },
+            "09779c98e54c30f905b21bd9744ae685": {
+              "phase10_rrf_score": 0.030679156908665108
+            },
+            "ca1f2174844857098f6c8912c90811be": {
+              "phase10_rrf_score": 0.030621785881252923
+            },
+            "89032171e3e9d790631e24e3f9421bfb": {
+              "phase10_rrf_score": 0.03055037313432836
+            }
+          },
+          "metrics": {
+            "ndcg@5": 1.0,
+            "mrr": 1.0,
+            "precision@5": 1.0,
+            "reranking_latency_median_ms_25_warm": 0.14170000031299423
+          }
+        },
+        "MULTI_SIGNAL": {
+          "ranked_product_ids": [
+            "7ae33aaf60fc1ffa5d2601c92ec11304",
+            "09779c98e54c30f905b21bd9744ae685",
+            "855c191a7973278a777e8374c67b2c8a",
+            "ca1f2174844857098f6c8912c90811be",
+            "89032171e3e9d790631e24e3f9421bfb"
+          ],
+          "score_components": {
+            "7ae33aaf60fc1ffa5d2601c92ec11304": {
+              "multi_signal_rank_utility": 0.9411764705882353
+            },
+            "09779c98e54c30f905b21bd9744ae685": {
+              "multi_signal_rank_utility": 0.775
+            },
+            "855c191a7973278a777e8374c67b2c8a": {
+              "multi_signal_rank_utility": 0.7735294117647059
+            },
+            "ca1f2174844857098f6c8912c90811be": {
+              "multi_signal_rank_utility": 0.7705882352941176
+            },
+            "89032171e3e9d790631e24e3f9421bfb": {
+              "multi_signal_rank_utility": 0.7617647058823529
+            }
+          },
+          "metrics": {
+            "ndcg@5": 1.0,
+            "mrr": 1.0,
+            "precision@5": 1.0,
+            "reranking_latency_median_ms_25_warm": 0.0729000003047986
+          }
+        }
+      }
+    },
+    {
+      "query_id": "Q04",
+      "query": "car floor mats Suzuki Swift",
+      "methods": {
+        "RRF": {
+          "ranked_product_ids": [
+            "697f4e16b77e369bf90703b1258fa995",
+            "77b724e25769214931572f61e0ed7053",
+            "5cd55e33ad760e876f04fe27eea61bf8",
+            "0b8a13e58f4a1a233c3a3e9f38bae660",
+            "6485a67e25ec54015efb5d4dd862bdbf"
+          ],
+          "score_components": {
+            "697f4e16b77e369bf90703b1258fa995": {
+              "phase10_rrf_score": 0.032266458495966696
+            },
+            "77b724e25769214931572f61e0ed7053": {
+              "phase10_rrf_score": 0.031754032258064516
+            },
+            "5cd55e33ad760e876f04fe27eea61bf8": {
+              "phase10_rrf_score": 0.03125763125763126
+            },
+            "0b8a13e58f4a1a233c3a3e9f38bae660": {
+              "phase10_rrf_score": 0.030330882352941176
+            },
+            "6485a67e25ec54015efb5d4dd862bdbf": {
+              "phase10_rrf_score": 0.03028233151183971
+            }
+          },
+          "metrics": {
+            "ndcg@5": 1.0,
+            "mrr": 1.0,
+            "precision@5": 1.0,
+            "reranking_latency_median_ms_25_warm": 0.07670000013604295
+          }
+        },
+        "MULTI_SIGNAL": {
+          "ranked_product_ids": [
+            "697f4e16b77e369bf90703b1258fa995",
+            "77b724e25769214931572f61e0ed7053",
+            "5cd55e33ad760e876f04fe27eea61bf8",
+            "0b8a13e58f4a1a233c3a3e9f38bae660",
+            "6485a67e25ec54015efb5d4dd862bdbf"
+          ],
+          "score_components": {
+            "697f4e16b77e369bf90703b1258fa995": {
+              "multi_signal_rank_utility": 0.9285714285714286
+            },
+            "77b724e25769214931572f61e0ed7053": {
+              "multi_signal_rank_utility": 0.8571428571428572
+            },
+            "5cd55e33ad760e876f04fe27eea61bf8": {
+              "multi_signal_rank_utility": 0.7857142857142857
+            },
+            "0b8a13e58f4a1a233c3a3e9f38bae660": {
+              "multi_signal_rank_utility": 0.6428571428571428
+            },
+            "6485a67e25ec54015efb5d4dd862bdbf": {
+              "multi_signal_rank_utility": 0.6071428571428571
+            }
+          },
+          "metrics": {
+            "ndcg@5": 1.0,
+            "mrr": 1.0,
+            "precision@5": 1.0,
+            "reranking_latency_median_ms_25_warm": 0.07560000085504726
+          }
+        }
+      }
+    }
+  ],
+  "cross_encoder": {
+    "status": "NOT_RUN",
+    "reason": "No Cross-Encoder checkpoint was present in local cache; external model downloads were not authorized."
+  },
+  "statistical_inference": "Not estimated: four curated queries are too few and judgments are from one engineer."
+}
