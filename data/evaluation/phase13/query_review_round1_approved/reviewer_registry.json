@@ -1,0 +1,16 @@
+{
+  "reviewer_a": {
+    "id": "tran_hung_vi",
+    "display_name": "tran hung vi"
+  },
+  "reviewer_b": {
+    "id": "nguyen_thuc_thuy_tien",
+    "display_name": "nguyen thuc thuy tien"
+  },
+  "adjudicator": {
+    "id": "dang_le_nguyen_vu",
+    "display_name": "dang le nguyen vu"
+  },
+  "approval_record": "Project owner reported that both named reviewers accepted all 200 AI-assisted preliminary interpretations without amendment.",
+  "scope": "Query interpretation only; this does not adjudicate candidate relevance or generation claims."
+}

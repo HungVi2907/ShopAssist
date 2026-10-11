@@ -1,0 +1,79 @@
+{
+  "dataset_version": "phase13-v3",
+  "created_date": "2026-10-11",
+  "catalog_artifact": "data/processed/products.parquet",
+  "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "catalog_product_count": 8405,
+  "query_count": 200,
+  "qrel_count": 0,
+  "category_distribution": {
+    "Automotive": 13,
+    "Baby Care": 12,
+    "Bags, Wallets & Belts": 12,
+    "Cameras & Accessories": 12,
+    "Computers": 13,
+    "Footwear": 15,
+    "Furniture": 12,
+    "Home Decor & Festive Needs": 13,
+    "Home Furnishing": 12,
+    "Home Improvement": 12,
+    "Kitchen & Dining": 12,
+    "Mobiles & Accessories": 13,
+    "Pens & Stationery": 13,
+    "Sports & Fitness": 12,
+    "Tools & Hardware": 12,
+    "Watches": 12
+  },
+  "query_type_distribution": {
+    "CLARIFICATION_UNSUPPORTED": 18,
+    "DIFFICULT_SEMANTIC": 19,
+    "MISSING_ATTRIBUTE": 18,
+    "MIXED_HARD_SOFT": 23,
+    "MULTI_CONSTRAINT": 34,
+    "NO_RESULT": 18,
+    "SIMPLE_CONSTRAINT": 20,
+    "SOFT_PREFERENCE": 23,
+    "USE_CASE": 27
+  },
+  "language_distribution": {
+    "en": 158,
+    "vi": 42
+  },
+  "split_counts": {
+    "development": 0,
+    "held_out": 0
+  },
+  "annotation_status": "ADJUDICATED",
+  "reviewer_count": 2,
+  "source_artifacts": [
+    "data/interim/phase11/phase11_annotation_plan.md",
+    "data/interim/phase11/phase11_reranking_cases.json",
+    "docs/phase12_recommendation_evaluation.md"
+  ],
+  "candidate_capture_status": "PENDING",
+  "frozen": false,
+  "source_version": "phase13-draft-v2",
+  "source_dataset_relpath": "data/evaluation/phase13/v2",
+  "source_query_sha256": "334ac815f02a26f1489de6e6c21f7696fe9eb32316ec78d2169d3e31208711fc",
+  "created_utc": "2026-10-11T17:00:41.674554+00:00",
+  "draft_generation_method": "160 category-specific authored queries; type/category are planning metadata",
+  "draft_warning": "No interpretations, no-result outcomes, relevance, or generation labels verified",
+  "artifact_sha256": {
+    "candidate_pools.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "claim_adjudications.csv": "29eb3830d795c8f2b33d5861e94ed8a97fde750e1fff1d5a25b82bea3ea4a9fd",
+    "claim_annotations.csv": "621f9020bc3f599e61c8fb4bcc8ef8f19e37b0b32ae0c75bd593121ea28aadef",
+    "generation_claims.csv": "17735ffd38f566022b84d7fd4f497e1ca9a1a12de7136225cbc250c80e08caae",
+    "qrels.csv": "b36f071ab1cfe8438cfd6178e64b9e3c2db222d2c3d5df3c2eae7704e674fded",
+    "queries.jsonl": "60389864ae53acc40753b2b9f154d4b1a79407b49dedbe1b489ab3f834d21df6",
+    "query_adjudications.jsonl": "da90f73b90826202a23547727924e2058065d7e14f8efe7e81879df2fca1829f",
+    "query_annotations.csv": "18ef235fa6a1035bb3266acf839691e7fb4a679a5a3a3b6f2008617a622b5500",
+    "relevance_adjudications.csv": "3d718f0c01d3756f9bcd80a7d5cd2c902029acd8f4ea47c30e2ec067ac9878e1",
+    "relevance_annotations.csv": "9efee1082ab39e91069c62cf11ffafac1b6513960197f3fc6fe6115e98bef451"
+  },
+  "catalog_draft_audit_sha256": "83bc32ecb1914b4f9cad997e7a3dfbaa2330d0b88f86aba7f31649227cbb0566",
+  "source_file_sha256": {
+    "queries.jsonl": "c0c6c733c2b328c7443ea3fde699fa37ad91c6afbac6560fe6bba6d54fb0130e",
+    "candidate_pools.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "generation_claims.csv": "17735ffd38f566022b84d7fd4f497e1ca9a1a12de7136225cbc250c80e08caae"
+  }
+}

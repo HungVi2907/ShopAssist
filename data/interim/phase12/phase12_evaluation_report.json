@@ -1,0 +1,301 @@
+{
+  "status": "VALIDATED_FOR_PROTOTYPE",
+  "provider": "openrouter",
+  "model": "google/gemma-4-26b-a4b-it",
+  "pricing_source": "OpenRouter official pricing: $0.0700/1M input, $0.2500/1M output",
+  "total_scenarios_evaluated": 7,
+  "all_scenarios_success": false,
+  "groundedness_pass_rate": 1.0,
+  "performance": {
+    "avg_input_tokens": 1657.4,
+    "avg_output_tokens": 701.6,
+    "avg_reasoning_tokens": 0,
+    "avg_total_tokens": 2359,
+    "median_latency_ms": 11641.7,
+    "p95_latency_ms": 19592.1,
+    "min_latency_ms": 10581.7,
+    "max_latency_ms": 19592.1,
+    "avg_cost_usd_per_request": 0.000291,
+    "total_evaluation_cost_usd": 0.002039
+  },
+  "context_builder_comparison": {
+    "scenario": "SCENARIO_1_SIMPLE",
+    "optimized": {
+      "input_tokens": 3395,
+      "output_tokens": 1046,
+      "total_tokens": 4441,
+      "latency_ms": 9058.97,
+      "cost_usd": 0.000499
+    },
+    "naive_unoptimized": {
+      "input_tokens": 4168,
+      "output_tokens": 1409,
+      "total_tokens": 5577,
+      "latency_ms": 12441.82,
+      "cost_usd": 0.000644
+    },
+    "reduction": {
+      "input_token_reduction_pct": 18.55,
+      "cost_reduction_pct": 22.52,
+      "latency_delta_ms": -3382.85
+    }
+  },
+  "runtime": {
+    "python": "3.10.11",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel"
+  },
+  "scenarios": [
+    {
+      "case_id": "SCENARIO_1_SIMPLE",
+      "name": "Simple product query (English)",
+      "query": "running shoes for jogging",
+      "language": "en",
+      "status": "SUCCESS",
+      "latency_ms": 19592.11,
+      "tokens": {
+        "input_tokens": 3031,
+        "output_tokens": 1405,
+        "reasoning_tokens": 0,
+        "total_tokens": 4436
+      },
+      "cost_usd": 0.000563,
+      "groundedness": {
+        "candidate_pids": [
+          "7ae33aaf60fc1ffa5d2601c92ec11304",
+          "855c191a7973278a777e8374c67b2c8a",
+          "09779c98e54c30f905b21bd9744ae685"
+        ],
+        "recommended_pids": [
+          "7ae33aaf60fc1ffa5d2601c92ec11304",
+          "855c191a7973278a777e8374c67b2c8a",
+          "09779c98e54c30f905b21bd9744ae685"
+        ],
+        "pid_validity": true,
+        "order_preserved": true,
+        "total_claims": 17,
+        "total_evidence_citations": 19,
+        "invalid_citations": 0,
+        "groundedness_pass": true
+      },
+      "overview_preview": "I have found several options for running shoes suitable for jogging, ranging from budget-friendly canvas styles to more ...",
+      "warnings": []
+    },
+    {
+      "case_id": "SCENARIO_2_HARD_CONSTRAINTS",
+      "name": "Hard constraints query (English)",
+      "query": "women red party wedges heel under 1500 INR rating 4.0+",
+      "language": "en",
+      "status": "SUCCESS",
+      "latency_ms": 10581.72,
+      "tokens": {
+        "input_tokens": 2456,
+        "output_tokens": 958,
+        "reasoning_tokens": 0,
+        "total_tokens": 3414
+      },
+      "cost_usd": 0.000411,
+      "groundedness": {
+        "candidate_pids": [
+          "237e586616e07088c6ee26151ea7cd2b",
+          "ba2c3c10eaeea0fa5eebbd65d8e67011",
+          "7f2fd8125ccb82de558945ba4b2af423"
+        ],
+        "recommended_pids": [
+          "237e586616e07088c6ee26151ea7cd2b",
+          "ba2c3c10eaeea0fa5eebbd65d8e67011",
+          "7f2fd8125ccb82de558945ba4b2af423"
+        ],
+        "pid_validity": true,
+        "order_preserved": true,
+        "total_claims": 15,
+        "total_evidence_citations": 12,
+        "invalid_citations": 0,
+        "groundedness_pass": true
+      },
+      "overview_preview": "I have found three pairs of red wedge heels for women that match your request for party wear under 1500 INR. All options...",
+      "warnings": []
+    },
+    {
+      "case_id": "SCENARIO_3_SOFT_PREFERENCES",
+      "name": "Soft preferences query (English)",
+      "query": "comfortable breathable running shoes for daily morning jogging",
+      "language": "en",
+      "status": "DETERMINISTIC_FALLBACK",
+      "latency_ms": 11076.39,
+      "tokens": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_tokens": 0,
+        "total_tokens": 0
+      },
+      "cost_usd": 0.0,
+      "groundedness": {
+        "candidate_pids": [
+          "7ae33aaf60fc1ffa5d2601c92ec11304",
+          "855c191a7973278a777e8374c67b2c8a",
+          "09779c98e54c30f905b21bd9744ae685"
+        ],
+        "recommended_pids": [
+          "7ae33aaf60fc1ffa5d2601c92ec11304",
+          "855c191a7973278a777e8374c67b2c8a",
+          "09779c98e54c30f905b21bd9744ae685"
+        ],
+        "pid_validity": true,
+        "order_preserved": true,
+        "total_claims": 6,
+        "total_evidence_citations": 3,
+        "invalid_citations": 0,
+        "groundedness_pass": true
+      },
+      "overview_preview": "Here are the top products matching your query (generated via verified metadata fallback):",
+      "warnings": [
+        "LLM generation failed: Failed to parse LLM response as JSON: Expecting ',' delimiter: line 13 column 9 (char 584). Raw: ```json\n{\n  \"overview\": \"Here are three running shoe options ranging from budget-friendly to premium choices to help with your daily morning jogging.\",\n  \"products\": [\n    {\n      \"product_id\": \"7ae33"
+      ]
+    },
+    {
+      "case_id": "SCENARIO_4_MISSING_ATTRIBUTES",
+      "name": "Missing attributes query (English)",
+      "query": "brown leather boots women zipper",
+      "language": "en",
+      "status": "SUCCESS",
+      "latency_ms": 15562.63,
+      "tokens": {
+        "input_tokens": 2779,
+        "output_tokens": 1043,
+        "reasoning_tokens": 0,
+        "total_tokens": 3822
+      },
+      "cost_usd": 0.000455,
+      "groundedness": {
+        "candidate_pids": [
+          "8a51adce678b874bef63d8a8a7d28ea4",
+          "c6c1eca6e11a3b8e347feb7c35a29680",
+          "522cc294663f3cf4bf1774d060ef949e"
+        ],
+        "recommended_pids": [
+          "8a51adce678b874bef63d8a8a7d28ea4",
+          "c6c1eca6e11a3b8e347feb7c35a29680",
+          "522cc294663f3cf4bf1774d060ef949e"
+        ],
+        "pid_validity": true,
+        "order_preserved": true,
+        "total_claims": 16,
+        "total_evidence_citations": 14,
+        "invalid_citations": 0,
+        "groundedness_pass": true
+      },
+      "overview_preview": "I have found a few options for brown boots for women that match your interests in leather materials and casual styles. H...",
+      "warnings": []
+    },
+    {
+      "case_id": "SCENARIO_5_COMPARISON",
+      "name": "Product comparison query (English)",
+      "query": "compare car floor mats for Suzuki Swift",
+      "language": "en",
+      "status": "SUCCESS",
+      "latency_ms": 12830.25,
+      "tokens": {
+        "input_tokens": 3336,
+        "output_tokens": 1505,
+        "reasoning_tokens": 0,
+        "total_tokens": 4841
+      },
+      "cost_usd": 0.00061,
+      "groundedness": {
+        "candidate_pids": [
+          "697f4e16b77e369bf90703b1258fa995",
+          "77b724e25769214931572f61e0ed7053",
+          "5cd55e33ad760e876f04fe27eea61bf8"
+        ],
+        "recommended_pids": [
+          "697f4e16b77e369bf90703b1258fa995",
+          "77b724e25769214931572f61e0ed7053",
+          "5cd55e33ad760e876f04fe27eea61bf8"
+        ],
+        "pid_validity": true,
+        "order_preserved": true,
+        "total_claims": 13,
+        "total_evidence_citations": 10,
+        "invalid_citations": 0,
+        "groundedness_pass": true
+      },
+      "overview_preview": "I have found three options for car floor mats specifically designed for the Maruti Suzuki Swift. These include plastic 4...",
+      "warnings": []
+    },
+    {
+      "case_id": "SCENARIO_6_VIETNAMESE",
+      "name": "Vietnamese natural language query",
+      "query": "Tôi cần tìm giày chạy bộ nam nhẹ êm ái thoáng khí cho người mới bắt đầu",
+      "language": "vi",
+      "status": "DETERMINISTIC_FALLBACK",
+      "latency_ms": 11641.66,
+      "tokens": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_tokens": 0,
+        "total_tokens": 0
+      },
+      "cost_usd": 0.0,
+      "groundedness": {
+        "candidate_pids": [
+          "7ae33aaf60fc1ffa5d2601c92ec11304",
+          "855c191a7973278a777e8374c67b2c8a",
+          "09779c98e54c30f905b21bd9744ae685"
+        ],
+        "recommended_pids": [
+          "7ae33aaf60fc1ffa5d2601c92ec11304",
+          "855c191a7973278a777e8374c67b2c8a",
+          "09779c98e54c30f905b21bd9744ae685"
+        ],
+        "pid_validity": true,
+        "order_preserved": true,
+        "total_claims": 6,
+        "total_evidence_citations": 3,
+        "invalid_citations": 0,
+        "groundedness_pass": true
+      },
+      "overview_preview": "Here are the top products matching your query (generated via verified metadata fallback):",
+      "warnings": [
+        "LLM generation failed: Failed to validate LLM response against schema: 3 validation errors for LLMRecommendationPayload\nproducts.0.summary_reason_original\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Đây là một lựa ch...hể thao nhẹ nhàng.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden\nproducts.1.summary_reason_original\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Sản phẩm này đáp ...t động thể thao.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden\nproducts.2.summary_reason_original\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Một đôi giày chạy...t động thể thao.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+      ]
+    },
+    {
+      "case_id": "SCENARIO_7_VIETNAMESE_CONSTRAINTS",
+      "name": "Vietnamese query with hard constraints",
+      "query": "Giày sandal cao gót nữ màu đỏ đi tiệc giá dưới 2000 INR",
+      "language": "vi",
+      "status": "DETERMINISTIC_FALLBACK",
+      "latency_ms": 11202.36,
+      "tokens": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_tokens": 0,
+        "total_tokens": 0
+      },
+      "cost_usd": 0.0,
+      "groundedness": {
+        "candidate_pids": [
+          "237e586616e07088c6ee26151ea7cd2b",
+          "ba2c3c10eaeea0fa5eebbd65d8e67011",
+          "7f2fd8125ccb82de558945ba4b2af423"
+        ],
+        "recommended_pids": [
+          "237e586616e07088c6ee26151ea7cd2b",
+          "ba2c3c10eaeea0fa5eebbd65d8e67011",
+          "7f2fd8125ccb82de558945ba4b2af423"
+        ],
+        "pid_validity": true,
+        "order_preserved": true,
+        "total_claims": 6,
+        "total_evidence_citations": 3,
+        "invalid_citations": 0,
+        "groundedness_pass": true
+      },
+      "overview_preview": "Here are the top products matching your query (generated via verified metadata fallback):",
+      "warnings": [
+        "LLM generation failed: Failed to parse LLM response as JSON: Expecting ':' delimiter: line 1 column 2862 (char 2861). Raw: ```json\n{\"overview\":\"Dưới đây là các lựa chọn giày sandal cao gót màu đỏ dành cho phụ nữ, phù hợp để đi tiệc và có mức giá dưới 2000 INR mà bạn đang tìm kiếm.\",\"products\":[{\"comparison_note\":\"Đây là l"
+      ]
+    }
+  ]
+}

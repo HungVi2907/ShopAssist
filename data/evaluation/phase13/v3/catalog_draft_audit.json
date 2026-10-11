@@ -1,0 +1,203 @@
+{
+  "status": "DRAFT_CATALOG_AUDIT",
+  "created_utc": "2026-10-11T15:46:12.294070+00:00",
+  "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "catalog_rows": 8405,
+  "queries": 200,
+  "distinct_queries": 200,
+  "near_duplicate_pairs": [],
+  "catalog_category_counts": {
+    "Automotive": 1010,
+    "Baby Care": 360,
+    "Bags, Wallets & Belts": 263,
+    "Cameras & Accessories": 72,
+    "Computers": 573,
+    "Footwear": 1179,
+    "Furniture": 180,
+    "Home Decor & Festive Needs": 866,
+    "Home Furnishing": 689,
+    "Home Improvement": 79,
+    "Kitchen & Dining": 643,
+    "Mobiles & Accessories": 1097,
+    "Pens & Stationery": 313,
+    "Sports & Fitness": 166,
+    "Tools & Hardware": 387,
+    "Watches": 528
+  },
+  "planned_category_counts": {
+    "Automotive": 13,
+    "Baby Care": 12,
+    "Bags, Wallets & Belts": 12,
+    "Cameras & Accessories": 12,
+    "Computers": 13,
+    "Footwear": 15,
+    "Furniture": 12,
+    "Home Decor & Festive Needs": 13,
+    "Home Furnishing": 12,
+    "Home Improvement": 12,
+    "Kitchen & Dining": 12,
+    "Mobiles & Accessories": 13,
+    "Pens & Stationery": 13,
+    "Sports & Fitness": 12,
+    "Tools & Hardware": 12,
+    "Watches": 12
+  },
+  "planned_type_counts": {
+    "CLARIFICATION_UNSUPPORTED": 18,
+    "DIFFICULT_SEMANTIC": 19,
+    "MISSING_ATTRIBUTE": 18,
+    "MIXED_HARD_SOFT": 23,
+    "MULTI_CONSTRAINT": 34,
+    "NO_RESULT": 18,
+    "SIMPLE_CONSTRAINT": 20,
+    "SOFT_PREFERENCE": 23,
+    "USE_CASE": 27
+  },
+  "potential_no_result_cases": [
+    {
+      "query_id": "Q0037",
+      "planning_category": "Computers",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0038",
+      "planning_category": "Pens & Stationery",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0048",
+      "planning_category": "Footwear",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0058",
+      "planning_category": "Mobiles & Accessories",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0068",
+      "planning_category": "Automotive",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0078",
+      "planning_category": "Home Decor & Festive Needs",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0088",
+      "planning_category": "Home Furnishing",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0098",
+      "planning_category": "Kitchen & Dining",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0108",
+      "planning_category": "Computers",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0118",
+      "planning_category": "Watches",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0128",
+      "planning_category": "Baby Care",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0138",
+      "planning_category": "Bags, Wallets & Belts",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0148",
+      "planning_category": "Furniture",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0158",
+      "planning_category": "Sports & Fitness",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0168",
+      "planning_category": "Tools & Hardware",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0178",
+      "planning_category": "Pens & Stationery",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0188",
+      "planning_category": "Cameras & Accessories",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    },
+    {
+      "query_id": "Q0198",
+      "planning_category": "Home Improvement",
+      "literal_constraint": "discounted_price < 1.0 INR",
+      "catalog_matching_count": 0,
+      "check": "ZERO_UNDER_LITERAL_CONSTRAINT",
+      "expected_status": null
+    }
+  ],
+  "interpretation": "Literal catalog checks are planning evidence only; human review and exact Phase 10 capture are required before NO_RESULTS ground truth."
+}

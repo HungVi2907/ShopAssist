@@ -1,0 +1,48 @@
+{
+  "status": "VALIDATED_FOR_PROTOTYPE",
+  "provider": "openrouter",
+  "model": "google/gemma-4-26b-a4b-it",
+  "pricing_source": "OpenRouter official pricing: $0.0700/1M input, $0.2500/1M output",
+  "total_scenarios_evaluated": 7,
+  "all_scenarios_success": false,
+  "groundedness_pass_rate": 1.0,
+  "performance": {
+    "avg_input_tokens": 1657.4,
+    "avg_output_tokens": 701.6,
+    "avg_reasoning_tokens": 0,
+    "avg_total_tokens": 2359,
+    "median_latency_ms": 11641.7,
+    "p95_latency_ms": 19592.1,
+    "min_latency_ms": 10581.7,
+    "max_latency_ms": 19592.1,
+    "avg_cost_usd_per_request": 0.000291,
+    "total_evaluation_cost_usd": 0.002039
+  },
+  "context_builder_comparison": {
+    "scenario": "SCENARIO_1_SIMPLE",
+    "optimized": {
+      "input_tokens": 3395,
+      "output_tokens": 1046,
+      "total_tokens": 4441,
+      "latency_ms": 9058.97,
+      "cost_usd": 0.000499
+    },
+    "naive_unoptimized": {
+      "input_tokens": 4168,
+      "output_tokens": 1409,
+      "total_tokens": 5577,
+      "latency_ms": 12441.82,
+      "cost_usd": 0.000644
+    },
+    "reduction": {
+      "input_token_reduction_pct": 18.55,
+      "cost_reduction_pct": 22.52,
+      "latency_delta_ms": -3382.85
+    }
+  },
+  "runtime": {
+    "python": "3.10.11",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel"
+  }
+}

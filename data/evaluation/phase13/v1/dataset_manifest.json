@@ -1,0 +1,55 @@
+{
+  "dataset_version": "phase13-pilot-v1",
+  "created_date": "2026-10-11",
+  "catalog_artifact": "data/processed/products.parquet",
+  "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "catalog_product_count": 8405,
+  "query_count": 40,
+  "qrel_count": 0,
+  "category_distribution": {
+    "Automotive": 3,
+    "Baby Care": 2,
+    "Bags, Wallets & Belts": 2,
+    "Cameras & Accessories": 2,
+    "Computers": 3,
+    "Footwear": 5,
+    "Furniture": 2,
+    "Home Decor & Festive Needs": 3,
+    "Home Furnishing": 2,
+    "Home Improvement": 2,
+    "Kitchen & Dining": 2,
+    "Mobiles & Accessories": 3,
+    "Pens & Stationery": 3,
+    "Sports & Fitness": 2,
+    "Tools & Hardware": 2,
+    "Watches": 2
+  },
+  "query_type_distribution": {
+    "CLARIFICATION_UNSUPPORTED": 2,
+    "DIFFICULT_SEMANTIC": 3,
+    "MISSING_ATTRIBUTE": 2,
+    "MIXED_HARD_SOFT": 7,
+    "MULTI_CONSTRAINT": 2,
+    "NO_RESULT": 2,
+    "SIMPLE_CONSTRAINT": 4,
+    "SOFT_PREFERENCE": 7,
+    "USE_CASE": 11
+  },
+  "language_distribution": {
+    "en": 30,
+    "vi": 10
+  },
+  "split_counts": {
+    "development": 0,
+    "held_out": 0
+  },
+  "annotation_status": "UNREVIEWED_DRAFT",
+  "reviewer_count": 0,
+  "source_artifacts": [
+    "data/interim/phase11/phase11_annotation_plan.md",
+    "data/interim/phase11/phase11_reranking_cases.json",
+    "docs/phase12_recommendation_evaluation.md"
+  ],
+  "candidate_capture_status": "PENDING",
+  "frozen": false
+}

@@ -1,0 +1,285 @@
+{
+  "status": "PASS",
+  "phase14_ready": false,
+  "readiness_gates": {
+    "query_count": false,
+    "category_coverage": true,
+    "query_type_coverage": true,
+    "interpretations_adjudicated": false,
+    "candidate_pools_frozen": false,
+    "no_results_verified": false,
+    "relevance_complete": false,
+    "claims_adjudicated": false,
+    "adjudication_trail": false,
+    "generation_case_coverage": false,
+    "claim_challenge_coverage": false,
+    "split_frozen": false,
+    "dataset_hashes": false,
+    "regression_tests": false,
+    "critical_blockers_resolved": false
+  },
+  "errors": [],
+  "warnings": [],
+  "statistics": {
+    "queries": 40,
+    "by_type": {
+      "USE_CASE": 11,
+      "MULTI_CONSTRAINT": 2,
+      "MIXED_HARD_SOFT": 7,
+      "DIFFICULT_SEMANTIC": 3,
+      "SIMPLE_CONSTRAINT": 4,
+      "SOFT_PREFERENCE": 7,
+      "MISSING_ATTRIBUTE": 2,
+      "NO_RESULT": 2,
+      "CLARIFICATION_UNSUPPORTED": 2
+    },
+    "by_category": {
+      "Footwear": 5,
+      "Mobiles & Accessories": 3,
+      "Automotive": 3,
+      "Home Decor & Festive Needs": 3,
+      "Home Furnishing": 2,
+      "Kitchen & Dining": 2,
+      "Computers": 3,
+      "Watches": 2,
+      "Baby Care": 2,
+      "Bags, Wallets & Belts": 2,
+      "Furniture": 2,
+      "Sports & Fitness": 2,
+      "Tools & Hardware": 2,
+      "Pens & Stationery": 3,
+      "Cameras & Accessories": 2,
+      "Home Improvement": 2
+    },
+    "category_coverage": {
+      "Automotive": {
+        "queries": 3,
+        "query_types": [
+          "DIFFICULT_SEMANTIC",
+          "SIMPLE_CONSTRAINT",
+          "SOFT_PREFERENCE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Baby Care": {
+        "queries": 2,
+        "query_types": [
+          "SOFT_PREFERENCE",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Bags, Wallets & Belts": {
+        "queries": 2,
+        "query_types": [
+          "DIFFICULT_SEMANTIC",
+          "MIXED_HARD_SOFT"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Cameras & Accessories": {
+        "queries": 2,
+        "query_types": [
+          "MISSING_ATTRIBUTE",
+          "MIXED_HARD_SOFT"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Computers": {
+        "queries": 3,
+        "query_types": [
+          "MIXED_HARD_SOFT",
+          "NO_RESULT",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Footwear": {
+        "queries": 5,
+        "query_types": [
+          "CLARIFICATION_UNSUPPORTED",
+          "DIFFICULT_SEMANTIC",
+          "MIXED_HARD_SOFT",
+          "MULTI_CONSTRAINT",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Furniture": {
+        "queries": 2,
+        "query_types": [
+          "SOFT_PREFERENCE",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Home Decor & Festive Needs": {
+        "queries": 3,
+        "query_types": [
+          "CLARIFICATION_UNSUPPORTED",
+          "SOFT_PREFERENCE",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Home Furnishing": {
+        "queries": 2,
+        "query_types": [
+          "MIXED_HARD_SOFT",
+          "SIMPLE_CONSTRAINT"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Home Improvement": {
+        "queries": 2,
+        "query_types": [
+          "MISSING_ATTRIBUTE",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Kitchen & Dining": {
+        "queries": 2,
+        "query_types": [
+          "SOFT_PREFERENCE",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Mobiles & Accessories": {
+        "queries": 3,
+        "query_types": [
+          "SIMPLE_CONSTRAINT",
+          "SOFT_PREFERENCE",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Pens & Stationery": {
+        "queries": 3,
+        "query_types": [
+          "MIXED_HARD_SOFT",
+          "NO_RESULT",
+          "SIMPLE_CONSTRAINT"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Sports & Fitness": {
+        "queries": 2,
+        "query_types": [
+          "MIXED_HARD_SOFT",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Tools & Hardware": {
+        "queries": 2,
+        "query_types": [
+          "SOFT_PREFERENCE",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      },
+      "Watches": {
+        "queries": 2,
+        "query_types": [
+          "MULTI_CONSTRAINT",
+          "USE_CASE"
+        ],
+        "candidate_pools": 0,
+        "relevant_judged_products": 0,
+        "reviewed_hard_constraint_queries": 0,
+        "reviewed_soft_preference_queries": 0
+      }
+    },
+    "by_language": {
+      "en": 30,
+      "vi": 10
+    },
+    "by_status": {
+      "UNREVIEWED": 40
+    },
+    "annotation_completion": {
+      "fully_annotated_queries": 0,
+      "partially_annotated_queries": 0,
+      "unannotated_queries": 40
+    },
+    "query_interpretations": 0,
+    "hard_constraint_queries": 0,
+    "soft_preference_queries": 0,
+    "average_preferences_per_reviewed_query": null,
+    "candidate_pools": 0,
+    "candidate_pool_sizes": {},
+    "average_candidate_pool_size": null,
+    "qrels": 0,
+    "adjudicated_qrels": 0,
+    "relevance_distribution": {},
+    "relevant_products_per_query": {},
+    "generation_claims": 0,
+    "adjudicated_claim_support": 0,
+    "double_annotated_claims": 0,
+    "claim_support_disagreements": 0,
+    "claim_support_exact_agreement": null,
+    "query_review_rows": 0,
+    "relevance_review_rows": 0,
+    "claim_review_rows": 0,
+    "query_adjudication_decisions": 0,
+    "relevance_adjudication_decisions": 0,
+    "claim_adjudication_decisions": 0,
+    "reviewer_count": 0,
+    "double_annotated_qrels": 0,
+    "relevance_disagreements": 0,
+    "exact_grade_agreement": null,
+    "quadratic_weighted_kappa": null,
+    "split_counts": {
+      "development": 0,
+      "held_out": 0
+    },
+    "near_duplicate_pairs": []
+  }
+}

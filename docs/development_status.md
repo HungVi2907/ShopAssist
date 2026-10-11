@@ -1,6 +1,6 @@
 # ShopAssist Development Status and Checklist
 
-**Updated:** 2026-10-10. This is the current roadmap status; prior phase reports remain historical evidence.
+**Updated:** 2026-10-11. This is the current roadmap status; prior phase reports remain historical evidence.
 
 | Phase | Current status | Evidence / next gate |
 | --- | --- | --- |
@@ -11,7 +11,9 @@
 | 9 | **PASS — COMPONENT SCOPE** | 22/22 Phase 9 tests; 398/398 offline regression tests (Gemini module excluded); 384D BGE validation; 12/12 curated relevant-over-irrelevant paired checks; local CUDA timings. Not an end-to-end recommendation-quality claim. |
 | 10 | **PASS — OFFLINE COMPONENT SCOPE** | Phase 10 tests **21/21 passed**; offline regression **405 passed, 14 live/integration tests deselected**. No Phase 10 live DB or catalog-quality evaluation. Phase 8 v1 price bounds require separately verified strict/inclusive metadata; otherwise the query stops as unsupported. See [Phase 10 report](phase10_hybrid_retrieval.md). |
 | 11 | **VALIDATED FOR PROTOTYPE — REAL INFERENCE & LIVE INTEGRATION VERIFIED** | Pinned Cross-Encoder downloaded (`1b5cd67b15209f24824c50370e0397743aa9b787`), CPU inference/token truncation/latencies benchmarked, Phase 10 live DB integration verified (53/53 tests pass). RRF remains default; 40-query independent evaluation deferred to Phase 13–14. See [Phase 11 report](phase11_reranking.md). |
-| 12–17 | Not started | Grounded generation, system evaluation, API, Telegram and deployment follow roadmap. |
+| 12 | **VALIDATED FOR PROTOTYPE — OPENROUTER GEMMA 4 MIGRATION & GROUNDING VERIFIED** | OpenRouter migration complete (`google/gemma-4-26b-a4b-it:free` by default, standard route and Groq preserved); live API authentication and JSON schema verified; 100% groundedness pass rate across 7 catalog scenarios; zero cross-product hallucinations; token/latency/cost measured; deterministic fallbacks verified under upstream rate limits; all repository regression tests passing. See [Phase 12 report](phase12_recommendation.md). |
+| 13 | **PARTIAL — 200 DRAFT QUERIES; GROUND TRUTH PENDING** | The v1 pilot is preserved; v2 has 200 distinct drafts across 16 categories and nine types, a catalog audit, independent review/adjudication workflow, versioned capture and split tools. Final offline regression: 482 passed, 7 skipped, 15 deselected; read-only Phase 10→11 integration passed. Zero human labels, frozen pools, qrels, generation claims or split. Phase 14 ready: false. See [Phase 13 report](phase13_dataset_report.md). |
+| 14–17 | Not started | System evaluation, API, Telegram and deployment follow roadmap. |
 
 ## Current Phase 9 checklist
 
@@ -67,4 +69,21 @@ flowchart LR
 - [ ] 40-query independent double-annotator review, adjudication, and evaluation split (P11-01, deferred to Phase 13–14).
 - [ ] Select any combined-model weights only on a development split, followed by a locked evaluation split (P11-04, deferred to Phase 13–14).
 
-See [Phase 8 freeze and handover](phase8_freeze_and_handover.md), [Phase 8 technical debt](technical_debt/phase8_deferred_issues.md), [Phase 9 engineering report](phase9_soft_preference_representation.md), and [Phase 11 deferred issues](technical_debt/phase11_deferred_issues.md).
+## Phase 12 checklist
+
+- [x] Dedicated Groq provider client with `openai/gpt-oss-20b`, JSON Schema Strict Mode, and bounded backoff.
+- [x] Provider isolation: `GROQ_API_KEY` and Phase 12 settings completely independent of Phase 8 Gemini configuration.
+- [x] Typed Phase 12 contract (`RecommendationResult`, `RecommendedProduct`, `TokenUsage`) with Pydantic v2.
+- [x] Evidence Context Builder with `{product_id}-E{counter}` traceable items, boilerplate stripping, and XML boundary protection.
+- [x] Grounded prompt engineering supporting bilingual (English / Vietnamese) product explanations.
+- [x] Post-generation Groundedness Validator enforcing product ID invariants, ordering preservation, and metadata authority.
+- [x] Deterministic metadata fallback on provider or parsing failures.
+- [x] Full offline unit test suite (16 tests, 100% passing).
+- [x] Live Groq API integration test suite (3 tests, 100% passing).
+- [x] Preliminary evaluation on 7 real catalog scenarios with token usage, latency, and cost benchmarking.
+- [x] Context builder A/B benchmark demonstrating 18.1% input token reduction.
+- [x] Comprehensive documentation (`phase12_recommendation.md`, `phase12_recommendation_contract.md`, `phase12_recommendation_evaluation.md`, `phase12_deferred_issues.md`).
+- [ ] Offline NLI entailment scoring model for automated semantic claim verification (P12-01, deferred to Phase 13–14).
+- [ ] Token streaming for conversational FastAPI/Telegram interfaces (P12-02, deferred to Phase 15–16).
+
+See [Phase 8 freeze and handover](phase8_freeze_and_handover.md), [Phase 8 technical debt](technical_debt/phase8_deferred_issues.md), [Phase 9 engineering report](phase9_soft_preference_representation.md), [Phase 11 deferred issues](technical_debt/phase11_deferred_issues.md), [Phase 12 report](phase12_recommendation.md), and [Phase 12 deferred issues](technical_debt/phase12_deferred_issues.md).
