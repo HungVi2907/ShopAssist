@@ -1,0 +1,26 @@
+{"query_id": "Q0008", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"detail": "Hybrid retrieval stopped with UNSUPPORTED_INTENT: The original query contains a negative or exclusion intent that Phase 8 v1 cannot represent safely", "method": "hybrid", "query_id": "Q0024", "reason": "RuntimeError", "stage": "capture", "status": "BLOCKED"}
+{"query_id": "Q0039", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0040", "reason": "PIPELINE_STOP:CLARIFICATION_REQUIRED", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0049", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"detail": "Hybrid retrieval stopped with UNSUPPORTED_INTENT: The original query contains a negative or exclusion intent that Phase 8 v1 cannot represent safely", "method": "hybrid", "query_id": "Q0056", "reason": "RuntimeError", "stage": "capture", "status": "BLOCKED"}
+{"query_id": "Q0059", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"detail": "Hybrid retrieval stopped with UNSUPPORTED_INTENT: The original query contains a negative or exclusion intent that Phase 8 v1 cannot represent safely", "method": "hybrid", "query_id": "Q0066", "reason": "RuntimeError", "stage": "capture", "status": "BLOCKED"}
+{"query_id": "Q0069", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0075", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0077", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0079", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0089", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0099", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"detail": "Hybrid retrieval stopped with UNSUPPORTED_INTENT: The original query contains a negative or exclusion intent that Phase 8 v1 cannot represent safely", "method": "hybrid", "query_id": "Q0106", "reason": "RuntimeError", "stage": "capture", "status": "BLOCKED"}
+{"query_id": "Q0109", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0119", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0129", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0139", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0149", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0159", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0169", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0170", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0179", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0189", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}
+{"query_id": "Q0199", "reason": "PIPELINE_STOP:UNSUPPORTED_INTENT", "stage": "capture", "status": "SKIPPED"}

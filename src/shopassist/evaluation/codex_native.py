@@ -136,6 +136,7 @@ def _refresh_native_manifest(
     dataset: Path,
     *,
     completion_status: str | None = None,
+    silver_ready: bool | None = None,
     native_updates: Mapping[str, Any] | None = None,
     unresolved_cases: Iterable[Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
@@ -144,6 +145,15 @@ def _refresh_native_manifest(
         raise ValueError("Dataset is not configured for CODEX_NATIVE_MULTI_JUDGE")
     if completion_status is not None:
         manifest["completion_status"] = completion_status
+    if silver_ready is not None:
+        manifest["silver_ready"] = silver_ready
+    elif (dataset / "validation_report_silver.json").is_file():
+        try:
+            persisted = json.loads((dataset / "validation_report_silver.json").read_text(encoding="utf-8"))
+            if isinstance(persisted, dict) and "silver_ready" in persisted:
+                manifest["silver_ready"] = bool(persisted["silver_ready"])
+        except Exception:
+            pass
     native = dict(manifest.get("codex_native") or {})
     if native_updates:
         native.update(dict(native_updates))
@@ -878,7 +888,7 @@ def prepare_native_relevance_tasks(
     dataset: Path,
     *,
     batch_size: int = 10,
-    max_pairs: int = 90,
+    max_pairs: int | None = None,
     resume: bool = False,
 ) -> dict[str, Any]:
     """Create 5--10-pair blind packets after frozen native pools exist."""
@@ -887,7 +897,7 @@ def prepare_native_relevance_tasks(
     manifest = _require_native_dataset(dataset)
     pools = _load_native_pools(dataset)
     total = sum(len(pool.get("candidates") or []) for pool in pools)
-    if total > max_pairs:
+    if max_pairs is not None and total > max_pairs:
         raise ValueError(f"Frozen native candidate pairs exceed cap: {total} > {max_pairs}")
     source = _load_unique_queries(dataset)
     audits = read_jsonl(dataset / "query_audit.jsonl")
@@ -924,7 +934,7 @@ def prepare_native_relevance_tasks(
             "relevance_task_count": len(tasks),
             "relevance_batch_size": batch_size,
             "relevance_batch_count": len(by_batch),
-            "relevance_pair_cap": max_pairs,
+            "relevance_pair_cap": max_pairs if max_pairs is not None else total,
             "relevance_task_fingerprints": {
                 f"{row['query_id']}/{row['product_id']}": row["task_fingerprint"] for row in tasks
             },

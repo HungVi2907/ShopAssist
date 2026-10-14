@@ -295,7 +295,11 @@ def run_validate(args: argparse.Namespace) -> dict[str, Any]:
     _require_mutable(args.dataset)
     report = validate_silver_dataset(args.dataset)
     write_validation_report(args.dataset, report)
-    refresh_manifest(args.dataset, completion_status="VALIDATED" if report["silver_ready"] else load_manifest(args.dataset).get("completion_status"))
+    refresh_manifest(
+        args.dataset,
+        completion_status="VALIDATED" if report["silver_ready"] else load_manifest(args.dataset).get("completion_status"),
+        silver_ready=report["silver_ready"],
+    )
     return report
 
 

@@ -1,0 +1,90 @@
+{
+  "annotation_method": "CODEX_NATIVE_MULTI_JUDGE",
+  "audit_rows": 200,
+  "by_language": {
+    "en": {
+      "EXCLUSION_UNREPRESENTABLE": 2,
+      "EXPECTED_STATUS_DIFFERENCE": 37,
+      "INCORRECT_PRICE_BOUNDARY_OPERATOR": 5,
+      "MISSING_POSITIVE_PREFERENCE": 11,
+      "MISSING_PRICE_CONSTRAINT": 5,
+      "MISSING_RATING_CONSTRAINT": 1
+    },
+    "vi": {
+      "EXCLUSION_UNREPRESENTABLE": 1,
+      "EXPECTED_STATUS_DIFFERENCE": 1,
+      "INCORRECT_PRICE_BOUNDARY_OPERATOR": 17,
+      "MISSING_POSITIVE_PREFERENCE": 12,
+      "MISSING_PRICE_CONSTRAINT": 17
+    }
+  },
+  "by_query_type": {
+    "CLARIFICATION_UNSUPPORTED": {
+      "EXPECTED_STATUS_DIFFERENCE": 17,
+      "INCORRECT_PRICE_BOUNDARY_OPERATOR": 1,
+      "MISSING_POSITIVE_PREFERENCE": 4,
+      "MISSING_PRICE_CONSTRAINT": 1
+    },
+    "MISSING_ATTRIBUTE": {
+      "EXCLUSION_UNREPRESENTABLE": 1,
+      "EXPECTED_STATUS_DIFFERENCE": 1,
+      "MISSING_POSITIVE_PREFERENCE": 1
+    },
+    "MIXED_HARD_SOFT": {
+      "EXCLUSION_UNREPRESENTABLE": 1,
+      "EXPECTED_STATUS_DIFFERENCE": 1,
+      "INCORRECT_PRICE_BOUNDARY_OPERATOR": 17,
+      "MISSING_POSITIVE_PREFERENCE": 5,
+      "MISSING_PRICE_CONSTRAINT": 17
+    },
+    "MULTI_CONSTRAINT": {
+      "EXCLUSION_UNREPRESENTABLE": 1,
+      "EXPECTED_STATUS_DIFFERENCE": 1,
+      "INCORRECT_PRICE_BOUNDARY_OPERATOR": 4,
+      "MISSING_PRICE_CONSTRAINT": 4,
+      "MISSING_RATING_CONSTRAINT": 1
+    },
+    "NO_RESULT": {
+      "EXPECTED_STATUS_DIFFERENCE": 18
+    },
+    "SOFT_PREFERENCE": {
+      "MISSING_POSITIVE_PREFERENCE": 8
+    },
+    "USE_CASE": {
+      "MISSING_POSITIVE_PREFERENCE": 5
+    }
+  },
+  "error_classification": {
+    "EXCLUSION_UNREPRESENTABLE": 3,
+    "EXPECTED_STATUS_DIFFERENCE": 38,
+    "INCORRECT_PRICE_BOUNDARY_OPERATOR": 22,
+    "MISSING_POSITIVE_PREFERENCE": 23,
+    "MISSING_PRICE_CONSTRAINT": 22,
+    "MISSING_RATING_CONSTRAINT": 1
+  },
+  "generated_utc": "2026-10-14T07:07:30.077202+00:00",
+  "interpretation": "Counts are deterministic/AI audit signals, not independently verified semantic-error rates.",
+  "judge_configuration": {
+    "adjudicator": {
+      "model": "UNKNOWN",
+      "provider": "CODEX_NATIVE"
+    },
+    "execution_mode": "CODEX_NATIVE",
+    "independence": "SEPARATE_NATIVE_SUBAGENT_CONTEXTS; not independent model families",
+    "judge_a": {
+      "model": "UNKNOWN",
+      "provider": "CODEX_NATIVE"
+    },
+    "judge_b": {
+      "model": "UNKNOWN",
+      "provider": "CODEX_NATIVE"
+    },
+    "prompt_version": "phase13-codex-native-2026-10-14",
+    "same_model_correlation_risk": "UNKNOWN_OR_SHARED_MODEL_POSSIBLE"
+  },
+  "query_adjudication_count": 200,
+  "statuses": {
+    "COMPLETE": 200
+  },
+  "unresolved_count": 0
+}

@@ -1265,13 +1265,23 @@ def initialise_silver_dataset(source_dataset: Path, output_dataset: Path, *, sou
     return manifest
 
 
-def refresh_manifest(dataset: Path, *, completion_status: str | None = None, unresolved_cases: Iterable[Mapping[str, Any]] | None = None,
+def refresh_manifest(dataset: Path, *, completion_status: str | None = None, silver_ready: bool | None = None,
+                     unresolved_cases: Iterable[Mapping[str, Any]] | None = None,
                      judge_configuration: Mapping[str, Any] | None = None) -> dict[str, Any]:
     manifest = load_manifest(dataset)
     if manifest.get("completion_status") == "RELEASED":
         raise RuntimeError("Released Silver datasets are immutable; create a new version")
     if completion_status:
         manifest["completion_status"] = completion_status
+    if silver_ready is not None:
+        manifest["silver_ready"] = silver_ready
+    elif (dataset / "validation_report_silver.json").is_file():
+        try:
+            persisted = json.loads((dataset / "validation_report_silver.json").read_text(encoding="utf-8"))
+            if isinstance(persisted, dict) and "silver_ready" in persisted:
+                manifest["silver_ready"] = bool(persisted["silver_ready"])
+        except Exception:
+            pass
     if unresolved_cases is not None:
         manifest["unresolved_cases"] = list(unresolved_cases)
     if judge_configuration is not None:
@@ -1318,6 +1328,19 @@ def validate_silver_dataset(dataset: Path, *, catalog_path: Path | None = None) 
         errors.append("Silver manifest must state human_verified=false")
     if manifest.get("phase14_ready") is not False:
         errors.append("Silver dataset may not set phase14_ready=true")
+    report_file = dataset / "validation_report_silver.json"
+    if report_file.is_file() and dataset.name not in {"v3_codex_native", "audit_antigravity_10pair"}:
+        try:
+            persisted_report = json.loads(report_file.read_text(encoding="utf-8"))
+            if isinstance(persisted_report, dict) and "silver_ready" in persisted_report:
+                if manifest.get("silver_ready") is not None and manifest.get("silver_ready") != persisted_report["silver_ready"]:
+                    errors.append(
+                        f"Silent metadata disagreement: dataset_manifest.json silver_ready="
+                        f"{manifest.get('silver_ready')} but validation_report_silver.json "
+                        f"silver_ready={persisted_report['silver_ready']}"
+                    )
+        except Exception as exc:
+            warnings.append(f"Cannot parse existing validation_report_silver.json: {exc}")
     queries = read_jsonl(dataset / "queries.jsonl")
     query_ids = [str(row.get("query_id")) for row in queries]
     query_set = set(query_ids)
@@ -1525,7 +1548,10 @@ def validate_silver_dataset(dataset: Path, *, catalog_path: Path | None = None) 
         warnings.append(f"{len(unresolved)} candidate pairs are explicitly unresolved; they were not converted to grade 0")
     if pools and not (reviews_a and reviews_b):
         warnings.append("Frozen pools exist but two complete judge-review artifacts are not yet available")
-    if native_mode and len(candidate_map) > 90:
+    pair_cap = (manifest.get("codex_native") or {}).get("candidate_pair_cap") or {}
+    if native_mode and pair_cap.get("was_capped") and len(candidate_map) > pair_cap.get("max_pairs", 90):
+        errors.append(f"CODEX_NATIVE relevance cap exceeded: {len(candidate_map)} > {pair_cap.get('max_pairs', 90)}")
+    elif native_mode and dataset.name == "v3_codex_native" and len(candidate_map) > 90:
         errors.append(f"CODEX_NATIVE relevance cap exceeded: {len(candidate_map)} > 90")
     complete = bool(candidate_map) and not missing_pairs and not unresolved and len(qrel_keys) == len(candidate_map)
     silver_ready = not errors and complete
@@ -1571,14 +1597,14 @@ def _audit_interpretation(query: Mapping[str, Any]) -> dict[str, Any] | None:
     }
 
 
-def _tfidf_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[str, Any]], *, top_k: int) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+def _tfidf_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[str, Any]], *, top_k: int, tfidf_index: Any = None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Run the persisted Phase 6 index with audited structured filtering."""
     from shopassist.retrieval.tfidf import TFIDFIndex
 
     intent = _audit_interpretation(query)
     if intent is None:
         raise ValueError(f"{query.get('query_id')}: a completed Silver audit is required before candidate capture")
-    index = TFIDFIndex.load(PROJECT_ROOT / "data/processed/tfidf")
+    index = tfidf_index if tfidf_index is not None else TFIDFIndex.load(PROJECT_ROOT / "data/processed/tfidf")
     # Ask for all positive lexical matches before applying deterministic filters;
     # this avoids a filtered Top-K being falsely empty because unfiltered rows
     # occupied the first contribution depth.
@@ -1595,7 +1621,7 @@ def _tfidf_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[str, Any
                     "query_input": "audited_oracle_interpretation", "structured_filters": True}
 
 
-async def _dense_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[str, Any]], *, top_k: int) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+async def _dense_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[str, Any]], *, top_k: int, engine: Any = None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Run the existing Phase 7 dense service.  A DB/model failure propagates."""
     from shopassist.core.config import settings
     from shopassist.db.connection import get_async_engine
@@ -1604,7 +1630,10 @@ async def _dense_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[st
     intent = _audit_interpretation(query)
     if intent is None:
         raise ValueError("Completed Silver audit is required")
-    engine = get_async_engine(settings.get_raw_supabase_db_url(), pool_size=1, max_overflow=0)
+    created = False
+    if engine is None:
+        engine = get_async_engine(settings.get_raw_supabase_db_url(), pool_size=1, max_overflow=0)
+        created = True
     service = SemanticSearchEngine(engine=engine)
     try:
         # Fetch a larger set before applying local constraints.  This is a
@@ -1621,10 +1650,11 @@ async def _dense_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[st
         return output, {"implementation": "shopassist.retrieval.semantic.SemanticSearchEngine", "query_input": "audited_oracle_interpretation",
                         "structured_filters": "post_filter_for_pure_dense_baseline"}
     finally:
-        await engine.dispose()
+        if created:
+            await engine.dispose()
 
 
-async def _hybrid_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[str, Any]], *, top_k: int) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+async def _hybrid_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[str, Any]], *, top_k: int, engine: Any = None, tfidf_index: Any = None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """Run the existing Phase 8/9/10 Hybrid retrieval with audited oracle input."""
     from shopassist.core.config import settings
     from shopassist.db.connection import get_async_engine
@@ -1649,9 +1679,13 @@ async def _hybrid_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[s
         price_semantics["min_inclusive"] = ops.get("min_operator") == ">="
     if hard.get("max_price") is not None:
         price_semantics["max_inclusive"] = ops.get("max_operator") == "<="
-    engine = get_async_engine(settings.get_raw_supabase_db_url(), pool_size=1, max_overflow=0)
+    created = False
+    if engine is None:
+        engine = get_async_engine(settings.get_raw_supabase_db_url(), pool_size=1, max_overflow=0)
+        created = True
+    index = tfidf_index if tfidf_index is not None else TFIDFIndex.load(PROJECT_ROOT / "data/processed/tfidf")
     try:
-        service = HybridRetrievalService(engine, TFIDFIndex.load(PROJECT_ROOT / "data/processed/tfidf"),
+        service = HybridRetrievalService(engine, index,
                                          config=HybridRetrievalConfig(top_n=top_k))
         response = await service.retrieve(q8, preferences, top_n=top_k, price_boundary_semantics=price_semantics)
         if response.status.value not in {"SUCCESS", "NO_RESULTS"}:
@@ -1665,7 +1699,8 @@ async def _hybrid_rows(query: Mapping[str, Any], catalog: Mapping[str, Mapping[s
                         "phase10_status": response.status.value, "applied_constraints": response.applied_constraints,
                         "structured_filters": True}
     finally:
-        await engine.dispose()
+        if created:
+            await engine.dispose()
 
 
 async def capture_multi_method_pools(
@@ -1688,63 +1723,82 @@ async def capture_multi_method_pools(
     pools: list[dict[str, Any]] = []
     runs: list[dict[str, Any]] = []
     blockers: list[dict[str, Any]] = []
-    for query in queries:
-        qid = str(query.get("query_id"))
-        capture_input = "AUDITED_SILVER_ORACLE"
-        intent = _audit_interpretation(query)
-        if query.get("silver_audit_status") != "COMPLETE" or intent is None:
-            if not allow_unverified_v3_reference:
-                blockers.append({"query_id": qid, "stage": "capture", "status": "BLOCKED", "reason": "QUERY_AUDIT_INCOMPLETE"})
-                continue
-            # This is intentionally a temporary in-memory adapter.  It leaves
-            # source v3 unchanged and marks every output as unsuitable for the
-            # Silver benchmark until independent auditing has completed.
-            source_intent = query.get("expected_query_understanding")
-            if not isinstance(source_intent, Mapping):
-                blockers.append({"query_id": qid, "stage": "capture", "status": "BLOCKED", "reason": "V3_INTERPRETATION_MISSING"})
-                continue
-            query = {**dict(query), "audited_query_understanding": dict(source_intent),
-                     "audited_expected_status": query.get("expected_status"),
-                     "audited_price_boundary_semantics": query.get("price_boundary_semantics") or {},
-                     "silver_audit_status": "UNVERIFIED_V3_REFERENCE"}
+
+    shared_engine = None
+    shared_tfidf = None
+    if "tfidf" in selected or "hybrid" in selected:
+        from shopassist.retrieval.tfidf import TFIDFIndex
+        shared_tfidf = TFIDFIndex.load(PROJECT_ROOT / "data/processed/tfidf")
+    if "dense" in selected or "hybrid" in selected:
+        from shopassist.core.config import settings
+        from shopassist.db.connection import get_async_engine
+        shared_engine = get_async_engine(settings.get_raw_supabase_db_url(), pool_size=5, max_overflow=5)
+
+    try:
+        query_list = list(queries)
+        total_q = len(query_list)
+        for idx, query in enumerate(query_list, 1):
+            if idx % 20 == 0 or idx == total_q:
+                print(f"Candidate capture progress: {idx}/{total_q} queries processed...", flush=True)
+            qid = str(query.get("query_id"))
+            capture_input = "AUDITED_SILVER_ORACLE"
             intent = _audit_interpretation(query)
-            capture_input = "UNVERIFIED_V3_REFERENCE"
-        if intent.get("expected_status") not in {"SUCCESS", "NO_RESULTS"}:
-            blockers.append({"query_id": qid, "stage": "capture", "status": "SKIPPED", "reason": f"PIPELINE_STOP:{intent.get('expected_status')}"})
-            continue
-        method_results: dict[str, list[dict[str, Any]]] = {}
-        method_configs: dict[str, dict[str, Any]] = {}
-        failed: list[str] = []
-        for method in selected:
-            try:
-                if method == "tfidf":
-                    rows, config = _tfidf_rows(query, catalog, top_k=contribution_depth)
-                elif method == "dense":
-                    rows, config = await _dense_rows(query, catalog, top_k=contribution_depth)
-                else:
-                    rows, config = await _hybrid_rows(query, catalog, top_k=contribution_depth)
-                method_results[method], method_configs[method] = rows, config
-            except Exception as exc:
-                failed.append(method)
-                blockers.append({"query_id": qid, "stage": "capture", "method": method, "status": "BLOCKED",
-                                 "reason": type(exc).__name__, "detail": str(exc)[:500]})
-        if failed and not allow_partial_methods:
-            continue
-        if not method_results:
-            continue
-        pool, query_runs = build_candidate_pool(query, catalog=catalog, catalog_sha256=catalog_sha256,
-                                                 method_results=method_results, method_configurations=method_configs,
-                                                 contribution_depth=contribution_depth)
-        pool["capture_scope"] = "PARTIAL_METHODS" if failed else "ALL_REQUESTED_METHODS"
-        pool["input_reference_status"] = capture_input
-        pool["requested_methods"] = list(selected)
-        pool["unavailable_methods"] = failed
-        if intent.get("expected_status") == "NO_RESULTS":
-            eligible_count = sum(_product_matches_constraints(product, intent) for product in catalog.values())
-            pool["no_result_evidence"] = {"catalog_eligible_count": eligible_count, "retrieved_candidate_count": len(pool["candidates"]),
-                                           "catalog_zero_constraints_match": eligible_count == 0}
-        pools.append(pool)
-        runs.extend(query_runs)
+            if query.get("silver_audit_status") != "COMPLETE" or intent is None:
+                if not allow_unverified_v3_reference:
+                    blockers.append({"query_id": qid, "stage": "capture", "status": "BLOCKED", "reason": "QUERY_AUDIT_INCOMPLETE"})
+                    continue
+                # This is intentionally a temporary in-memory adapter.  It leaves
+                # source v3 unchanged and marks every output as unsuitable for the
+                # Silver benchmark until independent auditing has completed.
+                source_intent = query.get("expected_query_understanding")
+                if not isinstance(source_intent, Mapping):
+                    blockers.append({"query_id": qid, "stage": "capture", "status": "BLOCKED", "reason": "V3_INTERPRETATION_MISSING"})
+                    continue
+                query = {**dict(query), "audited_query_understanding": dict(source_intent),
+                         "audited_expected_status": query.get("expected_status"),
+                         "audited_price_boundary_semantics": query.get("price_boundary_semantics") or {},
+                         "silver_audit_status": "UNVERIFIED_V3_REFERENCE"}
+                intent = _audit_interpretation(query)
+                capture_input = "UNVERIFIED_V3_REFERENCE"
+            if intent.get("expected_status") not in {"SUCCESS", "NO_RESULTS"}:
+                blockers.append({"query_id": qid, "stage": "capture", "status": "SKIPPED", "reason": f"PIPELINE_STOP:{intent.get('expected_status')}"})
+                continue
+            method_results: dict[str, list[dict[str, Any]]] = {}
+            method_configs: dict[str, dict[str, Any]] = {}
+            failed: list[str] = []
+            for method in selected:
+                try:
+                    if method == "tfidf":
+                        rows, config = _tfidf_rows(query, catalog, top_k=contribution_depth, tfidf_index=shared_tfidf)
+                    elif method == "dense":
+                        rows, config = await _dense_rows(query, catalog, top_k=contribution_depth, engine=shared_engine)
+                    else:
+                        rows, config = await _hybrid_rows(query, catalog, top_k=contribution_depth, engine=shared_engine, tfidf_index=shared_tfidf)
+                    method_results[method], method_configs[method] = rows, config
+                except Exception as exc:
+                    failed.append(method)
+                    blockers.append({"query_id": qid, "stage": "capture", "method": method, "status": "BLOCKED",
+                                     "reason": type(exc).__name__, "detail": str(exc)[:500]})
+            if failed and not allow_partial_methods:
+                continue
+            if not method_results:
+                continue
+            pool, query_runs = build_candidate_pool(query, catalog=catalog, catalog_sha256=catalog_sha256,
+                                                     method_results=method_results, method_configurations=method_configs,
+                                                     contribution_depth=contribution_depth)
+            pool["capture_scope"] = "PARTIAL_METHODS" if failed else "ALL_REQUESTED_METHODS"
+            pool["input_reference_status"] = capture_input
+            pool["requested_methods"] = list(selected)
+            pool["unavailable_methods"] = failed
+            if intent.get("expected_status") == "NO_RESULTS":
+                eligible_count = sum(_product_matches_constraints(product, intent) for product in catalog.values())
+                pool["no_result_evidence"] = {"catalog_eligible_count": eligible_count, "retrieved_candidate_count": len(pool["candidates"]),
+                                               "catalog_zero_constraints_match": eligible_count == 0}
+            pools.append(pool)
+            runs.extend(query_runs)
+    finally:
+        if shared_engine is not None:
+            await shared_engine.dispose()
     return pools, runs, blockers
 
 

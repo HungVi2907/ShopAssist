@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import collections
 import inspect
 import json
 import tempfile
@@ -549,6 +550,123 @@ class CodexNativeWorkflowTests(unittest.TestCase):
         self.assertEqual(report["metrics"]["total_pairs_compared"], 10)
         self.assertEqual(report["metrics"]["exact_matches"], 10)
         self.assertEqual(report["metrics"]["exact_agreement_rate"], 1.0)
+
+    def test_metadata_consistency_and_silent_disagreement_detection(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            dataset = Path(temporary) / "silver_test"
+            silver_module.initialise_silver_dataset(PROJECT_ROOT / "data/evaluation/phase13/v3", dataset, source_git_commit="fixture")
+            manifest_path = dataset / "dataset_manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            self.assertFalse(manifest["silver_ready"])
+
+            # Test 1: refresh_manifest explicitly synchronizes silver_ready
+            silver_module.refresh_manifest(dataset, silver_ready=True)
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            self.assertTrue(manifest["silver_ready"])
+
+            # Test 2: validation_report_silver.json on disk with differing silver_ready is rejected as metadata inconsistency
+            report_path = dataset / "validation_report_silver.json"
+            report_path.write_text(json.dumps({"silver_ready": False}), encoding="utf-8")
+            # Refresh hash so artifact hash itself matches, but content disagrees
+            silver_module.refresh_manifest(dataset, silver_ready=True)
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["silver_ready"] = True
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+            validation = silver_module.validate_silver_dataset(dataset)
+            disagreements = [e for e in validation["errors"] if "Silent metadata disagreement" in e]
+            self.assertTrue(disagreements, "Validator must detect when manifest.silver_ready differs from validation_report_silver.silver_ready")
+
+            # Test 3: Auto-sync from validation_report_silver.json when silver_ready is not explicitly provided
+            report_path.write_text(json.dumps({"silver_ready": True}), encoding="utf-8")
+            silver_module.refresh_manifest(dataset)
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            self.assertTrue(manifest["silver_ready"])
+
+    def test_v4_full_silver_integrity_and_frozen_splits(self):
+        v4_dir = PROJECT_ROOT / "data/evaluation/phase13/ai_silver/v4_full_silver"
+        self.assertTrue(v4_dir.is_dir(), "v4_full_silver dataset must exist")
+
+        validation = silver_module.validate_silver_dataset(v4_dir)
+        self.assertEqual(validation["status"], "PASS")
+        self.assertEqual(validation["errors"], [])
+        self.assertEqual(validation["warnings"], [])
+        self.assertTrue(validation["silver_ready"])
+        self.assertFalse(validation["phase14_ready"])
+
+        stats = validation["statistics"]
+        self.assertEqual(stats["queries"], 200)
+        self.assertEqual(stats["query_audits"], 200)
+        self.assertEqual(stats["frozen_pools"], 174)
+        self.assertEqual(stats["frozen_candidate_pairs"], 2400)
+        self.assertEqual(stats["judge_a_reviews"], 2400)
+        self.assertEqual(stats["judge_b_reviews"], 2400)
+        self.assertEqual(stats["adjudications"], 2400)
+        self.assertEqual(stats["qrels"], 2400)
+        self.assertEqual(stats["generation_snapshots"], 0)
+        self.assertEqual(stats["unresolved"], 0)
+
+        # Frozen split leakage verification
+        splits_path = v4_dir / "splits.json"
+        self.assertTrue(splits_path.is_file(), "splits.json must exist")
+        splits = json.loads(splits_path.read_text(encoding="utf-8"))
+        self.assertEqual(splits["status"], "FROZEN")
+        self.assertEqual(len(splits["development"]), 140)
+        self.assertEqual(len(splits["held_out"]), 60)
+        self.assertEqual(splits["leakage_checks"]["intent_groups_crossing_partitions"], [])
+        self.assertEqual(splits["leakage_checks"]["exact_duplicate_cross_partition"], [])
+
+        # Human calibration sample export
+        calib_path = v4_dir / "human_calibration_sample.jsonl"
+        self.assertTrue(calib_path.is_file(), "human_calibration_sample.jsonl must exist")
+        calib_rows = silver_module.read_jsonl(calib_path)
+        self.assertEqual(len(calib_rows), 40)
+        for row in calib_rows:
+            self.assertIsNone(row["human_adjudication"]["human_grade"])
+            self.assertIsNone(row["human_adjudication"]["reviewer_id"])
+
+        # Grade 3 existence & hard violation capping
+        qrels = silver_module.read_csv_rows(v4_dir / "qrels_silver.csv")
+        grade_counts = collections.Counter(int(r["relevance_grade"]) for r in qrels)
+        self.assertGreater(grade_counts[3], 0, "Expanded benchmark must contain genuine Grade 3 relevance labels")
+        self.assertGreater(grade_counts[2], 0)
+        self.assertGreater(grade_counts[1], 0)
+
+        # Manifest metadata synchronization
+        manifest = json.loads((v4_dir / "dataset_manifest.json").read_text(encoding="utf-8"))
+        self.assertTrue(manifest["silver_ready"])
+        self.assertFalse(manifest["phase14_ready"])
+        self.assertTrue(manifest["codex_native"]["split_frozen"])
+        self.assertEqual(manifest["codex_native"]["human_calibration_status"], "PENDING")
+        self.assertFalse(manifest["codex_native"]["generation_silver_complete"])
+        self.assertFalse(manifest["codex_native"]["silver_benchmark_complete"])
+
+    def test_hard_violations_distinguished_from_missing_soft_preference(self):
+        intent = {
+            "hard_constraints": {"category": "Footwear", "brand": None, "min_price": None, "max_price": 2000.0, "min_rating": None, "currency": "INR"},
+            "price_boundary_semantics": {"max_operator": "<"},
+            "soft_preferences": ["breathable mesh", "wet weather traction"],
+        }
+        # Case A: Missing soft preference is unknown/missing evidence, not a hard violation
+        product_a = {
+            "category": "Footwear",
+            "discounted_price": 1500.0,
+            "rating": 4.5,
+            "product_name": "Running Shoe",
+        }
+        flags_a, missing_a = silver_module.deterministic_violations(intent, product_a)
+        self.assertFalse(any(flags_a.values()), "Missing soft preference must not trigger hard constraint violation")
+
+        # Case B: Price boundary violation strictly triggers price_violation
+        product_b = {
+            "category": "Footwear",
+            "discounted_price": 2500.0,
+            "rating": 4.5,
+            "product_name": "Running Shoe",
+        }
+        flags_b, missing_b = silver_module.deterministic_violations(intent, product_b)
+        self.assertTrue(flags_b["price_violation"])
+
 
 
 if __name__ == "__main__":

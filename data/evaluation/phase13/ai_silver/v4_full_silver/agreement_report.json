@@ -1,0 +1,155 @@
+{
+  "annotation_method": "CODEX_NATIVE_MULTI_JUDGE",
+  "by_language": {
+    "en": {
+      "exact_agreement": 0.830587,
+      "pairs": 1942,
+      "quadratic_weighted_kappa": 0.826441
+    },
+    "vi": {
+      "exact_agreement": 0.943231,
+      "pairs": 458,
+      "quadratic_weighted_kappa": 0.672046
+    }
+  },
+  "by_product_category": {
+    "Automotive": {
+      "exact_agreement": 0.927536,
+      "pairs": 138,
+      "quadratic_weighted_kappa": 0.92491
+    },
+    "Baby Care": {
+      "exact_agreement": 0.848837,
+      "pairs": 172,
+      "quadratic_weighted_kappa": 0.603053
+    },
+    "Bags, Wallets & Belts": {
+      "exact_agreement": 0.896296,
+      "pairs": 135,
+      "quadratic_weighted_kappa": 0.889409
+    },
+    "Cameras & Accessories": {
+      "exact_agreement": 0.777778,
+      "pairs": 144,
+      "quadratic_weighted_kappa": 0.704312
+    },
+    "Computers": {
+      "exact_agreement": 0.884848,
+      "pairs": 165,
+      "quadratic_weighted_kappa": 0.693279
+    },
+    "Footwear": {
+      "exact_agreement": 0.907767,
+      "pairs": 206,
+      "quadratic_weighted_kappa": 0.923695
+    },
+    "Furniture": {
+      "exact_agreement": 0.835938,
+      "pairs": 128,
+      "quadratic_weighted_kappa": 0.799582
+    },
+    "Home Decor & Festive Needs": {
+      "exact_agreement": 0.803279,
+      "pairs": 122,
+      "quadratic_weighted_kappa": 0.79868
+    },
+    "Home Furnishing": {
+      "exact_agreement": 0.677632,
+      "pairs": 152,
+      "quadratic_weighted_kappa": 0.700547
+    },
+    "Home Improvement": {
+      "exact_agreement": 1.0,
+      "pairs": 126,
+      "quadratic_weighted_kappa": 1.0
+    },
+    "Kitchen & Dining": {
+      "exact_agreement": 0.76129,
+      "pairs": 155,
+      "quadratic_weighted_kappa": 0.719107
+    },
+    "Mobiles & Accessories": {
+      "exact_agreement": 0.890411,
+      "pairs": 146,
+      "quadratic_weighted_kappa": 0.855428
+    },
+    "Pens & Stationery": {
+      "exact_agreement": 0.881356,
+      "pairs": 177,
+      "quadratic_weighted_kappa": 0.896048
+    },
+    "Sports & Fitness": {
+      "exact_agreement": 0.943662,
+      "pairs": 142,
+      "quadratic_weighted_kappa": 0.800562
+    },
+    "Tools & Hardware": {
+      "exact_agreement": 0.990476,
+      "pairs": 105,
+      "quadratic_weighted_kappa": 0.973384
+    },
+    "Watches": {
+      "exact_agreement": 0.68984,
+      "pairs": 187,
+      "quadratic_weighted_kappa": 0.69736
+    }
+  },
+  "by_query_type": {
+    "DIFFICULT_SEMANTIC": {
+      "exact_agreement": 0.895582,
+      "pairs": 249,
+      "quadratic_weighted_kappa": 0.83305
+    },
+    "MISSING_ATTRIBUTE": {
+      "exact_agreement": 0.892744,
+      "pairs": 317,
+      "quadratic_weighted_kappa": 0.852449
+    },
+    "MIXED_HARD_SOFT": {
+      "exact_agreement": 0.875862,
+      "pairs": 290,
+      "quadratic_weighted_kappa": 0.820896
+    },
+    "MULTI_CONSTRAINT": {
+      "exact_agreement": 0.865809,
+      "pairs": 544,
+      "quadratic_weighted_kappa": 0.83174
+    },
+    "SIMPLE_CONSTRAINT": {
+      "exact_agreement": 0.564565,
+      "pairs": 333,
+      "quadratic_weighted_kappa": 0.677965
+    },
+    "SOFT_PREFERENCE": {
+      "exact_agreement": 0.95057,
+      "pairs": 263,
+      "quadratic_weighted_kappa": 0.816351
+    },
+    "USE_CASE": {
+      "exact_agreement": 0.930693,
+      "pairs": 404,
+      "quadratic_weighted_kappa": 0.906722
+    }
+  },
+  "constraint_violation_rate": 0.010417,
+  "disagreement_count": 355,
+  "disagreement_rate": 0.147917,
+  "exact_grade_agreement": 0.852083,
+  "grade_distribution_a": {
+    "0": 20,
+    "1": 1389,
+    "2": 847,
+    "3": 144
+  },
+  "grade_distribution_b": {
+    "0": 20,
+    "1": 1600,
+    "2": 492,
+    "3": 288
+  },
+  "interpretation": "Agreement measures consistency between AI calls; it is not proof of relevance-label correctness.",
+  "known_limitation": "Agreement reflects separate native executions, not independent model families or human verification.",
+  "pair_count": 2400,
+  "quadratic_weighted_kappa": 0.833586,
+  "unresolved_cases": []
+}
