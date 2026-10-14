@@ -12,8 +12,24 @@
 | 10 | **PASS — OFFLINE COMPONENT SCOPE** | Phase 10 tests **21/21 passed**; offline regression **405 passed, 14 live/integration tests deselected**. No Phase 10 live DB or catalog-quality evaluation. Phase 8 v1 price bounds require separately verified strict/inclusive metadata; otherwise the query stops as unsupported. See [Phase 10 report](phase10_hybrid_retrieval.md). |
 | 11 | **VALIDATED FOR PROTOTYPE — REAL INFERENCE & LIVE INTEGRATION VERIFIED** | Pinned Cross-Encoder downloaded (`1b5cd67b15209f24824c50370e0397743aa9b787`), CPU inference/token truncation/latencies benchmarked, Phase 10 live DB integration verified (53/53 tests pass). RRF remains default; 40-query independent evaluation deferred to Phase 13–14. See [Phase 11 report](phase11_reranking.md). |
 | 12 | **VALIDATED FOR PROTOTYPE — OPENROUTER GEMMA 4 MIGRATION & GROUNDING VERIFIED** | OpenRouter migration complete (`google/gemma-4-26b-a4b-it:free` by default, standard route and Groq preserved); live API authentication and JSON schema verified; 100% groundedness pass rate across 7 catalog scenarios; zero cross-product hallucinations; token/latency/cost measured; deterministic fallbacks verified under upstream rate limits; all repository regression tests passing. See [Phase 12 report](phase12_recommendation.md). |
-| 13 | **AI-SILVER BENCHMARK FROZEN — QUERY & RETRIEVAL COMPLETE; GENERATION BLOCKED** | Complete 200-query AI-Silver evaluation benchmark released at `data/evaluation/phase13/ai_silver/v4_full_silver/`. 200 dual-agent query audits completed and adjudicated (160 SUCCESS, 21 UNSUPPORTED, 18 NO_RESULTS, 1 CLARIFICATION_REQUIRED, 0 unresolved). 174 multi-method candidate pools frozen (TF-IDF, dense, hybrid at contribution depth 10) covering 2,400 query-product pairs. 4,800 native relevance reviews (2,400 Judge A, 2,400 Judge B) with 85.21% exact agreement, quadratic kappa 0.8336, 355 disagreements adjudicated, and 2,400 Silver qrels generated (144 Grade 3, 847 Grade 2, 1,389 Grade 1, 20 Grade 0; 0 hard-constraint violations >= Grade 2). 70/30 grouped development/held-out split frozen (140 dev, 60 held-out, 0 leakage). 40-pair stratified human calibration sample exported (`human_calibration_status = PENDING`). Generation quality evaluation honestly marked incomplete/blocked by 50 missing authentic Phase 12 interaction snapshots (`generation_silver_complete = false`, `silver_benchmark_complete = false`). Full test suite: 524 tests passed, 23 Phase 13 tests passed. `phase14_ready = false` preserved by design. See [Phase 13 Silver Benchmark Report](phase13_silver_benchmark_report.md). |
-| 14–17 | Not started | System evaluation, API, Telegram and deployment follow roadmap. |
+| 14 | **AI ENGINEERING EXPERIMENTAL EVALUATION COMPLETE — EDUCATIONAL SCOPE** | AI-Silver v4 validated (0 errors, 0 warnings); Baseline Retrieval (TF-IDF, Dense, Hybrid RRF) evaluated across All (174 pools), Dev (140), and Held-Out (60); Hybrid achieves nDCG@5 = 0.9067; Phase 11 Reranking (RRF vs Multi-Signal vs CPU Cross-Encoder) benchmarked; RAG Trace Q0001 generated; LLM-as-a-Judge rubric & live Gemini execution verified (Decision=PASS, Groundedness=4/5); 11/11 Phase 14 unit tests passed; Comprehensive 10-lesson Vietnamese AI Engineering curriculum authored in `docs/learning/`. Human Gold evaluation explicitly superseded by educational scope. `phase14_learning_status = COMPLETE`. See [Phase 14 Evaluation Report](phase14_evaluation_report.md). |
+| 15–17 | Planned | FastAPI backend, Telegram Chatbot and Docker deployment follow roadmap. |
+
+## Current Phase 14 checklist
+
+- [x] Validate immutable AI-Silver v4 benchmark (`data/evaluation/phase13/ai_silver/v4_full_silver/`): PASS (0 errors, 0 warnings).
+- [x] Implement mathematically rigorous ranking metrics with rank preservation, pool universe IDCG, and incomplete judgment handling (`src/shopassist/evaluation/phase14_metrics.py`).
+- [x] Baseline retrieval evaluation: TF-IDF, Dense, and Hybrid RRF across All (174 pools), Development (140), and Held-Out (60) splits.
+- [x] Reranking evaluation: benchmark RRF Pass-through, Multi-Signal, and pinned CPU Cross-Encoder (`ms-marco-MiniLM-L2-v2`).
+- [x] Structured retrieval analysis: verify 100% hard constraint satisfaction rate using SQL pre-filtering in pgvector.
+- [x] Traceable RAG pipeline demonstration (Q0001): end-to-end provenance across Phase 8 -> 9 -> 10 -> 11 -> 12.
+- [x] LLM-as-a-Judge evaluation framework: 5-criteria rubric, deterministic validation separation, structured Pydantic JSON schema.
+- [x] Live LLM Judge execution verified using `gemini-3.1-flash-lite` (Decision=PASS, Groundedness=4/5).
+- [x] Comprehensive unit tests authored: 11/11 passed with 100% coverage of metrics, constraints, RAG trace, and judge.
+- [x] Versioned machine-readable artifacts and SHA-256 manifest exported under `data/evaluation/phase14/v1/`.
+- [x] Comprehensive evaluation report authored under `docs/phase14_evaluation_report.md`.
+- [x] Complete 10-lesson Vietnamese AI Engineering learning curriculum authored under `docs/learning/`.
+- [x] Set official educational status: `phase14_learning_status = COMPLETE`.
 
 ## Current Phase 9 checklist
 

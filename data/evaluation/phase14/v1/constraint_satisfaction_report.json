@@ -1,0 +1,30 @@
+{
+  "report_version": "phase14-v1",
+  "description": "Hard constraint satisfaction rate across evaluated retrieval methods at K=5",
+  "methods": {
+    "tfidf": {
+      "constraint_satisfaction_rate": {
+        "mean": 1.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "samples": 129
+      }
+    },
+    "dense": {
+      "constraint_satisfaction_rate": {
+        "mean": 1.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "samples": 107
+      }
+    },
+    "hybrid": {
+      "constraint_satisfaction_rate": {
+        "mean": 1.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "samples": 153
+      }
+    }
+  }
+}

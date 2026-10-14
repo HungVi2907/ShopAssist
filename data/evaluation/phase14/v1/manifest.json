@@ -1,0 +1,16 @@
+{
+  "evaluation_release": "phase14_v1",
+  "created_at_utc": "2026-10-14T09:17:16.894181+00:00",
+  "phase14_learning_status": "COMPLETE",
+  "benchmark_source": "D:\\Project\\ShopAssist\\data\\evaluation\\phase13\\ai_silver\\v4_full_silver",
+  "seed": 14014,
+  "files": {
+    "retrieval_evaluation_summary.json": "b2687cfa5cf011a1e43237885ead4febd09e6f7b5d81704b3a03088a8803c720",
+    "per_query_metrics.jsonl": "7addc650ee4c80bde16049284c431ea9aedc48687b2c96247d01312c5c136ade",
+    "constraint_satisfaction_report.json": "7ee582a9bb6aa51bec7e51c9cc3fcde38bd56c1c851601459e27f522ac004249",
+    "rag_trace_demonstration.json": "4056747e82e570d2b74fbb4b293b3c86e46556780984ad017a0bcb573cf68a59",
+    "llm_judge_evaluation.json": "ca5b597d87da1b42dd18843d2bfca15a0b193f2e959cf1cfc6e842a9f9e060d3",
+    "reranking_evaluation_summary.json": "d02825acef6265430221fd31704901ab3f356a3bde441d35089db0efef4b805a"
+  },
+  "notes": "Educational AI Engineering benchmark evaluation completed without requiring human gold annotations."
+}

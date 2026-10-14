@@ -6,13 +6,13 @@
   "measurement": "Warm service wall time per candidate set; excludes Phase 10 retrieval and BGE query encoding.",
   "methods": {
     "RRF": {
-      "median_ms_mean_across_queries": 0.0965249964792747
+      "median_ms_mean_across_queries": 0.12929999866173603
     },
     "MULTI_SIGNAL": {
-      "median_ms_mean_across_queries": 0.0736499969207216
+      "median_ms_mean_across_queries": 0.12707500081887702
     },
     "CROSS_ENCODER": {
-      "median_ms_mean_across_queries": 75.98672499807435
+      "median_ms_mean_across_queries": 82.43079999920155
     }
   },
   "cross_encoder": {
@@ -21,7 +21,7 @@
     "repository": "cross-encoder/ms-marco-MiniLM-L2-v2",
     "revision": "1b5cd67b15209f24824c50370e0397743aa9b787",
     "device": "cpu",
-    "load_time_ms": 53.899100006674416
+    "load_time_ms": 88.71740000176942
   },
   "runtime": {
     "python": "3.10.11",

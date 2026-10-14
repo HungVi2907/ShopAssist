@@ -1,0 +1,19 @@
+{
+  "judge_provider": "gemini",
+  "judge_model": "gemini-3.1-flash-lite",
+  "prompt_version": "phase14-judge-prompt-v1.0",
+  "rubric_version": "phase14-rubric-v1.0",
+  "execution_mode": "LIVE_API",
+  "latency_ms": 1496.34,
+  "groundedness_score": 4,
+  "factual_correctness_score": 5,
+  "query_relevance_score": 5,
+  "citation_support_score": 5,
+  "missing_info_handling_score": 5,
+  "overall_decision": "PASS",
+  "evidence_supported": true,
+  "unsupported_claims": [
+    "designed specifically for jogging"
+  ],
+  "critique": "The recommendation is highly accurate and relevant to the user's request. The only minor issue is the claim that the shoes are 'designed specifically for jogging,' whereas the evidence states they are for 'running,' which is a minor semantic deviation."
+}

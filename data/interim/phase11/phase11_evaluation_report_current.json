@@ -42,19 +42,19 @@
       "ndcg@5": 0.9605202300026037,
       "mrr": 0.875,
       "precision@5": 0.9,
-      "reranking_latency_median_ms_25_warm": 0.0965249964792747
+      "reranking_latency_median_ms_25_warm": 0.12929999866173603
     },
     "MULTI_SIGNAL": {
       "ndcg@5": 0.9894586927454222,
       "mrr": 1.0,
       "precision@5": 0.85,
-      "reranking_latency_median_ms_25_warm": 0.0736499969207216
+      "reranking_latency_median_ms_25_warm": 0.12707500081887702
     },
     "CROSS_ENCODER": {
       "ndcg@5": 0.9284030207730101,
       "mrr": 0.8333333333333334,
       "precision@5": 0.85,
-      "reranking_latency_median_ms_25_warm": 75.98672499807435
+      "reranking_latency_median_ms_25_warm": 82.43079999920155
     }
   },
   "per_query": [
@@ -91,7 +91,7 @@
             "ndcg@5": 1.0,
             "mrr": 1.0,
             "precision@5": 1.0,
-            "reranking_latency_median_ms_25_warm": 0.13949999993201345
+            "reranking_latency_median_ms_25_warm": 0.158200000441866
           }
         },
         "MULTI_SIGNAL": {
@@ -123,7 +123,7 @@
             "ndcg@5": 1.0,
             "mrr": 1.0,
             "precision@5": 1.0,
-            "reranking_latency_median_ms_25_warm": 0.07509998977184296
+            "reranking_latency_median_ms_25_warm": 0.1416000013705343
           }
         },
         "CROSS_ENCODER": {
@@ -160,7 +160,7 @@
             "ndcg@5": 1.0,
             "mrr": 1.0,
             "precision@5": 1.0,
-            "reranking_latency_median_ms_25_warm": 34.150399995269254
+            "reranking_latency_median_ms_25_warm": 38.30089999974007
           }
         }
       }
@@ -198,7 +198,7 @@
             "ndcg@5": 0.8420809200104147,
             "mrr": 0.5,
             "precision@5": 0.6,
-            "reranking_latency_median_ms_25_warm": 0.07369999366346747
+            "reranking_latency_median_ms_25_warm": 0.06939999730093405
           }
         },
         "MULTI_SIGNAL": {
@@ -230,7 +230,7 @@
             "ndcg@5": 0.9578347709816888,
             "mrr": 1.0,
             "precision@5": 0.4,
-            "reranking_latency_median_ms_25_warm": 0.07110000296961516
+            "reranking_latency_median_ms_25_warm": 0.07499999992433004
           }
         },
         "CROSS_ENCODER": {
@@ -267,7 +267,7 @@
             "ndcg@5": 0.7743787950430012,
             "mrr": 0.3333333333333333,
             "precision@5": 0.6,
-            "reranking_latency_median_ms_25_warm": 84.61809999425896
+            "reranking_latency_median_ms_25_warm": 93.52039999794215
           }
         }
       }
@@ -305,7 +305,7 @@
             "ndcg@5": 1.0,
             "mrr": 1.0,
             "precision@5": 1.0,
-            "reranking_latency_median_ms_25_warm": 0.06690000009257346
+            "reranking_latency_median_ms_25_warm": 0.14559999908669852
           }
         },
         "MULTI_SIGNAL": {
@@ -337,7 +337,7 @@
             "ndcg@5": 1.0,
             "mrr": 1.0,
             "precision@5": 1.0,
-            "reranking_latency_median_ms_25_warm": 0.07270000060088933
+            "reranking_latency_median_ms_25_warm": 0.15420000272570178
           }
         },
         "CROSS_ENCODER": {
@@ -374,7 +374,7 @@
             "ndcg@5": 0.9762940786437024,
             "mrr": 1.0,
             "precision@5": 1.0,
-            "reranking_latency_median_ms_25_warm": 104.26009999355301
+            "reranking_latency_median_ms_25_warm": 107.42029999892111
           }
         }
       }
@@ -412,7 +412,7 @@
             "ndcg@5": 1.0,
             "mrr": 1.0,
             "precision@5": 1.0,
-            "reranking_latency_median_ms_25_warm": 0.10599999222904444
+            "reranking_latency_median_ms_25_warm": 0.14399999781744555
           }
         },
         "MULTI_SIGNAL": {
@@ -444,7 +444,7 @@
             "ndcg@5": 1.0,
             "mrr": 1.0,
             "precision@5": 1.0,
-            "reranking_latency_median_ms_25_warm": 0.07569999434053898
+            "reranking_latency_median_ms_25_warm": 0.13749999925494194
           }
         },
         "CROSS_ENCODER": {
@@ -481,7 +481,7 @@
             "ndcg@5": 0.9629392094053364,
             "mrr": 1.0,
             "precision@5": 0.8,
-            "reranking_latency_median_ms_25_warm": 80.91830000921618
+            "reranking_latency_median_ms_25_warm": 90.48160000020289
           }
         }
       }
@@ -493,7 +493,7 @@
     "repository": "cross-encoder/ms-marco-MiniLM-L2-v2",
     "revision": "1b5cd67b15209f24824c50370e0397743aa9b787",
     "device": "cpu",
-    "load_time_ms": 53.899100006674416
+    "load_time_ms": 88.71740000176942
   },
   "combined": {
     "status": "NOT_RUN",

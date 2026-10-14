@@ -1,0 +1,163 @@
+{
+  "cross_encoder_status": "LOADED_LOCAL_CPU",
+  "cases_evaluated": 4,
+  "k": 5,
+  "methods": {
+    "RRF": {
+      "metrics": {
+        "k": 5,
+        "query_count": 4,
+        "total_returned": 20,
+        "total_judged": 20,
+        "judgment_coverage": 1.0,
+        "precision_judged": {
+          "mean": 0.9,
+          "ci_lower": 0.7,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "precision_conservative": {
+          "mean": 0.9,
+          "ci_lower": 0.7,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "mrr": {
+          "mean": 0.875,
+          "ci_lower": 0.625,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "ndcg": {
+          "mean": 0.915497,
+          "ci_lower": 0.814165,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "pool_conditional_recall": {
+          "mean": 0.590278,
+          "ci_lower": 0.513889,
+          "ci_upper": 0.701389,
+          "samples": 4
+        },
+        "constraint_satisfaction_rate": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "samples": 4
+        }
+      },
+      "latency_ms": {
+        "mean": 0.26095,
+        "ci_lower": 0.1711,
+        "ci_upper": 0.35565,
+        "samples": 4
+      },
+      "mean_rank_shift_sum": 0
+    },
+    "MULTI_SIGNAL": {
+      "metrics": {
+        "k": 5,
+        "query_count": 4,
+        "total_returned": 20,
+        "total_judged": 20,
+        "judgment_coverage": 1.0,
+        "precision_judged": {
+          "mean": 0.85,
+          "ci_lower": 0.55,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "precision_conservative": {
+          "mean": 0.85,
+          "ci_lower": 0.55,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "mrr": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "ndcg": {
+          "mean": 0.934239,
+          "ci_lower": 0.802716,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "pool_conditional_recall": {
+          "mean": 0.527778,
+          "ci_lower": 0.5,
+          "ci_upper": 0.555556,
+          "samples": 4
+        },
+        "constraint_satisfaction_rate": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "samples": 4
+        }
+      },
+      "latency_ms": {
+        "mean": 0.156175,
+        "ci_lower": 0.1103,
+        "ci_upper": 0.182175,
+        "samples": 4
+      },
+      "mean_rank_shift_sum": 3
+    },
+    "CROSS_ENCODER": {
+      "metrics": {
+        "k": 5,
+        "query_count": 4,
+        "total_returned": 20,
+        "total_judged": 20,
+        "judgment_coverage": 1.0,
+        "precision_judged": {
+          "mean": 0.85,
+          "ci_lower": 0.7,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "precision_conservative": {
+          "mean": 0.85,
+          "ci_lower": 0.7,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "mrr": {
+          "mean": 0.833333,
+          "ci_lower": 0.5,
+          "ci_upper": 1.0,
+          "samples": 4
+        },
+        "ndcg": {
+          "mean": 0.862371,
+          "ci_lower": 0.744581,
+          "ci_upper": 0.963661,
+          "samples": 4
+        },
+        "pool_conditional_recall": {
+          "mean": 0.5625,
+          "ci_lower": 0.472222,
+          "ci_upper": 0.6875,
+          "samples": 4
+        },
+        "constraint_satisfaction_rate": {
+          "mean": 1.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "samples": 4
+        }
+      },
+      "latency_ms": {
+        "mean": 545.660225,
+        "ci_lower": 108.41615,
+        "ci_upper": 1401.587525,
+        "samples": 4
+      },
+      "mean_rank_shift_sum": 12
+    }
+  }
+}
