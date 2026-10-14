@@ -193,3 +193,16 @@ def create_app(settings: APISettings | None = None) -> FastAPI:
 
 # Module-level ASGI app for uvicorn
 app = create_app()
+
+
+def main() -> None:
+    """CLI entry point ensuring proper event loop policy on Windows."""
+    import uvicorn
+    ensure_windows_event_loop_policy()
+    cfg = get_api_settings()
+    loop_arg = "asyncio:SelectorEventLoop" if sys.platform == "win32" else "asyncio"
+    uvicorn.run("shopassist.api.main:app", host=cfg.api_host, port=cfg.api_port, loop=loop_arg)
+
+
+if __name__ == "__main__":
+    main()

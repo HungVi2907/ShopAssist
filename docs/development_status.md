@@ -145,5 +145,33 @@ flowchart LR
 - [ ] Capture 50 authentic Phase 12 recommendation interaction transcripts when production API is authorized (unblocks `generation_silver_complete`).
 - [ ] Complete human calibration review on 40-pair sample (P13-HUMAN-CALIB).
 
-See [Phase 8 freeze and handover](phase8_freeze_and_handover.md), [Phase 8 technical debt](technical_debt/phase8_deferred_issues.md), [Phase 9 engineering report](phase9_soft_preference_representation.md), [Phase 11 deferred issues](technical_debt/phase11_deferred_issues.md), [Phase 12 report](phase12_recommendation.md), [Phase 12 deferred issues](technical_debt/phase12_deferred_issues.md), [Phase 13 Pilot Audit](phase13_pilot_quality_audit.md), and [Phase 13 Silver Benchmark Report](phase13_silver_benchmark_report.md).
+## Phase 15 checklist (FastAPI Backend & AI Orchestration)
+
+- [x] Lifespan management for shared singletons: PostgreSQL async engine, TF-IDF index, DenseQueryEncoder, ProductTextProvider.
+- [x] Central RecommendationOrchestrator coordinating Phase 8 -> 9 -> 10 -> 11 -> 12 with short-circuiting.
+- [x] PriceBoundaryAdapter enforcing explicit price operator semantics (under, up to, between).
+- [x] Public Pydantic v2 schemas: RecommendationRequest, RecommendationResponse, HealthResponse.
+- [x] In-memory session tracking with TTL eviction and bounded turns.
+- [x] Health check probes (`GET /api/v1/health` and `GET /api/v1/health/live`).
+- [x] Automated unit and mocked integration tests (90 tests passing).
+- [x] Comprehensive documentation (`phase15_fastapi_backend.md`, `phase15_api_contract.md`, `phase15_integration_report.md`, `phase15_deferred_issues.md`).
+
+## Phase 16 checklist (Telegram Bot Integration)
+
+- [x] Standalone `shopassist.bot` package adhering to strict architectural boundaries (presentation only, no direct AI/DB).
+- [x] Environment configuration (`BotSettings`) with token syntax validation and secret masking (`masked_token`).
+- [x] Asynchronous HTTP client (`FastAPIRecommendationClient`) using `httpx.AsyncClient` with connection pooling and timeout alignment (95s client timeout vs 90s backend timeout).
+- [x] Pydantic response validation against `RecommendationResponse` with typed error handling.
+- [x] Telegram HTML product card formatting with strict HTML escaping, INR pricing (`₹`), star ratings, verified claims, and citations.
+- [x] Authoritative Flipkart URL and high-res image propagation via backend catalog lookup with automatic text fallback on delivery failure.
+- [x] Long Polling transport for local development with duplicate conflict detection.
+- [x] Commands implemented: `/start` (welcome & examples), `/help` (search guide & rules), `/reset` (session rotation).
+- [x] Background typing indicator (`ChatAction.TYPING`) active during backend processing window.
+- [x] Session isolation across chats and per-chat `asyncio.Lock` preventing concurrent request collisions.
+- [x] 58 automated unit and mocked integration tests passing (150 total tests in test suite).
+- [x] Live runtime verification of Telegram Bot authentication (`getMe`: `ShopAssistProject_bot`), backend readiness (`GET /api/v1/health`: 200 OK), and end-to-end client recommendation call.
+- [x] Comprehensive documentation (`phase16_preimplementation_audit.md`, `phase16_telegram_bot.md`, `phase16_integration_report.md`, `phase16_deferred_issues.md`, `docs/learning/12_telegram_bot_integration.md`).
+- [ ] End-to-end live user chat interaction via Telegram client (status: `IMPLEMENTED_PENDING_LIVE_VALIDATION`).
+
+See [Phase 8 freeze and handover](phase8_freeze_and_handover.md), [Phase 8 technical debt](technical_debt/phase8_deferred_issues.md), [Phase 9 engineering report](phase9_soft_preference_representation.md), [Phase 11 deferred issues](technical_debt/phase11_deferred_issues.md), [Phase 12 report](phase12_recommendation.md), [Phase 12 deferred issues](technical_debt/phase12_deferred_issues.md), [Phase 13 Pilot Audit](phase13_pilot_quality_audit.md), [Phase 13 Silver Benchmark Report](phase13_silver_benchmark_report.md), [Phase 15 Backend Documentation](phase15_fastapi_backend.md), and [Phase 16 Telegram Bot Documentation](phase16_telegram_bot.md).
 

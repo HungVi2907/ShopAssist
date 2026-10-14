@@ -8,9 +8,11 @@ P10 (Hybrid Retrieval) -> P11 (Reranking) -> P12 (Grounded Generation) -> Public
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
 import time
 from typing import Any
+from urllib.parse import urlparse
 
 from shopassist.api.config import APISettings, get_api_settings
 from shopassist.api.price_adapter import PriceBoundaryAdapter
@@ -34,6 +36,38 @@ from shopassist.reranking.core import RerankingMethod, RerankingService, Reranki
 from shopassist.retrieval.hybrid import HybridRetrievalService, HybridRetrievalStatus
 
 logger = logging.getLogger(__name__)
+
+
+def _sanitize_url(url: Any) -> str | None:
+    """Validate that a URL string has http or https scheme and a valid host."""
+    if not url or not isinstance(url, str):
+        return None
+    cleaned = url.strip()
+    try:
+        parsed = urlparse(cleaned)
+        if parsed.scheme in ("http", "https") and parsed.netloc:
+            return cleaned
+    except Exception:
+        return None
+    return None
+
+
+def _extract_primary_image_url(raw_image: Any) -> str | None:
+    """Extract and validate primary image URL from raw string or JSON list."""
+    if not raw_image or not isinstance(raw_image, str):
+        return None
+    cleaned = raw_image.strip()
+    if cleaned.startswith("[") and cleaned.endswith("]"):
+        try:
+            parsed = json.loads(cleaned)
+            if isinstance(parsed, list):
+                for item in parsed:
+                    sanitized = _sanitize_url(item)
+                    if sanitized:
+                        return sanitized
+        except Exception:
+            pass
+    return _sanitize_url(cleaned)
 
 
 class RecommendationOrchestrator:
@@ -343,8 +377,12 @@ class RecommendationOrchestrator:
         # ----------------------------------------------------------------------
         # Step 8: Build Public Response
         # ----------------------------------------------------------------------
+        product_ids = [prod.product_id for prod in rec_result.products]
+        enrichment = await self._enrich_product_presentation(product_ids)
+
         product_items: list[ProductResponseItem] = []
         for prod in rec_result.products:
+            meta = enrichment.get(prod.product_id, {})
             strengths_list = [
                 ProductClaimItem(claim=c.claim, evidence_ids=list(c.evidence_ids))
                 for c in prod.strengths
@@ -375,6 +413,8 @@ class RecommendationOrchestrator:
                     limitations=limitations_list,
                     comparison_note=prod.comparison_note,
                     available_evidence=evidence_items,
+                    product_url=meta.get("product_url"),
+                    image=meta.get("image"),
                 )
             )
 
@@ -462,3 +502,42 @@ class RecommendationOrchestrator:
                 stage_latencies_ms={k: round(v, 2) for k, v in stage_latencies.items()},
             ),
         )
+
+    async def _enrich_product_presentation(
+        self, product_ids: list[str]
+    ) -> dict[str, dict[str, str | None]]:
+        """Fetch verified product_url and image from catalog database.
+
+        Preserves ordering, uses a single batch read-only query, sanitizes URLs,
+        and fails open returning empty dict on any database/network issue.
+        """
+        if not product_ids:
+            return {}
+        engine = getattr(self.hybrid_service, "engine", None)
+        if not engine:
+            return {}
+        try:
+            from sqlalchemy import text
+
+            sql = text(
+                "SELECT product_id, product_url, image "
+                "FROM public.products "
+                "WHERE product_id = ANY(:pids)"
+            )
+            async with engine.connect() as conn:
+                result = await conn.execute(sql, {"pids": list(product_ids)})
+                rows = result.fetchall()
+
+            enrichment: dict[str, dict[str, str | None]] = {}
+            for row in rows:
+                pid = str(row[0])
+                raw_url = row[1]
+                raw_img = row[2]
+                enrichment[pid] = {
+                    "product_url": _sanitize_url(raw_url),
+                    "image": _extract_primary_image_url(raw_img),
+                }
+            return enrichment
+        except Exception as exc:
+            logger.warning("Product presentation enrichment failed: %s", exc)
+            return {}

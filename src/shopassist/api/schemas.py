@@ -92,6 +92,8 @@ class ProductResponseItem(BaseModel):
     limitations: list[ProductClaimItem] = Field(default_factory=list, description="Product limitations or caveats.")
     comparison_note: str | None = Field(default=None, description="Comparative note against other candidates.")
     available_evidence: list[ProductEvidenceItem] = Field(default_factory=list, description="Verifiable catalog evidence items.")
+    product_url: str | None = Field(default=None, description="Authoritative catalog product link or null.")
+    image: str | None = Field(default=None, description="Primary product image URL or null.")
 
 
 class RecommendationMetadata(BaseModel):

@@ -139,5 +139,49 @@ def test_recommendation_response_serialization():
     assert d["status"] == "SUCCESS"
     assert len(d["products"]) == 1
     assert d["products"][0]["product_id"] == "P001"
+    assert d["products"][0]["product_url"] is None
+    assert d["products"][0]["image"] is None
     assert d["metadata"]["recommended_count"] == 1
     assert d["usage"]["total_tokens"] == 450
+
+
+def test_product_response_item_with_image_and_url():
+    product = ProductResponseItem(
+        product_id="P002",
+        product_name="Puma Carson Runner",
+        category="Footwear",
+        discounted_price=1999.0,
+        summary_reason="Great value runner.",
+        product_url="https://www.flipkart.com/item/123",
+        image="https://img.flixcart.com/image/123.jpeg",
+    )
+    d = product.model_dump()
+    assert d["product_url"] == "https://www.flipkart.com/item/123"
+    assert d["image"] == "https://img.flixcart.com/image/123.jpeg"
+
+
+def test_url_and_image_sanitizers():
+    from shopassist.api.services.orchestrator import _extract_primary_image_url, _sanitize_url
+
+    # Safe URLs
+    assert _sanitize_url("https://example.com/item") == "https://example.com/item"
+    assert _sanitize_url("http://example.com/item") == "http://example.com/item"
+
+    # Unsafe / Invalid URLs
+    assert _sanitize_url("javascript:alert(1)") is None
+    assert _sanitize_url("file:///etc/passwd") is None
+    assert _sanitize_url("ftp://ftp.example.com") is None
+    assert _sanitize_url("") is None
+    assert _sanitize_url(None) is None
+    assert _sanitize_url("not a url") is None
+
+    # Image list parsing
+    json_list = '["http://img1.com/a.jpg", "http://img2.com/b.jpg"]'
+    assert _extract_primary_image_url(json_list) == "http://img1.com/a.jpg"
+
+    single_img = "https://img1.com/a.jpg"
+    assert _extract_primary_image_url(single_img) == "https://img1.com/a.jpg"
+
+    invalid_json = "[not valid json]"
+    assert _extract_primary_image_url(invalid_json) is None
+    assert _extract_primary_image_url(None) is None
