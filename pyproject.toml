@@ -31,8 +31,9 @@ dependencies = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 addopts = "--basetemp=.deps/pytest_tmp"
 markers = [
     "integration: marks integration tests that load neural model weights",
+    "live_api: marks live integration tests that require external API access",
 ]

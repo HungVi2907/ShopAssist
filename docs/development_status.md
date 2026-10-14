@@ -13,7 +13,28 @@
 | 11 | **VALIDATED FOR PROTOTYPE — REAL INFERENCE & LIVE INTEGRATION VERIFIED** | Pinned Cross-Encoder downloaded (`1b5cd67b15209f24824c50370e0397743aa9b787`), CPU inference/token truncation/latencies benchmarked, Phase 10 live DB integration verified (53/53 tests pass). RRF remains default; 40-query independent evaluation deferred to Phase 13–14. See [Phase 11 report](phase11_reranking.md). |
 | 12 | **VALIDATED FOR PROTOTYPE — OPENROUTER GEMMA 4 MIGRATION & GROUNDING VERIFIED** | OpenRouter migration complete (`google/gemma-4-26b-a4b-it:free` by default, standard route and Groq preserved); live API authentication and JSON schema verified; 100% groundedness pass rate across 7 catalog scenarios; zero cross-product hallucinations; token/latency/cost measured; deterministic fallbacks verified under upstream rate limits; all repository regression tests passing. See [Phase 12 report](phase12_recommendation.md). |
 | 14 | **AI ENGINEERING EXPERIMENTAL EVALUATION COMPLETE — EDUCATIONAL SCOPE** | AI-Silver v4 validated (0 errors, 0 warnings); Baseline Retrieval (TF-IDF, Dense, Hybrid RRF) evaluated across All (174 pools), Dev (140), and Held-Out (60); Hybrid achieves nDCG@5 = 0.9067; Phase 11 Reranking (RRF vs Multi-Signal vs CPU Cross-Encoder) benchmarked; RAG Trace Q0001 generated; LLM-as-a-Judge rubric & live Gemini execution verified (Decision=PASS, Groundedness=4/5); 11/11 Phase 14 unit tests passed; Comprehensive 10-lesson Vietnamese AI Engineering curriculum authored in `docs/learning/`. Human Gold evaluation explicitly superseded by educational scope. `phase14_learning_status = COMPLETE`. See [Phase 14 Evaluation Report](phase14_evaluation_report.md). |
-| 15–17 | Planned | FastAPI backend, Telegram Chatbot and Docker deployment follow roadmap. |
+| 15 | **IMPLEMENTED — PENDING LIVE THIRD-PARTY VALIDATION** | FastAPI backend implemented under `src/shopassist/api/`; lifespan resource management; PriceBoundaryAdapter (48 bilingual scenarios); RecommendationOrchestrator coordinating Phases 8–12 with short-circuiting; 91/91 Phase 15 unit and mocked integration tests passed; 610/610 full offline regression tests passed; live health probe verified against Supabase PostgreSQL and BGE embeddings; external live validation pending Google Gemini 503 and OpenRouter 429 quota resolution. See [Phase 15 report](phase15_fastapi_backend.md). |
+| 16–17 | Planned | Telegram Chatbot and Docker deployment follow roadmap. |
+
+## Current Phase 15 checklist
+
+- [x] Application architecture and packaging designed under `src/shopassist/api/`.
+- [x] Lifespan resource manager allocating shared SQLAlchemy AsyncEngine, TF-IDF index, BGE embedding model, and canonical texts.
+- [x] Strongly-typed Pydantic v2 schemas for request validation, product response, metadata, and usage telemetry (`RecommendationRequest`, `RecommendationResponse`).
+- [x] Narrowly-scoped bilingual PriceBoundaryAdapter resolving strict (<, >) vs inclusive (<=, >=) operators across 48 test scenarios.
+- [x] RecommendationOrchestrator coordinating Phases 8–12 with comprehensive short-circuiting on invalid inputs, clarifications, currency mismatches, and exclusions.
+- [x] Threadpool execution (`asyncio.to_thread`) for CPU-bound tasks (BGE encoding, TF-IDF dot products, RRF reranking) to prevent event loop blocking.
+- [x] Primary endpoint `POST /api/v1/recommend` and backward-compatible alias `POST /recommend`.
+- [x] Health probe `GET /api/v1/health` and liveness probe `GET /api/v1/health/live`.
+- [x] Ephemeral in-memory conversation session store with TTL bounding for Phase 16 Telegram preparation.
+- [x] Global exception handlers sanitizing errors and protecting credentials.
+- [x] Full unit test suite (74 tests, 100% passing).
+- [x] Mocked HTTP API integration suite (16 tests, 100% passing).
+- [x] Full offline regression suite (610 tests passed, 0 failures).
+- [x] Real infrastructure smoke test verifying live PostgreSQL 17.11 Supabase connection and local assets.
+- [x] Comprehensive documentation authored (`phase15_fastapi_backend.md`, `phase15_api_contract.md`, `phase15_integration_report.md`, `phase15_deferred_issues.md`, `phase15_preimplementation_audit.md`).
+- [x] Vietnamese AI Engineering curriculum updated with Lesson 11 (`docs/learning/11_fastapi_backend_and_ai_orchestration.md`).
+- [ ] Live external third-party end-to-end smoke test pending Google Gemini (503) and OpenRouter (429) quota clearance.
 
 ## Current Phase 14 checklist
 
