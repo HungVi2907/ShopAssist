@@ -11,7 +11,7 @@
 <!-- phase82-correction-end -->
 
 <!-- current-development-status-start -->
-> **Current development status — 2026-10-10:** Phase 8 is frozen as **IMPLEMENTED — ACCEPTED WITH KNOWN LIMITATIONS**. Phase 8.1 remains experimental and is not fully adopted in production. Phase 8.2 is **PARTIAL — offline research/validation complete; live optimization deferred**. Phase 9 is **PASS — component scope**. Phase 10 is **PASS — offline component scope**: 21/21 Phase 10 tests and 405 offline regression tests passed; 14 live/integration cases were deselected. Phase 11 is **PARTIAL**: offline RRF/Multi-Signal reranking, typed contracts, mocked Cross-Encoder adapter and four-query single-reviewer evaluation are implemented; no live Phase 10 or real Cross-Encoder quality claim is made. See the [development status and checklist](docs/development_status.md), [Phase 8 handover](docs/phase8_freeze_and_handover.md), [Phase 9 evaluation](docs/phase9_preference_evaluation.md), [Phase 10 report](docs/phase10_hybrid_retrieval.md), and [Phase 11 report](docs/phase11_reranking.md).
+> **Current development status — 2026-10-14:** Phase 15 is **IMPLEMENTED — PENDING LIVE THIRD-PARTY VALIDATION**. The FastAPI backend (`src/shopassist/api/`) integrates Phases 8–12 with lifespan resource management, CPU-bound threadpool offloading, PriceBoundaryAdapter, and RecommendationOrchestrator. All 91 Phase 15 tests and 610 repository regression tests pass. Live health check passes with Supabase PostgreSQL and BGE embeddings. Prior phases: Phase 14 Educational AI Engineering Evaluation is **COMPLETE** (`phase14_learning_status = COMPLETE`); Phase 12 Grounded Recommendation is **VALIDATED FOR PROTOTYPE**; Phase 11 Reranking is **VALIDATED FOR PROTOTYPE**; Phase 10 Hybrid Retrieval and Phase 9 Preference Representation are **PASS — component scope**. Next milestone is Phase 16: Telegram Bot Integration. See [development status and checklist](docs/development_status.md) and [Phase 15 report](docs/phase15_fastapi_backend.md).
 <!-- current-development-status-end -->
 
 ShopAssist is an end-to-end conversational product recommendation system using LLM-based query understanding, structured filtering, and hybrid retrieval to recommend consumer products based on both explicit constraints and semantic user preferences.
@@ -53,12 +53,17 @@ ShopAssist/
 │   └── evaluate_query_understanding.py # Query Understanding accuracy & latency benchmark CLI
 ├── src/
 │   └── shopassist/
+│       ├── api/              # Phase 15: FastAPI REST backend & AI pipeline orchestration
 │       ├── core/             # Configuration and path resolution
 │       ├── data/             # Data loading and schema validation modules
 │       ├── db/               # PostgreSQL & pgvector connection & loading
 │       ├── embeddings/       # Dense embedding model and inference
-│       ├── llm/              # LLM Query Understanding (Gemini, schemas, prompts, normalization)
-│       └── retrieval/        # Lexical (TF-IDF) & Dense Semantic retrieval engines
+│       ├── evaluation/       # Phase 14: Rigorous metrics, LLM-as-a-Judge & RAG trace
+│       ├── llm/              # Phase 8: LLM Query Understanding (Gemini, schemas, prompts)
+│       ├── preferences/      # Phase 9: Soft preference representation & BGE encoding
+│       ├── recommendation/   # Phase 12: Grounded recommendation generation (OpenRouter/Groq)
+│       ├── reranking/        # Phase 11: Candidate reranking (RRF, Multi-Signal, Cross-Encoder)
+│       └── retrieval/        # Phases 6, 7, 10: TF-IDF lexical, dense vector & Hybrid RRF
 └── tests/
     ├── test_data_loader.py   # Unit tests for data loading and schema validation
     ├── test_tfidf_retrieval.py # Unit and integration tests for TF-IDF retrieval
@@ -442,4 +447,33 @@ python -m pytest tests/test_gemini_integration.py -v
     - [`docs/phase8_1_evaluation_methodology.md`](file:///d:/Project/ShopAssist/docs/phase8_1_evaluation_methodology.md)
     - [`docs/concepts/llm_experimentation_and_extraction_refinement.md`](file:///d:/Project/ShopAssist/docs/concepts/llm_experimentation_and_extraction_refinement.md)
   - Emitted machine-readable reports: `data/interim/phase8_1/phase8_1_final_report.json`, `data/interim/phase8_1/experiment_manifest.json`, `data/interim/phase8_1/experiment_results.json`.
-- **Next Phase**: **Phase 11 — Reranking**
+- **Phase 9 — Soft Preference Representation** (Completed)
+  - Deterministic preference string composition and 384-dimensional BGE embedding extraction.
+  - Strict typed statuses (`SUCCESS`, `NO_PREFERENCES`, `CLARIFICATION_REQUIRED`, `UNSUPPORTED_INTENT`).
+  - Added 22 automated unit tests with 100% pass rate.
+- **Phase 10 — Hybrid Retrieval Engine** (Completed)
+  - Combined TF-IDF lexical search and dense semantic vector search via Reciprocal Rank Fusion (RRF).
+  - Enforced strict/inclusive price-boundary safeguards preventing ambiguous budget filtering.
+  - Added 21 automated unit tests with 100% pass rate.
+- **Phase 11 — Candidate Reranking** (Completed)
+  - Implemented multi-signal and cross-encoder reranking algorithms over candidate subsets.
+  - Benchmarked CPU inference with `ms-marco-MiniLM-L2-v2`.
+  - Added 53 unit and integration tests.
+- **Phase 12 — Grounded Recommendation Generation** (Completed)
+  - Multi-provider LLM recommendation engine (OpenRouter Gemma 4 / Groq) producing structured JSON advice.
+  - Built-in groundedness validation against catalog metadata, preventing hallucinations and preserving authoritative product attributes.
+  - Deterministic fallback under provider failure or token quota exhaustion.
+- **Phase 14 — AI Engineering Experimental Evaluation** (Completed)
+  - Validated AI-Silver v4 benchmark (174 query pools) across TF-IDF, Dense, and Hybrid retrieval.
+  - Demonstrated Hybrid RRF nDCG@5 = 0.9067 and 100% hard constraint satisfaction.
+  - Implemented LLM-as-a-Judge evaluation framework and traceable RAG pipeline provenance.
+  - Complete 10-lesson Vietnamese AI Engineering learning curriculum authored in `docs/learning/`.
+- **Phase 15 — FastAPI Backend & AI Pipeline Orchestration** (Implemented — Pending Live Third-Party Validation)
+  - Production-grade FastAPI backend under `src/shopassist/api/` exposing RESTful endpoints (`POST /api/v1/recommend`, `GET /api/v1/health`).
+  - Lifespan resource management (SQLAlchemy engine, TF-IDF index, BGE model singleton).
+  - CPU-bound task offloading via `asyncio.to_thread` preventing event loop degradation.
+  - Bilingual `PriceBoundaryAdapter` resolving strict vs inclusive operators across 48 scenarios.
+  - `RecommendationOrchestrator` coordinating Phases 8–12 with comprehensive short-circuiting.
+  - In-memory conversation session store with TTL bounding for Phase 16 Telegram integration.
+  - 91 Phase 15 automated unit/integration tests passed; 610 full repository regression tests passed.
+- **Next Phase**: **Phase 16 — Telegram Chatbot Integration**
