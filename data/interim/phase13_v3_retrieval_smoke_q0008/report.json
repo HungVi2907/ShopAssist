@@ -1,0 +1,19 @@
+{
+  "status": "PROVISIONAL_UNVERIFIED_V3_REFERENCE",
+  "created_utc": "2026-10-13T03:32:33.063529+00:00",
+  "source_dataset": "phase13-v3",
+  "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "query_ids": [
+    "Q0008"
+  ],
+  "methods_requested": [
+    "tfidf",
+    "dense",
+    "hybrid"
+  ],
+  "frozen_provisional_pools": 0,
+  "retrieval_runs": 0,
+  "blockers": 1,
+  "not_a_silver_benchmark": true,
+  "prohibition": "These captures use unverified v3 interpretations and must not be promoted, judged as Silver, or used for Phase 14 claims."
+}

@@ -1,0 +1,58 @@
+{
+  "annotation_method": "CODEX_NATIVE_MULTI_JUDGE",
+  "by_language": {
+    "vi": {
+      "exact_agreement": 0.922222,
+      "pairs": 90,
+      "quadratic_weighted_kappa": 0.908616
+    }
+  },
+  "by_product_category": {
+    "Footwear": {
+      "exact_agreement": 1.0,
+      "pairs": 30,
+      "quadratic_weighted_kappa": 1.0
+    },
+    "Home Furnishing": {
+      "exact_agreement": 0.9,
+      "pairs": 30,
+      "quadratic_weighted_kappa": 0.883117
+    },
+    "Mobiles & Accessories": {
+      "exact_agreement": 0.866667,
+      "pairs": 30,
+      "quadratic_weighted_kappa": 0.81982
+    }
+  },
+  "by_query_type": {
+    "MIXED_HARD_SOFT": {
+      "exact_agreement": 0.95,
+      "pairs": 60,
+      "quadratic_weighted_kappa": 0.938776
+    },
+    "SOFT_PREFERENCE": {
+      "exact_agreement": 0.866667,
+      "pairs": 30,
+      "quadratic_weighted_kappa": 0.81982
+    }
+  },
+  "constraint_violation_rate": 0.377778,
+  "disagreement_count": 7,
+  "disagreement_rate": 0.077778,
+  "exact_grade_agreement": 0.922222,
+  "grade_distribution_a": {
+    "0": 12,
+    "1": 42,
+    "2": 36
+  },
+  "grade_distribution_b": {
+    "0": 8,
+    "1": 47,
+    "2": 35
+  },
+  "interpretation": "Agreement measures consistency between AI calls; it is not proof of relevance-label correctness.",
+  "known_limitation": "Agreement reflects separate native executions, not independent model families or human verification.",
+  "pair_count": 90,
+  "quadratic_weighted_kappa": 0.908616,
+  "unresolved_cases": []
+}

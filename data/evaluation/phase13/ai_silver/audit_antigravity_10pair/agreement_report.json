@@ -1,0 +1,41 @@
+{
+  "annotation_method": "CODEX_NATIVE_MULTI_JUDGE",
+  "by_language": {
+    "vi": {
+      "exact_agreement": 0.9,
+      "pairs": 10,
+      "quadratic_weighted_kappa": 0.615385
+    }
+  },
+  "by_product_category": {
+    "Mobiles & Accessories": {
+      "exact_agreement": 0.9,
+      "pairs": 10,
+      "quadratic_weighted_kappa": 0.615385
+    }
+  },
+  "by_query_type": {
+    "SOFT_PREFERENCE": {
+      "exact_agreement": 0.9,
+      "pairs": 10,
+      "quadratic_weighted_kappa": 0.615385
+    }
+  },
+  "constraint_violation_rate": 0.0,
+  "disagreement_count": 1,
+  "disagreement_rate": 0.1,
+  "exact_grade_agreement": 0.9,
+  "grade_distribution_a": {
+    "1": 8,
+    "2": 2
+  },
+  "grade_distribution_b": {
+    "1": 9,
+    "2": 1
+  },
+  "interpretation": "Agreement measures consistency between AI calls; it is not proof of relevance-label correctness.",
+  "known_limitation": "Agreement reflects separate native executions, not independent model families or human verification.",
+  "pair_count": 10,
+  "quadratic_weighted_kappa": 0.615385,
+  "unresolved_cases": []
+}

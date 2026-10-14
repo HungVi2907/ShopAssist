@@ -1,6 +1,6 @@
 # ShopAssist Development Status and Checklist
 
-**Updated:** 2026-10-11. This is the current roadmap status; prior phase reports remain historical evidence.
+**Updated:** 2026-10-13. This is the current roadmap status; prior phase reports remain historical evidence.
 
 | Phase | Current status | Evidence / next gate |
 | --- | --- | --- |
@@ -12,7 +12,7 @@
 | 10 | **PASS — OFFLINE COMPONENT SCOPE** | Phase 10 tests **21/21 passed**; offline regression **405 passed, 14 live/integration tests deselected**. No Phase 10 live DB or catalog-quality evaluation. Phase 8 v1 price bounds require separately verified strict/inclusive metadata; otherwise the query stops as unsupported. See [Phase 10 report](phase10_hybrid_retrieval.md). |
 | 11 | **VALIDATED FOR PROTOTYPE — REAL INFERENCE & LIVE INTEGRATION VERIFIED** | Pinned Cross-Encoder downloaded (`1b5cd67b15209f24824c50370e0397743aa9b787`), CPU inference/token truncation/latencies benchmarked, Phase 10 live DB integration verified (53/53 tests pass). RRF remains default; 40-query independent evaluation deferred to Phase 13–14. See [Phase 11 report](phase11_reranking.md). |
 | 12 | **VALIDATED FOR PROTOTYPE — OPENROUTER GEMMA 4 MIGRATION & GROUNDING VERIFIED** | OpenRouter migration complete (`google/gemma-4-26b-a4b-it:free` by default, standard route and Groq preserved); live API authentication and JSON schema verified; 100% groundedness pass rate across 7 catalog scenarios; zero cross-product hallucinations; token/latency/cost measured; deterministic fallbacks verified under upstream rate limits; all repository regression tests passing. See [Phase 12 report](phase12_recommendation.md). |
-| 13 | **PARTIAL — 200 DRAFT QUERIES; GROUND TRUTH PENDING** | The v1 pilot is preserved; v2 has 200 distinct drafts across 16 categories and nine types, a catalog audit, independent review/adjudication workflow, versioned capture and split tools. Final offline regression: 482 passed, 7 skipped, 15 deselected; read-only Phase 10→11 integration passed. Zero human labels, frozen pools, qrels, generation claims or split. Phase 14 ready: false. See [Phase 13 report](phase13_dataset_report.md). |
+| 13 | **PARTIAL — LIVE AI SMOKE CHECKPOINTED; HUMAN GROUND TRUTH PENDING** | The v1/v2/v3 evidence remains preserved. The supported Windows runtime and PyArrow catalog preflight pass; 34 Phase-13 tests pass. A read-only v3 retrieval smoke ran TF-IDF/dense/hybrid for Q0007, Q0013, and Q0045, while Q0008 correctly stopped on unsupported exclusion intent. The authorised four-query live AI audit in isolated `ai_silver/v2` recorded eight calls: OpenRouter failed all four, Groq completed only Q0013, so no audited pool, relevance label, qrel, or Phase 14 evidence was created. These `data/interim` captures are explicitly unverified diagnostic evidence, not Silver labels. Resume requires explicit inspection of provider errors; no model/provider fallback is permitted. Silver labels can never set Phase 14 ready. See [Phase 13 report](phase13_dataset_report.md) and the [AI-Silver pipeline](phase13_ai_silver_pipeline.md). |
 | 14–17 | Not started | System evaluation, API, Telegram and deployment follow roadmap. |
 
 ## Current Phase 9 checklist

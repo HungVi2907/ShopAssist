@@ -1,0 +1,65 @@
+{
+  "annotation_method": "AI_MULTI_JUDGE",
+  "artifact_sha256": {
+    "queries.jsonl": "c19c6f95707b1f9889480a60d9af343b7c78d8b41ff9b0e4a372edc8f6bc1940",
+    "query_audit.jsonl": "667672552a3fdb7a6e5c427c9417ced6a9c050b613ca3456f1831f807fda17ec",
+    "query_audit_report.json": "e9ba1c676a237f45f2492f38fedf0ded4c55cb22078fe199d54bc3b8b837f74d",
+    "validation_report_silver.json": "6b7ea99dc9db6dd8c20470aba9106d19dc1e826211444f18b432afa19189ba2b"
+  },
+  "catalog_artifact": "data/processed/products.parquet",
+  "catalog_product_count": 8405,
+  "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "completion_status": "QUERY_AUDIT_PARTIAL",
+  "created_utc": "2026-10-13T17:16:54.810512+00:00",
+  "dataset_version": "v2",
+  "format_version": "1.0.0",
+  "human_verified": false,
+  "judge_configuration": {
+    "prompt_version": "phase13-silver-2026-10-13",
+    "query_audit": {
+      "adjudicator": {
+        "max_completion_tokens": 600,
+        "max_retries": 0,
+        "model": "google/gemma-4-26b-a4b-it:free",
+        "provider": "openrouter",
+        "request_options": {
+          "provider": {
+            "allow_fallbacks": false
+          }
+        }
+      },
+      "judge_a": {
+        "max_completion_tokens": 600,
+        "max_retries": 0,
+        "model": "google/gemma-4-26b-a4b-it:free",
+        "provider": "openrouter",
+        "request_options": {
+          "provider": {
+            "allow_fallbacks": false
+          }
+        }
+      },
+      "judge_b": {
+        "max_completion_tokens": 600,
+        "max_retries": 0,
+        "model": "openai/gpt-oss-20b",
+        "provider": "groq"
+      },
+      "max_requests": 12,
+      "requests_used": 8
+    }
+  },
+  "known_limitations": [
+    "AI-generated Silver labels are not independently human-verified ground truth.",
+    "No Phase 14 promotion is permitted from Silver labels alone."
+  ],
+  "label_quality": "SILVER",
+  "phase14_ready": false,
+  "query_count": 200,
+  "silver_ready": false,
+  "source_dataset_relpath": "data/evaluation/phase13/v3",
+  "source_dataset_version": "phase13-v3",
+  "source_git_commit": "3fd0615282f7d536f8360841ea781ad2873b5b6e",
+  "source_query_sha256": "60389864ae53acc40753b2b9f154d4b1a79407b49dedbe1b489ab3f834d21df6",
+  "unresolved_cases": []
+}

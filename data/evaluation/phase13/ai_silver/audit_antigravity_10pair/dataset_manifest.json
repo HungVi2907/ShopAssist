@@ -1,0 +1,98 @@
+{
+  "annotation_method": "CODEX_NATIVE_MULTI_JUDGE",
+  "artifact_sha256": {
+    "agreement_report.json": "e12aef4c6554543d604f0ac02eba271126ac16e40912f61c8cb284b0c7aaa9d4",
+    "candidate_pools.jsonl": "5341e5e029fbbe0698d998895809c64451b87a48efe091ff9b244d8302bd7c19",
+    "codex_native_inputs/relevance/judge_a_batch_001.jsonl": "72c627b480ced8872cf7bc663b1242ce4a9afdac27ce0c1ea8c4acc7a7588e79",
+    "codex_native_inputs/relevance/judge_b_batch_001.jsonl": "3ebfe683367d1ab0b5c1487c8692499a8d184aab0594b60d1724240ea5a96db9",
+    "codex_native_inputs/relevance_adjudication_tasks.jsonl": "7a3e57151b0ad7fcb0aa3ced998bd81b334b0c64ce7a0c163590aff52c266069",
+    "codex_native_inputs/relevance_task_index.jsonl": "72c627b480ced8872cf7bc663b1242ce4a9afdac27ce0c1ea8c4acc7a7588e79",
+    "judge_a_relevance.jsonl": "322f6a4e3bbf4880f9ea14affc101b64492085fb1ebc5dab94ade45002690ea0",
+    "judge_a_relevance_submission.jsonl": "6ab5bd1c79bda9fba4ea81f43dc8f71413eeefd2600f1b6c46c39ea1513591df",
+    "judge_b_relevance.jsonl": "51e8c00499a45535d8e85f1d6e20aebef25ee85e36a906d3159a0d9bb8e349dd",
+    "judge_b_relevance_submission.jsonl": "297f76d51957c59a1625d02d5c70baf9d14fd8f3774e99fb3c9a84173dcc2fb6",
+    "qrels_silver.csv": "8df6cc371ec2282819beeb79869fd49b6a996ea849082165a8f574917c92025e",
+    "queries.jsonl": "c19c6f95707b1f9889480a60d9af343b7c78d8b41ff9b0e4a372edc8f6bc1940",
+    "query_audit.jsonl": "0b3b9a65d3ddb300f5ad36834c1c5c188c5b7edfb698ad354d0e12cb33cd803d",
+    "relevance_adjudication_submission.jsonl": "e97e44e8d4b779a9fecc8143e3097475aacd7a162db58ba31df7e568c1bd2678",
+    "relevance_adjudications.jsonl": "55f1bb1e5307b7805abe1d98d8ac321b5349289b84323d2847da9d10b29a4771",
+    "validation_report_silver.json": "97bbe6be738dc1507584a042b1fac416726916f1a1a4bd2624bf1b17ad1e9ec8"
+  },
+  "catalog_artifact": "data/processed/products.parquet",
+  "catalog_product_count": 8405,
+  "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "codex_native": {
+    "adjudication": "Machine adjudication with deterministic constraint overrides",
+    "execution_mode": "CODEX_NATIVE",
+    "external_provider_calls": "DISABLED_BY_DESIGN",
+    "judge_a_relevance_review_count": 10,
+    "judge_b_relevance_review_count": 10,
+    "judge_separation": "Blinded evaluation packets; separate Judge A and Judge B scoring passes",
+    "known_blindness_limit": "Judges evaluate blinded packets without access to prior Codex grades or each other's outputs.",
+    "model_metadata": "gemini-3.8-flash",
+    "native_engine": "GOOGLE_ANTIGRAVITY",
+    "relevance_adjudication_count": 10,
+    "relevance_batch_count": 1,
+    "relevance_batch_size": 10,
+    "relevance_disagreement_count": 1,
+    "relevance_pair_cap": 10,
+    "relevance_resolved_count": 10,
+    "relevance_task_count": 10,
+    "relevance_task_fingerprints": {
+      "Q0007/14e1cda43983f4196bf4a6f1685ea4c6": "973fb6989f9eacfbb716799aefd066e41d8a0b822c2f6baf20b1e2a38f96be28",
+      "Q0007/20d1bba0a5a01993aa923e8d3b754e1c": "531dfe40d784e89d5b596f85012bd5546a42f07c9f0f2b8e06f1b199d173fb78",
+      "Q0007/3a7e4778ca27c7082d81d78094026783": "c4d15e14f45ab62275182d9cd0567cab7b49ff7fb35ef5f8faada8b41e4557fd",
+      "Q0007/716fa6f873e69852a488883381bfcdf8": "981692a7ce7a26d6f78d95e9a84b2a61f87a902cf1f0bd2418fc595da0d50832",
+      "Q0007/a8ca63d81029d95c12e8ca325c6b48a8": "4a8c05e3318e1c9555d3052b5b6e05b03ef8c63775ced7c8f5a90e7814f99ba9",
+      "Q0007/b3fa7204c2ebca4e289036277cf8f903": "3207d1416b6847969b1a6f2d5de609bbb7527214053036593e899bf191e6689e",
+      "Q0007/b6669ee1bec951d47a80145aef12f55f": "0469da6434aedb8b01f03cea3be539f4120991063242a393c155ed96c8b3c26c",
+      "Q0007/c23414205d9c0a3aa3d4858e302af6c1": "fde389c895e1668d158becae2a96d259ff22da34da2595e21e657b4c91db2053",
+      "Q0007/cf36f0622dd6bf48777a4c175160a47f": "2a8bf7cee4f172608bd4afa4e694e8e9c93e92b5d07dadbe393e713a93896fed",
+      "Q0007/e1645766bc7426ceb626b4cba470bc0b": "53a1c95a2c0835e8d16b77669e956cd695562874341a43a507a9837829826a2b"
+    },
+    "relevance_task_schema_version": "codex-native-relevance-task-v1",
+    "relevance_unresolved_count": 0,
+    "same_model_correlation_risk": "SHARED_ANTIGRAVITY_GEMINI_MODEL",
+    "task_prompt_version": "phase13-codex-native-2026-10-14"
+  },
+  "completion_status": "VALIDATED",
+  "created_utc": "2026-10-14T04:37:34.916576+00:00",
+  "dataset_version": "audit_antigravity_10pair",
+  "format_version": "1.0.0",
+  "human_verified": false,
+  "judge_configuration": {
+    "adjudicator": {
+      "model": "gemini-3.8-flash",
+      "provider": "GOOGLE_ANTIGRAVITY"
+    },
+    "execution_mode": "CODEX_NATIVE",
+    "independence": "BLINDED_ANTIGRAVITY_AGENT_EVALUATION; separate prompt contexts",
+    "judge_a": {
+      "model": "gemini-3.8-flash",
+      "provider": "GOOGLE_ANTIGRAVITY"
+    },
+    "judge_b": {
+      "model": "gemini-3.8-flash",
+      "provider": "GOOGLE_ANTIGRAVITY"
+    },
+    "native_engine": "GOOGLE_ANTIGRAVITY",
+    "prompt_version": "phase13-codex-native-2026-10-14",
+    "same_model_correlation_risk": "SHARED_ANTIGRAVITY_GEMINI_MODEL"
+  },
+  "known_limitations": [
+    "AI-generated Silver labels are not independently human-verified ground truth.",
+    "No Phase 14 promotion is permitted from Silver labels alone.",
+    "Antigravity judges use Gemini 3.8 Flash inference under the user's Google account; agreement is a consistency signal, not ground truth.",
+    "Audit experiment is strictly capped at 10 query-product pairs."
+  ],
+  "label_quality": "SILVER",
+  "phase14_ready": false,
+  "queries_snapshot_sha256": "c19c6f95707b1f9889480a60d9af343b7c78d8b41ff9b0e4a372edc8f6bc1940",
+  "query_count": 200,
+  "silver_ready": false,
+  "source_dataset_relpath": "data/evaluation/phase13/ai_silver/v3_codex_native",
+  "source_dataset_version": "v3_codex_native",
+  "source_git_commit": "3fd0615282f7d536f8360841ea781ad2873b5b6e",
+  "source_query_sha256": "60389864ae53acc40753b2b9f154d4b1a79407b49dedbe1b489ab3f834d21df6",
+  "unresolved_cases": []
+}

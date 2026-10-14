@@ -1,0 +1,3 @@
+FAILED_INCOMPLETE_OUTPUT
+2026-10-14
+The initial blind Judge A dispatch was given an incorrect packet path outside the relevance/ directory. No task records were read and no relevance labels were produced. This attempt is retained for auditability; a fresh blind context will receive only the corrected packet path.

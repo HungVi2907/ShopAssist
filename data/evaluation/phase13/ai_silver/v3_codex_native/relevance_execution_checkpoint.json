@@ -1,0 +1,20 @@
+{
+  "schema_version": "codex-native-relevance-execution-checkpoint-v1",
+  "status": "COMPLETE",
+  "frozen_candidate_pairs": 90,
+  "expected_reviews_per_judge": 90,
+  "judge_a_raw_submission_rows": 90,
+  "judge_b_raw_submission_rows": 90,
+  "dual_judged_pairs": 90,
+  "judge_a_remaining_reviews": 0,
+  "judge_b_remaining_reviews": 0,
+  "imported_judge_a_reviews": 90,
+  "imported_judge_b_reviews": 90,
+  "synthetic_labels_generated": false,
+  "blocker": null,
+  "preserved_attempts": [
+    "judge_a_batch_002_unavailable_attempt.txt",
+    "judge_a_batch_002_retry_usage_limit.txt"
+  ],
+  "resume_instruction": "Completed: native reviews were imported, seven disagreements were adjudicated, and Silver qrels were generated."
+}

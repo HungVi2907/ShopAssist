@@ -1,0 +1,124 @@
+{
+  "benchmark_context": {
+    "query_id": "Q0007",
+    "raw_query": "Ốp điện thoại chống sốc, cầm không bị trơn",
+    "semantic_intent": "Shock-resistant phone case with a non-slip grip",
+    "sample_size": 10
+  },
+  "metrics": {
+    "total_pairs_compared": 10,
+    "exact_matches": 10,
+    "exact_agreement_rate": 1.0,
+    "quadratic_weighted_cohen_kappa": 1.0,
+    "grade_distribution_antigravity": {
+      "1": 9,
+      "2": 1
+    },
+    "grade_distribution_codex": {
+      "1": 9,
+      "2": 1
+    }
+  },
+  "item_breakdown": [
+    {
+      "product_id": "14e1cda43983f4196bf4a6f1685ea4c6",
+      "product_name": "kits kart Pouch for HTC One M9+ Supreme Camera",
+      "brand": "kits kart",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_ADJUDICATION",
+      "codex_label_source": "CODEX_NATIVE_EXACT_AGREEMENT"
+    },
+    {
+      "product_id": "20d1bba0a5a01993aa923e8d3b754e1c",
+      "product_name": "Techno TrendZ Screen Guard HD Protector Tempered Glass for Huawei Honor 6",
+      "brand": "Techno TrendZ",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_ADJUDICATION"
+    },
+    {
+      "product_id": "3a7e4778ca27c7082d81d78094026783",
+      "product_name": "AdroitZ Premium Phone Socket Holder For HTC Sensation",
+      "brand": "AdroitZ",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_ADJUDICATION"
+    },
+    {
+      "product_id": "716fa6f873e69852a488883381bfcdf8",
+      "product_name": "Mobilecops Flip Cover for Samsung Galaxy Tab 3.7 inch",
+      "brand": "Mobilecops",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_EXACT_AGREEMENT"
+    },
+    {
+      "product_id": "a8ca63d81029d95c12e8ca325c6b48a8",
+      "product_name": "AMZER Anti-radiation Case for Asus Fonepad 7",
+      "brand": "Amzer",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_EXACT_AGREEMENT"
+    },
+    {
+      "product_id": "b3fa7204c2ebca4e289036277cf8f903",
+      "product_name": "Bling Book Case for iPad 2 / 3",
+      "brand": "Bling",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_EXACT_AGREEMENT"
+    },
+    {
+      "product_id": "b6669ee1bec951d47a80145aef12f55f",
+      "product_name": "HOKO Flip Cover for Apple iPad Air",
+      "brand": "Hoko",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_EXACT_AGREEMENT"
+    },
+    {
+      "product_id": "c23414205d9c0a3aa3d4858e302af6c1",
+      "product_name": "Dicapac Grip Back Cover for Galaxy Note",
+      "brand": "Dicapac",
+      "antigravity_grade": 2,
+      "codex_grade": 2,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_EXACT_AGREEMENT"
+    },
+    {
+      "product_id": "cf36f0622dd6bf48777a4c175160a47f",
+      "product_name": "AdroitZ Premium Phone Socket Holder For Nokia N9",
+      "brand": "AdroitZ",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_ADJUDICATION"
+    },
+    {
+      "product_id": "e1645766bc7426ceb626b4cba470bc0b",
+      "product_name": "IFROGZ Grip Back Cover for APPLE IPAD MINI",
+      "brand": "IFROGZ",
+      "antigravity_grade": 1,
+      "codex_grade": 1,
+      "exact_match": true,
+      "antigravity_label_source": "CODEX_NATIVE_EXACT_AGREEMENT",
+      "codex_label_source": "CODEX_NATIVE_EXACT_AGREEMENT"
+    }
+  ]
+}

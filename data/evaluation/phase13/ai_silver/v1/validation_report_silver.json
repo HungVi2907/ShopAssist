@@ -1,0 +1,30 @@
+{
+  "errors": [],
+  "limitations": [
+    "Structural validity does not establish semantic correctness.",
+    "Silver labels must not be represented as human-verified Gold ground truth.",
+    "phase14_ready remains false by design."
+  ],
+  "phase14_ready": false,
+  "research_readiness": "BLOCKED",
+  "semantic_quality": "UNRESOLVED",
+  "silver_ready": false,
+  "statistics": {
+    "adjudications": 0,
+    "frozen_candidate_pairs": 0,
+    "frozen_pools": 0,
+    "generation_claims": 0,
+    "generation_snapshots": 0,
+    "judge_a_reviews": 0,
+    "judge_b_reviews": 0,
+    "qrels": 0,
+    "queries": 200,
+    "query_audits": 40,
+    "unresolved": 0
+  },
+  "status": "WARNING",
+  "structural_validity": "PASS",
+  "warnings": [
+    "Catalog cannot be loaded for metadata comparison: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - The pyarrow installation is not built with support for the Parquet file format (DLL load failed while importing _parquet: An Application Control policy has blocked this file.)\n - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet."
+  ]
+}

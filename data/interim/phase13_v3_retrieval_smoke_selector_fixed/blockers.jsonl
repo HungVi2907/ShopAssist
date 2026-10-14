@@ -1,0 +1,1 @@
+{"detail": "Hybrid retrieval stopped with RETRIEVAL_FAILURE: Database retrieval failed (TimeoutError)", "method": "hybrid", "query_id": "Q0007", "reason": "RuntimeError", "stage": "capture", "status": "BLOCKED"}

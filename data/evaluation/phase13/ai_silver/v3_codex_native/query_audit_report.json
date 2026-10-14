@@ -1,0 +1,50 @@
+{
+  "annotation_method": "CODEX_NATIVE_MULTI_JUDGE",
+  "audit_rows": 4,
+  "by_language": {
+    "vi": {
+      "INCORRECT_PRICE_BOUNDARY_OPERATOR": 2,
+      "MISSING_POSITIVE_PREFERENCE": 1,
+      "MISSING_PRICE_CONSTRAINT": 2
+    }
+  },
+  "by_query_type": {
+    "MIXED_HARD_SOFT": {
+      "INCORRECT_PRICE_BOUNDARY_OPERATOR": 2,
+      "MISSING_PRICE_CONSTRAINT": 2
+    },
+    "SOFT_PREFERENCE": {
+      "MISSING_POSITIVE_PREFERENCE": 1
+    }
+  },
+  "error_classification": {
+    "INCORRECT_PRICE_BOUNDARY_OPERATOR": 2,
+    "MISSING_POSITIVE_PREFERENCE": 1,
+    "MISSING_PRICE_CONSTRAINT": 2
+  },
+  "generated_utc": "2026-10-13T18:32:50.768334+00:00",
+  "interpretation": "Counts are deterministic/AI audit signals, not independently verified semantic-error rates.",
+  "judge_configuration": {
+    "adjudicator": {
+      "model": "UNKNOWN",
+      "provider": "CODEX_NATIVE"
+    },
+    "execution_mode": "CODEX_NATIVE",
+    "independence": "SEPARATE_NATIVE_SUBAGENT_CONTEXTS; not independent model families",
+    "judge_a": {
+      "model": "UNKNOWN",
+      "provider": "CODEX_NATIVE"
+    },
+    "judge_b": {
+      "model": "UNKNOWN",
+      "provider": "CODEX_NATIVE"
+    },
+    "prompt_version": "phase13-codex-native-2026-10-14",
+    "same_model_correlation_risk": "UNKNOWN_OR_SHARED_MODEL_POSSIBLE"
+  },
+  "query_adjudication_count": 4,
+  "statuses": {
+    "COMPLETE": 4
+  },
+  "unresolved_count": 0
+}

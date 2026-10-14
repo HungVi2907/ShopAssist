@@ -1,0 +1,2 @@
+{"detail": "Hybrid retrieval stopped with UNSUPPORTED_INTENT: The original query contains a negative or exclusion intent that Phase 8 v1 cannot represent safely", "method": "hybrid", "query_id": "Q0008", "reason": "RuntimeError", "stage": "capture", "status": "BLOCKED"}
+{"detail": "Hybrid retrieval stopped with RETRIEVAL_FAILURE: Database retrieval failed (TimeoutError)", "method": "hybrid", "query_id": "Q0013", "reason": "RuntimeError", "stage": "capture", "status": "BLOCKED"}

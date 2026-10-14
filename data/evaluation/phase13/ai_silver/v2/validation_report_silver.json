@@ -1,0 +1,28 @@
+{
+  "errors": [],
+  "limitations": [
+    "Structural validity does not establish semantic correctness.",
+    "Silver labels must not be represented as human-verified Gold ground truth.",
+    "phase14_ready remains false by design."
+  ],
+  "phase14_ready": false,
+  "research_readiness": "BLOCKED",
+  "semantic_quality": "UNRESOLVED",
+  "silver_ready": false,
+  "statistics": {
+    "adjudications": 0,
+    "frozen_candidate_pairs": 0,
+    "frozen_pools": 0,
+    "generation_claims": 0,
+    "generation_snapshots": 0,
+    "judge_a_reviews": 0,
+    "judge_b_reviews": 0,
+    "qrels": 0,
+    "queries": 200,
+    "query_audits": 4,
+    "unresolved": 0
+  },
+  "status": "WARNING",
+  "structural_validity": "PASS",
+  "warnings": []
+}

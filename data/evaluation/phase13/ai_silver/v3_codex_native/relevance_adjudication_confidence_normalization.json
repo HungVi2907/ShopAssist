@@ -1,0 +1,6 @@
+{
+  "source": "relevance_adjudication_submission.jsonl",
+  "import_submission": "relevance_adjudication_submission_import.jsonl",
+  "method": "Mechanical confidence representation normalization only",
+  "rule": "Native numeric confidences 0.89-0.99 were mapped to HIGH; no label, violation flag, missing evidence, or rationale was changed."
+}

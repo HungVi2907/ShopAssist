@@ -1,0 +1,2 @@
+FAILED_INCOMPLETE_OUTPUT
+Native Codex subagent execution was unavailable because the authenticated ChatGPT Plus allowance reported a usage limit. The judge did not read the packet and did not emit any labels. No substitute or synthetic labels were generated.
