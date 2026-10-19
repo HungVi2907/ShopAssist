@@ -11,7 +11,7 @@
 <!-- phase82-correction-end -->
 
 <!-- current-development-status-start -->
-> **Current development status — 2026-10-14:** Phase 15 is **IMPLEMENTED — PENDING LIVE THIRD-PARTY VALIDATION**. The FastAPI backend (`src/shopassist/api/`) integrates Phases 8–12 with lifespan resource management, CPU-bound threadpool offloading, PriceBoundaryAdapter, and RecommendationOrchestrator. All 91 Phase 15 tests and 610 repository regression tests pass. Live health check passes with Supabase PostgreSQL and BGE embeddings. Prior phases: Phase 14 Educational AI Engineering Evaluation is **COMPLETE** (`phase14_learning_status = COMPLETE`); Phase 12 Grounded Recommendation is **VALIDATED FOR PROTOTYPE**; Phase 11 Reranking is **VALIDATED FOR PROTOTYPE**; Phase 10 Hybrid Retrieval and Phase 9 Preference Representation are **PASS — component scope**. Next milestone is Phase 16: Telegram Bot Integration. See [development status and checklist](docs/development_status.md) and [Phase 15 report](docs/phase15_fastapi_backend.md).
+> **Current development status — 2026-10-15:** Phase 16 is **IMPLEMENTED — PENDING LIVE USER VALIDATION**. The Telegram Bot interface (`src/shopassist/bot/`) connects end users to the Phase 15 FastAPI backend (`src/shopassist/api/`) using asynchronous HTTP (`httpx`), rich HTML cards with INR prices, star ratings, catalog URL/image propagation, and robust session/concurrency management. All 58 Phase 16 tests and 92 Phase 15 tests pass (150 total tests in automated suite). Live Telegram Bot API authentication (`getMe`: `ShopAssistProject_bot`) and live backend health checks (`/api/v1/health`: 200 OK) are verified. Prior phases: Phase 15 FastAPI Backend is **COMPLETE**; Phase 14 Educational AI Engineering Evaluation is **COMPLETE** (`phase14_learning_status = COMPLETE`); Phase 12 Grounded Recommendation is **VALIDATED FOR PROTOTYPE**; Phase 11 Reranking is **VALIDATED FOR PROTOTYPE**; Phase 10 Hybrid Retrieval and Phase 9 Preference Representation are **PASS — component scope**. Next milestone is Phase 17: Containerization & Deployment. See [development status and checklist](docs/development_status.md), [Phase 16 documentation](docs/phase16_telegram_bot.md), and [educational guide](docs/learning/12_telegram_bot_integration.md).
 <!-- current-development-status-end -->
 
 ShopAssist is an end-to-end conversational product recommendation system using LLM-based query understanding, structured filtering, and hybrid retrieval to recommend consumer products based on both explicit constraints and semantic user preferences.
@@ -54,6 +54,7 @@ ShopAssist/
 ├── src/
 │   └── shopassist/
 │       ├── api/              # Phase 15: FastAPI REST backend & AI pipeline orchestration
+│       ├── bot/              # Phase 16: Telegram Bot conversational interface
 │       ├── core/             # Configuration and path resolution
 │       ├── data/             # Data loading and schema validation modules
 │       ├── db/               # PostgreSQL & pgvector connection & loading
@@ -468,12 +469,37 @@ python -m pytest tests/test_gemini_integration.py -v
   - Demonstrated Hybrid RRF nDCG@5 = 0.9067 and 100% hard constraint satisfaction.
   - Implemented LLM-as-a-Judge evaluation framework and traceable RAG pipeline provenance.
   - Complete 10-lesson Vietnamese AI Engineering learning curriculum authored in `docs/learning/`.
-- **Phase 15 — FastAPI Backend & AI Pipeline Orchestration** (Implemented — Pending Live Third-Party Validation)
+- **Phase 15 — FastAPI Backend & AI Pipeline Orchestration** (Completed)
   - Production-grade FastAPI backend under `src/shopassist/api/` exposing RESTful endpoints (`POST /api/v1/recommend`, `GET /api/v1/health`).
   - Lifespan resource management (SQLAlchemy engine, TF-IDF index, BGE model singleton).
   - CPU-bound task offloading via `asyncio.to_thread` preventing event loop degradation.
   - Bilingual `PriceBoundaryAdapter` resolving strict vs inclusive operators across 48 scenarios.
   - `RecommendationOrchestrator` coordinating Phases 8–12 with comprehensive short-circuiting.
   - In-memory conversation session store with TTL bounding for Phase 16 Telegram integration.
-  - 91 Phase 15 automated unit/integration tests passed; 610 full repository regression tests passed.
-- **Next Phase**: **Phase 16 — Telegram Chatbot Integration**
+  - 92 Phase 15 automated unit/integration tests passing.
+- **Phase 16 — Telegram Bot Integration & Conversational Interface** (Implemented — Pending Live User Validation)
+  - Production-grade conversational Telegram interface under `src/shopassist/bot/`.
+  - Asynchronous HTTP client integration (`httpx.AsyncClient`) with connection pooling and aligned timeouts (95s client timeout vs 90s backend timeout).
+  - Grounded HTML product formatting with strict HTML escaping, INR price preservation, verified claims with evidence citations, star ratings, and external catalog links.
+  - Authoritative Flipkart product URL and high-res image propagation via backend catalog lookup with automatic text fallback on delivery failure.
+  - Clean conversational commands: `/start`, `/help`, and `/reset` (session rotation).
+  - Background typing indicator (`ChatAction.TYPING`) during AI orchestration.
+  - Per-chat session isolation and concurrency locking (`asyncio.Lock`).
+  - 58 automated unit and mocked integration tests passing (150 total tests in automated suite).
+  - Verified live Telegram API authentication (`getMe`: `ShopAssistProject_bot`), backend readiness (`GET /api/v1/health`: 200 OK), and live client recommendation retrieval.
+- **Next Phase**: **Phase 17 — Dockerization & Deployment**
+
+---
+
+## 4. Running the Application (Local Development)
+
+### Terminal 1 — FastAPI Backend:
+```bash
+python -m shopassist.api.main
+```
+*Swagger UI docs available at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).*
+
+### Terminal 2 — Telegram Bot:
+```bash
+python -m shopassist.bot.main
+```

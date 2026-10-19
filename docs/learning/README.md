@@ -29,6 +29,7 @@ Bộ tài liệu được sắp xếp theo trình tự từ tổng quan đến c
 | [**Bài 09**](09_reproducing_phase14.md) | **Hướng Dẫn Tái Hiện Thực Nghiệm Phase 14** | Hướng dẫn từng bước chạy evaluation runner, đọc báo cáo, kiểm thử unit test và xem kết quả thực tế. |
 | [**Bài 10**](10_what_we_learned.md) | **Tổng Kết Bài Học AI Engineering Thực Chiến** | Những bài học xương máu về thiết kế hệ thống AI, các trade-offs cốt lõi và tư duy kỹ thuật cần mang theo vào các dự án tương lai. |
 | [**Bài 11**](11_fastapi_backend_and_ai_orchestration.md) | **FastAPI Backend & Điều Phối AI Pipeline Thực Chiến** | Tại sao ứng dụng AI cần backend? Kiến trúc FastAPI, Async/Sync, Lifespan, Orchestration Phase 8–12, Short-circuiting, Guardrails và chuẩn bị cho Telegram Bot. |
+| [**Bài 12**](12_telegram_bot_integration.md) | **Tích Hợp Telegram Bot & Thiết Kế Giao Diện Hội Thoại** | Ranh giới giữa AI Backend và Presentation, Long Polling vs Webhook, httpx AsyncClient, HTML escaping, typing indicators, session nonces và per-chat concurrency locking. |
 
 ---
 
