@@ -1,6 +1,10 @@
 # ShopAssist Development Status and Checklist
 
-**Updated:** 2026-10-13. This is the current roadmap status; prior phase reports remain historical evidence.
+**Documentation reconciled:** 2026-10-23, using integration evidence through 2026-10-15. This is the current roadmap status; prior phase reports remain historical evidence. Reconciliation does not imply a new live test run.
+
+The API and Telegram implementations are available for local prototyping. The [Phase 16 integration report](phase16_integration_report.md) records 150 passing API/bot tests, successful Telegram authentication and backend readiness checks, and a live catalog recommendation using deterministic fallback. Real user chat delivery and full provider-backed end-to-end validation remain open gates. See the [project README](../README.md) for setup and the [architecture](architecture.md) for request flow and failure boundaries.
+
+**Automated recheck (2026-10-23):** the API/bot unit and mocked integration selection documented in the README passed again: **150 passed, 1 warning** (an unawaited `AsyncMock` coroutine reported during `test_deterministic_fallback_flow`). No live provider or Telegram validation was performed during this documentation update.
 
 | Phase | Current status | Evidence / next gate |
 | --- | --- | --- |
@@ -13,8 +17,9 @@
 | 11 | **VALIDATED FOR PROTOTYPE — REAL INFERENCE & LIVE INTEGRATION VERIFIED** | Pinned Cross-Encoder downloaded (`1b5cd67b15209f24824c50370e0397743aa9b787`), CPU inference/token truncation/latencies benchmarked, Phase 10 live DB integration verified (53/53 tests pass). RRF remains default; 40-query independent evaluation deferred to Phase 13–14. See [Phase 11 report](phase11_reranking.md). |
 | 12 | **VALIDATED FOR PROTOTYPE — OPENROUTER GEMMA 4 MIGRATION & GROUNDING VERIFIED** | OpenRouter migration complete (`google/gemma-4-26b-a4b-it:free` by default, standard route and Groq preserved); live API authentication and JSON schema verified; 100% groundedness pass rate across 7 catalog scenarios; zero cross-product hallucinations; token/latency/cost measured; deterministic fallbacks verified under upstream rate limits; all repository regression tests passing. See [Phase 12 report](phase12_recommendation.md). |
 | 14 | **AI ENGINEERING EXPERIMENTAL EVALUATION COMPLETE — EDUCATIONAL SCOPE** | AI-Silver v4 validated (0 errors, 0 warnings); Baseline Retrieval (TF-IDF, Dense, Hybrid RRF) evaluated across All (174 pools), Dev (140), and Held-Out (60); Hybrid achieves nDCG@5 = 0.9067; Phase 11 Reranking (RRF vs Multi-Signal vs CPU Cross-Encoder) benchmarked; RAG Trace Q0001 generated; LLM-as-a-Judge rubric & live Gemini execution verified (Decision=PASS, Groundedness=4/5); 11/11 Phase 14 unit tests passed; Comprehensive 10-lesson Vietnamese AI Engineering curriculum authored in `docs/learning/`. Human Gold evaluation explicitly superseded by educational scope. `phase14_learning_status = COMPLETE`. See [Phase 14 Evaluation Report](phase14_evaluation_report.md). |
-| 15 | **IMPLEMENTED — PENDING LIVE THIRD-PARTY VALIDATION** | FastAPI backend implemented under `src/shopassist/api/`; lifespan resource management; PriceBoundaryAdapter (48 bilingual scenarios); RecommendationOrchestrator coordinating Phases 8–12 with short-circuiting; 91/91 Phase 15 unit and mocked integration tests passed; 610/610 full offline regression tests passed; live health probe verified against Supabase PostgreSQL and BGE embeddings; external live validation pending Google Gemini 503 and OpenRouter 429 quota resolution. See [Phase 15 report](phase15_fastapi_backend.md). |
-| 16–17 | Planned | Telegram Chatbot and Docker deployment follow roadmap. |
+| 15 | **IMPLEMENTED — PENDING FULL PROVIDER-BACKED LIVE VALIDATION** | FastAPI orchestration, price boundary adaptation, sessions, and health probes implemented. The 2026-10-15 report records 92 API tests passing and a real client recommendation using deterministic fallback after OpenRouter HTTP 429. This extends the earlier infrastructure evidence without establishing a full live LLM generation pass. See [Phase 15 report](phase15_fastapi_backend.md) and [Phase 16 integration evidence](phase16_integration_report.md). |
+| 16 | **IMPLEMENTED — PENDING LIVE USER VALIDATION** | Telegram long polling, asynchronous API client, HTML cards, catalog URLs/images, commands, and per-chat session locking implemented. The 2026-10-15 report records 58 bot tests passing (150 API/bot tests combined), successful `getMe`, backend readiness, and fallback client retrieval. Real user chat delivery remains pending. See [Phase 16 integration report](phase16_integration_report.md). |
+| 17 | Planned | Containerization and deployment. Webhooks, distributed state, authentication, and client rate limiting remain deferred; see the [API](phase15_deferred_issues.md) and [bot](phase16_deferred_issues.md) debt registers. |
 
 ## Current Phase 15 checklist
 
@@ -23,18 +28,18 @@
 - [x] Strongly-typed Pydantic v2 schemas for request validation, product response, metadata, and usage telemetry (`RecommendationRequest`, `RecommendationResponse`).
 - [x] Narrowly-scoped bilingual PriceBoundaryAdapter resolving strict (<, >) vs inclusive (<=, >=) operators across 48 test scenarios.
 - [x] RecommendationOrchestrator coordinating Phases 8–12 with comprehensive short-circuiting on invalid inputs, clarifications, currency mismatches, and exclusions.
-- [x] Threadpool execution (`asyncio.to_thread`) for CPU-bound tasks (BGE encoding, TF-IDF dot products, RRF reranking) to prevent event loop blocking.
+- [x] Threadpool execution (`asyncio.to_thread`) for preference representation and reranking. Hybrid retrieval still performs local lexical work inside its async service call; see [architecture details](architecture.md#resources-sessions-and-deadlines).
 - [x] Primary endpoint `POST /api/v1/recommend` and backward-compatible alias `POST /recommend`.
 - [x] Health probe `GET /api/v1/health` and liveness probe `GET /api/v1/health/live`.
 - [x] Ephemeral in-memory conversation session store with TTL bounding for Phase 16 Telegram preparation.
 - [x] Global exception handlers sanitizing errors and protecting credentials.
-- [x] Full unit test suite (74 tests, 100% passing).
-- [x] Mocked HTTP API integration suite (16 tests, 100% passing).
-- [x] Full offline regression suite (610 tests passed, 0 failures).
+- [x] API unit and mocked HTTP integration suites: 92 passing tests in the 2026-10-15 Phase 16 report.
+- [x] Historical full offline regression: 610 passed in the 2026-10-14 Phase 15 report; not a current repository-wide count.
 - [x] Real infrastructure smoke test verifying live PostgreSQL 17.11 Supabase connection and local assets.
 - [x] Comprehensive documentation authored (`phase15_fastapi_backend.md`, `phase15_api_contract.md`, `phase15_integration_report.md`, `phase15_deferred_issues.md`, `phase15_preimplementation_audit.md`).
 - [x] Vietnamese AI Engineering curriculum updated with Lesson 11 (`docs/learning/11_fastapi_backend_and_ai_orchestration.md`).
-- [ ] Live external third-party end-to-end smoke test pending Google Gemini (503) and OpenRouter (429) quota clearance.
+- [x] Live client retrieval with catalog URLs/images and deterministic fallback recorded on 2026-10-15.
+- [ ] Full provider-backed live end-to-end validation; the recorded fallback result does not close this gate. Earlier runs observed Gemini 503 and OpenRouter 429; their present availability has not been rechecked in this documentation update.
 
 ## Current Phase 14 checklist
 
@@ -69,16 +74,7 @@
 
 ## Current flow
 
-```mermaid
-flowchart LR
-  Q[User query] --> P8[Phase 8 production v1]
-  P8 --> P9[Phase 9 positive preference representation]
-  P9 -->|SUCCESS + 384D vector| P10[Phase 10 hybrid retrieval]
-  P10 -->|Top-N candidates + provenance| P11[Phase 11 reranking]
-  P11 -->|Top-K + canonical evidence| P12[Phase 12 grounded generation]
-  P8 -->|invalid / clarification / unsupported| Stop[Stop and clarify]
-  P9 -->|no preferences| Base[Phase 7 base query encoder if needed]
-```
+See the [system and pipeline diagrams](../README.md#architecture) and the [Telegram request sequence](architecture.md#telegram-request-sequence). These include the API/bot boundaries, price adaptation, both retrieval paths, and generation fallback.
 
 ## Phase 10 checklist
 
@@ -145,17 +141,6 @@ flowchart LR
 - [ ] Capture 50 authentic Phase 12 recommendation interaction transcripts when production API is authorized (unblocks `generation_silver_complete`).
 - [ ] Complete human calibration review on 40-pair sample (P13-HUMAN-CALIB).
 
-## Phase 15 checklist (FastAPI Backend & AI Orchestration)
-
-- [x] Lifespan management for shared singletons: PostgreSQL async engine, TF-IDF index, DenseQueryEncoder, ProductTextProvider.
-- [x] Central RecommendationOrchestrator coordinating Phase 8 -> 9 -> 10 -> 11 -> 12 with short-circuiting.
-- [x] PriceBoundaryAdapter enforcing explicit price operator semantics (under, up to, between).
-- [x] Public Pydantic v2 schemas: RecommendationRequest, RecommendationResponse, HealthResponse.
-- [x] In-memory session tracking with TTL eviction and bounded turns.
-- [x] Health check probes (`GET /api/v1/health` and `GET /api/v1/health/live`).
-- [x] Automated unit and mocked integration tests (90 tests passing).
-- [x] Comprehensive documentation (`phase15_fastapi_backend.md`, `phase15_api_contract.md`, `phase15_integration_report.md`, `phase15_deferred_issues.md`).
-
 ## Phase 16 checklist (Telegram Bot Integration)
 
 - [x] Standalone `shopassist.bot` package adhering to strict architectural boundaries (presentation only, no direct AI/DB).
@@ -168,7 +153,7 @@ flowchart LR
 - [x] Commands implemented: `/start` (welcome & examples), `/help` (search guide & rules), `/reset` (session rotation).
 - [x] Background typing indicator (`ChatAction.TYPING`) active during backend processing window.
 - [x] Session isolation across chats and per-chat `asyncio.Lock` preventing concurrent request collisions.
-- [x] 58 automated unit and mocked integration tests passing (150 total tests in test suite).
+- [x] Historical 2026-10-15 evidence: 58 bot unit and mocked integration tests passing; 150 tests across the combined API/bot selection.
 - [x] Live runtime verification of Telegram Bot authentication (`getMe`: `ShopAssistProject_bot`), backend readiness (`GET /api/v1/health`: 200 OK), and end-to-end client recommendation call.
 - [x] Comprehensive documentation (`phase16_preimplementation_audit.md`, `phase16_telegram_bot.md`, `phase16_integration_report.md`, `phase16_deferred_issues.md`, `docs/learning/12_telegram_bot_integration.md`).
 - [ ] End-to-end live user chat interaction via Telegram client (status: `IMPLEMENTED_PENDING_LIVE_VALIDATION`).
