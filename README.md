@@ -1,6 +1,22 @@
 # ShopAssist
 
+![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Pydantic v2](https://img.shields.io/badge/Pydantic-v2-E92063?style=flat-square&logo=pydantic&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![pgvector](https://img.shields.io/badge/pgvector-Vector_Search-4169E1?style=flat-square)
+
+![Gemini](https://img.shields.io/badge/Gemini-8E75B2?style=flat-square&logo=googlegemini&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![Sentence Transformers](https://img.shields.io/badge/Sentence_Transformers-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![OpenRouter](https://img.shields.io/badge/OpenRouter-6467F2?style=flat-square&logo=openrouter&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-F55036?style=flat-square)
+
 Conversational product recommendations with structured query understanding, hybrid retrieval, and evidence-grounded explanations.
+
+[Architecture](#architecture) · [Tech stack](#tech-stack) · [Getting started](#getting-started) · [API usage](#rest-api) · [Learning guides](docs/learning/README.md)
 
 ShopAssist is an educational AI engineering prototype. It turns shopping requests such as **“Puma running shoes under 2000 INR”** into catalog recommendations by combining LLM extraction, explicit constraint filtering, lexical and vector search, and response validation. A FastAPI backend serves both direct API clients and a Telegram bot.
 
@@ -38,19 +54,35 @@ The source dataset contains approximately 20,000 Flipkart products; the prepared
 ### System overview
 
 ```mermaid
-flowchart LR
-    User["Telegram user"] <--> Cloud["Telegram Bot API"]
-    Bot["Telegram bot<br/>Long polling / HTTPX"] <-->|"Updates and replies"| Cloud
-    Bot <-->|"HTTP / JSON"| API["FastAPI backend"]
-    Client["API client / Swagger UI"] <-->|"HTTP / JSON"| API
+graph LR
+    User["Telegram user"]
+    Cloud["Telegram Bot API"]
+    Bot["Telegram bot - long polling / HTTPX"]
+    Client["API client / Swagger UI"]
     subgraph Backend["Backend services"]
-        API <--> Pipeline["Recommendation orchestrator<br/>Query understanding to grounded response"]
-        Pipeline <--> Session["In-memory session history"]
-        Assets["Local TF-IDF index<br/>Canonical product texts / BGE model"] --> Pipeline
+        API["FastAPI backend"]
+        Pipeline["Recommendation orchestrator"]
+        Session["In-memory session history"]
+        Assets["TF-IDF index, product texts, BGE model"]
     end
-    Pipeline <-->|"Catalog reads / vector search"| DB[("PostgreSQL + pgvector")]
-    Pipeline <-->|"Query extraction"| Gemini["Gemini API"]
-    Pipeline <-->|"Recommendation generation"| Provider["OpenRouter or Groq"]
+    DB[("PostgreSQL + pgvector")]
+    Gemini["Gemini API"]
+    Provider["OpenRouter or Groq"]
+    User <--> Cloud
+    Cloud <--> Bot
+    Bot -->|HTTP / JSON| API
+    API --> Bot
+    Client -->|HTTP / JSON| API
+    API --> Client
+    API <--> Pipeline
+    Pipeline <--> Session
+    Assets --> Pipeline
+    Pipeline -->|Catalog reads / vector search| DB
+    DB --> Pipeline
+    Pipeline -->|Query extraction| Gemini
+    Gemini --> Pipeline
+    Pipeline -->|Recommendation generation| Provider
+    Provider --> Pipeline
 ```
 
 The bot handles presentation and calls the API; database access and AI orchestration belong to the backend. Session history is stored for tracking, but is not currently used to reformulate follow-up questions.
