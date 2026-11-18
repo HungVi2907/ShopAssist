@@ -401,3 +401,42 @@ async def test_health_readiness_degraded_when_db_fails(test_app):
     data = res.json()
     assert data["status"] == "degraded"
     assert data["components"]["database"] == "unhealthy"
+
+
+@pytest.mark.parametrize("stall_stage", ["connect", "query"])
+@async_test
+async def test_health_readiness_times_out_database_probe(test_app, monkeypatch, stall_stage):
+    monkeypatch.setattr(
+        "shopassist.api.routes.health.DATABASE_PROBE_TIMEOUT_SECONDS", 0.01
+    )
+    cancelled = asyncio.Event()
+
+    async def stall(*args, **kwargs):
+        try:
+            await asyncio.sleep(10)
+        finally:
+            cancelled.set()
+
+    connection = AsyncMock()
+    connection.execute = AsyncMock(side_effect=stall) if stall_stage == "query" else AsyncMock()
+    context = AsyncMock()
+    context.__aenter__ = (
+        AsyncMock(side_effect=stall) if stall_stage == "connect" else AsyncMock(return_value=connection)
+    )
+    engine = MagicMock()
+    engine.connect.return_value = context
+    test_app.state.engine = engine
+    test_app.state.tfidf_index = MagicMock(is_fitted=True)
+    test_app.state.query_encoder = MagicMock()
+
+    async with AsyncClient(transport=ASGITransport(app=test_app), base_url="http://test") as client:
+        response = await asyncio.wait_for(client.get("/api/v1/health"), timeout=1.0)
+
+    assert response.status_code == 503
+    assert response.json()["status"] == "degraded"
+    assert response.json()["components"]["database"] == "unhealthy"
+    assert cancelled.is_set()
+    if stall_stage == "connect":
+        connection.execute.assert_not_called()
+    else:
+        context.__aexit__.assert_awaited_once()

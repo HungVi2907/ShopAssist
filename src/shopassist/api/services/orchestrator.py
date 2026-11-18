@@ -280,7 +280,9 @@ class RecommendationOrchestrator:
         )
         stage_latencies["phase10_hybrid_retrieval"] = (time.perf_counter() - t0) * 1000.0
 
-        if retrieval_result.status == HybridRetrievalStatus.NO_RESULTS or not retrieval_result.candidates:
+        if retrieval_result.status == HybridRetrievalStatus.NO_RESULTS or (
+            retrieval_result.status == HybridRetrievalStatus.SUCCESS and not retrieval_result.candidates
+        ):
             return self._build_terminal_response(
                 request_id=request_id,
                 status="NO_RESULTS",

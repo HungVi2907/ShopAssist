@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from datetime import datetime, timezone
 import logging
 from typing import Any
@@ -18,6 +19,15 @@ from shopassist.recommendation.config import get_recommendation_settings
 logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["Health & Readiness"])
+
+DATABASE_PROBE_TIMEOUT_SECONDS = 5.0
+
+
+async def _probe_database(engine: AsyncEngine) -> bool:
+    """Check checkout, connection establishment, and a minimal query together."""
+    async with engine.connect() as conn:
+        result = await conn.execute(text("SELECT 1;"))
+        return result.scalar() == 1
 
 
 @router.get(
@@ -46,15 +56,16 @@ async def check_health(request: Request) -> JSONResponse:
     engine: AsyncEngine | None = getattr(request.app.state, "engine", None)
     if engine is not None:
         try:
-            async with engine.connect() as conn:
-                res = await conn.execute(text("SELECT 1;"))
-                if res.scalar() == 1:
-                    components["database"] = "healthy"
-                else:
-                    components["database"] = "degraded"
-                    is_healthy = False
+            ready = await asyncio.wait_for(
+                _probe_database(engine), timeout=DATABASE_PROBE_TIMEOUT_SECONDS
+            )
+            if ready:
+                components["database"] = "healthy"
+            else:
+                components["database"] = "degraded"
+                is_healthy = False
         except Exception as exc:
-            logger.warning("Health check DB probe failed: %s", exc)
+            logger.warning("Health check DB probe failed: %s", type(exc).__name__)
             components["database"] = "unhealthy"
             is_healthy = False
     else:

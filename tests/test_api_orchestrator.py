@@ -266,6 +266,50 @@ async def test_short_circuit_on_phase10_no_results(mock_orchestrator_components)
     reranking_service.rerank.assert_not_called()
 
 
+@pytest.mark.parametrize(
+    ("retrieval_status", "expected_status"),
+    [
+        (HybridRetrievalStatus.RETRIEVAL_FAILURE, "RETRIEVAL_FAILURE"),
+        (HybridRetrievalStatus.EMBEDDING_FAILURE, "RETRIEVAL_FAILURE"),
+        (HybridRetrievalStatus.CLARIFICATION_REQUIRED, "CLARIFICATION_REQUIRED"),
+        (HybridRetrievalStatus.UNSUPPORTED_INTENT, "UNSUPPORTED_INTENT"),
+        (HybridRetrievalStatus.SUCCESS, "NO_RESULTS"),
+    ],
+)
+@async_test
+async def test_phase10_empty_candidates_preserve_terminal_status(
+    mock_orchestrator_components, retrieval_status, expected_status
+):
+    components = mock_orchestrator_components
+    components["query_engine"].parse_query_async = AsyncMock(
+        return_value=QueryUnderstandingResult(
+            query="running shoes",
+            output=QueryUnderstandingOutput(
+                semantic_query="running shoes",
+                hard_constraints=HardConstraints(category="Footwear"),
+            ),
+            is_valid=True,
+        )
+    )
+    components["preference_service"].represent.return_value = PreferenceRepresentationResult(
+        semantic_query="running shoes",
+        has_preferences=False,
+        status=RepresentationStatus.NO_PREFERENCES,
+    )
+    components["hybrid_service"].retrieve = AsyncMock(
+        return_value=HybridRetrievalResult(status=retrieval_status, candidates=[])
+    )
+
+    response = await components["orchestrator"].orchestrate(
+        RecommendationRequest(query="running shoes"), request_id="retrieval-status-test"
+    )
+
+    assert response.status == expected_status
+    assert response.products == []
+    components["reranking_service"].rerank.assert_not_called()
+    components["recommendation_service"].generate.assert_not_called()
+
+
 @async_test
 async def test_deterministic_fallback_flow(mock_orchestrator_components):
     orchestrator = mock_orchestrator_components["orchestrator"]
