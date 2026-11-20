@@ -1,0 +1,9 @@
+﻿{
+    "status":  "NOT_MEASURED",
+    "reason":  "Stage 1 exit gate failed; no LLM requests made",
+    "phase8_input":  null,
+    "phase8_output":  null,
+    "phase12_input":  null,
+    "phase12_output":  null,
+    "total":  null
+}

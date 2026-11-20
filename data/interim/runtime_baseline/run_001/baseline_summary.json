@@ -1,0 +1,30 @@
+﻿{
+    "report_title":  "SHOPASSIST — BASELINE PERFORMANCE REPORT",
+    "run_id":  "run_001",
+    "status":  "BLOCKED_INFRASTRUCTURE",
+    "successful_requests":  0,
+    "provider_failure_rate":  null,
+    "fallback_rate":  null,
+    "avg_phase8_input_tokens":  null,
+    "avg_phase8_output_tokens":  null,
+    "avg_phase12_input_tokens":  null,
+    "avg_phase12_output_tokens":  null,
+    "avg_total_tokens":  null,
+    "median_end_to_end_latency_ms":  null,
+    "p95_end_to_end_latency_ms":  null,
+    "avg_generation_latency_ms":  null,
+    "constraint_violation_rate":  null,
+    "evidence_citation_validity":  null,
+    "recommendation_relevance":  null,
+    "stage_1_result":  "BLOCKED",
+    "blocker":  "pyarrow parquet extension DLL load denied by Windows Application Control",
+    "tests":  {
+                  "prescribed_regression":  "FAILED during collection (2 modules)",
+                  "isolated_remainder":  "125 passed, 1 failed",
+                  "infra_failure":  "The failure occurs while importing pyarrow._parquet",
+                  "existing_artifacts":  "TF-IDF manifest and embedding validation report show 8405 products; these are prior artifacts, not current runtime validation"
+              },
+    "stage_2_provider_tests":  "NOT RUN because Stage 1 exit gate failed",
+    "interpretation":  "No live provider or generation measurements were collected. Token, latency, provider reliability, fallback, and recommendation quality are unmeasured.",
+    "next_step":  "Restore a permitted, working pyarrow parquet DLL environment, rerun Stage 1, then proceed sequentially to provider tests."
+}

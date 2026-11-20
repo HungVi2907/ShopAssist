@@ -1,0 +1,30 @@
+﻿{
+    "report_title":  "SHOPASSIST — BASELINE PERFORMANCE REPORT",
+    "run_id":  "run_002",
+    "status":  "BLOCKED_INFRASTRUCTURE",
+    "successful_requests":  0,
+    "provider_failure_rate":  null,
+    "fallback_rate":  null,
+    "avg_phase8_input_tokens":  null,
+    "avg_phase8_output_tokens":  null,
+    "avg_phase12_input_tokens":  null,
+    "avg_phase12_output_tokens":  null,
+    "avg_total_tokens":  null,
+    "median_end_to_end_latency_ms":  null,
+    "p95_end_to_end_latency_ms":  null,
+    "avg_generation_latency_ms":  null,
+    "constraint_violation_rate":  null,
+    "evidence_citation_validity":  null,
+    "recommendation_relevance":  "Not formally scored; TF-IDF smoke query returned mostly irrelevant candidates",
+    "stage_1_result":  "BLOCKED",
+    "results":  {
+                    "pyarrow_import":  "PASS after Smart App Control was disabled",
+                    "regression_tests":  "157 passed, 0 failed; 1 RuntimeWarning",
+                    "tfidf_search":  "PASS, 5 results in 12.624 ms, observed poor relevance",
+                    "database":  "FAIL: Supavisor returns FATAL (ENOTFOUND) tenant/user not found. DNS resolves and TCP 5432 is reachable; configured host shape, shared-pooler username format, and session port are syntactically valid. This points to a host/project-ref mapping mismatch or Supabase-side tenant registration, before password authentication.",
+                    "semantic_search":  "FAIL loading BAAI/bge-small-en-v1.5; Hugging Face returned HTTP 401; no project-local model copy found"
+                },
+    "stage_2_provider_tests":  "NOT RUN because Stage 1 exit gate failed",
+    "interpretation":  "No Gemini/OpenRouter calls were made. Tokens, end-to-end latency, provider reliability, fallback rate, and generated recommendation quality are unmeasured.",
+    "next_step":  "Copy the exact Session Pooler connection details from Supabase Dashboard \u003e Connect and compare host plus username/project ref (do not publish password). If they match and ENOTFOUND persists, request Supabase Support to verify the shared-pooler tenant mapping."
+}

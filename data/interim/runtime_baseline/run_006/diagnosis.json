@@ -1,0 +1,23 @@
+﻿{
+    "run_id":  "run_006",
+    "run_date":  "2026-11-20",
+    "scope":  "Stage 2.5 single RecommendationService smoke test after model change",
+    "configured_model":  "baidu/ernie-5.5-flash-preview:free",
+    "completion_token_limit":  2048,
+    "configured_retry_limit_for_this_test":  0,
+    "provider_name":  "Baidu",
+    "provider_http_status":  200,
+    "provider_attempts":  1,
+    "response_parse_status":  "FAIL",
+    "parse_error":  "Unterminated string at line 53 column 67 (character 2742)",
+    "service_status":  "DETERMINISTIC_FALLBACK",
+    "fallback_used":  true,
+    "returned_products":  3,
+    "prompt_tokens":  null,
+    "completion_tokens":  null,
+    "provider_latency_ms":  null,
+    "generation_cost_usd":  null,
+    "conclusion":  "The endpoint responded, but the generated content did not parse as valid JSON; RecommendationService returned deterministic fallback. Token usage and provider generation latency were unavailable because parsing failed.",
+    "unconfirmed":  "The output may have been truncated (configured max completion tokens are 2048 versus the original plan 4096), but finish_reason was not captured, so truncation is unconfirmed.",
+    "next_step":  "Capture finish_reason, raw output length, and token usage in a one-request smoke diagnostic; test with configured completion limit 2048 before changing it, then compare with 4096 only as a separately recorded configuration."
+}

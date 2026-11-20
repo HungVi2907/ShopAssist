@@ -1,0 +1,31 @@
+﻿{
+    "report_title":  "SHOPASSIST — BASELINE PERFORMANCE REPORT",
+    "run_id":  "run_003",
+    "status":  "BLOCKED_BY_PROVIDER",
+    "stage_1":  "PASS",
+    "stage_2":  "BLOCKED: OpenRouter smoke test returned HTTP 401 API key expired",
+    "stage_3":  "NOT RUN per Stage 2 exit gate",
+    "successful_end_to_end_requests":  0,
+    "provider_smoke_calls":  2,
+    "provider_smoke_successes":  1,
+    "provider_smoke_failures":  1,
+    "gemini_query_input_tokens":  1080,
+    "gemini_query_output_tokens":  121,
+    "measured_provider_smoke_tokens":  1201,
+    "openrouter_tokens":  null,
+    "median_end_to_end_latency_ms":  null,
+    "p95_end_to_end_latency_ms":  null,
+    "generation_latency_ms":  null,
+    "fallback_rate_e2e":  null,
+    "relevance_formal_score":  null,
+    "findings":  [
+                     "Stage 1 regression suite: 157 passed, 0 failed, 1 warning.",
+                     "Supabase validation: 43/43 checks passed; 8,405 products and 16 categories.",
+                     "FastAPI health endpoint: healthy across database, TF-IDF, embedding, and provider configuration.",
+                     "Semantic retrieval smoke test returned five candidates for running shoes with BGE model.",
+                     "TF-IDF smoke test executed in 12.624 ms but most returned candidates were irrelevant to wireless Bluetooth keyboard.",
+                     "Gemini smoke test returned valid structured extraction and expected category, brand, and INR max-price constraints.",
+                     "OpenRouter API key is expired; the service fell back deterministically. No retries were sent."
+                 ],
+    "next_step":  "Update OPENROUTER_API_KEY with a valid key, rerun only the one-case OpenRouter smoke test, then proceed to Q01 and remaining Stage 3 queries if it passes."
+}

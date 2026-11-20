@@ -1,0 +1,56 @@
+﻿{
+    "run_id":  "run_002",
+    "run_date":  "2026-11-18",
+    "status":  "BLOCKED_INFRASTRUCTURE",
+    "git_commit":  "c740d50de1976e8aafa371000644ae227f453cf0",
+    "branch":  "main",
+    "working_tree_before_run":  "clean",
+    "python":  "3.10.11",
+    "os":  "Windows-10-10.0.26300-SP0",
+    "smart_app_control":  "disabled by user; pyarrow.parquet import succeeds",
+    "configuration":  {
+                          "dataset_products":  8405,
+                          "database":  "Supabase PostgreSQL + pgvector",
+                          "embedding_model":  "BAAI/bge-small-en-v1.5",
+                          "query_provider":  "Gemini",
+                          "query_model":  "gemini-3.5-flash-lite",
+                          "recommendation_provider":  "OpenRouter",
+                          "recommendation_model":  "google/gemma-4-26b-a4b-it:free",
+                          "retrieval":  "Hybrid RRF",
+                          "reranking":  "RRF",
+                          "retrieval_top_n":  20,
+                          "configured_top_k":  3,
+                          "plan_top_k":  5,
+                          "evidence_specifications_max":  8,
+                          "evidence_description_max_sentences":  3,
+                          "configured_max_completion_tokens":  2048,
+                          "plan_max_completion_tokens":  4096,
+                          "timeout_seconds":  30,
+                          "retries":  3
+                      },
+    "stage_1":  {
+                    "regression_suite":  "PASS",
+                    "tests_passed":  157,
+                    "tests_failed":  0,
+                    "warnings":  [
+                                     "RuntimeWarning: coroutine AsyncMockMixin._execute_mock_call was never awaited in tests/test_api_orchestrator.py::test_deterministic_fallback_flow"
+                                 ],
+                    "parquet_import":  "PASS",
+                    "kb_validation":  "FAIL: Supavisor FATAL (ENOTFOUND) tenant/user not found; DNS resolution and TCP 5432 succeed. Host pattern aws-N-region.pooler.supabase.com, shared-pooler username postgres.\u003cproject-ref\u003e, and session port 5432 are syntactically valid. Root cause likely stale/mismatched host/project ref or Supabase-side tenant mapping; password was not validated.",
+                    "tfidf_query":  {
+                                        "status":  "PASS",
+                                        "query":  "wireless bluetooth keyboard",
+                                        "latency_ms":  12.624,
+                                        "returned":  5,
+                                        "note":  "Top results were mostly unrelated products (audio accessories and automotive), indicating a relevance issue"
+                                    },
+                    "semantic_query":  {
+                                           "status":  "FAIL",
+                                           "error":  "Could not load BAAI/bge-small-en-v1.5; Hugging Face HEAD requests returned HTTP 401; no local copy found in .models"
+                                       },
+                    "api_health":  "NOT RUN; startup requires the unavailable BGE model"
+                },
+    "stage_2":  "NOT RUN: Stage 1 exit gate not met",
+    "secrets_recorded":  false,
+    "provider_quota_checked":  false
+}

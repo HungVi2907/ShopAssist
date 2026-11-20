@@ -1,0 +1,10 @@
+﻿{
+    "status":  "NOT_MEASURED",
+    "reason":  "Stage 1 exit gate failed; no end-to-end requests made",
+    "phase8_ms":  null,
+    "phase9_ms":  null,
+    "phase10_ms":  null,
+    "phase11_ms":  null,
+    "phase12_ms":  null,
+    "end_to_end_ms":  null
+}

@@ -1,0 +1,1 @@
+﻿{"test_id":"2.5-diagnostic","provider":"OpenRouter","model":"google/gemma-4-26b-a4b-it:free","status":429,"provider_name":"Google AI Studio","limit_source":"UPSTREAM_PROVIDER_CAPACITY","attempts_sent":1,"configured_retries":0,"message":"Temporarily rate-limited upstream","retry_after_header":null}

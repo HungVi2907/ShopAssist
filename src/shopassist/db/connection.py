@@ -15,7 +15,7 @@ from sqlalchemy import text
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 
-from shopassist.core.config import mask_database_url, settings
+from shopassist.core.config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +46,10 @@ def get_async_database_url(raw_url: str | None = None) -> str:
         Async-compatible SQLAlchemy database URL string.
     """
     url_str = raw_url.strip() if raw_url else settings.get_raw_supabase_db_url()
-    parsed_url = make_url(url_str)
+    try:
+        parsed_url = make_url(url_str)
+    except ValueError:
+        raise ValueError("Invalid Supabase database URL.") from None
 
     if parsed_url.drivername in ("postgresql", "postgres"):
         async_url = parsed_url.set(drivername="postgresql+psycopg_async")
@@ -80,19 +83,24 @@ def get_async_engine(
 
     Returns:
         SQLAlchemy AsyncEngine instance.
+
+    Raises:
+        ValueError: If the database URL is missing or has an invalid port.
+        RuntimeError: If the async engine cannot be initialized.
     """
     ensure_windows_event_loop_policy()
     async_url = get_async_database_url(url)
-    masked_url = mask_database_url(async_url)
-    logger.info("Initializing async database engine with pooler: %s", masked_url)
-
-    engine = create_async_engine(
-        async_url,
-        pool_size=pool_size,
-        max_overflow=max_overflow,
-        pool_pre_ping=pool_pre_ping,
-    )
-    return engine
+    logger.info("Initializing Supabase async database engine.")
+    try:
+        return create_async_engine(
+            async_url,
+            pool_size=pool_size,
+            max_overflow=max_overflow,
+            pool_pre_ping=pool_pre_ping,
+        )
+    except Exception:
+        logger.error("Failed to initialize Supabase async database engine.")
+        raise RuntimeError("Supabase database engine initialization failed.") from None
 
 
 async def check_connection(engine: AsyncEngine | None = None) -> dict[str, Any]:
@@ -105,7 +113,8 @@ async def check_connection(engine: AsyncEngine | None = None) -> dict[str, Any]:
         Dictionary with status, database name, postgresql version, and ssl flag.
 
     Raises:
-        RuntimeError: If connection cannot be established (sanitized of secrets).
+        ValueError: If a temporary engine needs a missing or invalid database URL.
+        RuntimeError: If engine setup, the connection test, or cleanup fails.
     """
     should_dispose = False
     active_engine = engine
@@ -147,16 +156,13 @@ async def check_connection(engine: AsyncEngine | None = None) -> dict[str, Any]:
                 "full_version": str(version_str),
                 "ssl": ssl_active,
             }
-    except Exception as exc:
-        err_msg = str(exc)
-        # Strip any credentials that might accidentally appear in driver exception messages
-        masked_err = err_msg
-        raw_pw = settings.supabase_db_url or ""
-        if raw_pw and "@" in raw_pw:
-            # Avoid exposing secret parts
-            masked_err = "Database connection error (credentials stripped)"
-        logger.error("Failed to connect to Supabase: %s", masked_err)
-        raise RuntimeError(f"Supabase connection test failed: {masked_err}") from None
+    except Exception:
+        logger.error("Supabase connection test failed.")
+        raise RuntimeError("Supabase connection test failed.") from None
     finally:
         if should_dispose and active_engine is not None:
-            await active_engine.dispose()
+            try:
+                await active_engine.dispose()
+            except Exception:
+                logger.error("Failed to dispose of the temporary Supabase database engine.")
+                raise RuntimeError("Supabase database engine cleanup failed.") from None

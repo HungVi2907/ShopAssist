@@ -1,0 +1,85 @@
+﻿{
+    "run_id":  "run_004",
+    "run_date":  "2026-11-20",
+    "scope":  "Requested retest of Stage 2.2 and 2.3 only",
+    "status":  "STAGE_2_SMOKE_COMPLETE_PROVIDER_LIMITED",
+    "tests":  {
+                  "stage_2_2_gemini":  {
+                                           "status":  "PASS",
+                                           "query":  "Puma running shoes under 2000 INR",
+                                           "model":  "gemini-3.5-flash-lite",
+                                           "valid_json":  true,
+                                           "category":  "Footwear",
+                                           "brand":  "Puma",
+                                           "max_price":  2000,
+                                           "currency":  "INR",
+                                           "input_tokens":  1080,
+                                           "output_tokens":  121,
+                                           "total_tokens":  1201,
+                                           "latency_ms":  3827.83
+                                       },
+                  "stage_2_3_openrouter_key":  {
+                                                   "status":  "PASS",
+                                                   "endpoint":  "GET /api/v1/key",
+                                                   "http_status":  200,
+                                                   "key_valid":  true,
+                                                   "is_free_tier":  true,
+                                                   "expires_at":  "2026-12-20T06:28:00Z",
+                                                   "generation_called":  false
+                                               },
+                  "stage_2_4_openrouter_model":  {
+                                                     "status":  "PASS",
+                                                     "endpoint":  "GET /api/v1/models?q=\u003cconfigured-model\u003e",
+                                                     "http_status":  200,
+                                                     "exact_model_found":  true,
+                                                     "model_id":  "google/gemma-4-26b-a4b-it:free",
+                                                     "prompt_price_per_token":  0,
+                                                     "completion_price_per_token":  0,
+                                                     "context_length":  262144,
+                                                     "generation_called":  false
+                                                 },
+                  "stage_2_5_recommendation_smoke":  {
+                                                         "test_execution":  "PASS",
+                                                         "provider_generation":  "BLOCKED_BY_429",
+                                                         "http_status":  429,
+                                                         "fallback_used":  true,
+                                                         "fallback_type":  "DETERMINISTIC_FALLBACK",
+                                                         "returned_products":  3,
+                                                         "candidate_ids_preserved":  true,
+                                                         "authoritative_product_metadata_preserved":  true,
+                                                         "prompt_tokens":  0,
+                                                         "completion_tokens":  0,
+                                                         "total_tokens":  0,
+                                                         "reported_usage_latency_ms":  0,
+                                                         "provider_generation_latency":  "not measured",
+                                                         "estimated_cost_usd":  0,
+                                                         "retry_sent":  false,
+                                                         "configured_429_retries":  3,
+                                                         "max_total_provider_attempts":  4,
+                                                         "actual_provider_attempt_count":  "not captured; may be between 1 and 4",
+                                                         "retry_note":  "OpenRouterProvider automatically retries 429 responses; prior report incorrectly said no retry.",
+                                                         "openrouter_limit_source":  "unknown; 429 response metadata was not captured",
+                                                         "daily_free_model_quota_followup":  "0 of 50 used at follow-up check",
+                                                         "remaining_possible_causes":  [
+                                                                                           "free-model per-minute cap",
+                                                                                           "upstream provider/model capacity"
+                                                                                       ]
+                                                     }
+              },
+    "not_run":  [
+                    "Stage 3 end-to-end"
+                ],
+    "note":  "The configured free model exists and accepts the requested response_format, so this is not a bad model ID or schema-parameter mismatch. GET /key showed 0/50 daily free-model requests used after the failure. The 429 could still be the per-minute free cap or provider-side capacity; the response metadata was not saved, so source cannot be distinguished. Provider code auto-retries 429 up to 3 times (max 4 POST attempts); actual attempts were not captured.",
+    "diagnostic_followup":  {
+                                "api_key_status":  "valid",
+                                "free_tier":  true,
+                                "free_model_daily_requests_used":  0,
+                                "free_model_daily_requests_limit":  50,
+                                "daily_cap_exhausted":  false,
+                                "configured_model":  "google/gemma-4-26b-a4b-it:free",
+                                "model_found_in_catalog":  true,
+                                "model_supports_response_format":  true,
+                                "exact_429_source":  "not recoverable from the saved test output"
+                            },
+    "confirmed_diagnosis":  "A separate one-request diagnostic with retries disabled confirmed the selected free model route is temporarily rate-limited upstream by Google AI Studio (HTTP 429). The model ID is valid; no generation tokens were produced."
+}

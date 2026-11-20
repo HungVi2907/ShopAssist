@@ -6,11 +6,12 @@ import asyncio
 from functools import wraps
 import json
 from pathlib import Path
+from traceback import format_exception
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from shopassist.core.config import mask_database_url, Settings
+from shopassist.core.config import mask_database_url, settings, Settings
 from shopassist.db.connection import (
     check_connection,
     ensure_windows_event_loop_policy,
@@ -105,18 +106,90 @@ def test_get_async_database_url_conversion():
 # 2. Connection & Error Sanitization Tests (Unit)
 # ==============================================================================
 
-@async_test
-async def test_check_connection_failure_handling():
-    """Verify check_connection sanitizes error messages and suppresses credentials."""
-    mock_engine = MagicMock()
-    mock_engine.connect.side_effect = Exception("FATAL: password authentication failed for user postgres.secretref")
+_TEST_DSN = "postgresql://postgres.secretref:driver-password@offline.invalid:5432/postgres"
 
-    with pytest.raises(RuntimeError) as exc_info:
+
+@pytest.mark.parametrize("dsn", [None, _TEST_DSN], ids=["missing-dsn", "configured-dsn"])
+@async_test
+async def test_check_connection_failure_handling(dsn, monkeypatch, caplog):
+    """Verify check_connection sanitizes error messages and suppresses credentials."""
+    monkeypatch.setattr(settings, "supabase_db_url", dsn)
+    mock_engine = MagicMock()
+    mock_engine.connect.side_effect = OSError(f"FATAL: connection failed for {_TEST_DSN}")
+
+    with pytest.raises(RuntimeError, match=r"^Supabase connection test failed\.$") as exc_info:
         await check_connection(mock_engine)
 
-    err_msg = str(exc_info.value)
-    assert "secretref" not in err_msg
-    assert "Supabase connection test failed" in err_msg
+    assert "Supabase connection test failed." in caplog.text
+    traceback_text = "".join(format_exception(exc_info.value))
+    for secret in ("secretref", "driver-password"):
+        assert secret not in traceback_text
+        assert secret not in caplog.text
+    mock_engine.connect.assert_called_once_with()
+
+
+@async_test
+async def test_check_connection_without_engine_preserves_missing_dsn_error(monkeypatch):
+    monkeypatch.setattr(settings, "supabase_db_url", None)
+    monkeypatch.delenv("SUPABASE_DB_URL", raising=False)
+    with patch("shopassist.core.config.ENV_FILE_PATH") as env_file, patch(
+        "shopassist.db.connection.create_async_engine"
+    ) as create_engine:
+        env_file.exists.return_value = False
+        with pytest.raises(ValueError, match="SUPABASE_DB_URL is missing or empty"):
+            await check_connection()
+    create_engine.assert_not_called()
+
+
+@pytest.mark.parametrize("entry_point", ["factory", "connection-check"])
+@async_test
+async def test_engine_initialization_failure_is_sanitized(entry_point, monkeypatch, caplog):
+    monkeypatch.setattr(settings, "supabase_db_url", _TEST_DSN)
+    with patch("shopassist.db.connection.create_async_engine", side_effect=OSError(_TEST_DSN)) as create_engine:
+        with pytest.raises(RuntimeError, match=r"^Supabase database engine initialization failed\.$") as exc_info:
+            if entry_point == "factory":
+                get_async_engine()
+            else:
+                await check_connection()
+    create_engine.assert_called_once()
+    assert "Failed to initialize Supabase async database engine." in caplog.text
+    traceback_text = "".join(format_exception(exc_info.value))
+    for secret in ("secretref", "driver-password"):
+        assert secret not in traceback_text
+        assert secret not in caplog.text
+
+
+def test_get_async_engine_hides_invalid_port_value():
+    malformed_url = "postgresql://offline.invalid:driver-password/postgres"
+    with patch("shopassist.db.connection.create_async_engine") as create_engine:
+        with pytest.raises(ValueError, match=r"^Invalid Supabase database URL\.$") as exc_info:
+            get_async_engine(url=malformed_url)
+    create_engine.assert_not_called()
+    assert "driver-password" not in "".join(format_exception(exc_info.value))
+
+
+@async_test
+async def test_temporary_engine_cleanup_failure_is_sanitized(monkeypatch, caplog):
+    monkeypatch.setattr(settings, "supabase_db_url", _TEST_DSN)
+    mock_engine = MagicMock()
+    mock_engine.connect.side_effect = OSError(_TEST_DSN)
+    mock_engine.dispose = AsyncMock(side_effect=OSError(_TEST_DSN))
+    with patch("shopassist.db.connection.create_async_engine", return_value=mock_engine) as create_engine:
+        with pytest.raises(RuntimeError, match=r"^Supabase database engine cleanup failed\.$") as exc_info:
+            await check_connection()
+
+    create_engine.assert_called_once_with(
+        _TEST_DSN.replace("postgresql://", "postgresql+psycopg_async://", 1),
+        pool_size=1,
+        max_overflow=0,
+        pool_pre_ping=True,
+    )
+    mock_engine.dispose.assert_awaited_once_with()
+    assert "Failed to dispose of the temporary Supabase database engine." in caplog.text
+    traceback_text = "".join(format_exception(exc_info.value))
+    for secret in ("secretref", "driver-password"):
+        assert secret not in traceback_text
+        assert secret not in caplog.text
 
 
 # ==============================================================================

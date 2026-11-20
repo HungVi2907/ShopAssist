@@ -1,0 +1,23 @@
+﻿{
+    "run_id":  "run_005",
+    "run_date":  "2026-11-20",
+    "scope":  "Single diagnostic RecommendationService call with automatic retry disabled",
+    "configured_model":  "google/gemma-4-26b-a4b-it:free",
+    "model_catalog":  "Listed and supports response_format",
+    "provider_http_status":  429,
+    "provider_name":  "Google AI Studio",
+    "provider_message":  "google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream",
+    "limit_source":  "UPSTREAM_PROVIDER_CAPACITY",
+    "attempts_sent":  1,
+    "automatic_retries":  0,
+    "retry_after_header":  "not returned",
+    "rate_limit_headers":  "not returned",
+    "result_status":  "DETERMINISTIC_FALLBACK",
+    "returned_products":  3,
+    "prompt_tokens":  0,
+    "completion_tokens":  0,
+    "total_tokens":  0,
+    "generation_succeeded":  false,
+    "interpretation":  "The model ID is valid. The selected free route is currently throttled by its upstream Google AI Studio provider; this is not a key authentication failure or a model/schema mismatch.",
+    "next_step":  "Wait for upstream capacity to recover, use a different available provider/model route, or configure an own provider key as OpenRouter suggested. For any later baseline retry, keep retries disabled and send only one request."
+}

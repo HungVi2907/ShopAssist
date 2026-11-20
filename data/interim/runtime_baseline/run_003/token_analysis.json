@@ -1,0 +1,10 @@
+﻿{
+    "status":  "PARTIAL_MEASUREMENT",
+    "phase8_input":  1080,
+    "phase8_output":  121,
+    "phase8_total":  1201,
+    "phase12_input":  null,
+    "phase12_output":  null,
+    "phase12_total":  null,
+    "reason":  "OpenRouter returned HTTP 401 and no usage telemetry; end-to-end stage not run"
+}

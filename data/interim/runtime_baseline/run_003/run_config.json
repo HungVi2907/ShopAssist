@@ -1,0 +1,94 @@
+﻿{
+    "run_id":  "run_003",
+    "run_date":  "2026-11-18",
+    "status":  "BLOCKED_BY_PROVIDER",
+    "git_commit":  "c740d50de1976e8aafa371000644ae227f453cf0",
+    "branch":  "main",
+    "python":  "3.10.11",
+    "os":  "Windows-10-10.0.26300-SP0",
+    "smart_app_control":  "disabled by user; pyarrow parquet import succeeds",
+    "hf_hub_disable_implicit_token":  "set for test process only; cached token caused 401 when sent",
+    "configuration":  {
+                          "dataset_products":  8405,
+                          "database":  "Supabase PostgreSQL + pgvector",
+                          "embedding_model":  "BAAI/bge-small-en-v1.5",
+                          "query_provider":  "Gemini",
+                          "query_model":  "gemini-3.5-flash-lite",
+                          "recommendation_provider":  "OpenRouter",
+                          "recommendation_model":  "google/gemma-4-26b-a4b-it:free",
+                          "retrieval":  "Hybrid RRF",
+                          "reranking":  "RRF",
+                          "retrieval_top_n":  20,
+                          "configured_top_k":  3,
+                          "plan_top_k":  5,
+                          "configured_max_completion_tokens":  2048,
+                          "plan_max_completion_tokens":  4096,
+                          "timeout_seconds":  30,
+                          "retries":  3
+                      },
+    "stage_1":  {
+                    "regression_tests":  "PASS",
+                    "tests_passed":  157,
+                    "tests_failed":  0,
+                    "warnings":  [
+                                     "RuntimeWarning: coroutine AsyncMockMixin._execute_mock_call was never awaited in tests/test_api_orchestrator.py::test_deterministic_fallback_flow"
+                                 ],
+                    "knowledge_base_validation":  "PASS: 43/43 (data integrity 10/10; SQL filters 10/10; vector search 7/7; filtered semantic 10/10; indexes and benchmarks 6/6)",
+                    "catalog":  {
+                                    "products":  8405,
+                                    "categories":  16,
+                                    "embedding_dimensions":  384,
+                                    "model":  "BAAI/bge-small-en-v1.5"
+                                },
+                    "tfidf":  {
+                                  "status":  "PASS",
+                                  "query":  "wireless bluetooth keyboard",
+                                  "latency_ms":  12.624,
+                                  "returned":  5,
+                                  "relevance_note":  "Most results irrelevant (audio accessories and automotive)"
+                              },
+                    "semantic":  {
+                                     "status":  "PASS",
+                                     "query":  "running shoes",
+                                     "latency_ms":  null,
+                                     "top1":  "Lee Parke Running Shoes",
+                                     "model_load":  "PASS after HF_HUB_DISABLE_IMPLICIT_TOKEN=1"
+                                 },
+                    "api_health":  {
+                                       "status":  "healthy",
+                                       "database":  "healthy",
+                                       "tfidf":  "ready",
+                                       "embedding":  "ready",
+                                       "query_understanding":  "configured",
+                                       "recommendation_provider":  "configured (openrouter)"
+                                   }
+                },
+    "stage_2":  {
+                    "gemini":  {
+                                   "status":  "PASS",
+                                   "query":  "Puma running shoes under 2000 INR",
+                                   "model":  "gemini-3.5-flash-lite",
+                                   "category":  "Footwear",
+                                   "brand":  "Puma",
+                                   "max_price":  2000,
+                                   "currency":  "INR",
+                                   "valid_json":  true,
+                                   "input_tokens":  1080,
+                                   "output_tokens":  121,
+                                   "total_tokens":  1201,
+                                   "latency_ms":  5405.18,
+                                   "fallback":  false
+                               },
+                    "openrouter":  {
+                                       "status":  "FAIL",
+                                       "http_status":  401,
+                                       "error":  "API key expired",
+                                       "service_fallback":  "DETERMINISTIC_FALLBACK",
+                                       "usage_returned":  false,
+                                       "retry":  "not retried"
+                                   }
+                },
+    "stage_3":  "NOT RUN: Stage 2 exit gate failed for OpenRouter",
+    "secrets_recorded":  false,
+    "provider_quota_checked":  false
+}

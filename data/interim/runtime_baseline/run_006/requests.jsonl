@@ -1,0 +1,1 @@
+﻿{"test_id":"2.5","provider":"OpenRouter","model":"baidu/ernie-5.5-flash-preview:free","http_status":200,"status":"INVALID_JSON","parse_error":"Unterminated string at line 53 column 67 (character 2742)","fallback":"deterministic","returned_products":3,"retry_limit":0,"attempts":1,"token_usage":"unavailable"}
