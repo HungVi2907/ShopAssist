@@ -9,6 +9,7 @@ from typing import Annotated, Generic, Literal, TypeVar
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from shopassist.llm_gateway.errors import ErrorCategory, ErrorDetails, ReasonCode
+from shopassist.llm_gateway.schema_ids import PRODUCTION_SCHEMA_IDS, TASK_SCHEMA_IDS
 
 T = TypeVar("T", bound=BaseModel)
 Identifier = Annotated[str, Field(strict=True, min_length=1, max_length=128, pattern=r"^[A-Za-z0-9_.:/-]+$")]
@@ -24,11 +25,7 @@ class TaskType(str, Enum):
     LLM_JUDGE = "llm_judge"
 
 
-SCHEMA_IDS = {
-    TaskType.QUERY_UNDERSTANDING: "phase8.query.v1",
-    TaskType.RECOMMENDATION_GENERATION: "phase12.recommendation.v1",
-    TaskType.LLM_JUDGE: "phase14.judge.v1",
-}
+SCHEMA_IDS = {TaskType(task): schema_id for task, schema_id in PRODUCTION_SCHEMA_IDS.items()}
 
 
 class ContractModel(BaseModel):
@@ -59,7 +56,7 @@ class GatewayRequest(ContractModel, Generic[T]):
     def check_input(self):
         if not self.system_prompt.strip() or not self.user_prompt.strip():
             raise ValueError("Prompts must contain text")
-        if self.schema_id != SCHEMA_IDS[self.task]:
+        if self.schema_id not in TASK_SCHEMA_IDS[self.task.value]:
             raise ValueError("Task and schema ID do not match")
         return self
 
@@ -96,7 +93,7 @@ class AttemptRecord(ContractModel):
             raise ValueError("Context character count does not match prompts")
         if self.is_failover_route != (self.route_index > 0):
             raise ValueError("Failover flag does not match route index")
-        if self.schema_id != SCHEMA_IDS[self.task]:
+        if self.schema_id not in TASK_SCHEMA_IDS[self.task.value]:
             raise ValueError("Task and schema ID do not match")
         if self.outcome == "success":
             if self.error_category is not None or self.reason_code is not None:

@@ -9,6 +9,7 @@ import logging
 from pathlib import Path
 import time
 from typing import Any, Sequence
+import uuid
 
 from shopassist.core.config import PROJECT_ROOT
 from shopassist.llm.config import LLMSettings, llm_settings
@@ -23,6 +24,9 @@ from shopassist.llm.refinement_rules import (
 )
 from shopassist.llm.schema_variants import RefinedQueryUnderstandingOutput
 from shopassist.llm.schemas import QueryUnderstandingOutput, TokenUsageMetadata
+from shopassist.llm_gateway.errors import GatewayError
+from shopassist.llm_gateway.schema_ids import EXPERIMENTAL_SCHEMA_IDS
+from shopassist.llm_gateway.schemas import GatewayRequest, TaskType
 
 logger = logging.getLogger(__name__)
 
@@ -39,8 +43,10 @@ class ExperimentRunner:
         max_tokens: int = 300_000,
         pacing_delay_sec: float = 0.5,
         cache_path: Path | str = CACHE_PATH,
+        gateway=None,
     ) -> None:
-        self.settings = settings or llm_settings
+        self.gateway = gateway
+        self.settings = settings if gateway is not None else (settings or llm_settings)
         self.max_requests = max_requests
         self.max_tokens = max_tokens
         self.pacing_delay_sec = pacing_delay_sec
@@ -74,9 +80,24 @@ class ExperimentRunner:
         except Exception as exc:
             logger.warning("Could not persist cache at %s: %s", self.cache_path, exc)
 
-    def _compute_cache_key(self, config: ExperimentConfig, query: str) -> str:
+    def _compute_cache_key(self, config: ExperimentConfig, query: str, *, profile="legacy", route=None,
+                           schema_id=None, system_prompt=None) -> str:
         payload = f"{config.model}|{config.prompt_variant}|{config.schema_version}|{config.temperature:.2f}|{query.strip()}"
-        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+        schema = RefinedQueryUnderstandingOutput if config.schema_version == "v2.0.0" else QueryUnderstandingOutput
+        identity = {
+            "legacy_payload": payload, "task": "query_understanding", "profile": profile,
+            "schema_id": schema_id or config.schema_version,
+            "schema_fingerprint": hashlib.sha256(json.dumps(schema.model_json_schema(), sort_keys=True).encode()).hexdigest(),
+            "system_prompt": system_prompt,
+            "user_prompt": build_user_prompt(query),
+            "route": None if route is None else {
+                "provider": route.provider, "endpoint": route.endpoint, "model": route.model,
+                "route_id": route.route_id, "enabled": route.enabled, "approval": route.approval,
+                "options": dict(route.options),
+            },
+            "candidate_version": f"phase81:{config.id}:{config.prompt_variant}:{config.schema_version}",
+        }
+        return hashlib.sha256(json.dumps(identity, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()
 
     async def execute_experiment(
         self,
@@ -100,16 +121,42 @@ class ExperimentRunner:
             if config.schema_version == "v2.0.0"
             else QueryUnderstandingOutput
         )
+        profile = f"phase81_{config.id.lower().replace('-', '_')}"
+        schema_id = EXPERIMENTAL_SCHEMA_IDS["query_understanding"][
+            "query_refined_v1" if config.schema_version == "v2.0.0"
+            else "query_v1"
+        ]
 
         case_results: list[dict[str, Any]] = []
 
         for idx, c in enumerate(target_cases, start=1):
             q = c["query"]
             tid = c.get("test_id", f"CASE_{idx:03d}")
-            cache_key = self._compute_cache_key(config, q)
+            user_prompt = build_user_prompt(q)
+            request = None
+            route = None
+            if self.gateway is not None:
+                request = GatewayRequest[response_schema](
+                    task=TaskType.QUERY_UNDERSTANDING, profile=profile,
+                    request_id=uuid.uuid4().hex, task_id=uuid.uuid4().hex,
+                    system_prompt=system_instruction, user_prompt=user_prompt,
+                    schema_id=schema_id, response_schema=response_schema,
+                )
+                routes = self.gateway.registry.routes_for(request)
+                if len(routes) != 1 or routes[0].options.get("temperature") != config.temperature:
+                    raise ValueError("Experiment route does not match its YAML profile parameters")
+                route = routes[0]
+            cache_key = self._compute_cache_key(
+                config, q, profile=profile if self.gateway is not None else "legacy",
+                route=route, schema_id=schema_id if self.gateway is not None else None,
+                system_prompt=system_instruction,
+            )
 
             # Check cache
             cached_entry = self._cache.get(cache_key)
+            if cached_entry is not None and not cached_entry.get("is_valid", True):
+                cached_entry = None
+            cache_hit = cached_entry is not None
             if cached_entry:
                 raw_json = cached_entry["raw_json"]
                 latency_ms = cached_entry.get("latency_ms", 10.0)
@@ -117,6 +164,7 @@ class ExperimentRunner:
                 tok_usage = TokenUsageMetadata(**tok_dict) if tok_dict else None
                 is_valid = cached_entry.get("is_valid", True)
                 parsed_dict = cached_entry["parsed_output"]
+                provenance = cached_entry.get("provenance", {})
             else:
                 # Quota safety check
                 if self.requests_made >= self.max_requests:
@@ -124,37 +172,46 @@ class ExperimentRunner:
                 if self.tokens_consumed >= self.max_tokens:
                     raise RuntimeError(f"API token budget exhausted ({self.tokens_consumed}/{self.max_tokens}).")
 
-                user_prompt = build_user_prompt(q)
                 try:
-                    (
-                        parsed_inst,
-                        raw_json,
-                        latency_ms,
-                        tok_usage,
-                    ) = await self.client.generate_structured_async(
-                        prompt=user_prompt,
-                        response_schema=response_schema,
-                        system_instruction=system_instruction,
-                        temperature=config.temperature,
-                    )
+                    if self.gateway is not None:
+                        response = await self.gateway.complete(request)
+                        parsed_inst = response.payload
+                        raw_json = response.raw_text or parsed_inst.model_dump_json()
+                        latency_ms = response.latency_ms
+                        usage = response.usage
+                        tok_usage = TokenUsageMetadata(
+                            prompt_tokens=usage.input_tokens or 0,
+                            candidates_tokens=usage.output_tokens or 0,
+                            total_tokens=usage.total_tokens or 0,
+                        ) if any(x is not None for x in (usage.input_tokens, usage.output_tokens, usage.total_tokens)) else None
+                        provenance = {"provider": response.provider, "model": response.model, "route_id": response.route_id}
+                    else:
+                        parsed_inst, raw_json, latency_ms, tok_usage = await self.client.generate_structured_async(
+                            prompt=user_prompt, response_schema=response_schema,
+                            system_instruction=system_instruction, temperature=config.temperature,
+                        )
+                        provenance = {"provider": "gemini", "model": self.settings.model, "route_id": None}
                     parsed_dict = parsed_inst.model_dump()
                     is_valid = True
+                except GatewayError:
+                    raise
                 except Exception as exc:
-                    logger.error("Generation error on [%s]: %s", tid, exc)
+                    logger.error("Generation error on [%s] (%s)", tid, type(exc).__name__)
                     parsed_dict = {
                         "semantic_query": q,
                         "hard_constraints": {},
                         "soft_preferences": [],
                         "needs_clarification": True,
-                        "clarification_reason": str(exc),
+                        "clarification_reason": f"Generation failed ({type(exc).__name__}).",
                     }
                     raw_json = json.dumps(parsed_dict)
                     latency_ms = 0.0
                     tok_usage = TokenUsageMetadata()
                     is_valid = False
+                    provenance = {}
 
-                self.requests_made += 1
-                if tok_usage:
+                self.requests_made += len(response.attempts) if self.gateway is not None and is_valid else (0 if self.gateway is not None else 1)
+                if tok_usage and (self.gateway is None or is_valid):
                     self.tokens_consumed += tok_usage.total_tokens
 
                 # Cache response
@@ -164,8 +221,10 @@ class ExperimentRunner:
                     "latency_ms": latency_ms,
                     "token_usage": tok_usage.model_dump() if tok_usage else {},
                     "is_valid": is_valid,
+                    "provenance": provenance,
                 }
-                self._save_cache()
+                if is_valid:
+                    self._save_cache()
 
                 if self.pacing_delay_sec > 0:
                     await asyncio.sleep(self.pacing_delay_sec)
@@ -204,7 +263,11 @@ class ExperimentRunner:
                 "actual": final_actual_dict,
                 "is_valid": is_valid,
                 "latency_ms": latency_ms,
-                "token_usage": tok_usage.model_dump() if tok_usage else {},
+                "token_usage": {} if cache_hit else (tok_usage.model_dump() if tok_usage else {}),
+                "historical_token_usage": tok_usage.model_dump() if cache_hit and tok_usage else None,
+                "provider": provenance.get("provider"),
+                "model": provenance.get("model"),
+                "route_id": provenance.get("route_id"),
                 "metrics": case_metrics,
             })
 

@@ -14,6 +14,7 @@ from pydantic import BaseModel, ValidationError
 from shopassist.llm_gateway.adapters.base import AdapterResult, PreparedRequest, ProviderAdapter
 from shopassist.llm_gateway.config import GatewayConfigurationError, GatewaySettings, Limits
 from shopassist.llm_gateway.errors import (
+    DispatchBudgetDenied,
     ErrorCategory,
     GatewayError,
     ProviderAttemptError,
@@ -55,6 +56,7 @@ class Gateway:
         telemetry: TelemetrySink | None = None,
         credential_available: Callable[[ResolvedRoute], bool] | None = None,
         budget_estimator: Callable[[ResolvedRoute, GatewayRequest], tuple[int | None, Decimal | None]] | None = None,
+        attempt_accounting=None,
         decoders: Mapping[str, Callable[[str], str]] | None = None,
         monotonic: Callable[[], float] = time.monotonic,
         utc_now: Callable[[], datetime] = lambda: datetime.now(timezone.utc),
@@ -72,6 +74,7 @@ class Gateway:
             lambda route: bool(os.environ.get(route.credential_env))
         )
         self.budget_estimator = budget_estimator or (lambda _route, _request: (None, None))
+        self.attempt_accounting = attempt_accounting
         self.decoders = dict(decoders or {})
         self.monotonic = monotonic
         self.utc_now = utc_now
@@ -184,15 +187,26 @@ class Gateway:
                         elapsed_ms=self._elapsed_ms(started),
                     )
                 policy.before_dispatch(route.route_id)
+                budget_token = None
+                if self.attempt_accounting is not None:
+                    estimated_tokens, _ = self.budget_estimator(route, request)
+                    budget_token = self.attempt_accounting.reserve(
+                        request.task_id, route.route_id, estimated_tokens
+                    )
+                    dispatch["budget_token"] = budget_token
                 policy.record_dispatch(route.route_id)
                 if not self.quota.mark_dispatched(quota_lease):
                     policy.rollback_uncommitted_dispatch(route.route_id)
+                    if budget_token is not None:
+                        self.attempt_accounting.release(budget_token)
                     raise GatewayError(
                         request_id=request.request_id, task_id=request.task_id,
                         attempts=tuple(attempts), category=ErrorCategory.NO_ELIGIBLE_ROUTE,
                         reason_code=ReasonCode.CAPACITY_EXHAUSTED, source="admission",
                         elapsed_ms=self._elapsed_ms(started),
                     )
+                if budget_token is not None:
+                    self.attempt_accounting.mark_dispatched(budget_token)
                 dispatch["started_mono"] = self.monotonic()
                 dispatch["started_at_utc"] = self.utc_now().astimezone(timezone.utc)
                 dispatch["attempt_number"] = policy.attempt_count
@@ -241,17 +255,26 @@ class Gateway:
                     )
                     attempts.append(record)
                     self.quota.release(quota_lease, usage=None)
+                    self._settle_budget(dispatch, None)
                     self.health.release(health_lease)
                     last_outcome = "cancelled"
                     await self._emit_attempt(record)
                 else:
                     self.quota.release(quota_lease)
+                    self._release_budget(dispatch)
                     self.health.release(health_lease)
                 await self._emit_summary(request, attempts, skips, "cancelled", started)
+                raise
+            except DispatchBudgetDenied:
+                self.quota.release(quota_lease)
+                self._release_budget(dispatch)
+                self.health.release(health_lease)
+                await self._emit_summary(request, attempts, skips, "skipped", started)
                 raise
             except ProviderAttemptError as error:
                 if dispatch.get("started_mono") is None:
                     self.quota.release(quota_lease)
+                    self._release_budget(dispatch)
                     self.health.release(health_lease)
                     reason = ReasonCode.UNCONFIGURED if error.category == ErrorCategory.AUTHENTICATION else error.reason_code
                     skips.append(RouteSkip(route_id=route.route_id, reason=reason))
@@ -268,6 +291,7 @@ class Gateway:
                 )
                 attempts.append(record)
                 self.quota.release(quota_lease, usage=error.usage)
+                self._settle_budget(dispatch, error.usage)
                 retry_deadline = None
                 if error.retry_after_s is not None:
                     retry_deadline = self.monotonic() + error.retry_after_s
@@ -290,6 +314,7 @@ class Gateway:
                     )
                     attempts.append(record)
                     self.quota.release(quota_lease, usage=None)
+                    self._settle_budget(dispatch, None)
                     if error.category == ErrorCategory.DEADLINE_EXCEEDED:
                         self.health.release(health_lease)
                     else:
@@ -297,6 +322,7 @@ class Gateway:
                     await self._emit_attempt(record)
                 else:
                     self.quota.release(quota_lease)
+                    self._release_budget(dispatch)
                     self.health.release(health_lease)
                 await self._emit_summary(request, attempts, skips, "failure", started)
                 raise self._copy_gateway_error(error, request, attempts, started) from None
@@ -309,10 +335,12 @@ class Gateway:
                     )
                     attempts.append(record)
                     self.quota.release(quota_lease, usage=None)
+                    self._settle_budget(dispatch, None)
                     self.health.release(health_lease)
                     await self._emit_attempt(record)
                 else:
                     self.quota.release(quota_lease)
+                    self._release_budget(dispatch)
                     self.health.release(health_lease)
                 await self._emit_summary(request, attempts, skips, "failure", started)
                 raise GatewayError(
@@ -330,6 +358,7 @@ class Gateway:
             )
             attempts.append(record)
             self.quota.release(quota_lease, usage=result.usage)
+            self._settle_budget(dispatch, result.usage)
             self.health.record_success(health_lease)
             await self._emit_attempt(record)
             await self._emit_summary(request, attempts, skips, "success", started)
@@ -400,6 +429,18 @@ class Gateway:
 
     def _elapsed_ms(self, started: float) -> float:
         return max(0.0, (self.monotonic() - started) * 1000)
+
+    def _release_budget(self, dispatch: dict) -> None:
+        token = dispatch.get("budget_token")
+        if token is not None and not dispatch.get("budget_settled"):
+            self.attempt_accounting.release(token)
+            dispatch["budget_settled"] = True
+
+    def _settle_budget(self, dispatch: dict, usage: GatewayUsage | None) -> None:
+        token = dispatch.get("budget_token")
+        if token is not None and not dispatch.get("budget_settled"):
+            self.attempt_accounting.settle(token, usage)
+            dispatch["budget_settled"] = True
 
     def _attempt_record(
         self, request: GatewayRequest, route: ResolvedRoute, route_index: int,

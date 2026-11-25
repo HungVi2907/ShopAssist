@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from contextlib import asynccontextmanager
 import logging
+import os
 import sys
 from typing import AsyncGenerator
 from fastapi import FastAPI
@@ -17,14 +18,13 @@ from shopassist.api.services.orchestrator import RecommendationOrchestrator
 from shopassist.api.session import InMemorySessionStore
 from shopassist.core.config import PROCESSED_DATA_DIR
 from shopassist.db.connection import ensure_windows_event_loop_policy, get_async_engine
-from shopassist.evaluation.phase14_judge import LLMJudgeResponseSchema
 from shopassist.llm.query_understanding import QueryUnderstandingEngine
-from shopassist.llm.schemas import QueryUnderstandingOutput
 from shopassist.llm_gateway.adapters.gemini import GeminiAdapter
 from shopassist.llm_gateway.adapters.groq import GroqAdapter
 from shopassist.llm_gateway.adapters.openrouter import OpenRouterAdapter
 from shopassist.llm_gateway.config import GatewaySettings
 from shopassist.llm_gateway.gateway import Gateway
+from shopassist.llm_gateway.experiment_factory import experiment_schema_bindings
 from shopassist.llm_gateway.registry import ProviderRegistry
 from shopassist.llm_gateway.schemas import SCHEMA_IDS, TaskType
 from shopassist.llm_gateway.telemetry import TelemetrySink
@@ -32,7 +32,6 @@ from shopassist.preferences.embedding import PreferenceQueryEncoder
 from shopassist.preferences.service import PreferenceRepresentationService
 from shopassist.recommendation.core import RecommendationService
 from shopassist.recommendation.provider import decode_recommendation_gateway_output
-from shopassist.recommendation.schemas import LLMRecommendationPayload
 from shopassist.reranking.core import load_canonical_product_texts, RerankingService
 from shopassist.retrieval.hybrid import HybridRetrievalService
 from shopassist.retrieval.semantic import DenseQueryEncoder
@@ -45,15 +44,15 @@ def _build_gateway(settings: GatewaySettings) -> Gateway | None:
     """Validate the configured snapshot before constructing any provider client."""
     if not settings.enabled:
         return None
-    registry = ProviderRegistry(settings, {
-        SCHEMA_IDS[TaskType.QUERY_UNDERSTANDING]: QueryUnderstandingOutput,
-        SCHEMA_IDS[TaskType.RECOMMENDATION_GENERATION]: LLMRecommendationPayload,
-        SCHEMA_IDS[TaskType.LLM_JUDGE]: LLMJudgeResponseSchema,
-    })
+    registry = ProviderRegistry(settings, experiment_schema_bindings())
     return Gateway(
         settings,
         registry,
-        {"gemini": GeminiAdapter(), "openrouter": OpenRouterAdapter(), "groq": GroqAdapter()},
+        {
+            "gemini": GeminiAdapter(lambda: os.environ.get("GEMINI_API_KEY", "")),
+            "openrouter": OpenRouterAdapter(lambda: os.environ.get("OPENROUTER_API_KEY", "")),
+            "groq": GroqAdapter(lambda: os.environ.get("GROQ_API_KEY", "")),
+        },
         decoders={SCHEMA_IDS[TaskType.RECOMMENDATION_GENERATION]: decode_recommendation_gateway_output},
         telemetry=TelemetrySink(settings),
     )

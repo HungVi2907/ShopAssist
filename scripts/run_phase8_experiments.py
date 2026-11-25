@@ -70,6 +70,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=150,
         help="Maximum API request quota for this execution (default: 150).",
     )
+    parser.add_argument("--max-tokens", type=int, default=300_000,
+                        help="Maximum token budget for one live run.")
     parser.add_argument(
         "--pacing",
         type=float,
@@ -103,20 +105,25 @@ async def main_async(args: argparse.Namespace) -> int:
         print(f"Experiments: {args.experiments}; split: {args.split}; request ceiling: {args.max_requests}; pacing: {args.pacing}s")
         return 0
 
+    from shopassist.llm.experiments.phase82.persistent_budget import PersistentExperimentBudget
     from shopassist.llm_gateway.config import GatewaySettings
-    if GatewaySettings().enabled:
-        raise RuntimeError(
-            "Phase 8.1 live evaluation cannot bypass the enabled Gateway; no provider request was sent."
-        )
+    from shopassist.llm_gateway.experiment_factory import build_experiment_gateway, experiment_schema_bindings
+    from shopassist.llm_gateway.registry import ProviderRegistry
+    from shopassist.llm_gateway.schemas import TaskType
+    gateway_settings = GatewaySettings()
+    gateway_mode = gateway_settings.enabled
 
     print("=" * 80)
     print("SHOPASSIST PHASE 8.1: CONTROLLED QUERY UNDERSTANDING EXPERIMENTS")
     print("=" * 80)
 
-    settings = get_llm_settings()
-    print(f"LLM Provider:       {settings.provider}")
-    print(f"Configured Model:   {settings.model}")
-    print(f"API Key:            {settings.masked_api_key}")
+    settings = None if gateway_mode else get_llm_settings()
+    if gateway_mode:
+        print("Routing:            configured YAML experiment profiles")
+    else:
+        print(f"LLM Provider:       {settings.provider}")
+        print(f"Configured Model:   {settings.model}")
+        print(f"API Key:            {settings.masked_api_key}")
     print(f"Dataset Split:      {args.split}")
     print(f"Request Budget:     {args.max_requests}")
     print(f"Pacing Delay:       {args.pacing}s")
@@ -140,6 +147,20 @@ async def main_async(args: argparse.Namespace) -> int:
     print(f"Experiments to Run: {exp_ids}")
 
     results_path = RESULTS_PATH if args.split == "dev_15" else PROJECT_ROOT / "data" / "interim" / "phase8_1" / f"experiment_results_{args.split}.json"
+    gateway = None
+    budget = None
+    if gateway_mode:
+        if args.max_requests < 1 or args.max_tokens < 1:
+            raise ValueError("Gateway live runs require positive request and token ceilings")
+        registry = ProviderRegistry(gateway_settings, experiment_schema_bindings())
+        for exp_id in exp_ids:
+            profile = f"phase81_{exp_id.lower().replace('-', '_')}"
+            if profile not in registry.profiles(TaskType.QUERY_UNDERSTANDING):
+                raise ValueError("Experiment profile is not declared in Gateway YAML")
+        budget = PersistentExperimentBudget(
+            results_path.with_name("gateway_budget.json"), args.max_requests, args.max_tokens
+        )
+        gateway = build_experiment_gateway(gateway_settings, attempt_accounting=budget)
     existing_results: dict[str, Any] = {}
     if results_path.exists():
         try:
@@ -151,7 +172,9 @@ async def main_async(args: argparse.Namespace) -> int:
     runner = ExperimentRunner(
         settings=settings,
         max_requests=args.max_requests,
+        max_tokens=args.max_tokens,
         pacing_delay_sec=args.pacing,
+        gateway=gateway,
     )
 
     try:
@@ -196,6 +219,8 @@ async def main_async(args: argparse.Namespace) -> int:
 
     finally:
         await runner.aclose()
+        if gateway is not None:
+            await gateway.aclose()
 
 
 def main() -> int:

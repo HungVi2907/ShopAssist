@@ -10,6 +10,7 @@ from pydantic import BaseModel
 
 from shopassist.llm_gateway.config import GatewayConfigurationError, GatewaySettings, load_gateway_config
 from shopassist.llm_gateway.errors import ReasonCode
+from shopassist.llm_gateway.schema_ids import ALL_SCHEMA_IDS, TASK_SCHEMA_IDS
 from shopassist.llm_gateway.schemas import GatewayRequest, SCHEMA_IDS, TaskType
 
 
@@ -56,7 +57,7 @@ class ProviderRegistry:
         config = load_gateway_config(settings)
         if config is None:
             raise GatewayConfigurationError("Gateway registry requires enabled configuration")
-        if set(schema_bindings) != set(SCHEMA_IDS.values()) or any(
+        if not set(schema_bindings) <= ALL_SCHEMA_IDS or any(
             not isinstance(model, type) or not issubclass(model, BaseModel)
             for model in schema_bindings.values()
         ):
@@ -96,10 +97,14 @@ class ProviderRegistry:
         except KeyError:
             raise GatewayConfigurationError("Unknown route") from None
 
-    def primary_route(self, task: TaskType, profile: str = "default") -> ResolvedRoute | None:
-        """Return the first configured route for readiness reporting only."""
+    def profile_schema_id(self, task: TaskType, profile: str) -> str | None:
+        """Return the configured schema for a declared task profile."""
         binding = self._profiles.get((task, profile))
-        return self.resolve(binding[1][0]) if binding and binding[1] else None
+        return binding[0] if binding else None
+
+    def profiles(self, task: TaskType) -> tuple[str, ...]:
+        """List declared profiles without exposing provider credentials."""
+        return tuple(name for item_task, name in self._profiles if item_task == task)
 
     def primary_route(self, task: TaskType, profile: str = "default") -> ResolvedRoute | None:
         """Return the first configured route for readiness reporting only."""

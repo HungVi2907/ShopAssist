@@ -1,4 +1,4 @@
-"""FastAPI Gateway lifecycle tests use local config and inert adapters."""
+﻿"""FastAPI Gateway lifecycle tests use local config and inert adapters."""
 import asyncio
 from unittest.mock import AsyncMock, MagicMock
 
@@ -46,9 +46,9 @@ def patch_local_dependencies(monkeypatch, tmp_path, *, gateway_enabled=True, fai
     monkeypatch.setattr(main, "HybridRetrievalService", lambda **kwargs: object())
     monkeypatch.setattr(main, "RerankingService", lambda **kwargs: object())
     adapters = {name: InertAdapter() for name in ("gemini", "openrouter", "groq")}
-    monkeypatch.setattr(main, "GeminiAdapter", lambda: adapters["gemini"])
-    monkeypatch.setattr(main, "OpenRouterAdapter", lambda: adapters["openrouter"])
-    monkeypatch.setattr(main, "GroqAdapter", lambda: adapters["groq"])
+    monkeypatch.setattr(main, "GeminiAdapter", lambda credential_provider=None: adapters["gemini"])
+    monkeypatch.setattr(main, "OpenRouterAdapter", lambda credential_provider=None: adapters["openrouter"])
+    monkeypatch.setattr(main, "GroqAdapter", lambda credential_provider=None: adapters["groq"])
     gw_settings = GatewaySettings(
         _env_file=None, enabled=gateway_enabled,
         config_path=ROOT / "config" / "llm_gateway.yaml",

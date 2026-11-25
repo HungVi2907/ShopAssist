@@ -1,3 +1,42 @@
+## 2026-11-25 (Asia/Saigon) - T17 Live Provider Validation Preflight
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 preflight (validation NOT RUN) |
+| Status | **BLOCKED before dispatch**. No live provider or database request was made. |
+| Checks | Inspected the T17 authorization/cost policy and production candidate route metadata without reading or printing credential values. `GEMINI_API_KEY`, `OPENROUTER_API_KEY` and `GROQ_API_KEY` are absent from the execution environment. Production Phase 8 Gemini, Phase 12 OpenRouter/Groq and Phase 14 Gemini judge routes are all disabled/pending with cost class unknown. |
+| Blocking Requirements | Need an explicitly selected exact route/provider/model, locally configured credential for that provider, and approved maximum request count, token ceiling, cost ceiling and deadline. Unknown-cost routes must be denied under the Gateway contract; `:free` in a model identifier alone does not prove account entitlement or zero cost. |
+| Safety | No credentials were requested in chat or exposed. No routes were enabled/approved. No live API calls were attempted. |
+| Next Step | User configures the selected provider credential locally and confirms exact route plus ceilings. T17 remains **NOT RUN** until then. |
+
+## 2026-11-25 (Asia/Saigon) - T16 Full Offline Gateway & Application Regression
+
+| Item | Result |
+| --- | --- |
+| Task ID | T16 |
+| Status | **PASS** for offline acceptance. No live provider validation or activation was performed. |
+| Source Reviewed | T16 acceptance in `phase18_architecture.md`, Gateway contract, T15-FIX implementation and existing Gateway/provider/lifecycle/API/orchestrator tests. |
+| Implementation Summary | No source changes were required. The full offline suite exercises primary success; 429/503/timeout and invalid JSON/schema failover; both routes failing; authentication and missing-credential paths; missing/known usage; cooldown/half-open/quota; one/two-attempt limits; paid-route denial; cancellation/deadlines; and Phase 8 fail-closed, Phase 12 deterministic fallback and FastAPI/API compatibility. |
+| Tests Executed | Full regression used the T00 harness: repository `.env` suppressed, provider/database credentials removed, Hugging Face offline flags set, external DNS and socket connections blocked, and live-marked/provider-real suites excluded. |
+| Test Results | **902 passed, 13 deselected, 1 baseline AsyncMock warning**, exit 0, 54.20s. External connection attempts: **0**. JUnit: `.deps/phase18-t16-regression.xml`. |
+| Compatibility Impact | No public API, schema, prompt, dataset, retrieval, reranking or business behavior changes. Experimental and production provider routes remain disabled/pending pending route evidence. |
+| Next Task Allowed | **T17 only after explicit authorization and approved provider/model, credential scope, request/token/cost ceilings and deadline.** No T17 live request was made. |
+
+## 2026-11-25 (Asia/Saigon) - T15-FIX Experimental Profiles, Gateway Integration & Persistent Budget
+
+| Item | Result |
+| --- | --- |
+| Task ID | T15-FIX |
+| Status | **PASS** for offline acceptance. All experimental provider routes remain disabled/pending; this does not claim live route evidence or authorize provider activation. |
+| Files Changed | `src/shopassist/llm_gateway/schema_ids.py`, `src/shopassist/llm_gateway/config.py`, `src/shopassist/llm_gateway/schemas.py`, `src/shopassist/llm_gateway/registry.py`, `src/shopassist/llm_gateway/experiment_factory.py`, `src/shopassist/llm_gateway/errors.py`, `src/shopassist/llm_gateway/gateway.py`, `src/shopassist/api/main.py`, `config/llm_gateway.yaml`, `src/shopassist/llm/schema_variants.py`, `src/shopassist/llm/experiments/runner.py`, `src/shopassist/llm/experiments/phase82/candidates.py`, `src/shopassist/llm/experiments/phase82/runner.py`, `src/shopassist/llm/experiments/phase82/persistent_budget.py`, `scripts/run_phase8_experiments.py`, `scripts/run_phase8_2_experiments.py`, `tests/test_llm_gateway_registry.py`, `tests/test_phase18_experiment_cli_safety.py`, `tests/test_phase18_experiment_budget.py`, `tests/test_phase18_experiment_integration.py`, `tests/test_phase18_lifecycle.py`. |
+| Implementation Summary | Added distinct experimental schema IDs bound to exact Pydantic response classes while preserving production `phase8.query.v1`. Added 20 Phase 8.1/8.2 YAML experiment profiles/routes with per-profile schema/model/temperature; every experimental route remains `enabled=false`, approval pending. Both experiment runners use the shared Gateway and YAML profile exclusively when Gateway is enabled; rollback to legacy provider is retained only when Gateway is disabled and explicit `--live` is supplied. Cache identity includes task/profile/schema ID and schema fingerprint, prompts, provider/endpoint/model/route options, and candidate version; only successful validated outputs are cached with actual route provenance. Cache hits do not enter current-run outbound usage. Added crash-safe JSON budget ledger reserving before each provider dispatch, counting requests at dispatch, settling every attempt from reported usage or conservatively retaining estimate when unknown, retaining dispatched reservations across restart, and blocking further dispatch when ceilings are reached. No blocking `time.sleep` was introduced in async Gateway flows. Lifecycle test adapter mocks now accept the credential callback constructor contract. |
+| Evidence & Safety | Tests use synthetic schemas, artifacts and mocked adapters solely to validate control flow; they do not establish provider/model compatibility. No credentials, paid models, live LLM/database calls, or external network access were used. Gateway-enabled routes with no eligible YAML route fail closed. Production Phase 8 behavior/schema and public API, prompts, datasets, retrieval and reranking remain unchanged. |
+| Tests Executed | Focused integration/budget/CLI/config/registry/schema/Gateway/Phase 8.1+8.2 suite: **124 passed**. Lifecycle focused after correcting inert adapter factory signature: **4 passed**. Full offline regression repeated using T00 harness, repository `.env` suppressed, relevant credentials removed, DNS/socket external access blocked, and live tests excluded. `git diff --check` clean. |
+| Test Results | Full offline regression: **902 passed, 13 deselected, 1 baseline AsyncMock warning**, exit 0. External connection attempts: **0**. JUnit: `.deps/phase18-t15fix-regression.xml`. |
+| Remaining Unverified Routes | All Phase 8.1/8.2 experiment profiles and provider routes remain disabled/pending. Provider endpoint/model/schema compatibility, account entitlement and pricing require the evidence/authorization gate in T17. No route was auto-approved or enabled. |
+| Compatibility Impact | No public API contract, production schema, prompt, dataset, retrieval/reranking or recommendation business behavior changes. Gateway-disabled rollback remains explicit-live only; Gateway-enabled experiments cannot use legacy environment/model selection. |
+| Next Task Allowed | **T16 may proceed in a separate turn. T16 was not started in this turn.** |
+
 ## 2026-11-25 (Asia/Saigon) - T15 Phase 8 Experiment Runner Safety & Gateway Profile Integration
 
 | Item | Result |
@@ -40,7 +79,7 @@
 
 # ShopAssist Phase 18 V1 — Execution log
 
-**Current status** | T00-T14 **PASS**; T15 **FAIL / incomplete**. T16 is not allowed yet.
+**Current status** | T00-T16 **PASS**. T17 preflight is BLOCKED before dispatch; live validation NOT RUN pending exact scope, configured credential and approved limits.
 
 ## 2026-11-25 (Asia/Saigon) — T12 Phase 8 QueryUnderstanding Gateway Integration
 

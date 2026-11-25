@@ -22,6 +22,186 @@ routes:
     approval: {status: pending}
     cost: {class: unknown}
     options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e0:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e1_a:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e1_b:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e1_c:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e2_a:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e2_b:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.5}
+  query_phase81_e2_c:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 1.0}
+  query_phase81_e3:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e4:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e5_a:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase81_e5_b:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase82_b0:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase82_t05:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.5}
+  query_phase82_t10:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 1.0}
+  query_phase82_c2:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase82_c3:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase82_c4:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase82_c5:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase82_d1:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.required-v2.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  query_phase82_e6:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.refined.experiment.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
   recommendation_openrouter:
     provider: openrouter
     model: baidu/ernie-5.5-flash-preview:free
@@ -53,6 +233,26 @@ tasks:
   query_understanding:
     profiles:
       default: {schema_id: phase8.query.v1, route_ids: [query_gemini]}
+      phase81_e0: {schema_id: phase8.query.experiment.v1, route_ids: [query_phase81_e0]}
+      phase81_e1_a: {schema_id: phase8.query.experiment.v1, route_ids: [query_phase81_e1_a]}
+      phase81_e1_b: {schema_id: phase8.query.experiment.v1, route_ids: [query_phase81_e1_b]}
+      phase81_e1_c: {schema_id: phase8.query.experiment.v1, route_ids: [query_phase81_e1_c]}
+      phase81_e2_a: {schema_id: phase8.query.experiment.v1, route_ids: [query_phase81_e2_a]}
+      phase81_e2_b: {schema_id: phase8.query.experiment.v1, route_ids: [query_phase81_e2_b]}
+      phase81_e2_c: {schema_id: phase8.query.experiment.v1, route_ids: [query_phase81_e2_c]}
+      phase81_e3: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase81_e3]}
+      phase81_e4: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase81_e4]}
+      phase81_e5_a: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase81_e5_a]}
+      phase81_e5_b: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase81_e5_b]}
+      phase82_b0: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_b0]}
+      phase82_t05: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_t05]}
+      phase82_t10: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_t10]}
+      phase82_c2: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_c2]}
+      phase82_c3: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_c3]}
+      phase82_c4: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_c4]}
+      phase82_c5: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_c5]}
+      phase82_d1: {schema_id: phase8.query.required-v2.experiment.v1, route_ids: [query_phase82_d1]}
+      phase82_e6: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_e6]}
   recommendation_generation:
     profiles:
       default: {schema_id: phase12.recommendation.v1, route_ids: [recommendation_openrouter, recommendation_groq]}

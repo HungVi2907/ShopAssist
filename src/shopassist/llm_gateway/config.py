@@ -10,12 +10,13 @@ from urllib.parse import urlsplit
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, PrivateAttr, ValidationError, ValidationInfo, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from shopassist.llm_gateway.schema_ids import ALL_SCHEMA_IDS, EXPERIMENTAL_SCHEMA_IDS, PRODUCTION_SCHEMA_IDS, TASK_SCHEMA_IDS
 
 ROOT = Path(__file__).resolve().parents[3]
 Positive = Annotated[float, Field(gt=0, allow_inf_nan=False)]
 PositiveInt = Annotated[int, Field(gt=0, strict=True)]
 Name = Annotated[str, Field(min_length=1, pattern=r"^[a-zA-Z0-9_.:/-]+$")]
-SCHEMAS = {"query_understanding": "phase8.query.v1", "recommendation_generation": "phase12.recommendation.v1", "llm_judge": "phase14.judge.v1"}
+SCHEMAS = dict(PRODUCTION_SCHEMA_IDS)
 PROVIDERS = {"gemini": ("GEMINI_API_KEY", "generativelanguage.googleapis.com", ""), "openrouter": ("OPENROUTER_API_KEY", "openrouter.ai", "/api/v1"), "groq": ("GROQ_API_KEY", "api.groq.com", "/openai/v1")}
 
 
@@ -171,7 +172,7 @@ class RoutingConfig(Model):
                 raise ValueError("Incompatible structured mode")
             if kind != "groq" and route.options.reasoning_effort is not None:
                 raise ValueError("Unsupported reasoning option")
-            if not set(route.schema_ids) <= set(SCHEMAS.values()):
+            if not set(route.schema_ids) <= ALL_SCHEMA_IDS:
                 raise ValueError("Unknown schema")
             if route.enabled and route.cost.classification == "paid" and self.providers[route.provider].limits.cost_per_day_usd is None:
                 raise ValueError("Paid route requires cost limit")
@@ -179,7 +180,7 @@ class RoutingConfig(Model):
             if "default" not in task.profiles:
                 raise ValueError("Missing default profile")
             for profile in task.profiles.values():
-                if profile.schema_id != SCHEMAS[task_name] or len(set(profile.route_ids)) != len(profile.route_ids):
+                if profile.schema_id not in TASK_SCHEMA_IDS[task_name] or len(set(profile.route_ids)) != len(profile.route_ids):
                     raise ValueError("Invalid task schema or duplicate route")
                 identities = set()
                 for route_id in profile.route_ids:

@@ -10,6 +10,7 @@ from shopassist.llm_gateway.adapters.base import AdapterResult, PreparedRequest
 from shopassist.llm_gateway.config import GatewayConfigurationError, GatewaySettings, ROOT
 from shopassist.llm_gateway.errors import ReasonCode
 from shopassist.llm_gateway.registry import ProviderRegistry
+from shopassist.llm_gateway.schema_ids import EXPERIMENTAL_SCHEMA_IDS
 from shopassist.llm_gateway.schemas import GatewayRequest, SCHEMA_IDS, TaskType
 
 
@@ -69,6 +70,23 @@ def test_order_and_pending_backup(registry_factory, monkeypatch):
     assert [route.route_id for route in routes] == ["recommendation_openrouter", "recommendation_groq"]
     assert routes[1].model == "openai/gpt-oss-20b"
     assert registry.ineligibility(routes[1].route_id, TaskType.RECOMMENDATION_GENERATION) == ReasonCode.DISABLED
+
+
+def test_experiment_profile_binds_only_registered_experimental_schema(registry_factory):
+    _, settings, _ = registry_factory()
+    schema_id = EXPERIMENTAL_SCHEMA_IDS["query_understanding"]["query_v1"]
+    registry = ProviderRegistry(settings, {
+        **{sid: Output for sid in SCHEMA_IDS.values()}, schema_id: OtherOutput,
+    })
+    valid = request(profile="phase81_e1_a", schema_id=schema_id, response_schema=OtherOutput)
+    assert registry.routes_for(valid)[0].route_id == "query_phase81_e1_a"
+
+    for invalid in (
+        request(profile="phase81_e1_a", schema_id=schema_id, response_schema=Output),
+        request(profile="default", schema_id=schema_id, response_schema=OtherOutput),
+    ):
+        with pytest.raises(GatewayConfigurationError, match="schema binding"):
+            registry.routes_for(invalid)
 
 
 def test_schema_binding_and_profile_rejected(registry_factory):

@@ -276,3 +276,12 @@ class RefinedQueryUnderstandingOutput(BaseModel):
             needs_clarification=v1_output.needs_clarification,
             clarification_reason=v1_output.clarification_reason,
         )
+
+
+class RequiredV2(RefinedQueryUnderstandingOutput):
+    """Experimental v2 contract requiring explicitly modeled extraction slots."""
+
+    product_type: str | None
+    exclusions: list[ExclusionConstraint]
+    soft_preferences: list[str]
+    needs_clarification: bool

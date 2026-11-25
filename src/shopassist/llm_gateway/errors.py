@@ -109,3 +109,7 @@ class ProviderAttemptError(Exception):
         self.retry_after_s = self.record.retry_after_s
         self.usage = self.record.usage
         super().__init__(f"LLM provider attempt failed ({self.category.value}).")
+
+
+class DispatchBudgetDenied(Exception):
+    """Trusted local experiment budget denied a pre-dispatch reservation."""

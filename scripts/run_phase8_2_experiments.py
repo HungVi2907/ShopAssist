@@ -13,6 +13,12 @@ from shopassist.llm.config import get_llm_settings
 from shopassist.llm.experiments.phase82.candidates import CANDIDATES
 from shopassist.llm.experiments.phase82.runner import BudgetExceeded, ResearchRunner, atomic_write, digest
 from shopassist.llm.experiments.phase82.scoring import aggregate, consistency
+from shopassist.llm.experiments.phase82.persistent_budget import PersistentExperimentBudget
+from shopassist.llm_gateway.config import GatewaySettings
+from shopassist.llm_gateway.experiment_factory import build_experiment_gateway, experiment_schema_bindings
+from shopassist.llm_gateway.registry import ProviderRegistry
+from shopassist.llm_gateway.schemas import TaskType
+from shopassist.llm_gateway.errors import DispatchBudgetDenied
 
 
 def parse_args(argv=None):
@@ -46,25 +52,23 @@ async def run(args):
         raise ValueError("Unknown or duplicate experiment IDs")
     if args.use_cache and (args.repetitions > 1 or any(i in ids for i in ("T05", "T10"))):
         raise ValueError("Cache replay cannot establish sampling consistency")
-    if args.live:
-        from shopassist.llm_gateway.config import GatewaySettings
-        if GatewaySettings().enabled:
-            raise RuntimeError(
-                "Phase 8.2 live evaluation cannot bypass the enabled Gateway; no provider request was sent."
-            )
+    gateway_settings = GatewaySettings()
+    gateway_mode = gateway_settings.enabled
     path = ROOT / "tests/fixtures/heldout_evaluation_cases.json" if args.split == "legacy_heldout" else ROOT / f"tests/fixtures/phase8_2/{args.split}.json"
     data = json.loads(path.read_text(encoding="utf8"))
     cases = data["cases"][:args.limit]
     case_ids = [c["test_id"] for c in cases]
     if not cases or len(set(case_ids)) != len(case_ids) or len({c["query"] for c in cases}) != len(cases):
         raise ValueError("Empty or duplicate evaluation records")
-    settings = get_llm_settings().model_copy(update={"gemini_max_retries": args.max_retries})
+    settings = None if gateway_mode else get_llm_settings().model_copy(update={"gemini_max_retries": args.max_retries})
     dataset = {"split": args.split, "version": data.get("version", data.get("dataset_version", "legacy")),
                "file_sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "cases_hash": digest(cases)}
     schedule = [(i, c, rep) for rep in range(args.repetitions) for c in cases for i in ids]
     random.Random(args.seed).shuffle(schedule)
-    plan = {"status": "PLANNED" if not args.live else "RUNNING", "model": settings.model,
-            "experiments": [CANDIDATES[i].metadata() for i in ids], "dataset": dataset,
+    plan = {"status": "PLANNED" if not args.live else "RUNNING",
+            "mode": "gateway" if gateway_mode else "legacy_rollback",
+            "model": "YAML profile routed" if gateway_mode else settings.model,
+            "experiments": [{**CANDIDATES[i].metadata(), "profile": f"phase82_{i.lower()}"} for i in ids], "dataset": dataset,
             "logical_requests": len(schedule), "maximum_attempts": len(schedule)*(args.max_retries+1),
             "request_ceiling": args.max_requests, "token_ceiling": args.max_tokens,
             "pacing_seconds": args.pacing, "repetitions": args.repetitions, "seed": args.seed,
@@ -75,24 +79,45 @@ async def run(args):
         return 0
     if args.max_requests == 0 or args.max_tokens == 0:
         raise ValueError("Live runs require explicit positive request and token ceilings")
+    budget = None
+    gateway = None
+    if gateway_mode:
+        registry = ProviderRegistry(gateway_settings, experiment_schema_bindings())
+        for candidate_id in ids:
+            profile = f"phase82_{candidate_id.lower()}"
+            if profile not in registry.profiles(TaskType.QUERY_UNDERSTANDING):
+                raise ValueError("Experiment profile is not declared in Gateway YAML")
+        budget = PersistentExperimentBudget(args.output_dir / "budget.json", args.max_requests, args.max_tokens)
+        gateway = build_experiment_gateway(gateway_settings, attempt_accounting=budget)
     atomic_write(args.output_dir / "plan.json", plan)
-    runner = ResearchRunner(settings, args.output_dir, args.max_requests, args.max_tokens, args.pacing, args.use_cache)
+    runner = ResearchRunner(settings, args.output_dir, args.max_requests, args.max_tokens,
+                            args.pacing, args.use_cache, gateway=gateway)
     rows = []
     try:
         for i, case, rep in schedule:
-            row = await runner.run_case(CANDIDATES[i], case, dataset, rep, args.resume)
+            row = await runner.run_case(
+                CANDIDATES[i], case, dataset, rep, args.resume,
+                profile=f"phase82_{i.lower()}" if gateway is not None else None,
+            )
             rows.append(row)
             atomic_write(args.output_dir / "results.json", {"plan": plan, "per_case_results": rows})
         plan["status"] = "COMPLETE"
-    except BudgetExceeded:
+    except (BudgetExceeded, DispatchBudgetDenied):
         plan["status"] = "BUDGET_EXHAUSTED"
     finally:
         await runner.close()
+        if gateway is not None:
+            await gateway.aclose()
+        budget_snapshot = budget.snapshot() if budget is not None else {
+            "requests": runner.budget.requests,
+            "charged_tokens": runner.budget.charged_tokens,
+            "observed_tokens": runner.budget.observed_tokens,
+        }
         results = {i: aggregate([r for r in rows if r["candidate"]["id"] == i]) for i in ids}
         repeated = {i: consistency([r for r in rows if r["candidate"]["id"] == i]) for i in ids}
         atomic_write(args.output_dir / "results.json", {"plan": plan, "per_case_results": rows, "metrics": results,
                                                        "consistency": repeated,
-                                                       "budget": {"requests": runner.budget.requests, "charged_tokens": runner.budget.charged_tokens}})
+                                                       "budget": budget_snapshot})
     return 0 if plan["status"] == "COMPLETE" else 2
 
 
