@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import time
 from fastapi import APIRouter, Depends, Request, status
 
 from shopassist.api.config import APISettings
 from shopassist.api.dependencies import get_orchestrator, get_settings
 from shopassist.api.exceptions import PipelineTimeoutException
 from shopassist.api.schemas import RecommendationRequest, RecommendationResponse
+from shopassist.llm_gateway.errors import GatewayError
 from shopassist.api.services.orchestrator import RecommendationOrchestrator
 
 logger = logging.getLogger(__name__)
@@ -41,10 +43,18 @@ async def generate_recommendations(
 
     try:
         response = await asyncio.wait_for(
-            orchestrator.orchestrate(request=payload, request_id=request_id),
+            orchestrator.orchestrate(
+                request=payload,
+                request_id=request_id,
+                parent_deadline_mono=time.monotonic() + timeout_s,
+            ),
             timeout=timeout_s,
         )
         return response
     except asyncio.TimeoutError:
         logger.error("[%s] Orchestration timed out after %.1fs", request_id, timeout_s)
         raise PipelineTimeoutException(timeout_seconds=timeout_s) from None
+    except GatewayError as exc:
+        if exc.deadline_scope == "parent":
+            raise PipelineTimeoutException(timeout_seconds=timeout_s) from None
+        raise

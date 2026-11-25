@@ -9,11 +9,15 @@ from __future__ import annotations
 
 import asyncio
 import json
+from decimal import Decimal
+from types import SimpleNamespace
 from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 import httpx
 
 from shopassist.llm.schemas import HardConstraints, QueryUnderstandingOutput, QueryUnderstandingResult
+from shopassist.llm_gateway.errors import ErrorCategory, GatewayError, ReasonCode
+from shopassist.llm_gateway.schemas import GatewayUsage, SCHEMA_IDS, TaskType
 from shopassist.preferences.schemas import PreferenceRepresentationResult, RepresentationStatus
 from shopassist.reranking.core import (
     CandidateSource,
@@ -44,6 +48,7 @@ from shopassist.recommendation import (
 )
 from shopassist.recommendation.provider import (
     clean_json_content,
+    decode_recommendation_gateway_output,
     parse_recommendation_payload,
 )
 
@@ -633,6 +638,151 @@ def test_service_with_mocked_openrouter_success():
         assert mock_provider.generate_recommendation_payload.called
 
     asyncio.run(run())
+
+
+def test_service_gateway_integration_preserves_context_top_k_schema_and_actual_model():
+    async def run():
+        payload = LLMRecommendationPayload(
+            overview="Gateway recommendations",
+            products=[LLMProductExplanation(
+                product_id="P1", summary_reason="Matches your criteria.",
+                strengths=[LLMProductClaim(claim="Lightweight", evidence_ids=["P1-E1"])],
+                limitations=[], comparison_note=None,
+            )],
+        )
+
+        class StubGateway:
+            request = None
+
+            async def complete(self, request):
+                self.request = request
+                return SimpleNamespace(
+                    payload=payload,
+                    provider="groq",
+                    model="openai/gpt-oss-20b",
+                    route_id="recommendation_groq",
+                    latency_ms=25.0,
+                    usage=GatewayUsage(input_tokens=100, output_tokens=30, total_tokens=None,
+                                       reasoning_tokens=5, estimated_cost_usd=Decimal("0.02")),
+                )
+
+        gateway = StubGateway()
+        class ContextSpy(EvidenceContextBuilder):
+            candidate_ids = None
+
+            def build_context(self, query_result, preference_result, products):
+                self.candidate_ids = [item.product_id for item in products]
+                return super().build_context(query_result, preference_result, products)
+
+        context_builder = ContextSpy()
+        legacy_provider = MagicMock(spec=OpenRouterProvider)
+        service = RecommendationService(
+            settings=RecommendationSettings(phase12_llm_provider="openrouter", openrouter_api_key=None),
+            provider=legacy_provider, gateway=gateway,
+            context_builder=context_builder,
+        )
+        candidates = [make_product(f"P{i}", rank=i) for i in range(1, 5)]
+        result = await service.generate(
+            make_q8(), make_q9(), make_reranking_result(*candidates), top_k=3,
+            request_id="request-phase12", task_id="recommendation-phase12", parent_deadline_mono=98765.0,
+        )
+
+        assert gateway.request.task == TaskType.RECOMMENDATION_GENERATION
+        assert gateway.request.schema_id == SCHEMA_IDS[TaskType.RECOMMENDATION_GENERATION]
+        assert gateway.request.response_schema is LLMRecommendationPayload
+        assert gateway.request.request_id == "request-phase12"
+        assert gateway.request.task_id == "recommendation-phase12"
+        assert gateway.request.parent_deadline_mono == 98765.0
+        assert context_builder.candidate_ids == ["P1", "P2", "P3"]
+        assert result.status == RecommendationStatus.SUCCESS
+        assert result.model_name == "openai/gpt-oss-20b"
+        assert result.usage.prompt_tokens == 100
+        assert result.usage.completion_tokens == 30
+        assert result.usage.total_tokens == 130
+        assert result.usage.reasoning_tokens == 5
+        assert result.usage.latency_ms == 25.0
+        assert result.usage.estimated_cost_usd == 0.02
+        assert [p.product_id for p in result.products] == ["P1", "P2", "P3"]
+        legacy_provider.generate_recommendation_payload.assert_not_called()
+
+    asyncio.run(run())
+
+
+def test_gateway_failure_uses_deterministic_catalog_fallback_without_false_model_or_raw_error():
+    async def run():
+        class FailingGateway:
+            async def complete(self, request):
+                raise GatewayError(
+                    request_id=request.request_id, task_id=request.task_id,
+                    category=ErrorCategory.NO_ELIGIBLE_ROUTE,
+                    reason_code=ReasonCode.NO_ELIGIBLE_ROUTE, source="admission",
+                )
+
+        service = RecommendationService(
+            settings=RecommendationSettings(phase12_llm_provider="openrouter", openrouter_api_key=None),
+            gateway=FailingGateway(),
+        )
+        p1 = make_product("P1", name="Catalog fallback item")
+        result = await service.generate(make_q8(), make_q9(), make_reranking_result(p1))
+        assert result.status == RecommendationStatus.DETERMINISTIC_FALLBACK
+        assert result.products[0].product_id == "P1"
+        assert result.model_name is None
+        assert "NO_ELIGIBLE_ROUTE" not in result.diagnostic_reason
+        assert result.usage.total_tokens == 0
+
+    asyncio.run(run())
+
+
+def test_gateway_cancellation_propagates_without_catalog_fallback():
+    async def run():
+        class CancellingGateway:
+            async def complete(self, request):
+                raise asyncio.CancelledError
+
+        service = RecommendationService(
+            settings=RecommendationSettings(phase12_llm_provider="openrouter", openrouter_api_key=None),
+            gateway=CancellingGateway(),
+        )
+        with pytest.raises(asyncio.CancelledError):
+            await service.generate(make_q8(), make_q9(), make_reranking_result(make_product("P1")))
+
+    asyncio.run(run())
+
+
+def test_gateway_parent_deadline_propagates_for_api_timeout_mapping():
+    async def run():
+        class DeadlineGateway:
+            async def complete(self, request):
+                raise GatewayError(
+                    request_id=request.request_id, task_id=request.task_id,
+                    category=ErrorCategory.DEADLINE_EXCEEDED,
+                    reason_code=ReasonCode.DEADLINE_EXCEEDED,
+                    source="deadline", deadline_scope="parent",
+                )
+
+        service = RecommendationService(
+            settings=RecommendationSettings(phase12_llm_provider="openrouter", openrouter_api_key=None),
+            gateway=DeadlineGateway(),
+        )
+        with pytest.raises(GatewayError) as caught:
+            await service.generate(make_q8(), make_q9(), make_reranking_result(make_product("P1")))
+        assert caught.value.deadline_scope == "parent"
+
+    asyncio.run(run())
+
+
+def test_gateway_decoder_reuses_phase12_fences_alias_and_string_claim_normalization():
+    fence = chr(96) * 3
+    raw = f"""{fence}json
+    {{"overview":"Top picks", "recommendations":[{{"product_id":"P1",
+      "summary_reason":"Good fit", "strengths":["Lightweight [P1-E1]"],
+      "limitations":[], "comparison_note":null}}]}}
+    {fence}"""
+    normalized = json.loads(decode_recommendation_gateway_output(raw))
+    assert normalized["products"][0]["product_id"] == "P1"
+    assert normalized["products"][0]["strengths"][0] == {
+        "claim": "Lightweight", "evidence_ids": ["P1-E1"]
+    }
 
 
 def test_service_with_mocked_provider_failure_falls_back_deterministically():

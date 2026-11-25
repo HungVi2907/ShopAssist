@@ -21,6 +21,7 @@ import logging
 import os
 import re
 import time
+import uuid
 from typing import Any, Mapping, Sequence
 
 logger = logging.getLogger(__name__)
@@ -218,4 +219,48 @@ def run_llm_judge(
         evidence_supported=parsed_obj.evidence_supported,
         unsupported_claims=parsed_obj.unsupported_claims,
         critique=parsed_obj.critique,
+    )
+
+
+async def run_llm_judge_with_gateway(
+    gateway: Any,
+    user_query: str,
+    evidence_text: str,
+    recommendation_output: str,
+) -> LLMJudgeResult:
+    """Run the unchanged Phase 14 rubric through its Gateway task contract."""
+    from shopassist.llm_gateway.schemas import GatewayRequest, SCHEMA_IDS, TaskType
+
+    request_id = uuid.uuid4().hex
+    response = await gateway.complete(GatewayRequest[
+        LLMJudgeResponseSchema
+    ](
+        task=TaskType.LLM_JUDGE,
+        profile="default",
+        request_id=request_id,
+        task_id=uuid.uuid4().hex,
+        system_prompt=JUDGE_SYSTEM_PROMPT,
+        user_prompt=build_judge_user_prompt(
+            user_query, evidence_text, recommendation_output
+        ),
+        schema_id=SCHEMA_IDS[TaskType.LLM_JUDGE],
+        response_schema=LLMJudgeResponseSchema,
+    ))
+    output = response.payload
+    return LLMJudgeResult(
+        judge_provider=response.provider,
+        judge_model=response.model,
+        prompt_version=JUDGE_PROMPT_VERSION,
+        rubric_version=JUDGING_RUBRIC_VERSION,
+        execution_mode="LIVE_API",
+        latency_ms=round(response.latency_ms, 2),
+        groundedness_score=output.groundedness_score,
+        factual_correctness_score=output.factual_correctness_score,
+        query_relevance_score=output.query_relevance_score,
+        citation_support_score=output.citation_support_score,
+        missing_info_handling_score=output.missing_info_handling_score,
+        overall_decision=output.overall_decision,
+        evidence_supported=output.evidence_supported,
+        unsupported_claims=output.unsupported_claims,
+        critique=output.critique,
     )

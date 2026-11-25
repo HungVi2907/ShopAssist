@@ -14,6 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 from shopassist.api.dependencies import get_db_engine
 from shopassist.api.schemas import HealthResponse, LivenessResponse
 from shopassist.llm.config import get_llm_settings
+from shopassist.llm_gateway.schemas import TaskType
 from shopassist.recommendation.config import get_recommendation_settings
 
 logger = logging.getLogger(__name__)
@@ -88,26 +89,35 @@ async def check_health(request: Request) -> JSONResponse:
         components["embedding"] = "unloaded"
         is_healthy = False
 
-    # 4. Check Query Understanding (Phase 8 Gemini configuration)
-    try:
-        llm_cfg = get_llm_settings()
-        if llm_cfg.gemini_api_key and llm_cfg.gemini_api_key.strip():
-            components["query_understanding"] = "configured"
-        else:
-            components["query_understanding"] = "unconfigured"
-    except Exception:
-        components["query_understanding"] = "error"
+    gateway = getattr(request.app.state, "gateway", None)
+    if gateway is not None:
+        query_provider = gateway.primary_provider(TaskType.QUERY_UNDERSTANDING)
+        recommendation_provider = gateway.primary_provider(TaskType.RECOMMENDATION_GENERATION)
+        components["query_understanding"] = f"configured ({query_provider})" if query_provider else "unconfigured"
+        components["recommendation_provider"] = (
+            f"configured ({recommendation_provider})" if recommendation_provider else "unconfigured"
+        )
+        logger.debug("LLM Gateway local readiness snapshot: %s", gateway.readiness_snapshot())
+    else:
+        # Legacy rollback mode keeps its existing credential-based indicators.
+        try:
+            llm_cfg = get_llm_settings()
+            if llm_cfg.gemini_api_key and llm_cfg.gemini_api_key.strip():
+                components["query_understanding"] = "configured"
+            else:
+                components["query_understanding"] = "unconfigured"
+        except Exception:
+            components["query_understanding"] = "error"
 
-    # 5. Check Recommendation Provider (Phase 12 OpenRouter / Groq configuration)
-    try:
-        rec_cfg = get_recommendation_settings()
-        api_key = rec_cfg.get_api_key()
-        if api_key and api_key.strip():
-            components["recommendation_provider"] = f"configured ({rec_cfg.phase12_llm_provider})"
-        else:
-            components["recommendation_provider"] = "unconfigured"
-    except Exception:
-        components["recommendation_provider"] = "error"
+        try:
+            rec_cfg = get_recommendation_settings()
+            api_key = rec_cfg.get_api_key()
+            if api_key and api_key.strip():
+                components["recommendation_provider"] = f"configured ({rec_cfg.phase12_llm_provider})"
+            else:
+                components["recommendation_provider"] = "unconfigured"
+        except Exception:
+            components["recommendation_provider"] = "error"
 
     # Determine overall status code and label
     overall_status = "healthy" if is_healthy else "degraded"

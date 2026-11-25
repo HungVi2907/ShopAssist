@@ -33,7 +33,7 @@ logging.basicConfig(
 logger = logging.getLogger("test_gemini_connection")
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(
         description="Verify Gemini API connectivity, model discovery, and structured output."
@@ -44,7 +44,12 @@ def parse_args() -> argparse.Namespace:
         default="Puma running shoes under 2000 rupees",
         help="Sample test query for smoke test (default: 'Puma running shoes under 2000 rupees').",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--live",
+        action="store_true",
+        help="Explicitly authorize model discovery and a live Gemini inference request.",
+    )
+    return parser.parse_args(argv)
 
 
 async def run_connection_test(query: str) -> bool:
@@ -123,6 +128,9 @@ async def run_connection_test(query: str) -> bool:
 
 def main() -> int:
     args = parse_args()
+    if not args.live:
+        print("Live Gemini diagnostics require the explicit --live flag.", file=sys.stderr)
+        return 2
     success = asyncio.run(run_connection_test(args.query))
     return 0 if success else 1
 

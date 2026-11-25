@@ -1,0 +1,61 @@
+version: 1
+providers:
+  gemini:
+    kind: gemini
+    credential_env: GEMINI_API_KEY
+    endpoint: https://generativelanguage.googleapis.com
+  openrouter:
+    kind: openrouter
+    credential_env: OPENROUTER_API_KEY
+    endpoint: https://openrouter.ai/api/v1
+  groq:
+    kind: groq
+    credential_env: GROQ_API_KEY
+    endpoint: https://api.groq.com/openai/v1
+routes:
+  query_gemini:
+    provider: gemini
+    model: gemini-3.5-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase8.query.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+  recommendation_openrouter:
+    provider: openrouter
+    model: baidu/ernie-5.5-flash-preview:free
+    structured_mode: json_schema
+    schema_ids: [phase12.recommendation.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048}
+  recommendation_groq:
+    provider: groq
+    model: openai/gpt-oss-20b
+    structured_mode: json_schema
+    schema_ids: [phase12.recommendation.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, reasoning_effort: low}
+  judge_gemini:
+    provider: gemini
+    model: gemini-3.1-flash-lite
+    structured_mode: gemini_schema
+    schema_ids: [phase14.judge.v1]
+    enabled: false
+    approval: {status: pending}
+    cost: {class: unknown}
+    options: {max_output_tokens: 2048, temperature: 0.0}
+tasks:
+  query_understanding:
+    profiles:
+      default: {schema_id: phase8.query.v1, route_ids: [query_gemini]}
+  recommendation_generation:
+    profiles:
+      default: {schema_id: phase12.recommendation.v1, route_ids: [recommendation_openrouter, recommendation_groq]}
+  llm_judge:
+    profiles:
+      default: {schema_id: phase14.judge.v1, route_ids: [judge_gemini]}

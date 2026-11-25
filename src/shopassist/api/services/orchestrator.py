@@ -11,6 +11,7 @@ import asyncio
 import json
 import logging
 import time
+import uuid
 from typing import Any
 from urllib.parse import urlparse
 
@@ -26,6 +27,7 @@ from shopassist.api.schemas import (
     RecommendationUsage,
 )
 from shopassist.api.session import InMemorySessionStore
+from shopassist.llm_gateway.errors import GatewayError
 from shopassist.llm.query_understanding import QueryUnderstandingEngine
 from shopassist.preferences.safety import find_unsafe_negative_preferences
 from shopassist.preferences.schemas import RepresentationStatus
@@ -96,6 +98,7 @@ class RecommendationOrchestrator:
         self,
         request: RecommendationRequest,
         request_id: str,
+        parent_deadline_mono: float | None = None,
     ) -> RecommendationResponse:
         """Execute end-to-end recommendation workflow with short-circuiting and telemetry.
 
@@ -108,6 +111,11 @@ class RecommendationOrchestrator:
         """
         pipeline_start = time.perf_counter()
         stage_latencies: dict[str, float] = {}
+        # Internal correlation IDs are server-generated, so arbitrary client
+        # X-Request-ID values are never copied into Gateway telemetry.
+        gateway_request_id = uuid.uuid4().hex
+        query_task_id = uuid.uuid4().hex
+        recommendation_task_id = uuid.uuid4().hex
 
         query_text = request.query.strip()
         top_k = min(request.top_k, self.settings.api_max_top_k)
@@ -136,9 +144,26 @@ class RecommendationOrchestrator:
         # ----------------------------------------------------------------------
         t0 = time.perf_counter()
         try:
-            query_result = await self.query_engine.parse_query_async(query_text)
+            query_result = await self.query_engine.parse_query_async(
+                query_text,
+                request_id=gateway_request_id,
+                task_id=query_task_id,
+                parent_deadline_mono=parent_deadline_mono,
+            )
+        except GatewayError as exc:
+            if exc.deadline_scope == "parent":
+                raise
+            logger.warning("[%s] Phase 8 Gateway failed (%s).", request_id, exc.category.value)
+            return self._build_terminal_response(
+                request_id=request_id,
+                status="INVALID_INPUT",
+                overview="Failed to parse query structure.",
+                request=request,
+                pipeline_start=pipeline_start,
+                stage_latencies={"phase8_query_understanding": (time.perf_counter() - t0) * 1000.0},
+            )
         except Exception as exc:
-            logger.error("[%s] Phase 8 query understanding failed: %s", request_id, exc)
+            logger.error("[%s] Phase 8 query understanding failed: %s", request_id, type(exc).__name__)
             return self._build_terminal_response(
                 request_id=request_id,
                 status="INVALID_INPUT",
@@ -365,6 +390,9 @@ class RecommendationOrchestrator:
             reranking_result=reranking_result,
             top_k=top_k,
             language=language,
+            request_id=gateway_request_id,
+            task_id=recommendation_task_id,
+            parent_deadline_mono=parent_deadline_mono,
         )
         stage_latencies["phase12_recommendation"] = (time.perf_counter() - t0) * 1000.0
 

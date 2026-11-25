@@ -405,7 +405,9 @@ async def test_deterministic_fallback_flow(mock_orchestrator_components):
     )
 
     req = RecommendationRequest(query="Puma shoes under 3000", top_k=5, session_id="sess-fall")
-    res = await orchestrator.orchestrate(req, request_id="test-req-8")
+    res = await orchestrator.orchestrate(
+        req, request_id="test-req-8", parent_deadline_mono=12345.0
+    )
 
     assert res.status == "DETERMINISTIC_FALLBACK"
     assert res.metadata.fallback_used is True
@@ -413,3 +415,8 @@ async def test_deterministic_fallback_flow(mock_orchestrator_components):
     assert res.products[0].product_id == "PUMA001"
     assert res.metadata.session_id == "sess-fall"
     assert res.usage.total_tokens == 80  # P8 tokens preserved even with P12 fallback
+    query_call = query_engine.parse_query_async.await_args.kwargs
+    recommendation_call = recommendation_service.generate.await_args.kwargs
+    assert query_call["request_id"] == recommendation_call["request_id"]
+    assert query_call["task_id"] != recommendation_call["task_id"]
+    assert query_call["parent_deadline_mono"] == recommendation_call["parent_deadline_mono"] == 12345.0

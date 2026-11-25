@@ -286,10 +286,14 @@ def load_evaluation_cases(catalog_df: pd.DataFrame) -> list[dict[str, Any]]:
 
 
 async def run_evaluation(
-    live: bool = True,
+    live: bool = False,
     provider: str | None = None,
     model: str | None = None,
 ) -> dict[str, Any]:
+    if not live:
+        print("Phase 12 evaluation skipped: pass --live to authorize LLM provider requests.")
+        return {"status": "LIVE_SKIPPED", "reason": "EXPLICIT_LIVE_FLAG_REQUIRED"}
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     override_kwargs: dict[str, Any] = {}
     if provider:
@@ -298,6 +302,13 @@ async def run_evaluation(
         override_kwargs["phase12_llm_model"] = model
 
     settings = RecommendationSettings(**override_kwargs)
+
+    from shopassist.llm_gateway.config import GatewaySettings
+    if GatewaySettings().enabled:
+        raise RuntimeError(
+            "Phase 12 evaluation through the enabled Gateway is not available in this CLI yet; "
+            "no legacy provider request was sent."
+        )
 
     if live:
         if settings.phase12_llm_provider == "openrouter" and not settings.openrouter_api_key:
@@ -553,12 +564,16 @@ async def run_evaluation(
     return summary
 
 
-def main() -> None:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Evaluate Phase 12 Recommendation Service")
-    parser.add_argument("--live", action="store_true", default=True, help="Run live LLM inference")
+    parser.add_argument("--live", action="store_true", help="Explicitly authorize live LLM inference")
     parser.add_argument("--provider", choices=["openrouter", "groq"], default=None, help="LLM Provider override")
     parser.add_argument("--model", default=None, help="LLM Model ID override")
-    args = parser.parse_args()
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
 
     asyncio.run(run_evaluation(live=args.live, provider=args.provider, model=args.model))
 

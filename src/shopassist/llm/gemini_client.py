@@ -35,7 +35,8 @@ RETRYABLE_STATUS_CODES: set[int] = {429, 500, 502, 503, 504}
 class GeminiClient:
     """Production wrapper for Google Gen AI Gemini API."""
 
-    def __init__(self, settings: LLMSettings | None = None) -> None:
+    def __init__(self, settings: LLMSettings | None = None, *,
+                 http_options: types.HttpOptions | None = None) -> None:
         """Initialize Gemini client with settings.
 
         Args:
@@ -44,6 +45,7 @@ class GeminiClient:
         self.settings = settings or llm_settings
         self._api_key = self.settings.get_api_key()
         self._client: genai.Client | None = None
+        self._http_options = http_options
 
         logger.info(
             "Initializing GeminiClient with model '%s' (temperature=%.1f, timeout=%.1fs, max_retries=%d)...",
@@ -59,8 +61,13 @@ class GeminiClient:
         if self._client is None:
             # One retry layer owns accounting; disable hidden SDK retries.
             self._client = genai.Client(api_key=self._api_key,
-                http_options=types.HttpOptions(retry_options=types.HttpRetryOptions(attempts=1)))
+                http_options=self._http_options or types.HttpOptions(retry_options=types.HttpRetryOptions(attempts=1)))
         return self._client
+
+    async def generate_content_once(self, *, model: str, prompt: str,
+                                    config: types.GenerateContentConfig):
+        """Return the raw SDK response for gateway-owned validation/accounting."""
+        return await self.client.aio.models.generate_content(model=model, contents=prompt, config=config)
 
     def verify_model_availability(self, model_name: str | None = None) -> dict[str, Any]:
         """Verify if the requested model is accessible via the current API key.

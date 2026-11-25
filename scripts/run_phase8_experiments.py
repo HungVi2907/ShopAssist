@@ -37,8 +37,12 @@ HELDOUT_FIXTURE = PROJECT_ROOT / "tests" / "fixtures" / "heldout_evaluation_case
 BASELINE_FIXTURE = PROJECT_ROOT / "tests" / "fixtures" / "query_understanding_cases.json"
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run controlled Phase 8.1 experiments.")
+    parser.add_argument(
+        "--live", action="store_true",
+        help="Explicitly authorize provider requests; without this flag only report the plan.",
+    )
     parser.add_argument(
         "--experiments",
         "-e",
@@ -72,7 +76,7 @@ def parse_args() -> argparse.Namespace:
         default=0.5,
         help="Delay in seconds between API calls to avoid rate limits (default: 0.5).",
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 def load_dataset(split: str) -> list[dict[str, Any]]:
@@ -94,6 +98,17 @@ def load_dataset(split: str) -> list[dict[str, Any]]:
 
 
 async def main_async(args: argparse.Namespace) -> int:
+    if not args.live:
+        print("Phase 8.1 dry run: pass --live to authorize provider requests.")
+        print(f"Experiments: {args.experiments}; split: {args.split}; request ceiling: {args.max_requests}; pacing: {args.pacing}s")
+        return 0
+
+    from shopassist.llm_gateway.config import GatewaySettings
+    if GatewaySettings().enabled:
+        raise RuntimeError(
+            "Phase 8.1 live evaluation cannot bypass the enabled Gateway; no provider request was sent."
+        )
+
     print("=" * 80)
     print("SHOPASSIST PHASE 8.1: CONTROLLED QUERY UNDERSTANDING EXPERIMENTS")
     print("=" * 80)

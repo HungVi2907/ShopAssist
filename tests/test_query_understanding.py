@@ -15,6 +15,8 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 
 from shopassist.llm.config import LLMSettings, mask_api_key
+from shopassist.llm_gateway.errors import ErrorCategory, GatewayError, ReasonCode
+from shopassist.llm_gateway.schemas import GatewayUsage, SCHEMA_IDS, TaskType
 from shopassist.llm.normalization import (
     CANONICAL_CATEGORIES,
     normalize_brand,
@@ -335,6 +337,99 @@ class TestQueryUnderstandingEngineMocked:
         assert result.output.needs_clarification is True
         assert "Processing failure" in result.output.clarification_reason
         assert len(result.validation_errors) > 0
+
+    @async_test
+    async def test_gateway_success_preserves_schema_normalization_usage_and_model(self):
+        output = QueryUnderstandingOutput(
+            semantic_query="running shoes",
+            hard_constraints=HardConstraints(category="running shoes", brand="puma", max_price=2000),
+            soft_preferences=[" Durable ", "durable"],
+        )
+
+        class StubGateway:
+            request = None
+
+            async def complete(self, request):
+                self.request = request
+                return MagicMock(
+                    payload=output, raw_text='{"semantic_query":"running shoes"}',
+                    latency_ms=12.5, model="gemini-3.5-flash-lite",
+                    usage=GatewayUsage(input_tokens=10, output_tokens=4, total_tokens=None),
+                )
+
+        gateway = StubGateway()
+        client = MagicMock()
+        engine = QueryUnderstandingEngine(gateway=gateway, client=client, catalog_brands={"Puma"})
+        result = await engine.parse_query_async(
+            "  Puma running shoes under 2000  ", system_instruction="trusted Phase 8 instruction",
+            request_id="api-request", task_id="phase8-task", parent_deadline_mono=12345.0,
+        )
+
+        assert gateway.request.task == TaskType.QUERY_UNDERSTANDING
+        assert gateway.request.schema_id == SCHEMA_IDS[TaskType.QUERY_UNDERSTANDING]
+        assert gateway.request.response_schema is QueryUnderstandingOutput
+        assert gateway.request.request_id == "api-request"
+        assert gateway.request.task_id == "phase8-task"
+        assert gateway.request.parent_deadline_mono == 12345.0
+        assert gateway.request.system_prompt == "trusted Phase 8 instruction"
+        assert "Puma running shoes under 2000" in gateway.request.user_prompt
+        assert result.query == "Puma running shoes under 2000"
+        assert result.output.hard_constraints.category == "Footwear"
+        assert result.output.hard_constraints.brand == "Puma"
+        assert result.output.hard_constraints.max_price == 2000
+        assert result.output.soft_preferences == ["durable"]
+        assert result.model == "gemini-3.5-flash-lite"
+        assert result.raw_response_text == '{"semantic_query":"running shoes"}'
+        assert result.token_usage.prompt_tokens == 10
+        assert result.token_usage.candidates_tokens == 4
+        assert result.token_usage.total_tokens == 14
+        assert client.generate_structured_async.call_count == 0
+
+    @async_test
+    async def test_gateway_failure_fails_closed_without_semantic_clarification(self):
+        class FailingGateway:
+            async def complete(self, request):
+                raise GatewayError(
+                    request_id=request.request_id, task_id=request.task_id,
+                    category=ErrorCategory.NO_ELIGIBLE_ROUTE,
+                    reason_code=ReasonCode.NO_ELIGIBLE_ROUTE, source="admission",
+                )
+
+        engine = QueryUnderstandingEngine(gateway=FailingGateway(), catalog_brands={"Puma"})
+        result = await engine.parse_query_async("Puma shoes under 1000")
+        assert result.is_valid is False
+        assert result.output.needs_clarification is False
+        assert result.output.semantic_query == "Puma shoes under 1000"
+        assert result.output.hard_constraints == HardConstraints()
+        assert result.model == "" and result.raw_response_text == ""
+        assert "NO_ELIGIBLE_ROUTE" in result.validation_errors[0]
+        assert "password" not in result.validation_errors[0].lower()
+
+    @async_test
+    async def test_parent_deadline_is_propagated_to_outer_api_mapping(self):
+        class DeadlineGateway:
+            async def complete(self, request):
+                raise GatewayError(
+                    request_id=request.request_id, task_id=request.task_id,
+                    category=ErrorCategory.DEADLINE_EXCEEDED,
+                    reason_code=ReasonCode.DEADLINE_EXCEEDED,
+                    source="deadline", deadline_scope="parent",
+                )
+
+        engine = QueryUnderstandingEngine(gateway=DeadlineGateway(), catalog_brands=set())
+        with pytest.raises(GatewayError) as caught:
+            await engine.parse_query_async("shoes")
+        assert caught.value.deadline_scope == "parent"
+
+    @async_test
+    async def test_gateway_cancellation_propagates_without_constructing_clarification(self):
+        class CancellingGateway:
+            async def complete(self, request):
+                raise asyncio.CancelledError
+
+        engine = QueryUnderstandingEngine(gateway=CancellingGateway(), catalog_brands=set())
+        with pytest.raises(asyncio.CancelledError):
+            await engine.parse_query_async("shoes")
 
 
 # ==============================================================================

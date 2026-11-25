@@ -13,10 +13,12 @@ Executes the complete experimental evaluation for the ShopAssist AI Engineering 
 from __future__ import annotations
 
 import argparse
+import asyncio
 from datetime import datetime, timezone
 import hashlib
 import json
 import logging
+import os
 from pathlib import Path
 import sys
 import time
@@ -31,9 +33,21 @@ from shopassist.evaluation.phase14_evaluator import (
 from shopassist.evaluation.phase14_judge import (
     JUDGE_PROMPT_VERSION,
     JUDGING_RUBRIC_VERSION,
+    LLMJudgeResponseSchema,
     run_llm_judge,
+    run_llm_judge_with_gateway,
 )
 from shopassist.evaluation.silver import file_sha256, validate_silver_dataset
+from shopassist.llm.schemas import QueryUnderstandingOutput
+from shopassist.recommendation.schemas import LLMRecommendationPayload
+from shopassist.llm_gateway.adapters.gemini import GeminiAdapter
+from shopassist.llm_gateway.adapters.groq import GroqAdapter
+from shopassist.llm_gateway.adapters.openrouter import OpenRouterAdapter
+from shopassist.llm_gateway.config import GatewaySettings
+from shopassist.llm_gateway.gateway import Gateway
+from shopassist.llm_gateway.registry import ProviderRegistry
+from shopassist.llm_gateway.schemas import SCHEMA_IDS, TaskType
+from shopassist.llm_gateway.telemetry import TelemetrySink
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("phase14_runner")
@@ -43,6 +57,31 @@ DEFAULT_BENCHMARK_DIR = ROOT / "data/evaluation/phase13/ai_silver/v4_full_silver
 DEFAULT_CATALOG_PATH = ROOT / "data/processed/products.parquet"
 DEFAULT_CASES_PATH = ROOT / "data/interim/phase11/phase11_reranking_cases.json"
 DEFAULT_OUTPUT_DIR = ROOT / "data/evaluation/phase14/v1"
+
+
+async def _run_gateway_judge_if_eligible(query: str, evidence: str, recommendation: str):
+    """Return (result, diagnostics); None result means safely skipped pre-dispatch."""
+    settings = GatewaySettings()
+    registry = ProviderRegistry(settings, {
+        SCHEMA_IDS[TaskType.QUERY_UNDERSTANDING]: QueryUnderstandingOutput,
+        SCHEMA_IDS[TaskType.RECOMMENDATION_GENERATION]: LLMRecommendationPayload,
+        SCHEMA_IDS[TaskType.LLM_JUDGE]: LLMJudgeResponseSchema,
+    })
+    route = registry.primary_route(TaskType.LLM_JUDGE)
+    reason = registry.ineligibility(route.route_id, TaskType.LLM_JUDGE) if route else None
+    if reason is not None:
+        return None, {"status": "LIVE_SKIPPED", "reason": reason.value}
+    if route is None or not os.environ.get(route.credential_env, "").strip():
+        return None, {"status": "LIVE_SKIPPED", "reason": "CREDENTIAL_UNAVAILABLE"}
+
+    gateway = Gateway(settings, registry, {
+        "gemini": GeminiAdapter(), "openrouter": OpenRouterAdapter(), "groq": GroqAdapter(),
+    }, telemetry=TelemetrySink(settings))
+    try:
+        result = await run_llm_judge_with_gateway(gateway, query, evidence, recommendation)
+        return result, {"status": "LIVE_SUCCESS", "execution_mode": "LIVE_API"}
+    finally:
+        await gateway.aclose()
 
 
 def parse_args() -> argparse.Namespace:
@@ -209,21 +248,68 @@ def main() -> int:
     )
 
     client = None
-    if args.run_live_judge:
+    judge_diagnostics = {"live_requested": bool(args.run_live_judge)}
+    gateway_enabled = args.run_live_judge and GatewaySettings().enabled
+    if gateway_enabled:
         try:
-            from shopassist.llm.gemini_client import GeminiClient
-            client = GeminiClient()
-            print("  -> Connected to live GeminiClient for LLM Judge.")
+            judge_result, detail = asyncio.run(_run_gateway_judge_if_eligible(
+                sample_query, sample_evidence, sample_recommendation
+            ))
+            judge_diagnostics.update(detail)
+            if judge_result is None:
+                judge_result = run_llm_judge(
+                    sample_query, sample_evidence, sample_recommendation, mock_mode=True
+                )
+                judge_diagnostics["execution_mode"] = "OFFLINE_DEMONSTRATION"
         except Exception as exc:
-            print(f"  -> Live GeminiClient unavailable ({exc}); falling back to offline demonstration.")
-
-    judge_result = run_llm_judge(
-        user_query=sample_query,
-        evidence_text=sample_evidence,
-        recommendation_output=sample_recommendation,
-        client=client,
-        mock_mode=(client is None),
-    )
+            diagnostics_file = args.output_dir / "phase14_run_diagnostics.json"
+            diagnostics_file.write_text(json.dumps({
+                **judge_diagnostics, "execution_mode": "LIVE_API",
+                "status": "LIVE_FAILURE", "error_type": type(exc).__name__,
+            }, indent=2), encoding="utf-8")
+            print(f"  -> Gateway judge failed ({type(exc).__name__}); no demo result was written.", file=sys.stderr)
+            return 1
+    else:
+        if args.run_live_judge:
+            try:
+                from shopassist.llm.gemini_client import GeminiClient
+                client = GeminiClient()
+                print("  -> Connected to legacy live GeminiClient for LLM Judge.")
+            except Exception as exc:
+                judge_diagnostics.update({"status": "LIVE_SKIPPED", "reason": type(exc).__name__})
+                print(f"  -> Live GeminiClient unavailable ({type(exc).__name__}); using offline demonstration.")
+        try:
+            judge_result = run_llm_judge(
+                user_query=sample_query,
+                evidence_text=sample_evidence,
+                recommendation_output=sample_recommendation,
+                client=client,
+                mock_mode=(client is None),
+            )
+        except Exception as exc:
+            diagnostics_file = args.output_dir / "phase14_run_diagnostics.json"
+            diagnostics_file.write_text(json.dumps({
+                **judge_diagnostics, "execution_mode": "LIVE_API",
+                "status": "LIVE_FAILURE", "error_type": type(exc).__name__,
+            }, indent=2), encoding="utf-8")
+            print(f"  -> Live judge failed after dispatch ({type(exc).__name__}); no demo result was written.", file=sys.stderr)
+            return 1
+        finally:
+            if client is not None:
+                close = getattr(client, "close", None)
+                if callable(close):
+                    try:
+                        close_result = close()
+                        if asyncio.iscoroutine(close_result):
+                            asyncio.run(close_result)
+                    except Exception as exc:
+                        logger.warning("Could not close Phase 14 judge client (%s).", type(exc).__name__)
+        judge_diagnostics.setdefault(
+            "status", "LIVE_SUCCESS" if judge_result.execution_mode == "LIVE_API" else "OFFLINE_DEMONSTRATION"
+        )
+        judge_diagnostics["execution_mode"] = judge_result.execution_mode
+    diagnostics_file = args.output_dir / "phase14_run_diagnostics.json"
+    diagnostics_file.write_text(json.dumps(judge_diagnostics, indent=2), encoding="utf-8")
     judge_file = args.output_dir / "llm_judge_evaluation.json"
     judge_file.write_text(json.dumps(judge_result.to_dict(), indent=2), encoding="utf-8")
     print(f"  -> LLM Judge Result: Decision={judge_result.overall_decision}, Groundedness={judge_result.groundedness_score}/5, ExecutionMode={judge_result.execution_mode}")
@@ -244,6 +330,7 @@ def main() -> int:
             "constraint_satisfaction_report.json": file_sha256(constraint_file),
             "rag_trace_demonstration.json": file_sha256(rag_trace_file),
             "llm_judge_evaluation.json": file_sha256(judge_file),
+            "phase14_run_diagnostics.json": file_sha256(diagnostics_file),
         },
         "notes": "Educational AI Engineering benchmark evaluation completed without requiring human gold annotations.",
     }

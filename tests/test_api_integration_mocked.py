@@ -23,6 +23,7 @@ from shopassist.api.schemas import (
     RecommendationResponse,
     RecommendationUsage,
 )
+from shopassist.llm_gateway.errors import ErrorCategory, GatewayError, ReasonCode
 
 
 def async_test(fn):
@@ -96,6 +97,27 @@ async def test_recommend_success_scenario(test_app):
     assert data["products"][0]["product_id"] == "PUMA001"
     assert "X-Request-ID" in res.headers
     assert "X-Response-Time-MS" in res.headers
+    forwarded = mock_orchestrator.orchestrate.await_args.kwargs
+    assert forwarded["request_id"] == res.headers["X-Request-ID"]
+    assert forwarded["parent_deadline_mono"] > asyncio.get_running_loop().time() - 10
+
+
+@async_test
+async def test_parent_gateway_deadline_maps_to_504(test_app):
+    mock_orchestrator = MagicMock()
+    mock_orchestrator.orchestrate = AsyncMock(side_effect=GatewayError(
+        request_id="internal", task_id="task",
+        category=ErrorCategory.DEADLINE_EXCEEDED,
+        reason_code=ReasonCode.DEADLINE_EXCEEDED,
+        source="deadline", deadline_scope="parent",
+    ))
+    test_app.dependency_overrides[get_orchestrator] = lambda: mock_orchestrator
+
+    async with AsyncClient(transport=ASGITransport(app=test_app), base_url="http://test") as client:
+        response = await client.post("/api/v1/recommend", json={"query": "shoes"})
+
+    assert response.status_code == 504
+    assert "Gateway Timeout" in response.json()["error"]
 
 
 @async_test
@@ -298,7 +320,7 @@ async def test_recommend_unhandled_exception_returns_500_sanitized(test_app):
 async def test_concurrent_recommendation_requests(test_app):
     mock_orchestrator = MagicMock()
 
-    async def mock_call(request, request_id):
+    async def mock_call(request, request_id, parent_deadline_mono=None):
         await asyncio.sleep(0.01)
         return RecommendationResponse(
             request_id=request_id,
@@ -373,6 +395,43 @@ async def test_health_readiness_healthy_state(test_app):
     assert data["components"]["database"] == "healthy"
     assert data["components"]["tfidf"] == "ready"
     assert data["components"]["embedding"] == "ready"
+
+
+@async_test
+async def test_health_uses_gateway_local_readiness_without_legacy_settings(test_app, monkeypatch):
+    from shopassist.llm_gateway.schemas import TaskType
+
+    engine = MagicMock()
+    connection = AsyncMock()
+    connection.execute = AsyncMock(return_value=MagicMock(scalar=MagicMock(return_value=1)))
+    context = AsyncMock()
+    context.__aenter__ = AsyncMock(return_value=connection)
+    context.__aexit__ = AsyncMock(return_value=None)
+    engine.connect.return_value = context
+    test_app.state.engine = engine
+    test_app.state.tfidf_index = MagicMock(is_fitted=True)
+    test_app.state.query_encoder = MagicMock()
+
+    gateway = MagicMock()
+    gateway.primary_provider.side_effect = lambda task: {
+        TaskType.QUERY_UNDERSTANDING: "gemini",
+        TaskType.RECOMMENDATION_GENERATION: "openrouter",
+    }[task]
+    gateway.readiness_snapshot.return_value = {"routes": []}
+    test_app.state.gateway = gateway
+    monkeypatch.setattr("shopassist.api.routes.health.get_llm_settings", lambda: pytest.fail("legacy settings read"))
+    monkeypatch.setattr("shopassist.api.routes.health.get_recommendation_settings", lambda: pytest.fail("legacy settings read"))
+
+    async with AsyncClient(transport=ASGITransport(app=test_app), base_url="http://test") as client:
+        response = await client.get("/api/v1/health")
+
+    assert response.status_code == 200
+    components = response.json()["components"]
+    assert components["query_understanding"] == "configured (gemini)"
+    assert components["recommendation_provider"] == "configured (openrouter)"
+    gateway.primary_provider.assert_any_call(TaskType.QUERY_UNDERSTANDING)
+    gateway.primary_provider.assert_any_call(TaskType.RECOMMENDATION_GENERATION)
+    gateway.readiness_snapshot.assert_called_once_with()
 
 
 @async_test

@@ -162,6 +162,17 @@ def parse_recommendation_payload(content: str) -> LLMRecommendationPayload:
         raise RuntimeError(f"Failed to validate LLM response against schema: {parse_err}") from parse_err
 
 
+def decode_recommendation_gateway_output(content: str) -> str:
+    """Apply the established Phase 12 structural normalizations for Gateway.
+
+    Register this decoder for `phase12.recommendation.v1` at the trusted
+    Gateway composition root. The Gateway performs its own final schema
+    validation after this legacy-compatible normalization.
+    """
+    payload = parse_recommendation_payload(content)
+    return payload.model_dump_json()
+
+
 class BaseRecommendationProvider:
     """Base class for recommendation LLM providers."""
 

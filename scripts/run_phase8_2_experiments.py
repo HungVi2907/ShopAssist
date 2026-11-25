@@ -46,6 +46,12 @@ async def run(args):
         raise ValueError("Unknown or duplicate experiment IDs")
     if args.use_cache and (args.repetitions > 1 or any(i in ids for i in ("T05", "T10"))):
         raise ValueError("Cache replay cannot establish sampling consistency")
+    if args.live:
+        from shopassist.llm_gateway.config import GatewaySettings
+        if GatewaySettings().enabled:
+            raise RuntimeError(
+                "Phase 8.2 live evaluation cannot bypass the enabled Gateway; no provider request was sent."
+            )
     path = ROOT / "tests/fixtures/heldout_evaluation_cases.json" if args.split == "legacy_heldout" else ROOT / f"tests/fixtures/phase8_2/{args.split}.json"
     data = json.loads(path.read_text(encoding="utf8"))
     cases = data["cases"][:args.limit]

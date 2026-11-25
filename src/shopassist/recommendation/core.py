@@ -8,9 +8,14 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import uuid
 from typing import Any, Sequence
 
 from shopassist.llm.schemas import QueryUnderstandingResult
+from shopassist.llm_gateway.errors import GatewayError
+from shopassist.llm_gateway.gateway import Gateway
+from shopassist.llm_gateway.schemas import GatewayRequest, TaskType, SCHEMA_IDS
+from shopassist.recommendation.schemas import LLMRecommendationPayload
 from shopassist.preferences.schemas import PreferenceRepresentationResult
 from shopassist.reranking.core import RerankingResult, RerankingStatus
 from shopassist.recommendation.config import RecommendationSettings, get_recommendation_settings
@@ -43,11 +48,13 @@ class RecommendationService:
         *,
         settings: RecommendationSettings | None = None,
         provider: BaseRecommendationProvider | None = None,
+        gateway: Gateway | None = None,
         context_builder: EvidenceContextBuilder | None = None,
         validator: GroundednessValidator | None = None,
     ) -> None:
         self.settings = settings or get_recommendation_settings()
-        self.provider = provider or get_recommendation_provider(self.settings)
+        self.gateway = gateway
+        self.provider = provider or (get_recommendation_provider(self.settings) if gateway is None else None)
         self.context_builder = context_builder or EvidenceContextBuilder()
         self.validator = validator or GroundednessValidator()
 
@@ -59,6 +66,9 @@ class RecommendationService:
         *,
         top_k: int | None = None,
         language: str | None = None,
+        request_id: str | None = None,
+        task_id: str | None = None,
+        parent_deadline_mono: float | None = None,
     ) -> RecommendationResult:
         """Generate evidence-grounded recommendations for Phase 11 products.
 
@@ -202,22 +212,77 @@ class RecommendationService:
 
         user_prompt = build_recommendation_user_prompt(context_str, language=effective_language)
 
-        # 4. Groq Inference
-        try:
-            payload, usage = await self.provider.generate_recommendation_payload(
-                RECOMMENDATION_SYSTEM_PROMPT,
-                user_prompt,
+        # 4. Inference. Gateway mode owns provider/model routing; legacy mode
+        # remains available for the explicit rollback configuration.
+        model_name = self.settings.phase12_llm_model
+        if self.gateway is not None:
+            gateway_request = GatewayRequest[LLMRecommendationPayload](
+                task=TaskType.RECOMMENDATION_GENERATION,
+                profile="default",
+                request_id=request_id or uuid.uuid4().hex,
+                task_id=task_id or uuid.uuid4().hex,
+                system_prompt=RECOMMENDATION_SYSTEM_PROMPT,
+                user_prompt=user_prompt,
+                schema_id=SCHEMA_IDS[TaskType.RECOMMENDATION_GENERATION],
+                response_schema=LLMRecommendationPayload,
+                parent_deadline_mono=parent_deadline_mono,
             )
-        except Exception as exc:
-            logger.warning(f"LLM recommendation generation failed ({type(exc).__name__}): {exc}. Falling back to deterministic metadata.")
-            return self.validator.generate_deterministic_fallback(
-                candidates,
-                evidence_store,
-                reason=f"LLM generation failed: {exc}",
-                model_name=self.settings.phase12_llm_model,
-                applied_constraints=reranking_result.applied_constraints,
-                language=effective_language,
+            try:
+                gateway_response = await self.gateway.complete(gateway_request)
+            except asyncio.CancelledError:
+                raise
+            except GatewayError as exc:
+                if exc.deadline_scope == "parent":
+                    raise
+                # Provider details and exception causes stay inside Gateway
+                # telemetry; catalog fallback receives a fixed safe reason.
+                logger.warning("LLM Gateway recommendation failed (%s); using deterministic catalog fallback.", exc.category.value)
+                return self.validator.generate_deterministic_fallback(
+                    candidates,
+                    evidence_store,
+                    reason="LLM Gateway generation unavailable; deterministic catalog fallback used.",
+                    model_name=None,
+                    applied_constraints=reranking_result.applied_constraints,
+                    language=effective_language,
+                )
+            payload = gateway_response.payload
+            gateway_usage = gateway_response.usage
+            prompt_tokens = gateway_usage.input_tokens
+            completion_tokens = gateway_usage.output_tokens
+            total_tokens = gateway_usage.total_tokens
+            if total_tokens is None and prompt_tokens is not None and completion_tokens is not None:
+                total_tokens = prompt_tokens + completion_tokens
+            usage = TokenUsage(
+                prompt_tokens=prompt_tokens if prompt_tokens is not None else 0,
+                completion_tokens=completion_tokens if completion_tokens is not None else 0,
+                total_tokens=total_tokens if total_tokens is not None else 0,
+                reasoning_tokens=gateway_usage.reasoning_tokens if gateway_usage.reasoning_tokens is not None else 0,
+                latency_ms=gateway_response.latency_ms,
+                estimated_cost_usd=float(gateway_usage.estimated_cost_usd) if gateway_usage.estimated_cost_usd is not None else 0.0,
             )
+            model_name = gateway_response.model
+            logger.info(
+                "LLM Gateway recommendation completed provider=%s model=%s route=%s",
+                gateway_response.provider, gateway_response.model, gateway_response.route_id,
+            )
+        else:
+            if self.provider is None:
+                raise RuntimeError("Legacy recommendation provider is unavailable")
+            try:
+                payload, usage = await self.provider.generate_recommendation_payload(
+                    RECOMMENDATION_SYSTEM_PROMPT,
+                    user_prompt,
+                )
+            except Exception as exc:
+                logger.warning(f"LLM recommendation generation failed ({type(exc).__name__}): {exc}. Falling back to deterministic metadata.")
+                return self.validator.generate_deterministic_fallback(
+                    candidates,
+                    evidence_store,
+                    reason=f"LLM generation failed: {exc}",
+                    model_name=self.settings.phase12_llm_model,
+                    applied_constraints=reranking_result.applied_constraints,
+                    language=effective_language,
+                )
 
         # 5. Groundedness Validation & Metadata Merging
         result = self.validator.validate_and_merge(
@@ -226,7 +291,7 @@ class RecommendationService:
             evidence_store,
             flat_evidence,
             usage=usage,
-            model_name=self.settings.phase12_llm_model,
+            model_name=model_name,
             language=effective_language,
             applied_constraints=reranking_result.applied_constraints,
         )
@@ -241,6 +306,9 @@ class RecommendationService:
         *,
         top_k: int | None = None,
         language: str | None = None,
+        request_id: str | None = None,
+        task_id: str | None = None,
+        parent_deadline_mono: float | None = None,
     ) -> RecommendationResult:
         """Synchronous convenience wrapper for generate()."""
         return asyncio.run(
@@ -250,5 +318,8 @@ class RecommendationService:
                 reranking_result,
                 top_k=top_k,
                 language=language,
+                request_id=request_id,
+                task_id=task_id,
+                parent_deadline_mono=parent_deadline_mono,
             )
         )
