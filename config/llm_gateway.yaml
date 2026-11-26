@@ -4,10 +4,10 @@ providers:
     kind: gemini
     credential_env: GEMINI_API_KEY
     endpoint: https://generativelanguage.googleapis.com
-  openrouter:
-    kind: openrouter
-    credential_env: OPENROUTER_API_KEY
-    endpoint: https://openrouter.ai/api/v1
+  gemini_recommendation:
+    kind: gemini
+    credential_env: GEMINI_API_KEY_2
+    endpoint: https://generativelanguage.googleapis.com
   groq:
     kind: groq
     credential_env: GROQ_API_KEY
@@ -202,10 +202,10 @@ routes:
     approval: {status: pending}
     cost: {class: unknown}
     options: {max_output_tokens: 2048, temperature: 0.0}
-  recommendation_openrouter:
-    provider: openrouter
-    model: baidu/ernie-5.5-flash-preview:free
-    structured_mode: json_schema
+  recommendation_gemini:
+    provider: gemini_recommendation
+    model: gemini-3.5-flash-lite
+    structured_mode: gemini_schema
     schema_ids: [phase12.recommendation.v1]
     enabled: false
     approval: {status: pending}
@@ -255,7 +255,7 @@ tasks:
       phase82_e6: {schema_id: phase8.query.refined.experiment.v1, route_ids: [query_phase82_e6]}
   recommendation_generation:
     profiles:
-      default: {schema_id: phase12.recommendation.v1, route_ids: [recommendation_openrouter, recommendation_groq]}
+      default: {schema_id: phase12.recommendation.v1, route_ids: [recommendation_gemini, recommendation_groq]}
   llm_judge:
     profiles:
       default: {schema_id: phase14.judge.v1, route_ids: [judge_gemini]}

@@ -67,7 +67,7 @@ graph LR
     end
     DB[("PostgreSQL + pgvector")]
     Gemini["Gemini API"]
-    Provider["OpenRouter or Groq"]
+    Provider["Gemini primary or eligible Groq backup"]
     User <--> Cloud
     Cloud <--> Bot
     Bot -->|HTTP / JSON| API
@@ -122,7 +122,7 @@ The branches describe retrieval inputs; the implementation currently executes th
 | Embeddings | `BAAI/bge-small-en-v1.5`, 384 dimensions, Sentence Transformers / PyTorch |
 | Search and storage | scikit-learn TF-IDF, PostgreSQL + pgvector, SQLAlchemy / psycopg |
 | Optional neural reranking | `cross-encoder/ms-marco-MiniLM-L2-v2` |
-| Recommendation generation | OpenRouter (default) or Groq |
+| Recommendation generation | Gemini (`GEMINI_API_KEY_2`) via Phase 18 Gateway; legacy mode retains its configured provider |
 | Data and tests | pandas, PyArrow/Parquet, pytest |
 
 Dependencies are declared in [pyproject.toml](pyproject.toml). Model names below describe repository defaults, not guarantees of upstream availability.
@@ -153,10 +153,11 @@ Copy [.env.example](.env.example) to `.env` if you do not already have a local c
 | --- | --- |
 | `SUPABASE_DB_URL` | PostgreSQL connection URL for the catalog and pgvector search |
 | `GEMINI_API_KEY` | Query understanding credentials |
+| `GEMINI_API_KEY_2` | Phase 18 Gateway Phase 12 recommendation route credential |
 | `GEMINI_MODEL` | `gemini-3.1-flash-lite` |
-| `PHASE12_LLM_PROVIDER` | `openrouter` by default; `groq` is also supported |
-| `PHASE12_LLM_MODEL` | `google/gemma-4-26b-a4b-it:free` for the default OpenRouter route |
-| `OPENROUTER_API_KEY` / `GROQ_API_KEY` | Credentials for the selected recommendation provider |
+| `PHASE12_LLM_PROVIDER` | Legacy mode provider setting; used when the centralized Gateway is disabled |
+| `PHASE12_LLM_MODEL` | Legacy mode model setting; used when the centralized Gateway is disabled |
+| `OPENROUTER_API_KEY` / `GROQ_API_KEY` | Legacy provider credentials; Phase 18 Gateway Phase 12 primary uses `GEMINI_API_KEY_2` |
 | `API_HOST` / `API_PORT` | `127.0.0.1` / `8000` |
 | `API_RERANKING_METHOD` | `RRF`; alternatives: `MULTI_SIGNAL`, `CROSS_ENCODER`, `COMBINED` |
 | `TELEGRAM_BOT_TOKEN` | Needed only when running the bot |

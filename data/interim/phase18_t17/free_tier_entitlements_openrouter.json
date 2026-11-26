@@ -1,0 +1,15 @@
+[
+  {
+    "account_ref_sha256": "f0c0ad040a88b85d95d9d35d3327c7514bbfe51ab4e560d413f3bf0800d6b73e",
+    "artifact_ref": "openrouter_zero_cost_dashboard_recheck.json",
+    "artifact_sha256": "c63333245512bf5d266f030d0c007b9bfbfabdad5228a204231e7de237797ed2",
+    "entitlement_verified": true,
+    "expires_at": "2026-11-25T10:16:22+00:00",
+    "model": "baidu/ernie-5.5-flash-preview:free",
+    "paid_billing_disabled": true,
+    "provider": "openrouter",
+    "source_ref": "earlier authenticated OpenRouter key metadata plus current operator dashboard screenshot and Free Tier-only operator authorization",
+    "tier": "free",
+    "verified_at": "2026-11-25T09:16:22+00:00"
+  }
+]

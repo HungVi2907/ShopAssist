@@ -1,0 +1,15 @@
+[
+  {
+    "account_ref_sha256": "c413bfc67258b307cd6289fb6668585987d44f7785f61b1e7730138127364954",
+    "artifact_ref": "gemini_free_tier_operator_attestation.json",
+    "artifact_sha256": "0a7d5784da4cad3b4f9b2004d4877178dd042e2b2912e09519e5f40b2e75b430",
+    "entitlement_verified": true,
+    "expires_at": "2026-11-25T10:09:18+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "paid_billing_disabled": true,
+    "provider": "gemini",
+    "source_ref": "operator Free Tier attestation; Gemini model metadata API; official pricing documentation",
+    "tier": "free",
+    "verified_at": "2026-11-25T09:09:18+00:00"
+  }
+]

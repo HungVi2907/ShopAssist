@@ -28,6 +28,19 @@ def build_gateway(tmp_path, monkeypatch, *, disabled=(), failover=True, timeout=
                   credential_available=None, budget_estimator=None, health=None):
     data = yaml.safe_load((ROOT / "config/llm_gateway.yaml").read_text(encoding="utf-8"))
     selected = ("recommendation_openrouter", "recommendation_groq")
+    # These generic failover tests construct an isolated synthetic OpenRouter
+    # candidate; production YAML and composition roots no longer include it.
+    data["providers"]["openrouter"] = {
+        "kind": "openrouter", "credential_env": "OPENROUTER_API_KEY",
+        "endpoint": "https://openrouter.ai/api/v1",
+    }
+    data["routes"]["recommendation_openrouter"] = {
+        "provider": "openrouter", "model": "baidu/ernie-5.5-flash-preview:free",
+        "structured_mode": "json_schema", "schema_ids": ["phase12.recommendation.v1"],
+        "enabled": False, "approval": {"status": "pending"}, "cost": {"class": "unknown"},
+        "options": {"max_output_tokens": 2048},
+    }
+    data["tasks"]["recommendation_generation"]["profiles"]["default"]["route_ids"] = list(selected)
     for provider_name, values in (limits or {}).items():
         data["providers"][provider_name]["limits"] = values
     for route_id in selected:
@@ -103,6 +116,18 @@ class MockAdapter:
 
     async def aclose(self):
         self.closed += 1
+
+
+def test_profile_specific_adapter_overrides_kind_adapter(tmp_path, monkeypatch):
+    gateway, _request, _primary, _backup, _sink = build_gateway(tmp_path, monkeypatch)
+    kind_adapter = MockAdapter([AdapterResult(raw_text='{"value": 1}')])
+    profile_adapter = MockAdapter([AdapterResult(raw_text='{"value": 2}')])
+    gateway.adapters["gemini"] = kind_adapter
+    gateway.adapters["gemini_recommendation"] = profile_adapter
+    route = gateway.registry.resolve("recommendation_gemini")
+    assert gateway._adapter_for_route(route) is profile_adapter
+    route = gateway.registry.resolve("query_gemini")
+    assert gateway._adapter_for_route(route) is kind_adapter
 
 
 class BeforeDispatchFailure:

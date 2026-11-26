@@ -9,7 +9,6 @@ from shopassist.llm.schema_variants import RefinedQueryUnderstandingOutput, Requ
 from shopassist.llm.schemas import QueryUnderstandingOutput
 from shopassist.llm_gateway.adapters.gemini import GeminiAdapter
 from shopassist.llm_gateway.adapters.groq import GroqAdapter
-from shopassist.llm_gateway.adapters.openrouter import OpenRouterAdapter
 from shopassist.llm_gateway.config import GatewaySettings
 from shopassist.llm_gateway.gateway import Gateway
 from shopassist.llm_gateway.registry import ProviderRegistry
@@ -50,7 +49,7 @@ def build_experiment_gateway(
         registry,
         {
             "gemini": GeminiAdapter(lambda: os.environ.get("GEMINI_API_KEY", "")),
-            "openrouter": OpenRouterAdapter(lambda: os.environ.get("OPENROUTER_API_KEY", "")),
+            "gemini_recommendation": GeminiAdapter(lambda: os.environ.get("GEMINI_API_KEY_2", "")),
             "groq": GroqAdapter(lambda: os.environ.get("GROQ_API_KEY", "")),
         },
         telemetry=TelemetrySink(settings),

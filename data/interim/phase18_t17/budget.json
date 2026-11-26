@@ -1,0 +1,1 @@
+{"requests": {"gemini": 4, "groq": 3, "openrouter": 3}, "reservations": {}, "tokens": {"gemini": 6550, "groq": 2304, "openrouter": 11462}, "version": 1}

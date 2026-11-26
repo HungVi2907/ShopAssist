@@ -1,0 +1,15 @@
+[
+  {
+    "account_ref_sha256": "5cb7243a4a34bfe2363752e67a06f4f29f7106302a457b71e3f539458b3f46a2",
+    "artifact_ref": "gemini_recommendation_key2_operator_attestation.json",
+    "artifact_sha256": "2a42e4042a028143f9f248965d2f6342f30a2cc38b1535855adb33c567369155",
+    "entitlement_verified": true,
+    "expires_at": "2026-11-26T03:44:03+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "paid_billing_disabled": true,
+    "provider": "gemini",
+    "source_ref": "operator-attestation:2026-11-26:gemini-recommendation-key2",
+    "tier": "free",
+    "verified_at": "2026-11-26T02:44:03+00:00"
+  }
+]

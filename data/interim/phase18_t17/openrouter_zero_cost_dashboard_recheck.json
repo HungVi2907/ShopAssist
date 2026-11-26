@@ -1,0 +1,40 @@
+{
+  "endpoint": "https://openrouter.ai/api/v1",
+  "kind": "openrouter_zero_cost_dashboard_recheck",
+  "limitation": "The screenshot confirms observed model totals of $0.00; account key Free Tier status remains based on the earlier authenticated key metadata check.",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "model_catalog_source": "https://openrouter.ai/baidu/ernie-5.5-flash-preview%3Afree",
+  "prior_authenticated_key_metadata": {
+    "expires_at": "2026-12-20T06:28:00.000Z",
+    "free_model_daily_requests": {
+      "limit": 50,
+      "remaining": 50,
+      "used": 0
+    },
+    "http_status": 200,
+    "include_byok_in_limit": false,
+    "is_free_tier": true,
+    "limit_remaining_usd": 0,
+    "limit_usd": 0,
+    "usage_usd": 0
+  },
+  "prior_credential_fingerprint_sha256": "f0c0ad040a88b85d95d9d35d3327c7514bbfe51ab4e560d413f3bf0800d6b73e",
+  "provider": "openrouter",
+  "request_policy": {
+    "exact_model_only": true,
+    "max_cost_usd": 0,
+    "paid_models_allowed": false,
+    "provider_fallbacks": false
+  },
+  "schema": "phase12.recommendation.v1",
+  "task": "recommendation_generation",
+  "user_provided_dashboard_screenshot": {
+    "average_usd": 0,
+    "max_usd": 0,
+    "min_usd": 0,
+    "model_display": "ERNIE-5.5-Flash-Preview (free)",
+    "provenance": "Screenshot attached by the operator in this conversation immediately before this retest.",
+    "total_usd": 0
+  },
+  "verified_at": "2026-11-25T09:16:22Z"
+}

@@ -1,0 +1,64 @@
+{
+  "catalog_fixture": {
+    "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+    "category": "Footwear",
+    "evidence_id": "20e1ffc3b0db7e7422d50d895a5d3158-E1",
+    "evidence_text": "Product: 11e Women Flats | Category: Footwear | Specifications: Occasion: Casual; Ideal For: Women; Sole Material: PVC; Weight: 150 g (per single Sandal) - Weight of the product may vary depending on size.; Type: Flats; Heel Height: 0 inch; Insole Material: PVC; Outer Material: Synthetic Leather; Color: Beige; Care Instructions: Wash in Lukewarm Water, Do Not Bleach | Description: Flipkart.com: Buy 11e Women Flats only for Rs. 349 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+    "product_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+    "product_name": "11e Women Flats"
+  },
+  "created_at_utc": "2026-11-26T03:04:21.350702+00:00",
+  "kind": "shopassist_phase18_t17_groundedness_review",
+  "recommendation": {
+    "overview": "Here\u2019s a detailed assessment of the 11e Women Flats that matches your search for casual footwear.",
+    "products": [
+      {
+        "comparison_note": null,
+        "limitations": [
+          {
+            "claim": "No information on size range or durability beyond material type",
+            "evidence_ids": []
+          },
+          {
+            "claim": "Color limited to beige; no other options listed",
+            "evidence_ids": []
+          },
+          {
+            "claim": "Lack of brand or style details beyond generic description",
+            "evidence_ids": []
+          }
+        ],
+        "product_id": "20e1ffc3b0db7e7422d50d895a5d3158",
+        "strengths": [
+          {
+            "claim": "Lightweight design at 150 g per sandal",
+            "evidence_ids": [
+              "20e1ffc3b0db7e7422d50d895a5d3158-E1"
+            ]
+          },
+          {
+            "claim": "Flat heel of 0 inch suitable for casual occasions",
+            "evidence_ids": [
+              "20e1ffc3b0db7e7422d50d895a5d3158-E1"
+            ]
+          },
+          {
+            "claim": "Made from PVC sole and synthetic leather for durability",
+            "evidence_ids": [
+              "20e1ffc3b0db7e7422d50d895a5d3158-E1"
+            ]
+          }
+        ],
+        "summary_reason": "This pair of 11e Women Flats offers lightweight, casual comfort with a PVC sole and synthetic leather upper, making it suitable for everyday wear."
+      }
+    ]
+  },
+  "route": {
+    "endpoint": "https://api.groq.com/openai/v1",
+    "model": "openai/gpt-oss-20b",
+    "provider": "groq",
+    "route_id": "recommendation_groq",
+    "schema_id": "phase12.recommendation.v1",
+    "task": "recommendation_generation"
+  }
+}

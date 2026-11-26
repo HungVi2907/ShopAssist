@@ -6,6 +6,8 @@ The API and Telegram implementations are available for local prototyping. The [P
 
 **Automated recheck (2026-10-23):** the API/bot unit and mocked integration selection documented in the README passed again: **150 passed, 1 warning** (an unawaited `AsyncMock` coroutine reported during `test_deterministic_fallback_flow`). No live provider or Telegram validation was performed during this documentation update.
 
+**Phase 18 handover (2026-11-26):** T18 documentation is complete. Gateway routing now lists Phase 12 Gemini (`GEMINI_API_KEY_2`) then Groq, with both production routes disabled/pending. T17 isolated live schema/catalog checks ran, but groundedness review, backup approval, production failover and a final-snapshot guarded regression remain open. Overall status is `IMPLEMENTED_PENDING_BACKUP_VALIDATION`. See the [Phase 18 handover](phase18_handover.md) and [test/integration report](phase18_test_and_integration_report.md). The historical phase rows below retain their original evidence dates.
+
 | Phase | Current status | Evidence / next gate |
 | --- | --- | --- |
 | 1–7 | Implemented | Existing phase reports and artifacts; embeddings/model assets retained. |

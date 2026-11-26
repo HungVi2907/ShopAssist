@@ -1,0 +1,29 @@
+{
+  "account_ref_sha256": "c413bfc67258b307cd6289fb6668585987d44f7785f61b1e7730138127364954",
+  "credential_metadata_check": {
+    "http_status": 200,
+    "inference_sent": false,
+    "model_listed": true,
+    "supports_generateContent": true
+  },
+  "endpoint": "https://generativelanguage.googleapis.com",
+  "evidence_limit": "Google model metadata confirms authentication and model catalog visibility, not billing tier; Free Tier status is operator-attested.",
+  "kind": "gemini_free_tier_operator_attestation",
+  "model": "gemini-3.5-flash-lite",
+  "operator_attestation": {
+    "free_tier": true,
+    "paid_billing_disabled": true,
+    "source": "User explicitly confirmed this Gemini key is Free Tier and instructed one controlled test in this conversation."
+  },
+  "policy": {
+    "exact_model_only": true,
+    "grounding_tools_disabled": true,
+    "max_cost_usd": 0,
+    "paid_models_allowed": false
+  },
+  "pricing_reference": "https://ai.google.dev/gemini-api/docs/pricing",
+  "provider": "gemini",
+  "schema": "phase8.query.v1",
+  "task": "query_understanding",
+  "verified_at": "2026-11-25T09:09:18Z"
+}

@@ -67,7 +67,7 @@ def test_order_and_pending_backup(registry_factory, monkeypatch):
     monkeypatch.setenv("GROQ_API_KEY", "synthetic-secret")
     monkeypatch.setenv("PHASE12_LLM_MODEL", "override")
     routes = registry.routes_for(request(TaskType.RECOMMENDATION_GENERATION))
-    assert [route.route_id for route in routes] == ["recommendation_openrouter", "recommendation_groq"]
+    assert [route.route_id for route in routes] == ["recommendation_gemini", "recommendation_groq"]
     assert routes[1].model == "openai/gpt-oss-20b"
     assert registry.ineligibility(routes[1].route_id, TaskType.RECOMMENDATION_GENERATION) == ReasonCode.DISABLED
 

@@ -1,0 +1,23 @@
+{
+  "credential_env": "GROQ_API_KEY",
+  "credential_sha256": "73f70c1b35450a03e3452c00787c602aa434a391b82d081df784df629cd5fc2a",
+  "endpoint": "https://api.groq.com/openai/v1",
+  "kind": "operator_attested_free_tier_entitlement",
+  "model": "openai/gpt-oss-20b",
+  "operator_attestation": {
+    "free_tier": true,
+    "paid_billing_disabled": true,
+    "source": "Operator confirmed in conversation on 2026-11-26 that all selected provider accounts/keys are Free Tier and authorized completion of T17."
+  },
+  "policy": {
+    "exact_model_only": true,
+    "max_cost_usd": 0,
+    "paid_models_allowed": false
+  },
+  "provider": "groq",
+  "schema": "phase12.recommendation.v1",
+  "scope_limit": "Operator attestation; not a provider-returned billing-tier field.",
+  "structured_mode": "json_schema",
+  "task": "recommendation_generation",
+  "verified_at": "2026-11-26T02:46:16+00:00"
+}

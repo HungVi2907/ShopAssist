@@ -125,7 +125,7 @@ class Gateway:
             if static_reason is not None:
                 skips.append(RouteSkip(route_id=route.route_id, reason=static_reason))
                 continue
-            adapter = self.adapters.get(route.provider)
+            adapter = self._adapter_for_route(route)
             if adapter is None:
                 skips.append(RouteSkip(route_id=route.route_id, reason=ReasonCode.UNCONFIGURED))
                 continue
@@ -481,6 +481,10 @@ class Gateway:
             skip_reasons=tuple(skips),
         )
         self.telemetry.emit_task(summary)
+
+    def _adapter_for_route(self, route: ResolvedRoute) -> ProviderAdapter | None:
+        """Prefer a profile-specific adapter, then fall back to the provider-kind adapter."""
+        return self.adapters.get(route.provider_profile) or self.adapters.get(route.provider)
 
     def _copy_gateway_error(self, error: GatewayError, request: GatewayRequest,
                             attempts: list[AttemptRecord], started: float) -> GatewayError:

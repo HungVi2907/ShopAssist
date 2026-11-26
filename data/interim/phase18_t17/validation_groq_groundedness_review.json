@@ -1,0 +1,57 @@
+{
+  "budget": {
+    "max_cost_usd": "0",
+    "max_total_requests": 10,
+    "max_total_tokens": 50000,
+    "pending_reservations": 0,
+    "requests": {
+      "gemini": 4,
+      "groq": 3,
+      "openrouter": 3
+    },
+    "tokens": {
+      "gemini": 6550,
+      "groq": 2304,
+      "openrouter": 11462
+    },
+    "total_requests": 10,
+    "total_tokens": 20316
+  },
+  "created_at_utc": "2026-11-26T03:04:21.351738+00:00",
+  "kind": "shopassist_phase18_t17_validation",
+  "policy": {
+    "max_cost_usd": "0",
+    "paid_models_allowed": false
+  },
+  "results": [
+    {
+      "actual_cost_usd": null,
+      "attempt_count": 1,
+      "catalog_fixture_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+      "endpoint": "https://api.groq.com/openai/v1",
+      "entitlement_ref": "060f380eabead4fb38db659de8a2c992549d274cfa9b52c1484eb62929464616",
+      "evidence_citations_valid": true,
+      "expected_model": "openai/gpt-oss-20b",
+      "groundedness_review_ref": "validation_groq_groundedness_review_recommendation_groq_groundedness_review.json",
+      "groundedness_review_required": true,
+      "latency_ms": 6328.000000037719,
+      "output_schema_valid": true,
+      "provider": "groq",
+      "recommendation_ids_valid": true,
+      "reported_model": "openai/gpt-oss-20b",
+      "route_id": "recommendation_groq",
+      "safe_error": null,
+      "schema_id": "phase12.recommendation.v1",
+      "status": "passed",
+      "task": "recommendation_generation",
+      "usage": {
+        "estimated_cost_usd": null,
+        "input_tokens": 806,
+        "output_tokens": 306,
+        "pricing_ref": null,
+        "reasoning_tokens": 13,
+        "total_tokens": 1112
+      }
+    }
+  ]
+}

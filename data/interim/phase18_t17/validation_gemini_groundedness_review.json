@@ -1,0 +1,50 @@
+{
+  "budget": {
+    "max_cost_usd": "0",
+    "max_total_requests": 10,
+    "max_total_tokens": 50000,
+    "pending_reservations": 0,
+    "requests": {
+      "gemini": 4,
+      "groq": 2,
+      "openrouter": 3
+    },
+    "tokens": {
+      "gemini": 6550,
+      "groq": 1192,
+      "openrouter": 11462
+    },
+    "total_requests": 9,
+    "total_tokens": 19204
+  },
+  "created_at_utc": "2026-11-26T03:03:51.062193+00:00",
+  "kind": "shopassist_phase18_t17_validation",
+  "policy": {
+    "max_cost_usd": "0",
+    "paid_models_allowed": false
+  },
+  "results": [
+    {
+      "actual_cost_usd": null,
+      "attempt_count": 1,
+      "catalog_fixture_sha256": null,
+      "endpoint": "https://generativelanguage.googleapis.com",
+      "entitlement_ref": "72cb624f761078b372391899d61554812bc2d81e0cf229d8b8c73d15bd04d5bf",
+      "evidence_citations_valid": null,
+      "expected_model": "gemini-3.5-flash-lite",
+      "groundedness_review_ref": null,
+      "groundedness_review_required": null,
+      "latency_ms": 6266.00000000326,
+      "output_schema_valid": false,
+      "provider": "gemini",
+      "recommendation_ids_valid": null,
+      "reported_model": null,
+      "route_id": "recommendation_gemini",
+      "safe_error": "PROVIDER_UNAVAILABLE",
+      "schema_id": "phase12.recommendation.v1",
+      "status": "failed",
+      "task": "recommendation_generation",
+      "usage": null
+    }
+  ]
+}

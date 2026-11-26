@@ -21,7 +21,6 @@ from shopassist.db.connection import ensure_windows_event_loop_policy, get_async
 from shopassist.llm.query_understanding import QueryUnderstandingEngine
 from shopassist.llm_gateway.adapters.gemini import GeminiAdapter
 from shopassist.llm_gateway.adapters.groq import GroqAdapter
-from shopassist.llm_gateway.adapters.openrouter import OpenRouterAdapter
 from shopassist.llm_gateway.config import GatewaySettings
 from shopassist.llm_gateway.gateway import Gateway
 from shopassist.llm_gateway.experiment_factory import experiment_schema_bindings
@@ -50,7 +49,7 @@ def _build_gateway(settings: GatewaySettings) -> Gateway | None:
         registry,
         {
             "gemini": GeminiAdapter(lambda: os.environ.get("GEMINI_API_KEY", "")),
-            "openrouter": OpenRouterAdapter(lambda: os.environ.get("OPENROUTER_API_KEY", "")),
+            "gemini_recommendation": GeminiAdapter(lambda: os.environ.get("GEMINI_API_KEY_2", "")),
             "groq": GroqAdapter(lambda: os.environ.get("GROQ_API_KEY", "")),
         },
         decoders={SCHEMA_IDS[TaskType.RECOMMENDATION_GENERATION]: decode_recommendation_gateway_output},

@@ -1,0 +1,28 @@
+[
+  {
+    "account_ref_sha256": "5cb7243a4a34bfe2363752e67a06f4f29f7106302a457b71e3f539458b3f46a2",
+    "artifact_ref": "gemini_recommendation_key2_operator_attestation.json",
+    "artifact_sha256": "2a42e4042a028143f9f248965d2f6342f30a2cc38b1535855adb33c567369155",
+    "entitlement_verified": true,
+    "expires_at": "2026-11-26T03:44:03+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "paid_billing_disabled": true,
+    "provider": "gemini",
+    "source_ref": "operator-attestation:2026-11-26:gemini-recommendation-key2",
+    "tier": "free",
+    "verified_at": "2026-11-26T02:44:03+00:00"
+  },
+  {
+    "account_ref_sha256": "73f70c1b35450a03e3452c00787c602aa434a391b82d081df784df629cd5fc2a",
+    "artifact_ref": "groq_current_free_tier_operator_attestation.json",
+    "artifact_sha256": "42e9e301314fa1a07952aeb6b6b311345217566669ae67ba81cb5d5fb4f286f4",
+    "entitlement_verified": true,
+    "expires_at": "2026-11-26T03:46:16+00:00",
+    "model": "openai/gpt-oss-20b",
+    "paid_billing_disabled": true,
+    "provider": "groq",
+    "source_ref": "operator-attestation:2026-11-26:groq-phase12",
+    "tier": "free",
+    "verified_at": "2026-11-26T02:46:16+00:00"
+  }
+]

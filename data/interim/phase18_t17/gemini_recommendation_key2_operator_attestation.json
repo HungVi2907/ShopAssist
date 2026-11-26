@@ -1,0 +1,23 @@
+{
+  "credential_env": "GEMINI_API_KEY_2",
+  "credential_sha256": "5cb7243a4a34bfe2363752e67a06f4f29f7106302a457b71e3f539458b3f46a2",
+  "endpoint": "https://generativelanguage.googleapis.com",
+  "kind": "operator_attested_free_tier_entitlement",
+  "model": "gemini-3.5-flash-lite",
+  "operator_attestation": {
+    "free_tier": true,
+    "paid_billing_disabled": true,
+    "source": "Operator confirmed in conversation on 2026-11-26 that all selected provider accounts/keys are Free Tier and authorized completion of T17."
+  },
+  "policy": {
+    "exact_model_only": true,
+    "max_cost_usd": 0,
+    "paid_models_allowed": false
+  },
+  "provider": "gemini",
+  "schema": "phase12.recommendation.v1",
+  "scope_limit": "Operator attestation; not a provider-returned billing-tier field.",
+  "structured_mode": "gemini_schema",
+  "task": "recommendation_generation",
+  "verified_at": "2026-11-26T02:44:03+00:00"
+}

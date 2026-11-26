@@ -23,7 +23,15 @@ def test_default_config_and_disabled_backup(settings, monkeypatch, tmp_path):
     monkeypatch.delenv("GROQ_API_KEY", raising=False)
     config = load_gateway_config(settings)
     assert config.routes["query_gemini"].model == "gemini-3.5-flash-lite"
-    assert config.routes["recommendation_openrouter"].model == "baidu/ernie-5.5-flash-preview:free"
+    assert "openrouter" not in config.providers
+    assert "recommendation_openrouter" not in config.routes
+    assert config.providers["gemini_recommendation"].credential_env == "GEMINI_API_KEY_2"
+    assert config.routes["recommendation_gemini"].provider == "gemini_recommendation"
+    assert config.routes["recommendation_gemini"].schema_ids == ["phase12.recommendation.v1"]
+    assert config.tasks["recommendation_generation"].profiles["default"].route_ids == [
+        "recommendation_gemini", "recommendation_groq",
+    ]
+    assert not config.routes["recommendation_gemini"].enabled
     assert not config.routes["recommendation_groq"].enabled
 
 

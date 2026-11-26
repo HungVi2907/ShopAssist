@@ -1,0 +1,15 @@
+[
+  {
+    "account_ref_sha256": "73f70c1b35450a03e3452c00787c602aa434a391b82d081df784df629cd5fc2a",
+    "artifact_ref": "groq_free_tier_preflight.json",
+    "artifact_sha256": "4e89f3a5cc0653f908783e28cfce0e1d526488d685a318e158595d3d8652062e",
+    "entitlement_verified": true,
+    "expires_at": "2026-11-25T08:48:39+00:00",
+    "model": "openai/gpt-oss-20b",
+    "paid_billing_disabled": true,
+    "provider": "groq",
+    "source_ref": "operator attestation and user-provided Groq console screenshot; authenticated Groq model-list API",
+    "tier": "free",
+    "verified_at": "2026-11-25T07:48:39+00:00"
+  }
+]

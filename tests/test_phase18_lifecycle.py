@@ -45,9 +45,9 @@ def patch_local_dependencies(monkeypatch, tmp_path, *, gateway_enabled=True, fai
     monkeypatch.setattr(main, "PreferenceRepresentationService", lambda **kwargs: object())
     monkeypatch.setattr(main, "HybridRetrievalService", lambda **kwargs: object())
     monkeypatch.setattr(main, "RerankingService", lambda **kwargs: object())
-    adapters = {name: InertAdapter() for name in ("gemini", "openrouter", "groq")}
-    monkeypatch.setattr(main, "GeminiAdapter", lambda credential_provider=None: adapters["gemini"])
-    monkeypatch.setattr(main, "OpenRouterAdapter", lambda credential_provider=None: adapters["openrouter"])
+    adapters = {name: InertAdapter() for name in ("gemini", "gemini_recommendation", "groq")}
+    gemini_adapter_instances = iter((adapters["gemini"], adapters["gemini_recommendation"]))
+    monkeypatch.setattr(main, "GeminiAdapter", lambda credential_provider=None: next(gemini_adapter_instances))
     monkeypatch.setattr(main, "GroqAdapter", lambda credential_provider=None: adapters["groq"])
     gw_settings = GatewaySettings(
         _env_file=None, enabled=gateway_enabled,

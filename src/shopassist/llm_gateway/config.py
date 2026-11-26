@@ -17,7 +17,11 @@ Positive = Annotated[float, Field(gt=0, allow_inf_nan=False)]
 PositiveInt = Annotated[int, Field(gt=0, strict=True)]
 Name = Annotated[str, Field(min_length=1, pattern=r"^[a-zA-Z0-9_.:/-]+$")]
 SCHEMAS = dict(PRODUCTION_SCHEMA_IDS)
-PROVIDERS = {"gemini": ("GEMINI_API_KEY", "generativelanguage.googleapis.com", ""), "openrouter": ("OPENROUTER_API_KEY", "openrouter.ai", "/api/v1"), "groq": ("GROQ_API_KEY", "api.groq.com", "/openai/v1")}
+PROVIDERS = {
+    "gemini": ({"GEMINI_API_KEY", "GEMINI_API_KEY_2"}, "generativelanguage.googleapis.com", ""),
+    "openrouter": ({"OPENROUTER_API_KEY"}, "openrouter.ai", "/api/v1"),
+    "groq": ({"GROQ_API_KEY"}, "api.groq.com", "/openai/v1"),
+}
 
 
 class GatewaySettings(BaseSettings):
@@ -64,9 +68,9 @@ class Provider(Model):
 
     @model_validator(mode="after")
     def check_endpoint(self):
-        credential, host, path = PROVIDERS[self.kind]
+        credentials, host, path = PROVIDERS[self.kind]
         url = urlsplit(self.endpoint)
-        if self.credential_env != credential or url.scheme != "https" or url.hostname != host or url.path.rstrip("/") != path or url.username or url.password or url.query or url.fragment or url.port not in (None, 443):
+        if self.credential_env not in credentials or url.scheme != "https" or url.hostname != host or url.path.rstrip("/") != path or url.username or url.password or url.query or url.fragment or url.port not in (None, 443):
             raise ValueError("Invalid provider endpoint or credential reference")
         return self
 

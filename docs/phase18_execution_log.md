@@ -1,15 +1,70 @@
+## 2026-11-26 (Asia/Saigon) - T18 Final Documentation and Handover
+
+| Item | Result |
+| --- | --- |
+| Task ID | T18 — Final Documentation & Handover. |
+| Operator direction | Operator accepted the Free Tier attestation as sufficient for this handover and explicitly directed T18 to start. This authorizes the documentation task; it does not create route approval evidence or increase the exhausted T17 request budget. |
+| Status | **PASS for T18 documentation acceptance.** Phase 18 V1 remains **`IMPLEMENTED_PENDING_BACKUP_VALIDATION`**; T17 live acceptance remains incomplete. |
+| Files changed | `docs/phase18_test_and_integration_report.md`, `docs/phase18_handover.md`, `docs/phase18_architecture.md`, `docs/phase18_gateway_contract.md`, `docs/phase18_execution_log.md`, `docs/development_status.md`. No Gateway/runtime code or production route activation in T18. |
+| Deliverables | Architecture and contract links reconciled with Gemini `GEMINI_API_KEY_2` primary and Groq backup; test and integration evidence report; configuration guide, provider switching and rollback instructions, telemetry format, deferred issues and Baseline Testing handover. |
+| Acceptance evidence | Report distinguishes earlier guarded regressions from final-snapshot focused tests and states that complete post-change offline regression is not established. Latest focused suite: **110 passed**. Isolated live outcomes, T17 ledger **10/10 requests, 20,316/50,000 tokens**, and unreviewed groundedness are recorded. No new live request or paid spend was initiated by T18. Documentation links and whitespace were checked locally. |
+| Open gates | Gemini Phase 12 semantic groundedness lacks a reviewable successful response; Groq output needs human review; no Phase 12 backup is approved/enabled; production failover/live API or Telegram path has not been demonstrated; complete guarded offline regression on the final snapshot remains outstanding. Do not mark T17 or Phase 18 V1 `COMPLETE`. |
+| Next step | Use the [handover](phase18_handover.md) and [test/integration report](phase18_test_and_integration_report.md) for Baseline Testing planning. Any further live requests need a new explicit budget. |
+
+## 2026-11-25 (Asia/Saigon) - T17 Account Entitlement Evidence Recheck
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 Free Tier entitlement verification |
+| Budget Authorization | Existing operator approval retained: Gemini 2/10,000; OpenRouter 3/20,000; Groq 3/20,000; global 8/50,000; maximum paid spend USD $0. No additional budget approval requested. |
+| Status | **BLOCKED before dispatch for all three providers.** |
+| Evidence Checked | Inspected the harness contract/tests and searched local Phase 18/T17 evidence locations. The only T17 artifact is the prior blocked result. Other entitlement-shaped artifacts found under test output are explicitly synthetic fixtures and are not account evidence. No per-account Free Tier proof artifact exists at `data/interim/phase18_t17/free_tier_entitlements.json`. Local credential-variable presence does not identify/verify the associated provider account, project tier, exact-model entitlement or paid billing state. |
+| Required Evidence Format | Each `FreeTierEvidence` entry must bind exact `provider`, `model`, hashed account reference, `tier=free`, `entitlement_verified=true`, `paid_billing_disabled=true`, provenance `source_ref`, a local proof `artifact_ref` and matching SHA-256, and UTC `verified_at`/`expires_at`. The referenced proof must be trustworthy, account-specific, current, and demonstrate exact model access under Free Tier with no paid fallback. The harness verifies structure, binding, expiry and digest; it cannot establish truth without genuine provider-account proof. |
+| Provider Results | Gemini `gemini-3.5-flash-lite`: **BLOCKED**; OpenRouter `baidu/ernie-5.5-flash-preview:free`: **BLOCKED**; Groq `openai/gpt-oss-20b`: **BLOCKED**. Groq remains a candidate and is not classified as paid by default; its Free Tier entitlement is simply unverified. |
+| Actual Counters | No API/model-list/inference requests made. Existing T17 artifact remains at **0 requests, 0 tokens, USD $0**, `attempt_count=0` for each route, no pending reservations. No provider calls were used to probe account entitlement. |
+| Route State | Production routes remain disabled/pending with YAML cost class unknown. No route approval or configuration changes. `LLM_GATEWAY_ALLOW_PAID_MODELS=false`. |
+| Next Step | Operator supplies genuine, redacted account-specific proof artifacts locally in the harness format. Until then keep all unverified candidates BLOCKED. T18 is not allowed. |
+
+## 2026-11-25 (Asia/Saigon) - T17 Authorized Live Validation Attempt (Blocked at Free Tier Preflight)
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 live validation preflight |
+| Operator Authorization | Received for Gemini 2 requests/10,000 tokens, OpenRouter 3/20,000, Groq 3/20,000; global max 8/50,000; USD $0 maximum spend. Attempt timeout 25s, run deadline 120s and output max 2,048 were supplied to the harness. |
+| Status | **BLOCKED before provider dispatch**. Operator budget approval does not satisfy the mandatory account Free Tier evidence gate. T18 is not allowed. |
+| Candidate Preflight | All three route identities, models, task/schema mappings, endpoints, structured modes and output-token caps matched YAML. Credential variable presence was confirmed without reading or displaying values. `LLM_GATEWAY_ALLOW_PAID_MODELS=false`. YAML candidates remain disabled/pending and cost class unknown. |
+| Entitlement Gate | Expected evidence file `data/interim/phase18_t17/free_tier_entitlements.json` does not exist. No trusted account-level Free Tier proof was available for Gemini, OpenRouter or Groq. All three candidates were therefore marked `BLOCKED`; no provider-specific request was sent. Groq was not classified as paid by default, but also lacked the required Free Tier proof. |
+| Budget Evidence | Harness artifact `data/interim/phase18_t17/validation.json` records all three statuses as `blocked`, each with `attempt_count=0`; aggregate and per-provider totals are **0 requests / 0 tokens**, pending reservations 0, maximum cost USD $0. Artifact SHA-256: `d52ae0f924f3bf44715d99aa867f08de395b9c04259d8a56f280ce8d754041b1`. No budget ledger was created because no reservation/dispatch occurred. |
+| Live Results | None. Model response identity, structured output, token usage, latency, error handling, catalog grounding and human review remain NOT RUN. No route approval or YAML change was made. |
+| Next Step | Operator supplies valid, unexpired local Free Tier entitlement artifacts bound to each exact provider/model/account, then rerun preflight. Keep any provider without evidence BLOCKED. No T18. |
+
+## 2026-11-25 (Asia/Saigon) - T17 Isolated Free Tier Validation Harness (Offline Only)
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 harness implementation / offline validation |
+| Status | **PASS for offline harness implementation. T17 live provider validation remains NOT RUN / BLOCKED. T18 is not allowed.** |
+| Files Changed | `src/shopassist/llm_gateway/validation_harness.py`, `scripts/validate_phase18_providers.py`, `tests/test_phase18_validation_harness.py`, this execution log. |
+| Implementation | Added an isolated exact-route candidate allowlist for the three selected routes, validating provider, endpoint, model, task/profile schema, structured-output mode and 2,048 max output tokens against YAML. Candidate routes must remain production-disabled/pending. The harness calls adapters directly only after all selected routes pass preflight; there is no Gateway failover, nested retry or route mutation. Live CLI requires `--live`, operator approval, zero-paid-spend approval, explicit aggregate request/token/zero-cost limits and an unexpired Free Tier evidence JSON whose local proof artifact is SHA-256 bound to provider/model/account reference. Credentials are checked for presence only. `LLM_GATEWAY_ALLOW_PAID_MODELS=false` is explicitly set for the harness and was verified false in local configuration. |
+| Budget Safety | Persistent single-process-locked ledger enforces per-provider proposed request/token ceilings (Gemini 2/10,000; OpenRouter 3/20,000; Groq 3/20,000) plus total hard maximum 8 requests/50,000 tokens. Reservation is persisted before dispatch; request is counted at dispatch; reported usage settles the reservation and unknown usage retains the conservative reservation across restart. Maximum cost is hard-coded to USD $0; any provider-reported nonzero estimated cost fails the run. Output token cap, attempt timeout and run deadline cannot exceed 2,048, 25s and 120s. |
+| Validation Scope | Query response is Pydantic-validated and reported model must exactly match. Recommendation response is Pydantic-validated against the existing Phase 12 generation schema, exact product ID and citation IDs are checked against a deterministic read-only sample from `data/processed/products.parquet`; the artifact records the dataset hash. Semantic groundedness remains explicitly flagged for human review. Unit tests use synthetic product/evidence and entitlement artifacts only; they are not live evidence. |
+| Tests Executed | Focused offline harness tests: **26 passed**; Gateway config/registry/runtime/adapter integration tests also passed in the full regression. Full offline regression used the T00 harness with repository `.env` suppressed, credentials removed from the test process, external DNS/socket blocked, and live suites excluded. Python compile check and `git diff --check` passed. |
+| Test Results | Full offline regression: **928 passed, 13 deselected, 1 baseline AsyncMock warning**, exit 0, 35.76s. External connection attempts: **0**. JUnit: `.deps/phase18-t17-harness-regression.xml`. CLI dry-run reported candidate metadata and confirmed no provider requests. |
+| Remaining Preflight | Local API-key variable presence was confirmed without displaying values, but account-level Free Tier eligibility and the proof artifacts are still unverified/not supplied. The proposed budgets have not been confirmed as live authorization. No live request was made. Routes remain disabled/pending and YAML pricing remains unknown. |
+| Next Task Allowed | **T17 live dispatch only after the operator explicitly approves the exact budgets and verifies each selected account's Free Tier entitlement with local evidence artifacts. T18 is not allowed.** |
+
 ## 2026-11-25 (Asia/Saigon) - T17 Live Provider Validation Authorization Preflight
 
 | Item | Result |
 | --- | --- |
 | Task ID | T17 preflight (live validation NOT RUN) |
-| Status | **BLOCKED before dispatch**. Per operator instruction, remain at preflight. No live provider or database request was made. |
+| Status | **BLOCKED before dispatch** at the time of this entry. The later Free Tier only policy correction supersedes the earlier paid-route assumption. No live provider or database request was made. |
 | Selected Scope | `query_gemini` maps to Gemini `gemini-3.5-flash-lite`, `query_understanding`, `phase8.query.v1`; `recommendation_openrouter` maps to OpenRouter `baidu/ernie-5.5-flash-preview:free`, `recommendation_generation`, `phase12.recommendation.v1`; `recommendation_groq` maps to Groq `openai/gpt-oss-20b`, same recommendation task/schema. Exact endpoints from YAML: Google Generative Language API, OpenRouter `/api/v1`, and Groq `/openai/v1`. Structured modes: Gemini schema and JSON Schema for OpenRouter/Groq. Configured max output is 2,048 tokens per request for all three. |
-| Proposed Budgets (Not Yet Approved) | Gemini: 2 requests / 10,000 tokens / 25 s per attempt; OpenRouter: 3 / 20,000 / 25 s; Groq: 3 / 20,000 / 25 s. Aggregate proposal: 8 requests / 50,000 tokens; 2,048 max output tokens/request; 120 s run deadline. Groq proposed cost ceiling is USD $0.05 and still requires separate explicit paid-use approval. No retries beyond these limits. |
+| Proposed Budgets (Not Yet Approved) | Gemini: 2 requests / 10,000 tokens / 25 s per attempt; OpenRouter: 3 / 20,000 / 25 s; Groq: 3 / 20,000 / 25 s. Aggregate proposal: 8 requests / 50,000 tokens; 2,048 max output tokens/request; 120 s run deadline. These figures were proposals only and were superseded by the later Free Tier only, zero-paid-spend correction. Groq remains a candidate subject to verified account Free Tier entitlement; do not infer paid eligibility or authorize paid requests from the published token price. No retries beyond approved limits. |
 | Local Credential Check | Presence-only inspection found `GEMINI_API_KEY`, `OPENROUTER_API_KEY`, and `GROQ_API_KEY` configured locally in `.env`. Values were not read out or printed. Account-level free-tier/entitlement status is not visible from the local environment and remains unverified. |
-| Route/Policy Check | YAML identities and schemas match the selected scope. All three routes remain `enabled=false`, approval `pending`, and `cost.class=unknown`. The T17 controlled isolated validation harness was not found in the repository; existing experiment budget ledgers do not provide the required single cross-provider global request/token/cost ceiling. Do not route these pending candidates through production Gateway. |
+| Route/Policy Check | YAML identities and schemas match the selected scope. All three routes remain `enabled=false`, approval `pending`, and `cost.class=unknown`. At the time of this preflight entry, the T17 harness had not yet been implemented; the offline harness implementation is recorded in the newer T17 entry above. Do not route these pending candidates through production Gateway. |
 | Public Pricing/Capability Evidence | Google lists Gemini 3.5 Flash-Lite with a free tier and paid rates; account entitlement must still be verified in the operator's account: [Google Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing). OpenRouter lists the exact ERNIE free model at $0 and describes structured output support; account availability/rate limits still require account verification: [OpenRouter model page](https://openrouter.ai/baidu/ernie-5.5-flash-preview:free/). Groq lists GPT-OSS 20B at $0.075/M input and $0.30/M output and JSON Schema capability: [Groq supported models and pricing](https://console.groq.com/docs/models), [Groq model page](https://console.groq.com/docs/model/openai/gpt-oss-20b). Published provider pricing is not proof of account entitlement or a substitute for Gateway cost evidence. |
-| Blocking Requirements | Operator must confirm the proposed exact budgets are approved, confirm Gemini free-tier and OpenRouter free-route account eligibility, and separately approve or exclude Groq paid use. A controlled T17 harness must enforce per-provider and aggregate request/token/cost ceilings before any dispatch. Cost/entitlement remains unknown for runtime route eligibility. |
+| Blocking Requirements | Operator must confirm exact request/token ceilings and verify Free Tier eligibility for each selected account, including Groq. Paid usage is not authorized. A controlled T17 harness must enforce per-provider and aggregate request/token/cost ceilings before dispatch. Cost/entitlement remains unknown for runtime route eligibility. |
 | Safety | No credentials were exposed. No route was enabled/approved. No live API calls were attempted. No production eligibility or pricing evidence was fabricated. |
 | Next Step | Remain at preflight until operator confirmation and controlled harness readiness. T17 remains **NOT RUN**; T18 is not allowed. |
 
@@ -83,7 +138,7 @@
 
 # ShopAssist Phase 18 V1 — Execution log
 
-**Current status** | T00-T16 **PASS**. T17 preflight is BLOCKED before dispatch pending operator approval/entitlement confirmation and a controlled budget-enforcing harness. T18 is not allowed.
+**Current status** | T00-T16 **PASS**. T17 isolated harness implementation is PASS offline; all three live candidates remain BLOCKED before dispatch because genuine account-specific Free Tier entitlement artifacts are absent. T18 is not allowed.
 
 ## 2026-11-25 (Asia/Saigon) — T12 Phase 8 QueryUnderstanding Gateway Integration
 
@@ -309,3 +364,141 @@
 | Compatibility Impact | Groq Gateway adapter chọn REST qua HTTPX để dùng chung single-request transport với OpenRouter. Payload vẫn giữ max_completion_tokens và reasoning_effort theo route. Raw generated content trả cho Gateway validation ở task sau. Các legacy providers tiếp tục dùng implementation hiện tại. |
 | Known Issues | Warning AsyncMock đã có từ baseline. Production routes tiếp tục disabled/pending và cần validation/entitlement tại T17. Phase 12 runtime integration thuộc T11. |
 | Next Task Allowed | **T07** ở lượt riêng. T07 chưa được thực hiện. |
+
+## 2026-11-25 (Asia/Saigon) - T17 Evidence Update and OpenRouter Controlled Attempt
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 provider-specific preflight and one controlled OpenRouter validation attempt |
+| Status | **T17 remains BLOCKED / FAIL for acceptance.** OpenRouter account Free Tier evidence was verified, but the isolated inference attempt was rejected before producing a valid model response. Gemini and Groq were not dispatched. T18 is not allowed. |
+| Budget Authorization | Existing authorization remains in force: Gemini 2/10,000 tokens, OpenRouter 3/20,000, Groq 3/20,000; global 8/50,000; USD $0 maximum. No new approval requested. Harness was run only for OpenRouter with exact route `recommendation_openrouter`, zero-cost ceiling, 25s attempt timeout and 120s total deadline. |
+| OpenRouter Account Evidence | One authenticated, read-only `GET https://openrouter.ai/api/v1/key` using the local OpenRouter credential returned HTTP 200, `is_free_tier=true`, key limit USD $0, remaining USD $0, usage USD $0, and free-model daily allowance 50/50 remaining. Only allowlisted fields were retained; credential value and account identifiers were not logged. Verification time: 2026-11-25 07:34:54 UTC. User screenshot independently showed a `shopassist` key with $0.000 credits/total/key limit. |
+| Model/Request Policy Evidence | OpenRouter's current exact model page identifies `baidu/ernie-5.5-flash-preview:free` as Free ($0 input/output), supports JSON Schema structured outputs, and says it is served by Baidu Qianfan. The ShopAssist OpenRouter adapter pins the exact model and sends `provider.allow_fallbacks=false`; paid models remain disallowed. Sources: https://openrouter.ai/baidu/ernie-5.5-flash-preview%3Afree and https://openrouter.ai/api/v1/key. |
+| Evidence Artifacts | Added `data/interim/phase18_t17/openrouter_free_tier_preflight.json` with sanitized metadata and source references; SHA-256 `38e9a1f7d2e29982c009a8c1d7350b4f37cbc371f3e7053f9897a552d7724840`. Added `data/interim/phase18_t17/free_tier_entitlements_openrouter.json` bound to the exact provider/model and a one-hour evidence validity window. No production evidence/approval state was changed. |
+| OpenRouter Attempt | Harness passed route identity and evidence preflight, then dispatched exactly one inference request. Result **FAILED / PROVIDER_REJECTED**; no reported model identity, valid structured output, token usage or actual cost was returned. Latency 13,453 ms. Harness conservatively reserved 5,731 tokens because provider usage was unavailable. The attempt is not retried. |
+| Gemini Screenshot Review | Google AI Studio screenshot shows two API keys marked Free tier. A local check compared `GEMINI_API_KEY` against the two visible masked suffixes without printing the credential; neither matched. Therefore the screenshot does not bind to the credential in `.env`. No Gemini request was sent. Official general pricing is not substituted for credential-specific entitlement. |
+| Groq | No account-specific Free Tier proof was supplied or verified. No request was sent; route remains BLOCKED. |
+| Counters | Persistent inference ledger: Gemini 0 requests / 0 tokens; OpenRouter 1 request / 5,731 conservatively reserved tokens; Groq 0 / 0. Global 1 inference request / 5,731 tokens; pending reservations 0; configured cost ceiling USD $0. Actual cost/usage for the rejected OpenRouter response remain unknown. In addition, exactly one non-inference OpenRouter metadata GET was made for account verification. |
+| Compatibility/Route State | All production routes remain `enabled=false`, `approval=pending`, cost class `unknown`; `LLM_GATEWAY_ALLOW_PAID_MODELS=false`. The OpenRouter route is not approved despite account/model pricing evidence because live structured output was not validated. No Gemini/Groq live attempt and no automatic approval. |
+| Next Step | T17 remains incomplete. Diagnose the OpenRouter rejection from a safe provider response/status or offline payload conformance before any further request; any additional inference must remain inside the existing OpenRouter cap of 3 and zero-cost policy. Obtain account-specific proof bound to the local Gemini credential and Groq credential before dispatch. No T18. |
+
+## 2026-11-25 (Asia/Saigon) - T17 Groq Credential Match and Controlled Validation
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 Groq provider-specific validation |
+| Status | **Groq isolated validation PASS (one provider only); overall T17 remains BLOCKED.** OpenRouter validation failed and Gemini remains blocked. No T18. |
+| Operator Evidence | Operator stated the replacement Groq key is the Free Tier key. User-provided Groq console screenshot shows a new `shopAssist` key with 0 API calls. A local comparison confirmed the configured `GROQ_API_KEY` matches the screenshot's visible suffix; the secret itself was never printed. The screenshot does not display the billing tier, so the Free Tier status is recorded as operator-attested, not as a tier field returned by the API. Groq's official billing documentation says Free-tier accounts have Free-tier restrictions and usage-based charges stop when downgraded; the model documentation lists Developer-tier prices, which are not authorized here. |
+| Read-only Preflight | Authenticated `GET https://api.groq.com/openai/v1/models` returned HTTP 200 and listed `openai/gpt-oss-20b`. This confirmed credential validity and model availability only; no inference was sent by this GET. No rate-limit headers identifying account tier were returned. |
+| Controlled Inference | The existing isolated harness passed exact route/evidence admission and sent exactly one request. Result: **PASS**. Reported model matched `openai/gpt-oss-20b`; Phase 12 Pydantic/schema validation passed; catalog product ID and evidence citation checks passed. Usage: 806 input, 386 output, 35 reasoning, 1,192 total tokens. Latency 4,172 ms. Actual/estimated cost was not reported (`null`); the request was run under the operator-attested Free Tier and zero-paid policy. Semantic groundedness remains flagged for human review. |
+| Evidence Artifacts | Added `data/interim/phase18_t17/groq_free_tier_preflight.json` and `data/interim/phase18_t17/free_tier_entitlements_groq.json`, bound to the exact credential fingerprint/provider/model and one-hour evidence window. Provenance clearly distinguishes user attestation from authenticated model-list evidence. The route remains unapproved. |
+| Persistent Counters | Updated the ledger to include both account metadata GETs as provider requests: OpenRouter 2/3 total provider API requests (1 metadata + 1 inference); Groq 2/3 (1 metadata + 1 inference); Gemini 0/2. Global total is 4/8 requests. Inference token accounting is OpenRouter 5,731 conservatively reserved (provider usage unavailable) and Groq 1,192 reported; total 6,923/50,000. Pending reservations 0. Cost remains USD $0 ceiling; actual cost is unknown where providers did not return it. |
+| Failover/Approval | Automatic failover validation was not run because Phase 12 routes have not both passed and been approved. No route was automatically approved or enabled. `LLM_GATEWAY_ALLOW_PAID_MODELS=false`; all production routes remain disabled/pending. |
+| Next Step | Overall T17 remains blocked on Gemini credential-bound Free Tier evidence and successful Gemini validation, plus diagnosis/revalidation of OpenRouter's rejected structured-output request. Groq semantic groundedness requires human review. Do not start T18. |
+
+## 2026-11-25 (Asia/Saigon) - T17 Gemini API Key Metadata Check
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 Gemini credential metadata check |
+| Status | **Credential authenticated and exact model listed; no inference run. Gemini route remains BLOCKED for live validation because this does not establish the local key's Free Tier billing entitlement.** |
+| Request | One read-only `GET https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000` using the local key in the `x-goog-api-key` header. No prompt/generation endpoint was called. |
+| Result | HTTP 200. `models/gemini-3.5-flash-lite` appeared in the catalog and listed `generateContent` support. Credential value was not printed. The check cannot confirm project billing tier or guarantee a generation request is permitted under Free Tier. |
+| Artifact | `data/interim/phase18_t17/gemini_key_metadata_check.json` contains only the sanitized status, model capability, hashed credential reference and explicit scope limitation. No production route state changed. |
+| Counters | Account metadata GETs: Gemini 1, OpenRouter 1, Groq 1. Inference requests: Gemini 0, OpenRouter 1, Groq 1. Total provider API requests: 5/8. Inference token budget: 6,923/50,000 (OpenRouter 5,731 reserved; Groq 1,192 reported). Pending reservations 0. |
+| Next Step | For Gemini, a Free Tier account artifact bound to this exact local credential is still needed before a generation request. T17 and T18 status unchanged. |
+
+## 2026-11-25 (Asia/Saigon) - T17 Gemini Controlled Live Validation
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 Gemini selected-route validation |
+| Status | **Gemini validation PASS. Overall T17 remains BLOCKED** because OpenRouter failed structured-output validation and Phase 12 failover acceptance requires both recommendation routes validated/approved. No T18. |
+| Authorization / Entitlement Basis | Operator explicitly confirmed the current Gemini key is Free Tier and requested the controlled test. The claim is recorded as operator attestation, bound to the local credential fingerprint; it is not mislabeled as a billing-tier field returned by Google. The model metadata GET had authenticated successfully and the exact model appeared with `generateContent`. Official Gemini pricing lists a Free Tier with no charge for this model; paid-model policy remained false and no grounding/search tools were used. Source: https://ai.google.dev/gemini-api/docs/pricing. |
+| Controlled Inference | Isolated harness dispatched exactly one synthetic query-understanding request to `gemini-3.5-flash-lite`. Provider-reported identity matched exactly; `phase8.query.v1` validation passed. Latency 4,469 ms; usage 31 input + 124 output = 155 tokens. Provider did not return actual/estimated cost (`null`); no paid route was requested and `LLM_GATEWAY_ALLOW_PAID_MODELS=false`. |
+| Evidence | Added `data/interim/phase18_t17/gemini_free_tier_operator_attestation.json` and `data/interim/phase18_t17/free_tier_entitlements_gemini.json`, with one-hour validity and a digest binding. The artifact preserves that account tier came from the operator's attestation; metadata endpoint alone cannot prove billing tier. |
+| Aggregated Validation Artifact | `data/interim/phase18_t17/validation.json` now retains all three provider outcomes: Gemini **passed**, Groq **passed** (human groundedness review remains), OpenRouter **failed / PROVIDER_REJECTED**. No route was approved or enabled. |
+| Persistent Counters | All provider API calls are counted, including read-only metadata GETs: Gemini 2/2 (1 metadata + 1 inference), Groq 2/3 (1 + 1), OpenRouter 2/3 (1 + 1), global 6/8. Inference tokens: Gemini 155 reported, Groq 1,192 reported, OpenRouter 5,731 conservatively reserved due missing usage; total 7,078/50,000. Pending reservations 0. Actual cost is null where providers did not report it. |
+| Tests / Compatibility | No source code changed and no new unit test suite was run in this turn. The live harness validated the exact Gemini output schema; prior offline harness test results remain 26 focused and 928 full regression passed. Production routes remain disabled/pending; no prompt, dataset, retrieval or public API contract changed. |
+| Remaining Gate | Diagnose and rerun OpenRouter within its remaining provider request allowance; complete Phase 12 groundedness human review; then perform only the failover cases permitted by T17. No automatic route approval. T18 remains disallowed. |
+
+## 2026-11-25 (Asia/Saigon) - T17 OpenRouter Retest After Zero-Cost Dashboard Evidence
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 OpenRouter retest |
+| Status | **OpenRouter validation still FAIL/BLOCKED.** The retest used the final available OpenRouter request under the provider cap and ended with a network error. No further OpenRouter request is allowed within the approved three-request cap. |
+| Operator Evidence | User supplied a dashboard screenshot for `ERNIE-5.5-Flash-Preview (free)` showing min/max/average/total all `$0.00`. This complements the earlier authenticated key metadata response showing `is_free_tier=true`, key limit `$0`, and usage `$0`. The refreshed sanitized record is `data/interim/phase18_t17/openrouter_zero_cost_dashboard_recheck.json`. The exact model is documented as zero-priced and supporting JSON Schema: https://openrouter.ai/baidu/ernie-5.5-flash-preview%3Afree. |
+| Retest | Refreshed the local evidence digest from the new dashboard observation and re-ran only `recommendation_openrouter` through the isolated harness, with paid models disabled, exact `:free` model pinned and provider fallbacks off. Exactly one inference request was dispatched. Result: **NETWORK_ERROR**, 23,218 ms; no model identity, schema output, provider usage or actual cost returned. No retry. |
+| Prior OpenRouter Attempt | Preserved: earlier attempt was `PROVIDER_REJECTED`, 13,453 ms, with no usage/model/cost returned. Both attempts conservatively reserve 5,731 tokens each; request details/raw errors are not persisted. |
+| Aggregated Artifact | `data/interim/phase18_t17/validation.json` now retains Gemini PASS, Groq PASS (human groundedness review required), and latest OpenRouter failure plus both OpenRouter attempts in history. No production route state changed. |
+| Counters | Provider requests including metadata GETs: Gemini 2/2 (1 metadata + 1 inference), Groq 2/3 (1 + 1), OpenRouter 3/3 (1 metadata + 2 inference), global **7/8**. Token budget: Gemini 155 reported, Groq 1,192 reported, OpenRouter 11,462 reserved for two failed requests; total **12,809/50,000**. Pending reservations 0. The screenshot showed `$0.00` before this latest attempt; actual cost for the failed attempt is unavailable from the response and is not asserted as confirmed. |
+| Gate / Next Step | T17 remains incomplete because OpenRouter has not validated output, Phase 12 groundedness needs human review, and automatic failover criteria are unmet. No OpenRouter retries remain under the approved cap. Gemini/Groq production routes remain disabled/pending. T18 is not allowed. |
+
+## 2026-11-25 (Asia/Saigon) - T17 OpenRouter Credential Change Check (No Dispatch)
+
+| Item | Result |
+| --- | --- |
+| Task ID | T17 OpenRouter retry preflight |
+| Status | **NOT DISPATCHED.** The current environment still contains an OpenRouter-format `OPENROUTER_API_KEY` and a different Google/Gemini-format `GEMINI_API_KEY_2`; only credential types and equality were checked locally, no secret values were printed. |
+| Compatibility | OpenRouter's API requires an OpenRouter-issued credential. A Google Gemini API key cannot authenticate to the OpenRouter API; no request was sent with it. |
+| Budget Gate | OpenRouter has already reached its approved cap of 3 provider API requests (one metadata GET plus two inference attempts). No further OpenRouter request is permitted within the existing authorization, even after a key change. |
+| Counters | No counters changed in this preflight. Global remains 7/8 provider API requests and 12,809/50,000 inference tokens; OpenRouter remains 3/3 requests. |
+| Next Step | The operator must provide an OpenRouter-issued key in `OPENROUTER_API_KEY` and renew/raise the OpenRouter request ceiling before another live attempt. T18 remains disallowed. |
+
+## 2026-11-25 (Asia/Saigon) - Operator-Requested Phase 12 Gemini Route Change
+
+| Item | Result |
+| --- | --- |
+| Task | Replace the Phase 12 production profile's OpenRouter primary with Gemini using `GEMINI_API_KEY_2`; preserve Groq as the second candidate. |
+| Implementation | Added provider profile `gemini_recommendation` and route `recommendation_gemini` (`gemini-3.5-flash-lite`, Google Generative Language endpoint, `gemini_schema`, `phase12.recommendation.v1`). Phase 12 default order is now Gemini then Groq. The OpenRouter route remains defined for audit/rollback but is no longer in the default profile. API and CLI Gateway composition roots bind the new profile to `GEMINI_API_KEY_2`; profile-specific adapter lookup takes precedence over provider-kind lookup. |
+| Safety / compatibility | All candidate routes remain `enabled=false`, `approval=pending`, cost `unknown`; `LLM_GATEWAY_ALLOW_PAID_MODELS=false`. No prompts, business schemas, public API contracts, dataset, retrieval, reranking or recommendation behavior changed. No provider credentials were modified and no LLM request was sent for this change. |
+| Focused tests | Gateway configuration, registry, runtime, validation harness, lifecycle and experiment integration: **103 passed**. |
+| Offline regression | Network-safe broad selection: **910 passed, 7 skipped, 26 deselected, 1 pre-existing AsyncMock warning**, 52.84s; excludes live/database-marked tests, the known stale `test_api_settings_defaults` expectation, and `tests/test_semantic_retrieval.py` because its local embedding checkpoint is unavailable. JUnit: `.deps/phase18-route-change-offline.xml`. |
+| Regression limitation | The attempted unfiltered offline selection was not a valid offline run: it exposed unmarked live Supabase tests and attempted database connections; embedding tests also attempted to fetch `BAAI/bge-small-en-v1.5` from Hugging Face and received HTTP 401. No test established a successful database connection, and no provider LLM API was called by this route-change work. The first unrelated assertion failure was `test_api_settings_defaults` (`api_default_top_k` expected 5, actual 3). Do not count that run as acceptance evidence. |
+| T17 budget / acceptance | Existing T17 counters remain at Gemini 2/2, OpenRouter 3/3, Groq 2/3, global 7/8 requests and 12,809/50,000 tokens; maximum paid spend remains USD $0. Those ceilings do not authorize live validation of the new Phase 12 Gemini route. A new provider-specific budget and entitlement evidence for the `GEMINI_API_KEY_2` account are required before dispatch. |
+| Status | **Route configuration and wiring implemented; production route acceptance remains BLOCKED/PENDING T17.** No route was approved or enabled. T18 is not allowed. |
+
+## 2026-11-25 (Asia/Saigon) - Operator Correction: Remove OpenRouter from Phase 18 Gateway
+
+| Item | Result |
+| --- | --- |
+| Task | Remove OpenRouter entirely from the Phase 18 Gateway Phase 12 route and replace it with Gemini using `GEMINI_API_KEY_2`. |
+| Changes | Removed the OpenRouter provider and `recommendation_openrouter` route from `config/llm_gateway.yaml`; removed OpenRouter adapter construction from FastAPI and CLI Gateway composition roots; removed OpenRouter from the live T17 route allowlist and adapter factory. The Phase 12 route order is Gemini (`recommendation_gemini`) then Groq (`recommendation_groq`). Legacy OpenRouter code/settings remain available only with Gateway disabled, preserving the legacy-mode invariant. Historical T17 ledger keys and logs remain readable and are not active dispatch candidates. |
+| Tests | After this correction: focused Gateway/config/registry/harness/lifecycle/experiment/CLI suite **109 passed** in 20.27s. No provider, database, or model-download calls were part of this test run. The earlier broad safe selection (910 passed) preceded this final removal and is not claimed as a post-correction full regression. |
+| Acceptance | Phase 12 Gateway route remains disabled/pending with unknown cost until new T17 budget and exact Gemini account entitlement/evidence are approved and validated. No credentials were changed; no live request was sent. T18 remains disallowed. |
+
+## 2026-11-26 (Asia/Saigon) - Operator Free Tier Attestation and T17 Re-preflight
+
+| Item | Result |
+| --- | --- |
+| Operator Attestation | Operator confirmed all selected provider keys/accounts are Free Tier, paid billing is disabled, and asked to complete T17. This is recorded as operator attestation, not provider-returned billing metadata. |
+| Local Credential Readiness | `GEMINI_API_KEY_2` and `GROQ_API_KEY` are present in the local dotenv file. `GEMINI_API_KEY_2` is different from the Gemini key used for the earlier Phase 8 query test. No key or fingerprint was printed. |
+| Evidence | Added `data/interim/phase18_t17/gemini_recommendation_key2_operator_attestation.json` and `groq_current_free_tier_operator_attestation.json`; current, one-hour entitlement index is `free_tier_entitlements_phase12_current.json`. Records bind provider/model/task/schema and credential fingerprints, distinguish operator attestation from provider metadata, and enforce zero paid spend. The evidence loader validated both entries. |
+| Offline Preflight | Dry-run selected only `recommendation_gemini` and `recommendation_groq`; exact endpoints/models and credentials were present, both routes remain disabled/pending with unknown cost, paid models are false, and no provider request was sent. |
+| Budget Gate | Persistent T17 ledger remains Gemini 2/2, Groq 2/3, OpenRouter historical 3/3, global 7/8 requests; total tokens 12,809/50,000, maximum cost USD $0. Gemini's per-provider request ceiling is exhausted, so the new Phase 12 Gemini recommendation request is blocked even though one global request slot remains. Free Tier confirmation does not increase the approved request ceiling. |
+| Remaining Work | Requires explicit T17 budget amendment for at least one additional Gemini request (Gemini cap 2 → 3; global cap may remain 8, token ceiling 50,000 and cost ceiling USD $0). Then run Gemini Phase 12 structured-output/catalog validation. Groq groundedness still needs human review; prior result artifact records IDs/citations but not raw response text. Automatic failover cases and route approval remain outstanding. No T18. |
+
+## 2026-11-26 (Asia/Saigon) - T17 Gemini Phase 12 Controlled Validation
+
+| Item | Result |
+| --- | --- |
+| Authorization | Operator approved exactly one additional Gemini request: Gemini cap 3, global cap 8, 50,000 tokens, maximum paid spend USD $0. `LLM_GATEWAY_ALLOW_PAID_MODELS=false`. |
+| Preflight | Confirmed `GEMINI_API_KEY_2` is present and its local fingerprint matches the current operator-attestation artifact; exact route/model/task/schema/endpoint matched YAML. Current Gemini and Groq Free Tier attestations passed the harness evidence loader. No credential value or fingerprint was printed. |
+| Dispatch | Isolated T17 harness dispatched exactly one request for `recommendation_gemini` using `gemini-3.5-flash-lite` at `https://generativelanguage.googleapis.com`. No retry or additional request. |
+| Result | **Individual Gemini Phase 12 validation PASS.** Reported model matched; `phase12.recommendation.v1` parsed; catalog product ID and evidence citations matched the frozen catalog fixture. Usage: 303 input + 361 output = 664 tokens. Latency 4,640 ms. Actual cost was not reported (`null`); Free Tier operator attestation and USD $0 ceiling applied. The harness flags groundedness for human review; raw generated text is not retained in the sanitized result artifact, so that review is still outstanding. |
+| Artifact | `data/interim/phase18_t17/validation_gemini_recommendation.json`; SHA-256 `B6117294E79DEB1B9B58DA2658CFE891D5E2E2AFB526A0D1A4E9E5D25B9E6F32`. No production route approval/enable state changed. |
+| Counters | Gemini 3/3 requests, 819/10,000 tokens; Groq 2/3 requests, 1,192/20,000 tokens; historical OpenRouter 3/3, 11,462 tokens; global **8/8 requests**, 13,473/50,000 tokens; pending reservations 0; maximum paid spend USD $0. No further T17 dispatch fits the approved request ceiling. |
+| Status / Remaining Gates | **T17 remains BLOCKED.** Gemini and Groq each have schema/identity/catalog-ID/citation validation results, but human groundedness review remains outstanding and response text is not retained for that review. Per T17 sequence, automatic failover cases wait until both routes are individually reviewed/approved; route approval is never automatic. Any additional live call requires a new budget because global request cap 8/8 is exhausted. T18 is not allowed. |
+
+## 2026-11-26 (Asia/Saigon) - T17 Approved Groundedness Review Requests
+
+| Item | Result |
+| --- | --- |
+| Authorization | Operator approved two additional inference requests: one Gemini and one Groq. Updated ceiling: 10 total requests, 50,000 tokens, USD $0 maximum; per-provider caps Gemini 4/10,000 and Groq 3/20,000. |
+| Harness / Tests | Added a separate groundedness-review artifact containing only the parsed Phase 12 payload and the exact frozen catalog fixture; prompts and credentials are excluded from the review file and raw payload is excluded from the validation summary. Focused Gateway/config/registry/harness/lifecycle/experiment/CLI tests: **110 passed**, 25.85s. |
+| Gemini Attempt | `recommendation_gemini`, `gemini-3.5-flash-lite`: exactly one request; result **PROVIDER_UNAVAILABLE**, attempt count 1, latency 6,266 ms, no reported model/usage/cost, no retry. The harness conservatively charged its reservation (5,731 tokens). The prior Gemini Phase 12 request still has schema/catalog-ID/citation PASS, but no captured text for human groundedness review. |
+| Groq Attempt | `recommendation_groq`, `openai/gpt-oss-20b`: exactly one request; result **PASS** for model identity, Phase 12 schema, catalog product ID and evidence citations. Usage: 806 input + 306 output = 1,112 tokens, 13 reasoning tokens; latency 6,328 ms. Actual cost was not reported (`null`), under Free Tier operator attestation and USD $0 policy. Parsed output and fixture are in `validation_groq_groundedness_review_recommendation_groq_groundedness_review.json`; manual groundedness review is still required. |
+| Aggregated Evidence | `data/interim/phase18_t17/validation_current_routes.json`; SHA-256 `5A2ABDB411637CA6F536E021BF9CAFF99E2D84F3D01CB6A847E1E4A2AF7CBDEB`. It retains the prior Gemini pass, the single Gemini unavailable result, and Groq pass, with current counters. |
+| Counters | Gemini **4/4 requests**, 6,550/10,000 tokens; Groq **3/3**, 2,304/20,000; historical OpenRouter 3/3, 11,462 tokens; global **10/10 requests**, 20,316/50,000 tokens; pending reservations 0; paid spend ceiling USD $0. No more dispatches fit this authorization. |
+| Status / Remaining Gates | **T17 remains BLOCKED.** Gemini recommendation groundedness lacks a reviewable successful output; its one approved follow-up was unavailable. Groq's review artifact awaits human decision. Do not approve/enable either route automatically. Automatic failover validation stays behind the individual review/approval gate. Further live calls require another budget; T18 is not allowed. |

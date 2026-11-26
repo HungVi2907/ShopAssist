@@ -1,0 +1,29 @@
+{
+  "account_tier": {
+    "basis": "operator_attestation in this conversation; user-provided Groq console screenshot shows matching shopAssist API key with zero API calls; screenshot does not expose key value or project identifiers",
+    "tier": "free"
+  },
+  "billing_policy_source": "https://console.groq.com/docs/billing-faqs",
+  "cost_policy": {
+    "model_developer_tier_rates_are_not_authorized": true,
+    "operator_policy": "Free Tier only; zero paid spend; no account upgrade",
+    "paid_billing_disabled": true
+  },
+  "credential_binding": {
+    "authenticated_model_list_http_status": 200,
+    "exact_model_available": true,
+    "matches_user_screenshot_key_suffix": true
+  },
+  "endpoint": "https://api.groq.com/openai/v1",
+  "kind": "sanitized_groq_free_tier_preflight",
+  "model": "openai/gpt-oss-20b",
+  "model_capabilities": {
+    "json_schema_mode": true,
+    "source": "https://console.groq.com/docs/model/openai/gpt-oss-20b"
+  },
+  "provider": "groq",
+  "provider_metadata_source": "https://api.groq.com/openai/v1/models",
+  "schema": "phase12.recommendation.v1",
+  "task": "recommendation_generation",
+  "verified_at": "2026-11-25T07:48:39Z"
+}

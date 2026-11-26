@@ -1,0 +1,15 @@
+{
+  "cost_usd": 0,
+  "credential_sha256": "c413bfc67258b307cd6289fb6668585987d44f7785f61b1e7730138127364954",
+  "endpoint": "https://generativelanguage.googleapis.com/v1beta/models",
+  "http_status": 200,
+  "inference_sent": false,
+  "kind": "gemini_key_metadata_check",
+  "limitation": "Model catalog success confirms key authentication and catalog visibility, not Free Tier account billing entitlement or generation permission.",
+  "provider": "gemini",
+  "supports_generateContent": true,
+  "target_model": "gemini-3.5-flash-lite",
+  "target_model_listed": true,
+  "token_usage": 0,
+  "verified_at": "2026-11-25T09:00:07Z"
+}

@@ -1,0 +1,39 @@
+{
+  "account_metadata_source": "https://openrouter.ai/api/v1/key",
+  "authenticated_key_metadata": {
+    "expires_at": "2026-12-20T06:28:00.000Z",
+    "free_model_daily_requests": {
+      "limit": 50,
+      "remaining": 50,
+      "used": 0
+    },
+    "http_status": 200,
+    "include_byok_in_limit": false,
+    "is_free_tier": true,
+    "limit_remaining_usd": 0,
+    "limit_usd": 0,
+    "usage_usd": 0
+  },
+  "credential_fingerprint_sha256": "f0c0ad040a88b85d95d9d35d3327c7514bbfe51ab4e560d413f3bf0800d6b73e",
+  "endpoint": "https://openrouter.ai/api/v1",
+  "kind": "sanitized_openrouter_free_tier_preflight",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "model_catalog": {
+    "input_usd_per_million": 0,
+    "json_schema_structured_outputs": true,
+    "output_usd_per_million": 0,
+    "price": "free",
+    "source": "https://openrouter.ai/baidu/ernie-5.5-flash-preview%3Afree"
+  },
+  "provider": "openrouter",
+  "request_policy": {
+    "exact_model_id_required": true,
+    "maximum_cost_usd": 0,
+    "paid_models_allowed": false,
+    "provider_fallbacks": false
+  },
+  "schema": "phase12.recommendation.v1",
+  "screenshot_source": "User-provided OpenRouter API keys page screenshot; shows shopassist key with $0.000 credits/total/key limit; not used as sole credential binding.",
+  "task": "recommendation_generation",
+  "verified_at": "2026-11-25T07:35:25Z"
+}
