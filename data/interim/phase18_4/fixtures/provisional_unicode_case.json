@@ -1,0 +1,64 @@
+{
+  "version": "phase18_4_unicode_correction_1",
+  "semantic_review": "PROVISIONAL_NO_HUMAN_REVIEW",
+  "notes": "Corrects PowerShell stdin encoding corruption in F08 only; original fixture and failed result are preserved. Frozen candidate source unchanged.",
+  "cases": [
+    {
+      "id": "F08",
+      "query_result": {
+        "query": "Tôi cần xem giày bệt màu nâu",
+        "output": {
+          "semantic_query": "Tôi cần xem giày bệt màu nâu",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "6d684e7d37de8de50f29a5f803406a3b",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Assort Women Flats",
+          "retrieval_text": "Product: Assort Women Flats | Category: Footwear | Specifications: Occasion: Casual; Ideal For: Women; Weight: 220 g (per single Sandal) - Weight of the product may vary depending on size.; Type: Flats; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: Blue | Description: Flipkart.com: Buy Assort Women Flats only for Rs. 599 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 599.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Occasion": "Casual",
+              "Ideal For": "Women",
+              "Weight": "220 g (per single Sandal) - Weight of the product may vary depending on size.",
+              "Type": "Flats",
+              "Heel Height": "0 inch",
+              "Outer Material": "Synthetic Leather",
+              "Color": "Blue"
+            },
+            "product_url": "http://www.flipkart.com/assort-women-flats/p/itme37cxknu9sy68?pid=SNDE37CXG3BUGJYV"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        }
+      ],
+      "language": "vi",
+      "mode": "provisional_new_catalog_items"
+    }
+  ]
+}

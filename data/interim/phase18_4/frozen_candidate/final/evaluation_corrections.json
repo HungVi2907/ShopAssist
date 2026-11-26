@@ -1,0 +1,5 @@
+{
+  "file": "scripts\\evaluate_phase18_4.py",
+  "sha256": "94d870c2589a97e66ecf49e39268964fbe37ca5d0ba133f29c0910c2de7c5582",
+  "note": "Post-run diagnostic fix: missing-information limitations may have empty citations. Recorded initial raw audit remains preserved; citation_audit.json recomputes exact reference ownership. Generation code, prompt, schema and responses are unchanged."
+}

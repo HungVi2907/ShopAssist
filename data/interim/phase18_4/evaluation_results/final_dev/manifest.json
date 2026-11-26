@@ -1,0 +1,56 @@
+{
+  "created_utc": "2026-11-26T14:16:09.078916+00:00",
+  "fixtures": "data\\interim\\phase18_4\\fixtures\\dev.json",
+  "fixtures_sha256": "570335603bcc71f65245842db95c08b728da86f30ce31c9df9b8b5505a8e6640",
+  "model": {
+    "name": "qwen2.5:1.5b-instruct-local",
+    "model": "qwen2.5:1.5b-instruct-local",
+    "modified_at": "2026-11-26T12:37:46.6417411+07:00",
+    "size": 986061627,
+    "digest": "d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174",
+    "details": {
+      "parent_model": "qwen2.5:1.5b-instruct",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "1.5B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 1536,
+      "runner": "llamacpp"
+    },
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "version": {
+    "version": "0.40.18"
+  },
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 4096,
+    "num_predict": 1536
+  },
+  "sources": {
+    "src\\shopassist\\recommendation\\config.py": "1dafbc4e6ca59c1b39bea1de3ee5536f6b023d60683e6224fc2e2e6156eb12bc",
+    "src\\shopassist\\recommendation\\context.py": "bd82addbb603ee269d1537c42ccde5f0fb3ee50d369ed95d2009ad76223d6dac",
+    "src\\shopassist\\recommendation\\core.py": "6cf707bd6b429b96261ab329b4d7cdcf534733ac220b931e9f2f952b691fe626",
+    "src\\shopassist\\recommendation\\local.py": "e1fd9913d7b8e94bb67533754e4f9051c15b25f06659a49352f29022dbf9df4f",
+    "src\\shopassist\\recommendation\\prompts.py": "8230abbbb8b970d1a224618099b9a9447894f905a0a8e451d024dc56095b04b2",
+    "src\\shopassist\\recommendation\\provider.py": "321cb924926dc47d3a40ef3f4955be7c82ecf832a2320fabf93f1f15e18bb2fd",
+    "src\\shopassist\\recommendation\\schemas.py": "e48f969c0421c25c3464797f5b4022f71576bbbd833b14add82c561cac85350d",
+    "src\\shopassist\\recommendation\\validation.py": "963afc1ea39d8c752a06077d9cc4a82fb5acf5faa40e768d31415605136529e5",
+    "src\\shopassist\\recommendation\\__init__.py": "b5b396c5777e5a384bc6f2053ae9f1be4afc9d240d8ffff19136bcda11ed77a6"
+  },
+  "local_selection_options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 4096,
+    "num_predict": 256
+  },
+  "schema_note": "R3 uses per-request required keys and bounded fact indices; actual schema is recorded on each row."
+}

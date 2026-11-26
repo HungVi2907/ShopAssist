@@ -1,0 +1,244 @@
+{
+  "input": {
+    "overview": "These products definitely satisfy all requirements.",
+    "products": []
+  },
+  "unsupported_claims_retained": {
+    "contract_version": "1.0.0",
+    "status": "SUCCESS",
+    "overview": "These products definitely satisfy all requirements.",
+    "products": [
+      {
+        "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+        "product_name": "ADIWALK ATOM Running Shoes",
+        "brand": "ADIWALK",
+        "category": "Footwear",
+        "discounted_price": 599.0,
+        "rating": null,
+        "currency": "INR",
+        "original_rank": 1,
+        "reranked_rank": 1,
+        "rrf_score": 0.01639344262295082,
+        "summary_reason": "Authentic waterproof product with excellent battery life.",
+        "strengths": [
+          {
+            "claim": "Highly durable and compatible with all devices",
+            "evidence_ids": [
+              "aa82d80cd54f7f0eee7a470dc44c49e4-E1"
+            ]
+          },
+          {
+            "claim": "Best performance",
+            "evidence_ids": []
+          }
+        ],
+        "limitations": [
+          {
+            "claim": "This product is not waterproof",
+            "evidence_ids": []
+          }
+        ],
+        "comparison_note": "It is the cheapest and best product.",
+        "available_evidence": [
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E1",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "product_name",
+            "text": "ADIWALK ATOM Running Shoes"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E2",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "brand",
+            "text": "ADIWALK"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E3",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "category",
+            "text": "Footwear"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E4",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "discounted_price",
+            "text": "599.00 INR"
+          }
+        ]
+      }
+    ],
+    "total_candidates_received": 1,
+    "recommended_count": 1,
+    "applied_constraints": {},
+    "language": "auto",
+    "model_name": null,
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "reasoning_tokens": 0,
+      "latency_ms": 0.0,
+      "estimated_cost_usd": 0.0
+    },
+    "warnings": [
+      "Claim for product 'aa82d80cd54f7f0eee7a470dc44c49e4' cited non-existent evidence ID 'NONEXISTENT'."
+    ],
+    "diagnostic_reason": null
+  },
+  "fallback": {
+    "contract_version": "1.0.0",
+    "status": "DETERMINISTIC_FALLBACK",
+    "overview": "Here are the top products matching your query (generated via verified metadata fallback):",
+    "products": [
+      {
+        "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+        "product_name": "ADIWALK ATOM Running Shoes",
+        "brand": "ADIWALK",
+        "category": "Footwear",
+        "discounted_price": 599.0,
+        "rating": null,
+        "currency": "INR",
+        "original_rank": 1,
+        "reranked_rank": 1,
+        "rrf_score": 0.01639344262295082,
+        "summary_reason": "ADIWALK ATOM Running Shoes by ADIWALK in Footwear at 599.00 INR.",
+        "strengths": [
+          {
+            "claim": "Verified Footwear candidate meeting query retrieval criteria.",
+            "evidence_ids": [
+              "aa82d80cd54f7f0eee7a470dc44c49e4-E1"
+            ]
+          }
+        ],
+        "limitations": [
+          {
+            "claim": "Generated via deterministic fallback; natural language explanation unavailable.",
+            "evidence_ids": []
+          }
+        ],
+        "comparison_note": "Rank #1 candidate in retrieval results.",
+        "available_evidence": [
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E1",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "product_name",
+            "text": "ADIWALK ATOM Running Shoes"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E2",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "brand",
+            "text": "ADIWALK"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E3",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "category",
+            "text": "Footwear"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E4",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "discounted_price",
+            "text": "599.00 INR"
+          }
+        ]
+      }
+    ],
+    "total_candidates_received": 1,
+    "recommended_count": 1,
+    "applied_constraints": {},
+    "language": "auto",
+    "model_name": null,
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "reasoning_tokens": 0,
+      "latency_ms": 0.0,
+      "estimated_cost_usd": 0.0
+    },
+    "warnings": [
+      "controlled unavailable fixture"
+    ],
+    "diagnostic_reason": "controlled unavailable fixture"
+  },
+  "empty_payload_fallback": {
+    "contract_version": "1.0.0",
+    "status": "DETERMINISTIC_FALLBACK",
+    "overview": "Here are the top products matching your query (generated via verified metadata fallback):",
+    "products": [
+      {
+        "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+        "product_name": "ADIWALK ATOM Running Shoes",
+        "brand": "ADIWALK",
+        "category": "Footwear",
+        "discounted_price": 599.0,
+        "rating": null,
+        "currency": "INR",
+        "original_rank": 1,
+        "reranked_rank": 1,
+        "rrf_score": 0.01639344262295082,
+        "summary_reason": "ADIWALK ATOM Running Shoes by ADIWALK in Footwear at 599.00 INR.",
+        "strengths": [
+          {
+            "claim": "Verified Footwear candidate meeting query retrieval criteria.",
+            "evidence_ids": [
+              "aa82d80cd54f7f0eee7a470dc44c49e4-E1"
+            ]
+          }
+        ],
+        "limitations": [
+          {
+            "claim": "Generated via deterministic fallback; natural language explanation unavailable.",
+            "evidence_ids": []
+          }
+        ],
+        "comparison_note": "Rank #1 candidate in retrieval results.",
+        "available_evidence": [
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E1",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "product_name",
+            "text": "ADIWALK ATOM Running Shoes"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E2",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "brand",
+            "text": "ADIWALK"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E3",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "category",
+            "text": "Footwear"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E4",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "discounted_price",
+            "text": "599.00 INR"
+          }
+        ]
+      }
+    ],
+    "total_candidates_received": 1,
+    "recommended_count": 1,
+    "applied_constraints": {},
+    "language": "auto",
+    "model_name": null,
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "reasoning_tokens": 0,
+      "latency_ms": 0.0,
+      "estimated_cost_usd": 0.0
+    },
+    "warnings": [
+      "Groundedness validation failed: No valid candidate IDs found in LLM response."
+    ],
+    "diagnostic_reason": "Groundedness validation failed: No valid candidate IDs found in LLM response."
+  }
+}

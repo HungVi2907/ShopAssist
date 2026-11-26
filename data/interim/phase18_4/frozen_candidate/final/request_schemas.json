@@ -1,0 +1,515 @@
+{
+  "D01": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D02": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      },
+      "p2": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P2",
+        "type": "array"
+      },
+      "p3": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P3",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1",
+      "p2",
+      "p3"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D03": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      },
+      "p2": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P2",
+        "type": "array"
+      },
+      "p3": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P3",
+        "type": "array"
+      },
+      "p4": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P4",
+        "type": "array"
+      },
+      "p5": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P5",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1",
+      "p2",
+      "p3",
+      "p4",
+      "p5"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D04": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      },
+      "p2": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P2",
+        "type": "array"
+      },
+      "p3": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P3",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1",
+      "p2",
+      "p3"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D05": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 4,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D06": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      },
+      "p2": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P2",
+        "type": "array"
+      },
+      "p3": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P3",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1",
+      "p2",
+      "p3"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D07": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 11,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      },
+      "p2": {
+        "items": {
+          "maximum": 11,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P2",
+        "type": "array"
+      },
+      "p3": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P3",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1",
+      "p2",
+      "p3"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D08": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 11,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      },
+      "p2": {
+        "items": {
+          "maximum": 11,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P2",
+        "type": "array"
+      },
+      "p3": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P3",
+        "type": "array"
+      },
+      "p4": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P4",
+        "type": "array"
+      },
+      "p5": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P5",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1",
+      "p2",
+      "p3",
+      "p4",
+      "p5"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D09": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 11,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      },
+      "p2": {
+        "items": {
+          "maximum": 11,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P2",
+        "type": "array"
+      },
+      "p3": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P3",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1",
+      "p2",
+      "p3"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D11": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      },
+      "p2": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P2",
+        "type": "array"
+      },
+      "p3": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P3",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1",
+      "p2",
+      "p3"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D12": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 3,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D13": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  },
+  "D14": {
+    "additionalProperties": false,
+    "properties": {
+      "p1": {
+        "items": {
+          "maximum": 12,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "maxItems": 3,
+        "minItems": 1,
+        "title": "P1",
+        "type": "array"
+      }
+    },
+    "required": [
+      "p1"
+    ],
+    "title": "EvidenceSelection",
+    "type": "object"
+  }
+}

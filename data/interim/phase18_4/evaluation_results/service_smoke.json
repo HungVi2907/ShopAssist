@@ -1,0 +1,437 @@
+{
+  "requests": [
+    {
+      "host": "localhost",
+      "path": "/api/chat"
+    }
+  ],
+  "wall_ms": 4226.527499995427,
+  "result": {
+    "contract_version": "1.0.0",
+    "status": "SUCCESS",
+    "overview": "Catalog candidates with selected source facts; suitability is not independently verified.",
+    "products": [
+      {
+        "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+        "product_name": "ADIWALK ATOM Running Shoes",
+        "brand": "ADIWALK",
+        "category": "Footwear",
+        "discounted_price": 599.0,
+        "rating": null,
+        "currency": "INR",
+        "original_rank": 1,
+        "reranked_rank": 1,
+        "rrf_score": 0.01639344262295082,
+        "summary_reason": "Catalog item: ADIWALK ATOM Running Shoes",
+        "strengths": [
+          {
+            "claim": "Catalog lists: 599.00 INR",
+            "evidence_ids": [
+              "aa82d80cd54f7f0eee7a470dc44c49e4-E4"
+            ]
+          },
+          {
+            "claim": "Catalog lists: Occasion: Sports",
+            "evidence_ids": [
+              "aa82d80cd54f7f0eee7a470dc44c49e4-E5"
+            ]
+          },
+          {
+            "claim": "Catalog lists: Ideal For: Men",
+            "evidence_ids": [
+              "aa82d80cd54f7f0eee7a470dc44c49e4-E6"
+            ]
+          }
+        ],
+        "limitations": [
+          {
+            "claim": "Requested features not explicitly evidenced remain unverified.",
+            "evidence_ids": []
+          },
+          {
+            "claim": "The catalog does not specify a rating.",
+            "evidence_ids": []
+          }
+        ],
+        "comparison_note": null,
+        "available_evidence": [
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E1",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "product_name",
+            "text": "ADIWALK ATOM Running Shoes"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E2",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "brand",
+            "text": "ADIWALK"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E3",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "category",
+            "text": "Footwear"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E4",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "discounted_price",
+            "text": "599.00 INR"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E5",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "specifications",
+            "text": "Occasion: Sports"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E6",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "specifications",
+            "text": "Ideal For: Men"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E7",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "specifications",
+            "text": "Lining: Foam"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E8",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "specifications",
+            "text": "Tip Shape: Round"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E9",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "specifications",
+            "text": "Closure: Laced"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E10",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "specifications",
+            "text": "Sole Material: EVA"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E11",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "specifications",
+            "text": "Number of Contents in Sales Package: Pack of 1"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E12",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "specifications",
+            "text": "Weight: 300 g (per single Shoe) - Weight of the product may vary depending on size."
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E13",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "description",
+            "text": "Key Features of ADIWALK ATOM Running Shoes Material: Mesh Occasion: Sports Color: Multicolor Heel Height: 1.5,ADIWALK ATOM Running Shoes Price: Rs."
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E14",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "description",
+            "text": "599 ADIWALK is one of the leading brands offering a wide variety of footwear at attractive prices."
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E15",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "description",
+            "text": "Our product range is widely popular amongst customers.ADIWALK Shoes are known for great designs, durability and colour combinations."
+          }
+        ]
+      },
+      {
+        "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+        "product_name": "AMCO Running Shoes",
+        "brand": "AMCO",
+        "category": "Footwear",
+        "discounted_price": 399.0,
+        "rating": null,
+        "currency": "INR",
+        "original_rank": 2,
+        "reranked_rank": 2,
+        "rrf_score": 0.016129032258064516,
+        "summary_reason": "Catalog item: AMCO Running Shoes",
+        "strengths": [
+          {
+            "claim": "Catalog lists: 399.00 INR",
+            "evidence_ids": [
+              "4bf3067f11585b2c4b6bb9e6bfa49147-E4"
+            ]
+          },
+          {
+            "claim": "Catalog lists: Occasion: Sports",
+            "evidence_ids": [
+              "4bf3067f11585b2c4b6bb9e6bfa49147-E5"
+            ]
+          },
+          {
+            "claim": "Catalog lists: Ideal For: Boys",
+            "evidence_ids": [
+              "4bf3067f11585b2c4b6bb9e6bfa49147-E6"
+            ]
+          }
+        ],
+        "limitations": [
+          {
+            "claim": "Requested features not explicitly evidenced remain unverified.",
+            "evidence_ids": []
+          },
+          {
+            "claim": "The catalog does not specify a rating.",
+            "evidence_ids": []
+          }
+        ],
+        "comparison_note": null,
+        "available_evidence": [
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E1",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "product_name",
+            "text": "AMCO Running Shoes"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E2",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "brand",
+            "text": "AMCO"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E3",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "category",
+            "text": "Footwear"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E4",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "discounted_price",
+            "text": "399.00 INR"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E5",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "specifications",
+            "text": "Occasion: Sports"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E6",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "specifications",
+            "text": "Ideal For: Boys"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E7",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "specifications",
+            "text": "Weight: 200 g (per single Shoe) - Weight of the product may vary depending on size."
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E8",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "specifications",
+            "text": "Heel Height: 0 inch"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E9",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "specifications",
+            "text": "Outer Material: EVA"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E10",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "specifications",
+            "text": "Color: Yellow"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E11",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "specifications",
+            "text": "Occasion: Sports"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E12",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "specifications",
+            "text": "Ideal For: Boys"
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E13",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "description",
+            "text": "Key Features of AMCO Running Shoes Material: EVA Occasion: Sports Color: Yellow, Black Heel Height: 0,Specifications of AMCO Running Shoes General Occasion Sports Ideal For Boys Shoe Details Weight 200 g (per single Shoe) - Weight of the product may vary depending on size."
+          },
+          {
+            "evidence_id": "4bf3067f11585b2c4b6bb9e6bfa49147-E14",
+            "product_id": "4bf3067f11585b2c4b6bb9e6bfa49147",
+            "source_field": "description",
+            "text": "Heel Height 0 inch Outer Material EVA Color Yellow"
+          }
+        ]
+      },
+      {
+        "product_id": "83786a7c9924ae140ea2d316c0c81690",
+        "product_name": "AMCO Running Shoes",
+        "brand": "AMCO",
+        "category": "Footwear",
+        "discounted_price": 399.0,
+        "rating": null,
+        "currency": "INR",
+        "original_rank": 3,
+        "reranked_rank": 3,
+        "rrf_score": 0.015873015873015872,
+        "summary_reason": "Catalog item: AMCO Running Shoes",
+        "strengths": [
+          {
+            "claim": "Catalog lists: 399.00 INR",
+            "evidence_ids": [
+              "83786a7c9924ae140ea2d316c0c81690-E4"
+            ]
+          },
+          {
+            "claim": "Catalog lists: Occasion: Sports",
+            "evidence_ids": [
+              "83786a7c9924ae140ea2d316c0c81690-E5"
+            ]
+          },
+          {
+            "claim": "Catalog lists: Ideal For: Boys",
+            "evidence_ids": [
+              "83786a7c9924ae140ea2d316c0c81690-E6"
+            ]
+          }
+        ],
+        "limitations": [
+          {
+            "claim": "Requested features not explicitly evidenced remain unverified.",
+            "evidence_ids": []
+          },
+          {
+            "claim": "The catalog does not specify a rating.",
+            "evidence_ids": []
+          }
+        ],
+        "comparison_note": null,
+        "available_evidence": [
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E1",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "product_name",
+            "text": "AMCO Running Shoes"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E2",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "brand",
+            "text": "AMCO"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E3",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "category",
+            "text": "Footwear"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E4",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "discounted_price",
+            "text": "399.00 INR"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E5",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "specifications",
+            "text": "Occasion: Sports"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E6",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "specifications",
+            "text": "Ideal For: Boys"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E7",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "specifications",
+            "text": "Weight: 200 g (per single Shoe) - Weight of the product may vary depending on size."
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E8",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "specifications",
+            "text": "Heel Height: 0 inch"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E9",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "specifications",
+            "text": "Outer Material: EVA"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E10",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "specifications",
+            "text": "Color: Red"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E11",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "specifications",
+            "text": "Occasion: Sports"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E12",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "specifications",
+            "text": "Ideal For: Boys"
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E13",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "description",
+            "text": "Key Features of AMCO Running Shoes Material: EVA Occasion: Sports Color: Red Heel Height: 0,Specifications of AMCO Running Shoes General Occasion Sports Ideal For Boys Shoe Details Weight 200 g (per single Shoe) - Weight of the product may vary depending on size."
+          },
+          {
+            "evidence_id": "83786a7c9924ae140ea2d316c0c81690-E14",
+            "product_id": "83786a7c9924ae140ea2d316c0c81690",
+            "source_field": "description",
+            "text": "Heel Height 0 inch Outer Material EVA Color Red"
+          }
+        ]
+      }
+    ],
+    "total_candidates_received": 3,
+    "recommended_count": 3,
+    "applied_constraints": {
+      "category": null,
+      "brand": null,
+      "min_price": null,
+      "max_price": null,
+      "min_rating": null,
+      "currency": "INR"
+    },
+    "language": "en",
+    "model_name": "qwen2.5:1.5b-instruct-local",
+    "usage": {
+      "prompt_tokens": 459,
+      "completion_tokens": 45,
+      "total_tokens": 504,
+      "reasoning_tokens": 0,
+      "latency_ms": 4226.040999994439,
+      "estimated_cost_usd": 0.0
+    },
+    "warnings": [
+      "Evidence selection accepted; source wording assembled by Python."
+    ],
+    "diagnostic_reason": "Evidence selection accepted; source wording assembled by Python."
+  },
+  "scope": "Real RecommendationService with explicitly injected native generator; no API/Gateway route activation."
+}

@@ -1,0 +1,20 @@
+{
+  "R1": {
+    "n": 20,
+    "requests": 20,
+    "json_valid": 12,
+    "schema_valid": 12,
+    "public_valid": 12,
+    "order_exact": 7,
+    "raw_unsupported_cases": 2,
+    "invalid_citation_cases": 4,
+    "fallback": 0,
+    "success": 12,
+    "truncated": 8,
+    "p50_ms": 8914.858550000645,
+    "p95_ms": 15043.821300001582,
+    "mean_prompt_tokens": 1638.3,
+    "max_prompt_tokens": 2820,
+    "mean_completion_tokens": 1031.45
+  }
+}

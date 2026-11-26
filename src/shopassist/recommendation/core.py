@@ -51,10 +51,14 @@ class RecommendationService:
         gateway: Gateway | None = None,
         context_builder: EvidenceContextBuilder | None = None,
         validator: GroundednessValidator | None = None,
+        local_generator=None,
     ) -> None:
         self.settings = settings or get_recommendation_settings()
         self.gateway = gateway
-        self.provider = provider or (get_recommendation_provider(self.settings) if gateway is None else None)
+        if local_generator is not None and (gateway is not None or provider is not None):
+            raise ValueError('Experimental local generation cannot also dispatch external providers or Gateway.')
+        self.local_generator = local_generator
+        self.provider = provider or (get_recommendation_provider(self.settings) if gateway is None and local_generator is None else None)
         self.context_builder = context_builder or EvidenceContextBuilder()
         self.validator = validator or GroundednessValidator()
 
@@ -96,6 +100,10 @@ class RecommendationService:
                 overview="Invalid reranking result input.",
                 diagnostic_reason=f"Expected RerankingResult, got {type(reranking_result)}",
             )
+
+        if not query_result.is_valid:
+            return RecommendationResult(status=RecommendationStatus.INVALID_INPUT,
+                overview="Upstream query understanding failed.",diagnostic_reason="Phase 8 is_valid=False")
 
         # Propagate Phase 8 Query Understanding statuses
         output = getattr(query_result, "output", None)
@@ -142,6 +150,12 @@ class RecommendationService:
                 return RecommendationResult(
                     status=RecommendationStatus.INVALID_INPUT,
                     overview="Invalid preference representation input.",
+                )
+            if p9_status == "EMBEDDING_FAILURE":
+                return RecommendationResult(
+                    status=RecommendationStatus.GENERATION_FAILURE,
+                    overview="Upstream preference representation failed.",
+                    diagnostic_reason="Phase 9 embedding failure is terminal.",
                 )
 
         # Propagate upstream terminal and failure statuses
@@ -202,6 +216,10 @@ class RecommendationService:
 
         # Determine target language
         effective_language = language or self.settings.phase12_output_language
+
+        if self.local_generator is not None:
+            return await self.local_generator.generate(query_result,candidates,
+                language=effective_language,parent_deadline_mono=parent_deadline_mono)
 
         # 3. Context & Evidence Construction
         context_str, evidence_store, flat_evidence = self.context_builder.build_context(
@@ -297,6 +315,10 @@ class RecommendationService:
         )
 
         return result
+
+    async def aclose(self) -> None:
+        if self.local_generator is not None:
+            await self.local_generator.aclose()
 
     def generate_sync(
         self,

@@ -1,0 +1,738 @@
+{
+  "version": "phase18_4_provisional_1",
+  "semantic_review": "PROVISIONAL_NO_HUMAN_REVIEW",
+  "reviewer": null,
+  "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "notes": "New catalog IDs relative to development, created after R3 source freeze. No independent human review; suitability labels are not supplied.",
+  "cases": [
+    {
+      "id": "F01",
+      "query_result": {
+        "query": "boots with a listed material",
+        "output": {
+          "semantic_query": "boots with a listed material",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "8a51adce678b874bef63d8a8a7d28ea4",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "20Dresses Brown Shiver Me Timbers Boots",
+          "retrieval_text": "Product: 20Dresses Brown Shiver Me Timbers Boots | Category: Footwear | Specifications: Ideal For: Women; Occasion: Casual; Sole Material: Non-leather; Closure: Zipper; Tip Shape: Round; Heel Height: 0 inch; Outer Material: Artificial Leather; Color: Brown; Care Instructions: Avoid Water, Clean with a dry cloth, Store in a cool dry place when not in use | Description: 20Dresses Brown Shiver Me Timbers Boots - Buy 20Dresses Brown Shiver Me Timbers Boots - BO0006 only for Rs. 2795 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 2795.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Ideal For": "Women",
+              "Occasion": "Casual",
+              "Sole Material": "Non-leather",
+              "Closure": "Zipper",
+              "Tip Shape": "Round",
+              "Heel Height": "0 inch",
+              "Outer Material": "Artificial Leather",
+              "Color": "Brown",
+              "Care Instructions": "Avoid Water, Clean with a dry cloth, Store in a cool dry place when not in use"
+            },
+            "product_url": "http://www.flipkart.com/20dresses-brown-shiver-me-timbers-boots/p/itme3uqg7dxrv6pu?pid=SHOEFHKHHVGZQ9FY"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        }
+      ],
+      "language": "en",
+      "mode": "provisional_new_catalog_items"
+    },
+    {
+      "id": "F02",
+      "query_result": {
+        "query": "boots for comparison",
+        "output": {
+          "semantic_query": "boots for comparison",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "8a51adce678b874bef63d8a8a7d28ea4",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "20Dresses Brown Shiver Me Timbers Boots",
+          "retrieval_text": "Product: 20Dresses Brown Shiver Me Timbers Boots | Category: Footwear | Specifications: Ideal For: Women; Occasion: Casual; Sole Material: Non-leather; Closure: Zipper; Tip Shape: Round; Heel Height: 0 inch; Outer Material: Artificial Leather; Color: Brown; Care Instructions: Avoid Water, Clean with a dry cloth, Store in a cool dry place when not in use | Description: 20Dresses Brown Shiver Me Timbers Boots - Buy 20Dresses Brown Shiver Me Timbers Boots - BO0006 only for Rs. 2795 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 2795.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Ideal For": "Women",
+              "Occasion": "Casual",
+              "Sole Material": "Non-leather",
+              "Closure": "Zipper",
+              "Tip Shape": "Round",
+              "Heel Height": "0 inch",
+              "Outer Material": "Artificial Leather",
+              "Color": "Brown",
+              "Care Instructions": "Avoid Water, Clean with a dry cloth, Store in a cool dry place when not in use"
+            },
+            "product_url": "http://www.flipkart.com/20dresses-brown-shiver-me-timbers-boots/p/itme3uqg7dxrv6pu?pid=SHOEFHKHHVGZQ9FY"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        },
+        {
+          "product_id": "d6edc0d5a40c9c2c1a11a59a12a7459a",
+          "original_rank": 2,
+          "reranked_rank": 2,
+          "product_name": "99 Moves Boots",
+          "retrieval_text": "Product: 99 Moves Boots | Category: Footwear | Specifications: Occasion: Casual; Ideal For: Men; Tip Shape: Closed Toe; Heel Height: 1 inch; Outer Material: Genuine Leather; Color: Tan; Care Instructions: Wipe with Dry Cloth or Dust off with Brush, Do not Wash | Description: 99 Moves Boots - Buy 99 Moves Boots - MOV0083 only for Rs. 1742 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1742.0,
+          "rating": null,
+          "rrf_score": 0.016129032258064516,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Occasion": "Casual",
+              "Ideal For": "Men",
+              "Tip Shape": "Closed Toe",
+              "Heel Height": "1 inch",
+              "Outer Material": "Genuine Leather",
+              "Color": "Tan",
+              "Care Instructions": "Wipe with Dry Cloth or Dust off with Brush, Do not Wash"
+            },
+            "product_url": "http://www.flipkart.com/99-moves-boots/p/itme89xpgtmzznug?pid=SHOE89XZZKW8GACG"
+          },
+          "final_score": 0.016129032258064516,
+          "score_components": {}
+        },
+        {
+          "product_id": "f8dc06c84fd99af98f44bba26e50fe71",
+          "original_rank": 3,
+          "reranked_rank": 3,
+          "product_name": "99Moves MOV-269-9 Boots",
+          "retrieval_text": "Product: 99Moves MOV-269-9 Boots | Category: Footwear | Specifications: Ideal For: Men; Occasion: Casual; Heel Height: 1 inch; Outer Material: Synthetic Leather; Color: Black | Description: 99Moves MOV-269-9 Boots - Buy 99Moves MOV-269-9 Boots - MOV-269 only for Rs. 1649 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1649.0,
+          "rating": null,
+          "rrf_score": 0.015873015873015872,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Ideal For": "Men",
+              "Occasion": "Casual",
+              "Heel Height": "1 inch",
+              "Outer Material": "Synthetic Leather",
+              "Color": "Black"
+            },
+            "product_url": "http://www.flipkart.com/99moves-mov-269-9-boots/p/itmee3gffgdrmxgd?pid=SHOEE3GGSRHDHGYQ"
+          },
+          "final_score": 0.015873015873015872,
+          "score_components": {}
+        }
+      ],
+      "language": "en",
+      "mode": "provisional_new_catalog_items"
+    },
+    {
+      "id": "F03",
+      "query_result": {
+        "query": "water bottle",
+        "output": {
+          "semantic_query": "water bottle",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "993ca754cc46e86a09219c87aa343ac4",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Blue Birds USA Homeware Aluminium water bottle 750 ml Bottle",
+          "retrieval_text": "Product: Blue Birds USA Homeware Aluminium water bottle 750 ml Bottle | Category: Kitchen & Dining | Brand: Blue Birds USA Homeware | Specifications: Type: Bottle; Number of Contents in Sales Package: Pack of 2; Sales Package: 2 bottle 750 ml each | Description: Key Features of Blue Birds USA Homeware Aluminium water bottle 750 ml Bottle 750 ml,Specifications of Blue Birds USA Homeware Aluminium water bottle 750 ml Bottle (Pack of 2, Green) General Type Bottle In the Box Number of Contents in Sales Package Pack of 2 Sales Package 2 bottle 750 ml each",
+          "category": "Kitchen & Dining",
+          "brand": "Blue Birds USA Homeware",
+          "discounted_price": 749.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Type": "Bottle",
+              "Number of Contents in Sales Package": "Pack of 2",
+              "Sales Package": "2 bottle 750 ml each"
+            },
+            "product_url": "http://www.flipkart.com/blue-birds-usa-homeware-aluminium-water-bottle-750-ml/p/itmejt4q2mq72mx5?pid=BOTEJT4QNFFAEKAG"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        }
+      ],
+      "language": "en",
+      "mode": "provisional_new_catalog_items"
+    },
+    {
+      "id": "F04",
+      "query_result": {
+        "query": "water bottle",
+        "output": {
+          "semantic_query": "water bottle",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "993ca754cc46e86a09219c87aa343ac4",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Blue Birds USA Homeware Aluminium water bottle 750 ml Bottle",
+          "retrieval_text": "Product: Blue Birds USA Homeware Aluminium water bottle 750 ml Bottle | Category: Kitchen & Dining | Brand: Blue Birds USA Homeware | Specifications: Type: Bottle; Number of Contents in Sales Package: Pack of 2; Sales Package: 2 bottle 750 ml each | Description: Key Features of Blue Birds USA Homeware Aluminium water bottle 750 ml Bottle 750 ml,Specifications of Blue Birds USA Homeware Aluminium water bottle 750 ml Bottle (Pack of 2, Green) General Type Bottle In the Box Number of Contents in Sales Package Pack of 2 Sales Package 2 bottle 750 ml each",
+          "category": "Kitchen & Dining",
+          "brand": "Blue Birds USA Homeware",
+          "discounted_price": 749.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Type": "Bottle",
+              "Number of Contents in Sales Package": "Pack of 2",
+              "Sales Package": "2 bottle 750 ml each"
+            },
+            "product_url": "http://www.flipkart.com/blue-birds-usa-homeware-aluminium-water-bottle-750-ml/p/itmejt4q2mq72mx5?pid=BOTEJT4QNFFAEKAG"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        },
+        {
+          "product_id": "a5dfd972634e58fe9c244776dbd9e7b9",
+          "original_rank": 2,
+          "reranked_rank": 2,
+          "product_name": "Crezy Xtreem 1000 ml Water Bottles",
+          "retrieval_text": "Product: Crezy Xtreem 1000 ml Water Bottles | Category: Pens & Stationery | Brand: Crezy | Specifications: Series: Xtreem; Model Name: CWPX-08-2; Packaging: Blister Roll; Weight: 340 g; Other Dimensions: Xtreme Bottle; Height: 24 mm; Width: 7 mm; Depth: 7 mm; Cap Type: Screw; Other Water Bottle Features: Quality Design; Water Bottle Capacity: 1000 ml | Description: Key Features of Crezy Xtreem 1000 ml Water Bottles Tough Durable Strong Leak Proof Fashionable Light Crystal Clear BPA free Durable Quality,Crezy Xtreem 1000 ml Water Bottles (Set of 8, Blue,Violet) Price: Rs. 399 In this busy lifestyle, one neglects an important aspect of drinking water on a regular basis. Keeping these Water Bottles from Crezy World in your office or home can come in handy, and keep various health problems at bay. Made of Virgin Plastic These water bottles are made of high-quality plastic that does not contaminate the water and keeps it clean. Durable and strong, these are easy to carry and do not pose any hassles. Comfortable Design With wide mouth openings, filling water and cleaning these bottles become a piece of cake. The tab on the cap further makes it comfortable to open the bottle even if your hands are not dry.,Specifications of Crezy Xtreem 1000 ml Water Bottles (Set of 8, Blue,Violet) General Series Xtreem Model Name CWPX-08-2 Packaging Blister Roll Dimensions Weight 340 g Other Dimensions Xtreme Bottle Height 24 mm Width 7 mm Depth 7 mm Water Bottle Features Cap Type Screw Other Water Bottle Features Quality Design Water Bottle Capacity 1000 ml",
+          "category": "Pens & Stationery",
+          "brand": "Crezy",
+          "discounted_price": 399.0,
+          "rating": null,
+          "rrf_score": 0.016129032258064516,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Series": "Xtreem",
+              "Model Name": "CWPX-08-2",
+              "Packaging": "Blister Roll",
+              "Weight": "340 g",
+              "Other Dimensions": "Xtreme Bottle",
+              "Height": "24 mm",
+              "Width": "7 mm",
+              "Depth": "7 mm",
+              "Cap Type": "Screw",
+              "Other Water Bottle Features": "Quality Design",
+              "Water Bottle Capacity": "1000 ml"
+            },
+            "product_url": "http://www.flipkart.com/crezy-xtreem-1000-ml-water-bottles/p/itmehd8vbpfaryzh?pid=WBTEHD8V9NYHZFNK"
+          },
+          "final_score": 0.016129032258064516,
+          "score_components": {}
+        },
+        {
+          "product_id": "a0559125b41236cfd66800431dac6e1a",
+          "original_rank": 3,
+          "reranked_rank": 3,
+          "product_name": "Gift Studio Two Tone Finish 750 ml Water Bottle",
+          "retrieval_text": "Product: Gift Studio Two Tone Finish 750 ml Water Bottle | Category: Pens & Stationery | Brand: Gift Studio | Specifications: Model Name: Multi Colour; Series: Two Tone Finish; Water Bottle Capacity: 750 ml; Cap Type: Sipper | Description: Specifications of Gift Studio Two Tone Finish 750 ml Water Bottle (Set of 1, Yellow, White) In the Box Water Bottle General Model Name Multi Colour Series Two Tone Finish Water Bottle Features Water Bottle Capacity 750 ml Cap Type Sipper",
+          "category": "Pens & Stationery",
+          "brand": "Gift Studio",
+          "discounted_price": 375.0,
+          "rating": null,
+          "rrf_score": 0.015873015873015872,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Model Name": "Multi Colour",
+              "Series": "Two Tone Finish",
+              "Water Bottle Capacity": "750 ml",
+              "Cap Type": "Sipper"
+            },
+            "product_url": "http://www.flipkart.com/gift-studio-two-tone-finish-750-ml-water-bottle/p/itmedx24tjvymegm?pid=WBTEDX24E8BPGACB"
+          },
+          "final_score": 0.015873015873015872,
+          "score_components": {}
+        }
+      ],
+      "language": "en",
+      "mode": "provisional_new_catalog_items"
+    },
+    {
+      "id": "F05",
+      "query_result": {
+        "query": "pen",
+        "output": {
+          "semantic_query": "pen",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "614b7701d9a4f20861213b8ed5036342",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "ab posters minions cartoons Art PVC Pencil Box",
+          "retrieval_text": "Product: ab posters minions cartoons Art PVC Pencil Box | Category: Pens & Stationery | Brand: ab posters | Specifications: Series: minions; Model Name: ABPC02; Pencil Box Art: cartoons; Integrated Sharpener: Yes; Pencil Box Material: PVC | Description: Key Features of ab posters minions cartoons Art PVC Pencil Box Magnatic Integrated Sharpener 2 comparments,Specifications of ab posters minions cartoons Art PVC Pencil Box (Set of 1, Yellow) General Series minions Model Name ABPC02 Pencil Box Features Pencil Box Art cartoons Integrated Sharpener Yes Pencil Box Material PVC In the Box 1 Pencil Box",
+          "category": "Pens & Stationery",
+          "brand": "ab posters",
+          "discounted_price": 199.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Series": "minions",
+              "Model Name": "ABPC02",
+              "Pencil Box Art": "cartoons",
+              "Integrated Sharpener": "Yes",
+              "Pencil Box Material": "PVC"
+            },
+            "product_url": "http://www.flipkart.com/ab-posters-minions-cartoons-art-pvc-pencil-box/p/itmejtjr4fsy4yzw?pid=PBXEJTJRMMZEBYGG"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        },
+        {
+          "product_id": "a858f3a918103a290acb35880d1822e4",
+          "original_rank": 2,
+          "reranked_rank": 2,
+          "product_name": "ab posters Sofia cartoons Art PVC Pencil Box",
+          "retrieval_text": "Product: ab posters Sofia cartoons Art PVC Pencil Box | Category: Pens & Stationery | Brand: ab posters | Specifications: Series: Sofia; Model Name: ABPC01; Pencil Box Art: cartoons; Integrated Sharpener: Yes; Pencil Box Material: PVC | Description: Key Features of ab posters Sofia cartoons Art PVC Pencil Box Magnatic Integrated Sharpener 2 comparments,Specifications of ab posters Sofia cartoons Art PVC Pencil Box (Set of 1, Purple) General Series Sofia Model Name ABPC01 Pencil Box Features Pencil Box Art cartoons Integrated Sharpener Yes Pencil Box Material PVC In the Box 1 Pencil Box",
+          "category": "Pens & Stationery",
+          "brand": "ab posters",
+          "discounted_price": 199.0,
+          "rating": null,
+          "rrf_score": 0.016129032258064516,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Series": "Sofia",
+              "Model Name": "ABPC01",
+              "Pencil Box Art": "cartoons",
+              "Integrated Sharpener": "Yes",
+              "Pencil Box Material": "PVC"
+            },
+            "product_url": "http://www.flipkart.com/ab-posters-sofia-cartoons-art-pvc-pencil-box/p/itmejtjrukpygqub?pid=PBXEJTJRCMZ2H7ZE"
+          },
+          "final_score": 0.016129032258064516,
+          "score_components": {}
+        },
+        {
+          "product_id": "6e6dc7c6c75cfb581f1e1bebb672611b",
+          "original_rank": 3,
+          "reranked_rank": 3,
+          "product_name": "Abhika Studio Cute Pattern Animal Art Cloth Pencil Box",
+          "retrieval_text": "Product: Abhika Studio Cute Pattern Animal Art Cloth Pencil Box | Category: Pens & Stationery | Specifications: Model Name: New Fashion Cute Animal Pattern Soft Plush Fancy Pencil Case Pen Pocket Cosmetic Makeup Zipper Bag; Series: Cute Pattern; Pencil Box Closure Type: Zip; Pencil Box Art: Animal; Other Pencil Box Features: Make School Fun With This Cute Pencil Case.; Pencil Box Material: Cloth | Description: Flipkart.com: Buy Abhika Studio Cute Pattern Animal Art Cloth Pencil Box only for Rs. 320 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Pens & Stationery",
+          "brand": null,
+          "discounted_price": 320.0,
+          "rating": null,
+          "rrf_score": 0.015873015873015872,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Model Name": "New Fashion Cute Animal Pattern Soft Plush Fancy Pencil Case Pen Pocket Cosmetic Makeup Zipper Bag",
+              "Series": "Cute Pattern",
+              "Pencil Box Closure Type": "Zip",
+              "Pencil Box Art": "Animal",
+              "Other Pencil Box Features": "Make School Fun With This Cute Pencil Case.",
+              "Pencil Box Material": "Cloth"
+            },
+            "product_url": "http://www.flipkart.com/abhika-studio-cute-pattern-animal-art-cloth-pencil-box/p/itme9gf9de4hm96q?pid=PBXE9GF9XZTGMCRG"
+          },
+          "final_score": 0.015873015873015872,
+          "score_components": {}
+        },
+        {
+          "product_id": "653eb174f9c71aac13c1ccf0d62967a1",
+          "original_rank": 4,
+          "reranked_rank": 4,
+          "product_name": "Abhika Studio Cute Pattern Animal Art Cloth Pencil Box",
+          "retrieval_text": "Product: Abhika Studio Cute Pattern Animal Art Cloth Pencil Box | Category: Pens & Stationery | Specifications: Model Name: New Fashion Cute Butterfly Pattern Soft Plush Fancy Pencil Case Pen Pocket Cosmetic Makeup Zipper Bag; Series: Cute Pattern; Pencil Box Closure Type: Zip; Pencil Box Art: Animal; Other Pencil Box Features: Make School Fun With This Cute Pencil Case.; Pencil Box Material: Cloth | Description: Flipkart.com: Buy Abhika Studio Cute Pattern Animal Art Cloth Pencil Box only for Rs. 420 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Pens & Stationery",
+          "brand": null,
+          "discounted_price": 420.0,
+          "rating": null,
+          "rrf_score": 0.015625,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Model Name": "New Fashion Cute Butterfly Pattern Soft Plush Fancy Pencil Case Pen Pocket Cosmetic Makeup Zipper Bag",
+              "Series": "Cute Pattern",
+              "Pencil Box Closure Type": "Zip",
+              "Pencil Box Art": "Animal",
+              "Other Pencil Box Features": "Make School Fun With This Cute Pencil Case.",
+              "Pencil Box Material": "Cloth"
+            },
+            "product_url": "http://www.flipkart.com/abhika-studio-cute-pattern-animal-art-cloth-pencil-box/p/itme9gf9bpnhwvak?pid=PBXE9GF9BRSCSGVV"
+          },
+          "final_score": 0.015625,
+          "score_components": {}
+        },
+        {
+          "product_id": "872365cba394ad511914a4b3bdf8a8e6",
+          "original_rank": 5,
+          "reranked_rank": 5,
+          "product_name": "Ajay A100-75x80 Double Sided Open End Wrench Set",
+          "retrieval_text": "Product: Ajay A100-75x80 Double Sided Open End Wrench Set | Category: Home Improvement | Brand: Ajay | Specifications: Brand: Ajay; Model Number: A100-75x80; Sided: Double Sided; Type: Open End Wrench Set; Size: 75x80 mm; Sales Package: Double Ended Open Jaw Spanners 75x80MM; Pack of: 1 | Description: Buy Ajay A100-75x80 Double Sided Open End Wrench Set for Rs.8910 online. Ajay A100-75x80 Double Sided Open End Wrench Set at best prices with FREE shipping & cash on delivery. Only Genuine Products. 30 Day Replacement Guarantee.",
+          "category": "Home Improvement",
+          "brand": "Ajay",
+          "discounted_price": 8910.0,
+          "rating": null,
+          "rrf_score": 0.015384615384615385,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Brand": "Ajay",
+              "Model Number": "A100-75x80",
+              "Sided": "Double Sided",
+              "Type": "Open End Wrench Set",
+              "Size": "75x80 mm",
+              "Sales Package": "Double Ended Open Jaw Spanners 75x80MM",
+              "Pack of": "1"
+            },
+            "product_url": "http://www.flipkart.com/ajay-a100-75x80-double-sided-open-end-wrench-set/p/itme4g5xzt5uaaxy?pid=WRSE4G5XJHJKGQPY"
+          },
+          "final_score": 0.015384615384615385,
+          "score_components": {}
+        }
+      ],
+      "language": "en",
+      "mode": "provisional_new_catalog_items"
+    },
+    {
+      "id": "F06",
+      "query_result": {
+        "query": "curtain",
+        "output": {
+          "semantic_query": "curtain",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "c4775688a676795d9530ee1c30bc973e",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 1 Sun Shade For Chevrolet Sail",
+          "retrieval_text": "Product: AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 1 Sun Shade For Chevrolet Sail | Category: Automotive | Brand: AdroitZ | Specifications: Brand: AdroitZ; Attachment Mechanism: Suction Cup; Model Number: Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 1; Placement Position: Side Window; Color: Multicolor; Weight: 120 g; Height: 20 cm; Width: 25 cm; Depth: 1 cm; Sales Package: 2 Sun Shade; Pack of: 2 | Description: Key Features of AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 1 Sun Shade For Chevrolet Sail Easy to install and remove Highly Durable Simple to Use Makes car AC system to be more effective,AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 1 Sun Shade For Chevrolet Sail (Side Window) Price: Rs. 199 AdroitZ presents to you Birbie doll sunshade Protects from scorching sunrays and to protect your privacy from peeping tom and also to keep your Car interior Cool, The shades are such a perfect fit. They perform perfectly, giving you protection from the sun. These sunshades create a mesh layer to stops the heat,allowing the car aircondition system to be more effective. Block uv rays. keeps car cool. easy to install and remove. highly durable. Note this is a universal product .kindly check Your specification before ordering.,Specifications of AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 1 Sun Shade For Chevrolet Sail (Side Window) General Brand AdroitZ Attachment Mechanism Suction Cup Model Number Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 1",
+          "category": "Automotive",
+          "brand": "AdroitZ",
+          "discounted_price": 199.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Brand": "AdroitZ",
+              "Attachment Mechanism": "Suction Cup",
+              "Model Number": "Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 1",
+              "Placement Position": "Side Window",
+              "Color": "Multicolor",
+              "Weight": "120 g",
+              "Height": "20 cm",
+              "Width": "25 cm",
+              "Depth": "1 cm",
+              "Sales Package": "2 Sun Shade",
+              "Pack of": "2"
+            },
+            "product_url": "http://www.flipkart.com/adroitz-exclusive-barbie-doll-sunshade-curtain-set-2-chevrolet-sail-type-1-sun-shade/p/itmeggbfs9xmqwpy?pid=SUDEGGBFNGESYFHT"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        },
+        {
+          "product_id": "42ed2786c0ad2bd341d09f7e73e46be4",
+          "original_rank": 2,
+          "reranked_rank": 2,
+          "product_name": "AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 2 Sun Shade For Chevrolet Sail",
+          "retrieval_text": "Product: AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 2 Sun Shade For Chevrolet Sail | Category: Automotive | Brand: AdroitZ | Specifications: Brand: AdroitZ; Attachment Mechanism: Suction Cup; Model Number: Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 2; Placement Position: Side Window; Color: Multicolor; Weight: 120 g; Height: 20 cm; Width: 25 cm; Depth: 1 cm; Sales Package: 2 Sun Shade; Pack of: 2 | Description: Key Features of AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 2 Sun Shade For Chevrolet Sail Easy to install and remove Highly Durable Simple to Use Makes car AC system to be more effective,AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 2 Sun Shade For Chevrolet Sail (Side Window) Price: Rs. 199 AdroitZ presents to you Birbie doll sunshade Protects from scorching sunrays and to protect your privacy from peeping tom and also to keep your Car interior Cool, The shades are such a perfect fit. They perform perfectly, giving you protection from the sun. These sunshades create a mesh layer to stops the heat,allowing the car aircondition system to be more effective. Block uv rays. keeps car cool. easy to install and remove. highly durable. Note this is a universal product .kindly check Your specification before ordering.,Specifications of AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 2 Sun Shade For Chevrolet Sail (Side Window) General Brand AdroitZ Attachment Mechanism Suction Cup Model Number Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 2",
+          "category": "Automotive",
+          "brand": "AdroitZ",
+          "discounted_price": 199.0,
+          "rating": null,
+          "rrf_score": 0.016129032258064516,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Brand": "AdroitZ",
+              "Attachment Mechanism": "Suction Cup",
+              "Model Number": "Exclusive Barbie Doll Sunshade / curtain (set of 2) for Chevrolet Sail type 2",
+              "Placement Position": "Side Window",
+              "Color": "Multicolor",
+              "Weight": "120 g",
+              "Height": "20 cm",
+              "Width": "25 cm",
+              "Depth": "1 cm",
+              "Sales Package": "2 Sun Shade",
+              "Pack of": "2"
+            },
+            "product_url": "http://www.flipkart.com/adroitz-exclusive-barbie-doll-sunshade-curtain-set-2-chevrolet-sail-type-2-sun-shade/p/itmeggb2xrmp8ws7?pid=SUDEGGB28WWTGFUY"
+          },
+          "final_score": 0.016129032258064516,
+          "score_components": {}
+        },
+        {
+          "product_id": "fa07641e58b09875e13540a8073cdca6",
+          "original_rank": 3,
+          "reranked_rank": 3,
+          "product_name": "AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Fiat Linea Sun Shade For Fiat Linea",
+          "retrieval_text": "Product: AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Fiat Linea Sun Shade For Fiat Linea | Category: Automotive | Brand: AdroitZ | Specifications: Brand: AdroitZ; Attachment Mechanism: Suction Cup; Model Number: Exclusive Barbie Doll Sunshade / curtain (set of 2) for Fiat Linea; Placement Position: Side Window; Color: Multicolor; Weight: 120 g; Height: 20 cm; Width: 25 cm; Depth: 1 cm; Sales Package: 2 Sun Shade; Pack of: 2 | Description: Key Features of AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Fiat Linea Sun Shade For Fiat Linea Easy to install and remove Highly Durable Simple to Use Makes car AC system to be more effective,AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Fiat Linea Sun Shade For Fiat Linea (Side Window) Price: Rs. 199 AdroitZ presents to you Birbie doll sunshade Protects from scorching sunrays and to protect your privacy from peeping tom and also to keep your Car interior Cool, The shades are such a perfect fit. They perform perfectly, giving you protection from the sun. These sunshades create a mesh layer to stops the heat,allowing the car aircondition system to be more effective. Block uv rays. keeps car cool. easy to install and remove. highly durable. Note this is a universal product .kindly check Your specification before ordering.,Specifications of AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Fiat Linea Sun Shade For Fiat Linea (Side Window) General Brand AdroitZ Attachment Mechanism Suction Cup Model Number Exclusive Barbie Doll Sunshade / curtain (set of 2) for Fiat Linea Placement Position Side Window Color Multicolor Dimensions",
+          "category": "Automotive",
+          "brand": "AdroitZ",
+          "discounted_price": 199.0,
+          "rating": null,
+          "rrf_score": 0.015873015873015872,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Brand": "AdroitZ",
+              "Attachment Mechanism": "Suction Cup",
+              "Model Number": "Exclusive Barbie Doll Sunshade / curtain (set of 2) for Fiat Linea",
+              "Placement Position": "Side Window",
+              "Color": "Multicolor",
+              "Weight": "120 g",
+              "Height": "20 cm",
+              "Width": "25 cm",
+              "Depth": "1 cm",
+              "Sales Package": "2 Sun Shade",
+              "Pack of": "2"
+            },
+            "product_url": "http://www.flipkart.com/adroitz-exclusive-barbie-doll-sunshade-curtain-set-2-fiat-linea-sun-shade/p/itmeggb5jghaqghz?pid=SUDEGGB4EZEJ7ZPV"
+          },
+          "final_score": 0.015873015873015872,
+          "score_components": {}
+        }
+      ],
+      "language": "en",
+      "mode": "provisional_new_catalog_items"
+    },
+    {
+      "id": "F07",
+      "query_result": {
+        "query": "backpack",
+        "output": {
+          "semantic_query": "backpack",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "e1607410ab4a7c291f72959de3d643f8",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "ABSTAR LIGHT 30 L Backpack",
+          "retrieval_text": "Product: ABSTAR LIGHT 30 L Backpack | Category: Bags, Wallets & Belts | Brand: ABSTAR | Specifications: Trolley Support: No; Type: Backpack; Laptop Sleeve: No; Style Code: LIGHT; Compatible Laptop Size: 15; Capacity: 30 L; Ideal For: Boys, Men, Girls, Women; Color Code: Green; Number of Compartments: 3 | Description: Key Features of ABSTAR LIGHT 30 L Backpack Ideal For: Boys, Men, Girls, Women No of Compartments: 3 Laptop Sleeve: No,Specifications of ABSTAR LIGHT 30 L Backpack (Green) General Trolley Support No Type Backpack Laptop Sleeve No Style Code LIGHT Compatible Laptop Size 15 Capacity 30 L Ideal For Boys, Men, Girls, Women Color Code Green Body Features Number of Compartments 3",
+          "category": "Bags, Wallets & Belts",
+          "brand": "ABSTAR",
+          "discounted_price": 999.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Trolley Support": "No",
+              "Type": "Backpack",
+              "Laptop Sleeve": "No",
+              "Style Code": "LIGHT",
+              "Compatible Laptop Size": "15",
+              "Capacity": "30 L",
+              "Ideal For": "Boys, Men, Girls, Women",
+              "Color Code": "Green",
+              "Number of Compartments": "3"
+            },
+            "product_url": "http://www.flipkart.com/abstar-light-30-l-backpack/p/itmegzc2cvprfhmz?pid=BKPEGZC2B9WHH3U3"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        }
+      ],
+      "language": "en",
+      "mode": "provisional_new_catalog_items"
+    },
+    {
+      "id": "F08",
+      "query_result": {
+        "query": "T?i c?n xem gi?y b?t m?u n?u",
+        "output": {
+          "semantic_query": "T?i c?n xem gi?y b?t m?u n?u",
+          "hard_constraints": {
+            "category": null,
+            "brand": null,
+            "min_price": null,
+            "max_price": null,
+            "min_rating": null,
+            "currency": "INR"
+          },
+          "soft_preferences": [],
+          "needs_clarification": false,
+          "clarification_reason": null
+        },
+        "raw_response_text": "",
+        "model": "",
+        "latency_ms": 0.0,
+        "token_usage": null,
+        "is_valid": true,
+        "validation_errors": []
+      },
+      "products": [
+        {
+          "product_id": "6d684e7d37de8de50f29a5f803406a3b",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Assort Women Flats",
+          "retrieval_text": "Product: Assort Women Flats | Category: Footwear | Specifications: Occasion: Casual; Ideal For: Women; Weight: 220 g (per single Sandal) - Weight of the product may vary depending on size.; Type: Flats; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: Blue | Description: Flipkart.com: Buy Assort Women Flats only for Rs. 599 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 599.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "product_specifications": {
+              "Occasion": "Casual",
+              "Ideal For": "Women",
+              "Weight": "220 g (per single Sandal) - Weight of the product may vary depending on size.",
+              "Type": "Flats",
+              "Heel Height": "0 inch",
+              "Outer Material": "Synthetic Leather",
+              "Color": "Blue"
+            },
+            "product_url": "http://www.flipkart.com/assort-women-flats/p/itme37cxknu9sy68?pid=SNDE37CXG3BUGJYV"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        }
+      ],
+      "language": "vi",
+      "mode": "provisional_new_catalog_items"
+    }
+  ]
+}

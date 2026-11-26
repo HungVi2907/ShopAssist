@@ -1,0 +1,15 @@
+{
+  "unit_fixture": {
+    "failed": 1,
+    "passed": 61,
+    "cause": "New test omitted RerankingResult.method; corrected fixture without weakening assertions.",
+    "evidence": "tool transcript, test_phase18_4.py::test_service_local_selection_and_upstream_invalid_do_not_create_legacy_provider"
+  },
+  "initial_guarded_suite": {
+    "failed": 1,
+    "passed": 417,
+    "cause": "Operator environment API_DEFAULT_TOP_K=3 differs from default test expectation 5; isolated runner pins test default only.",
+    "evidence": "offline_regression.txt"
+  },
+  "semantic_review": "All semantic/new-case evaluation remains provisional without human review."
+}

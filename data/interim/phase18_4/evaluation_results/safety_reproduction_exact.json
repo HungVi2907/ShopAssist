@@ -1,0 +1,141 @@
+{
+  "input": {
+    "overview": "All requirements are satisfied.",
+    "products": [
+      {
+        "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+        "summary_reason": "Authentic waterproof product with excellent battery life.",
+        "strengths": [
+          {
+            "claim": "Highly durable and compatible with all devices",
+            "evidence_ids": [
+              "aa82d80cd54f7f0eee7a470dc44c49e4-E1"
+            ]
+          },
+          {
+            "claim": "Best performance",
+            "evidence_ids": [
+              "MISSING"
+            ]
+          }
+        ],
+        "limitations": [
+          {
+            "claim": "This product is not waterproof",
+            "evidence_ids": []
+          }
+        ],
+        "comparison_note": "Cheapest and best performance."
+      }
+    ]
+  },
+  "provided_evidence": {
+    "aa82d80cd54f7f0eee7a470dc44c49e4-E1": {
+      "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E1",
+      "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+      "source_field": "product_name",
+      "text": "ADIWALK ATOM Running Shoes"
+    },
+    "aa82d80cd54f7f0eee7a470dc44c49e4-E2": {
+      "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E2",
+      "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+      "source_field": "brand",
+      "text": "ADIWALK"
+    },
+    "aa82d80cd54f7f0eee7a470dc44c49e4-E3": {
+      "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E3",
+      "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+      "source_field": "category",
+      "text": "Footwear"
+    },
+    "aa82d80cd54f7f0eee7a470dc44c49e4-E4": {
+      "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E4",
+      "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+      "source_field": "discounted_price",
+      "text": "599.00 INR"
+    }
+  },
+  "original_validator_result": {
+    "contract_version": "1.0.0",
+    "status": "SUCCESS",
+    "overview": "All requirements are satisfied.",
+    "products": [
+      {
+        "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+        "product_name": "ADIWALK ATOM Running Shoes",
+        "brand": "ADIWALK",
+        "category": "Footwear",
+        "discounted_price": 599.0,
+        "rating": null,
+        "currency": "INR",
+        "original_rank": 1,
+        "reranked_rank": 1,
+        "rrf_score": 0.01639344262295082,
+        "summary_reason": "Authentic waterproof product with excellent battery life.",
+        "strengths": [
+          {
+            "claim": "Highly durable and compatible with all devices",
+            "evidence_ids": [
+              "aa82d80cd54f7f0eee7a470dc44c49e4-E1"
+            ]
+          },
+          {
+            "claim": "Best performance",
+            "evidence_ids": []
+          }
+        ],
+        "limitations": [
+          {
+            "claim": "This product is not waterproof",
+            "evidence_ids": []
+          }
+        ],
+        "comparison_note": "Cheapest and best performance.",
+        "available_evidence": [
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E1",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "product_name",
+            "text": "ADIWALK ATOM Running Shoes"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E2",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "brand",
+            "text": "ADIWALK"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E3",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "category",
+            "text": "Footwear"
+          },
+          {
+            "evidence_id": "aa82d80cd54f7f0eee7a470dc44c49e4-E4",
+            "product_id": "aa82d80cd54f7f0eee7a470dc44c49e4",
+            "source_field": "discounted_price",
+            "text": "599.00 INR"
+          }
+        ]
+      }
+    ],
+    "total_candidates_received": 1,
+    "recommended_count": 1,
+    "applied_constraints": {},
+    "language": "auto",
+    "model_name": null,
+    "usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0,
+      "reasoning_tokens": 0,
+      "latency_ms": 0.0,
+      "estimated_cost_usd": 0.0
+    },
+    "warnings": [
+      "Claim for product 'aa82d80cd54f7f0eee7a470dc44c49e4' cited non-existent evidence ID 'MISSING'."
+    ],
+    "diagnostic_reason": null
+  },
+  "scope": "Frozen original validator; controlled sparse real catalog evidence, no model inference."
+}

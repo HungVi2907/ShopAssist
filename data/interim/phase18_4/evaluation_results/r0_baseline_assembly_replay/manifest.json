@@ -1,0 +1,6 @@
+{
+  "source": "r0_baseline",
+  "mode": "Offline replay of missing parse-error fallback using frozen original validator; no extra inference. Also completes total usage from native envelope.",
+  "fallback": 8,
+  "partial_fallback": 1
+}

@@ -1,0 +1,25 @@
+{
+  "r0_baseline": {
+    "references": 69,
+    "valid_references": 65,
+    "invalid_reference_cases": [
+      "D01"
+    ],
+    "missing_strength_citations": 1,
+    "claim_count": 54,
+    "exact_source_claims": 7,
+    "note": "Empty limitation citations are allowed for missing-information caveats. Initial audit invalid_citations overflags these; this corrected ownership metric is authoritative. No semantic entailment is inferred."
+  },
+  "r1_compact": {
+    "references": 92,
+    "valid_references": 85,
+    "invalid_reference_cases": [
+      "D01",
+      "D15"
+    ],
+    "missing_strength_citations": 1,
+    "claim_count": 58,
+    "exact_source_claims": 7,
+    "note": "Empty limitation citations are allowed for missing-information caveats. Initial audit invalid_citations overflags these; this corrected ownership metric is authoritative. No semantic entailment is inferred."
+  }
+}

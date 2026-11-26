@@ -1,0 +1,46 @@
+{
+  "$defs": {
+    "Explanation": {
+      "additionalProperties": false,
+      "properties": {
+        "product_index": {
+          "title": "Product Index",
+          "type": "integer"
+        },
+        "evidence_indices": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Evidence Indices",
+          "type": "array"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_index",
+        "evidence_indices",
+        "reason"
+      ],
+      "title": "Explanation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "explanations": {
+      "items": {
+        "$ref": "#/$defs/Explanation"
+      },
+      "title": "Explanations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "explanations"
+  ],
+  "title": "ExplanationPayload",
+  "type": "object"
+}

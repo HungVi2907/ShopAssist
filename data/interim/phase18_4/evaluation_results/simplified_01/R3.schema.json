@@ -1,0 +1,41 @@
+{
+  "$defs": {
+    "Selection": {
+      "additionalProperties": false,
+      "properties": {
+        "product_index": {
+          "title": "Product Index",
+          "type": "integer"
+        },
+        "evidence_indices": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Evidence Indices",
+          "type": "array"
+        }
+      },
+      "required": [
+        "product_index",
+        "evidence_indices"
+      ],
+      "title": "Selection",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "explanations": {
+      "items": {
+        "$ref": "#/$defs/Selection"
+      },
+      "title": "Explanations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "explanations"
+  ],
+  "title": "SelectionPayload",
+  "type": "object"
+}

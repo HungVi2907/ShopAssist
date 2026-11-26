@@ -96,11 +96,11 @@ class GroundednessValidator:
             if llm_exp is None:
                 # LLM omitted this product: synthesize deterministic explanation
                 warnings.append(f"Candidate product '{pid}' was omitted by LLM; generated fallback explanation.")
-                summary_reason = f"{p.product_name} matches the requested {p.category} category."
+                summary_reason = f"Catalog item: {p.product_name}. Suitability is not independently verified."
                 strengths = [
                     ProductClaim(
-                        claim=f"Authentic {p.brand or p.category} product priced at {p.discounted_price:.2f} {currency}",
-                        evidence_ids=[f"{pid}-E1"] if f"{pid}-E1" in flat_evidence_map else [],
+                        claim=f"Catalog price: {p.discounted_price:.2f} {currency}",
+                        evidence_ids=[e.evidence_id for e in available_ev if e.source_field == 'discounted_price'],
                     )
                 ]
                 limitations = [
@@ -217,7 +217,7 @@ class GroundednessValidator:
                 summary_reason=f"{p.product_name}{brand_str} in {p.category} at {p.discounted_price:.2f} {currency}{rating_str}.",
                 strengths=[
                     ProductClaim(
-                        claim=f"Verified {p.category} candidate meeting query retrieval criteria.",
+                        claim=f"Catalog item: {p.product_name}.",
                         evidence_ids=[f"{pid}-E1"] if any(e.evidence_id == f"{pid}-E1" for e in available_ev) else [],
                     )
                 ],
@@ -232,9 +232,9 @@ class GroundednessValidator:
             )
             recommended_products.append(rec)
 
-        overview = "Here are the top products matching your query (generated via verified metadata fallback):"
+        overview = "Catalog candidates from deterministic metadata fallback; suitability is not independently verified."
         if language.lower() in ("vi", "vietnamese"):
-            overview = "Dưới đây là các sản phẩm hàng đầu phù hợp với yêu cầu của bạn (thông tin xác thực từ danh mục):"
+            overview = "Các mục trong danh mục từ dữ liệu dự phòng; chưa xác minh sự phù hợp với mọi yêu cầu."
 
         return RecommendationResult(
             contract_version="1.0.0",

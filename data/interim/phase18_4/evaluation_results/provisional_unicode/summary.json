@@ -1,0 +1,38 @@
+{
+  "R3": {
+    "n": 1,
+    "requests": 1,
+    "json_valid": 1,
+    "schema_valid": 1,
+    "public_valid": 1,
+    "order_exact": 1,
+    "raw_unsupported_cases": 0,
+    "invalid_citation_cases": 0,
+    "fallback": 0,
+    "success": 1,
+    "truncated": 0,
+    "p50_ms": 664.096199994674,
+    "p95_ms": 664.096199994674,
+    "mean_prompt_tokens": 231,
+    "max_prompt_tokens": 231,
+    "mean_completion_tokens": 11
+  },
+  "D0": {
+    "n": 1,
+    "requests": 0,
+    "json_valid": 0,
+    "schema_valid": 0,
+    "public_valid": 1,
+    "order_exact": 0,
+    "raw_unsupported_cases": 0,
+    "invalid_citation_cases": 0,
+    "fallback": 1,
+    "success": 0,
+    "truncated": 0,
+    "p50_ms": 13.14960000308929,
+    "p95_ms": 13.14960000308929,
+    "mean_prompt_tokens": 0,
+    "max_prompt_tokens": 0,
+    "mean_completion_tokens": 0
+  }
+}

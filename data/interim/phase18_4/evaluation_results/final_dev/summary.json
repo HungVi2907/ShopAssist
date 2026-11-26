@@ -1,0 +1,38 @@
+{
+  "R3": {
+    "n": 20,
+    "requests": 13,
+    "json_valid": 13,
+    "schema_valid": 13,
+    "public_valid": 20,
+    "order_exact": 13,
+    "raw_unsupported_cases": 0,
+    "invalid_citation_cases": 0,
+    "fallback": 0,
+    "success": 13,
+    "truncated": 0,
+    "p50_ms": 434.0432499993767,
+    "p95_ms": 943.7677000023541,
+    "mean_prompt_tokens": 259.95,
+    "max_prompt_tokens": 712,
+    "mean_completion_tokens": 22.4
+  },
+  "D0": {
+    "n": 20,
+    "requests": 0,
+    "json_valid": 0,
+    "schema_valid": 0,
+    "public_valid": 20,
+    "order_exact": 0,
+    "raw_unsupported_cases": 0,
+    "invalid_citation_cases": 0,
+    "fallback": 13,
+    "success": 0,
+    "truncated": 0,
+    "p50_ms": 14.61369999742601,
+    "p95_ms": 19.57140000013169,
+    "mean_prompt_tokens": 0,
+    "max_prompt_tokens": 0,
+    "mean_completion_tokens": 0
+  }
+}
