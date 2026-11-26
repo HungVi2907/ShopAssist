@@ -16,6 +16,24 @@ Example input: lightweight Puma running shoes under 2000 rupees
 Example output: {"product":"running shoes","brand":"Puma","budget":"under 2000 rupees","rating":null,"preferences":["lightweight"]}
 """
 
+# Bounded development candidates; P0 remains the historical control.
+PREFERENCE_PROMPTS = {'P0': EXTRACTION_PROMPT}
+PREFERENCE_PROMPTS['P1'] = EXTRACTION_PROMPT.replace(
+    'preferences: qualitative features or intended use.',
+    'preferences: ALL explicitly requested features, materials, comfort, portability, '
+    'intended uses and user contexts. Copy short original phrases, including "for ..." '
+    'when stated. Include these even if also in product; do not invent typical features '
+    'or list the product name itself as a preference.')
+PREFERENCE_PROMPTS['P2'] = PREFERENCE_PROMPTS['P1'].split('Example input:')[0] + '''Example input: portable Acer laptop for coding under 42000
+Example output: {"product":"laptop","brand":"Acer","budget":"under 42000","rating":null,"preferences":["portable","for coding"]}
+Example input: soft leather wallet for women
+Example output: {"product":"wallet","brand":null,"budget":null,"rating":null,"preferences":["soft","leather","for women"]}
+'''
+
+# Final Phase 18.3 research selection: preference prompt changes did not generalize.
+# Application defaults still do not inject this client.
+EXTRACTION_PROMPT = PREFERENCE_PROMPTS['P0']
+
 
 class OllamaIntentExtractor:
     def __init__(self, client: httpx.AsyncClient | None = None):

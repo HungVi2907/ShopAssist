@@ -1,0 +1,1151 @@
+{
+  "catalog_rows": 8405,
+  "catalog_sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+  "reranker_error": null,
+  "scope": "Existing TF-IDF with actual local catalog and existing local CrossEncoder pair scorer. No database/dense branch; no reviewed product qrels. Explicit inclusive v1 prices for this ablation.",
+  "results": [
+    {
+      "id": "QU002",
+      "variant": "Q0",
+      "raw_query": "comfortable Nike sneakers under 3500 rs with at least 4 star rating",
+      "semantic_input": "comfortable Nike sneakers with rating",
+      "preference_input": "comfortable — comfortable Nike sneakers with rating",
+      "gated": false,
+      "filters": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_rating": 4.0,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 3500.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "86be9efcc2ae20c049a9a6b3eb392c1b",
+          "name": "Nike 684658-003 Training & Gym Shoes, Running Shoes",
+          "score": 0.12866618083550965
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "86be9efcc2ae20c049a9a6b3eb392c1b",
+          "name": "Nike 684658-003 Training & Gym Shoes, Running Shoes",
+          "score": -3.0016815662384033
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU002",
+      "variant": "P1",
+      "raw_query": "comfortable Nike sneakers under 3500 rs with at least 4 star rating",
+      "semantic_input": "comfortable Nike sneakers with rating",
+      "preference_input": "comfortable — comfortable Nike sneakers with rating",
+      "gated": false,
+      "filters": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_rating": 4.0,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 3500.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "86be9efcc2ae20c049a9a6b3eb392c1b",
+          "name": "Nike 684658-003 Training & Gym Shoes, Running Shoes",
+          "score": 0.12866618083550965
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "86be9efcc2ae20c049a9a6b3eb392c1b",
+          "name": "Nike 684658-003 Training & Gym Shoes, Running Shoes",
+          "score": -3.0016815662384033
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU002",
+      "variant": "fixture_reference",
+      "raw_query": "comfortable Nike sneakers under 3500 rs with at least 4 star rating",
+      "semantic_input": "Nike sneakers",
+      "preference_input": "comfortable — Nike sneakers",
+      "gated": false,
+      "filters": {
+        "category": "Footwear",
+        "brand": "Nike",
+        "min_rating": 4.0,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 3500.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "86be9efcc2ae20c049a9a6b3eb392c1b",
+          "name": "Nike 684658-003 Training & Gym Shoes, Running Shoes",
+          "score": 0.15924746632790235
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "86be9efcc2ae20c049a9a6b3eb392c1b",
+          "name": "Nike 684658-003 Training & Gym Shoes, Running Shoes",
+          "score": -1.3395540714263916
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU004",
+      "variant": "Q0",
+      "raw_query": "lightweight Dell laptop for programming under 60000",
+      "semantic_input": "lightweight Dell laptop for programming",
+      "preference_input": "lightweight — lightweight Dell laptop for programming",
+      "gated": false,
+      "filters": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 60000.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": [],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU004",
+      "variant": "P1",
+      "raw_query": "lightweight Dell laptop for programming under 60000",
+      "semantic_input": "lightweight Dell laptop for programming",
+      "preference_input": "lightweight — lightweight Dell laptop for programming",
+      "gated": false,
+      "filters": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 60000.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": [],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU004",
+      "variant": "fixture_reference",
+      "raw_query": "lightweight Dell laptop for programming under 60000",
+      "semantic_input": "Dell laptop",
+      "preference_input": "for programming; lightweight — Dell laptop",
+      "gated": false,
+      "filters": {
+        "category": "Computers",
+        "brand": "Dell",
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 60000.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": [],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU005",
+      "variant": "Q0",
+      "raw_query": "Casio digital watch for men below 1500",
+      "semantic_input": "Casio digital watch for men",
+      "preference_input": null,
+      "gated": false,
+      "filters": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1500.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": [],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU005",
+      "variant": "P1",
+      "raw_query": "Casio digital watch for men below 1500",
+      "semantic_input": "Casio digital watch for men",
+      "preference_input": "for men — Casio digital watch for men",
+      "gated": false,
+      "filters": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1500.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": [],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU005",
+      "variant": "fixture_reference",
+      "raw_query": "Casio digital watch for men below 1500",
+      "semantic_input": "Casio digital watch",
+      "preference_input": "for men — Casio digital watch",
+      "gated": false,
+      "filters": {
+        "category": "Watches",
+        "brand": "Casio",
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1500.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": [],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU050",
+      "variant": "Q0",
+      "raw_query": "fast wireless charging pad for iPhone and Android under 1800",
+      "semantic_input": "fast wireless charging pad for iPhone and Android",
+      "preference_input": "fast — fast wireless charging pad for iPhone and Android",
+      "gated": true,
+      "filters": {
+        "category": null,
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": []
+    },
+    {
+      "id": "QU050",
+      "variant": "P1",
+      "raw_query": "fast wireless charging pad for iPhone and Android under 1800",
+      "semantic_input": "fast wireless charging pad for iPhone and Android",
+      "preference_input": null,
+      "gated": false,
+      "filters": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "28816aea8f796815cbdf79045e391830",
+          "name": "Newdort Usb Charger Full Charging Pad",
+          "score": 0.18465345499711883
+        },
+        {
+          "id": "ef9979756bed63f8769f27fe0a2f9242",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 0.1507195398020392
+        },
+        {
+          "id": "31100b8a80a913fbfab9f7c891e517de",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 0.15067622134023118
+        },
+        {
+          "id": "56d0c335e9013cacbda2736b44c5075c",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 0.15026451497750395
+        },
+        {
+          "id": "9f6c8457804ee62e7514ce9a0a7856f0",
+          "name": "i-KitPit Pouch for iPhone 5 / 5S",
+          "score": 0.10148208658862763
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "31100b8a80a913fbfab9f7c891e517de",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 1.517488718032837
+        },
+        {
+          "id": "ef9979756bed63f8769f27fe0a2f9242",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 1.4969890117645264
+        },
+        {
+          "id": "56d0c335e9013cacbda2736b44c5075c",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 1.4351316690444946
+        },
+        {
+          "id": "8e2ddc626a7c10d2f5d142070507fd13",
+          "name": "AW High Speed Charge and Sync Usb for Iphone 6 Plus Lightning Cable",
+          "score": -0.15346556901931763
+        },
+        {
+          "id": "c666e51ec698f56a304d5fd9c1687229",
+          "name": "AW High Speed Charge and Sync Usb for Iphone 6 Lightning Cable",
+          "score": -0.38200145959854126
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "QU050",
+      "variant": "fixture_reference",
+      "raw_query": "fast wireless charging pad for iPhone and Android under 1800",
+      "semantic_input": "fast wireless charging pad for iPhone and Android",
+      "preference_input": "fast charging — fast wireless charging pad for iPhone and Android",
+      "gated": false,
+      "filters": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "28816aea8f796815cbdf79045e391830",
+          "name": "Newdort Usb Charger Full Charging Pad",
+          "score": 0.18465345499711883
+        },
+        {
+          "id": "ef9979756bed63f8769f27fe0a2f9242",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 0.1507195398020392
+        },
+        {
+          "id": "31100b8a80a913fbfab9f7c891e517de",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 0.15067622134023118
+        },
+        {
+          "id": "56d0c335e9013cacbda2736b44c5075c",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 0.15026451497750395
+        },
+        {
+          "id": "9f6c8457804ee62e7514ce9a0a7856f0",
+          "name": "i-KitPit Pouch for iPhone 5 / 5S",
+          "score": 0.10148208658862763
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "ef9979756bed63f8769f27fe0a2f9242",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 3.175269842147827
+        },
+        {
+          "id": "56d0c335e9013cacbda2736b44c5075c",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 3.115281105041504
+        },
+        {
+          "id": "31100b8a80a913fbfab9f7c891e517de",
+          "name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+          "score": 3.0094656944274902
+        },
+        {
+          "id": "8e2ddc626a7c10d2f5d142070507fd13",
+          "name": "AW High Speed Charge and Sync Usb for Iphone 6 Plus Lightning Cable",
+          "score": -0.24664737284183502
+        },
+        {
+          "id": "c666e51ec698f56a304d5fd9c1687229",
+          "name": "AW High Speed Charge and Sync Usb for Iphone 6 Lightning Cable",
+          "score": -1.023568868637085
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD007",
+      "variant": "Q0",
+      "raw_query": "ergonomic mesh office chair with lumbar support below 7000",
+      "semantic_input": "ergonomic mesh office chair with lumbar support",
+      "preference_input": "ergonomic; lumbar support — ergonomic mesh office chair with lumbar support",
+      "gated": false,
+      "filters": {
+        "category": "Furniture",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 7000.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "e1cd4e80191fdc5eaad8329992334e45",
+          "name": "Nilkamal CHR6020 Plastic Outdoor Chair",
+          "score": 0.07946616830525881
+        },
+        {
+          "id": "875a75d570aad7478514cf0ff02e7c39",
+          "name": "ORKA Printed Leatherette XXL Chair Kid Bean Bag",
+          "score": 0.07417106132097345
+        },
+        {
+          "id": "4290fbceffb11317167349a8a8b371d9",
+          "name": "Lovely Plastic Desk Chair",
+          "score": 0.07106954197931219
+        },
+        {
+          "id": "92b359f5b2f2b00d52d9c4a96fdf8842",
+          "name": "RoyalOak Metal Outdoor Chair",
+          "score": 0.0686431512651974
+        },
+        {
+          "id": "d972097a0f51188cac236f70fc2e0bc7",
+          "name": "IBS ADJUSTABLE FOLDING KIDS MATE HOME OFFICE READING WRITING STUDY TABLEMATE WITH CUPHOLDER Plastic Portable Laptop Table",
+          "score": 0.05679799440461073
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "875a75d570aad7478514cf0ff02e7c39",
+          "name": "ORKA Printed Leatherette XXL Chair Kid Bean Bag",
+          "score": -7.034414291381836
+        },
+        {
+          "id": "81f305096865f5092608efd7e8005d4a",
+          "name": "IBS ADJUSTABLE FOLDING KIDS MATE HOME OFFICE READING WRITING TABLEMATE WITH CUPHOLDER Plastic Portable Laptop Table",
+          "score": -8.530137062072754
+        },
+        {
+          "id": "92b359f5b2f2b00d52d9c4a96fdf8842",
+          "name": "RoyalOak Metal Outdoor Chair",
+          "score": -8.821200370788574
+        },
+        {
+          "id": "181e43c979afff251cad0d4e042ab1c2",
+          "name": "IBS Plastic Portable Laptop Table",
+          "score": -8.882837295532227
+        },
+        {
+          "id": "d972097a0f51188cac236f70fc2e0bc7",
+          "name": "IBS ADJUSTABLE FOLDING KIDS MATE HOME OFFICE READING WRITING STUDY TABLEMATE WITH CUPHOLDER Plastic Portable Laptop Table",
+          "score": -8.884356498718262
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD007",
+      "variant": "P1",
+      "raw_query": "ergonomic mesh office chair with lumbar support below 7000",
+      "semantic_input": "ergonomic mesh office chair with lumbar support",
+      "preference_input": "ergonomic; mesh; lumbar support — ergonomic mesh office chair with lumbar support",
+      "gated": false,
+      "filters": {
+        "category": "Furniture",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 7000.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "e1cd4e80191fdc5eaad8329992334e45",
+          "name": "Nilkamal CHR6020 Plastic Outdoor Chair",
+          "score": 0.07946616830525881
+        },
+        {
+          "id": "875a75d570aad7478514cf0ff02e7c39",
+          "name": "ORKA Printed Leatherette XXL Chair Kid Bean Bag",
+          "score": 0.07417106132097345
+        },
+        {
+          "id": "4290fbceffb11317167349a8a8b371d9",
+          "name": "Lovely Plastic Desk Chair",
+          "score": 0.07106954197931219
+        },
+        {
+          "id": "92b359f5b2f2b00d52d9c4a96fdf8842",
+          "name": "RoyalOak Metal Outdoor Chair",
+          "score": 0.0686431512651974
+        },
+        {
+          "id": "d972097a0f51188cac236f70fc2e0bc7",
+          "name": "IBS ADJUSTABLE FOLDING KIDS MATE HOME OFFICE READING WRITING STUDY TABLEMATE WITH CUPHOLDER Plastic Portable Laptop Table",
+          "score": 0.05679799440461073
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "875a75d570aad7478514cf0ff02e7c39",
+          "name": "ORKA Printed Leatherette XXL Chair Kid Bean Bag",
+          "score": -6.2125020027160645
+        },
+        {
+          "id": "4290fbceffb11317167349a8a8b371d9",
+          "name": "Lovely Plastic Desk Chair",
+          "score": -8.421417236328125
+        },
+        {
+          "id": "81f305096865f5092608efd7e8005d4a",
+          "name": "IBS ADJUSTABLE FOLDING KIDS MATE HOME OFFICE READING WRITING TABLEMATE WITH CUPHOLDER Plastic Portable Laptop Table",
+          "score": -8.685688972473145
+        },
+        {
+          "id": "181e43c979afff251cad0d4e042ab1c2",
+          "name": "IBS Plastic Portable Laptop Table",
+          "score": -8.833066940307617
+        },
+        {
+          "id": "92b359f5b2f2b00d52d9c4a96fdf8842",
+          "name": "RoyalOak Metal Outdoor Chair",
+          "score": -8.90355396270752
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD007",
+      "variant": "fixture_reference",
+      "raw_query": "ergonomic mesh office chair with lumbar support below 7000",
+      "semantic_input": "ergonomic mesh office chair",
+      "preference_input": "ergonomic; mesh; with lumbar support — ergonomic mesh office chair",
+      "gated": false,
+      "filters": {
+        "category": "Furniture",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 7000.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "e1cd4e80191fdc5eaad8329992334e45",
+          "name": "Nilkamal CHR6020 Plastic Outdoor Chair",
+          "score": 0.08285891732837677
+        },
+        {
+          "id": "875a75d570aad7478514cf0ff02e7c39",
+          "name": "ORKA Printed Leatherette XXL Chair Kid Bean Bag",
+          "score": 0.0758063362831954
+        },
+        {
+          "id": "4290fbceffb11317167349a8a8b371d9",
+          "name": "Lovely Plastic Desk Chair",
+          "score": 0.07340363901244577
+        },
+        {
+          "id": "92b359f5b2f2b00d52d9c4a96fdf8842",
+          "name": "RoyalOak Metal Outdoor Chair",
+          "score": 0.07044121692076809
+        },
+        {
+          "id": "d972097a0f51188cac236f70fc2e0bc7",
+          "name": "IBS ADJUSTABLE FOLDING KIDS MATE HOME OFFICE READING WRITING STUDY TABLEMATE WITH CUPHOLDER Plastic Portable Laptop Table",
+          "score": 0.05691741702705586
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "875a75d570aad7478514cf0ff02e7c39",
+          "name": "ORKA Printed Leatherette XXL Chair Kid Bean Bag",
+          "score": -4.604058742523193
+        },
+        {
+          "id": "d972097a0f51188cac236f70fc2e0bc7",
+          "name": "IBS ADJUSTABLE FOLDING KIDS MATE HOME OFFICE READING WRITING STUDY TABLEMATE WITH CUPHOLDER Plastic Portable Laptop Table",
+          "score": -6.987168788909912
+        },
+        {
+          "id": "81f305096865f5092608efd7e8005d4a",
+          "name": "IBS ADJUSTABLE FOLDING KIDS MATE HOME OFFICE READING WRITING TABLEMATE WITH CUPHOLDER Plastic Portable Laptop Table",
+          "score": -7.003266334533691
+        },
+        {
+          "id": "181e43c979afff251cad0d4e042ab1c2",
+          "name": "IBS Plastic Portable Laptop Table",
+          "score": -7.27852201461792
+        },
+        {
+          "id": "4290fbceffb11317167349a8a8b371d9",
+          "name": "Lovely Plastic Desk Chair",
+          "score": -7.541503429412842
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD010",
+      "variant": "Q0",
+      "raw_query": "cheap portable Bluetooth speaker for outdoor party",
+      "semantic_input": "cheap portable Bluetooth speaker for outdoor party",
+      "preference_input": "portable; cheap — cheap portable Bluetooth speaker for outdoor party",
+      "gated": true,
+      "filters": {
+        "category": null,
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": null,
+        "max_price_inclusive": null
+      },
+      "lexical_top": [],
+      "reranked_top": []
+    },
+    {
+      "id": "HELD010",
+      "variant": "P1",
+      "raw_query": "cheap portable Bluetooth speaker for outdoor party",
+      "semantic_input": "cheap portable Bluetooth speaker for outdoor party",
+      "preference_input": "portable; bluetooth; cheap — cheap portable Bluetooth speaker for outdoor party",
+      "gated": false,
+      "filters": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": null,
+        "max_price_inclusive": null
+      },
+      "lexical_top": [
+        {
+          "id": "f1a0526d192c65cc538387ffd287c01b",
+          "name": "Allora 3D Screen Expander With Speaker for Micromax Bolt A089 Screen Expander Phone",
+          "score": 0.13375669668506646
+        },
+        {
+          "id": "d242e6305e62e47abbdf774f447790c3",
+          "name": "Redwave 360 Degree Powered Rotation Bluetooth Selfie Stick",
+          "score": 0.08239983971045096
+        },
+        {
+          "id": "203860575c7e91e6cf6e30856f573275",
+          "name": "Dyna Silver Heart Stereo Wireless Bluetooth Headset",
+          "score": 0.07991675352639523
+        },
+        {
+          "id": "bfb1fcf0c9f0e4dd31a9842dc969375c",
+          "name": "snjmart C5 Ultra Dual Stereo Dynamic Earphone Wired Headphones",
+          "score": 0.07445547845431505
+        },
+        {
+          "id": "94d4019000f88153ee3ec5a4919020db",
+          "name": "Head Kik Premium Quality Solo2 S460 Wireless Bluetooth Headset Stereo Dynamic Wired & Wireless Bluetooth Headphones",
+          "score": 0.0647706614370541
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "203860575c7e91e6cf6e30856f573275",
+          "name": "Dyna Silver Heart Stereo Wireless Bluetooth Headset",
+          "score": -4.25642204284668
+        },
+        {
+          "id": "136454e94f8b20fd332f510601919c2c",
+          "name": "LIFE LIKE S450 3.0 WITH MIC GOOD SOUND QUALITY Wired & Wireless Bluetooth Headphones",
+          "score": -4.786537170410156
+        },
+        {
+          "id": "85746bd7ec397edbd4f727ab0f381cca",
+          "name": "LIFE LIKE STN-840 4.1 WITH MIC Wireless Bluetooth Headset",
+          "score": -7.393354415893555
+        },
+        {
+          "id": "bfb1fcf0c9f0e4dd31a9842dc969375c",
+          "name": "snjmart C5 Ultra Dual Stereo Dynamic Earphone Wired Headphones",
+          "score": -7.493001937866211
+        },
+        {
+          "id": "1277ea28e08b058171afd114ab9ace2e",
+          "name": "Shortkut enterprises Model no 400 Mobile/Tablet Speaker",
+          "score": -7.527863502502441
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD010",
+      "variant": "fixture_reference",
+      "raw_query": "cheap portable Bluetooth speaker for outdoor party",
+      "semantic_input": "portable Bluetooth speaker",
+      "preference_input": "cheap; for outdoor party; portable — portable Bluetooth speaker",
+      "gated": false,
+      "filters": {
+        "category": "Mobiles & Accessories",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": null,
+        "max_price_inclusive": null
+      },
+      "lexical_top": [
+        {
+          "id": "d242e6305e62e47abbdf774f447790c3",
+          "name": "Redwave 360 Degree Powered Rotation Bluetooth Selfie Stick",
+          "score": 0.14066756476507672
+        },
+        {
+          "id": "203860575c7e91e6cf6e30856f573275",
+          "name": "Dyna Silver Heart Stereo Wireless Bluetooth Headset",
+          "score": 0.13642860401175105
+        },
+        {
+          "id": "94d4019000f88153ee3ec5a4919020db",
+          "name": "Head Kik Premium Quality Solo2 S460 Wireless Bluetooth Headset Stereo Dynamic Wired & Wireless Bluetooth Headphones",
+          "score": 0.11057219582695473
+        },
+        {
+          "id": "85746bd7ec397edbd4f727ab0f381cca",
+          "name": "LIFE LIKE STN-840 4.1 WITH MIC Wireless Bluetooth Headset",
+          "score": 0.101970728529667
+        },
+        {
+          "id": "136454e94f8b20fd332f510601919c2c",
+          "name": "LIFE LIKE S450 3.0 WITH MIC GOOD SOUND QUALITY Wired & Wireless Bluetooth Headphones",
+          "score": 0.10035311398912311
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "136454e94f8b20fd332f510601919c2c",
+          "name": "LIFE LIKE S450 3.0 WITH MIC GOOD SOUND QUALITY Wired & Wireless Bluetooth Headphones",
+          "score": -5.8994059562683105
+        },
+        {
+          "id": "203860575c7e91e6cf6e30856f573275",
+          "name": "Dyna Silver Heart Stereo Wireless Bluetooth Headset",
+          "score": -6.62239408493042
+        },
+        {
+          "id": "1277ea28e08b058171afd114ab9ace2e",
+          "name": "Shortkut enterprises Model no 400 Mobile/Tablet Speaker",
+          "score": -8.141865730285645
+        },
+        {
+          "id": "85746bd7ec397edbd4f727ab0f381cca",
+          "name": "LIFE LIKE STN-840 4.1 WITH MIC Wireless Bluetooth Headset",
+          "score": -8.497834205627441
+        },
+        {
+          "id": "94d4019000f88153ee3ec5a4919020db",
+          "name": "Head Kik Premium Quality Solo2 S460 Wireless Bluetooth Headset Stereo Dynamic Wired & Wireless Bluetooth Headphones",
+          "score": -8.693506240844727
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD014",
+      "variant": "Q0",
+      "raw_query": "Cello stainless steel insulated water bottle 1000ml under 800",
+      "semantic_input": "Cello stainless steel insulated water bottle 1000ml",
+      "preference_input": "stainless steel; insulated — Cello stainless steel insulated water bottle 1000ml",
+      "gated": true,
+      "filters": {
+        "category": "Kitchen & Dining",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": []
+    },
+    {
+      "id": "HELD014",
+      "variant": "P1",
+      "raw_query": "Cello stainless steel insulated water bottle 1000ml under 800",
+      "semantic_input": "Cello stainless steel insulated water bottle 1000ml",
+      "preference_input": "stainless steel; insulated — Cello stainless steel insulated water bottle 1000ml",
+      "gated": true,
+      "filters": {
+        "category": "Kitchen & Dining",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": []
+    },
+    {
+      "id": "HELD014",
+      "variant": "fixture_reference",
+      "raw_query": "Cello stainless steel insulated water bottle 1000ml under 800",
+      "semantic_input": "Cello stainless steel insulated water bottle",
+      "preference_input": "1000ml; insulated; stainless steel — Cello stainless steel insulated water bottle",
+      "gated": false,
+      "filters": {
+        "category": "Kitchen & Dining",
+        "brand": "Cello",
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": [],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD018",
+      "variant": "Q0",
+      "raw_query": "leather wallet for men below 1200",
+      "semantic_input": "leather wallet for men",
+      "preference_input": null,
+      "gated": false,
+      "filters": {
+        "category": "Bags, Wallets & Belts",
+        "brand": "Leather",
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1200.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": [],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD018",
+      "variant": "P1",
+      "raw_query": "leather wallet for men below 1200",
+      "semantic_input": "leather wallet for men",
+      "preference_input": "leather; for men — leather wallet for men",
+      "gated": false,
+      "filters": {
+        "category": "Bags, Wallets & Belts",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1200.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "9441eef99e8a6bc18ae175f15a3d7c7b",
+          "name": "Klaska SP-004 Pouch",
+          "score": 0.3186790206815124
+        },
+        {
+          "id": "01b6381a666b96467b23b637428f72fc",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 0.11590084241732193
+        },
+        {
+          "id": "b276800a43a00828605e7e81bd0c39af",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 0.10390590605316367
+        },
+        {
+          "id": "9b86a1fec49fb8aeef566fb059378291",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 0.10361512047047058
+        },
+        {
+          "id": "9b1e9dfe819fcb6bf72884b1a5abceb9",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 0.10299033845863084
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "74c1a4396ef511830e30254223ce44ca",
+          "name": "Eccellente Y- Back Suspenders for Men",
+          "score": 3.8874099254608154
+        },
+        {
+          "id": "02ccb4498a24cfb05512797142568d0a",
+          "name": "Eccellente Y- Back Suspenders for Men",
+          "score": 3.730426788330078
+        },
+        {
+          "id": "0ce052a83d9ddd48e33fcb48e08157e9",
+          "name": "Eccellente Y- Back Suspenders for Men",
+          "score": 3.560811996459961
+        },
+        {
+          "id": "9441eef99e8a6bc18ae175f15a3d7c7b",
+          "name": "Klaska SP-004 Pouch",
+          "score": 3.458329439163208
+        },
+        {
+          "id": "e1faccdd442e27ddc8855a5c48001329",
+          "name": "Navaksha Y- Back Suspenders for Men",
+          "score": 3.455366373062134
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD018",
+      "variant": "fixture_reference",
+      "raw_query": "leather wallet for men below 1200",
+      "semantic_input": "leather wallet",
+      "preference_input": "for men; leather — leather wallet",
+      "gated": false,
+      "filters": {
+        "category": "Bags, Wallets & Belts",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1200.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "9441eef99e8a6bc18ae175f15a3d7c7b",
+          "name": "Klaska SP-004 Pouch",
+          "score": 0.31406995629253354
+        },
+        {
+          "id": "01b6381a666b96467b23b637428f72fc",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 0.09069590415709235
+        },
+        {
+          "id": "a2353aa7f17c997dcbb267cc8059bdcf",
+          "name": "Best 6 Card Holder",
+          "score": 0.08929978978942636
+        },
+        {
+          "id": "b276800a43a00828605e7e81bd0c39af",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 0.08050531824520947
+        },
+        {
+          "id": "9b86a1fec49fb8aeef566fb059378291",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 0.08028002031205976
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "7a7e587d3344885bdb8c77f8b7679483",
+          "name": "Vermello Men Casual Brown Genuine Leather Belt",
+          "score": 5.673007965087891
+        },
+        {
+          "id": "7db2acfee8298ef8c687d688147c69be",
+          "name": "Ligans NY Men Formal Black Genuine Leather Belt",
+          "score": 5.018718719482422
+        },
+        {
+          "id": "9441eef99e8a6bc18ae175f15a3d7c7b",
+          "name": "Klaska SP-004 Pouch",
+          "score": 4.903008937835693
+        },
+        {
+          "id": "b276800a43a00828605e7e81bd0c39af",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 1.3283486366271973
+        },
+        {
+          "id": "01b6381a666b96467b23b637428f72fc",
+          "name": "KAN Long Travel Passport Organizer & Cheque Book Pouch Document Holder with Zip For Men and Women",
+          "score": 0.8311342597007751
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD020",
+      "variant": "Q0",
+      "raw_query": "waterproof car body cover for Honda City under 1800",
+      "semantic_input": "waterproof car body cover for Honda City",
+      "preference_input": "waterproof — waterproof car body cover for Honda City",
+      "gated": true,
+      "filters": {
+        "category": "Automotive",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [],
+      "reranked_top": []
+    },
+    {
+      "id": "HELD020",
+      "variant": "P1",
+      "raw_query": "waterproof car body cover for Honda City under 1800",
+      "semantic_input": "waterproof car body cover for Honda City",
+      "preference_input": "waterproof; for honda city — waterproof car body cover for Honda City",
+      "gated": false,
+      "filters": {
+        "category": "Automotive",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "cebf552de1d9ac84d31e14c4c6d735be",
+          "name": "Allure Auto CM 1028 Car Mat Honda City",
+          "score": 0.3364486493658717
+        },
+        {
+          "id": "d4b654c83effda0e3d8bec86448141e9",
+          "name": "Allure Auto CM 1170 Car Mat Honda City",
+          "score": 0.3175281533160245
+        },
+        {
+          "id": "7d3f9ad649787cb413a238552fc1f302",
+          "name": "Modx Steering Cover For Honda City",
+          "score": 0.27689228080744216
+        },
+        {
+          "id": "aa5fae0a2616918610dc3a9a0280ba3b",
+          "name": "AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Honda city type 3 Sun Shade For Honda City",
+          "score": 0.25576213449459667
+        },
+        {
+          "id": "740e87191eae57cfefe388acfde09b39",
+          "name": "3a Autocare City Car Mat Honda City",
+          "score": 0.22107814724555203
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "7d3f9ad649787cb413a238552fc1f302",
+          "name": "Modx Steering Cover For Honda City",
+          "score": 0.8681708574295044
+        },
+        {
+          "id": "740e87191eae57cfefe388acfde09b39",
+          "name": "3a Autocare City Car Mat Honda City",
+          "score": -0.0369073748588562
+        },
+        {
+          "id": "aa5fae0a2616918610dc3a9a0280ba3b",
+          "name": "AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Honda city type 3 Sun Shade For Honda City",
+          "score": -1.9739441871643066
+        },
+        {
+          "id": "60007d219d57ba1e2c62c02516afb137",
+          "name": "AdroitZ PREMIUM Orange & Black Bike Body Cover For Honda Aviator Two Wheeler Cover",
+          "score": -2.2076001167297363
+        },
+        {
+          "id": "d4b654c83effda0e3d8bec86448141e9",
+          "name": "Allure Auto CM 1170 Car Mat Honda City",
+          "score": -3.6057820320129395
+        }
+      ],
+      "constraint_violations": 0
+    },
+    {
+      "id": "HELD020",
+      "variant": "fixture_reference",
+      "raw_query": "waterproof car body cover for Honda City under 1800",
+      "semantic_input": "waterproof car body cover for Honda City",
+      "preference_input": "for honda city; waterproof — waterproof car body cover for Honda City",
+      "gated": false,
+      "filters": {
+        "category": "Automotive",
+        "brand": null,
+        "min_rating": null,
+        "min_price": null,
+        "min_price_inclusive": null,
+        "max_price": 1800.0,
+        "max_price_inclusive": true
+      },
+      "lexical_top": [
+        {
+          "id": "cebf552de1d9ac84d31e14c4c6d735be",
+          "name": "Allure Auto CM 1028 Car Mat Honda City",
+          "score": 0.3364486493658717
+        },
+        {
+          "id": "d4b654c83effda0e3d8bec86448141e9",
+          "name": "Allure Auto CM 1170 Car Mat Honda City",
+          "score": 0.3175281533160245
+        },
+        {
+          "id": "7d3f9ad649787cb413a238552fc1f302",
+          "name": "Modx Steering Cover For Honda City",
+          "score": 0.27689228080744216
+        },
+        {
+          "id": "aa5fae0a2616918610dc3a9a0280ba3b",
+          "name": "AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Honda city type 3 Sun Shade For Honda City",
+          "score": 0.25576213449459667
+        },
+        {
+          "id": "740e87191eae57cfefe388acfde09b39",
+          "name": "3a Autocare City Car Mat Honda City",
+          "score": 0.22107814724555203
+        }
+      ],
+      "reranked_top": [
+        {
+          "id": "7d3f9ad649787cb413a238552fc1f302",
+          "name": "Modx Steering Cover For Honda City",
+          "score": 1.9703210592269897
+        },
+        {
+          "id": "740e87191eae57cfefe388acfde09b39",
+          "name": "3a Autocare City Car Mat Honda City",
+          "score": 0.8000547289848328
+        },
+        {
+          "id": "aa5fae0a2616918610dc3a9a0280ba3b",
+          "name": "AdroitZ Exclusive Barbie Doll Sunshade / curtain (set of 2) for Honda city type 3 Sun Shade For Honda City",
+          "score": -1.332746982574463
+        },
+        {
+          "id": "60007d219d57ba1e2c62c02516afb137",
+          "name": "AdroitZ PREMIUM Orange & Black Bike Body Cover For Honda Aviator Two Wheeler Cover",
+          "score": -1.825101613998413
+        },
+        {
+          "id": "d4b654c83effda0e3d8bec86448141e9",
+          "name": "Allure Auto CM 1170 Car Mat Honda City",
+          "score": -2.8748199939727783
+        }
+      ],
+      "constraint_violations": 0
+    }
+  ]
+}

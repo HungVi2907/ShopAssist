@@ -10,7 +10,7 @@ from shopassist.llm.refinement_rules import IN_QUERY_CORRECTION_REGEX
 NUMBER = r"(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?"
 MONEY = r"(?:INR|rs\.?|rupees?|USD|dollars?|EUR|euros?|GBP|pounds?|₹|\$|€|£)"
 AMOUNT = rf"(?:{MONEY}\s*)?(?P<value>{NUMBER})"
-UPPER = r"under|below|less than|up to|at most|maximum|max|within|dưới|tối đa"
+UPPER = r"not exceeding|under|below|less than|up to|at most|maximum|max|within|dưới|tối đa"
 LOWER = r"above|over|more than|at least|minimum|min|trên|ít nhất"
 BOUND = re.compile(rf"\b(?P<operator>{UPPER}|{LOWER})\s+{AMOUNT}", re.I)
 RANGE = re.compile(rf"\bbetween\s+(?:{MONEY}\s*)?(?P<lo>{NUMBER})\s+and\s+(?:{MONEY}\s*)?(?P<hi>{NUMBER})", re.I)

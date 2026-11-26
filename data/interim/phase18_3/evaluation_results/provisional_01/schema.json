@@ -1,0 +1,65 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "product": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Product"
+    },
+    "brand": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Brand"
+    },
+    "budget": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Budget"
+    },
+    "rating": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Rating"
+    },
+    "preferences": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Preferences",
+      "type": "array"
+    }
+  },
+  "required": [
+    "product",
+    "brand",
+    "budget",
+    "rating",
+    "preferences"
+  ],
+  "title": "ExtractedShoppingIntent",
+  "type": "object"
+}

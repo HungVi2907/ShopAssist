@@ -1,0 +1,7 @@
+{
+  "source_run": "data\\interim\\phase18_3\\evaluation_results\\provisional_01",
+  "source_responses_sha256": "223d07cb37a1120a1eafb6b9ab64c7da0d8e1d07ab5a1e80f8bf4c3d23854405",
+  "transformation_sha256": "07f0585cb3108d3366d83f6c35f24d7794e71a01ca7068ff679c5a6414763c02",
+  "timing": "Inherited live wall time plus measured offline revalidation; conservative estimate, not a fresh end-to-end benchmark.",
+  "independence": "Post-provisional safety repair. All datasets now seen; no independent human review."
+}
