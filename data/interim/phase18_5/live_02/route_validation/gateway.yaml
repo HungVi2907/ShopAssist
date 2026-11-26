@@ -1,0 +1,81 @@
+version: 1
+providers:
+  ollama:
+    kind: ollama
+    endpoint: http://127.0.0.1:11434
+    credential_env: ''
+    model_digest: d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174
+    limits:
+      max_in_flight: 1
+routes:
+  native_query:
+    provider: ollama
+    model: qwen2.5:1.5b-instruct-local
+    structured_mode: ollama_schema
+    schema_ids:
+    - phase8.intent.flat.v1
+    enabled: true
+    approval:
+      status: approved
+      evidence_ref: native_query.yaml
+    cost:
+      class: free
+      evidence_ref: native_query.yaml
+    options:
+      max_output_tokens: 512
+      context_limit_tokens: 4096
+      temperature: 0.0
+      seed: 42
+  native_recommendation:
+    provider: ollama
+    model: qwen2.5:1.5b-instruct-local
+    structured_mode: ollama_schema
+    schema_ids:
+    - phase12.catalog-selection.v2
+    enabled: true
+    approval:
+      status: approved
+      evidence_ref: native_recommendation.yaml
+    cost:
+      class: free
+      evidence_ref: native_recommendation.yaml
+    options:
+      max_output_tokens: 256
+      context_limit_tokens: 4096
+      temperature: 0.0
+      seed: 42
+  judge_disabled:
+    provider: ollama
+    model: qwen2.5:1.5b-instruct-local
+    structured_mode: ollama_schema
+    schema_ids:
+    - phase14.judge.v1
+    enabled: false
+    approval:
+      status: pending
+    cost:
+      class: unknown
+    options:
+      max_output_tokens: 256
+      context_limit_tokens: 4096
+      temperature: 0.0
+      seed: 42
+tasks:
+  query_understanding:
+    profiles:
+      default:
+        schema_id: phase8.intent.flat.v1
+        route_ids:
+        - native_query
+  recommendation_generation:
+    profiles:
+      default:
+        schema_id: phase12.catalog-selection.v2
+        route_ids:
+        - native_recommendation
+  llm_judge:
+    profiles:
+      default:
+        schema_id: phase14.judge.v1
+        route_ids:
+        - judge_disabled

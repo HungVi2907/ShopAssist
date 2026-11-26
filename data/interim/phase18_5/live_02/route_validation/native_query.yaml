@@ -1,0 +1,24 @@
+approval: approved
+artifact_ref: artifact.json
+artifact_sha256: 7af358a4627beeb3360d3602c8bdcde1cab83bbc63d4a76e4a219dd2d9b74d4d
+cost_class: free
+endpoint: http://127.0.0.1:11434
+inference_options:
+  context_limit_tokens: 4096
+  max_output_tokens: 512
+  reasoning_effort: null
+  reported_model_aliases: []
+  seed: 42
+  temperature: 0.0
+model: qwen2.5:1.5b-instruct-local
+model_digest: d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174
+provider: ollama
+route_id: native_query
+schema_fingerprints:
+- b629c246250f8b58e49da98733d79488b3bda996f7df8f12bb01f77a854bb5d7
+schema_id: phase8.intent.flat.v1
+scope: experimental
+status: valid
+structured_mode: ollama_schema
+task: query_understanding
+valid_until: '2026-11-27T15:16:28.944887+00:00'

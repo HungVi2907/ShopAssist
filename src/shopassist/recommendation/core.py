@@ -55,7 +55,7 @@ class RecommendationService:
     ) -> None:
         self.settings = settings or get_recommendation_settings()
         self.gateway = gateway
-        if local_generator is not None and (gateway is not None or provider is not None):
+        if local_generator is not None and (provider is not None or (gateway is not None and getattr(local_generator,'gateway',None) is not gateway)):
             raise ValueError('Experimental local generation cannot also dispatch external providers or Gateway.')
         self.local_generator = local_generator
         self.provider = provider or (get_recommendation_provider(self.settings) if gateway is None and local_generator is None else None)
@@ -219,7 +219,7 @@ class RecommendationService:
 
         if self.local_generator is not None:
             return await self.local_generator.generate(query_result,candidates,
-                language=effective_language,parent_deadline_mono=parent_deadline_mono)
+                language=effective_language,parent_deadline_mono=parent_deadline_mono,request_id=request_id,task_id=task_id)
 
         # 3. Context & Evidence Construction
         context_str, evidence_store, flat_evidence = self.context_builder.build_context(

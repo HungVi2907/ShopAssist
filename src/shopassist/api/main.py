@@ -41,6 +41,9 @@ logger = logging.getLogger(__name__)
 
 def _build_gateway(settings: GatewaySettings) -> Gateway | None:
     """Validate the configured snapshot before constructing any provider client."""
+    if settings.runtime=='ollama_experimental':
+        from shopassist.llm_gateway.native_runtime import build_native_gateway
+        return build_native_gateway(settings)
     if not settings.enabled:
         return None
     registry = ProviderRegistry(settings, experiment_schema_bindings())
@@ -74,6 +77,10 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
         gateway_settings = GatewaySettings()
         gateway = _build_gateway(gateway_settings)
         app.state.gateway = gateway
+        native=gateway_settings.runtime=='ollama_experimental'
+        if native:
+            from shopassist.llm_gateway.native_runtime import verify_native_gateway
+            await verify_native_gateway(gateway)
 
         engine = get_async_engine(pool_size=5, max_overflow=2, pool_pre_ping=True)
         app.state.engine = engine
@@ -101,12 +108,16 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
             product_text_provider = MappingProductTextProvider(texts={})
         app.state.product_text_provider = product_text_provider
 
-        query_engine = QueryUnderstandingEngine(gateway=gateway)
+        query_engine = QueryUnderstandingEngine(gateway=gateway,**({'gateway_native':True} if native else {}))
         pref_encoder = PreferenceQueryEncoder(dense_query_encoder=dense_query_encoder)
         preference_service = PreferenceRepresentationService(encoder=pref_encoder)
         hybrid_service = HybridRetrievalService(engine=engine, tfidf_index=tfidf_index, query_encoder=dense_query_encoder)
         reranking_service = RerankingService(text_provider=product_text_provider)
-        recommendation_service = RecommendationService(gateway=gateway)
+        if native:
+            from shopassist.recommendation.local import LocalRecommendationGenerator
+            recommendation_service=RecommendationService(gateway=gateway,local_generator=LocalRecommendationGenerator(gateway=gateway))
+        else:
+            recommendation_service = RecommendationService(gateway=gateway)
 
         app.state.query_engine = query_engine
         app.state.preference_service = preference_service

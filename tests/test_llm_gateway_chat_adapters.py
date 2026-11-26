@@ -9,9 +9,9 @@ import pytest
 
 from shopassist.llm_gateway.adapters.groq import GroqAdapter
 from shopassist.llm_gateway.adapters.openrouter import OpenRouterAdapter
-from shopassist.llm_gateway.config import GatewaySettings
+from shopassist.llm_gateway.config import GatewaySettings, Options
 from shopassist.llm_gateway.errors import ErrorCategory, ProviderAttemptError
-from shopassist.llm_gateway.registry import ProviderRegistry
+from shopassist.llm_gateway.registry import ProviderRegistry, ResolvedRoute
 from shopassist.llm_gateway.schemas import GatewayRequest, SCHEMA_IDS
 from shopassist.recommendation.schemas import LLMRecommendationPayload
 
@@ -22,14 +22,19 @@ def provider(request):
 
 
 def prepared(adapter, kind):
-    registry = ProviderRegistry(GatewaySettings(_env_file=None, enabled=True),
-                                {schema: LLMRecommendationPayload for schema in SCHEMA_IDS.values()})
+    # Adapter conformance must not depend on an enabled/removed production route.
+    route=ResolvedRoute(route_id='synthetic_'+kind,provider_profile=kind,provider=kind,
+        endpoint={'groq':'https://api.groq.com/openai/v1','openrouter':'https://openrouter.ai/api/v1'}[kind],
+        credential_env={'groq':'GROQ_API_KEY','openrouter':'OPENROUTER_API_KEY'}[kind],model='test-model',
+        structured_mode='json_schema',schema_ids=frozenset({'phase12.recommendation.v1'}),enabled=False,
+        approval='pending',evidence_valid_until=None,cost_class='unknown',cost={},limits={},
+        options=Options(max_output_tokens=2048,reasoning_effort='low' if kind=='groq' else None).model_dump())
     request = GatewayRequest[LLMRecommendationPayload](
         task="recommendation_generation", request_id="req", task_id="task",
         schema_id="phase12.recommendation.v1", response_schema=LLMRecommendationPayload,
         system_prompt="system prompt", user_prompt="evidence context",
     )
-    return adapter.prepare(request, registry.resolve("recommendation_" + kind))
+    return adapter.prepare(request, route)
 
 
 def envelope(content='{"overview":"ok","products":[]}'):

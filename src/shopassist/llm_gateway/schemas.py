@@ -4,6 +4,8 @@ from __future__ import annotations
 from datetime import datetime
 from decimal import Decimal
 from enum import Enum
+import hashlib
+import json
 from typing import Annotated, Generic, Literal, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -41,6 +43,13 @@ class GatewayUsage(ContractModel):
     pricing_ref: Identifier | None = None
 
 
+class GatewayTimings(ContractModel):
+    total_ms: Duration | None = None
+    load_ms: Duration | None = None
+    prompt_eval_ms: Duration | None = None
+    eval_ms: Duration | None = None
+
+
 class GatewayRequest(ContractModel, Generic[T]):
     task: TaskType
     profile: Identifier = "default"
@@ -51,6 +60,10 @@ class GatewayRequest(ContractModel, Generic[T]):
     schema_id: Identifier
     response_schema: type[T] = Field(repr=False, exclude=True)
     parent_deadline_mono: Duration | None = None
+
+    @property
+    def schema_fingerprint(self) -> str:
+        return hashlib.sha256(json.dumps(self.response_schema.model_json_schema(),sort_keys=True).encode()).hexdigest()
 
     @model_validator(mode="after")
     def check_input(self):
@@ -70,7 +83,7 @@ class AttemptRecord(ContractModel):
     attempt_number: Annotated[int, Field(strict=True, ge=1, le=2)]
     route_index: Count
     route_id: Identifier
-    provider: Literal["gemini", "openrouter", "groq"]
+    provider: Literal["gemini", "openrouter", "groq", "ollama"]
     model: Identifier
     reported_model: Identifier | None = None
     started_at_utc: datetime
@@ -84,6 +97,9 @@ class AttemptRecord(ContractModel):
     user_chars: Count
     context_chars: Count
     is_failover_route: bool
+    schema_fingerprint: str | None = Field(default=None,pattern=r'^[0-9a-f]{64}$')
+    timings: GatewayTimings | None = None
+    model_digest: str | None = Field(default=None,pattern=r'^[0-9a-f]{64}$')
 
     @model_validator(mode="after")
     def check_attempt(self):
@@ -130,7 +146,7 @@ class GatewayResponse(AttemptHistory, Generic[T]):
     payload: T = Field(repr=False, exclude=True)
     raw_text: Annotated[str, Field(max_length=1_000_000)] | None = Field(default=None, repr=False, exclude=True)
     route_id: Identifier
-    provider: Literal["gemini", "openrouter", "groq"]
+    provider: Literal["gemini", "openrouter", "groq", "ollama"]
     model: Identifier
     reported_model: Identifier | None = None
     usage: GatewayUsage
@@ -168,3 +184,5 @@ class ProviderFailure(ContractModel):
     http_status: HttpStatus | None = None
     retry_after_s: Duration | None = None
     usage: GatewayUsage | None = None
+    reported_model: Identifier | None = None
+    timings: GatewayTimings | None = None

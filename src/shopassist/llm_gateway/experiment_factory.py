@@ -19,7 +19,11 @@ from shopassist.recommendation.schemas import LLMRecommendationPayload
 
 
 def experiment_schema_bindings() -> dict[str, type]:
+    from shopassist.llm.transformation import ExtractedShoppingIntent
+    from shopassist.recommendation.local import SelectionFamily
     return {
+        'phase8.intent.flat.v1':ExtractedShoppingIntent,
+        'phase12.catalog-selection.v2':SelectionFamily,
         SCHEMA_IDS[TaskType.QUERY_UNDERSTANDING]: QueryUnderstandingOutput,
         SCHEMA_IDS[TaskType.RECOMMENDATION_GENERATION]: LLMRecommendationPayload,
         SCHEMA_IDS[TaskType.LLM_JUDGE]: LLMJudgeResponseSchema,

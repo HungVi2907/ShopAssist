@@ -57,6 +57,7 @@ class QueryUnderstandingEngine:
         catalog_brands: set[str] | None = None,
         *,
         intent_extractor=None,
+        gateway_native: bool = False,
     ) -> None:
         """Initialize Query Understanding engine.
 
@@ -71,6 +72,9 @@ class QueryUnderstandingEngine:
         if intent_extractor is not None and gateway is not None:
             raise ValueError('Experimental native extraction cannot use Gateway routes.')
         self.intent_extractor = intent_extractor
+        if gateway_native and (gateway is None or intent_extractor is not None):
+            raise ValueError('Native schema binding requires exactly one Gateway.')
+        self.gateway_native=gateway_native
         self._catalog_brands = catalog_brands if catalog_brands is not None else load_catalog_brands_set()
         logger.info(
             "QueryUnderstandingEngine initialized with %d catalog brands.",
@@ -150,17 +154,30 @@ class QueryUnderstandingEngine:
 
         # 3. Call Gemini API
         try:
-            if self.intent_extractor is not None:
+            if self.intent_extractor is not None or self.gateway_native:
                 from shopassist.llm.transformation import transform_extraction, ExtractedShoppingIntent
                 start = time.perf_counter()
-                extracted, raw_json, _, usage = await self.intent_extractor.extract(clean_query)
+                usage_warnings=[]
+                if self.gateway_native:
+                    from shopassist.llm.extraction import EXTRACTION_PROMPT
+                    response=await self.gateway.complete(GatewayRequest(
+                        task=TaskType.QUERY_UNDERSTANDING,profile='default',request_id=request_id or uuid.uuid4().hex,
+                        task_id=task_id or uuid.uuid4().hex,system_prompt=EXTRACTION_PROMPT,user_prompt=clean_query,
+                        schema_id='phase8.intent.flat.v1',response_schema=ExtractedShoppingIntent,parent_deadline_mono=parent_deadline_mono))
+                    extracted=response.payload;raw_json=response.raw_text or '';model=response.model
+                    usage=TokenUsageMetadata(prompt_tokens=response.usage.input_tokens or 0,candidates_tokens=response.usage.output_tokens or 0,total_tokens=response.usage.total_tokens or 0)
+                    if any(v is None for v in (response.usage.input_tokens,response.usage.output_tokens,response.usage.total_tokens)):
+                        usage_warnings.append('Gateway usage is unknown; zero public usage fields are legacy defaults, not measured zero tokens.')
+                else:
+                    extracted, raw_json, _, usage = await self.intent_extractor.extract(clean_query)
+                    model=self.intent_extractor.model
                 extracted = ExtractedShoppingIntent.model_validate(extracted)
                 validation = transform_extraction(clean_query, extracted, self._catalog_brands)
                 return QueryUnderstandingResult(
                     query=clean_query, output=validation.output, raw_response_text=raw_json,
-                    model=self.intent_extractor.model, latency_ms=(time.perf_counter()-start)*1000,
+                    model=model, latency_ms=(time.perf_counter()-start)*1000,
                     token_usage=usage, is_valid=True,
-                    validation_errors=[validation.status.value, *validation.issues, *validation.corrections],
+                    validation_errors=[validation.status.value, *validation.issues, *validation.corrections,*usage_warnings],
                 )
             if self.gateway is not None:
                 response = await self.gateway.complete(
@@ -231,6 +248,15 @@ class QueryUnderstandingEngine:
             # `is_valid=False` before it checks clarification state.
             logger.warning("Query understanding Gateway failed (%s); failing closed.", exc.category.value)
             safe_failure = f"LLM Gateway failure ({exc.category.value}); query constraints were not inferred."
+            failed_usage=None
+            usage_warnings=[]
+            if exc.attempts:
+                if any(v is None for a in exc.attempts for v in (a.usage.input_tokens,a.usage.output_tokens,a.usage.total_tokens)):
+                    usage_warnings.append('Gateway usage is unknown; zero public usage fields are legacy defaults, not measured zero tokens.')
+                def count(field):
+                    values=[getattr(a.usage,field) for a in exc.attempts]
+                    return sum(values) if all(v is not None for v in values) else 0
+                failed_usage=TokenUsageMetadata(prompt_tokens=count('input_tokens'),candidates_tokens=count('output_tokens'),total_tokens=count('total_tokens'))
             return QueryUnderstandingResult(
                 query=clean_query,
                 output=QueryUnderstandingOutput(
@@ -240,8 +266,9 @@ class QueryUnderstandingEngine:
                 ),
                 raw_response_text="",
                 model="",
+                latency_ms=exc.elapsed_ms,token_usage=failed_usage,
                 is_valid=False,
-                validation_errors=[safe_failure],
+                validation_errors=[safe_failure,*usage_warnings],
             )
         except Exception as exc:
             logger.error("Query understanding processing error: %s", type(exc).__name__)

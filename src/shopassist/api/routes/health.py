@@ -98,6 +98,16 @@ async def check_health(request: Request) -> JSONResponse:
             f"configured ({recommendation_provider})" if recommendation_provider else "unconfigured"
         )
         logger.debug("LLM Gateway local readiness snapshot: %s", gateway.readiness_snapshot())
+        if getattr(getattr(gateway,'settings',None),'runtime',None)=='ollama_experimental':
+            snapshot=gateway.readiness_snapshot()
+            verified=all(row.get('identity_verified_recently',False) for row in snapshot.values())
+            eligible=all(gateway.registry.ineligibility(gateway.registry.primary_route(task).route_id,task) is None
+                for task in (TaskType.QUERY_UNDERSTANDING,TaskType.RECOMMENDATION_GENERATION))
+            components['ollama_identity']='verified_recently' if verified else 'unverified_or_stale'
+            components['ollama_routes']='eligible_experimental' if eligible else 'disabled_or_unapproved'
+            active=all(row['health']=='active' and row.get('route_health')=='active' for row in snapshot.values() if row['enabled'])
+            components['ollama_transport']='active' if active else 'cooldown_or_blocked'
+            if not verified or not eligible or not active:is_healthy=False
     else:
         # Legacy rollback mode keeps its existing credential-based indicators.
         try:

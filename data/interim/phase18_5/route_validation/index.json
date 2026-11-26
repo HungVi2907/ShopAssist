@@ -1,0 +1,8 @@
+{
+  "permission_scope": "Isolated supervised integration tests only; no production semantic approval",
+  "configuration": "data/interim/phase18_5/live_02/route_validation/gateway.yaml",
+  "artifact": "data/interim/phase18_5/live_02/route_validation/artifact.json",
+  "artifact_sha256": "7af358a4627beeb3360d3602c8bdcde1cab83bbc63d4a76e4a219dd2d9b74d4d",
+  "schema_binding": "Exact fingerprints and frozen options through normal loader; approvals expire after 24 hours",
+  "checked_in_templates": "Production and experimental templates remain disabled/pending"
+}

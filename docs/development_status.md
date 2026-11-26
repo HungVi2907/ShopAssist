@@ -10,6 +10,7 @@ The API and Telegram implementations are available for local prototyping. The [P
 
 | Phase | Current status | Evidence / next gate |
 | --- | --- | --- |
+| 18.5 | **EXPERIMENTAL NATIVE INTEGRATION IMPLEMENTED AND LOCALLY VALIDATED** | Shared Ollama Gateway for frozen Q1S/R3; 728 guarded offline tests passed (one existing mock warning); live QU and 1/3/5-product generation passed; combined mocked-retrieval smoke used two inference calls. Production remains disabled/pending; actual FastAPI/catalog retrieval, independent semantic review, Telegram delivery and historical backup gates remain open. [Implementation](phase18_5/implementation_report.md), [tests](phase18_5/integration_test_report.md), [Phase 18.6 handover](phase18_5/phase18_6_handover.md). Overall Phase 18 remains `IMPLEMENTED_PENDING_BACKUP_VALIDATION`. |
 | 1–7 | Implemented | Existing phase reports and artifacts; embeddings/model assets retained. |
 | 8 | **IMPLEMENTED — ACCEPTED WITH KNOWN LIMITATIONS** | Production remains Gemini `gemini-3.1-flash-lite`, temperature `0.0`, Schema v1. Freeze manifest and debt register created. |
 | 8.1 | **EXPERIMENTAL REFINEMENT COMPLETE — NOT FULLY ADOPTED IN PRODUCTION** | E5-B/schema-v2 remain experimental; historical reports preserved. |

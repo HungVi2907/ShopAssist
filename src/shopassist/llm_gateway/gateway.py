@@ -35,6 +35,7 @@ from shopassist.llm_gateway.schemas import (
     TaskType,
 )
 from shopassist.llm_gateway.telemetry import RouteSkip, TelemetrySink, build_task_summary
+from shopassist.llm_gateway.json_utils import strict_json_loads
 
 
 class Gateway:
@@ -71,7 +72,8 @@ class Gateway:
         self.quota = quota or ProviderQuotaManager(monotonic=monotonic, utc_now=utc_now)
         self.telemetry = telemetry
         self.credential_available = credential_available or (
-            lambda route: bool(os.environ.get(route.credential_env))
+            lambda route: (bool(getattr(self._adapter_for_route(route),'ready_for',lambda _:False)(route)) and
+                (not route.credential_env or bool(os.environ.get(route.credential_env)))) if route.provider=='ollama' else bool(os.environ.get(route.credential_env))
         )
         self.budget_estimator = budget_estimator or (lambda _route, _request: (None, None))
         self.attempt_accounting = attempt_accounting
@@ -94,6 +96,7 @@ class Gateway:
         try:
             routes = self.router.routes_for(request)
         except Exception:
+            await self._emit_summary(request,[],[],'failure',started)
             raise GatewayError(
                 request_id=request.request_id, task_id=request.task_id,
                 category=ErrorCategory.CONFIGURATION_ERROR,
@@ -139,6 +142,12 @@ class Gateway:
 
             try:
                 prepared = adapter.prepare(request, route)
+            except ProviderAttemptError as exc:
+                await self._emit_summary(request,attempts,skips,'failure',started)
+                native=route.provider=='ollama'
+                raise GatewayError(request_id=request.request_id,task_id=request.task_id,attempts=tuple(attempts),
+                    category=exc.category if native else ErrorCategory.CONFIGURATION_ERROR,
+                    reason_code=exc.reason_code if native else ReasonCode.CONFIGURATION_ERROR,source='request' if native else 'gateway') from None
             except Exception:
                 # Local preparation is not an outbound attempt.
                 raise GatewayError(
@@ -227,19 +236,21 @@ class Gateway:
                         category=ErrorCategory.INCOMPATIBLE_ROUTE,
                         reason_code=ReasonCode.INCOMPATIBLE_ROUTE,
                         http_status=result.http_status, usage=result.usage,
+                        reported_model=result.reported_model, timings=result.timings,
                     )
                 try:
                     decoder = self.decoders.get(request.schema_id)
                     output_text = decoder(result.raw_text) if decoder is not None else result.raw_text
                     if not isinstance(output_text, str):
                         raise ValueError("Decoder returned an invalid value")
-                    value = json.loads(output_text, parse_constant=self._reject_json_constant)
+                    value = strict_json_loads(output_text)
                     payload = request.response_schema.model_validate(value)
                 except Exception:
                     raise ProviderAttemptError(
                         category=ErrorCategory.INVALID_OUTPUT,
                         reason_code=ReasonCode.INVALID_OUTPUT,
                         http_status=result.http_status, usage=result.usage,
+                        reported_model=result.reported_model, timings=result.timings,
                     ) from None
                 policy.timeout_for_attempt()  # Reject synchronous validation that crossed the deadline.
                 return result, payload
@@ -288,6 +299,7 @@ class Gateway:
                     outcome="error", category=error.category,
                     reason=error.reason_code, status=error.http_status,
                     usage=error.usage or GatewayUsage(),
+                    reported_model=error.reported_model, timings=error.timings,
                 )
                 attempts.append(record)
                 self.quota.release(quota_lease, usage=error.usage)
@@ -355,6 +367,7 @@ class Gateway:
                 request, route, route_index, policy, dispatch,
                 outcome="success", usage=result.usage, reported_model=result.reported_model,
                 status=result.http_status,
+                timings=result.timings,
             )
             attempts.append(record)
             self.quota.release(quota_lease, usage=result.usage)
@@ -420,6 +433,8 @@ class Gateway:
                 "health": health.status,
                 "cooldown_remaining_s": health.cooldown_remaining_s,
                 "quota": quota,
+                **({'identity_verified_recently':bool(getattr(self._adapter_for_route(route),'ready_for',lambda _:False)(route)),
+                    'route_health':self.health.snapshot(route.provider_profile,route_id,next(iter(route.schema_ids))).status} if route.provider=='ollama' else {}),
             }
         return snapshot
 
@@ -446,7 +461,7 @@ class Gateway:
         self, request: GatewayRequest, route: ResolvedRoute, route_index: int,
         policy: TaskAttemptPolicy, dispatch: dict, *, outcome: str,
         category: ErrorCategory | None = None, reason: ReasonCode | None = None,
-        usage: GatewayUsage, reported_model: str | None = None, status: int | None = None,
+        usage: GatewayUsage, reported_model: str | None = None, status: int | None = None, timings=None,
     ) -> AttemptRecord:
         started_mono = float(dispatch["started_mono"])
         started_utc = dispatch["started_at_utc"]
@@ -462,11 +477,18 @@ class Gateway:
             system_chars=len(request.system_prompt), user_chars=len(request.user_prompt),
             context_chars=len(request.system_prompt) + len(request.user_prompt),
             is_failover_route=route_index > 0,
+            schema_fingerprint=request.schema_fingerprint,timings=timings,
+            model_digest=route.model_digest,
         )
 
     async def _emit_attempt(self, record: AttemptRecord) -> None:
         if self.telemetry is not None:
             self.telemetry.emit_attempt(record)
+
+    def record_fallback(self,request_id,task_id,schema_id,reason_code=ReasonCode.INVALID_OUTPUT):
+        if self.telemetry is not None:
+            try:self.telemetry.emit_fallback(request_id,task_id,schema_id,reason_code)
+            except (ValueError,TypeError):return False
 
     async def _emit_summary(self, request: GatewayRequest, attempts: list[AttemptRecord],
                             skips: list[RouteSkip], outcome: str, started: float) -> None:
@@ -479,6 +501,7 @@ class Gateway:
             history, task=request.task, profile=request.profile, schema_id=request.schema_id,
             outcome=outcome, elapsed_ms=self._elapsed_ms(started),
             skip_reasons=tuple(skips),
+            schema_fingerprint=request.schema_fingerprint,
         )
         self.telemetry.emit_task(summary)
 

@@ -9,10 +9,11 @@ import asyncio
 import json
 import re
 import time
+import uuid
 from typing import Literal, Annotated
 
 import httpx
-from pydantic import BaseModel, ConfigDict, Field, create_model
+from pydantic import BaseModel, ConfigDict, Field, create_model, model_validator
 
 from shopassist.llm.normalization import CATEGORY_SYNONYM_MAP
 from shopassist.llm.schemas import QueryUnderstandingResult
@@ -21,6 +22,8 @@ from shopassist.recommendation.context import EvidenceContextBuilder
 from shopassist.recommendation.schemas import (RecommendationResult, RecommendationStatus,
     ProductClaim, TokenUsage)
 from shopassist.recommendation.validation import GroundednessValidator
+from shopassist.llm_gateway.errors import ErrorCategory,GatewayError,ReasonCode
+from shopassist.llm_gateway.schemas import GatewayRequest,TaskType
 
 MODEL = 'qwen2.5:1.5b-instruct-local'
 OUTPUT_BUDGET = 256  # Measured selection output is small; free-reason comparison keeps 1536.
@@ -56,11 +59,21 @@ class ExplanationPayload(BaseModel):
     explanations: list[Explanation]
 
 
+class SelectionFamily(BaseModel):
+    model_config = ConfigDict(extra='forbid',strict=True)
+
+    @model_validator(mode='after')
+    def unique_indices(self):
+        if any(len(indices)!=len(set(indices)) for indices in self.model_dump().values()):
+            raise ValueError('Duplicate fact indices')
+        return self
+
+
 def selection_schema(supplied):
     """Required product keys remove identity, duplicate and ordering generation."""
-    fields={f'p{i}':(list[Annotated[int,Field(ge=1,le=len(facts))]],Field(min_length=1,max_length=3))
+    fields={f'p{i}':(list[Annotated[int,Field(ge=1,le=len(facts))]],Field(min_length=1,max_length=3,json_schema_extra={'uniqueItems':True}))
             for i,facts in enumerate(supplied.values(),1)}
-    return create_model('EvidenceSelection',__config__=ConfigDict(extra='forbid',strict=True),**fields)
+    return create_model('EvidenceSelection',__base__=SelectionFamily,**fields)
 
 
 def strict_json(text):
@@ -99,20 +112,24 @@ def relevance_issue(query, products):
 
 class LocalRecommendationGenerator:
     """One shared injected client can serve many experimental requests."""
-    def __init__(self,client: httpx.AsyncClient | None=None,*,candidate:Literal['R2','R3','D0']='R3'):
-        self.client=client or httpx.AsyncClient(base_url='http://localhost:11434',timeout=30,trust_env=False)
-        self.owns_client=client is None
+    def __init__(self,client: httpx.AsyncClient | None=None,*,candidate:Literal['R2','R3','D0']='R3',gateway=None):
+        if gateway is not None and (client is not None or candidate!='R3'):raise ValueError('Gateway R3 cannot own a second transport or another schema.')
+        self.gateway=gateway
+        self.client=(client or httpx.AsyncClient(base_url='http://localhost:11434',timeout=30,trust_env=False)) if gateway is None else None
+        self.owns_client=client is None and gateway is None
         self.candidate=candidate
 
     async def aclose(self):
         if self.owns_client:await self.client.aclose()
 
-    async def generate(self,query,products,*,language='en',parent_deadline_mono=None):
-        result,_=await self.evaluate(query,products,language=language,parent_deadline_mono=parent_deadline_mono)
+    async def generate(self,query,products,*,language='en',parent_deadline_mono=None,request_id=None,task_id=None):
+        result,_=await self.evaluate(query,products,language=language,parent_deadline_mono=parent_deadline_mono,request_id=request_id,task_id=task_id)
         return result
 
-    async def evaluate(self,query:QueryUnderstandingResult,products,*,language='en',parent_deadline_mono=None):
+    async def evaluate(self,query:QueryUnderstandingResult,products,*,language='en',parent_deadline_mono=None,request_id=None,task_id=None):
         diagnostic={};started=time.perf_counter()
+        request_id=request_id or uuid.uuid4().hex;task_id=task_id or uuid.uuid4().hex
+        fallback_code=ReasonCode.INVALID_OUTPUT
         if language.casefold()=='auto':
             language='vi' if re.search(r'\b(?:tôi|cần|giày|tìm|muốn)\b',query.query,re.I) else 'en'
         language='vi' if language.casefold() in ('vi','vietnamese') else 'en'
@@ -127,6 +144,9 @@ class LocalRecommendationGenerator:
         if len({p.product_id for p in products})!=len(products):return stop(RecommendationStatus.VALIDATION_FAILURE,'Duplicate upstream candidates.')
         issue=relevance_issue(query,products)
         if issue:return stop(RecommendationStatus.VALIDATION_FAILURE,issue)
+        if self.gateway is not None and parent_deadline_mono is not None and parent_deadline_mono<=time.monotonic():
+            raise GatewayError(request_id=request_id,task_id=task_id,category=ErrorCategory.DEADLINE_EXCEEDED,
+                reason_code=ReasonCode.DEADLINE_EXCEEDED,source='deadline',deadline_scope='parent')
         _,store,flat=EvidenceContextBuilder().build_context(query,None,products)
         # Descriptions are excluded from generation. Structured fields are still
         # untrusted facts: attribute them to the catalog, never infer implications.
@@ -141,11 +161,13 @@ class LocalRecommendationGenerator:
         diagnostic.update(context=user,provided_evidence={k:[e.model_dump() for e in v] for k,v in supplied.items()})
         diagnostic['excluded_evidence']={k:[e.model_dump() for e in store[k] if e not in supplied[k]] for k in store}
         diagnostic['request_schema']=schema.model_json_schema()
-        usage=TokenUsage();reported_model=None
+        usage=TokenUsage();reported_model=None;usage_unknown=False
         validator=GroundednessValidator()
         def fallback(reason):
+            if self.gateway is not None:self.gateway.record_fallback(request_id,task_id,'phase12.catalog-selection.v2',fallback_code)
             result=validator.generate_deterministic_fallback(products,store,reason=reason,usage=usage,
                 model_name=reported_model,language=language,applied_constraints=query.output.hard_constraints.model_dump())
+            if usage_unknown:result.warnings.append('Gateway usage is unknown; zero public usage fields are legacy defaults, not measured zero tokens.')
             if language=='vi':
                 for item in result.products:
                     item.summary_reason=f'Mục danh mục: {item.product_name}; {item.discounted_price:.2f} {item.currency}.'
@@ -157,27 +179,39 @@ class LocalRecommendationGenerator:
         # Conservative UTF-8 byte upper bound for byte-BPE tokenization, plus
         # template/schema margin and reserved completion. Never silently truncate.
         if len((prompt+user).encode('utf8'))+output_budget+256>4096:
+            fallback_code=ReasonCode.INVALID_REQUEST
             return fallback('Context cannot be proven to fit 4096 tokens; no evidence was silently truncated.')
-        if parent_deadline_mono is not None and parent_deadline_mono<=time.monotonic():raise asyncio.TimeoutError('Parent deadline expired')
+        if self.gateway is None and parent_deadline_mono is not None and parent_deadline_mono<=time.monotonic():raise asyncio.TimeoutError('Parent deadline expired')
         try:
             body={'model':MODEL,'messages':[{'role':'system','content':prompt},{'role':'user','content':user}],
                 'format':schema.model_json_schema(),'stream':False,
                 'options':{'temperature':0,'seed':42,'num_ctx':4096,'num_predict':output_budget}}
             diagnostic['request_options']=body['options']
-            pending=self.client.post('/api/chat',json=body)
-            if parent_deadline_mono is not None:
-                response=await asyncio.wait_for(pending,timeout=max(0,parent_deadline_mono-time.monotonic()))
-            else:response=await pending
-            response.raise_for_status();envelope=response.json();diagnostic['envelope']=envelope
-            if envelope.get('model')!=MODEL:raise ValueError('Reported model does not match configured model')
-            reported_model=MODEL
-            usage=TokenUsage(prompt_tokens=envelope.get('prompt_eval_count',0),completion_tokens=envelope.get('eval_count',0),
-                total_tokens=envelope.get('prompt_eval_count',0)+envelope.get('eval_count',0),latency_ms=(time.perf_counter()-started)*1000)
-            diagnostic['raw']=envelope['message']['content']
-            if envelope.get('prompt_eval_count',4096)+output_budget>4096:
-                raise ValueError('Reported prompt count does not leave the reserved completion window')
-            if not envelope.get('done') or envelope.get('done_reason')=='length':raise ValueError('Incomplete generation')
-            diagnostic['parsed']=strict_json(diagnostic['raw']);payload=schema.model_validate(diagnostic['parsed']);diagnostic['schema_valid']=True
+            if self.gateway is not None:
+                response=await self.gateway.complete(GatewayRequest(task=TaskType.RECOMMENDATION_GENERATION,profile='default',
+                    request_id=request_id,task_id=task_id,system_prompt=prompt,user_prompt=user,schema_id='phase12.catalog-selection.v2',
+                    response_schema=schema,parent_deadline_mono=parent_deadline_mono))
+                payload=response.payload;reported_model=response.model
+                usage_unknown=any(v is None for v in (response.usage.input_tokens,response.usage.output_tokens,response.usage.total_tokens))
+                usage=TokenUsage(prompt_tokens=response.usage.input_tokens or 0,completion_tokens=response.usage.output_tokens or 0,
+                    total_tokens=response.usage.total_tokens or 0,latency_ms=response.latency_ms)
+                diagnostic['gateway']=response.model_dump(mode='json');diagnostic['raw']=response.raw_text
+                diagnostic['parsed']=payload.model_dump();diagnostic['schema_valid']=True
+            else:
+                pending=self.client.post('/api/chat',json=body)
+                if parent_deadline_mono is not None:
+                    response=await asyncio.wait_for(pending,timeout=max(0,parent_deadline_mono-time.monotonic()))
+                else:response=await pending
+                response.raise_for_status();envelope=response.json();diagnostic['envelope']=envelope
+                if envelope.get('model')!=MODEL:raise ValueError('Reported model does not match configured model')
+                reported_model=MODEL
+                usage=TokenUsage(prompt_tokens=envelope.get('prompt_eval_count',0),completion_tokens=envelope.get('eval_count',0),
+                    total_tokens=envelope.get('prompt_eval_count',0)+envelope.get('eval_count',0),latency_ms=(time.perf_counter()-started)*1000)
+                diagnostic['raw']=envelope['message']['content']
+                if envelope.get('prompt_eval_count',4096)+output_budget>4096:
+                    raise ValueError('Reported prompt count does not leave the reserved completion window')
+                if not envelope.get('done') or envelope.get('done_reason')=='length':raise ValueError('Incomplete generation')
+                diagnostic['parsed']=strict_json(diagnostic['raw']);payload=schema.model_validate(diagnostic['parsed']);diagnostic['schema_valid']=True
             if self.candidate=='R2':
                 if [e.product_index for e in payload.explanations]!=list(range(1,len(products)+1)):
                     raise ValueError('Missing, unknown, duplicate or reordered product indices')
@@ -195,11 +229,23 @@ class LocalRecommendationGenerator:
                 selections.append(selected)
         except asyncio.CancelledError:raise
         except asyncio.TimeoutError:raise
+        except GatewayError as exc:
+            if exc.deadline_scope=='parent':raise
+            fallback_code=exc.reason_code
+            if exc.attempts:
+                def known_sum(field):
+                    values=[getattr(a.usage,field) for a in exc.attempts]
+                    return sum(values) if all(v is not None for v in values) else None
+                a,b,t=(known_sum(f) for f in ('input_tokens','output_tokens','total_tokens'))
+                usage_unknown=any(v is None for v in (a,b,t))
+                usage=TokenUsage(prompt_tokens=a or 0,completion_tokens=b or 0,total_tokens=t or 0,latency_ms=exc.elapsed_ms)
+            diagnostic['gateway_error']=exc.to_safe_dict()
+            return fallback('Gateway generation unavailable or invalid; catalog-only fallback used.')
         except Exception as exc:
             diagnostic['generation_error']=type(exc).__name__+': '+str(exc)
             return fallback('Local generation unavailable or failed evidence validation; catalog-only fallback used.')
         result=validator.generate_deterministic_fallback(products,store,reason='Evidence selection accepted; source wording assembled by Python.',
-            usage=usage,model_name=MODEL,language=language,applied_constraints=query.output.hard_constraints.model_dump())
+            usage=usage,model_name=reported_model,language=language,applied_constraints=query.output.hard_constraints.model_dump())
         vi=language.casefold() in ('vi','vietnamese')
         for item,selected,p in zip(result.products,selections,products):
             item.summary_reason=('Mục trong danh mục: ' if vi else 'Catalog item: ')+p.product_name
@@ -209,6 +255,7 @@ class LocalRecommendationGenerator:
             item.comparison_note=None
         result.overview='Các mục trong danh mục; không xác nhận phù hợp với mọi yêu cầu.' if vi else 'Catalog candidates with selected source facts; suitability is not independently verified.'
         result.status=RecommendationStatus.SUCCESS
+        if usage_unknown:result.warnings.append('Gateway usage is unknown; zero public usage fields are legacy defaults, not measured zero tokens.')
         diagnostic['accepted_selection']=True
         diagnostic['audit']={'id_order_exact':True,'unsupported_critical_findings':[],'invalid_citations':[],
             'scope':'Source-backed quotation assembly; no free-text entailment claim.'}

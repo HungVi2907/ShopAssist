@@ -7,7 +7,7 @@ from typing import Callable, Protocol
 from pydantic import Field
 
 from shopassist.llm_gateway.registry import ResolvedRoute
-from shopassist.llm_gateway.schemas import ContractModel, GatewayRequest, GatewayUsage, HttpStatus, Identifier
+from shopassist.llm_gateway.schemas import ContractModel, GatewayRequest, GatewayUsage, GatewayTimings, HttpStatus, Identifier
 
 
 @dataclass(frozen=True)
@@ -22,6 +22,7 @@ class AdapterResult(ContractModel):
     usage: GatewayUsage = Field(default_factory=GatewayUsage)
     http_status: HttpStatus | None = None
     reported_model: Identifier | None = None
+    timings: GatewayTimings | None = None
 
 
 class ProviderAdapter(Protocol):

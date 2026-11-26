@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
+import json
 from datetime import datetime, timezone
 from types import MappingProxyType
 from typing import Mapping
@@ -24,6 +26,7 @@ CAPABILITIES = MappingProxyType({
     "gemini": ProviderCapability(frozenset({"gemini_schema"})),
     "openrouter": ProviderCapability(frozenset({"json_schema", "json_object"})),
     "groq": ProviderCapability(frozenset({"json_schema", "json_object"}), True),
+    "ollama": ProviderCapability(frozenset({'ollama_schema'})),
 })
 
 
@@ -44,6 +47,8 @@ class ResolvedRoute:
     cost: Mapping
     options: Mapping
     limits: Mapping
+    model_digest: str | None = None
+    schema_fingerprints: tuple[str,...] = ()
 
 
 class ProviderRegistry:
@@ -83,6 +88,8 @@ class ProviderRegistry:
                 cost=MappingProxyType(route.cost.model_dump()),
                 options=MappingProxyType(options),
                 limits=MappingProxyType(provider.limits.model_dump()),
+                model_digest=provider.model_digest,
+                schema_fingerprints=tuple(config._native_evidence[route_id].schema_fingerprints) if route_id in config._native_evidence else (),
             )
         self._routes = MappingProxyType(routes)
         self._profiles = MappingProxyType({
@@ -113,9 +120,29 @@ class ProviderRegistry:
 
     def routes_for(self, request: GatewayRequest) -> tuple[ResolvedRoute, ...]:
         profile = self._profiles.get((request.task, request.profile))
-        if profile is None or profile[0] != request.schema_id or self._schemas.get(request.schema_id) is not request.response_schema:
+        binding=self._schemas.get(request.schema_id)
+        valid=binding is request.response_schema
+        if request.schema_id=='phase12.catalog-selection.v2':
+            valid=self._selection_binding(request.response_schema,binding)
+        if profile is None or profile[0] != request.schema_id or not valid:
             raise GatewayConfigurationError("Task profile or schema binding mismatch")
-        return tuple(self.resolve(route_id) for route_id in profile[1])
+        routes=tuple(self.resolve(route_id) for route_id in profile[1])
+        if any(r.provider=='ollama' and r.enabled and request.schema_fingerprint not in r.schema_fingerprints for r in routes):
+            raise GatewayConfigurationError('Request schema shape lacks native route evidence')
+        return routes
+
+    @staticmethod
+    def _selection_binding(schema,binding):
+        from shopassist.recommendation.local import SelectionFamily,selection_schema
+        try:
+            if binding is not SelectionFamily or not issubclass(schema,SelectionFamily) or schema.model_config!=SelectionFamily.model_config:return False
+            properties=schema.model_json_schema()['properties']
+            if len(properties) not in (1,3,5) or list(properties)!=[f'p{i}' for i in range(1,len(properties)+1)]:return False
+            sizes=[p['items']['maximum'] for p in properties.values()]
+            if any(type(n) is not int or not 1<=n<=13 for n in sizes):return False
+            trusted=selection_schema({str(i):[None]*n for i,n in enumerate(sizes)})
+            return schema.model_json_schema()==trusted.model_json_schema()
+        except (KeyError,TypeError,AttributeError):return False
 
     def ineligibility(self, route_id: str, task: TaskType, profile: str = "default") -> ReasonCode | None:
         route = self.resolve(route_id)

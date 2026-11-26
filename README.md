@@ -258,6 +258,8 @@ TF-IDF search uses local artifacts; semantic search also needs the database and 
 
 ## Testing
 
+Phase 18.5 adds an explicitly selected experimental Ollama Native runtime: frozen Q1S and R3 share the existing Gateway and one HTTPX client. The final guarded offline selection passed **728 tests** (one existing mock warning); live local QU and 1/3/5-product generation passed, and a smoke request with mocked retrieval used exactly two inference calls. Production routes remain disabled/pending. Actual catalog-backed FastAPI retrieval and Telegram user validation remain open. See the [native runtime/configuration guide](docs/phase18_5/architecture_and_integration.md), [validation evidence](docs/phase18_5/integration_test_report.md) and [Phase 18.6 handover](docs/phase18_5/phase18_6_handover.md). Standard startup defaults remain unchanged.
+
 Run the API and bot unit/mocked integration suites without live provider calls:
 
 ```powershell

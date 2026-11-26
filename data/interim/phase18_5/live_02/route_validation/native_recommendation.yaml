@@ -1,0 +1,27 @@
+approval: approved
+artifact_ref: artifact.json
+artifact_sha256: 7af358a4627beeb3360d3602c8bdcde1cab83bbc63d4a76e4a219dd2d9b74d4d
+cost_class: free
+dynamic_schema_family: r3.required-keys.v2
+endpoint: http://127.0.0.1:11434
+inference_options:
+  context_limit_tokens: 4096
+  max_output_tokens: 256
+  reasoning_effort: null
+  reported_model_aliases: []
+  seed: 42
+  temperature: 0.0
+model: qwen2.5:1.5b-instruct-local
+model_digest: d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174
+provider: ollama
+route_id: native_recommendation
+schema_fingerprints:
+- 597b0def6a18f660dad96915630c9951cfd3d088218c547859aabc278f85ed59
+- b361cf19989b4260fe229055e3abba8953889503b6d693f89ffd35261ad7a168
+- d68721dacb798ce3f72608de78b79273e3543c031f3be47babf1ad6f044cd2a8
+schema_id: phase12.catalog-selection.v2
+scope: experimental
+status: valid
+structured_mode: ollama_schema
+task: recommendation_generation
+valid_until: '2026-11-27T15:16:28.945870+00:00'

@@ -96,18 +96,20 @@ class ProviderAttemptError(Exception):
 
     def __init__(self, *, category: ErrorCategory, reason_code: ReasonCode,
                  http_status: int | None = None, retry_after_s: float | None = None,
-                 usage=None):
+                 usage=None, reported_model=None, timings=None):
         from shopassist.llm_gateway.schemas import ProviderFailure
 
         self.record = ProviderFailure(
             category=category, reason_code=reason_code, http_status=http_status,
-            retry_after_s=retry_after_s, usage=usage,
+            retry_after_s=retry_after_s, usage=usage, reported_model=reported_model, timings=timings,
         )
         self.category = self.record.category
         self.reason_code = self.record.reason_code
         self.http_status = self.record.http_status
         self.retry_after_s = self.record.retry_after_s
         self.usage = self.record.usage
+        self.reported_model = self.record.reported_model
+        self.timings = self.record.timings
         super().__init__(f"LLM provider attempt failed ({self.category.value}).")
 
 

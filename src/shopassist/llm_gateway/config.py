@@ -27,6 +27,9 @@ PROVIDERS = {
 class GatewaySettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="LLM_GATEWAY_", env_file=ROOT / ".env", extra="ignore", hide_input_in_errors=True)
     enabled: bool = False
+    runtime: Literal['standard','ollama_experimental'] = 'standard'
+    ollama_approved_endpoints: list[str] = Field(default_factory=list)
+    ollama_identity_ttl_seconds: Positive = 300
     config_path: Path = Path("config/llm_gateway.yaml")
     auto_failover: bool = True
     allow_paid_models: bool = False
@@ -61,13 +64,25 @@ class Limits(Model):
 
 
 class Provider(Model):
-    kind: Literal["gemini", "openrouter", "groq"]
-    credential_env: str
+    kind: Literal["gemini", "openrouter", "groq", "ollama"]
+    credential_env: str = ''
     endpoint: str
+    model_digest: Annotated[str,Field(pattern=r'^[0-9a-f]{64}$')] | None = None
     limits: Limits = Field(default_factory=Limits)
 
     @model_validator(mode="after")
-    def check_endpoint(self):
+    def check_endpoint(self, info: ValidationInfo):
+        if self.kind == 'ollama':
+            url=urlsplit(self.endpoint)
+            if any(c.isspace() or ord(c)<32 for c in self.endpoint) or '\\' in self.endpoint or url.username or url.password or url.query or url.fragment or url.path not in ('','/') or not url.hostname or not self.model_digest:
+                raise ValueError('Invalid native endpoint')
+            loopback=url.hostname in ('127.0.0.1','localhost','::1')
+            if loopback:
+                if url.scheme!='http' or url.port is None or not 1<=url.port<=65535 or self.credential_env:
+                    raise ValueError('Invalid loopback endpoint or credential')
+            elif self.endpoint not in (info.context or {}).get('ollama_approved_endpoints',[]) or url.scheme!='https' or url.port not in (None,443) or self.credential_env!='OLLAMA_API_KEY':
+                raise ValueError('Remote Ollama endpoint is not explicitly approved')
+            return self
         credentials, host, path = PROVIDERS[self.kind]
         url = urlsplit(self.endpoint)
         if self.credential_env not in credentials or url.scheme != "https" or url.hostname != host or url.path.rstrip("/") != path or url.username or url.password or url.query or url.fragment or url.port not in (None, 443):
@@ -93,12 +108,13 @@ class Options(Model):
     temperature: Annotated[float, Field(ge=0, le=2, allow_inf_nan=False)] | None = None
     reasoning_effort: Literal["none", "low", "medium", "high"] | None = None
     reported_model_aliases: list[Name] = Field(default_factory=list)
+    seed: Annotated[int,Field(strict=True,ge=0)] | None = None
 
 
 class Route(Model):
     provider: Name
     model: Name
-    structured_mode: Literal["gemini_schema", "json_schema", "json_object"]
+    structured_mode: Literal["gemini_schema", "json_schema", "json_object", "ollama_schema"]
     schema_ids: list[Name] = Field(min_length=1)
     enabled: bool
     approval: Approval
@@ -133,7 +149,12 @@ class RouteEvidence(Model):
     endpoint: str
     model: Name
     schema_id: Name
-    structured_mode: Literal["gemini_schema", "json_schema", "json_object"]
+    structured_mode: Literal["gemini_schema", "json_schema", "json_object", "ollama_schema"]
+    scope: Literal['production','experimental'] = 'production'
+    model_digest: Annotated[str,Field(pattern=r'^[0-9a-f]{64}$')] | None = None
+    schema_fingerprints: list[Annotated[str,Field(pattern=r'^[0-9a-f]{64}$')]] = Field(default_factory=list)
+    dynamic_schema_family: Literal['r3.required-keys.v2'] | None = None
+    inference_options: dict = Field(default_factory=dict)
     status: Literal["valid", "rejected", "revoked"]
     approval: Literal["approved", "rejected"]
     cost_class: Literal["free", "paid"]
@@ -159,6 +180,7 @@ class RouteEvidence(Model):
 
 class RoutingConfig(Model):
     _evidence_expiry: dict[str, datetime] = PrivateAttr(default_factory=dict)
+    _native_evidence: dict[str, RouteEvidence] = PrivateAttr(default_factory=dict)
     version: Literal[1]
     providers: dict[Name, Provider]
     routes: dict[Name, Route]
@@ -172,6 +194,16 @@ class RoutingConfig(Model):
             if route.provider not in self.providers:
                 raise ValueError("Unknown provider reference")
             kind = self.providers[route.provider].kind
+            if (kind=='ollama') != (route.structured_mode=='ollama_schema'):
+                raise ValueError('Incompatible native mode')
+            if kind=='ollama':
+                if (info.context or {}).get('runtime')!='ollama_experimental':
+                    raise ValueError('Native routes require the isolated experimental runtime')
+                if route.options.temperature!=0 or route.options.seed!=42 or route.options.context_limit_tokens!=4096 or route.options.reported_model_aliases:
+                    raise ValueError('Native options differ from frozen profile')
+                caps={'phase8.intent.flat.v1':512,'phase12.catalog-selection.v2':256}
+                if route.enabled and (len(route.schema_ids)!=1 or route.schema_ids[0] not in caps or route.options.max_output_tokens!=caps[route.schema_ids[0]]):
+                    raise ValueError('Enabled native routes must use one frozen task binding and budget')
             if (kind == "gemini") != (route.structured_mode == "gemini_schema"):
                 raise ValueError("Incompatible structured mode")
             if kind != "groq" and route.options.reasoning_effort is not None:
@@ -229,6 +261,10 @@ class RoutingConfig(Model):
                     if route_id in profile.route_ids
                 ]
                 provider = self.providers[route.provider]
+                if provider.kind=='ollama':
+                    if evidence.scope!='experimental' or evidence.model_digest!=provider.model_digest or not evidence.schema_fingerprints or evidence.inference_options!=route.options.model_dump() or (evidence.schema_id=='phase12.catalog-selection.v2' and evidence.dynamic_schema_family!='r3.required-keys.v2'):
+                        raise ValueError('Native evidence is missing exact options, schema or digest binding')
+                    self._native_evidence[route_id]=evidence
                 if (
                     not bindings
                     or any(binding != (evidence.task, evidence.schema_id) for binding in bindings)
@@ -278,6 +314,13 @@ def load_gateway_config(settings: GatewaySettings) -> RoutingConfig | None:
     try:
         with path.open("r", encoding="utf-8") as stream:
             data = yaml.load(stream, Loader=UniqueSafeLoader)
-        return RoutingConfig.model_validate(data, context={"evidence_dir": path.parent})
-    except (OSError, UnicodeError, yaml.YAMLError, ValidationError, ValueError, TypeError):
+        if settings.runtime=='ollama_experimental':
+            if len(data['providers'])!=1 or any(len(profile['route_ids'])!=1 for task in data['tasks'].values() for profile in task['profiles'].values()):
+                raise ValueError('Native runtime requires one shared provider and one route per profile')
+            if settings.auto_failover or settings.max_attempts_per_task!=1 or any(p['kind']!='ollama' for p in data['providers'].values()) or any(p.get('limits',{}).get('max_in_flight')!=1 for p in data['providers'].values()):
+                raise ValueError('Native experimental runtime must be single-attempt, single-flight, Ollama-only')
+            if path.resolve()==(ROOT/'config/llm_gateway.yaml').resolve():
+                raise ValueError('Native runtime must use isolated configuration')
+        return RoutingConfig.model_validate(data, context={"evidence_dir": path.parent,'runtime':settings.runtime,'ollama_approved_endpoints':settings.ollama_approved_endpoints})
+    except (OSError, UnicodeError, yaml.YAMLError, ValidationError, ValueError, TypeError, KeyError, AttributeError):
         raise GatewayConfigurationError("Invalid or unavailable gateway configuration") from None

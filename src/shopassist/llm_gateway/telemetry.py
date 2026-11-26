@@ -41,16 +41,25 @@ class RouteSkip(ContractModel):
     reason: ReasonCode
 
 
+class FallbackTelemetry(ContractModel):
+    request_id: Identifier
+    task_id: Identifier
+    schema_id: Identifier
+    reason_code: ReasonCode
+    outcome: Literal['deterministic_fallback'] = 'deterministic_fallback'
+
+
 class TaskTelemetrySummary(ContractModel):
     request_id: Identifier
     task_id: Identifier
     task: TaskType
     profile: Identifier
     schema_id: Identifier
+    schema_fingerprint: str | None = Field(default=None,pattern=r'^[0-9a-f]{64}$')
     outcome: Literal["success", "failure", "fallback", "skipped", "cancelled"]
     elapsed_ms: float = Field(ge=0, allow_inf_nan=False)
     actual_route_id: Identifier | None = None
-    actual_provider: Literal["gemini", "openrouter", "groq"] | None = None
+    actual_provider: Literal["gemini", "openrouter", "groq", "ollama"] | None = None
     actual_model: Identifier | None = None
     skip_reasons: tuple[RouteSkip, ...] = Field(default=(), max_length=32)
     attempt_count: int = Field(ge=0, le=2)
@@ -81,6 +90,7 @@ def build_task_summary(
     outcome: Literal["success", "failure", "fallback", "skipped", "cancelled"],
     elapsed_ms: float,
     skip_reasons: tuple[RouteSkip, ...] = (),
+    schema_fingerprint: str | None = None,
 ) -> TaskTelemetrySummary:
     """Build one summary, aggregating attempt usage exactly once."""
     attempts = history.attempts
@@ -97,6 +107,7 @@ def build_task_summary(
         task=task,
         profile=profile,
         schema_id=schema_id,
+        schema_fingerprint=schema_fingerprint,
         outcome=outcome,
         elapsed_ms=elapsed_ms,
         actual_route_id=winner.route_id if winner else None,
@@ -147,6 +158,11 @@ class TelemetrySink:
         if not self.enabled or self._closed:
             return False
         return self._enqueue("task_summary", summary.model_dump(mode="json"))
+
+    def emit_fallback(self,request_id,task_id,schema_id,reason_code):
+        if not self.enabled or self._closed:return False
+        record=FallbackTelemetry(request_id=request_id,task_id=task_id,schema_id=schema_id,reason_code=reason_code)
+        return self._enqueue('fallback',record.model_dump(mode='json'))
 
     def _enqueue(self, event: str, payload: dict) -> bool:
         try:
