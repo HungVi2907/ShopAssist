@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import uuid
+import time
 from typing import Any, Callable
 
 import pandas as pd
@@ -54,6 +55,8 @@ class QueryUnderstandingEngine:
         gateway: Gateway | None = None,
         settings: LLMSettings | None = None,
         catalog_brands: set[str] | None = None,
+        *,
+        intent_extractor=None,
     ) -> None:
         """Initialize Query Understanding engine.
 
@@ -65,6 +68,9 @@ class QueryUnderstandingEngine:
         self.settings = settings or llm_settings
         self._client = client
         self.gateway = gateway
+        if intent_extractor is not None and gateway is not None:
+            raise ValueError('Experimental native extraction cannot use Gateway routes.')
+        self.intent_extractor = intent_extractor
         self._catalog_brands = catalog_brands if catalog_brands is not None else load_catalog_brands_set()
         logger.info(
             "QueryUnderstandingEngine initialized with %d catalog brands.",
@@ -144,6 +150,18 @@ class QueryUnderstandingEngine:
 
         # 3. Call Gemini API
         try:
+            if self.intent_extractor is not None:
+                from shopassist.llm.transformation import transform_extraction, ExtractedShoppingIntent
+                start = time.perf_counter()
+                extracted, raw_json, _, usage = await self.intent_extractor.extract(clean_query)
+                extracted = ExtractedShoppingIntent.model_validate(extracted)
+                validation = transform_extraction(clean_query, extracted, self._catalog_brands)
+                return QueryUnderstandingResult(
+                    query=clean_query, output=validation.output, raw_response_text=raw_json,
+                    model=self.intent_extractor.model, latency_ms=(time.perf_counter()-start)*1000,
+                    token_usage=usage, is_valid=True,
+                    validation_errors=[validation.status.value, *validation.issues, *validation.corrections],
+                )
             if self.gateway is not None:
                 response = await self.gateway.complete(
                     GatewayRequest[QueryUnderstandingOutput](
@@ -264,3 +282,5 @@ class QueryUnderstandingEngine:
         """Cleanly close client resources."""
         if self._client is not None:
             await self._client.aclose()
+        if self.intent_extractor is not None:
+            await self.intent_extractor.aclose()

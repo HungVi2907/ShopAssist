@@ -1,0 +1,113 @@
+{
+  "E0": {
+    "n": 24,
+    "counts": {
+      "category": 20,
+      "brand": 22,
+      "min_price": 17,
+      "max_price": 17,
+      "min_rating": 24,
+      "currency": 24,
+      "clarification": 22,
+      "exact": 8,
+      "inversion": 6,
+      "hallucination": 8,
+      "missing": 9
+    },
+    "preference": {
+      "tp": 3,
+      "fp": 3,
+      "fn": 8,
+      "precision": 0.5,
+      "recall": 0.2727272727272727,
+      "f1": 0.35294117647058826
+    },
+    "json_valid": 24,
+    "internal_schema_valid": 24,
+    "final_schema_valid": 24,
+    "clarified": 4,
+    "correct_clarifications": 4,
+    "answerable_count": 18,
+    "answerable_served": 18,
+    "false_corrections": null,
+    "corrections_checked": null,
+    "p50_ms": 818.2910999967135,
+    "p95_ms": 903.1354999970063,
+    "prompt_tokens_mean": 837.0833333333334,
+    "completion_tokens_mean": 86.41666666666667
+  },
+  "E1": {
+    "n": 24,
+    "counts": {
+      "category": 21,
+      "brand": 23,
+      "min_price": 24,
+      "max_price": 23,
+      "min_rating": 24,
+      "currency": 24,
+      "clarification": 18,
+      "exact": 11,
+      "inversion": 0,
+      "hallucination": 0,
+      "missing": 4
+    },
+    "preference": {
+      "tp": 3,
+      "fp": 3,
+      "fn": 8,
+      "precision": 0.5,
+      "recall": 0.2727272727272727,
+      "f1": 0.35294117647058826
+    },
+    "json_valid": 24,
+    "internal_schema_valid": 24,
+    "final_schema_valid": 24,
+    "clarified": 12,
+    "correct_clarifications": 6,
+    "answerable_count": 18,
+    "answerable_served": 12,
+    "false_corrections": 0,
+    "corrections_checked": 13,
+    "p50_ms": 821.1116499987838,
+    "p95_ms": 905.8781999992789,
+    "prompt_tokens_mean": 837.0833333333334,
+    "completion_tokens_mean": 86.41666666666667
+  },
+  "E2": {
+    "n": 24,
+    "counts": {
+      "category": 22,
+      "brand": 24,
+      "min_price": 24,
+      "max_price": 23,
+      "min_rating": 24,
+      "currency": 24,
+      "clarification": 19,
+      "exact": 15,
+      "inversion": 0,
+      "hallucination": 0,
+      "missing": 2
+    },
+    "preference": {
+      "tp": 8,
+      "fp": 4,
+      "fn": 3,
+      "precision": 0.6666666666666666,
+      "recall": 0.7272727272727273,
+      "f1": 0.6956521739130435
+    },
+    "json_valid": 24,
+    "internal_schema_valid": 24,
+    "final_schema_valid": 24,
+    "clarified": 11,
+    "correct_clarifications": 6,
+    "answerable_count": 18,
+    "answerable_served": 13,
+    "false_corrections": null,
+    "corrections_checked": null,
+    "p50_ms": 287.7668500004802,
+    "p95_ms": 356.83870000502793,
+    "prompt_tokens_mean": 175.33333333333334,
+    "completion_tokens_mean": 31.666666666666668
+  }
+}

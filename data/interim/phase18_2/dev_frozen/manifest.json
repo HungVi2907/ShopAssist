@@ -1,0 +1,65 @@
+{
+  "created_utc": "2026-11-26T13:21:03.026155+00:00",
+  "dataset": "data\\interim\\phase18_1\\dev_pilot.json",
+  "dataset_sha256": "70b13bd993b4eda1918b957b3feb3f7bfbbc9054388db5dedb3e449fbb2ae824",
+  "model": {
+    "name": "qwen2.5:1.5b-instruct-local",
+    "model": "qwen2.5:1.5b-instruct-local",
+    "modified_at": "2026-11-26T12:37:46.6417411+07:00",
+    "size": 986061627,
+    "digest": "d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174",
+    "details": {
+      "parent_model": "qwen2.5:1.5b-instruct",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "1.5B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 1536,
+      "runner": "llamacpp"
+    },
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 4096,
+    "num_predict": 512
+  },
+  "version": {
+    "version": "0.40.18"
+  },
+  "pairing": "E0 and E1 share a single raw response; E1 timing includes transformation",
+  "source_sha256": {
+    "src\\shopassist\\llm\\config.py": "c1397d17fd4237e4595c2116481de1e3b3a19955f773b5a1513dbfc4db945b82",
+    "src\\shopassist\\llm\\constraints.py": "7a508ef272f27bfae0f34c527b43030caacf27cf324f6752b78efd4c1f6cd615",
+    "src\\shopassist\\llm\\evaluation.py": "204ff868d5c8595be474d22c5138c863b3d352fb7b05f3d3352ec6eded26a29e",
+    "src\\shopassist\\llm\\extraction.py": "1902a27cff0f6f3369558547a6af61558139348bc0c0d64258bdca3fce83fff8",
+    "src\\shopassist\\llm\\gemini_client.py": "cb0d45ff19c58397bde948c041b98d5883f68c31220c8e3dccedf08a9380cd2c",
+    "src\\shopassist\\llm\\normalization.py": "0168bf65ed89be3fde85a942086e933dadfca7c9df106478ce07f4998413a56e",
+    "src\\shopassist\\llm\\prompts.py": "02ec67b9198a174d292af2f0440738ac7ab471958acb3d177a97943ce4755441",
+    "src\\shopassist\\llm\\prompt_variants.py": "ce065bc36e296a1f96d6c8d141abe4182a642cb297f8c8bfd7204d01b2183588",
+    "src\\shopassist\\llm\\query_understanding.py": "70ecc67c9b1ca01f8bf78e757c024744d716cda0ac2c382644779238a987429b",
+    "src\\shopassist\\llm\\refinement_rules.py": "5710652abeaa54daac0a5a297cb8a094b1b8eb5ad9f8a84426ca186ec2945dcc",
+    "src\\shopassist\\llm\\schemas.py": "c58fd182f80b9bb2d4d9a3374e1b895632ef357e41a16ff8084682f234454da4",
+    "src\\shopassist\\llm\\schema_variants.py": "927a03ee1f387f80a235b755c6a688e969f2e8c17b657896c8718d782c7704e0",
+    "src\\shopassist\\llm\\security.py": "37d7cb7d1b68a60baa754399236c7d135a75b5d7cebef4747c62f2c273006637",
+    "src\\shopassist\\llm\\transformation.py": "5b633dfc985261473bb75860e3aaf73553738a132e96aed28546f8d12e4482c0",
+    "src\\shopassist\\llm\\__init__.py": "7b62c8438650c0b441ef74b6cfbd86353e6434350cec8a25286a27c84993738f"
+  },
+  "catalog_brands_sha256": "bf93cca5af37d66fb71b44c29d096ee61a89bd3c699e31dcbc994a53b91ac570",
+  "schemas": {
+    "E0": "47791e64deb5d9ad05e6779b19e7983ccc222013202222bb5b025d3eb258cbf5",
+    "E2": "b629c246250f8b58e49da98733d79488b3bda996f7df8f12bb01f77a854bb5d7"
+  },
+  "prompts": {
+    "E0": "d763df1462078edd7a2605525e7adbad34731778c238c8e4f95dd1bfbe429a25",
+    "E2": "50e7cb6e27eb286cba47121d91108bcfd31c4e7fc6b373ee51366be2c39eabe6"
+  }
+}

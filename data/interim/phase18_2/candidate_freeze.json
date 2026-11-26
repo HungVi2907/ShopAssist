@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-11-26T13:21:58.081800+00:00",
+  "selected_research_candidate": "E2",
+  "production_accepted": false,
+  "reason": "E2 vs E1: shared exact 15/24 vs 11/24, preference micro F1 69.6% vs 35.3%, answerable coverage 13/18 vs 12/18, faster inference. Neither meets all targets; no activation.",
+  "development_run": "dev_frozen",
+  "independent_reviewed_heldout_available": false,
+  "regression_dataset": "tests/fixtures/heldout_evaluation_cases.json",
+  "source_sha256": {
+    "src\\shopassist\\llm\\constraints.py": "7a508ef272f27bfae0f34c527b43030caacf27cf324f6752b78efd4c1f6cd615",
+    "src\\shopassist\\llm\\transformation.py": "5b633dfc985261473bb75860e3aaf73553738a132e96aed28546f8d12e4482c0",
+    "src\\shopassist\\llm\\extraction.py": "1902a27cff0f6f3369558547a6af61558139348bc0c0d64258bdca3fce83fff8",
+    "src\\shopassist\\llm\\query_understanding.py": "70ecc67c9b1ca01f8bf78e757c024744d716cda0ac2c382644779238a987429b",
+    "scripts\\evaluate_phase18_2.py": "6adb6d5ff2b3ec5c26a99f13ca61704feeb5cfec24cd843050d99c35f1ff2079"
+  }
+}
