@@ -1,13 +1,17 @@
-## 2026-11-25 (Asia/Saigon) - T17 Live Provider Validation Preflight
+## 2026-11-25 (Asia/Saigon) - T17 Live Provider Validation Authorization Preflight
 
 | Item | Result |
 | --- | --- |
-| Task ID | T17 preflight (validation NOT RUN) |
-| Status | **BLOCKED before dispatch**. No live provider or database request was made. |
-| Checks | Inspected the T17 authorization/cost policy and production candidate route metadata without reading or printing credential values. `GEMINI_API_KEY`, `OPENROUTER_API_KEY` and `GROQ_API_KEY` are absent from the execution environment. Production Phase 8 Gemini, Phase 12 OpenRouter/Groq and Phase 14 Gemini judge routes are all disabled/pending with cost class unknown. |
-| Blocking Requirements | Need an explicitly selected exact route/provider/model, locally configured credential for that provider, and approved maximum request count, token ceiling, cost ceiling and deadline. Unknown-cost routes must be denied under the Gateway contract; `:free` in a model identifier alone does not prove account entitlement or zero cost. |
-| Safety | No credentials were requested in chat or exposed. No routes were enabled/approved. No live API calls were attempted. |
-| Next Step | User configures the selected provider credential locally and confirms exact route plus ceilings. T17 remains **NOT RUN** until then. |
+| Task ID | T17 preflight (live validation NOT RUN) |
+| Status | **BLOCKED before dispatch**. Per operator instruction, remain at preflight. No live provider or database request was made. |
+| Selected Scope | `query_gemini` maps to Gemini `gemini-3.5-flash-lite`, `query_understanding`, `phase8.query.v1`; `recommendation_openrouter` maps to OpenRouter `baidu/ernie-5.5-flash-preview:free`, `recommendation_generation`, `phase12.recommendation.v1`; `recommendation_groq` maps to Groq `openai/gpt-oss-20b`, same recommendation task/schema. Exact endpoints from YAML: Google Generative Language API, OpenRouter `/api/v1`, and Groq `/openai/v1`. Structured modes: Gemini schema and JSON Schema for OpenRouter/Groq. Configured max output is 2,048 tokens per request for all three. |
+| Proposed Budgets (Not Yet Approved) | Gemini: 2 requests / 10,000 tokens / 25 s per attempt; OpenRouter: 3 / 20,000 / 25 s; Groq: 3 / 20,000 / 25 s. Aggregate proposal: 8 requests / 50,000 tokens; 2,048 max output tokens/request; 120 s run deadline. Groq proposed cost ceiling is USD $0.05 and still requires separate explicit paid-use approval. No retries beyond these limits. |
+| Local Credential Check | Presence-only inspection found `GEMINI_API_KEY`, `OPENROUTER_API_KEY`, and `GROQ_API_KEY` configured locally in `.env`. Values were not read out or printed. Account-level free-tier/entitlement status is not visible from the local environment and remains unverified. |
+| Route/Policy Check | YAML identities and schemas match the selected scope. All three routes remain `enabled=false`, approval `pending`, and `cost.class=unknown`. The T17 controlled isolated validation harness was not found in the repository; existing experiment budget ledgers do not provide the required single cross-provider global request/token/cost ceiling. Do not route these pending candidates through production Gateway. |
+| Public Pricing/Capability Evidence | Google lists Gemini 3.5 Flash-Lite with a free tier and paid rates; account entitlement must still be verified in the operator's account: [Google Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing). OpenRouter lists the exact ERNIE free model at $0 and describes structured output support; account availability/rate limits still require account verification: [OpenRouter model page](https://openrouter.ai/baidu/ernie-5.5-flash-preview:free/). Groq lists GPT-OSS 20B at $0.075/M input and $0.30/M output and JSON Schema capability: [Groq supported models and pricing](https://console.groq.com/docs/models), [Groq model page](https://console.groq.com/docs/model/openai/gpt-oss-20b). Published provider pricing is not proof of account entitlement or a substitute for Gateway cost evidence. |
+| Blocking Requirements | Operator must confirm the proposed exact budgets are approved, confirm Gemini free-tier and OpenRouter free-route account eligibility, and separately approve or exclude Groq paid use. A controlled T17 harness must enforce per-provider and aggregate request/token/cost ceilings before any dispatch. Cost/entitlement remains unknown for runtime route eligibility. |
+| Safety | No credentials were exposed. No route was enabled/approved. No live API calls were attempted. No production eligibility or pricing evidence was fabricated. |
+| Next Step | Remain at preflight until operator confirmation and controlled harness readiness. T17 remains **NOT RUN**; T18 is not allowed. |
 
 ## 2026-11-25 (Asia/Saigon) - T16 Full Offline Gateway & Application Regression
 
@@ -79,7 +83,7 @@
 
 # ShopAssist Phase 18 V1 — Execution log
 
-**Current status** | T00-T16 **PASS**. T17 preflight is BLOCKED before dispatch; live validation NOT RUN pending exact scope, configured credential and approved limits.
+**Current status** | T00-T16 **PASS**. T17 preflight is BLOCKED before dispatch pending operator approval/entitlement confirmation and a controlled budget-enforcing harness. T18 is not allowed.
 
 ## 2026-11-25 (Asia/Saigon) — T12 Phase 8 QueryUnderstanding Gateway Integration
 
