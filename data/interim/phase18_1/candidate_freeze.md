@@ -1,0 +1,3 @@
+﻿# Candidate freeze before held-out evaluation
+
+Selection: P4, frozen from dev_run_02/P4.prompt.txt and its SHA-256 in manifest.json. On 24 development cases, P4 has 6 price-direction inversions against P3's 8, while P4 has 19/24 category and 9/24 shared slot exact match versus P3's 21/24 and 10/24. Critical price reliability takes priority. Neither candidate meets production readiness; this is selection for evaluation, not promotion. P1/P2 omit most constraints despite lower apparent inversion. The held-out fixture has not been used to choose or tune this candidate. No further prompt edits will be made based on held-out results.

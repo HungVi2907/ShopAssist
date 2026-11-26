@@ -1,0 +1,116 @@
+{
+  "P4": {
+    "n": 24,
+    "json": 24,
+    "schema": 24,
+    "validated": 24,
+    "missing_fields": 2,
+    "truncated": 0,
+    "request_errors": 0,
+    "first_wall_ms": 1014.1590999992331,
+    "mean_wall_ms": 778.6080375000589,
+    "p50_wall_ms": 818.3450999986235,
+    "p95_wall_ms": 945.6209000018134,
+    "mean_prompt_tokens": 837.0833333333334,
+    "mean_completion_tokens": 89,
+    "mean_generation_tokens_s": 122.771685173158,
+    "stages": {
+      "parsed": {
+        "n": 24,
+        "counts": {
+          "category": 17,
+          "brand": 20,
+          "min_price": 17,
+          "max_price": 18,
+          "min_rating": 24,
+          "currency": 22,
+          "clarification": 18,
+          "exact": 7,
+          "inversion": 6,
+          "hallucination": 10,
+          "missing": 8
+        },
+        "preference": {
+          "tp": 5,
+          "fp": 6,
+          "fn": 6,
+          "precision": 0.45454545454545453,
+          "recall": 0.45454545454545453,
+          "f1": 0.45454545454545453
+        }
+      },
+      "validated": {
+        "n": 24,
+        "counts": {
+          "category": 17,
+          "brand": 20,
+          "min_price": 17,
+          "max_price": 18,
+          "min_rating": 24,
+          "currency": 24,
+          "clarification": 18,
+          "exact": 7,
+          "inversion": 6,
+          "hallucination": 10,
+          "missing": 8
+        },
+        "preference": {
+          "tp": 5,
+          "fp": 6,
+          "fn": 6,
+          "precision": 0.45454545454545453,
+          "recall": 0.45454545454545453,
+          "f1": 0.45454545454545453
+        }
+      },
+      "normalized": {
+        "n": 24,
+        "counts": {
+          "category": 19,
+          "brand": 22,
+          "min_price": 17,
+          "max_price": 18,
+          "min_rating": 24,
+          "currency": 24,
+          "clarification": 22,
+          "exact": 9,
+          "inversion": 6,
+          "hallucination": 8,
+          "missing": 8
+        },
+        "preference": {
+          "tp": 5,
+          "fp": 6,
+          "fn": 6,
+          "precision": 0.45454545454545453,
+          "recall": 0.45454545454545453,
+          "f1": 0.45454545454545453
+        }
+      },
+      "experimental_refined": {
+        "n": 24,
+        "counts": {
+          "category": 20,
+          "brand": 23,
+          "min_price": 17,
+          "max_price": 18,
+          "min_rating": 24,
+          "currency": 24,
+          "clarification": 24,
+          "exact": 10,
+          "inversion": 6,
+          "hallucination": 7,
+          "missing": 8
+        },
+        "preference": {
+          "tp": 5,
+          "fp": 6,
+          "fn": 6,
+          "precision": 0.45454545454545453,
+          "recall": 0.45454545454545453,
+          "f1": 0.45454545454545453
+        }
+      }
+    }
+  }
+}

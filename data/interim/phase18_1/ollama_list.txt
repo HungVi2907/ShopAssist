@@ -1,0 +1,3 @@
+NAME                           ID              SIZE      MODIFIED    
+qwen2.5:1.5b-instruct-local    d010eb818583    986 MB    7 hours ago    
+qwen2.5:1.5b-instruct          65ec06548149    986 MB    8 hours ago    

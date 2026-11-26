@@ -1,0 +1,145 @@
+{
+  "$defs": {
+    "HardConstraints": {
+      "description": "Hard filter constraints extracted from user shopping query.",
+      "properties": {
+        "category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Canonical product category matching one of the 16 approved catalog categories.",
+          "title": "Category"
+        },
+        "brand": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Brand name if explicitly requested (e.g. 'Puma', 'Samsung'). None if unspecified.",
+          "title": "Brand"
+        },
+        "min_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Minimum price threshold in specified currency (e.g. 'at least 500' -> 500.0).",
+          "title": "Min Price"
+        },
+        "max_price": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Maximum price budget ceiling in specified currency (e.g. 'under 2000' -> 2000.0).",
+          "title": "Max Price"
+        },
+        "min_rating": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Minimum product rating on a 1.0 to 5.0 scale (e.g. 'at least 4 stars' -> 4.0).",
+          "title": "Min Rating"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "INR",
+          "description": "Currency code for prices (default: 'INR', or 'USD', 'EUR' if explicitly stated).",
+          "title": "Currency"
+        }
+      },
+      "title": "HardConstraints",
+      "type": "object",
+      "required": [
+        "category",
+        "brand",
+        "min_price",
+        "max_price",
+        "min_rating",
+        "currency"
+      ]
+    }
+  },
+  "description": "Canonical structured representation of a user shopping query.",
+  "properties": {
+    "semantic_query": {
+      "description": "Cleaned, focused search query representing the core product type and essential features, with conversational filler removed.",
+      "title": "Semantic Query",
+      "type": "string"
+    },
+    "hard_constraints": {
+      "$ref": "#/$defs/HardConstraints",
+      "description": "Structured hard filters (category, brand, price boundaries, rating, currency)."
+    },
+    "soft_preferences": {
+      "description": "List of qualitative, subjective, or lifestyle preferences (e.g. 'comfortable', 'lightweight', 'durable', 'portable').",
+      "items": {
+        "type": "string"
+      },
+      "title": "Soft Preferences",
+      "type": "array"
+    },
+    "needs_clarification": {
+      "default": false,
+      "description": "True if the user query is excessively ambiguous, contradicts itself, or asks for an unsupported category.",
+      "title": "Needs Clarification",
+      "type": "boolean"
+    },
+    "clarification_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Explanation of why clarification is required, or null if query is clear.",
+      "title": "Clarification Reason"
+    }
+  },
+  "required": [
+    "semantic_query",
+    "hard_constraints",
+    "soft_preferences",
+    "needs_clarification",
+    "clarification_reason"
+  ],
+  "title": "QueryUnderstandingOutput",
+  "type": "object"
+}

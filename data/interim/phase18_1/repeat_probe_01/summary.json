@@ -1,0 +1,116 @@
+{
+  "P4": {
+    "n": 18,
+    "json": 18,
+    "schema": 18,
+    "validated": 18,
+    "missing_fields": 3,
+    "truncated": 0,
+    "request_errors": 0,
+    "first_wall_ms": 1043.284200000926,
+    "mean_wall_ms": 795.8018333332196,
+    "p50_wall_ms": 833.4707499998331,
+    "p95_wall_ms": 1043.284200000926,
+    "mean_prompt_tokens": 837.8333333333334,
+    "mean_completion_tokens": 90,
+    "mean_generation_tokens_s": 121.58024845662226,
+    "stages": {
+      "parsed": {
+        "n": 18,
+        "counts": {
+          "category": 15,
+          "brand": 15,
+          "min_price": 15,
+          "max_price": 15,
+          "min_rating": 18,
+          "currency": 15,
+          "clarification": 18,
+          "exact": 9,
+          "inversion": 0,
+          "hallucination": 3,
+          "missing": 9
+        },
+        "preference": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "validated": {
+        "n": 18,
+        "counts": {
+          "category": 15,
+          "brand": 15,
+          "min_price": 15,
+          "max_price": 15,
+          "min_rating": 18,
+          "currency": 18,
+          "clarification": 18,
+          "exact": 9,
+          "inversion": 0,
+          "hallucination": 3,
+          "missing": 9
+        },
+        "preference": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "normalized": {
+        "n": 18,
+        "counts": {
+          "category": 15,
+          "brand": 15,
+          "min_price": 15,
+          "max_price": 15,
+          "min_rating": 18,
+          "currency": 18,
+          "clarification": 18,
+          "exact": 9,
+          "inversion": 0,
+          "hallucination": 3,
+          "missing": 9
+        },
+        "preference": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "experimental_refined": {
+        "n": 18,
+        "counts": {
+          "category": 15,
+          "brand": 15,
+          "min_price": 15,
+          "max_price": 15,
+          "min_rating": 18,
+          "currency": 18,
+          "clarification": 18,
+          "exact": 9,
+          "inversion": 0,
+          "hallucination": 3,
+          "missing": 9
+        },
+        "preference": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    }
+  }
+}

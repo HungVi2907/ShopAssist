@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-11-26T12:49:30.643254+00:00",
+  "dataset": "data\\interim\\phase18_1\\dev_probe.json",
+  "dataset_sha256": "673fb1aa135e38c390d72b01e488c09f9cf0d780a5eb1b40e9420203ae8a2914",
+  "dataset_version": "phase18_1_probe_1",
+  "model": "qwen2.5:1.5b-instruct-local",
+  "model_metadata": {
+    "name": "qwen2.5:1.5b-instruct-local",
+    "model": "qwen2.5:1.5b-instruct-local",
+    "modified_at": "2026-11-26T12:37:46.6417411+07:00",
+    "size": 986061627,
+    "digest": "d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174",
+    "details": {
+      "parent_model": "qwen2.5:1.5b-instruct",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "1.5B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 1536,
+      "runner": "llamacpp"
+    },
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "ollama_version": {
+    "version": "0.40.18"
+  },
+  "schema_id": "phase8.query.v1",
+  "schema_sha256": "47791e64deb5d9ad05e6779b19e7983ccc222013202222bb5b025d3eb258cbf5",
+  "prompt_sha256": {
+    "P4": "d763df1462078edd7a2605525e7adbad34731778c238c8e4f95dd1bfbe429a25"
+  },
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 4096,
+    "num_predict": 512
+  },
+  "catalog_brands_count": 1860,
+  "repeat": 3
+}
