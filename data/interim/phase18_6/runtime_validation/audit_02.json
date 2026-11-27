@@ -1,0 +1,129 @@
+{
+  "python": "3.10.11",
+  "packages": {
+    "fastapi": "0.138.0",
+    "uvicorn": "0.49.0",
+    "httpx": "0.28.1",
+    "pydantic": "2.12.5",
+    "sqlalchemy": "2.0.51",
+    "psycopg": "3.3.6",
+    "pgvector": "0.5.0",
+    "torch": "2.6.0+cu124",
+    "sentence-transformers": "6.0.1",
+    "scikit-learn": "1.7.2"
+  },
+  "catalog": {
+    "count": 8405,
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "brand",
+      "retail_price",
+      "discounted_price",
+      "rating",
+      "description",
+      "product_specifications",
+      "product_url",
+      "image",
+      "pid",
+      "retrieval_text",
+      "embedding",
+      "embedding_model"
+    ],
+    "duplicate_ids": 0,
+    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+  },
+  "tfidf": {
+    "count": 8405,
+    "id_symmetric_difference": 0,
+    "artifacts": {
+      "product_metadata.parquet": "d56849ccdd63c76d5f1dcd7f0a7f1a77a2042e69158670d014916d211760a924",
+      "tfidf_manifest.json": "7d7d0aa0a7c0213b51404206b612ce9b395eeb7b008cc82e68bd7fd6dbded0be",
+      "tfidf_matrix.npz": "6d938229f240eaaa07b030bfb0d3c6ec15854ca5cd7d69e5bcc024b7dff73919",
+      "tfidf_vectorizer.joblib": "230bdb0cf944cea463543fc165aa47b7b9adbe57e930b7b74b81fa69ee085f2e"
+    },
+    "metadata_columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "brand",
+      "discounted_price",
+      "retail_price",
+      "rating",
+      "pid"
+    ]
+  },
+  "ollama": {
+    "tags": {
+      "models": [
+        {
+          "name": "qwen2.5:1.5b-instruct-local",
+          "model": "qwen2.5:1.5b-instruct-local",
+          "modified_at": "2026-11-26T12:37:46.6417411+07:00",
+          "size": 986061627,
+          "digest": "d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174",
+          "details": {
+            "parent_model": "qwen2.5:1.5b-instruct",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 32768,
+            "embedding_length": 1536,
+            "runner": "llamacpp"
+          },
+          "capabilities": [
+            "completion",
+            "tools"
+          ]
+        },
+        {
+          "name": "qwen2.5:1.5b-instruct",
+          "model": "qwen2.5:1.5b-instruct",
+          "modified_at": "2026-11-26T12:06:50.0915824+07:00",
+          "size": 986061892,
+          "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 32768,
+            "embedding_length": 1536,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "completion",
+            "tools"
+          ]
+        }
+      ]
+    },
+    "version": {
+      "version": "0.40.18"
+    }
+  },
+  "database": {
+    "blocker": "OperationalError",
+    "driver_error_type": "ConnectionTimeout",
+    "sqlstate": null,
+    "reason_flags": {
+      "timeout": true,
+      "password authentication failed": false,
+      "ssl": false,
+      "resolve": false,
+      "refused": false,
+      "tenant": false,
+      "pool": true
+    },
+    "connection_timeout_seconds": 10
+  }
+}

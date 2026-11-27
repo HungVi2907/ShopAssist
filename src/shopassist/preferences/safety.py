@@ -30,3 +30,15 @@ def find_unsafe_negative_preferences(preferences: list[str]) -> list[str]:
         if any(pattern.search(phrase) for pattern in _EXCLUSION_PATTERNS):
             unsafe.append(phrase)
     return unsafe
+
+
+def find_unsafe_query_exclusions(query: str) -> list[str]:
+    """Protect verified numeric spans while retaining every other exclusion guard."""
+    from shopassist.llm.constraints import parse_constraints
+
+    parsed = parse_constraints(query)
+    remaining = query
+    if not parsed.issues:
+        for start, end in sorted(parsed.spans, reverse=True):
+            remaining = remaining[:start] + ' ' * (end-start) + remaining[end:]
+    return [query] if find_unsafe_negative_preferences([remaining]) else []

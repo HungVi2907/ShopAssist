@@ -1,0 +1,152 @@
+{
+  "scope": "Classified before API execution; database outage is an integration blocker, not an expected functional pass.",
+  "cases": [
+    {
+      "id": "E01",
+      "query": "running shoes under 2000 INR",
+      "expected": "Successful recommendation",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E02",
+      "query": "AMCO running shoes under 2000 INR",
+      "expected": "Successful recommendation",
+      "top_k": 2,
+      "language": "en"
+    },
+    {
+      "id": "E03",
+      "query": "comfortable running shoes for daily jogging under 2000 INR",
+      "expected": "Successful recommendation",
+      "top_k": 4,
+      "language": "en"
+    },
+    {
+      "id": "E04",
+      "query": "headphones under 1000 INR",
+      "expected": "Successful recommendation if product type is verified",
+      "top_k": 5,
+      "language": "en"
+    },
+    {
+      "id": "E05",
+      "query": "cheap headphones",
+      "expected": "Clarification or guarded recommendation; no invented numeric budget",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E06",
+      "query": "headphones with at least 4 stars",
+      "expected": "Successful recommendation if catalog rating/type are verified",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E07",
+      "query": "laptop between 20000 and 40000 INR",
+      "expected": "No relevant results; catalog laptop accessories do not establish actual laptops",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E08",
+      "query": "laptop with 16 GB RAM",
+      "expected": "Clarification or validation failure unless mandatory specification is established",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E09",
+      "query": "laptop under 500 dollars",
+      "expected": "Clarification or unsupported currency",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E10",
+      "query": "pet food",
+      "expected": "Clarification or unsupported category",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E11",
+      "query": "I need something nice",
+      "expected": "Clarification required",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E12",
+      "query": "shoes without leather",
+      "expected": "Unsupported exclusion",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E13",
+      "query": "laptop but not gaming",
+      "expected": "Unsupported exclusion",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E14",
+      "query": "camera lens with no telephoto lenses",
+      "expected": "Unsupported exclusion",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E15",
+      "query": "Nike or Puma shoes",
+      "expected": "Clarification for conflicting manufacturers",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E16",
+      "query": "wireless charging pad",
+      "expected": "No verified relevant product; never accept cable as substitute",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E17",
+      "query": "Bluetooth speaker",
+      "expected": "No verified relevant product; never accept headphones as substitute",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E18",
+      "query": "Honda City body cover",
+      "expected": "No verified compatible body cover; never accept steering cover",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E19",
+      "query": "Shoes not exceeding 2000 rupees",
+      "expected": "Numeric expression passes exclusion guards; guarded recommendation if relevant candidates exist",
+      "top_k": 3,
+      "language": "en"
+    },
+    {
+      "id": "E20",
+      "query": "Tôi cần giày chạy bộ dưới 2000 INR",
+      "expected": "Vietnamese clarification or catalog-backed guarded recommendation",
+      "top_k": 3,
+      "language": "vi"
+    },
+    {
+      "id": "E21",
+      "query": "running shoes under 1 INR",
+      "expected": "No matching products",
+      "top_k": 3,
+      "language": "en"
+    }
+  ]
+}

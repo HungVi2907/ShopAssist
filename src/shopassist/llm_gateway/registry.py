@@ -137,7 +137,7 @@ class ProviderRegistry:
         try:
             if binding is not SelectionFamily or not issubclass(schema,SelectionFamily) or schema.model_config!=SelectionFamily.model_config:return False
             properties=schema.model_json_schema()['properties']
-            if len(properties) not in (1,3,5) or list(properties)!=[f'p{i}' for i in range(1,len(properties)+1)]:return False
+            if not 1<=len(properties)<=5 or list(properties)!=[f'p{i}' for i in range(1,len(properties)+1)]:return False
             sizes=[p['items']['maximum'] for p in properties.values()]
             if any(type(n) is not int or not 1<=n<=13 for n in sizes):return False
             trusted=selection_schema({str(i):[None]*n for i,n in enumerate(sizes)})

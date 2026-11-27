@@ -26,7 +26,7 @@ from shopassist.preferences.schemas import (
     RepresentationStatus,
 )
 from shopassist.preferences.normalization import normalize_preferences, normalize_semantic_query
-from shopassist.preferences.safety import find_unsafe_negative_preferences
+from shopassist.preferences.safety import find_unsafe_query_exclusions
 from shopassist.retrieval.semantic import DenseQueryEncoder, SemanticSearchConfig
 from shopassist.retrieval.tfidf import TFIDFIndex
 
@@ -293,7 +293,7 @@ class HybridRetrievalService:
                 status=HybridRetrievalStatus.UNSUPPORTED_INTENT,
                 diagnostic_reason="Catalog prices are in INR; foreign currency filters are unsupported",
             )
-        if find_unsafe_negative_preferences([query_result.query]):
+        if find_unsafe_query_exclusions(query_result.query):
             return HybridRetrievalResult(
                 status=HybridRetrievalStatus.UNSUPPORTED_INTENT,
                 diagnostic_reason="The original query contains a negative or exclusion intent that Phase 8 v1 cannot represent safely",

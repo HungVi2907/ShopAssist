@@ -1,0 +1,357 @@
+[
+  {
+    "kind": "health",
+    "status": 200,
+    "body": {
+      "status": "healthy",
+      "components": {
+        "database": "healthy",
+        "tfidf": "ready",
+        "embedding": "ready",
+        "query_understanding": "configured (ollama)",
+        "recommendation_provider": "configured (ollama)",
+        "ollama_identity": "verified_recently",
+        "ollama_routes": "eligible_experimental",
+        "ollama_transport": "active"
+      },
+      "timestamp": "2026-11-27T02:00:35.674704+00:00"
+    }
+  },
+  {
+    "kind": "profile",
+    "status": 200,
+    "body": {
+      "request_id": "p186-stage-profile",
+      "status": "SUCCESS",
+      "overview": "Catalog candidates with selected source facts; suitability is not independently verified.",
+      "products": [
+        {
+          "product_id": "ca1f2174844857098f6c8912c90811be",
+          "product_name": "BAAJ Running Shoes",
+          "brand": "BAAJ",
+          "category": "Footwear",
+          "discounted_price": 444.0,
+          "currency": "INR",
+          "rating": null,
+          "summary_reason": "Catalog item: BAAJ Running Shoes",
+          "strengths": [
+            {
+              "claim": "Catalog lists: BAAJ Running Shoes",
+              "evidence_ids": [
+                "ca1f2174844857098f6c8912c90811be-E1"
+              ]
+            },
+            {
+              "claim": "Catalog lists: BAAJ",
+              "evidence_ids": [
+                "ca1f2174844857098f6c8912c90811be-E2"
+              ]
+            },
+            {
+              "claim": "Catalog lists: Footwear",
+              "evidence_ids": [
+                "ca1f2174844857098f6c8912c90811be-E3"
+              ]
+            }
+          ],
+          "limitations": [
+            {
+              "claim": "Requested features not explicitly evidenced remain unverified.",
+              "evidence_ids": []
+            },
+            {
+              "claim": "The catalog does not specify a rating.",
+              "evidence_ids": []
+            }
+          ],
+          "comparison_note": null,
+          "available_evidence": [
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E1",
+              "source_field": "product_name",
+              "text": "BAAJ Running Shoes"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E2",
+              "source_field": "brand",
+              "text": "BAAJ"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E3",
+              "source_field": "category",
+              "text": "Footwear"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E4",
+              "source_field": "discounted_price",
+              "text": "444.00 INR"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E5",
+              "source_field": "specifications",
+              "text": "Ideal For: Men"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E6",
+              "source_field": "specifications",
+              "text": "Occasion: Sports"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E7",
+              "source_field": "specifications",
+              "text": "Heel Height: 1 inch"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E8",
+              "source_field": "specifications",
+              "text": "Outer Material: Synthetic Leather"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E9",
+              "source_field": "specifications",
+              "text": "Color: Blue::Grey"
+            },
+            {
+              "evidence_id": "ca1f2174844857098f6c8912c90811be-E10",
+              "source_field": "description",
+              "text": "Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey"
+            }
+          ],
+          "product_url": "http://www.flipkart.com/baaj-running-shoes/p/itmehxegjgvzyu2z?pid=SHOEHXEGYRZC2RK2",
+          "image": "http://img6a.flixcart.com/image/shoe/r/k/2/blue-grey-footnstyle114-baaj-9-original-imadzjz3kuymgcjh.jpeg"
+        },
+        {
+          "product_id": "89032171e3e9d790631e24e3f9421bfb",
+          "product_name": "ETHICS Running Shoes",
+          "brand": "ETHICS",
+          "category": "Footwear",
+          "discounted_price": 298.0,
+          "currency": "INR",
+          "rating": null,
+          "summary_reason": "Catalog item: ETHICS Running Shoes",
+          "strengths": [
+            {
+              "claim": "Catalog lists: ETHICS Running Shoes",
+              "evidence_ids": [
+                "89032171e3e9d790631e24e3f9421bfb-E1"
+              ]
+            },
+            {
+              "claim": "Catalog lists: ETHICS",
+              "evidence_ids": [
+                "89032171e3e9d790631e24e3f9421bfb-E2"
+              ]
+            },
+            {
+              "claim": "Catalog lists: Footwear",
+              "evidence_ids": [
+                "89032171e3e9d790631e24e3f9421bfb-E3"
+              ]
+            }
+          ],
+          "limitations": [
+            {
+              "claim": "Requested features not explicitly evidenced remain unverified.",
+              "evidence_ids": []
+            },
+            {
+              "claim": "The catalog does not specify a rating.",
+              "evidence_ids": []
+            }
+          ],
+          "comparison_note": null,
+          "available_evidence": [
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E1",
+              "source_field": "product_name",
+              "text": "ETHICS Running Shoes"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E2",
+              "source_field": "brand",
+              "text": "ETHICS"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E3",
+              "source_field": "category",
+              "text": "Footwear"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E4",
+              "source_field": "discounted_price",
+              "text": "298.00 INR"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E5",
+              "source_field": "specifications",
+              "text": "Occasion: Sports"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E6",
+              "source_field": "specifications",
+              "text": "Ideal For: Men"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E7",
+              "source_field": "specifications",
+              "text": "Weight: 449 g (per single Shoe) - Weight of the product may vary depending on size."
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E8",
+              "source_field": "specifications",
+              "text": "Heel Height: 0 inch"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E9",
+              "source_field": "specifications",
+              "text": "Outer Material: Synthetic Leather"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E10",
+              "source_field": "specifications",
+              "text": "Color: ORANGE"
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E11",
+              "source_field": "description",
+              "text": "Key Features of ETHICS Running Shoes Material: Synthetic Leather Occasion: Sports Color: Orange Heel Height: 0,Specifications of ETHICS Running Shoes General Occasion Sports Ideal For Men Shoe Details Weight 449 g (per single Shoe) - Weight of the product may vary depending on size."
+            },
+            {
+              "evidence_id": "89032171e3e9d790631e24e3f9421bfb-E12",
+              "source_field": "description",
+              "text": "Heel Height 0 inch Outer Material Synthetic Leather Color ORANGE"
+            }
+          ],
+          "product_url": "http://www.flipkart.com/ethics-running-shoes/p/itmejf5gbuukmzud?pid=SHOEJF5G5NAZ4EMG",
+          "image": "http://img6a.flixcart.com/image/shoe/x/t/u/orange-bl-01-ethics-9-original-imaejcb8yxuqtmgm.jpeg"
+        },
+        {
+          "product_id": "09779c98e54c30f905b21bd9744ae685",
+          "product_name": "Campus Berlin Running Shoes",
+          "brand": null,
+          "category": "Footwear",
+          "discounted_price": 1399.0,
+          "currency": "INR",
+          "rating": null,
+          "summary_reason": "Catalog item: Campus Berlin Running Shoes",
+          "strengths": [
+            {
+              "claim": "Catalog lists: Campus Berlin Running Shoes",
+              "evidence_ids": [
+                "09779c98e54c30f905b21bd9744ae685-E1"
+              ]
+            },
+            {
+              "claim": "Catalog lists: Footwear",
+              "evidence_ids": [
+                "09779c98e54c30f905b21bd9744ae685-E2"
+              ]
+            },
+            {
+              "claim": "Catalog lists: 1399.00 INR",
+              "evidence_ids": [
+                "09779c98e54c30f905b21bd9744ae685-E3"
+              ]
+            }
+          ],
+          "limitations": [
+            {
+              "claim": "Requested features not explicitly evidenced remain unverified.",
+              "evidence_ids": []
+            },
+            {
+              "claim": "The catalog does not specify a rating.",
+              "evidence_ids": []
+            }
+          ],
+          "comparison_note": null,
+          "available_evidence": [
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E1",
+              "source_field": "product_name",
+              "text": "Campus Berlin Running Shoes"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E2",
+              "source_field": "category",
+              "text": "Footwear"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E3",
+              "source_field": "discounted_price",
+              "text": "1399.00 INR"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E4",
+              "source_field": "specifications",
+              "text": "Occasion: Sports"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E5",
+              "source_field": "specifications",
+              "text": "Ideal For: Women"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E6",
+              "source_field": "specifications",
+              "text": "Sole Material: TPR"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E7",
+              "source_field": "specifications",
+              "text": "Heel Height: 0 inch"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E8",
+              "source_field": "specifications",
+              "text": "Outer Material: Synthetic Leather"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E9",
+              "source_field": "specifications",
+              "text": "Color: Pink"
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E10",
+              "source_field": "description",
+              "text": "Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs."
+            },
+            {
+              "evidence_id": "09779c98e54c30f905b21bd9744ae685-E11",
+              "source_field": "description",
+              "text": "1399 from Flipkart.com."
+            }
+          ],
+          "product_url": "http://www.flipkart.com/campus-berlin-running-shoes/p/itmeaegrdzftca2e?pid=SHOEAEGRVDKXNWXR",
+          "image": "http://img6a.flixcart.com/image/shoe/w/x/r/pink-berlin-campus-8-original-imaedh9z98ge5fcg.jpeg"
+        }
+      ],
+      "metadata": {
+        "recommended_count": 3,
+        "retrieval_method": "HYBRID_RRF",
+        "reranking_method": "RRF",
+        "fallback_used": false,
+        "session_id": null,
+        "applied_constraints": {
+          "category": "Footwear",
+          "rating_null_policy": "null ratings do not satisfy a minimum rating"
+        }
+      },
+      "usage": {
+        "total_tokens": 605,
+        "prompt_tokens": 540,
+        "completion_tokens": 65,
+        "estimated_cost_usd": 0.0,
+        "total_latency_ms": 2396.53,
+        "stage_latencies_ms": {
+          "phase8_query_understanding": 737.12,
+          "phase9_preferences": 1.86,
+          "phase10_hybrid_retrieval": 935.58,
+          "phase11_reranking": 1.72,
+          "phase12_recommendation": 351.16
+        }
+      }
+    },
+    "wall_ms": 2407.6440000062576
+  }
+]

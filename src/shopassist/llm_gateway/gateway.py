@@ -132,6 +132,31 @@ class Gateway:
             if adapter is None:
                 skips.append(RouteSkip(route_id=route.route_id, reason=ReasonCode.UNCONFIGURED))
                 continue
+            if route.provider=='ollama':
+                try:
+                    timeout=min(5.0,policy.timeout_for_attempt())
+                    verification_deadline_limited=policy.remaining_s()<=min(5.0,policy.attempt_timeout_s)
+                    verified=await asyncio.wait_for(adapter.ensure_identity(route,timeout_s=timeout),timeout=timeout)
+                    policy.timeout_for_attempt()
+                except asyncio.CancelledError:
+                    await self._emit_summary(request,attempts,skips,'cancelled',started)
+                    raise
+                except asyncio.TimeoutError:
+                    if verification_deadline_limited or policy.remaining_s()<=0:
+                        await self._emit_summary(request,attempts,skips,'failure',started)
+                        raise policy._deadline_error() from None
+                    verified=False
+                except GatewayError:
+                    await self._emit_summary(request,attempts,skips,'failure',started)
+                    raise
+                if not verified:
+                    skips.append(RouteSkip(route_id=route.route_id,reason=ReasonCode.UNCONFIGURED))
+                    continue
+                # Verification is not approval renewal; expiry can occur during I/O.
+                static_reason=self.registry.ineligibility(route.route_id,request.task,request.profile)
+                if static_reason is not None:
+                    skips.append(RouteSkip(route_id=route.route_id,reason=static_reason))
+                    continue
             try:
                 if not self.credential_available(route):
                     skips.append(RouteSkip(route_id=route.route_id, reason=ReasonCode.UNCONFIGURED))

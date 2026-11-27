@@ -16,7 +16,7 @@ import time
 from typing import Any, Mapping, Protocol, Sequence
 
 from shopassist.llm.schemas import QueryUnderstandingResult
-from shopassist.preferences.safety import find_unsafe_negative_preferences
+from shopassist.preferences.safety import find_unsafe_query_exclusions
 from shopassist.preferences.schemas import PreferenceRepresentationResult, RepresentationStatus
 from shopassist.preferences.normalization import normalize_preferences, normalize_semantic_query
 from shopassist.preferences.query_composer import build_preference_query
@@ -237,7 +237,7 @@ class RerankingService:
             return self._failure(RerankingStatus.CLARIFICATION_REQUIRED, selected_method, "Input requires clarification")
         if (query_result.output.hard_constraints.currency or "INR").upper() != "INR":
             return self._failure(RerankingStatus.UNSUPPORTED_INTENT, selected_method, "Catalog prices are in INR")
-        if find_unsafe_negative_preferences([query_result.query]):
+        if find_unsafe_query_exclusions(query_result.query):
             return self._failure(RerankingStatus.UNSUPPORTED_INTENT, selected_method, "Exclusion intent cannot be reranked safely")
         if preference_result.status not in (RepresentationStatus.SUCCESS, RepresentationStatus.NO_PREFERENCES):
             status = RerankingStatus.UNSUPPORTED_INTENT if preference_result.status == RepresentationStatus.UNSUPPORTED_INTENT else RerankingStatus.EMBEDDING_FAILURE

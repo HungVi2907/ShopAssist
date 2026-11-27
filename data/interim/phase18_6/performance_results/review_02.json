@@ -1,0 +1,282 @@
+{
+  "checks": [
+    {
+      "case": "E01",
+      "status": "SUCCESS",
+      "inference_calls": 2,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true,
+      "two_calls": true,
+      "order": true,
+      "metadata": true,
+      "owned_exact_quotes": true,
+      "mandatory_filters": true,
+      "presentation_urls": true
+    },
+    {
+      "case": "E02",
+      "status": "SUCCESS",
+      "inference_calls": 2,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true,
+      "two_calls": true,
+      "order": true,
+      "metadata": true,
+      "owned_exact_quotes": true,
+      "mandatory_filters": true,
+      "presentation_urls": true
+    },
+    {
+      "case": "E03",
+      "status": "SUCCESS",
+      "inference_calls": 2,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true,
+      "two_calls": true,
+      "order": true,
+      "metadata": true,
+      "owned_exact_quotes": true,
+      "mandatory_filters": true,
+      "presentation_urls": true
+    },
+    {
+      "case": "E04",
+      "status": "SUCCESS",
+      "inference_calls": 2,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true,
+      "two_calls": true,
+      "order": true,
+      "metadata": true,
+      "owned_exact_quotes": true,
+      "mandatory_filters": true,
+      "presentation_urls": true
+    },
+    {
+      "case": "E05",
+      "status": "SUCCESS",
+      "inference_calls": 2,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true,
+      "two_calls": true,
+      "order": true,
+      "metadata": true,
+      "owned_exact_quotes": true,
+      "mandatory_filters": true,
+      "presentation_urls": true
+    },
+    {
+      "case": "E06",
+      "status": "VALIDATION_FAILURE",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E07",
+      "status": "VALIDATION_FAILURE",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E08",
+      "status": "VALIDATION_FAILURE",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E09",
+      "status": "CLARIFICATION_REQUIRED",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E10",
+      "status": "CLARIFICATION_REQUIRED",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E11",
+      "status": "CLARIFICATION_REQUIRED",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E12",
+      "status": "UNSUPPORTED_INTENT",
+      "inference_calls": 0,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E13",
+      "status": "UNSUPPORTED_INTENT",
+      "inference_calls": 0,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E14",
+      "status": "UNSUPPORTED_INTENT",
+      "inference_calls": 0,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E15",
+      "status": "CLARIFICATION_REQUIRED",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E16",
+      "status": "VALIDATION_FAILURE",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E17",
+      "status": "CLARIFICATION_REQUIRED",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E18",
+      "status": "CLARIFICATION_REQUIRED",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E19",
+      "status": "SUCCESS",
+      "inference_calls": 2,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true,
+      "two_calls": true,
+      "order": true,
+      "metadata": true,
+      "owned_exact_quotes": true,
+      "mandatory_filters": true,
+      "presentation_urls": true
+    },
+    {
+      "case": "E20",
+      "status": "CLARIFICATION_REQUIRED",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E21",
+      "status": "NO_RESULTS",
+      "inference_calls": 1,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true
+    },
+    {
+      "case": "E22",
+      "status": "SUCCESS",
+      "inference_calls": 2,
+      "at_most_two_calls": true,
+      "public_usage_matches_reported_counts": true,
+      "two_calls": true,
+      "order": true,
+      "metadata": true,
+      "owned_exact_quotes": true,
+      "mandatory_filters": true,
+      "presentation_urls": true
+    }
+  ],
+  "counts": {
+    "inference_posts": 26,
+    "identity_gets": 11,
+    "successful_requests": 7,
+    "accepted_product_occurrences": 21,
+    "selected_claims": 42,
+    "input_tokens": 6286,
+    "output_tokens": 847
+  },
+  "executed_stage_metrics": {
+    "startup": {
+      "n": 1,
+      "p50_ms": 3820.406999991974,
+      "p95_ms": 3820.406999991974
+    },
+    "python_transformation": {
+      "n": 19,
+      "p50_ms": 7.425200004945509,
+      "p95_ms": 29.035390001081062
+    },
+    "query_understanding": {
+      "n": 19,
+      "p50_ms": 342.60010000434704,
+      "p95_ms": 737.155040002829
+    },
+    "preferences": {
+      "n": 12,
+      "p50_ms": 0.17770000704331324,
+      "p95_ms": 29.200634997687303
+    },
+    "hybrid_retrieval": {
+      "n": 12,
+      "p50_ms": 685.5911000093329,
+      "p95_ms": 1332.2030849994917
+    },
+    "reranking": {
+      "n": 11,
+      "p50_ms": 0.4684000014094636,
+      "p95_ms": 0.5160000000614673
+    },
+    "recommendation": {
+      "n": 11,
+      "p50_ms": 312.9043999942951,
+      "p95_ms": 550.3902999989805
+    },
+    "pipeline": {
+      "n": 22,
+      "p50_ms": 924.8584500019206,
+      "p95_ms": 2052.443314989796
+    }
+  },
+  "successful_http_wall": {
+    "n": 7,
+    "p50_ms": 1814.5662000024458,
+    "p95_ms": 4625.598670005272
+  },
+  "warm_successful_http_wall": {
+    "n": 6,
+    "p50_ms": 1761.3420499983476,
+    "p95_ms": 2009.5667250025144
+  },
+  "identity_stress_ttl_seconds": 2,
+  "refresh_offsets_since_start_seconds": [
+    16.5,
+    21.422000000005937,
+    23.922000000005937,
+    26.562000000005355,
+    29.062000000005355,
+    31.26600000000326,
+    33.562000000005355,
+    35.687000000005355,
+    37.75,
+    40.46899999999732
+  ],
+  "correlation_method": "Sequential one-worker native HTTP observations paired with ordered Gateway attempts; public request IDs remain unmodified and internal IDs server-generated.",
+  "not_separately_measured": [
+    "pure input validation",
+    "evidence preparation",
+    "recommendation assembly",
+    "pure HTTP serialization; client/server residual contains middleware and network"
+  ],
+  "assessment_scope": "Deterministic source/constraint fidelity; relevance/usefulness review remains provisional."
+}

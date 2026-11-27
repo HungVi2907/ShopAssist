@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {
+      "id": "E22",
+      "query": "headphones with at least 4 stars",
+      "expected": "Single-result rating-constrained catalog recommendation; guards must still pass. This requested top_k is fixed before execution.",
+      "top_k": 1,
+      "language": "en"
+    }
+  ]
+}

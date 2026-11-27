@@ -1,0 +1,3156 @@
+{
+  "scope": "Real hybrid branches and existing rerankers; reference QU, no inference and no route permission generated",
+  "records": [
+    {
+      "query": "wireless charging pad",
+      "scope": "Manual correct-type reference QU for retrieval diagnosis only; actual Q1S clarification is preserved separately.",
+      "catalog_name_cooccurrence": [],
+      "retrieval": {
+        "status": "SUCCESS",
+        "candidates": [
+          {
+            "rank": 1,
+            "product_id": "28816aea8f796815cbdf79045e391830",
+            "product_name": "Newdort Usb Charger Full Charging Pad",
+            "category": "Mobiles & Accessories",
+            "brand": "Newdort",
+            "discounted_price": 299.0,
+            "rating": null,
+            "rrf_score": 0.03278688524590164,
+            "sources": {
+              "dense": {
+                "rank": 1,
+                "score": 0.6907261425689559
+              },
+              "lexical": {
+                "rank": 1,
+                "score": 0.32275101228862324
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.309273857431044,
+              "retail_price": 999.0,
+              "product_specifications": [
+                {
+                  "key": "Brand",
+                  "value": "Newdort"
+                },
+                {
+                  "key": "Indicator",
+                  "value": "No"
+                },
+                {
+                  "key": "Model Number",
+                  "value": "Usb Charger Full"
+                },
+                {
+                  "key": "Rechargeable Battery",
+                  "value": "Yes"
+                },
+                {
+                  "key": "Compatible With",
+                  "value": "Motorola,"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                }
+              ],
+              "product_description": "Specifications of Newdort Usb Charger Full Charging Pad General Brand Newdort Indicator No Model Number Usb Charger Full Rechargeable Battery Yes Compatible With Motorola, Color White In the Box 1 Motorola T/C",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 2,
+            "product_id": "b381180b1795b4a37b3782dc4b60d6d9",
+            "product_name": "Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh",
+            "category": "Mobiles & Accessories",
+            "brand": "Wayona",
+            "discounted_price": 2149.0,
+            "rating": null,
+            "rrf_score": 0.03225806451612903,
+            "sources": {
+              "dense": {
+                "rank": 2,
+                "score": 0.677878618240356
+              },
+              "lexical": {
+                "rank": 2,
+                "score": 0.164620918305404
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.322121381759644,
+              "retail_price": 5499.0,
+              "product_specifications": [
+                {
+                  "key": "Connectors",
+                  "value": "Micro, Mini"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Wayona"
+                },
+                {
+                  "key": "Model Number",
+                  "value": "10000mAh"
+                },
+                {
+                  "key": "Battery Capacity",
+                  "value": "10000 mAh"
+                },
+                {
+                  "key": "Model Name",
+                  "value": "Wireless 10000mAh Power bank With Dual USB Output"
+                },
+                {
+                  "key": "Output Power",
+                  "value": "1.5V/2.1A"
+                },
+                {
+                  "key": "Battery Type",
+                  "value": "Lithium Polymer"
+                },
+                {
+                  "key": "Power Source",
+                  "value": "DC Adapter"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Covered in Warranty",
+                  "value": "Manufacturing Defects Only"
+                },
+                {
+                  "key": "Warranty Summary",
+                  "value": "6 Months Manufacturer Warranty"
+                },
+                {
+                  "key": "Warranty Service Type",
+                  "value": "Replacement / Repair"
+                },
+                {
+                  "key": "Not Covered in Warranty",
+                  "value": "Physical Damages, Accidental Damages"
+                },
+                {
+                  "key": "Weight",
+                  "value": "180 g"
+                },
+                {
+                  "key": "Height",
+                  "value": "150 mm"
+                },
+                {
+                  "key": "Width",
+                  "value": "72 mm"
+                },
+                {
+                  "key": "Depth",
+                  "value": "10 mm"
+                },
+                {
+                  "key": "Sales Package",
+                  "value": "Power Bank, Micro USB Charger Cable, Warranty Card"
+                }
+              ],
+              "product_description": "Key Features of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh Can charge up to 3 devices simultaneously,Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) Price: Rs. 2,149 Wayona wireless power 10000mAh works as a Qi charging pad or a power bank on the go. Can charge up to 3 devices simultaneously.Qi CompatibleSupports wireless charging at up to 1A for devices including (but not limited to):* Samsung Galaxy Note5/S6/S6 Edge/S6 Edge+* Google Nexus 5/6/7* HTC Droid DNA, 8X* LG G3/G4, Lucid 2/3* Nokia Lumia 920/930* iPhone 5S/6/6 Plus with wireless charging case 1 micro USB cable is included for wired charging of Android devices.Slim High-Capacity Battery Built-in, custom-made 10000mAh lithium-polymer battery can recharge phones and tablets The battery can be recharged rapidly via its micro USB port in 5-6 hours with proprietary 2A rapid charging technology.Smart USB PortsEach of the two USB ports automatically detects optimal charging speed for Android or iOS devices at up to 2.1A. Intelligent protection against overcharge Note: For wireless charging, your phone must have a Qi receiver. Recharge the device using a USB adapter supporting 5V/2A output. If red LED is off, press-and-hold power button for 3 secs to turn on wireless charging. To charge phones while recharging, you may need to press the power button once. To Samsung Galaxy Note5/S6 Edge+ owners: All units in current inventory have been tested for compatibility with Note5/S6 Edge+.,Specifications of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) General Connectors Micro, Mini Brand Wayona Model Number 10000mAh Battery Capacity 10000 mAh Model Name Wireless 10000mAh Power bank With Dual USB Output Output Power 1.5V/2.1A Battery Type Lithium Polymer Power Source DC Adapter Color White Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 6 Months Manufacturer Warranty Warranty Service Type Replacement / Repair Not Covered in Warranty Physical Damages, Accidental Damages Dimensions Weight 180 g Height 150 mm Width 72 mm Depth 10 mm Additional Features Can charge up to 3 devices simultaneously In the Box Sales Package Power Bank, Micro USB Charger Cable, Warranty Card",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 3,
+            "product_id": "6c9039af5852abefdb4ddb31a2916e42",
+            "product_name": "Smartpro Micro USB Data Sync and Charging Cable USB Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Smartpro",
+            "discounted_price": 269.0,
+            "rating": null,
+            "rrf_score": 0.028594771241830064,
+            "sources": {
+              "dense": {
+                "rank": 12,
+                "score": 0.6332875678923
+              },
+              "lexical": {
+                "rank": 8,
+                "score": 0.058708578699123576
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.3667124321077,
+              "retail_price": 700.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Sales Package",
+                  "value": "USB Cable"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Smartpro"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "Smart Phones"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "High Speed Cable 1000 Mbps Speed"
+                },
+                {
+                  "key": "Model",
+                  "value": "Micro USB Data Sync and Charging Cable"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1 m"
+                },
+                {
+                  "key": "Type",
+                  "value": "USB Cable"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "FDC-01"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "Micro USB Type"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "USB Type"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Full HD Support",
+                  "value": "No"
+                },
+                {
+                  "key": "3D Support",
+                  "value": "No"
+                }
+              ],
+              "product_description": "Smartpro Micro USB Data Sync and Charging Cable USB Cable (White) Price: Rs. 269 This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only. This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only.",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 4,
+            "product_id": "31100b8a80a913fbfab9f7c891e517de",
+            "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Lexel",
+            "discounted_price": 339.0,
+            "rating": null,
+            "rrf_score": 0.02786377708978328,
+            "sources": {
+              "dense": {
+                "rank": 8,
+                "score": 0.6375722505109169
+              },
+              "lexical": {
+                "rank": 16,
+                "score": 0.049714485446751264
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.362427749489083,
+              "retail_price": 999.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Sales Package",
+                  "value": "1 USB Cable"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Lexel"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "MOBILE, TABLET"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "High Speed Cable 480 Mbps Speed"
+                },
+                {
+                  "key": "Model",
+                  "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1.5 m"
+                },
+                {
+                  "key": "Compatible Devices",
+                  "value": "Mobile"
+                },
+                {
+                  "key": "Type",
+                  "value": "Lightning Cable"
+                },
+                {
+                  "key": "Cable",
+                  "value": "Round"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "LX-M15"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "USB"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "Lighting"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Covered in Warranty",
+                  "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                },
+                {
+                  "key": "Warranty Summary",
+                  "value": "6 Months Manufacture Warranty"
+                },
+                {
+                  "key": "Not Covered in Warranty",
+                  "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                }
+              ],
+              "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Length 1.5 m Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color White Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 5,
+            "product_id": "ef9979756bed63f8769f27fe0a2f9242",
+            "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Lexel",
+            "discounted_price": 339.0,
+            "rating": null,
+            "rrf_score": 0.02761904761904762,
+            "sources": {
+              "dense": {
+                "rank": 10,
+                "score": 0.6356604099273679
+              },
+              "lexical": {
+                "rank": 15,
+                "score": 0.049728778047268954
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.364339590072632,
+              "retail_price": 999.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Sales Package",
+                  "value": "1 USB Cable"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Lexel"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "MOBILE, TABLET"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1.5 m"
+                },
+                {
+                  "key": "Model",
+                  "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "High Speed Cable 480 Mbps Speed"
+                },
+                {
+                  "key": "Compatible Devices",
+                  "value": "Mobile"
+                },
+                {
+                  "key": "Type",
+                  "value": "Lightning Cable"
+                },
+                {
+                  "key": "Cable",
+                  "value": "Round"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "LX-M15"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "USB"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "Lighting"
+                },
+                {
+                  "key": "Color",
+                  "value": "Black"
+                },
+                {
+                  "key": "Covered in Warranty",
+                  "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                },
+                {
+                  "key": "Warranty Summary",
+                  "value": "6 Months Manufacture Warranty"
+                },
+                {
+                  "key": "Not Covered in Warranty",
+                  "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                }
+              ],
+              "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Black) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Black) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color Black Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 6,
+            "product_id": "56d0c335e9013cacbda2736b44c5075c",
+            "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Lexel",
+            "discounted_price": 339.0,
+            "rating": null,
+            "rrf_score": 0.027479766610201392,
+            "sources": {
+              "dense": {
+                "rank": 9,
+                "score": 0.636497118264266
+              },
+              "lexical": {
+                "rank": 17,
+                "score": 0.04957864603031196
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.363502881735734,
+              "retail_price": 999.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Sales Package",
+                  "value": "1 USB Cable"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Lexel"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "MOBILE, TABLET"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1.5 m"
+                },
+                {
+                  "key": "Model",
+                  "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "High Speed Cable 480 Mbps Speed"
+                },
+                {
+                  "key": "Compatible Devices",
+                  "value": "Mobile"
+                },
+                {
+                  "key": "Type",
+                  "value": "Lightning Cable"
+                },
+                {
+                  "key": "Cable",
+                  "value": "Round"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "LX-M15"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "USB"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "Lighting"
+                },
+                {
+                  "key": "Color",
+                  "value": "Blue"
+                },
+                {
+                  "key": "Covered in Warranty",
+                  "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                },
+                {
+                  "key": "Warranty Summary",
+                  "value": "6 Months Manufacture Warranty"
+                },
+                {
+                  "key": "Not Covered in Warranty",
+                  "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                }
+              ],
+              "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Blue) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Blue) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color Blue Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 7,
+            "product_id": "66050a18e19e133093226dfe5ba39751",
+            "product_name": "Remax Micro USB Data Sync Charging Cable USB Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Remax",
+            "discounted_price": 149.0,
+            "rating": null,
+            "rrf_score": 0.027432808155699723,
+            "sources": {
+              "dense": {
+                "rank": 23,
+                "score": 0.624865137048655
+              },
+              "lexical": {
+                "rank": 5,
+                "score": 0.0647909137208086
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.375134862951345,
+              "retail_price": 849.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Sales Package",
+                  "value": "Data Cable"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Remax"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "Mobile"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "Standard 30 Mbps Speed"
+                },
+                {
+                  "key": "Model",
+                  "value": "Micro USB Data Sync Charging Cable"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1 m"
+                },
+                {
+                  "key": "Type",
+                  "value": "USB Cable"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "RemWhtMcrDcbl"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "SC Type"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "Female USB Adapter Type"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Full HD Support",
+                  "value": "No"
+                },
+                {
+                  "key": "3D Support",
+                  "value": "No"
+                }
+              ],
+              "product_description": "Buy Remax Micro USB Data Sync Charging Cable USB Cable only for Rs. 149 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 8,
+            "product_id": "02cf9be035d844218e642e9a03bd2e63",
+            "product_name": "HOKO Micro USB to USB High speed data transfer and Charging Cable for HTC One Remix USB Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Hoko",
+            "discounted_price": 270.0,
+            "rating": null,
+            "rrf_score": 0.02628900949796472,
+            "sources": {
+              "dense": {
+                "rank": 28,
+                "score": 0.6220991611480711
+              },
+              "lexical": {
+                "rank": 7,
+                "score": 0.061462549879988795
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.377900838851929,
+              "retail_price": 650.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Brand",
+                  "value": "HOKO"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "Mobile, Tablet"
+                },
+                {
+                  "key": "Model",
+                  "value": "Micro USB to USB High speed data transfer and Charging Cable for HTC One Remix"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "High Speed Cable 480 Mbps Speed"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1 m"
+                },
+                {
+                  "key": "Type",
+                  "value": "USB Cable"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "HOKO-W-CABLE-680"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "Micro USB"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "USB"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Full HD Support",
+                  "value": "No"
+                },
+                {
+                  "key": "3D Support",
+                  "value": "No"
+                }
+              ],
+              "product_description": "Buy HOKO Micro USB to USB High speed data transfer and Charging Cable for HTC One Remix USB Cable only for Rs. 270 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 9,
+            "product_id": "ae5f7ee4c38b73b64d7be051f5251a10",
+            "product_name": "D'clair Micromax Canvas Play 4G Q469 Battery Charger",
+            "category": "Mobiles & Accessories",
+            "brand": "D'clair",
+            "discounted_price": 400.0,
+            "rating": null,
+            "rrf_score": 0.0248015873015873,
+            "sources": {
+              "dense": {
+                "rank": 3,
+                "score": 0.657473285718956
+              },
+              "lexical": {
+                "rank": 52,
+                "score": 0.020382893390401953
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.342526714281044,
+              "retail_price": 600.0,
+              "product_specifications": [
+                {
+                  "key": "Sales Package",
+                  "value": "Car Charger"
+                },
+                {
+                  "key": "Brand",
+                  "value": "D'clair"
+                },
+                {
+                  "key": "Model",
+                  "value": "Micromax Canvas Play 4G Q469"
+                },
+                {
+                  "key": "Type",
+                  "value": "Car Charger"
+                },
+                {
+                  "key": "Connector",
+                  "value": "Micro USB"
+                },
+                {
+                  "key": "Color",
+                  "value": "Black"
+                }
+              ],
+              "product_description": "Key Features of D'clair Micromax Canvas Play 4G Q469 Battery Charger Dual USB Compatible Compact Durable,D'clair Micromax Canvas Play 4G Q469 Battery Charger (Black) Price: Rs. 400 DUAL USB Car Charger Easy and convenient way to charger the phone battery in a vehicle, for operation, safety, care and maintenance, see phone's user guide. Bilitong enhancements enable the best possible operation of your mobile phone. Please check the compatibility of your mobile phone and this enhancement with your dealer. Performance Illustration: Input: DC 12V-24V Output: DC 5V/2.1A Dual Channel Keeping high output Support fast charging Dual USB Can work simultaneously High efficiency IC inside to control the circuit Multi set to protect the circuit Brief fashion design,Specifications of D'clair Micromax Canvas Play 4G Q469 Battery Charger (Black) In The Box Sales Package Car Charger General Brand D'clair Model Micromax Canvas Play 4G Q469 Type Car Charger Connector Micro USB Color Black",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 10,
+            "product_id": "14c416a70b1a1317cbf92c94dfafaa26",
+            "product_name": "XEBAC XEBAC-ADAPTER-B390 Battery Charger",
+            "category": "Mobiles & Accessories",
+            "brand": "XEBAC",
+            "discounted_price": 269.0,
+            "rating": null,
+            "rrf_score": 0.02475171886936593,
+            "sources": {
+              "dense": {
+                "rank": 17,
+                "score": 0.629304431122278
+              },
+              "lexical": {
+                "rank": 25,
+                "score": 0.03706493610379379
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.370695568877722,
+              "retail_price": 899.0,
+              "product_specifications": [
+                {
+                  "key": "Sales Package",
+                  "value": "1 Mobile Charger Adapter"
+                },
+                {
+                  "key": "Brand",
+                  "value": "XEBAC"
+                },
+                {
+                  "key": "Model",
+                  "value": "XEBAC-ADAPTER-B390"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1 m"
+                },
+                {
+                  "key": "Type",
+                  "value": "Wall Charger"
+                },
+                {
+                  "key": "Connector",
+                  "value": "Micro USB, AC - 3N Pin"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Weight",
+                  "value": "0.5 g"
+                },
+                {
+                  "key": "Width x Height x Depth",
+                  "value": "5 x 5 x 5 mm"
+                }
+              ],
+              "product_description": "Key Features of XEBAC XEBAC-ADAPTER-B390 Battery Charger Fast Charging Speed Genuine Output Best Quality 100% Compatible,XEBAC XEBAC-ADAPTER-B390 Battery Charger (White) Price: Rs. 269 Standard USB output, compatible with all the mobiles and digital products. Maximum output of Charger is 5V-1.2 A Which gives a speedy charging with safety of your mobile and mobile battery. Built in intelligent protection system, effectively prevents the overcharging and short circuit, hence more safety. Anti interference circuit helps smartphones for smooth functioning of touch screen.,Specifications of XEBAC XEBAC-ADAPTER-B390 Battery Charger (White) In The Box Sales Package 1 Mobile Charger Adapter General Brand XEBAC Model XEBAC-ADAPTER-B390 Cable Length 1 m Type Wall Charger Connector Micro USB, AC - 3N Pin Color White Dimensions Weight 0.5 g Width x Height x Depth 5 x 5 x 5 mm",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 11,
+            "product_id": "227410c1be4e957a9c80968d5665d3c2",
+            "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Lexel",
+            "discounted_price": 339.0,
+            "rating": null,
+            "rrf_score": 0.023769338959212377,
+            "sources": {
+              "dense": {
+                "rank": 30,
+                "score": 0.621217548847198
+              },
+              "lexical": {
+                "rank": 19,
+                "score": 0.04814643727968174
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.378782451152802,
+              "retail_price": 999.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Sales Package",
+                  "value": "1 USB Cable"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Lexel"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "MOBILE, TABLET"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1.5 m"
+                },
+                {
+                  "key": "Model",
+                  "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "High Speed Cable 480 Mbps Speed"
+                },
+                {
+                  "key": "Compatible Devices",
+                  "value": "Mobile"
+                },
+                {
+                  "key": "Type",
+                  "value": "USB Cable"
+                },
+                {
+                  "key": "Cable",
+                  "value": "Round"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "LX-M15"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "USB"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "MicroUSB"
+                },
+                {
+                  "key": "Color",
+                  "value": "Black"
+                },
+                {
+                  "key": "Covered in Warranty",
+                  "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                },
+                {
+                  "key": "Warranty Summary",
+                  "value": "6 Months Manufacture Warranty"
+                },
+                {
+                  "key": "Not Covered in Warranty",
+                  "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                }
+              ],
+              "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Black) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Black) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type USB Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 MicroUSB Color Black Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 12,
+            "product_id": "d9b513911fcd6dc049f8274cd1000410",
+            "product_name": "Nillkin Apple Lightning to USB Cable USB Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Nillkin",
+            "discounted_price": 599.0,
+            "rating": null,
+            "rrf_score": 0.02318454363757495,
+            "sources": {
+              "dense": {
+                "rank": 19,
+                "score": 0.628119606617678
+              },
+              "lexical": {
+                "rank": 35,
+                "score": 0.035420875234226094
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.371880393382322,
+              "retail_price": 999.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Nillkin"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "iphone, ipad Air, ipad Mini"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1.2 m"
+                },
+                {
+                  "key": "Model",
+                  "value": "Apple Lightning to USB Cable"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "Lightning Connector to USB for Sync and Charging 480 Mbps Speed"
+                },
+                {
+                  "key": "Type",
+                  "value": "USB Cable"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "ALCWH01"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "Mirco USB"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "USB"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Full HD Support",
+                  "value": "No"
+                },
+                {
+                  "key": "3D Support",
+                  "value": "No"
+                }
+              ],
+              "product_description": "Buy Nillkin Apple Lightning to USB Cable USB Cable only for Rs. 520 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 13,
+            "product_id": "36b3070975afb8dadcca37c5b664259f",
+            "product_name": "XEBAC XEBAC-ADAPTER-B693 Battery Charger",
+            "category": "Mobiles & Accessories",
+            "brand": "XEBAC",
+            "discounted_price": 269.0,
+            "rating": null,
+            "rrf_score": 0.022988505747126436,
+            "sources": {
+              "dense": {
+                "rank": 27,
+                "score": 0.6221716403961179
+              },
+              "lexical": {
+                "rank": 27,
+                "score": 0.03706493610379379
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.377828359603882,
+              "retail_price": 899.0,
+              "product_specifications": [
+                {
+                  "key": "Sales Package",
+                  "value": "1 Mobile Charger Adapter"
+                },
+                {
+                  "key": "Brand",
+                  "value": "XEBAC"
+                },
+                {
+                  "key": "Model",
+                  "value": "XEBAC-ADAPTER-B693"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1 m"
+                },
+                {
+                  "key": "Type",
+                  "value": "Wall Charger"
+                },
+                {
+                  "key": "Connector",
+                  "value": "Micro USB, AC - 3N Pin"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Weight",
+                  "value": "0.5 g"
+                },
+                {
+                  "key": "Width x Height x Depth",
+                  "value": "5 x 5 x 5 mm"
+                }
+              ],
+              "product_description": "Key Features of XEBAC XEBAC-ADAPTER-B693 Battery Charger Fast Charging Speed Genuine Output Best Quality 100% Compatible,XEBAC XEBAC-ADAPTER-B693 Battery Charger (White) Price: Rs. 269 Standard USB output, compatible with all the mobiles and digital products. Maximum output of Charger is 5V-1.2 A Which gives a speedy charging with safety of your mobile and mobile battery. Built in intelligent protection system, effectively prevents the overcharging and short circuit, hence more safety. Anti interference circuit helps smartphones for smooth functioning of touch screen.,Specifications of XEBAC XEBAC-ADAPTER-B693 Battery Charger (White) In The Box Sales Package 1 Mobile Charger Adapter General Brand XEBAC Model XEBAC-ADAPTER-B693 Cable Length 1 m Type Wall Charger Connector Micro USB, AC - 3N Pin Color White Dimensions Weight 0.5 g Width x Height x Depth 5 x 5 x 5 mm",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 14,
+            "product_id": "253a7f050335f81d9c3b653b463f605e",
+            "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable",
+            "category": "Mobiles & Accessories",
+            "brand": "Lexel",
+            "discounted_price": 339.0,
+            "rating": null,
+            "rrf_score": 0.02291666666666667,
+            "sources": {
+              "dense": {
+                "rank": 36,
+                "score": 0.619435236521339
+              },
+              "lexical": {
+                "rank": 20,
+                "score": 0.048031721622199264
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.380564763478661,
+              "retail_price": 999.0,
+              "product_specifications": [
+                {
+                  "key": "Number of Contents in Sales Package",
+                  "value": "1"
+                },
+                {
+                  "key": "Sales Package",
+                  "value": "1 USB Cable"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Lexel"
+                },
+                {
+                  "key": "Suitable For",
+                  "value": "MOBILE, TABLET"
+                },
+                {
+                  "key": "Cable Type",
+                  "value": "High Speed Cable 480 Mbps Speed"
+                },
+                {
+                  "key": "Model",
+                  "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1.5 m"
+                },
+                {
+                  "key": "Compatible Devices",
+                  "value": "Mobile"
+                },
+                {
+                  "key": "Type",
+                  "value": "USB Cable"
+                },
+                {
+                  "key": "Cable",
+                  "value": "Round"
+                },
+                {
+                  "key": "Part Number",
+                  "value": "LX-M15"
+                },
+                {
+                  "key": "Connector 2",
+                  "value": "USB"
+                },
+                {
+                  "key": "Connector 1",
+                  "value": "MicroUSB"
+                },
+                {
+                  "key": "Color",
+                  "value": "Pink"
+                },
+                {
+                  "key": "Covered in Warranty",
+                  "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                },
+                {
+                  "key": "Warranty Summary",
+                  "value": "6 Months Manufacture Warranty"
+                },
+                {
+                  "key": "Not Covered in Warranty",
+                  "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                }
+              ],
+              "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Pink) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Pink) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc Cable Length 1.5 m Compatible Devices Mobile Type USB Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 MicroUSB Color Pink Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 15,
+            "product_id": "9a92fa49e44bab30e96f3b5c769724b1",
+            "product_name": "XEBAC XEBAC-CHARGER-B895 Battery Charger",
+            "category": "Mobiles & Accessories",
+            "brand": "XEBAC",
+            "discounted_price": 269.0,
+            "rating": null,
+            "rrf_score": 0.022774327122153208,
+            "sources": {
+              "dense": {
+                "rank": 32,
+                "score": 0.620480895042419
+              },
+              "lexical": {
+                "rank": 24,
+                "score": 0.037379789239316626
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.379519104957581,
+              "retail_price": 899.0,
+              "product_specifications": [
+                {
+                  "key": "Sales Package",
+                  "value": "1 Mobile Charger Adapter and USB Cable"
+                },
+                {
+                  "key": "Brand",
+                  "value": "XEBAC"
+                },
+                {
+                  "key": "Model",
+                  "value": "XEBAC-CHARGER-B895"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1 m"
+                },
+                {
+                  "key": "Type",
+                  "value": "Wall Charger"
+                },
+                {
+                  "key": "Connector",
+                  "value": "Micro USB, AC - 3N Pin"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Weight",
+                  "value": "0.5 g"
+                },
+                {
+                  "key": "Width x Height x Depth",
+                  "value": "5 x 5 x 5 mm"
+                }
+              ],
+              "product_description": "Key Features of XEBAC XEBAC-CHARGER-B895 Battery Charger Fast Charging Speed Genuine Output Best Quality 100% Compatible,XEBAC XEBAC-CHARGER-B895 Battery Charger (White) Price: Rs. 269 Standard USB output, compatible with all the mobiles and digital products. Maximum output of Charger is 5V-1.2 A Which gives a speedy charging with safety of your mobile and mobile battery. Built in intelligent protection system, effectively prevents the overcharging and short circuit, hence more safety. Anti interference circuit helps smartphones for smooth functioning of touch screen.,Specifications of XEBAC XEBAC-CHARGER-B895 Battery Charger (White) In The Box Sales Package 1 Mobile Charger Adapter & USB Cable General Brand XEBAC Model XEBAC-CHARGER-B895 Cable Length 1 m Type Wall Charger Connector Micro USB, AC - 3N Pin Color White Dimensions Weight 0.5 g Width x Height x Depth 5 x 5 x 5 mm",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 16,
+            "product_id": "cc9c940f5423f599c5d87be351ecec5d",
+            "product_name": "XEBAC XEBAC-ADAPTER-B701 Battery Charger",
+            "category": "Mobiles & Accessories",
+            "brand": "XEBAC",
+            "discounted_price": 269.0,
+            "rating": null,
+            "rrf_score": 0.021858576206402296,
+            "sources": {
+              "dense": {
+                "rank": 31,
+                "score": 0.621191487170285
+              },
+              "lexical": {
+                "rank": 32,
+                "score": 0.03706493610379379
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.378808512829715,
+              "retail_price": 899.0,
+              "product_specifications": [
+                {
+                  "key": "Sales Package",
+                  "value": "1 Mobile Charger Adapter"
+                },
+                {
+                  "key": "Brand",
+                  "value": "XEBAC"
+                },
+                {
+                  "key": "Model",
+                  "value": "XEBAC-ADAPTER-B701"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1 m"
+                },
+                {
+                  "key": "Type",
+                  "value": "Wall Charger"
+                },
+                {
+                  "key": "Connector",
+                  "value": "Micro USB, AC - 3N Pin"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Weight",
+                  "value": "0.5 g"
+                },
+                {
+                  "key": "Width x Height x Depth",
+                  "value": "5 x 5 x 5 mm"
+                }
+              ],
+              "product_description": "Key Features of XEBAC XEBAC-ADAPTER-B701 Battery Charger Fast Charging Speed Genuine Output Best Quality 100% Compatible,XEBAC XEBAC-ADAPTER-B701 Battery Charger (White) Price: Rs. 269 Standard USB output, compatible with all the mobiles and digital products. Maximum output of Charger is 5V-1.2 A Which gives a speedy charging with safety of your mobile and mobile battery. Built in intelligent protection system, effectively prevents the overcharging and short circuit, hence more safety. Anti interference circuit helps smartphones for smooth functioning of touch screen.,Specifications of XEBAC XEBAC-ADAPTER-B701 Battery Charger (White) In The Box Sales Package 1 Mobile Charger Adapter General Brand XEBAC Model XEBAC-ADAPTER-B701 Cable Length 1 m Type Wall Charger Connector Micro USB, AC - 3N Pin Color White Dimensions Weight 0.5 g Width x Height x Depth 5 x 5 x 5 mm",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 17,
+            "product_id": "2d2556a7931166676486f53b8d11228e",
+            "product_name": "XEBAC XEBAC-ADAPTER-B725 Battery Charger",
+            "category": "Mobiles & Accessories",
+            "brand": "XEBAC",
+            "discounted_price": 269.0,
+            "rating": null,
+            "rrf_score": 0.021831988609397245,
+            "sources": {
+              "dense": {
+                "rank": 38,
+                "score": 0.6177443450017079
+              },
+              "lexical": {
+                "rank": 26,
+                "score": 0.03706493610379379
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.382255654998292,
+              "retail_price": 899.0,
+              "product_specifications": [
+                {
+                  "key": "Sales Package",
+                  "value": "1 Mobile Charger Adapter"
+                },
+                {
+                  "key": "Brand",
+                  "value": "XEBAC"
+                },
+                {
+                  "key": "Model",
+                  "value": "XEBAC-ADAPTER-B725"
+                },
+                {
+                  "key": "Cable Length",
+                  "value": "1 m"
+                },
+                {
+                  "key": "Type",
+                  "value": "Wall Charger"
+                },
+                {
+                  "key": "Connector",
+                  "value": "Micro USB, AC - 3N Pin"
+                },
+                {
+                  "key": "Color",
+                  "value": "White"
+                },
+                {
+                  "key": "Weight",
+                  "value": "0.5 g"
+                },
+                {
+                  "key": "Width x Height x Depth",
+                  "value": "5 x 5 x 5 mm"
+                }
+              ],
+              "product_description": "Key Features of XEBAC XEBAC-ADAPTER-B725 Battery Charger Fast Charging Speed Genuine Output Best Quality 100% Compatible,XEBAC XEBAC-ADAPTER-B725 Battery Charger (White) Price: Rs. 269 Standard USB output, compatible with all the mobiles and digital products. Maximum output of Charger is 5V-1.2 A Which gives a speedy charging with safety of your mobile and mobile battery. Built in intelligent protection system, effectively prevents the overcharging and short circuit, hence more safety. Anti interference circuit helps smartphones for smooth functioning of touch screen.,Specifications of XEBAC XEBAC-ADAPTER-B725 Battery Charger (White) In The Box Sales Package 1 Mobile Charger Adapter General Brand XEBAC Model XEBAC-ADAPTER-B725 Cable Length 1 m Type Wall Charger Connector Micro USB, AC - 3N Pin Color White Dimensions Weight 0.5 g Width x Height x Depth 5 x 5 x 5 mm",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 18,
+            "product_id": "eadd1a659f6acfc0a27321f1b0fe3d30",
+            "product_name": "Shop Swipe Anti-Radiation Retro Style Wired Headphones",
+            "category": "Mobiles & Accessories",
+            "brand": "Shop Swipe",
+            "discounted_price": 559.0,
+            "rating": null,
+            "rrf_score": 0.021687462863933454,
+            "sources": {
+              "dense": {
+                "rank": 6,
+                "score": 0.637940883636475
+              },
+              "lexical": {
+                "rank": 93,
+                "score": 0.012585401848534489
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.362059116363525,
+              "retail_price": 1200.0,
+              "product_specifications": [
+                {
+                  "key": "Noise Cancellation",
+                  "value": "No"
+                },
+                {
+                  "key": "Headset Design",
+                  "value": "Canalphone"
+                },
+                {
+                  "key": "Brand",
+                  "value": "Shop Swipe"
+                },
+                {
+                  "key": "Wired/Wireless",
+                  "value": "Wired"
+                },
+                {
+                  "key": "Headphone Type",
+                  "value": "Over the Ear"
+                },
+                {
+                  "key": "Model ID",
+                  "value": "Anti-Radiation"
+                },
+                {
+                  "key": "Color",
+                  "value": "Black"
+                },
+                {
+                  "key": "In Sales Package",
+                  "value": "1 Headphone"
+                },
+                {
+                  "key": "Covered in Warranty",
+                  "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only."
+                },
+                {
+                  "key": "Warranty Summary",
+                  "value": "6 monts warranty for manufacturing defects only"
+                },
+                {
+                  "key": "Warranty Service Type",
+                  "value": "Replacement"
+                },
+                {
+                  "key": "Not Covered in Warranty",
+                  "value": "Warranty Does Not Cover Physical Damages."
+                },
+                {
+                  "key": "Headphone Jack",
+                  "value": "3.5 MM"
+                },
+                {
+                  "key": "Flatwire",
+                  "value": "No"
+                }
+              ],
+              "product_description": "Key Features of Shop Swipe Anti-Radiation Retro Style Wired Headphones Headset Design: Canalphone Type: Over the Ear Compatible Devices: Mobile, Tablet, Computer,Shop Swipe Anti-Radiation Retro Style Wired Headphones (Black, Over the Ear) Price: Rs. 559 Shop Swipe Wired Handset Shop Swipee New Anti-Radiation Retro Style 3.5mm Jack Wired Handset Phone Iphone/ Htc/Samsung/Nokia/Blackberry/Sony/Lg With Speaker And Microphone Plugs Into Your Mobile Phone To Make Talking More Comfortable Allows The Use Of Other Mobile Phone Functions Whilst Talking. Soft To The Touch Exterior Reduces Absorbed Mobile Phone Radiation By Over 96% Long Extendable Coil Cord With 3.5mm Plug. Pick Up/Hang Up Button. Can Adjust The Volume Size Noise Reduction System Can Help Improve The Quality Of Phone Calls. Suitable For The Home And Office Ideal For Connecting To : Compatible With: Iphone 5/5c/5s/4/4s/Htc/Samsung/Nokia/Blackberry/Sony/Lg With Speaker And Microphone Why Hold The Cellphone Up To Your Head : Use This Retro Cell Phone Handset Talking Forward, Looking Back. (Soft Feeling Rubberized Black) Talk In Comfort, Work And Talk At The Same Time - Works On Most Tablets, Smart Phones & Computers. High Quality Speaker And Microphone, Combines Classic Style With A Contemporary Edge , Product Is Fitted With A 3.5mm Jack , Loud And Clear Speaker, Works With Most Tablets, Smart Phones And Computers. Shop Swipee(Tm) Is A Registered Trademark And The Only Authorized Seller Of Shop Swipe Branded Products. Shop Swipee Provide You Various Kinds Of Great Products At The Lowest Possible Prices, Welcome To Our Store And Get What You Want,Specifications of Shop Swipe Anti-Radiation Retro Style Wired Headphones (Black, Over the Ear) Performance Features Noise Cancellation No General Headset Design Canalphone Brand Shop Swipe Wired/Wireless Wired Headphone Type Over the Ear Model ID Anti-Radiation Color Black In Sales Package 1 Headphone Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only. Warranty Summary 6 monts warranty for manufacturing defects only Warranty Service Type Replacement Not Covered in Warranty Warranty Does Not Cover Physical Damages. Connectivity Headphone Jack 3.5 MM Additional Features Flatwire No",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 19,
+            "product_id": "1adc62302d19c52dc67da80dc5afe2c0",
+            "product_name": "D'clair Huwai Honor 4X Battery Charger",
+            "category": "Mobiles & Accessories",
+            "brand": "D'clair",
+            "discounted_price": 400.0,
+            "rating": null,
+            "rrf_score": 0.02125055629728527,
+            "sources": {
+              "dense": {
+                "rank": 24,
+                "score": 0.624571643795274
+              },
+              "lexical": {
+                "rank": 47,
+                "score": 0.020964098592369147
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.375428356204726,
+              "retail_price": 600.0,
+              "product_specifications": [
+                {
+                  "key": "Sales Package",
+                  "value": "Car Charger"
+                },
+                {
+                  "key": "Brand",
+                  "value": "D'clair"
+                },
+                {
+                  "key": "Model",
+                  "value": "Huwai Honor 4X"
+                },
+                {
+                  "key": "Type",
+                  "value": "Car Charger"
+                },
+                {
+                  "key": "Connector",
+                  "value": "Micro USB"
+                },
+                {
+                  "key": "Color",
+                  "value": "Black"
+                }
+              ],
+              "product_description": "Key Features of D'clair Huwai Honor 4X Battery Charger Dual USB Compatible Compact Durable,D'clair Huwai Honor 4X Battery Charger (Black) Price: Rs. 400 DUAL USB Car Charger Easy and convenient way to charger the phone battery in a vehicle, for operation, safety, care and maintenance, see phone's user guide. Bilitong enhancements enable the best possible operation of your mobile phone. Please check the compatibility of your mobile phone and this enhancement with your dealer. Performance Illustration: Input: DC 12V-24V Output: DC 5V/2.1A Dual Channel Keeping high output Support fast charging Dual USB Can work simultaneously High efficiency IC inside to control the circuit Multi set to protect the circuit Brief fashion design,Specifications of D'clair Huwai Honor 4X Battery Charger (Black) In The Box Sales Package Car Charger General Brand D'clair Model Huwai Honor 4X Type Car Charger Connector Micro USB Color Black",
+              "query_vector_source": "phase7_base_query"
+            }
+          },
+          {
+            "rank": 20,
+            "product_id": "b9cfae933a7efb3506bc9df4de6acd49",
+            "product_name": "D'clair Lava Al Fa Battery Charger",
+            "category": "Mobiles & Accessories",
+            "brand": "D'clair",
+            "discounted_price": 400.0,
+            "rating": null,
+            "rrf_score": 0.0210239651416122,
+            "sources": {
+              "dense": {
+                "rank": 25,
+                "score": 0.6236539111343691
+              },
+              "lexical": {
+                "rank": 48,
+                "score": 0.02095080423395222
+              }
+            },
+            "metadata": {
+              "cosine_distance": 0.376346088865631,
+              "retail_price": 600.0,
+              "product_specifications": [
+                {
+                  "key": "Sales Package",
+                  "value": "Car Charger"
+                },
+                {
+                  "key": "Brand",
+                  "value": "D'clair"
+                },
+                {
+                  "key": "Model",
+                  "value": "Lava Al Fa"
+                },
+                {
+                  "key": "Type",
+                  "value": "Car Charger"
+                },
+                {
+                  "key": "Connector",
+                  "value": "Micro USB"
+                },
+                {
+                  "key": "Color",
+                  "value": "Black"
+                }
+              ],
+              "product_description": "Key Features of D'clair Lava Al Fa Battery Charger Dual USB Compatible Compact Durable,D'clair Lava Al Fa Battery Charger (Black) Price: Rs. 400 DUAL USB Car Charger Easy and convenient way to charger the phone battery in a vehicle, for operation, safety, care and maintenance, see phone's user guide. Bilitong enhancements enable the best possible operation of your mobile phone. Please check the compatibility of your mobile phone and this enhancement with your dealer. Performance Illustration: Input: DC 12V-24V Output: DC 5V/2.1A Dual Channel Keeping high output Support fast charging Dual USB Can work simultaneously High efficiency IC inside to control the circuit Multi set to protect the circuit Brief fashion design,Specifications of D'clair Lava Al Fa Battery Charger (Black) In The Box Sales Package Car Charger General Brand D'clair Model Lava Al Fa Type Car Charger Connector Micro USB Color Black",
+              "query_vector_source": "phase7_base_query"
+            }
+          }
+        ],
+        "applied_constraints": {
+          "category": "Mobiles & Accessories",
+          "rating_null_policy": "null ratings do not satisfy a minimum rating"
+        },
+        "warnings": [],
+        "stage_latency_ms": {
+          "sql_filter_ms": 1110.0178,
+          "dense_retrieval_ms": 448.654,
+          "lexical_ms": 53.9745,
+          "fusion_ms": 1.0672
+        },
+        "filtered_catalog_size": 1097,
+        "diagnostic_reason": null
+      },
+      "reranking": [
+        {
+          "method": "RRF",
+          "result": {
+            "contract_version": "1.0.0",
+            "status": "SUCCESS",
+            "method": "RRF",
+            "products": [
+              {
+                "product_id": "28816aea8f796815cbdf79045e391830",
+                "original_rank": 1,
+                "reranked_rank": 1,
+                "product_name": "Newdort Usb Charger Full Charging Pad",
+                "retrieval_text": "Product: Newdort Usb Charger Full Charging Pad | Category: Mobiles & Accessories | Brand: Newdort | Specifications: Brand: Newdort; Indicator: No; Model Number: Usb Charger Full; Rechargeable Battery: Yes; Compatible With: Motorola,; Color: White | Description: Specifications of Newdort Usb Charger Full Charging Pad General Brand Newdort Indicator No Model Number Usb Charger Full Rechargeable Battery Yes Compatible With Motorola, Color White In the Box 1 Motorola T/C",
+                "category": "Mobiles & Accessories",
+                "brand": "Newdort",
+                "discounted_price": 299.0,
+                "rating": null,
+                "rrf_score": 0.03278688524590164,
+                "sources": {
+                  "dense": {
+                    "rank": 1,
+                    "score": 0.6907261425689559
+                  },
+                  "lexical": {
+                    "rank": 1,
+                    "score": 0.32275101228862324
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.309273857431044,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Brand",
+                      "value": "Newdort"
+                    },
+                    {
+                      "key": "Indicator",
+                      "value": "No"
+                    },
+                    {
+                      "key": "Model Number",
+                      "value": "Usb Charger Full"
+                    },
+                    {
+                      "key": "Rechargeable Battery",
+                      "value": "Yes"
+                    },
+                    {
+                      "key": "Compatible With",
+                      "value": "Motorola,"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    }
+                  ],
+                  "product_description": "Specifications of Newdort Usb Charger Full Charging Pad General Brand Newdort Indicator No Model Number Usb Charger Full Rechargeable Battery Yes Compatible With Motorola, Color White In the Box 1 Motorola T/C",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.03278688524590164,
+                "score_components": {
+                  "phase10_rrf_score": 0.03278688524590164
+                }
+              },
+              {
+                "product_id": "b381180b1795b4a37b3782dc4b60d6d9",
+                "original_rank": 2,
+                "reranked_rank": 2,
+                "product_name": "Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh",
+                "retrieval_text": "Product: Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh | Category: Mobiles & Accessories | Brand: Wayona | Specifications: Connectors: Micro, Mini; Brand: Wayona; Model Number: 10000mAh; Battery Capacity: 10000 mAh; Model Name: Wireless 10000mAh Power bank With Dual USB Output; Output Power: 1.5V/2.1A; Battery Type: Lithium Polymer; Power Source: DC Adapter; Color: White; Covered in Warranty: Manufacturing Defects Only; Warranty Summary: 6 Months Manufacturer Warranty; Warranty Service Type: Replacement / Repair; Not Covered in Warranty: Physical Damages, Accidental Damages; Weight: 180 g; Height: 150 mm; Width: 72 mm; Depth: 10 mm; Sales Package: Power Bank, Micro USB Charger Cable, Warranty Card | Description: Key Features of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh Can charge up to 3 devices simultaneously,Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) Price: Rs. 2,149 Wayona wireless power 10000mAh works as a Qi charging pad or a power bank on the go. Can charge up to 3 devices simultaneously.Qi CompatibleSupports wireless charging at up to 1A for devices including (but not limited to):* Samsung Galaxy Note5/S6/S6 Edge/S6 Edge+* Google Nexus 5/6/7* HTC Droid DNA, 8X* LG G3/G4, Lucid 2/3* Nokia Lumia 920/930* iPhone 5S/6/6 Plus with wireless charging case 1 micro USB cable is included for wired charging of Android devices.Slim High-Capacity Battery Built-in, custom-made 10000mAh lithium-polymer battery can recharge phones and tablets The battery can be recharged rapidly via its micro USB port in 5-6 hours with proprietary 2A rapid charging technology.Smart USB PortsEach of the two USB ports automatically detects optimal charging speed for Android or iOS devices at up to 2.1A. Intelligent protection against overcharge Note: For wireless charging, your phone must have a Qi receiver. Recharge the device using a USB",
+                "category": "Mobiles & Accessories",
+                "brand": "Wayona",
+                "discounted_price": 2149.0,
+                "rating": null,
+                "rrf_score": 0.03225806451612903,
+                "sources": {
+                  "dense": {
+                    "rank": 2,
+                    "score": 0.677878618240356
+                  },
+                  "lexical": {
+                    "rank": 2,
+                    "score": 0.164620918305404
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.322121381759644,
+                  "retail_price": 5499.0,
+                  "product_specifications": [
+                    {
+                      "key": "Connectors",
+                      "value": "Micro, Mini"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Wayona"
+                    },
+                    {
+                      "key": "Model Number",
+                      "value": "10000mAh"
+                    },
+                    {
+                      "key": "Battery Capacity",
+                      "value": "10000 mAh"
+                    },
+                    {
+                      "key": "Model Name",
+                      "value": "Wireless 10000mAh Power bank With Dual USB Output"
+                    },
+                    {
+                      "key": "Output Power",
+                      "value": "1.5V/2.1A"
+                    },
+                    {
+                      "key": "Battery Type",
+                      "value": "Lithium Polymer"
+                    },
+                    {
+                      "key": "Power Source",
+                      "value": "DC Adapter"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacturer Warranty"
+                    },
+                    {
+                      "key": "Warranty Service Type",
+                      "value": "Replacement / Repair"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Physical Damages, Accidental Damages"
+                    },
+                    {
+                      "key": "Weight",
+                      "value": "180 g"
+                    },
+                    {
+                      "key": "Height",
+                      "value": "150 mm"
+                    },
+                    {
+                      "key": "Width",
+                      "value": "72 mm"
+                    },
+                    {
+                      "key": "Depth",
+                      "value": "10 mm"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "Power Bank, Micro USB Charger Cable, Warranty Card"
+                    }
+                  ],
+                  "product_description": "Key Features of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh Can charge up to 3 devices simultaneously,Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) Price: Rs. 2,149 Wayona wireless power 10000mAh works as a Qi charging pad or a power bank on the go. Can charge up to 3 devices simultaneously.Qi CompatibleSupports wireless charging at up to 1A for devices including (but not limited to):* Samsung Galaxy Note5/S6/S6 Edge/S6 Edge+* Google Nexus 5/6/7* HTC Droid DNA, 8X* LG G3/G4, Lucid 2/3* Nokia Lumia 920/930* iPhone 5S/6/6 Plus with wireless charging case 1 micro USB cable is included for wired charging of Android devices.Slim High-Capacity Battery Built-in, custom-made 10000mAh lithium-polymer battery can recharge phones and tablets The battery can be recharged rapidly via its micro USB port in 5-6 hours with proprietary 2A rapid charging technology.Smart USB PortsEach of the two USB ports automatically detects optimal charging speed for Android or iOS devices at up to 2.1A. Intelligent protection against overcharge Note: For wireless charging, your phone must have a Qi receiver. Recharge the device using a USB adapter supporting 5V/2A output. If red LED is off, press-and-hold power button for 3 secs to turn on wireless charging. To charge phones while recharging, you may need to press the power button once. To Samsung Galaxy Note5/S6 Edge+ owners: All units in current inventory have been tested for compatibility with Note5/S6 Edge+.,Specifications of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) General Connectors Micro, Mini Brand Wayona Model Number 10000mAh Battery Capacity 10000 mAh Model Name Wireless 10000mAh Power bank With Dual USB Output Output Power 1.5V/2.1A Battery Type Lithium Polymer Power Source DC Adapter Color White Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 6 Months Manufacturer Warranty Warranty Service Type Replacement / Repair Not Covered in Warranty Physical Damages, Accidental Damages Dimensions Weight 180 g Height 150 mm Width 72 mm Depth 10 mm Additional Features Can charge up to 3 devices simultaneously In the Box Sales Package Power Bank, Micro USB Charger Cable, Warranty Card",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.03225806451612903,
+                "score_components": {
+                  "phase10_rrf_score": 0.03225806451612903
+                }
+              },
+              {
+                "product_id": "6c9039af5852abefdb4ddb31a2916e42",
+                "original_rank": 3,
+                "reranked_rank": 3,
+                "product_name": "Smartpro Micro USB Data Sync and Charging Cable USB Cable",
+                "retrieval_text": "Product: Smartpro Micro USB Data Sync and Charging Cable USB Cable | Category: Mobiles & Accessories | Brand: Smartpro | Specifications: Number of Contents in Sales Package: 1; Sales Package: USB Cable; Brand: Smartpro; Suitable For: Smart Phones; Cable Type: High Speed Cable 1000 Mbps Speed; Model: Micro USB Data Sync and Charging Cable; Cable Length: 1 m; Type: USB Cable; Part Number: FDC-01; Connector 2: Micro USB Type; Connector 1: USB Type; Color: White; Full HD Support: No; 3D Support: No | Description: Smartpro Micro USB Data Sync and Charging Cable USB Cable (White) Price: Rs. 269 This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only. This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only.",
+                "category": "Mobiles & Accessories",
+                "brand": "Smartpro",
+                "discounted_price": 269.0,
+                "rating": null,
+                "rrf_score": 0.028594771241830064,
+                "sources": {
+                  "dense": {
+                    "rank": 12,
+                    "score": 0.6332875678923
+                  },
+                  "lexical": {
+                    "rank": 8,
+                    "score": 0.058708578699123576
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.3667124321077,
+                  "retail_price": 700.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Smartpro"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "Smart Phones"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 1000 Mbps Speed"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "Micro USB Data Sync and Charging Cable"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1 m"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "USB Cable"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "FDC-01"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "Micro USB Type"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "USB Type"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    },
+                    {
+                      "key": "Full HD Support",
+                      "value": "No"
+                    },
+                    {
+                      "key": "3D Support",
+                      "value": "No"
+                    }
+                  ],
+                  "product_description": "Smartpro Micro USB Data Sync and Charging Cable USB Cable (White) Price: Rs. 269 This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only. This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only.",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.028594771241830064,
+                "score_components": {
+                  "phase10_rrf_score": 0.028594771241830064
+                }
+              },
+              {
+                "product_id": "31100b8a80a913fbfab9f7c891e517de",
+                "original_rank": 4,
+                "reranked_rank": 4,
+                "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+                "retrieval_text": "Product: Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable | Category: Mobiles & Accessories | Brand: Lexel | Specifications: Number of Contents in Sales Package: 1; Sales Package: 1 USB Cable; Brand: Lexel; Suitable For: MOBILE, TABLET; Cable Type: High Speed Cable 480 Mbps Speed; Model: High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad; Cable Length: 1.5 m; Compatible Devices: Mobile; Type: Lightning Cable; Cable: Round; Part Number: LX-M15; Connector 2: USB; Connector 1: Lighting; Color: White; Covered in Warranty: Warranty Of The Product Is Limited To Manufacturing Defects Only; Warranty Summary: 6 Months Manufacture Warranty; Not Covered in Warranty: Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane | Description: Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Length 1.5 m Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color White Warranty Covered in Warranty Warranty Of The Product Is",
+                "category": "Mobiles & Accessories",
+                "brand": "Lexel",
+                "discounted_price": 339.0,
+                "rating": null,
+                "rrf_score": 0.02786377708978328,
+                "sources": {
+                  "dense": {
+                    "rank": 8,
+                    "score": 0.6375722505109169
+                  },
+                  "lexical": {
+                    "rank": 16,
+                    "score": 0.049714485446751264
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.362427749489083,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "1 USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Lexel"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "MOBILE, TABLET"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 480 Mbps Speed"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1.5 m"
+                    },
+                    {
+                      "key": "Compatible Devices",
+                      "value": "Mobile"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "Lightning Cable"
+                    },
+                    {
+                      "key": "Cable",
+                      "value": "Round"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "LX-M15"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "USB"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "Lighting"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacture Warranty"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                    }
+                  ],
+                  "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Length 1.5 m Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color White Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.02786377708978328,
+                "score_components": {
+                  "phase10_rrf_score": 0.02786377708978328
+                }
+              },
+              {
+                "product_id": "ef9979756bed63f8769f27fe0a2f9242",
+                "original_rank": 5,
+                "reranked_rank": 5,
+                "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+                "retrieval_text": "Product: Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable | Category: Mobiles & Accessories | Brand: Lexel | Specifications: Number of Contents in Sales Package: 1; Sales Package: 1 USB Cable; Brand: Lexel; Suitable For: MOBILE, TABLET; Cable Length: 1.5 m; Model: High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad; Cable Type: High Speed Cable 480 Mbps Speed; Compatible Devices: Mobile; Type: Lightning Cable; Cable: Round; Part Number: LX-M15; Connector 2: USB; Connector 1: Lighting; Color: Black; Covered in Warranty: Warranty Of The Product Is Limited To Manufacturing Defects Only; Warranty Summary: 6 Months Manufacture Warranty; Not Covered in Warranty: Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane | Description: Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Black) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Black) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color Black Warranty Covered in Warranty Warranty Of The Product Is",
+                "category": "Mobiles & Accessories",
+                "brand": "Lexel",
+                "discounted_price": 339.0,
+                "rating": null,
+                "rrf_score": 0.02761904761904762,
+                "sources": {
+                  "dense": {
+                    "rank": 10,
+                    "score": 0.6356604099273679
+                  },
+                  "lexical": {
+                    "rank": 15,
+                    "score": 0.049728778047268954
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.364339590072632,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "1 USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Lexel"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "MOBILE, TABLET"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1.5 m"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 480 Mbps Speed"
+                    },
+                    {
+                      "key": "Compatible Devices",
+                      "value": "Mobile"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "Lightning Cable"
+                    },
+                    {
+                      "key": "Cable",
+                      "value": "Round"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "LX-M15"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "USB"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "Lighting"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "Black"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacture Warranty"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                    }
+                  ],
+                  "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Black) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Black) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color Black Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.02761904761904762,
+                "score_components": {
+                  "phase10_rrf_score": 0.02761904761904762
+                }
+              }
+            ],
+            "total_candidates": 20,
+            "returned_count": 5,
+            "model_name": null,
+            "stage_latency_ms": {
+              "canonical_text_lookup_ms": 0.0196,
+              "cross_encoder_inference_ms": 0.0,
+              "ordering_top_k_ms": 0.0366,
+              "reranking_ms": 0.463
+            },
+            "applied_constraints": {
+              "category": "Mobiles & Accessories",
+              "rating_null_policy": "null ratings do not satisfy a minimum rating"
+            },
+            "warnings": [],
+            "diagnostic_reason": null
+          },
+          "r3_relevance_issue": "Candidate product type is not established by its catalog name."
+        },
+        {
+          "method": "MULTI_SIGNAL",
+          "result": {
+            "contract_version": "1.0.0",
+            "status": "SUCCESS",
+            "method": "MULTI_SIGNAL",
+            "products": [
+              {
+                "product_id": "28816aea8f796815cbdf79045e391830",
+                "original_rank": 1,
+                "reranked_rank": 1,
+                "product_name": "Newdort Usb Charger Full Charging Pad",
+                "retrieval_text": "Product: Newdort Usb Charger Full Charging Pad | Category: Mobiles & Accessories | Brand: Newdort | Specifications: Brand: Newdort; Indicator: No; Model Number: Usb Charger Full; Rechargeable Battery: Yes; Compatible With: Motorola,; Color: White | Description: Specifications of Newdort Usb Charger Full Charging Pad General Brand Newdort Indicator No Model Number Usb Charger Full Rechargeable Battery Yes Compatible With Motorola, Color White In the Box 1 Motorola T/C",
+                "category": "Mobiles & Accessories",
+                "brand": "Newdort",
+                "discounted_price": 299.0,
+                "rating": null,
+                "rrf_score": 0.03278688524590164,
+                "sources": {
+                  "dense": {
+                    "rank": 1,
+                    "score": 0.6907261425689559
+                  },
+                  "lexical": {
+                    "rank": 1,
+                    "score": 0.32275101228862324
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.309273857431044,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Brand",
+                      "value": "Newdort"
+                    },
+                    {
+                      "key": "Indicator",
+                      "value": "No"
+                    },
+                    {
+                      "key": "Model Number",
+                      "value": "Usb Charger Full"
+                    },
+                    {
+                      "key": "Rechargeable Battery",
+                      "value": "Yes"
+                    },
+                    {
+                      "key": "Compatible With",
+                      "value": "Motorola,"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    }
+                  ],
+                  "product_description": "Specifications of Newdort Usb Charger Full Charging Pad General Brand Newdort Indicator No Model Number Usb Charger Full Rechargeable Battery Yes Compatible With Motorola, Color White In the Box 1 Motorola T/C",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 1.0,
+                "score_components": {
+                  "multi_signal_rank_utility": 1.0
+                }
+              },
+              {
+                "product_id": "b381180b1795b4a37b3782dc4b60d6d9",
+                "original_rank": 2,
+                "reranked_rank": 2,
+                "product_name": "Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh",
+                "retrieval_text": "Product: Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh | Category: Mobiles & Accessories | Brand: Wayona | Specifications: Connectors: Micro, Mini; Brand: Wayona; Model Number: 10000mAh; Battery Capacity: 10000 mAh; Model Name: Wireless 10000mAh Power bank With Dual USB Output; Output Power: 1.5V/2.1A; Battery Type: Lithium Polymer; Power Source: DC Adapter; Color: White; Covered in Warranty: Manufacturing Defects Only; Warranty Summary: 6 Months Manufacturer Warranty; Warranty Service Type: Replacement / Repair; Not Covered in Warranty: Physical Damages, Accidental Damages; Weight: 180 g; Height: 150 mm; Width: 72 mm; Depth: 10 mm; Sales Package: Power Bank, Micro USB Charger Cable, Warranty Card | Description: Key Features of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh Can charge up to 3 devices simultaneously,Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) Price: Rs. 2,149 Wayona wireless power 10000mAh works as a Qi charging pad or a power bank on the go. Can charge up to 3 devices simultaneously.Qi CompatibleSupports wireless charging at up to 1A for devices including (but not limited to):* Samsung Galaxy Note5/S6/S6 Edge/S6 Edge+* Google Nexus 5/6/7* HTC Droid DNA, 8X* LG G3/G4, Lucid 2/3* Nokia Lumia 920/930* iPhone 5S/6/6 Plus with wireless charging case 1 micro USB cable is included for wired charging of Android devices.Slim High-Capacity Battery Built-in, custom-made 10000mAh lithium-polymer battery can recharge phones and tablets The battery can be recharged rapidly via its micro USB port in 5-6 hours with proprietary 2A rapid charging technology.Smart USB PortsEach of the two USB ports automatically detects optimal charging speed for Android or iOS devices at up to 2.1A. Intelligent protection against overcharge Note: For wireless charging, your phone must have a Qi receiver. Recharge the device using a USB",
+                "category": "Mobiles & Accessories",
+                "brand": "Wayona",
+                "discounted_price": 2149.0,
+                "rating": null,
+                "rrf_score": 0.03225806451612903,
+                "sources": {
+                  "dense": {
+                    "rank": 2,
+                    "score": 0.677878618240356
+                  },
+                  "lexical": {
+                    "rank": 2,
+                    "score": 0.164620918305404
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.322121381759644,
+                  "retail_price": 5499.0,
+                  "product_specifications": [
+                    {
+                      "key": "Connectors",
+                      "value": "Micro, Mini"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Wayona"
+                    },
+                    {
+                      "key": "Model Number",
+                      "value": "10000mAh"
+                    },
+                    {
+                      "key": "Battery Capacity",
+                      "value": "10000 mAh"
+                    },
+                    {
+                      "key": "Model Name",
+                      "value": "Wireless 10000mAh Power bank With Dual USB Output"
+                    },
+                    {
+                      "key": "Output Power",
+                      "value": "1.5V/2.1A"
+                    },
+                    {
+                      "key": "Battery Type",
+                      "value": "Lithium Polymer"
+                    },
+                    {
+                      "key": "Power Source",
+                      "value": "DC Adapter"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacturer Warranty"
+                    },
+                    {
+                      "key": "Warranty Service Type",
+                      "value": "Replacement / Repair"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Physical Damages, Accidental Damages"
+                    },
+                    {
+                      "key": "Weight",
+                      "value": "180 g"
+                    },
+                    {
+                      "key": "Height",
+                      "value": "150 mm"
+                    },
+                    {
+                      "key": "Width",
+                      "value": "72 mm"
+                    },
+                    {
+                      "key": "Depth",
+                      "value": "10 mm"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "Power Bank, Micro USB Charger Cable, Warranty Card"
+                    }
+                  ],
+                  "product_description": "Key Features of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh Can charge up to 3 devices simultaneously,Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) Price: Rs. 2,149 Wayona wireless power 10000mAh works as a Qi charging pad or a power bank on the go. Can charge up to 3 devices simultaneously.Qi CompatibleSupports wireless charging at up to 1A for devices including (but not limited to):* Samsung Galaxy Note5/S6/S6 Edge/S6 Edge+* Google Nexus 5/6/7* HTC Droid DNA, 8X* LG G3/G4, Lucid 2/3* Nokia Lumia 920/930* iPhone 5S/6/6 Plus with wireless charging case 1 micro USB cable is included for wired charging of Android devices.Slim High-Capacity Battery Built-in, custom-made 10000mAh lithium-polymer battery can recharge phones and tablets The battery can be recharged rapidly via its micro USB port in 5-6 hours with proprietary 2A rapid charging technology.Smart USB PortsEach of the two USB ports automatically detects optimal charging speed for Android or iOS devices at up to 2.1A. Intelligent protection against overcharge Note: For wireless charging, your phone must have a Qi receiver. Recharge the device using a USB adapter supporting 5V/2A output. If red LED is off, press-and-hold power button for 3 secs to turn on wireless charging. To charge phones while recharging, you may need to press the power button once. To Samsung Galaxy Note5/S6 Edge+ owners: All units in current inventory have been tested for compatibility with Note5/S6 Edge+.,Specifications of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) General Connectors Micro, Mini Brand Wayona Model Number 10000mAh Battery Capacity 10000 mAh Model Name Wireless 10000mAh Power bank With Dual USB Output Output Power 1.5V/2.1A Battery Type Lithium Polymer Power Source DC Adapter Color White Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 6 Months Manufacturer Warranty Warranty Service Type Replacement / Repair Not Covered in Warranty Physical Damages, Accidental Damages Dimensions Weight 180 g Height 150 mm Width 72 mm Depth 10 mm Additional Features Can charge up to 3 devices simultaneously In the Box Sales Package Power Bank, Micro USB Charger Cable, Warranty Card",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.9814657611771365,
+                "score_components": {
+                  "multi_signal_rank_utility": 0.9814657611771365
+                }
+              },
+              {
+                "product_id": "31100b8a80a913fbfab9f7c891e517de",
+                "original_rank": 4,
+                "reranked_rank": 3,
+                "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+                "retrieval_text": "Product: Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable | Category: Mobiles & Accessories | Brand: Lexel | Specifications: Number of Contents in Sales Package: 1; Sales Package: 1 USB Cable; Brand: Lexel; Suitable For: MOBILE, TABLET; Cable Type: High Speed Cable 480 Mbps Speed; Model: High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad; Cable Length: 1.5 m; Compatible Devices: Mobile; Type: Lightning Cable; Cable: Round; Part Number: LX-M15; Connector 2: USB; Connector 1: Lighting; Color: White; Covered in Warranty: Warranty Of The Product Is Limited To Manufacturing Defects Only; Warranty Summary: 6 Months Manufacture Warranty; Not Covered in Warranty: Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane | Description: Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Length 1.5 m Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color White Warranty Covered in Warranty Warranty Of The Product Is",
+                "category": "Mobiles & Accessories",
+                "brand": "Lexel",
+                "discounted_price": 339.0,
+                "rating": null,
+                "rrf_score": 0.02786377708978328,
+                "sources": {
+                  "dense": {
+                    "rank": 8,
+                    "score": 0.6375722505109169
+                  },
+                  "lexical": {
+                    "rank": 16,
+                    "score": 0.049714485446751264
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.362427749489083,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "1 USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Lexel"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "MOBILE, TABLET"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 480 Mbps Speed"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1.5 m"
+                    },
+                    {
+                      "key": "Compatible Devices",
+                      "value": "Mobile"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "Lightning Cable"
+                    },
+                    {
+                      "key": "Cable",
+                      "value": "Round"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "LX-M15"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "USB"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "Lighting"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacture Warranty"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                    }
+                  ],
+                  "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Length 1.5 m Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color White Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.8272495755517827,
+                "score_components": {
+                  "multi_signal_rank_utility": 0.8272495755517827
+                }
+              },
+              {
+                "product_id": "6c9039af5852abefdb4ddb31a2916e42",
+                "original_rank": 3,
+                "reranked_rank": 4,
+                "product_name": "Smartpro Micro USB Data Sync and Charging Cable USB Cable",
+                "retrieval_text": "Product: Smartpro Micro USB Data Sync and Charging Cable USB Cable | Category: Mobiles & Accessories | Brand: Smartpro | Specifications: Number of Contents in Sales Package: 1; Sales Package: USB Cable; Brand: Smartpro; Suitable For: Smart Phones; Cable Type: High Speed Cable 1000 Mbps Speed; Model: Micro USB Data Sync and Charging Cable; Cable Length: 1 m; Type: USB Cable; Part Number: FDC-01; Connector 2: Micro USB Type; Connector 1: USB Type; Color: White; Full HD Support: No; 3D Support: No | Description: Smartpro Micro USB Data Sync and Charging Cable USB Cable (White) Price: Rs. 269 This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only. This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only.",
+                "category": "Mobiles & Accessories",
+                "brand": "Smartpro",
+                "discounted_price": 269.0,
+                "rating": null,
+                "rrf_score": 0.028594771241830064,
+                "sources": {
+                  "dense": {
+                    "rank": 12,
+                    "score": 0.6332875678923
+                  },
+                  "lexical": {
+                    "rank": 8,
+                    "score": 0.058708578699123576
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.3667124321077,
+                  "retail_price": 700.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Smartpro"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "Smart Phones"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 1000 Mbps Speed"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "Micro USB Data Sync and Charging Cable"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1 m"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "USB Cable"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "FDC-01"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "Micro USB Type"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "USB Type"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    },
+                    {
+                      "key": "Full HD Support",
+                      "value": "No"
+                    },
+                    {
+                      "key": "3D Support",
+                      "value": "No"
+                    }
+                  ],
+                  "product_description": "Smartpro Micro USB Data Sync and Charging Cable USB Cable (White) Price: Rs. 269 This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only. This USB data sync and charging cable is a dual fuction cable lets you transfer the data from your mobile to computer & also charges your phone. The key feature of this product is that it charges 30% faster than the conventional cables. The connectors are made of aluminium. It is compatible with USB 3.0 version only.",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.8176287492925862,
+                "score_components": {
+                  "multi_signal_rank_utility": 0.8176287492925862
+                }
+              },
+              {
+                "product_id": "56d0c335e9013cacbda2736b44c5075c",
+                "original_rank": 6,
+                "reranked_rank": 5,
+                "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+                "retrieval_text": "Product: Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable | Category: Mobiles & Accessories | Brand: Lexel | Specifications: Number of Contents in Sales Package: 1; Sales Package: 1 USB Cable; Brand: Lexel; Suitable For: MOBILE, TABLET; Cable Length: 1.5 m; Model: High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad; Cable Type: High Speed Cable 480 Mbps Speed; Compatible Devices: Mobile; Type: Lightning Cable; Cable: Round; Part Number: LX-M15; Connector 2: USB; Connector 1: Lighting; Color: Blue; Covered in Warranty: Warranty Of The Product Is Limited To Manufacturing Defects Only; Warranty Summary: 6 Months Manufacture Warranty; Not Covered in Warranty: Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane | Description: Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Blue) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Blue) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color Blue Warranty Covered in Warranty Warranty Of The Product Is",
+                "category": "Mobiles & Accessories",
+                "brand": "Lexel",
+                "discounted_price": 339.0,
+                "rating": null,
+                "rrf_score": 0.027479766610201392,
+                "sources": {
+                  "dense": {
+                    "rank": 9,
+                    "score": 0.636497118264266
+                  },
+                  "lexical": {
+                    "rank": 17,
+                    "score": 0.04957864603031196
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.363502881735734,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "1 USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Lexel"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "MOBILE, TABLET"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1.5 m"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 480 Mbps Speed"
+                    },
+                    {
+                      "key": "Compatible Devices",
+                      "value": "Mobile"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "Lightning Cable"
+                    },
+                    {
+                      "key": "Cable",
+                      "value": "Round"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "LX-M15"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "USB"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "Lighting"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "Blue"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacture Warranty"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                    }
+                  ],
+                  "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Blue) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (Blue) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color Blue Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.808715336728919,
+                "score_components": {
+                  "multi_signal_rank_utility": 0.808715336728919
+                }
+              }
+            ],
+            "total_candidates": 20,
+            "returned_count": 5,
+            "model_name": null,
+            "stage_latency_ms": {
+              "canonical_text_lookup_ms": 0.0249,
+              "cross_encoder_inference_ms": 0.0,
+              "ordering_top_k_ms": 0.0569,
+              "reranking_ms": 0.6577
+            },
+            "applied_constraints": {
+              "category": "Mobiles & Accessories",
+              "rating_null_policy": "null ratings do not satisfy a minimum rating"
+            },
+            "warnings": [],
+            "diagnostic_reason": null
+          },
+          "r3_relevance_issue": "Candidate product type is not established by its catalog name."
+        },
+        {
+          "method": "CROSS_ENCODER",
+          "result": {
+            "contract_version": "1.0.0",
+            "status": "SUCCESS",
+            "method": "CROSS_ENCODER",
+            "products": [
+              {
+                "product_id": "28816aea8f796815cbdf79045e391830",
+                "original_rank": 1,
+                "reranked_rank": 1,
+                "product_name": "Newdort Usb Charger Full Charging Pad",
+                "retrieval_text": "Product: Newdort Usb Charger Full Charging Pad | Category: Mobiles & Accessories | Brand: Newdort | Specifications: Brand: Newdort; Indicator: No; Model Number: Usb Charger Full; Rechargeable Battery: Yes; Compatible With: Motorola,; Color: White | Description: Specifications of Newdort Usb Charger Full Charging Pad General Brand Newdort Indicator No Model Number Usb Charger Full Rechargeable Battery Yes Compatible With Motorola, Color White In the Box 1 Motorola T/C",
+                "category": "Mobiles & Accessories",
+                "brand": "Newdort",
+                "discounted_price": 299.0,
+                "rating": null,
+                "rrf_score": 0.03278688524590164,
+                "sources": {
+                  "dense": {
+                    "rank": 1,
+                    "score": 0.6907261425689559
+                  },
+                  "lexical": {
+                    "rank": 1,
+                    "score": 0.32275101228862324
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.309273857431044,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Brand",
+                      "value": "Newdort"
+                    },
+                    {
+                      "key": "Indicator",
+                      "value": "No"
+                    },
+                    {
+                      "key": "Model Number",
+                      "value": "Usb Charger Full"
+                    },
+                    {
+                      "key": "Rechargeable Battery",
+                      "value": "Yes"
+                    },
+                    {
+                      "key": "Compatible With",
+                      "value": "Motorola,"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    }
+                  ],
+                  "product_description": "Specifications of Newdort Usb Charger Full Charging Pad General Brand Newdort Indicator No Model Number Usb Charger Full Rechargeable Battery Yes Compatible With Motorola, Color White In the Box 1 Motorola T/C",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 1.0,
+                "score_components": {
+                  "cross_encoder_raw": -0.172686368227005,
+                  "cross_encoder_minmax": 1.0
+                }
+              },
+              {
+                "product_id": "b381180b1795b4a37b3782dc4b60d6d9",
+                "original_rank": 2,
+                "reranked_rank": 2,
+                "product_name": "Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh",
+                "retrieval_text": "Product: Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh | Category: Mobiles & Accessories | Brand: Wayona | Specifications: Connectors: Micro, Mini; Brand: Wayona; Model Number: 10000mAh; Battery Capacity: 10000 mAh; Model Name: Wireless 10000mAh Power bank With Dual USB Output; Output Power: 1.5V/2.1A; Battery Type: Lithium Polymer; Power Source: DC Adapter; Color: White; Covered in Warranty: Manufacturing Defects Only; Warranty Summary: 6 Months Manufacturer Warranty; Warranty Service Type: Replacement / Repair; Not Covered in Warranty: Physical Damages, Accidental Damages; Weight: 180 g; Height: 150 mm; Width: 72 mm; Depth: 10 mm; Sales Package: Power Bank, Micro USB Charger Cable, Warranty Card | Description: Key Features of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh Can charge up to 3 devices simultaneously,Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) Price: Rs. 2,149 Wayona wireless power 10000mAh works as a Qi charging pad or a power bank on the go. Can charge up to 3 devices simultaneously.Qi CompatibleSupports wireless charging at up to 1A for devices including (but not limited to):* Samsung Galaxy Note5/S6/S6 Edge/S6 Edge+* Google Nexus 5/6/7* HTC Droid DNA, 8X* LG G3/G4, Lucid 2/3* Nokia Lumia 920/930* iPhone 5S/6/6 Plus with wireless charging case 1 micro USB cable is included for wired charging of Android devices.Slim High-Capacity Battery Built-in, custom-made 10000mAh lithium-polymer battery can recharge phones and tablets The battery can be recharged rapidly via its micro USB port in 5-6 hours with proprietary 2A rapid charging technology.Smart USB PortsEach of the two USB ports automatically detects optimal charging speed for Android or iOS devices at up to 2.1A. Intelligent protection against overcharge Note: For wireless charging, your phone must have a Qi receiver. Recharge the device using a USB",
+                "category": "Mobiles & Accessories",
+                "brand": "Wayona",
+                "discounted_price": 2149.0,
+                "rating": null,
+                "rrf_score": 0.03225806451612903,
+                "sources": {
+                  "dense": {
+                    "rank": 2,
+                    "score": 0.677878618240356
+                  },
+                  "lexical": {
+                    "rank": 2,
+                    "score": 0.164620918305404
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.322121381759644,
+                  "retail_price": 5499.0,
+                  "product_specifications": [
+                    {
+                      "key": "Connectors",
+                      "value": "Micro, Mini"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Wayona"
+                    },
+                    {
+                      "key": "Model Number",
+                      "value": "10000mAh"
+                    },
+                    {
+                      "key": "Battery Capacity",
+                      "value": "10000 mAh"
+                    },
+                    {
+                      "key": "Model Name",
+                      "value": "Wireless 10000mAh Power bank With Dual USB Output"
+                    },
+                    {
+                      "key": "Output Power",
+                      "value": "1.5V/2.1A"
+                    },
+                    {
+                      "key": "Battery Type",
+                      "value": "Lithium Polymer"
+                    },
+                    {
+                      "key": "Power Source",
+                      "value": "DC Adapter"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacturer Warranty"
+                    },
+                    {
+                      "key": "Warranty Service Type",
+                      "value": "Replacement / Repair"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Physical Damages, Accidental Damages"
+                    },
+                    {
+                      "key": "Weight",
+                      "value": "180 g"
+                    },
+                    {
+                      "key": "Height",
+                      "value": "150 mm"
+                    },
+                    {
+                      "key": "Width",
+                      "value": "72 mm"
+                    },
+                    {
+                      "key": "Depth",
+                      "value": "10 mm"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "Power Bank, Micro USB Charger Cable, Warranty Card"
+                    }
+                  ],
+                  "product_description": "Key Features of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh Can charge up to 3 devices simultaneously,Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) Price: Rs. 2,149 Wayona wireless power 10000mAh works as a Qi charging pad or a power bank on the go. Can charge up to 3 devices simultaneously.Qi CompatibleSupports wireless charging at up to 1A for devices including (but not limited to):* Samsung Galaxy Note5/S6/S6 Edge/S6 Edge+* Google Nexus 5/6/7* HTC Droid DNA, 8X* LG G3/G4, Lucid 2/3* Nokia Lumia 920/930* iPhone 5S/6/6 Plus with wireless charging case 1 micro USB cable is included for wired charging of Android devices.Slim High-Capacity Battery Built-in, custom-made 10000mAh lithium-polymer battery can recharge phones and tablets The battery can be recharged rapidly via its micro USB port in 5-6 hours with proprietary 2A rapid charging technology.Smart USB PortsEach of the two USB ports automatically detects optimal charging speed for Android or iOS devices at up to 2.1A. Intelligent protection against overcharge Note: For wireless charging, your phone must have a Qi receiver. Recharge the device using a USB adapter supporting 5V/2A output. If red LED is off, press-and-hold power button for 3 secs to turn on wireless charging. To charge phones while recharging, you may need to press the power button once. To Samsung Galaxy Note5/S6 Edge+ owners: All units in current inventory have been tested for compatibility with Note5/S6 Edge+.,Specifications of Wayona 10000mAh Wireless 10000mAh Power bank With Dual USB Output 10000 mAh (White) General Connectors Micro, Mini Brand Wayona Model Number 10000mAh Battery Capacity 10000 mAh Model Name Wireless 10000mAh Power bank With Dual USB Output Output Power 1.5V/2.1A Battery Type Lithium Polymer Power Source DC Adapter Color White Warranty Covered in Warranty Manufacturing Defects Only Warranty Summary 6 Months Manufacturer Warranty Warranty Service Type Replacement / Repair Not Covered in Warranty Physical Damages, Accidental Damages Dimensions Weight 180 g Height 150 mm Width 72 mm Depth 10 mm Additional Features Can charge up to 3 devices simultaneously In the Box Sales Package Power Bank, Micro USB Charger Cable, Warranty Card",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.9505213843903129,
+                "score_components": {
+                  "cross_encoder_raw": -0.6439039707183838,
+                  "cross_encoder_minmax": 0.9505213843903129
+                }
+              },
+              {
+                "product_id": "253a7f050335f81d9c3b653b463f605e",
+                "original_rank": 14,
+                "reranked_rank": 3,
+                "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable",
+                "retrieval_text": "Product: Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable | Category: Mobiles & Accessories | Brand: Lexel | Specifications: Number of Contents in Sales Package: 1; Sales Package: 1 USB Cable; Brand: Lexel; Suitable For: MOBILE, TABLET; Cable Type: High Speed Cable 480 Mbps Speed; Model: High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc; Cable Length: 1.5 m; Compatible Devices: Mobile; Type: USB Cable; Cable: Round; Part Number: LX-M15; Connector 2: USB; Connector 1: MicroUSB; Color: Pink; Covered in Warranty: Warranty Of The Product Is Limited To Manufacturing Defects Only; Warranty Summary: 6 Months Manufacture Warranty; Not Covered in Warranty: Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane | Description: Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Pink) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Pink) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc Cable Length 1.5 m Compatible Devices Mobile Type USB Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 MicroUSB Color",
+                "category": "Mobiles & Accessories",
+                "brand": "Lexel",
+                "discounted_price": 339.0,
+                "rating": null,
+                "rrf_score": 0.02291666666666667,
+                "sources": {
+                  "dense": {
+                    "rank": 36,
+                    "score": 0.619435236521339
+                  },
+                  "lexical": {
+                    "rank": 20,
+                    "score": 0.048031721622199264
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.380564763478661,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "1 USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Lexel"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "MOBILE, TABLET"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 480 Mbps Speed"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1.5 m"
+                    },
+                    {
+                      "key": "Compatible Devices",
+                      "value": "Mobile"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "USB Cable"
+                    },
+                    {
+                      "key": "Cable",
+                      "value": "Round"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "LX-M15"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "USB"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "MicroUSB"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "Pink"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacture Warranty"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                    }
+                  ],
+                  "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Pink) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Pink) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc Cable Length 1.5 m Compatible Devices Mobile Type USB Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 MicroUSB Color Pink Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.7601063212134828,
+                "score_components": {
+                  "cross_encoder_raw": -2.457352638244629,
+                  "cross_encoder_minmax": 0.7601063212134828
+                }
+              },
+              {
+                "product_id": "227410c1be4e957a9c80968d5665d3c2",
+                "original_rank": 11,
+                "reranked_rank": 4,
+                "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable",
+                "retrieval_text": "Product: Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable | Category: Mobiles & Accessories | Brand: Lexel | Specifications: Number of Contents in Sales Package: 1; Sales Package: 1 USB Cable; Brand: Lexel; Suitable For: MOBILE, TABLET; Cable Length: 1.5 m; Model: High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc; Cable Type: High Speed Cable 480 Mbps Speed; Compatible Devices: Mobile; Type: USB Cable; Cable: Round; Part Number: LX-M15; Connector 2: USB; Connector 1: MicroUSB; Color: Black; Covered in Warranty: Warranty Of The Product Is Limited To Manufacturing Defects Only; Warranty Summary: 6 Months Manufacture Warranty; Not Covered in Warranty: Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane | Description: Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Black) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Black) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type USB Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 MicroUSB",
+                "category": "Mobiles & Accessories",
+                "brand": "Lexel",
+                "discounted_price": 339.0,
+                "rating": null,
+                "rrf_score": 0.023769338959212377,
+                "sources": {
+                  "dense": {
+                    "rank": 30,
+                    "score": 0.621217548847198
+                  },
+                  "lexical": {
+                    "rank": 19,
+                    "score": 0.04814643727968174
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.378782451152802,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "1 USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Lexel"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "MOBILE, TABLET"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1.5 m"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 480 Mbps Speed"
+                    },
+                    {
+                      "key": "Compatible Devices",
+                      "value": "Mobile"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "USB Cable"
+                    },
+                    {
+                      "key": "Cable",
+                      "value": "Round"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "LX-M15"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "USB"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "MicroUSB"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "Black"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacture Warranty"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                    }
+                  ],
+                  "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Black) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc USB Cable (Black) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Length 1.5 m Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for All Smartphone like Samsung HTC etc Cable Type High Speed Cable 480 Mbps Speed Compatible Devices Mobile Type USB Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 MicroUSB Color Black Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.7550130348640128,
+                "score_components": {
+                  "cross_encoder_raw": -2.505859375,
+                  "cross_encoder_minmax": 0.7550130348640128
+                }
+              },
+              {
+                "product_id": "31100b8a80a913fbfab9f7c891e517de",
+                "original_rank": 4,
+                "reranked_rank": 5,
+                "product_name": "Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable",
+                "retrieval_text": "Product: Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable | Category: Mobiles & Accessories | Brand: Lexel | Specifications: Number of Contents in Sales Package: 1; Sales Package: 1 USB Cable; Brand: Lexel; Suitable For: MOBILE, TABLET; Cable Type: High Speed Cable 480 Mbps Speed; Model: High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad; Cable Length: 1.5 m; Compatible Devices: Mobile; Type: Lightning Cable; Cable: Round; Part Number: LX-M15; Connector 2: USB; Connector 1: Lighting; Color: White; Covered in Warranty: Warranty Of The Product Is Limited To Manufacturing Defects Only; Warranty Summary: 6 Months Manufacture Warranty; Not Covered in Warranty: Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane | Description: Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Length 1.5 m Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color White Warranty Covered in Warranty Warranty Of The Product Is",
+                "category": "Mobiles & Accessories",
+                "brand": "Lexel",
+                "discounted_price": 339.0,
+                "rating": null,
+                "rrf_score": 0.02786377708978328,
+                "sources": {
+                  "dense": {
+                    "rank": 8,
+                    "score": 0.6375722505109169
+                  },
+                  "lexical": {
+                    "rank": 16,
+                    "score": 0.049714485446751264
+                  }
+                },
+                "metadata": {
+                  "cosine_distance": 0.362427749489083,
+                  "retail_price": 999.0,
+                  "product_specifications": [
+                    {
+                      "key": "Number of Contents in Sales Package",
+                      "value": "1"
+                    },
+                    {
+                      "key": "Sales Package",
+                      "value": "1 USB Cable"
+                    },
+                    {
+                      "key": "Brand",
+                      "value": "Lexel"
+                    },
+                    {
+                      "key": "Suitable For",
+                      "value": "MOBILE, TABLET"
+                    },
+                    {
+                      "key": "Cable Type",
+                      "value": "High Speed Cable 480 Mbps Speed"
+                    },
+                    {
+                      "key": "Model",
+                      "value": "High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone and Ipad"
+                    },
+                    {
+                      "key": "Cable Length",
+                      "value": "1.5 m"
+                    },
+                    {
+                      "key": "Compatible Devices",
+                      "value": "Mobile"
+                    },
+                    {
+                      "key": "Type",
+                      "value": "Lightning Cable"
+                    },
+                    {
+                      "key": "Cable",
+                      "value": "Round"
+                    },
+                    {
+                      "key": "Part Number",
+                      "value": "LX-M15"
+                    },
+                    {
+                      "key": "Connector 2",
+                      "value": "USB"
+                    },
+                    {
+                      "key": "Connector 1",
+                      "value": "Lighting"
+                    },
+                    {
+                      "key": "Color",
+                      "value": "White"
+                    },
+                    {
+                      "key": "Covered in Warranty",
+                      "value": "Warranty Of The Product Is Limited To Manufacturing Defects Only"
+                    },
+                    {
+                      "key": "Warranty Summary",
+                      "value": "6 Months Manufacture Warranty"
+                    },
+                    {
+                      "key": "Not Covered in Warranty",
+                      "value": "Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane"
+                    }
+                  ],
+                  "product_description": "Key Features of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable 1 Woven Fabric Nylon Cord data sync usb charging cable.2 High accurate mold of connectors, make perfect connection.3 Support USB2.0 high speed charging & Sync.4 For Charging and Sync with your computer.5 Nylon Woven Fabric Design!.6 Durable surface and not easy to get damage or dirty.,Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) Price: Rs. 399 High Quality Braided USB Metal Charging cable,Specifications of Lexel High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Lightning Cable (White) In The Box Number of Contents in Sales Package 1 Sales Package 1 USB Cable General Brand Lexel Suitable For MOBILE, TABLET Cable Type High Speed Cable 480 Mbps Speed Model High Quality Braided Metal Head Pure Copper Fast Charging 1.5 Meter Long for Iphone & Ipad Cable Length 1.5 m Compatible Devices Mobile Type Lightning Cable Cable Round Part Number LX-M15 Connector 2 USB Connector 1 Lighting Color White Warranty Covered in Warranty Warranty Of The Product Is Limited To Manufacturing Defects Only Warranty Summary 6 Months Manufacture Warranty Not Covered in Warranty Warranty Does Not Cover Any External Accessories (Such As Battery, Cable, Carrying Bag), Damage Caused To The Product Due To Improper Installation By Customer, Normal Wear And Tear To Magnetic Heads, Audio, Video, Laser Pick-Ups And Tv Picture Tubes, Pane",
+                  "query_vector_source": "phase7_base_query",
+                  "phase11_canonical_text_snapshot": {
+                    "artifact_name": "products.parquet",
+                    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc",
+                    "product_count": 8405,
+                    "unique_product_ids": 8405,
+                    "canonical_text_count": 8405,
+                    "manifest_version": 1,
+                    "snapshot_id": "sha256:bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+                  }
+                },
+                "final_score": 0.6994107163800491,
+                "score_components": {
+                  "cross_encoder_raw": -3.0353970527648926,
+                  "cross_encoder_minmax": 0.6994107163800491
+                }
+              }
+            ],
+            "total_candidates": 20,
+            "returned_count": 5,
+            "model_name": "cross-encoder/ms-marco-MiniLM-L2-v2",
+            "stage_latency_ms": {
+              "canonical_text_lookup_ms": 0.0131,
+              "cross_encoder_inference_ms": 348.785,
+              "ordering_top_k_ms": 0.063,
+              "reranking_ms": 349.2211
+            },
+            "applied_constraints": {
+              "category": "Mobiles & Accessories",
+              "rating_null_policy": "null ratings do not satisfy a minimum rating"
+            },
+            "warnings": [
+              "Cross-Encoder truncates token pairs at max_length=512; confirm important product fields survive with the pinned model tokenizer."
+            ],
+            "diagnostic_reason": null
+          },
+          "r3_relevance_issue": "Candidate product type is not established by its catalog name."
+        }
+      ]
+    }
+  ]
+}

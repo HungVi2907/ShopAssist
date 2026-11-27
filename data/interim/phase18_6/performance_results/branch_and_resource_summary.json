@@ -1,0 +1,121 @@
+{
+  "stage_metrics": {
+    "hybrid_retrieval.sql_filter_ms": {
+      "n": 12,
+      "p50_ms": 154.0326,
+      "p95_ms": 287.7725149999999
+    },
+    "hybrid_retrieval.dense_retrieval_ms": {
+      "n": 12,
+      "p50_ms": 229.0173,
+      "p95_ms": 508.5480349999999
+    },
+    "hybrid_retrieval.lexical_ms": {
+      "n": 12,
+      "p50_ms": 49.441,
+      "p95_ms": 499.363365
+    },
+    "hybrid_retrieval.fusion_ms": {
+      "n": 12,
+      "p50_ms": 0.6214,
+      "p95_ms": 2.0910399999999996
+    },
+    "reranking.canonical_text_lookup_ms": {
+      "n": 11,
+      "p50_ms": 0.0236,
+      "p95_ms": 0.026549999999999997
+    },
+    "reranking.cross_encoder_inference_ms": {
+      "n": 11,
+      "p50_ms": 0.0,
+      "p95_ms": 0.0
+    },
+    "reranking.ordering_top_k_ms": {
+      "n": 11,
+      "p50_ms": 0.0415,
+      "p95_ms": 0.05425000000000001
+    },
+    "reranking.reranking_ms": {
+      "n": 11,
+      "p50_ms": 0.4516,
+      "p95_ms": 0.5022
+    },
+    "query_understanding.latency_ms": {
+      "n": 19,
+      "p50_ms": 327.9999999940628,
+      "p95_ms": 691.9999999896329
+    },
+    "query_understanding.timings.total_ms": {
+      "n": 19,
+      "p50_ms": 322.7503,
+      "p95_ms": 682.4354899999939
+    },
+    "query_understanding.timings.load_ms": {
+      "n": 19,
+      "p50_ms": 6.0334,
+      "p95_ms": 298.18081999999384
+    },
+    "recommendation_generation.latency_ms": {
+      "n": 7,
+      "p50_ms": 389.9999999994179,
+      "p95_ms": 517.2000000020489
+    },
+    "recommendation_generation.timings.total_ms": {
+      "n": 7,
+      "p50_ms": 383.4693,
+      "p95_ms": 524.9637799999999
+    },
+    "recommendation_generation.timings.load_ms": {
+      "n": 7,
+      "p50_ms": 5.6683,
+      "p95_ms": 6.498049999999999
+    }
+  },
+  "safe_runtime_settings": {
+    "API_REQUEST_TIMEOUT_SECONDS": "90",
+    "BOT_REQUEST_TIMEOUT_SECONDS": "95.0",
+    "API_DEFAULT_TOP_K": "3",
+    "BOT_DEFAULT_TOP_K": "3",
+    "API_RETRIEVAL_TOP_N": "20",
+    "API_RERANKING_METHOD": "RRF"
+  },
+  "bge_cached_artifacts": {
+    "model.safetensors": {
+      "snapshot": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "sha256": "3c9f31665447c8911517620762200d2245a2518d6e7208acc78cd9db317e21ad"
+    },
+    "config.json": {
+      "snapshot": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "sha256": "094f8e891b932f2000c92cfc663bac4c62069f5d8af5b5278c4306aef3084750"
+    },
+    "tokenizer.json": {
+      "snapshot": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+    },
+    "modules.json": {
+      "snapshot": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+      "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf"
+    }
+  },
+  "inference_runs": {
+    "server_01": {
+      "inference_attempts": 18,
+      "outcomes": [
+        "success"
+      ]
+    },
+    "server_02": {
+      "inference_attempts": 26,
+      "outcomes": [
+        "success"
+      ]
+    },
+    "server_03": {
+      "inference_attempts": 2,
+      "outcomes": [
+        "success"
+      ]
+    }
+  },
+  "interpretation": "Branch timings cover executed SQL/filter, dense, lexical, fusion and reranking work. HTTP admission/serialization and R3 evidence/assembly are not independently isolated in this run."
+}

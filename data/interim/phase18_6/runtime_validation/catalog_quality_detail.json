@@ -1,0 +1,15 @@
+{
+  "database_read_only": true,
+  "database_counts": {
+    "nonpositive_discounted_prices": 0,
+    "discount_above_retail": 0,
+    "out_of_range_ratings": 0
+  },
+  "tfidf_catalog_metadata_mismatches": {
+    "product_name": 0,
+    "category": 0,
+    "brand": 0,
+    "discounted_price": 0,
+    "rating": 0
+  }
+}

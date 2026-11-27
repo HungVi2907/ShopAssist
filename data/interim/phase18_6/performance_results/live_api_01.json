@@ -1,0 +1,11 @@
+{
+  "count": 21,
+  "p50_wall_ms": 656.5656999882776,
+  "p95_wall_ms": 10678.614899996319,
+  "statuses": {
+    "CLARIFICATION_REQUIRED": 7,
+    "RETRIEVAL_FAILURE": 10,
+    "UNSUPPORTED_INTENT": 4
+  },
+  "scope": "Actual loopback HTTP/FastAPI, local Ollama and existing pipeline; DB timeout may block genuine catalog-backed completion. No mocked replacement."
+}

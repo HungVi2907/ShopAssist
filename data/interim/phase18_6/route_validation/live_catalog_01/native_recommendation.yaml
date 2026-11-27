@@ -1,0 +1,46 @@
+approval: approved
+artifact_ref: artifact.json
+artifact_sha256: ecb1b4833f9fda6e691aa0bc43b6b3977877204fbc5b5aaead34da1f7751c118
+cost_class: free
+dynamic_schema_family: r3.required-keys.v2
+endpoint: http://127.0.0.1:11434
+inference_options:
+  context_limit_tokens: 4096
+  max_output_tokens: 256
+  reasoning_effort: null
+  reported_model_aliases: []
+  seed: 42
+  temperature: 0.0
+model: qwen2.5:1.5b-instruct-local
+model_digest: d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174
+provider: ollama
+route_id: native_recommendation
+schema_fingerprints:
+- 0c1f616669869cf974078d76325eed881b4cedc90b0903ab0de8665ae30aa2e5
+- 0ed602bbfcf61fed3f9816dc47bef5012714bb1ea5e2dc24d7ca6c74ebcda77a
+- 2a653d9f9a1674e481c151dd299fa61381c30871f6c7a060e9171c62099165e6
+- 2aec4c6ce49ba3014e79dd6f8703f4914990f4c4e4791680e96f7c7f3069c695
+- 33dba4da9766ccd3f90ba3e3ef31f6decc2fe11808cb7e78c3a09987d90a5248
+- 597b0def6a18f660dad96915630c9951cfd3d088218c547859aabc278f85ed59
+- 59c493ce179a2bb37216dd051e51baf3ec1426595a5f32b06a503b933eeb7b13
+- 619c71b0d8fb40013b248589091e518e3c80baa70a36fa5bd0e28059abe3a0b6
+- 6dac5fe3df6f25176c66a4937b783758c63b40f197b635f60f314f5b64a80846
+- 73a9fde9bb46849048381af9dcb1e8f1f0f9cf1d58fdfcdc4bd7088040f780e2
+- 781535d08ab1783a97be152b86be0c13087a7d1118caaea3ecdd6e203671d3a6
+- 98f231bcbbf4a85ff3a77787e1f85e30fea7446e10b197f3ee28d91a48d76134
+- 9c85dc7579c966840240832e826383516575bbfb39b2c6c5d60cbe8e86225a63
+- ac84ad83b5debc7a820f7c0747f6810c4f2b4bf9631b0bbef8fac2895f02f5a6
+- b361cf19989b4260fe229055e3abba8953889503b6d693f89ffd35261ad7a168
+- b3e8476edd5b90d3002de596922b71539a1c71b5a276cc54e4cd013dba5666f7
+- d5a0f9e9a5d45e87d2067a8ae8930818918c73b31b61585ccab638ae63193dc2
+- d68721dacb798ce3f72608de78b79273e3543c031f3be47babf1ad6f044cd2a8
+- d7e99b78ced2dc49d6bcb92e1a1f6827967f326a334099260a6944ab8c44629e
+- d80567498fc322c881e4ae37913ff26f62e1fcf189b0bb167b90fb5d98385d4e
+- d96901f4aaa8083a5b392dfc87150b865b1408d1696ceef55993aded372e672e
+- de60d995f3e4f8df57c5838785992abf2cddbc26ff88b4b6a92fc3d3990cde1b
+schema_id: phase12.catalog-selection.v2
+scope: experimental
+status: valid
+structured_mode: ollama_schema
+task: recommendation_generation
+valid_until: '2026-11-28T01:52:22.272991+00:00'

@@ -29,7 +29,7 @@ from shopassist.api.schemas import (
 from shopassist.api.session import InMemorySessionStore
 from shopassist.llm_gateway.errors import GatewayError
 from shopassist.llm.query_understanding import QueryUnderstandingEngine
-from shopassist.preferences.safety import find_unsafe_negative_preferences
+from shopassist.preferences.safety import find_unsafe_query_exclusions
 from shopassist.preferences.schemas import RepresentationStatus
 from shopassist.preferences.service import PreferenceRepresentationService
 from shopassist.recommendation.core import RecommendationService
@@ -111,6 +111,9 @@ class RecommendationOrchestrator:
         """
         pipeline_start = time.perf_counter()
         stage_latencies: dict[str, float] = {}
+        query_usage = None
+        def terminal_response(**kwargs):
+            return self._build_terminal_response(**kwargs, token_usage=query_usage)
         # Internal correlation IDs are server-generated, so arbitrary client
         # X-Request-ID values are never copied into Gateway telemetry.
         gateway_request_id = uuid.uuid4().hex
@@ -124,13 +127,13 @@ class RecommendationOrchestrator:
         # ----------------------------------------------------------------------
         # Step 1: Input Safeguards (Direct Text-Level Guards)
         # ----------------------------------------------------------------------
-        unsafe_exclusions = find_unsafe_negative_preferences([query_text])
+        unsafe_exclusions = find_unsafe_query_exclusions(query_text)
         if unsafe_exclusions:
             msg = (
                 "Negative or exclusion semantics cannot safely be processed: "
                 + ", ".join(unsafe_exclusions)
             )
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="UNSUPPORTED_INTENT",
                 overview=msg,
@@ -154,7 +157,7 @@ class RecommendationOrchestrator:
             if exc.deadline_scope == "parent":
                 raise
             logger.warning("[%s] Phase 8 Gateway failed (%s).", request_id, exc.category.value)
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="INVALID_INPUT",
                 overview="Failed to parse query structure.",
@@ -164,7 +167,7 @@ class RecommendationOrchestrator:
             )
         except Exception as exc:
             logger.error("[%s] Phase 8 query understanding failed: %s", request_id, type(exc).__name__)
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="INVALID_INPUT",
                 overview="Failed to parse query structure.",
@@ -173,6 +176,7 @@ class RecommendationOrchestrator:
                 stage_latencies={"phase8_query_understanding": (time.perf_counter() - t0) * 1000.0},
             )
         stage_latencies["phase8_query_understanding"] = (time.perf_counter() - t0) * 1000.0
+        query_usage = query_result.token_usage
 
         # Phase 8 Short-Circuits
         if not query_result.is_valid:
@@ -181,7 +185,7 @@ class RecommendationOrchestrator:
                 if query_result.validation_errors
                 else (query_result.output.clarification_reason or "Invalid shopping query.")
             )
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="INVALID_INPUT",
                 overview=err,
@@ -195,7 +199,7 @@ class RecommendationOrchestrator:
                 query_result.output.clarification_reason
                 or "Your shopping query requires clarification before we can recommend products."
             )
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="CLARIFICATION_REQUIRED",
                 overview=reason,
@@ -206,7 +210,7 @@ class RecommendationOrchestrator:
 
         currency = (query_result.output.hard_constraints.currency or "INR").upper()
         if currency != "INR":
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="UNSUPPORTED_INTENT",
                 overview=f"Catalog prices are in INR; currency '{currency}' is not supported.",
@@ -236,7 +240,7 @@ class RecommendationOrchestrator:
                     request_id,
                     resolution.unresolved_reason,
                 )
-                return self._build_terminal_response(
+                return terminal_response(
                     request_id=request_id,
                     status="CLARIFICATION_REQUIRED",
                     overview=resolution.unresolved_reason
@@ -257,7 +261,7 @@ class RecommendationOrchestrator:
         stage_latencies["phase9_preferences"] = (time.perf_counter() - t0) * 1000.0
 
         if preference_result.status == RepresentationStatus.CLARIFICATION_REQUIRED:
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="CLARIFICATION_REQUIRED",
                 overview=preference_result.diagnostic_reason or "Your preferences require clarification.",
@@ -266,7 +270,7 @@ class RecommendationOrchestrator:
                 stage_latencies=stage_latencies,
             )
         elif preference_result.status == RepresentationStatus.UNSUPPORTED_INTENT:
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="UNSUPPORTED_INTENT",
                 overview=preference_result.diagnostic_reason or "Requested shopping intent is not supported.",
@@ -275,7 +279,7 @@ class RecommendationOrchestrator:
                 stage_latencies=stage_latencies,
             )
         elif preference_result.status == RepresentationStatus.EMBEDDING_FAILURE:
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="EMBEDDING_FAILURE",
                 overview="Failed to encode preference embedding vector.",
@@ -284,7 +288,7 @@ class RecommendationOrchestrator:
                 stage_latencies=stage_latencies,
             )
         elif preference_result.status == RepresentationStatus.INVALID_INPUT:
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="INVALID_INPUT",
                 overview=preference_result.diagnostic_reason or "Invalid preference representation.",
@@ -308,7 +312,7 @@ class RecommendationOrchestrator:
         if retrieval_result.status == HybridRetrievalStatus.NO_RESULTS or (
             retrieval_result.status == HybridRetrievalStatus.SUCCESS and not retrieval_result.candidates
         ):
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="NO_RESULTS",
                 overview="No products in our catalog match your specified criteria.",
@@ -318,7 +322,7 @@ class RecommendationOrchestrator:
                 applied_constraints=retrieval_result.applied_constraints,
             )
         elif retrieval_result.status == HybridRetrievalStatus.CLARIFICATION_REQUIRED:
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="CLARIFICATION_REQUIRED",
                 overview=retrieval_result.diagnostic_reason or "Query requires clarification.",
@@ -327,7 +331,7 @@ class RecommendationOrchestrator:
                 stage_latencies=stage_latencies,
             )
         elif retrieval_result.status == HybridRetrievalStatus.UNSUPPORTED_INTENT:
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="UNSUPPORTED_INTENT",
                 overview=retrieval_result.diagnostic_reason or "Intent unsupported by retrieval.",
@@ -336,7 +340,7 @@ class RecommendationOrchestrator:
                 stage_latencies=stage_latencies,
             )
         elif retrieval_result.status != HybridRetrievalStatus.SUCCESS:
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status="RETRIEVAL_FAILURE",
                 overview=f"Catalog retrieval encountered an issue ({retrieval_result.status.value}).",
@@ -360,8 +364,10 @@ class RecommendationOrchestrator:
         )
         stage_latencies["phase11_reranking"] = (time.perf_counter() - t0) * 1000.0
 
-        if reranking_result.status == RerankingStatus.NO_RESULTS or not reranking_result.products:
-            return self._build_terminal_response(
+        if reranking_result.status == RerankingStatus.NO_RESULTS or (
+            reranking_result.status == RerankingStatus.SUCCESS and not reranking_result.products
+        ):
+            return terminal_response(
                 request_id=request_id,
                 status="NO_RESULTS",
                 overview="No candidate products remained after constraint validation.",
@@ -371,7 +377,7 @@ class RecommendationOrchestrator:
                 applied_constraints=reranking_result.applied_constraints,
             )
         elif reranking_result.status != RerankingStatus.SUCCESS:
-            return self._build_terminal_response(
+            return terminal_response(
                 request_id=request_id,
                 status=reranking_result.status.value,
                 overview=f"Reranking encountered an issue ({reranking_result.status.value}).",
@@ -507,6 +513,7 @@ class RecommendationOrchestrator:
         pipeline_start: float,
         stage_latencies: dict[str, float],
         applied_constraints: dict[str, Any] | None = None,
+        token_usage=None,
     ) -> RecommendationResponse:
         """Helper generating short-circuit terminal response without calling downstream phases."""
         total_latency_ms = (time.perf_counter() - pipeline_start) * 1000.0
@@ -524,9 +531,9 @@ class RecommendationOrchestrator:
                 applied_constraints=applied_constraints or {},
             ),
             usage=RecommendationUsage(
-                total_tokens=0,
-                prompt_tokens=0,
-                completion_tokens=0,
+                total_tokens=token_usage.total_tokens if token_usage else 0,
+                prompt_tokens=token_usage.prompt_tokens if token_usage else 0,
+                completion_tokens=token_usage.candidates_tokens if token_usage else 0,
                 estimated_cost_usd=0.0,
                 total_latency_ms=round(total_latency_ms, 2),
                 stage_latencies_ms={k: round(v, 2) for k, v in stage_latencies.items()},

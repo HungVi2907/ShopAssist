@@ -26,6 +26,8 @@ class OllamaAdapter:
         self.client=client or httpx.AsyncClient(trust_env=False,follow_redirects=False,transport=httpx.AsyncHTTPTransport(retries=0))
         self.owns_client=client is None;self.clock=clock;self.ttl=identity_ttl_s
         self.verified_at=None;self.closed=False
+        self._identity_lock=asyncio.Lock()
+        self._identity_generation=0
 
     def ready_for(self,route):
         return (not self.closed and self.verified_at is not None and 0<=self.clock()-self.verified_at<self.ttl
@@ -71,6 +73,18 @@ class OllamaAdapter:
             self.verified_at=self.clock();return True
         except asyncio.CancelledError:raise
         except (ProviderAttemptError,KeyError,TypeError,StopIteration,AttributeError):return False
+        finally:self._identity_generation+=1
+
+    async def ensure_identity(self,route,*,timeout_s=5):
+        """Coalesce stale checks; permission and fingerprint approval stay in Gateway."""
+        if self.ready_for(route):return True
+        generation=self._identity_generation
+        async with self._identity_lock:
+            if self.ready_for(route):return True
+            # Another concurrent waiter already observed this failed verification.
+            if self._identity_generation!=generation:return False
+            if not await self.verify_model(timeout_s=timeout_s):return False
+            return self.ready_for(route)
 
     def prepare(self,request,route):
         if route.provider!='ollama' or route.structured_mode!='ollama_schema' or not self.ready_for(route):

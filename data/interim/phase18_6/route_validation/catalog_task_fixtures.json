@@ -1,0 +1,382 @@
+{
+  "query_result": {
+    "query": "running shoes under 2000 INR",
+    "output": {
+      "semantic_query": "running shoes",
+      "hard_constraints": {
+        "category": "Footwear",
+        "brand": null,
+        "min_price": null,
+        "max_price": 2000.0,
+        "min_rating": null,
+        "currency": "INR"
+      },
+      "soft_preferences": [],
+      "needs_clarification": false,
+      "clarification_reason": null
+    },
+    "raw_response_text": "",
+    "model": "",
+    "latency_ms": 0.0,
+    "token_usage": null,
+    "is_valid": true,
+    "validation_errors": []
+  },
+  "shapes": [
+    {
+      "candidate_count": 1,
+      "schema_fingerprint": "619c71b0d8fb40013b248589091e518e3c80baa70a36fa5bd0e28059abe3a0b6",
+      "fact_counts": [
+        9
+      ],
+      "products": [
+        {
+          "product_id": "09779c98e54c30f905b21bd9744ae685",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Campus Berlin Running Shoes",
+          "retrieval_text": "Product: Campus Berlin Running Shoes | Category: Footwear | Specifications: Occasion: Sports; Ideal For: Women; Sole Material: TPR; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: Pink | Description: Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1399.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "retail_price": 1399.0,
+            "product_specifications": "[{\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Ideal For\", \"value\": \"Women\"}, {\"key\": \"Sole Material\", \"value\": \"TPR\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Pink\"}]",
+            "product_description": "Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        }
+      ]
+    },
+    {
+      "candidate_count": 2,
+      "schema_fingerprint": "bf6db14d5f9320b9395b5416b4625dce1af8e947333459e302d64dd5e0249cac",
+      "fact_counts": [
+        9,
+        9
+      ],
+      "products": [
+        {
+          "product_id": "09779c98e54c30f905b21bd9744ae685",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Campus Berlin Running Shoes",
+          "retrieval_text": "Product: Campus Berlin Running Shoes | Category: Footwear | Specifications: Occasion: Sports; Ideal For: Women; Sole Material: TPR; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: Pink | Description: Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1399.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "retail_price": 1399.0,
+            "product_specifications": "[{\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Ideal For\", \"value\": \"Women\"}, {\"key\": \"Sole Material\", \"value\": \"TPR\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Pink\"}]",
+            "product_description": "Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        },
+        {
+          "product_id": "ca1f2174844857098f6c8912c90811be",
+          "original_rank": 2,
+          "reranked_rank": 2,
+          "product_name": "BAAJ Running Shoes",
+          "retrieval_text": "Product: BAAJ Running Shoes | Category: Footwear | Brand: BAAJ | Specifications: Ideal For: Men; Occasion: Sports; Heel Height: 1 inch; Outer Material: Synthetic Leather; Color: Blue::Grey | Description: Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey",
+          "category": "Footwear",
+          "brand": "BAAJ",
+          "discounted_price": 444.0,
+          "rating": null,
+          "rrf_score": 0.016129032258064516,
+          "sources": {},
+          "metadata": {
+            "retail_price": 999.0,
+            "product_specifications": "[{\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Heel Height\", \"value\": \"1 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Blue::Grey\"}]",
+            "product_description": "Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey"
+          },
+          "final_score": 0.016129032258064516,
+          "score_components": {}
+        }
+      ]
+    },
+    {
+      "candidate_count": 3,
+      "schema_fingerprint": "67bece7d35a203835d431c8e90388d3eb6750f2309cc182aca5cd51f66ba7b26",
+      "fact_counts": [
+        9,
+        9,
+        10
+      ],
+      "products": [
+        {
+          "product_id": "09779c98e54c30f905b21bd9744ae685",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Campus Berlin Running Shoes",
+          "retrieval_text": "Product: Campus Berlin Running Shoes | Category: Footwear | Specifications: Occasion: Sports; Ideal For: Women; Sole Material: TPR; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: Pink | Description: Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1399.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "retail_price": 1399.0,
+            "product_specifications": "[{\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Ideal For\", \"value\": \"Women\"}, {\"key\": \"Sole Material\", \"value\": \"TPR\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Pink\"}]",
+            "product_description": "Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        },
+        {
+          "product_id": "ca1f2174844857098f6c8912c90811be",
+          "original_rank": 2,
+          "reranked_rank": 2,
+          "product_name": "BAAJ Running Shoes",
+          "retrieval_text": "Product: BAAJ Running Shoes | Category: Footwear | Brand: BAAJ | Specifications: Ideal For: Men; Occasion: Sports; Heel Height: 1 inch; Outer Material: Synthetic Leather; Color: Blue::Grey | Description: Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey",
+          "category": "Footwear",
+          "brand": "BAAJ",
+          "discounted_price": 444.0,
+          "rating": null,
+          "rrf_score": 0.016129032258064516,
+          "sources": {},
+          "metadata": {
+            "retail_price": 999.0,
+            "product_specifications": "[{\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Heel Height\", \"value\": \"1 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Blue::Grey\"}]",
+            "product_description": "Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey"
+          },
+          "final_score": 0.016129032258064516,
+          "score_components": {}
+        },
+        {
+          "product_id": "89032171e3e9d790631e24e3f9421bfb",
+          "original_rank": 3,
+          "reranked_rank": 3,
+          "product_name": "ETHICS Running Shoes",
+          "retrieval_text": "Product: ETHICS Running Shoes | Category: Footwear | Brand: ETHICS | Specifications: Occasion: Sports; Ideal For: Men; Weight: 449 g (per single Shoe) - Weight of the product may vary depending on size.; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: ORANGE | Description: Key Features of ETHICS Running Shoes Material: Synthetic Leather Occasion: Sports Color: Orange Heel Height: 0,Specifications of ETHICS Running Shoes General Occasion Sports Ideal For Men Shoe Details Weight 449 g (per single Shoe) - Weight of the product may vary depending on size. Heel Height 0 inch Outer Material Synthetic Leather Color ORANGE",
+          "category": "Footwear",
+          "brand": "ETHICS",
+          "discounted_price": 298.0,
+          "rating": null,
+          "rrf_score": 0.015873015873015872,
+          "sources": {},
+          "metadata": {
+            "retail_price": 499.0,
+            "product_specifications": "[{\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Weight\", \"value\": \"449 g (per single Shoe) - Weight of the product may vary depending on size.\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"ORANGE\"}]",
+            "product_description": "Key Features of ETHICS Running Shoes Material: Synthetic Leather Occasion: Sports Color: Orange Heel Height: 0,Specifications of ETHICS Running Shoes General Occasion Sports Ideal For Men Shoe Details Weight 449 g (per single Shoe) - Weight of the product may vary depending on size. Heel Height 0 inch Outer Material Synthetic Leather Color ORANGE"
+          },
+          "final_score": 0.015873015873015872,
+          "score_components": {}
+        }
+      ]
+    },
+    {
+      "candidate_count": 4,
+      "schema_fingerprint": "6ac0aab2915741c8c9902fbb19990d6c153daecfb29d319d1ad6e071a4b6985d",
+      "fact_counts": [
+        9,
+        9,
+        10,
+        11
+      ],
+      "products": [
+        {
+          "product_id": "09779c98e54c30f905b21bd9744ae685",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Campus Berlin Running Shoes",
+          "retrieval_text": "Product: Campus Berlin Running Shoes | Category: Footwear | Specifications: Occasion: Sports; Ideal For: Women; Sole Material: TPR; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: Pink | Description: Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1399.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "retail_price": 1399.0,
+            "product_specifications": "[{\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Ideal For\", \"value\": \"Women\"}, {\"key\": \"Sole Material\", \"value\": \"TPR\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Pink\"}]",
+            "product_description": "Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        },
+        {
+          "product_id": "ca1f2174844857098f6c8912c90811be",
+          "original_rank": 2,
+          "reranked_rank": 2,
+          "product_name": "BAAJ Running Shoes",
+          "retrieval_text": "Product: BAAJ Running Shoes | Category: Footwear | Brand: BAAJ | Specifications: Ideal For: Men; Occasion: Sports; Heel Height: 1 inch; Outer Material: Synthetic Leather; Color: Blue::Grey | Description: Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey",
+          "category": "Footwear",
+          "brand": "BAAJ",
+          "discounted_price": 444.0,
+          "rating": null,
+          "rrf_score": 0.016129032258064516,
+          "sources": {},
+          "metadata": {
+            "retail_price": 999.0,
+            "product_specifications": "[{\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Heel Height\", \"value\": \"1 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Blue::Grey\"}]",
+            "product_description": "Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey"
+          },
+          "final_score": 0.016129032258064516,
+          "score_components": {}
+        },
+        {
+          "product_id": "89032171e3e9d790631e24e3f9421bfb",
+          "original_rank": 3,
+          "reranked_rank": 3,
+          "product_name": "ETHICS Running Shoes",
+          "retrieval_text": "Product: ETHICS Running Shoes | Category: Footwear | Brand: ETHICS | Specifications: Occasion: Sports; Ideal For: Men; Weight: 449 g (per single Shoe) - Weight of the product may vary depending on size.; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: ORANGE | Description: Key Features of ETHICS Running Shoes Material: Synthetic Leather Occasion: Sports Color: Orange Heel Height: 0,Specifications of ETHICS Running Shoes General Occasion Sports Ideal For Men Shoe Details Weight 449 g (per single Shoe) - Weight of the product may vary depending on size. Heel Height 0 inch Outer Material Synthetic Leather Color ORANGE",
+          "category": "Footwear",
+          "brand": "ETHICS",
+          "discounted_price": 298.0,
+          "rating": null,
+          "rrf_score": 0.015873015873015872,
+          "sources": {},
+          "metadata": {
+            "retail_price": 499.0,
+            "product_specifications": "[{\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Weight\", \"value\": \"449 g (per single Shoe) - Weight of the product may vary depending on size.\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"ORANGE\"}]",
+            "product_description": "Key Features of ETHICS Running Shoes Material: Synthetic Leather Occasion: Sports Color: Orange Heel Height: 0,Specifications of ETHICS Running Shoes General Occasion Sports Ideal For Men Shoe Details Weight 449 g (per single Shoe) - Weight of the product may vary depending on size. Heel Height 0 inch Outer Material Synthetic Leather Color ORANGE"
+          },
+          "final_score": 0.015873015873015872,
+          "score_components": {}
+        },
+        {
+          "product_id": "0d58c009b3b320e67a1e26630eb8d98a",
+          "original_rank": 4,
+          "reranked_rank": 4,
+          "product_name": "Parbat Nova-Orng-Strips Running Shoes",
+          "retrieval_text": "Product: Parbat Nova-Orng-Strips Running Shoes | Category: Footwear | Specifications: Ideal For: Men; Occasion: Sports; Lining: Cotton Lining; Sole Material: Rubber; Closure: Laced; Tip Shape: Round; Number of Contents in Sales Package: Pack of 1; Weight: 400 g (per single Shoe) - Weight of the product may vary depending on size.; Inner Material: Synthetic; Heel Height: 0 inch; Outer Material: Mesh; Color: Orange; Care Instructions: Wash In Lukewarm Water, Do Not Bleach | Description: Parbat Nova-Orng-Strips Running Shoes - Buy Parbat Nova-Orng-Strips Running Shoes - CNRO221 only for Rs. 999 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 999.0,
+          "rating": null,
+          "rrf_score": 0.015625,
+          "sources": {},
+          "metadata": {
+            "retail_price": 2699.0,
+            "product_specifications": "[{\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Lining\", \"value\": \"Cotton Lining\"}, {\"key\": \"Sole Material\", \"value\": \"Rubber\"}, {\"key\": \"Closure\", \"value\": \"Laced\"}, {\"key\": \"Tip Shape\", \"value\": \"Round\"}, {\"key\": \"Number of Contents in Sales Package\", \"value\": \"Pack of 1\"}, {\"key\": \"Weight\", \"value\": \"400 g (per single Shoe) - Weight of the product may vary depending on size.\"}, {\"key\": \"Inner Material\", \"value\": \"Synthetic\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Mesh\"}, {\"key\": \"Color\", \"value\": \"Orange\"}, {\"key\": \"Care Instructions\", \"value\": \"Wash In Lukewarm Water, Do Not Bleach\"}]",
+            "product_description": "Parbat Nova-Orng-Strips Running Shoes - Buy Parbat Nova-Orng-Strips Running Shoes - CNRO221 only for Rs. 999 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+          },
+          "final_score": 0.015625,
+          "score_components": {}
+        }
+      ]
+    },
+    {
+      "candidate_count": 5,
+      "schema_fingerprint": "4e72ab2b9cdf1ef4f5552fa21a7fa23a5e1032fcd9f8f5e8da0c0c5fbcc0e3d0",
+      "fact_counts": [
+        9,
+        9,
+        10,
+        11,
+        10
+      ],
+      "products": [
+        {
+          "product_id": "09779c98e54c30f905b21bd9744ae685",
+          "original_rank": 1,
+          "reranked_rank": 1,
+          "product_name": "Campus Berlin Running Shoes",
+          "retrieval_text": "Product: Campus Berlin Running Shoes | Category: Footwear | Specifications: Occasion: Sports; Ideal For: Women; Sole Material: TPR; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: Pink | Description: Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 1399.0,
+          "rating": null,
+          "rrf_score": 0.01639344262295082,
+          "sources": {},
+          "metadata": {
+            "retail_price": 1399.0,
+            "product_specifications": "[{\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Ideal For\", \"value\": \"Women\"}, {\"key\": \"Sole Material\", \"value\": \"TPR\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Pink\"}]",
+            "product_description": "Campus Berlin Running Shoes - Buy Campus Berlin Running Shoes - BERLIN only for Rs. 1399 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+          },
+          "final_score": 0.01639344262295082,
+          "score_components": {}
+        },
+        {
+          "product_id": "ca1f2174844857098f6c8912c90811be",
+          "original_rank": 2,
+          "reranked_rank": 2,
+          "product_name": "BAAJ Running Shoes",
+          "retrieval_text": "Product: BAAJ Running Shoes | Category: Footwear | Brand: BAAJ | Specifications: Ideal For: Men; Occasion: Sports; Heel Height: 1 inch; Outer Material: Synthetic Leather; Color: Blue::Grey | Description: Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey",
+          "category": "Footwear",
+          "brand": "BAAJ",
+          "discounted_price": 444.0,
+          "rating": null,
+          "rrf_score": 0.016129032258064516,
+          "sources": {},
+          "metadata": {
+            "retail_price": 999.0,
+            "product_specifications": "[{\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Heel Height\", \"value\": \"1 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"Blue::Grey\"}]",
+            "product_description": "Key Features of BAAJ Running Shoes Material: Synthetic Leather Occasion: Sports Color: Blue, Grey Heel Height: 1,Specifications of BAAJ Running Shoes General Ideal For Men Occasion Sports Shoe Details Heel Height 1 inch Outer Material Synthetic Leather Color Blue::Grey"
+          },
+          "final_score": 0.016129032258064516,
+          "score_components": {}
+        },
+        {
+          "product_id": "89032171e3e9d790631e24e3f9421bfb",
+          "original_rank": 3,
+          "reranked_rank": 3,
+          "product_name": "ETHICS Running Shoes",
+          "retrieval_text": "Product: ETHICS Running Shoes | Category: Footwear | Brand: ETHICS | Specifications: Occasion: Sports; Ideal For: Men; Weight: 449 g (per single Shoe) - Weight of the product may vary depending on size.; Heel Height: 0 inch; Outer Material: Synthetic Leather; Color: ORANGE | Description: Key Features of ETHICS Running Shoes Material: Synthetic Leather Occasion: Sports Color: Orange Heel Height: 0,Specifications of ETHICS Running Shoes General Occasion Sports Ideal For Men Shoe Details Weight 449 g (per single Shoe) - Weight of the product may vary depending on size. Heel Height 0 inch Outer Material Synthetic Leather Color ORANGE",
+          "category": "Footwear",
+          "brand": "ETHICS",
+          "discounted_price": 298.0,
+          "rating": null,
+          "rrf_score": 0.015873015873015872,
+          "sources": {},
+          "metadata": {
+            "retail_price": 499.0,
+            "product_specifications": "[{\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Weight\", \"value\": \"449 g (per single Shoe) - Weight of the product may vary depending on size.\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Synthetic Leather\"}, {\"key\": \"Color\", \"value\": \"ORANGE\"}]",
+            "product_description": "Key Features of ETHICS Running Shoes Material: Synthetic Leather Occasion: Sports Color: Orange Heel Height: 0,Specifications of ETHICS Running Shoes General Occasion Sports Ideal For Men Shoe Details Weight 449 g (per single Shoe) - Weight of the product may vary depending on size. Heel Height 0 inch Outer Material Synthetic Leather Color ORANGE"
+          },
+          "final_score": 0.015873015873015872,
+          "score_components": {}
+        },
+        {
+          "product_id": "0d58c009b3b320e67a1e26630eb8d98a",
+          "original_rank": 4,
+          "reranked_rank": 4,
+          "product_name": "Parbat Nova-Orng-Strips Running Shoes",
+          "retrieval_text": "Product: Parbat Nova-Orng-Strips Running Shoes | Category: Footwear | Specifications: Ideal For: Men; Occasion: Sports; Lining: Cotton Lining; Sole Material: Rubber; Closure: Laced; Tip Shape: Round; Number of Contents in Sales Package: Pack of 1; Weight: 400 g (per single Shoe) - Weight of the product may vary depending on size.; Inner Material: Synthetic; Heel Height: 0 inch; Outer Material: Mesh; Color: Orange; Care Instructions: Wash In Lukewarm Water, Do Not Bleach | Description: Parbat Nova-Orng-Strips Running Shoes - Buy Parbat Nova-Orng-Strips Running Shoes - CNRO221 only for Rs. 999 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!",
+          "category": "Footwear",
+          "brand": null,
+          "discounted_price": 999.0,
+          "rating": null,
+          "rrf_score": 0.015625,
+          "sources": {},
+          "metadata": {
+            "retail_price": 2699.0,
+            "product_specifications": "[{\"key\": \"Ideal For\", \"value\": \"Men\"}, {\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Lining\", \"value\": \"Cotton Lining\"}, {\"key\": \"Sole Material\", \"value\": \"Rubber\"}, {\"key\": \"Closure\", \"value\": \"Laced\"}, {\"key\": \"Tip Shape\", \"value\": \"Round\"}, {\"key\": \"Number of Contents in Sales Package\", \"value\": \"Pack of 1\"}, {\"key\": \"Weight\", \"value\": \"400 g (per single Shoe) - Weight of the product may vary depending on size.\"}, {\"key\": \"Inner Material\", \"value\": \"Synthetic\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Mesh\"}, {\"key\": \"Color\", \"value\": \"Orange\"}, {\"key\": \"Care Instructions\", \"value\": \"Wash In Lukewarm Water, Do Not Bleach\"}]",
+            "product_description": "Parbat Nova-Orng-Strips Running Shoes - Buy Parbat Nova-Orng-Strips Running Shoes - CNRO221 only for Rs. 999 from Flipkart.com. Only Genuine Products. 30 Day Replacement Guarantee. Free Shipping. Cash On Delivery!"
+          },
+          "final_score": 0.015625,
+          "score_components": {}
+        },
+        {
+          "product_id": "ca91a9b331e5307b30068488feb78499",
+          "original_rank": 5,
+          "reranked_rank": 5,
+          "product_name": "WorldWearFootwear Running Shoes, Walking Shoes",
+          "retrieval_text": "Product: WorldWearFootwear Running Shoes, Walking Shoes | Category: Footwear | Brand: WorldWearFootwear | Specifications: Ideal For: Men, Boys; Occasion: Sports; Weight: 200 g (per single Shoe) - Weight of the product may vary depending on size.; Heel Height: 0 inch; Outer Material: Mesh; Color: WHITE | Description: Key Features of WorldWearFootwear Running Shoes, Walking Shoes Material: Mesh Occasion: Sports Color: Multicolor Heel Height: 0,Specifications of WorldWearFootwear Running Shoes, Walking Shoes General Ideal For Men, Boys Occasion Sports Shoe Details Weight 200 g (per single Shoe) - Weight of the product may vary depending on size. Heel Height 0 inch Outer Material Mesh Color WHITE",
+          "category": "Footwear",
+          "brand": "WorldWearFootwear",
+          "discounted_price": 380.0,
+          "rating": null,
+          "rrf_score": 0.015384615384615385,
+          "sources": {},
+          "metadata": {
+            "retail_price": 999.0,
+            "product_specifications": "[{\"key\": \"Ideal For\", \"value\": \"Men, Boys\"}, {\"key\": \"Occasion\", \"value\": \"Sports\"}, {\"key\": \"Weight\", \"value\": \"200 g (per single Shoe) - Weight of the product may vary depending on size.\"}, {\"key\": \"Heel Height\", \"value\": \"0 inch\"}, {\"key\": \"Outer Material\", \"value\": \"Mesh\"}, {\"key\": \"Color\", \"value\": \"WHITE\"}]",
+            "product_description": "Key Features of WorldWearFootwear Running Shoes, Walking Shoes Material: Mesh Occasion: Sports Color: Multicolor Heel Height: 0,Specifications of WorldWearFootwear Running Shoes, Walking Shoes General Ideal For Men, Boys Occasion Sports Shoe Details Weight 200 g (per single Shoe) - Weight of the product may vary depending on size. Heel Height 0 inch Outer Material Mesh Color WHITE"
+          },
+          "final_score": 0.015384615384615385,
+          "score_components": {}
+        }
+      ]
+    }
+  ]
+}

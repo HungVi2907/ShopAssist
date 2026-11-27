@@ -17,7 +17,7 @@ from pydantic import BaseModel, ConfigDict, Field, create_model, model_validator
 
 from shopassist.llm.normalization import CATEGORY_SYNONYM_MAP
 from shopassist.llm.schemas import QueryUnderstandingResult
-from shopassist.preferences.safety import find_unsafe_negative_preferences
+from shopassist.preferences.safety import find_unsafe_query_exclusions
 from shopassist.recommendation.context import EvidenceContextBuilder
 from shopassist.recommendation.schemas import (RecommendationResult, RecommendationStatus,
     ProductClaim, TokenUsage)
@@ -137,7 +137,7 @@ class LocalRecommendationGenerator:
             return RecommendationResult(status=status,overview=reason,diagnostic_reason=reason,language=language),diagnostic
         if not query.is_valid:return stop(RecommendationStatus.INVALID_INPUT,'Upstream query understanding failed.')
         if query.output.needs_clarification:return stop(RecommendationStatus.CLARIFICATION_REQUIRED,query.output.clarification_reason or 'Clarification required.')
-        if (query.output.hard_constraints.currency or 'INR')!='INR' or find_unsafe_negative_preferences([query.query]):
+        if (query.output.hard_constraints.currency or 'INR')!='INR' or find_unsafe_query_exclusions(query.query):
             return stop(RecommendationStatus.UNSUPPORTED_INTENT,'Currency or exclusions cannot safely be recommended.')
         if not products:return stop(RecommendationStatus.NO_RESULTS,'No candidates supplied.')
         if len(products)>5:return stop(RecommendationStatus.VALIDATION_FAILURE,'Local pilot supports at most five supplied candidates.')

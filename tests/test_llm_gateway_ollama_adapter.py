@@ -107,6 +107,7 @@ def test_digest_mismatch_and_staleness_prevent_dispatch(tmp_path):
         seen=[];bad=True
         def handler(req):
             seen.append(req.url.path)
+            if req.url.path=='/api/chat':return httpx.Response(200,json=envelope(INTENT))
             return httpx.Response(200,json={'models':[{'name':MODEL,'digest':'0'*64 if bad else DIGEST}]})
         client=httpx.AsyncClient(transport=httpx.MockTransport(handler));g=build_native_gateway(native_config(tmp_path),client=client)
         assert not await verify_native_gateway(g)
@@ -114,8 +115,9 @@ def test_digest_mismatch_and_staleness_prevent_dispatch(tmp_path):
         assert not exc.value.attempts
         bad=False;assert await verify_native_gateway(g)
         adapter=next(iter(g.adapters.values()));adapter.verified_at-=adapter.ttl+1
-        with pytest.raises(GatewayError):await g.complete(request())
-        assert seen==['/api/tags','/api/tags'];await g.aclose();await client.aclose()
+        result=await g.complete(request())
+        assert result.reported_model==MODEL
+        assert seen==['/api/tags','/api/tags','/api/tags','/api/tags','/api/chat'];await g.aclose();await client.aclose()
     asyncio.run(run())
 
 

@@ -1,0 +1,1294 @@
+{
+  "python": "3.10.11",
+  "packages": {
+    "fastapi": "0.138.0",
+    "uvicorn": "0.49.0",
+    "httpx": "0.28.1",
+    "pydantic": "2.12.5",
+    "sqlalchemy": "2.0.51",
+    "psycopg": "3.3.6",
+    "pgvector": "0.5.0",
+    "torch": "2.6.0+cu124",
+    "sentence-transformers": "6.0.1",
+    "scikit-learn": "1.7.2"
+  },
+  "catalog": {
+    "count": 8405,
+    "columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "brand",
+      "retail_price",
+      "discounted_price",
+      "rating",
+      "description",
+      "product_specifications",
+      "product_url",
+      "image",
+      "pid",
+      "retrieval_text",
+      "embedding",
+      "embedding_model"
+    ],
+    "duplicate_ids": 0,
+    "sha256": "bd9bac023368289629c903ad04fc98bae85c347777f646dca63ad4bdfb029cdc"
+  },
+  "tfidf": {
+    "count": 8405,
+    "id_symmetric_difference": 0,
+    "artifacts": {
+      "product_metadata.parquet": "d56849ccdd63c76d5f1dcd7f0a7f1a77a2042e69158670d014916d211760a924",
+      "tfidf_manifest.json": "7d7d0aa0a7c0213b51404206b612ce9b395eeb7b008cc82e68bd7fd6dbded0be",
+      "tfidf_matrix.npz": "6d938229f240eaaa07b030bfb0d3c6ec15854ca5cd7d69e5bcc024b7dff73919",
+      "tfidf_vectorizer.joblib": "230bdb0cf944cea463543fc165aa47b7b9adbe57e930b7b74b81fa69ee085f2e"
+    },
+    "metadata_columns": [
+      "product_id",
+      "product_name",
+      "category",
+      "brand",
+      "discounted_price",
+      "retail_price",
+      "rating",
+      "pid"
+    ]
+  },
+  "ollama": {
+    "tags": {
+      "models": [
+        {
+          "name": "qwen2.5:1.5b-instruct-local",
+          "model": "qwen2.5:1.5b-instruct-local",
+          "modified_at": "2026-11-26T12:37:46.6417411+07:00",
+          "size": 986061627,
+          "digest": "d010eb818583111cfafeb3523cc17802f85dcb7f4fe5e8ecdd4927dca40e3174",
+          "details": {
+            "parent_model": "qwen2.5:1.5b-instruct",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 32768,
+            "embedding_length": 1536,
+            "runner": "llamacpp"
+          },
+          "capabilities": [
+            "completion",
+            "tools"
+          ]
+        },
+        {
+          "name": "qwen2.5:1.5b-instruct",
+          "model": "qwen2.5:1.5b-instruct",
+          "modified_at": "2026-11-26T12:06:50.0915824+07:00",
+          "size": 986061892,
+          "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "1.5B",
+            "quantization_level": "Q4_K_M",
+            "context_length": 32768,
+            "embedding_length": 1536,
+            "runner": "ggml"
+          },
+          "capabilities": [
+            "completion",
+            "tools"
+          ]
+        }
+      ]
+    },
+    "version": {
+      "version": "0.40.18"
+    }
+  },
+  "database": {
+    "server_version": "17.11",
+    "read_only": "on",
+    "vector_extension": "0.8.2",
+    "columns": [
+      {
+        "column_name": "product_id",
+        "data_type": "character varying",
+        "udt_name": "varchar"
+      },
+      {
+        "column_name": "product_name",
+        "data_type": "text",
+        "udt_name": "text"
+      },
+      {
+        "column_name": "category",
+        "data_type": "character varying",
+        "udt_name": "varchar"
+      },
+      {
+        "column_name": "brand",
+        "data_type": "character varying",
+        "udt_name": "varchar"
+      },
+      {
+        "column_name": "retail_price",
+        "data_type": "numeric",
+        "udt_name": "numeric"
+      },
+      {
+        "column_name": "discounted_price",
+        "data_type": "numeric",
+        "udt_name": "numeric"
+      },
+      {
+        "column_name": "rating",
+        "data_type": "numeric",
+        "udt_name": "numeric"
+      },
+      {
+        "column_name": "description",
+        "data_type": "text",
+        "udt_name": "text"
+      },
+      {
+        "column_name": "product_specifications",
+        "data_type": "jsonb",
+        "udt_name": "jsonb"
+      },
+      {
+        "column_name": "product_url",
+        "data_type": "text",
+        "udt_name": "text"
+      },
+      {
+        "column_name": "image",
+        "data_type": "text",
+        "udt_name": "text"
+      },
+      {
+        "column_name": "pid",
+        "data_type": "character varying",
+        "udt_name": "varchar"
+      },
+      {
+        "column_name": "retrieval_text",
+        "data_type": "text",
+        "udt_name": "text"
+      },
+      {
+        "column_name": "embedding",
+        "data_type": "USER-DEFINED",
+        "udt_name": "vector"
+      },
+      {
+        "column_name": "embedding_model",
+        "data_type": "character varying",
+        "udt_name": "varchar"
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz"
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "udt_name": "timestamptz"
+      }
+    ],
+    "indexes": [
+      {
+        "indexname": "products_pkey",
+        "indexdef": "CREATE UNIQUE INDEX products_pkey ON public.products USING btree (product_id)"
+      },
+      {
+        "indexname": "idx_products_category",
+        "indexdef": "CREATE INDEX idx_products_category ON public.products USING btree (category)"
+      },
+      {
+        "indexname": "idx_products_price",
+        "indexdef": "CREATE INDEX idx_products_price ON public.products USING btree (discounted_price)"
+      },
+      {
+        "indexname": "idx_products_brand",
+        "indexdef": "CREATE INDEX idx_products_brand ON public.products USING btree (brand)"
+      },
+      {
+        "indexname": "idx_products_category_price",
+        "indexdef": "CREATE INDEX idx_products_category_price ON public.products USING btree (category, discounted_price)"
+      },
+      {
+        "indexname": "idx_products_embedding",
+        "indexdef": "CREATE INDEX idx_products_embedding ON public.products USING hnsw (embedding vector_cosine_ops) WITH (m='16', ef_construction='64')"
+      }
+    ],
+    "count": 8405,
+    "duplicate_ids": 0,
+    "missing_embeddings": 0,
+    "dimensions": {
+      "384": 8405
+    },
+    "embedding_models": {
+      "BAAI/bge-small-en-v1.5": 8405
+    },
+    "id_symmetric_difference": 0,
+    "missing_names": 0,
+    "missing_categories": 0,
+    "missing_prices": 0,
+    "missing_brands": 1988,
+    "missing_ratings": 7511,
+    "metadata_mismatches": [
+      {
+        "product_id": "dadf7d946c271007a6b6a0cc37110fb7",
+        "field": "rating"
+      },
+      {
+        "product_id": "84cff956323bd63d24c5402efb6b2087",
+        "field": "rating"
+      },
+      {
+        "product_id": "31ba5f86bd4d3eacdd4a0b3a1d6b88aa",
+        "field": "rating"
+      },
+      {
+        "product_id": "6d3f8372eb91e51fcbe3634c23fdd695",
+        "field": "rating"
+      },
+      {
+        "product_id": "2aab18b9340cf86994762175e091f732",
+        "field": "rating"
+      },
+      {
+        "product_id": "a848f3b9808ad7d62d1ea96b9c52bc02",
+        "field": "rating"
+      },
+      {
+        "product_id": "d97f1c3a785cd4c41b6c15da582f5a74",
+        "field": "rating"
+      },
+      {
+        "product_id": "114e8154ff3010832209dfa3ce44fdcb",
+        "field": "rating"
+      },
+      {
+        "product_id": "9743e6d1c9f3180483825fe4d2e97836",
+        "field": "rating"
+      },
+      {
+        "product_id": "4976ac37140f4224981c12c7851af4e4",
+        "field": "rating"
+      },
+      {
+        "product_id": "5b662857aed31a99169c422b0f88210d",
+        "field": "rating"
+      },
+      {
+        "product_id": "c668c070270a6cc3350707cc3f94827e",
+        "field": "rating"
+      },
+      {
+        "product_id": "f979cdde83f4d9f85ccfeec355b46dd3",
+        "field": "rating"
+      },
+      {
+        "product_id": "b5b47b2ecf5cf5760051b0a980ed7a3f",
+        "field": "rating"
+      },
+      {
+        "product_id": "71cf5404c52791d773e28cbe23b7ebaa",
+        "field": "rating"
+      },
+      {
+        "product_id": "af47f7f6a83f2f754159336d16e14812",
+        "field": "rating"
+      },
+      {
+        "product_id": "f5c0fcffe67ef8ff4088fbff74c13da8",
+        "field": "rating"
+      },
+      {
+        "product_id": "cb0afa31d9ca796908fde019cd64044d",
+        "field": "rating"
+      },
+      {
+        "product_id": "394c2c627914e1eed9b8ac343583a679",
+        "field": "rating"
+      },
+      {
+        "product_id": "88234501ae4ec60655e126ae520cedab",
+        "field": "rating"
+      },
+      {
+        "product_id": "e320e938f598e16dbd706972c1b155de",
+        "field": "rating"
+      },
+      {
+        "product_id": "3dd61917c5d8ceda97aa809c9a778935",
+        "field": "rating"
+      },
+      {
+        "product_id": "1fd50727cc86075baec0bbc6db2358d4",
+        "field": "rating"
+      },
+      {
+        "product_id": "67677f942598e9ecdf91d8a090dd469e",
+        "field": "rating"
+      },
+      {
+        "product_id": "fd2716d0e5dd7ffc367ca4dd9f97aaa0",
+        "field": "rating"
+      },
+      {
+        "product_id": "43c343ad3dc830484b982279bb762429",
+        "field": "rating"
+      },
+      {
+        "product_id": "3602107a0212e55187c7bc96d3442ca7",
+        "field": "rating"
+      },
+      {
+        "product_id": "37139cd5f02223a11645b17355bfa7d9",
+        "field": "rating"
+      },
+      {
+        "product_id": "93d379bfb4589c91efd0a63841f37f88",
+        "field": "rating"
+      },
+      {
+        "product_id": "3164cf296c017b4e6d4c591ba0615a1e",
+        "field": "rating"
+      },
+      {
+        "product_id": "9adf33b62f0758602909f5b880d6baa0",
+        "field": "rating"
+      },
+      {
+        "product_id": "9a985171b0680687ffe7f7bcdb735c60",
+        "field": "rating"
+      },
+      {
+        "product_id": "17e0801bd537d02b49cbc67a3166d8fb",
+        "field": "rating"
+      },
+      {
+        "product_id": "0c4e7646251e7646e152cca7f614ed36",
+        "field": "rating"
+      },
+      {
+        "product_id": "303b2cc1a682291b94061b7633f23c9d",
+        "field": "rating"
+      },
+      {
+        "product_id": "fce2bd96b35d531a4784bc57e19aca4f",
+        "field": "rating"
+      },
+      {
+        "product_id": "dfa536b435f093dc6ad6f1d5094eb726",
+        "field": "rating"
+      },
+      {
+        "product_id": "27d7303f3f0322287159d84c95fdca09",
+        "field": "rating"
+      },
+      {
+        "product_id": "d9cc8b251761ef40d8b60d0595ad23a1",
+        "field": "rating"
+      },
+      {
+        "product_id": "b654529f78e2a4f23d55da2d574b9213",
+        "field": "rating"
+      },
+      {
+        "product_id": "d09c1754859515eed93bef906713394c",
+        "field": "rating"
+      },
+      {
+        "product_id": "eb7148dc532ca3a71f0c88fe1d617b4d",
+        "field": "rating"
+      },
+      {
+        "product_id": "470ff3c4e22d237f5a75ac07225e513e",
+        "field": "rating"
+      },
+      {
+        "product_id": "8d5d96a358b59efb6565ea40b828d44c",
+        "field": "rating"
+      },
+      {
+        "product_id": "85a27ada9fb0d8ca4939f364596c2028",
+        "field": "rating"
+      },
+      {
+        "product_id": "260a80a94d489cd814baea818d5f245f",
+        "field": "rating"
+      },
+      {
+        "product_id": "e24ef34ede03630207f0d367f633d8ea",
+        "field": "rating"
+      },
+      {
+        "product_id": "b749545be85a49ac9cf0970dafba0914",
+        "field": "rating"
+      },
+      {
+        "product_id": "409210174cd7418f2908754141e224b4",
+        "field": "rating"
+      },
+      {
+        "product_id": "7c2523e20963c669fff98897775215b7",
+        "field": "rating"
+      },
+      {
+        "product_id": "9f06a785d4c1d37c61fed1ee3f41a5ac",
+        "field": "rating"
+      },
+      {
+        "product_id": "a732e1b8856a2be6e76335146da381e6",
+        "field": "rating"
+      },
+      {
+        "product_id": "7d62791cb19dc2ed22597980e3422adc",
+        "field": "rating"
+      },
+      {
+        "product_id": "4664ab78c5037ae68340d37c4353a8ac",
+        "field": "rating"
+      },
+      {
+        "product_id": "31234088c1464e6f2aa6f6136b1c0efd",
+        "field": "rating"
+      },
+      {
+        "product_id": "a6457a53fb964becff312f738a7ba17b",
+        "field": "rating"
+      },
+      {
+        "product_id": "4f81b43617d68e70be6cea2449cf0152",
+        "field": "rating"
+      },
+      {
+        "product_id": "04c9374e6f69d2ca8e686b94b6f9be70",
+        "field": "rating"
+      },
+      {
+        "product_id": "e90062f11aa8cb23112938e3d44fd2e9",
+        "field": "rating"
+      },
+      {
+        "product_id": "8720a25546a572b0217817a82bfd00a5",
+        "field": "rating"
+      },
+      {
+        "product_id": "6c3768639e82ceaeab681e083b897672",
+        "field": "rating"
+      },
+      {
+        "product_id": "044ac32c825a25652fd4e045d5a16e0d",
+        "field": "rating"
+      },
+      {
+        "product_id": "4a4b65e94d81d0a3cef41a60be0892a3",
+        "field": "rating"
+      },
+      {
+        "product_id": "8116bd28bf74c5930426fd53a9b4d1cb",
+        "field": "rating"
+      },
+      {
+        "product_id": "6747a114bf3f9896d2c27fe2a0f8ae03",
+        "field": "rating"
+      },
+      {
+        "product_id": "f4b2d29638953cc3694ab87d53dfbdd8",
+        "field": "rating"
+      },
+      {
+        "product_id": "f3ad282dac6ef0e30585a49ac67a322b",
+        "field": "rating"
+      },
+      {
+        "product_id": "b8a4b58c34c9d3e18aa7b44b312eb697",
+        "field": "rating"
+      },
+      {
+        "product_id": "e78379b5aa456ac81d4e60a5d9177f2b",
+        "field": "rating"
+      },
+      {
+        "product_id": "bf77cde1ddf5b35076eabe4ae4c55fd1",
+        "field": "rating"
+      },
+      {
+        "product_id": "b0173f4bb88582d08b64b1569224f4dd",
+        "field": "rating"
+      },
+      {
+        "product_id": "20e4a23a9cc1cf08c3bc0a437b372f6a",
+        "field": "rating"
+      },
+      {
+        "product_id": "3dfe063aa3b8e468ae0ceb2e6678f6e9",
+        "field": "rating"
+      },
+      {
+        "product_id": "3a10add7e7d7bd13007b146ff08046e4",
+        "field": "rating"
+      },
+      {
+        "product_id": "c4ca19e8167fcd2d7f300ed8c2b332b8",
+        "field": "rating"
+      },
+      {
+        "product_id": "66b9b853448c77d5ca087b5b4367b761",
+        "field": "rating"
+      },
+      {
+        "product_id": "1824319f46591f727c7f17006c6e8237",
+        "field": "rating"
+      },
+      {
+        "product_id": "ffd3444175f6966c70a0a686c389453a",
+        "field": "rating"
+      },
+      {
+        "product_id": "3bb34a53506120ff93d898cc3aab9806",
+        "field": "rating"
+      },
+      {
+        "product_id": "79476105bf7bbbba3c0ef59ed1829918",
+        "field": "rating"
+      },
+      {
+        "product_id": "ab3687d515f95d45f764fa5e8acaf281",
+        "field": "rating"
+      },
+      {
+        "product_id": "a70ea60f971825b2eb57261029f317ec",
+        "field": "rating"
+      },
+      {
+        "product_id": "8b3be6d1635a6c42003ee7cfd406fbed",
+        "field": "rating"
+      },
+      {
+        "product_id": "e1ac07d276a2b12572f095fdf551c7b5",
+        "field": "rating"
+      },
+      {
+        "product_id": "cdd49b7102daf9e5c20c83a82c469cd2",
+        "field": "rating"
+      },
+      {
+        "product_id": "af8e18e7148ce558d3b45afc3cfb325f",
+        "field": "rating"
+      },
+      {
+        "product_id": "41fdfc6b0ba0df54ba391efa76a4fde4",
+        "field": "rating"
+      },
+      {
+        "product_id": "5f6bdfa9268d1589bf0366b2cf3f2a38",
+        "field": "rating"
+      },
+      {
+        "product_id": "c6bfe3d78de5dea178ecb2a105edcc4f",
+        "field": "rating"
+      },
+      {
+        "product_id": "b7fb7b8c082b5a1178be985cde24c136",
+        "field": "rating"
+      },
+      {
+        "product_id": "f3d1b6c03888072df17878fa024c1846",
+        "field": "rating"
+      },
+      {
+        "product_id": "3897a9a35c1b2abae493b5f168154927",
+        "field": "rating"
+      },
+      {
+        "product_id": "1640870d6cfcfa0941fbff5255a1bab4",
+        "field": "rating"
+      },
+      {
+        "product_id": "8a15fa23b8c39ac1c7eaac94cbbe6fc6",
+        "field": "rating"
+      },
+      {
+        "product_id": "9ab3bb452a90e3d9f5f87bac8b813b0c",
+        "field": "rating"
+      },
+      {
+        "product_id": "8bd421aeb50b6bf5a24d870db2fdbc37",
+        "field": "rating"
+      },
+      {
+        "product_id": "261a8e53f715b46fb852f64c150deb49",
+        "field": "rating"
+      },
+      {
+        "product_id": "79a44dd970810c61de61185244342364",
+        "field": "rating"
+      },
+      {
+        "product_id": "b2f45d57493e10877d4e8764302cf409",
+        "field": "rating"
+      },
+      {
+        "product_id": "ee417fd5023354d317e7f31f92c6228c",
+        "field": "rating"
+      },
+      {
+        "product_id": "b0846b86e0e4e8597f1ee69096c93a48",
+        "field": "rating"
+      },
+      {
+        "product_id": "16f5c100a240ef50fb5e413f3ddb480e",
+        "field": "rating"
+      },
+      {
+        "product_id": "91a8607de972b452d3c3e7933c7b4906",
+        "field": "rating"
+      },
+      {
+        "product_id": "23bcdc0edbe2524763afda7b2abe4b8d",
+        "field": "rating"
+      },
+      {
+        "product_id": "c38eb8abdaa1d8c28bc8c262761dfbc5",
+        "field": "rating"
+      },
+      {
+        "product_id": "3678cd432d27eb785c9139cd0056cb6f",
+        "field": "rating"
+      },
+      {
+        "product_id": "37664c492c4801622f526d0d96ca2777",
+        "field": "rating"
+      },
+      {
+        "product_id": "d7a1584b5205f0a148b609a7f2ec8fe9",
+        "field": "rating"
+      },
+      {
+        "product_id": "09ea6b8cbbcac50471cf8ba166a75049",
+        "field": "rating"
+      },
+      {
+        "product_id": "c22755b93d9ed8e57abab11fdb082182",
+        "field": "rating"
+      },
+      {
+        "product_id": "b99e5e1fb9cee589de2429065f6de745",
+        "field": "rating"
+      },
+      {
+        "product_id": "ae3fad1fc6656b1dee010f9a0cc1817d",
+        "field": "rating"
+      },
+      {
+        "product_id": "c24baa8866270d65f91deb1c86b3025e",
+        "field": "rating"
+      },
+      {
+        "product_id": "e528bc66d53b8e1d8196da5b20f045ab",
+        "field": "rating"
+      },
+      {
+        "product_id": "c4c5becabb2d0ba476289c27c49050ed",
+        "field": "rating"
+      },
+      {
+        "product_id": "d34f321a002b990e04962ab480873bbc",
+        "field": "rating"
+      },
+      {
+        "product_id": "4ead262c3c563156c88a678af9434f93",
+        "field": "rating"
+      },
+      {
+        "product_id": "f1737941f98b7feabf338792fb72b12f",
+        "field": "rating"
+      },
+      {
+        "product_id": "eed072bc52d5dd0146742b95378d8218",
+        "field": "rating"
+      },
+      {
+        "product_id": "389197b67a189c703f3deb9ca6f1f678",
+        "field": "rating"
+      },
+      {
+        "product_id": "059bc43e03e1824a9ab6466e32e5f137",
+        "field": "rating"
+      },
+      {
+        "product_id": "88340323318c2e97e3ca4edbb837d0a7",
+        "field": "rating"
+      },
+      {
+        "product_id": "da2070c66e22ab7c57f15d93306700c1",
+        "field": "rating"
+      },
+      {
+        "product_id": "3693c4e7f7efb47edb3d9eec067ffd93",
+        "field": "rating"
+      },
+      {
+        "product_id": "ac209ee3c602efed4ff093854a4ade06",
+        "field": "rating"
+      },
+      {
+        "product_id": "641095c0afa77b5eca45362ef1831323",
+        "field": "rating"
+      },
+      {
+        "product_id": "5ba732dd6e2d2c6149b15add63b3ac5c",
+        "field": "rating"
+      },
+      {
+        "product_id": "90bc11c49582f90e938c7e1af2e42182",
+        "field": "rating"
+      },
+      {
+        "product_id": "8284c10b2890ed53e17de5cfc33cdb96",
+        "field": "rating"
+      },
+      {
+        "product_id": "9c9996de8059791ca71c36a38923c3b9",
+        "field": "rating"
+      },
+      {
+        "product_id": "65532c32ab0b64138978fa639d4330e0",
+        "field": "rating"
+      },
+      {
+        "product_id": "2c9a22e57e1030d71aaa4403def986da",
+        "field": "rating"
+      },
+      {
+        "product_id": "711dd352c12977415ce27d3ca7b9d219",
+        "field": "rating"
+      },
+      {
+        "product_id": "b64149a8a9235f5199c6d8225d5dc602",
+        "field": "rating"
+      },
+      {
+        "product_id": "322ff3bcaa0318b9f6b5cef33ffe4882",
+        "field": "rating"
+      },
+      {
+        "product_id": "9cafa9c34bd3795aaa8a92c78e2dd044",
+        "field": "rating"
+      },
+      {
+        "product_id": "093097cfe5626f4ad8914e0a16a940b5",
+        "field": "rating"
+      },
+      {
+        "product_id": "c1e9b5875e442203073211c522072973",
+        "field": "rating"
+      },
+      {
+        "product_id": "4a01370e20c5de2f131c278f44b8cf1b",
+        "field": "rating"
+      },
+      {
+        "product_id": "0d0b6ee7c7a93d397c0f0dc20cae4b20",
+        "field": "rating"
+      },
+      {
+        "product_id": "3a1950381659338a42668002f594a596",
+        "field": "rating"
+      },
+      {
+        "product_id": "9b5c670a48f2c996e1bc76b78bdbd558",
+        "field": "rating"
+      },
+      {
+        "product_id": "eaefddbe8ecf86ba1b53c0d4d7ad9fa1",
+        "field": "rating"
+      },
+      {
+        "product_id": "2f00c8e4b5c02fbec5839b913eeb8eba",
+        "field": "rating"
+      },
+      {
+        "product_id": "2f6425ca7701720fcfdaec201174227a",
+        "field": "rating"
+      },
+      {
+        "product_id": "0edac1362cdd97a2cab1d4015ba124a8",
+        "field": "rating"
+      },
+      {
+        "product_id": "2a20862f02555a44b0ab301bed987a0b",
+        "field": "rating"
+      },
+      {
+        "product_id": "10a46f055c0932edd551740b1e984788",
+        "field": "rating"
+      },
+      {
+        "product_id": "1549ca339f5c05075c3e53ebabbde1a4",
+        "field": "rating"
+      },
+      {
+        "product_id": "f25d2701ff23f6749e8e69ca17987993",
+        "field": "rating"
+      },
+      {
+        "product_id": "2258617be2bfbd1f30567426bb00cbfb",
+        "field": "rating"
+      },
+      {
+        "product_id": "1edeb800df4077b07314204814f65268",
+        "field": "rating"
+      },
+      {
+        "product_id": "d6b4bc453eae23dc878f62b285bc61bc",
+        "field": "rating"
+      },
+      {
+        "product_id": "d14364b3e3fe037e953bdfbf3c43f330",
+        "field": "rating"
+      },
+      {
+        "product_id": "b8fc83a8669738fc5fa3410b8a05500d",
+        "field": "rating"
+      },
+      {
+        "product_id": "733aa1e801a139fa8dc7be9f0eff5ee0",
+        "field": "rating"
+      },
+      {
+        "product_id": "be9348d9b0a58588c95af0bcb065e37b",
+        "field": "rating"
+      },
+      {
+        "product_id": "0ddc40c08d9a9bafc4d14eddd98db7c0",
+        "field": "rating"
+      },
+      {
+        "product_id": "e24bd6466e7db882c61b1fa70b71b141",
+        "field": "rating"
+      },
+      {
+        "product_id": "7fdc72b9a2e9b61ba80c436f7abbbac3",
+        "field": "rating"
+      },
+      {
+        "product_id": "b6690cba2fba4381f608d581d4ffc9f4",
+        "field": "rating"
+      },
+      {
+        "product_id": "3982f088b3a0b5cf9a4dc9354f2fcc47",
+        "field": "rating"
+      },
+      {
+        "product_id": "7bb01969165f29003bd887d3aabd913f",
+        "field": "rating"
+      },
+      {
+        "product_id": "3f83221dcff19fe47aac3c0f762cf30d",
+        "field": "rating"
+      },
+      {
+        "product_id": "c3a7aea1e651ad62154b8e024bf8bdc0",
+        "field": "rating"
+      },
+      {
+        "product_id": "807302011d3d8f4d88860cff2cb16dee",
+        "field": "rating"
+      },
+      {
+        "product_id": "49907d6f72c714ea52571212dbd59900",
+        "field": "rating"
+      },
+      {
+        "product_id": "22146eaca9aee0223a4302d87cb3e122",
+        "field": "rating"
+      },
+      {
+        "product_id": "c312896a8ed9e9d69519d9bff72996ef",
+        "field": "rating"
+      },
+      {
+        "product_id": "ee6d5fe464237e85f61cc9128710ce32",
+        "field": "rating"
+      },
+      {
+        "product_id": "0105fd81ac871025ff871cab9b7432c6",
+        "field": "rating"
+      },
+      {
+        "product_id": "0992374ae351064d71c61d6f07830bc2",
+        "field": "rating"
+      },
+      {
+        "product_id": "5ae20d628f22dec948ea0ea2256e9c9c",
+        "field": "rating"
+      },
+      {
+        "product_id": "9199cacd5a7061f5e666c45743aa5c91",
+        "field": "rating"
+      },
+      {
+        "product_id": "33d97d63c037078cd3f08033966d6a88",
+        "field": "rating"
+      },
+      {
+        "product_id": "fdbdb02c2e8bc6770001f3b7f109e046",
+        "field": "rating"
+      },
+      {
+        "product_id": "59d8fbf3379fa4b17fa7717adde60d80",
+        "field": "rating"
+      },
+      {
+        "product_id": "deed996c91113e94f23f1033f776c43a",
+        "field": "rating"
+      },
+      {
+        "product_id": "87e0ba259a84a10580bd659466e73e23",
+        "field": "rating"
+      },
+      {
+        "product_id": "d21409978f5e404b53f89e444f7893fe",
+        "field": "rating"
+      },
+      {
+        "product_id": "f9837c408ca0026ce72b0a748da46a3a",
+        "field": "rating"
+      },
+      {
+        "product_id": "e443d2c1c9cdc3040710bc00b69cbd99",
+        "field": "rating"
+      },
+      {
+        "product_id": "684114516ed57a591bb0927819afaf0d",
+        "field": "rating"
+      },
+      {
+        "product_id": "434939ad3ce33bd17105e06e85191d47",
+        "field": "rating"
+      },
+      {
+        "product_id": "92575fe20a9a1795c4e26c9299166122",
+        "field": "rating"
+      },
+      {
+        "product_id": "311a7c735c6f2b3bb4fa68bd84efead6",
+        "field": "rating"
+      },
+      {
+        "product_id": "f78eccca7151857181b2666eb4363782",
+        "field": "rating"
+      },
+      {
+        "product_id": "fbbaf7aea8f2111a8d9e5f7c5b824841",
+        "field": "rating"
+      },
+      {
+        "product_id": "bb7950eb09f95d18d4d5011c333998a2",
+        "field": "rating"
+      },
+      {
+        "product_id": "3864ab10ef7006452fef45513de8f868",
+        "field": "rating"
+      },
+      {
+        "product_id": "07970b5d84c24e29d3d069d4efb26f10",
+        "field": "rating"
+      },
+      {
+        "product_id": "e283962903cb5a9c0aeec531fcd43329",
+        "field": "rating"
+      },
+      {
+        "product_id": "a9f3b7353225f8492e53bb2337d85211",
+        "field": "rating"
+      },
+      {
+        "product_id": "8b724f6992ecb1c2e72b109c886789f4",
+        "field": "rating"
+      },
+      {
+        "product_id": "7f5f73d9783e8b213b4cafe2fc1955a9",
+        "field": "rating"
+      },
+      {
+        "product_id": "62316dacbd7d32e9ad2f96936f14e639",
+        "field": "rating"
+      },
+      {
+        "product_id": "ddf9b00a1c005420af821bcb964dd0ad",
+        "field": "rating"
+      },
+      {
+        "product_id": "15377d3d47b1296fb21960729fb2aacb",
+        "field": "rating"
+      },
+      {
+        "product_id": "2e474c49a7dfe704c35cf3990740daa3",
+        "field": "rating"
+      },
+      {
+        "product_id": "f13458bceb3c3952c629ae5cf41e292c",
+        "field": "rating"
+      },
+      {
+        "product_id": "235410c63d373e2fe141c129de2f624f",
+        "field": "rating"
+      },
+      {
+        "product_id": "bf9545f12ca3b8ae52b3222f4ad3dea0",
+        "field": "rating"
+      },
+      {
+        "product_id": "33aca3e2c3f8421d8627e96e2a316d87",
+        "field": "rating"
+      },
+      {
+        "product_id": "f9999d9cdd8a9ea8d6e942f703c21173",
+        "field": "rating"
+      },
+      {
+        "product_id": "f63ebbb3003f69fe75fa448529f7eb27",
+        "field": "rating"
+      },
+      {
+        "product_id": "3564ccf571dd718fe472af16201e161b",
+        "field": "rating"
+      },
+      {
+        "product_id": "6d2b5fedafee73ffe0730a1c8f561fe5",
+        "field": "rating"
+      },
+      {
+        "product_id": "e842806fe41a1a2bd6e95cd6096a7be5",
+        "field": "rating"
+      },
+      {
+        "product_id": "154fcab5a116b48ae3b26cf8d923460a",
+        "field": "rating"
+      },
+      {
+        "product_id": "dc3aa7bb97e5918809ee900a54b77cee",
+        "field": "rating"
+      },
+      {
+        "product_id": "54ed6b5ec9c5379db91f899fb91e8551",
+        "field": "rating"
+      },
+      {
+        "product_id": "16b9a1476ac7c9152087156712f827f5",
+        "field": "rating"
+      },
+      {
+        "product_id": "e365b55f806e5d0abe0094a9f2590e33",
+        "field": "rating"
+      },
+      {
+        "product_id": "26989e846c2096a5b59b59cbea2cc7ab",
+        "field": "rating"
+      },
+      {
+        "product_id": "e738d8e78ce32792f869f5b0528b3335",
+        "field": "rating"
+      },
+      {
+        "product_id": "0b2a564351642342d474fd6c8f79b231",
+        "field": "rating"
+      },
+      {
+        "product_id": "3386d3d1d642ca82cf57b9593de29127",
+        "field": "rating"
+      },
+      {
+        "product_id": "21126429ad98f1affc2f2c3ae72cfd50",
+        "field": "rating"
+      },
+      {
+        "product_id": "c159084f01e179cffbd262054a034ba3",
+        "field": "rating"
+      },
+      {
+        "product_id": "4b90f8ae8bf85955c9886720aca62b8f",
+        "field": "rating"
+      },
+      {
+        "product_id": "ef7e2583361d629d609a9e87ced51e5b",
+        "field": "rating"
+      },
+      {
+        "product_id": "787dc24d99405149e7d0048d6af50478",
+        "field": "rating"
+      },
+      {
+        "product_id": "6b1ca0415ce2192ddcbbbc38249a53aa",
+        "field": "rating"
+      },
+      {
+        "product_id": "700dfd088162ea00deda33123cd7f2da",
+        "field": "rating"
+      },
+      {
+        "product_id": "9ca143ef7e320d95a4c938d4df061437",
+        "field": "rating"
+      },
+      {
+        "product_id": "ccab7282fe81dd6c291ffe207c1d8f37",
+        "field": "rating"
+      },
+      {
+        "product_id": "4cd57b9250ee11b7d828431ab0e36032",
+        "field": "rating"
+      },
+      {
+        "product_id": "884ff6050ff3d6b2c8f681c300a21b2a",
+        "field": "rating"
+      },
+      {
+        "product_id": "702ddbdf7bb80b3db3868145614c630a",
+        "field": "rating"
+      },
+      {
+        "product_id": "ea3b8138956b215944c03ce93d21b3a9",
+        "field": "rating"
+      },
+      {
+        "product_id": "c0c2560ce87e22201c49a34221779d4c",
+        "field": "rating"
+      },
+      {
+        "product_id": "fc4de07449d53dc697a1997b383955f2",
+        "field": "rating"
+      },
+      {
+        "product_id": "8f00ee54fc378b4ba18b7acca28329de",
+        "field": "rating"
+      },
+      {
+        "product_id": "8d0528d80daeb0033918bbdcc5ac3a6f",
+        "field": "rating"
+      },
+      {
+        "product_id": "2670ba9bc61b42937773486ddcae442a",
+        "field": "rating"
+      },
+      {
+        "product_id": "8f87b1af1e8ab42c1d559f2f9caf70bb",
+        "field": "rating"
+      },
+      {
+        "product_id": "acaedb6dd1ff23f1193ed1233f6358d0",
+        "field": "rating"
+      },
+      {
+        "product_id": "fc7b52589ffc33d75eedd8b082e1cef8",
+        "field": "rating"
+      },
+      {
+        "product_id": "9f6f759f02fb9d5436f8ca5fb3bc3108",
+        "field": "rating"
+      },
+      {
+        "product_id": "b7214d4c357e3f7acae72fcbe7d31afe",
+        "field": "rating"
+      },
+      {
+        "product_id": "d0bb2a201949d12ea41a2b7260036d90",
+        "field": "rating"
+      },
+      {
+        "product_id": "0885a0a7a607c0996a5fcea834193384",
+        "field": "rating"
+      },
+      {
+        "product_id": "df69b2af6c33deb82d7ee93dcc16366b",
+        "field": "rating"
+      },
+      {
+        "product_id": "4d6be4c0f6c80299750a038c49d245c0",
+        "field": "rating"
+      },
+      {
+        "product_id": "7e2cf2b2de0568010410d79665c0a2e1",
+        "field": "rating"
+      },
+      {
+        "product_id": "4438205dd1de1ccb6c345a8b6d52d6c3",
+        "field": "rating"
+      },
+      {
+        "product_id": "82b972cf4aeaab9917bc65b128c217d0",
+        "field": "rating"
+      },
+      {
+        "product_id": "ad0e50ae8df6aef705c12994d0b5d923",
+        "field": "rating"
+      },
+      {
+        "product_id": "44e4b9fbd4a7e561e1dd9485682ba397",
+        "field": "rating"
+      },
+      {
+        "product_id": "e2f9cb7f20c147dd11c73eb984959e6e",
+        "field": "rating"
+      },
+      {
+        "product_id": "617213f4ecbc0deaa8ca29c86d18e0a6",
+        "field": "rating"
+      },
+      {
+        "product_id": "0fb3fed04e86ee9188c01d5b009d3d8c",
+        "field": "rating"
+      },
+      {
+        "product_id": "2a78921e36fdaae212589387895de447",
+        "field": "rating"
+      },
+      {
+        "product_id": "3b08fa9a3255a347edb5b1ea31f421de",
+        "field": "rating"
+      },
+      {
+        "product_id": "e23acdd6f803817f953532a47212f4dc",
+        "field": "rating"
+      },
+      {
+        "product_id": "47e019502ff3bd0fcac96d71c953bb2c",
+        "field": "rating"
+      },
+      {
+        "product_id": "60a7313ea1e0ee8d845a0a6dec6117cc",
+        "field": "rating"
+      },
+      {
+        "product_id": "b707fb4e10ebf63c88be8c6a8e50d038",
+        "field": "rating"
+      },
+      {
+        "product_id": "fecc8c2cf5f7aff6faed7a7c1d9819b3",
+        "field": "rating"
+      },
+      {
+        "product_id": "70a5185fb972e732e305b06c1821da3a",
+        "field": "rating"
+      },
+      {
+        "product_id": "71677c4dfffc4b7ecb411bfdf38c8b1f",
+        "field": "rating"
+      }
+    ],
+    "audit_ms": 3042.3781999998027
+  }
+}

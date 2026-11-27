@@ -15,7 +15,7 @@ from shopassist.preferences.normalization import (
     normalize_semantic_query,
 )
 from shopassist.preferences.query_composer import build_preference_query
-from shopassist.preferences.safety import find_unsafe_negative_preferences
+from shopassist.preferences.safety import find_unsafe_query_exclusions
 from shopassist.preferences.schemas import (
     PreferenceRepresentationResult,
     RepresentationStatus,
@@ -78,7 +78,7 @@ class PreferenceRepresentationService:
                 f"Catalog prices use INR; query currency {currency} requires clarification",
             )
 
-        unsafe = find_unsafe_negative_preferences(preferences)
+        unsafe = [phrase for phrase in preferences if find_unsafe_query_exclusions(phrase)]
         if unsafe:
             return self._stopped(
                 semantic_query,
